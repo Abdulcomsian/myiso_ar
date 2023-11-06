@@ -17,7 +17,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Quality Manual</h2>
+			<h2>كتيب الجودة</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
@@ -28,9 +28,9 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="procedure_div">
-					<h4>1. Scope</h4>
-					<p>This Quality Manual defines the Quality Management System (QMS) applicable to the activities performed by <b><span class="authName">{{Auth::user()->company_name}}</span></b>, in accordance with the requirements of ISO 9001:2015.</p>
-					<h4 class="m-t-20">2. Normative References</h4>
+					<h4>1. النطاق</h4>
+					<p>يتمثل الهدف من دليل الجودة هذا في تحديد نظام إدارة الجودة المطبّق على الأنشطة التي تؤديها <b><span class="authName">{{Auth::user()->company_name}}</span></b> وفقًا لمتطلبات شهادة الأيزو: (ISO 9001:2015).</p>
+					<h4 class="m-t-20">2. المراجع المعيارية</h4>
 					<div class="list_div">
 						<div class="list_number">
 							<p>2.1 -</p>
@@ -39,28 +39,28 @@
 							<p>2.1.3 -</p>
 						</div>
 						<div class="list_content">
-							<p style="028px;">This document references the following:</p>
-							<p style="028px;">Procedures</p>
-							<p style="025px;">Processes</p>
-							<p style="025px;">Forms and records</p>
+							<p style="028px;">تشير هذه الوثيقة إلى ما يلي:</p>
+							<p style="028px;"> الإجراءات</p>
+							<p style="025px;"> العمليات</p>
+							<p style="025px;">النماذج والسجلات</p>
 						</div>
 					</div>
-					<h4 class="m-t-20">3. Terms and Definitions</h4>
+					<h4 class="m-t-20">3. المصطلحات والتعاريف</h4>
 					<div class="list_div">
 						<div class="list_number">
 							<p>3.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="033px;">Follow the terms and conditions detailed in the standard ISO9001: 2015.</p>
+							<p style="033px;">اتباع الشروط والأحكام المفصلة في شهادة الآيزو القياسية (ISO9001:2015).</p>
 						</div>
 					</div>
-					<h4 class="m-t-20">4. Context of the Organisation</h4>
+					<h4 class="m-t-20">4. سياق المنظمة</h4>
 					<div class="list_div">
 						<div class="list_number">
 							<p>4.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="033px;">Understanding the organisation and its context.</p>
+							<p style="033px;">فهم المنظمة وسياقها.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -68,7 +68,7 @@
 							<p>4.1.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="025px;">This Manual presents policy and procedural requirements for the quality management system of <b><span class="authName">{{ Auth::user()->company_name}}</span></b>. In understanding the external context, consideration shall be given to issues arising from legal, technological, competitive, market, cultural, social, and economic environments, whether international, national, regional, or local. In understanding the internal context, consideration is given to issues related to values, culture, knowledge, and performance of the organisation.</p>
+							<p style="025px;">يستعرض هذا الدليل المتطلبات السياسية والإجرائية لنظام إدارة الجودة في <b><span class="authName">{{ Auth::user()->company_name}}</span></b>. يستوجب فهم السياق الخارجيّ مراعاة القضايا الناشئة عن البيئات القانونية والتكنولوجية والتنافسية والسوقية والثقافية والاجتماعية والاقتصادية، سواء كانت دولية أو وطنية أو إقليمية أو محلية. وفيما يخصّ فهم السياق الداخلي، يتم التركيز على القضايا المعنية بالقيم والثقافة والمعرفة والأداء في المنظمة.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -84,7 +84,7 @@
 							<p>4.2 -</p>
 						</div>
 						<div class="list_content">
-							<p style="028px;">Understanding the needs and expectations of interested parties.</p>
+							<p style="028px;">فهم احتياجات الأطراف المعنية وتوقعاتها.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -92,7 +92,7 @@
 							<p>4.2.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="022px;">See <a href="{{ url('/quality_policy') }}">Quality Policy</a>.</p>
+							<p style="022px;"> انظر  <a href="{{ url('/quality_policy') }}">Quality Policy</a></p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -100,7 +100,7 @@
 							<p>4.2.2 -</p>
 						</div>
 						<div class="list_content">
-							<p style="018px;"><b><span class="authName">{{ Auth::user()->company_name}}</span></b> consider interested parties to include customers, legal obligations, employees and contractors, suppliers and company neighbours. Those affected by GDPR are also considered an interested party. Their needs and expectations can be further documented <a href="{{ url('interesting_parties') }}">here</a>.</p>
+							<p style="018px;"> تأخذ <b><span class="authName">{{ Auth::user()->company_name}}</span></b> بعين الاعتبار أن الأطراف المعنية تشمل العملاء والالتزامات القانونية والموظفين والمقاولين والموردين والمنطقة المحيطة بالشركة.  الشركة. كما تشمل قائمة الأطراف المعنية الجهات المتأثرة بالقانون العام لحماية البيانات. ويمكن توثيق احتياجاتهم وتوقعاتهم بشكل أكبر  <a href="{{ url('interesting_parties') }}">here</a>.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -108,7 +108,7 @@
 							<p>4.3 -</p>
 						</div>
 						<div class="list_content">
-							<p style="028px;">Determining the scope of the quality management system.</p>
+							<p style="028px;">تحديد نطاق نظام إدارة الجودة.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -116,7 +116,7 @@
 							<p>4.3.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="022px;">The scope of the quality system defined by this manual addresses all activities required by ISO 9001:2015, based on the scope detailed in 4.1.2, with the exceptions of aspects listed in paragraph 4.3.3. The entire company site, all employees and contractors, and activities are considered within the boundaries of this management system.</p>
+							<p style="022px;">يتناول نطاق نظام الجودة المحدد في هذا الدليل جميع الأنشطة التي تتطلبها شهادة الآيزو (ISO 9001:2015) وفقًا للنطاق المفصّل في البند 2.1.4، مع استثناء الجوانب المذكورة في الفقرة 3.3.4. وتتضمن حدود هذا النظام الإداري الموقع الكامل للشركة، وجميع الموظفين والمقاولين، والأنشطة.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -124,7 +124,7 @@
 							<p>4.3.2 -</p>
 						</div>
 						<div class="list_content">
-							<p style="018px;">The scope for <b><span class="authName">{{ Auth::user()->company_name}}</span></b> is: "{{ Auth::user()->scope}}"</p>
+							<p style="018px;">نطاق <b><span class="authName">{{ Auth::user()->company_name}}</span></b> يتمثل في "{{ Auth::user()->scope}}"</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -132,7 +132,7 @@
 							<p>4.3.3 -</p>
 						</div>
 						<div class="list_content">
-							<p style="016px;">Reduction in Scope</p>
+							<p style="016px;">تخفيض النطاق</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -140,17 +140,17 @@
 							<p>4.3.3.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="09px;">Quality system items that are not applicable: - ISO 9001 Section 8.3, Design and development of products and services.</p>
+							<p style="09px;">بنود نظام الجودة غير القابلة للتطبيق: المواصفات (ISO 9001) القسم 3.8، تصميم وتطوير المنتجات والخدمات.</p>
 						</div>
 					</div>
 					<div class="list_div">
 						<div class="list_number">
 							<p style="
-    07px;
-">4.3.3.2 -</p>
+									07px;
+								">4.3.3.2 -</p>
 						</div>
 						<div class="list_content">
-							<p style="012px;">These exclusions are applicable because of their non-relevance to the activities of <b><span class="authName">{{ Auth::user()->company_name}}</span></b> or to their desired scope of registration. Not doing this element does not impact on the product or service provided to the customers.</p>
+							<p style="012px;"> يمكن تطبيق هذه الاستثناءات نظرًا لعدم ارتباطها بأنشطة <b><span class="authName">{{ Auth::user()->company_name}}</span></b> أو نطاق التسجيل المطلوب. لا يؤثر عدم القيام بهذا العنصر على المنتج أو الخدمة المقدمة للعملاء.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -158,7 +158,7 @@
 							<p>4.4 -</p>
 						</div>
 						<div class="list_content">
-							<p style="028px;">Quality management system and its processes.</p>
+							<p style="028px;">نظام إدارة الجودة وعملياته.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -166,8 +166,7 @@
 							<p>4.4.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="020px;">The following key processes are used and defined by
-								 <b><span class="authName">{{Auth::user()->company_name}}</span></b>.</p>
+							<p style="020px;"> تستخدم <b><span class="authName">{{Auth::user()->company_name}}</span></b> العمليات التالية، وتحددها.</p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -175,7 +174,7 @@
 							<p>4.4.1.1 -</p>
 						</div>
 						<div class="list_content">
-							<p style="012px;"><a href="{{url('sale_processes')}}">QP1 - Sales Process</a></p>
+							<p style="012px;"><a href="{{url('sale_processes')}}"> سياسة الجودة 1 – عمليات البيع</a></p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -183,7 +182,7 @@
 							<p>4.4.1.2 -</p>
 						</div>
 						<div class="list_content">
-							<p style="09px;"><a href="{{url('purchasing_processes')}}">QP2 - Purchasing Process</a></p>
+							<p style="09px;"><a href="{{url('purchasing_processes')}}">سياسة الجودة 2 – عمليات الشراء</a></p>
 						</div>
 					</div>
 					<div class="list_div">
@@ -191,7 +190,7 @@
 							<p>4.4.1.3 -</p>
 						</div>
 						<div class="list_content">
-							<p style="09px;"><a href="{{url('servicing_contract')}}">QP3 - Servicing of a Contract</p></a>
+							<p style="09px;"><a href="{{url('servicing_contract')}}">سياسة الجودة 3 – خدمات العقود</p></a>
 						</div>
 					</div>
 					<div class="list_div">
@@ -199,7 +198,7 @@
 							<p>4.4.1.4 -</p>
 						</div>
 						<div class="list_content">
-							<p style="09px;"><a href="{{url('competency_process')}}">QP4 - Competency Process</a></p>
+							<p style="09px;"><a href="{{url('competency_process')}}"> سياسة الجودة 4 – عمليات الكفاءة</a></p>
 						</div>
 					</div>
 					<h4 class="m-t-20">5. Leadership</h4>

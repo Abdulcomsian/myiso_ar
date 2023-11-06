@@ -23,7 +23,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Management Organogram</h2>
+			<h2>المخطط التنظيمي للإدارة</h2>
 		</div>
 	</div>
 	<div class="procedure_div">
@@ -41,40 +41,36 @@
                     		@endif
                     		</div>
                     		<div class="col-lg-3 col-xl-2 text-right">
-                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">ADD ALTERNATIVE PROCESS</a>
+                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">أضف عملية بديلة</a>
                     		</div>
                     	</div>
                     	<div class="work_instruction_from_div">
-    <form enctype='multipart/form-data' action="{{url('uploadimg')}}" method="post">
+                       <form enctype='multipart/form-data' action="{{url('uploadimg')}}" method="post">
                             @csrf
-  <input type="hidden" name="user_id" value="<?php echo Auth::id(); ?>"/>
+                           <input type="hidden" name="user_id" value="<?php echo Auth::id(); ?>"/>
                             <div class="row">
                     				<div class="col-lg-6 d-flex">
                     					<div class="form-group">
-											<label>Upload Photo:</label><br>
-		<input type="file" class="form-control" name="organogram">
-
+											<label>تحميل صورة:</label><br>
+		                                    <input type="file" class="form-control" name="organogram">
+											{{-- <button type="submit" class="submitBtn">يُقدِّم</button> --}}
+											<button type="submit" class="submitBtn" style="margin-top: 10px;">يُقدِّم</button>
 										</div>
-										<button type="submit" class="submitBtn">SUBMIT</button>
                     				</div>
-                    				
                     			</div>
-
-								
                     		</form>
                     	</div>
                     </div>
-	<section id="procedure_section">
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="procedure_div">
-@if($img) <img src="{{ $img }}" class="img-fluid"> @endif
-				</div>
-			</div>
-		</div>
-	</section>
-
+					<section id="procedure_section">
+						
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="procedure_div">
+								@if($img) <img src="{{ $img }}" class="img-fluid"> @endif
+								</div>
+							</div>
+						</div>
+					</section>
 	<!--End::Section-->
 </div>
 @endsection
