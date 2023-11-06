@@ -115,11 +115,11 @@
     				<input type="hidden" name="id" id="editvalue" value="">
     				<div class="form-group row">
     					<div class="col-lg-8">
-    						<label for="title">Subject:</label>
+    						<label for="title">الموضوع</label>
     						<input type="text" id="title" name="title" class="form-control" placeholder="Please enter Message Subject" required>
     					</div>
                         <div class="col-md-4">
-    						<label for="attachment">Attachment</label>
+    						<label for="attachment">المرفق</label>
     						<div class="kt-input-icon kt-input-icon--right">
     						<input type="file" name="attachment" class="form-control" id="attachment">
     						</div>
@@ -128,7 +128,7 @@
     
     
     					<div class="col-lg-12">
-    						<label for="message">Message:</label>
+    						<label for="message"><p> رسالة إلى المسؤول</p></label>
     						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="Please enter your Message"></textarea>
     					</div>
     					<br>
@@ -149,7 +149,7 @@
     	</div>
     
     	<div class="modal-footer">
-    		<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm"><i class="fa fa-paper-plane"></i>  Send </button>
+    		<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm"><i class="fa fa-paper-plane"></i>  إرسال </button>
     	</div>
     
     </form>

@@ -2,7 +2,7 @@
 <button class="kt-aside-close " id="kt_aside_close_btn">
 	<i class="la la-close"></i>
 </button>
-<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+<div class="kt-aside kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
 
 	<!-- begin:: Aside -->
 	<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
@@ -421,14 +421,14 @@
 						</ul>
 					</div>
 				</li>
-				<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+				{{-- <li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 					<a href="{{ url('contact_us') }}" class="kt-menu__link kt-menu__toggle">
 						<span class="kt-menu__link-icon">
 							<i class="fa fa-mobile" aria-hidden="true"></i>
 						</span>
 						<span class="kt-menu__link-text">Contact Us</span>
 					</a>
-				</li>
+				</li> --}}
 				
 
 				<li id="admin_notifications" class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
