@@ -129,7 +129,7 @@
 									<i class="flaticon2-bar-chart kt-font-info"></i>
 								</div>
 								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
+									<div class="kt-notification__item-title"> b
 										New user feedback received
 									</div>
 									<div class="kt-notification__item-time">

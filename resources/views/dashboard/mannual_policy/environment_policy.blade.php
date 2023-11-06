@@ -1,5 +1,11 @@
 @extends('dashboard.layouts.app')
-
+@section('css')
+	<style>
+		.list-items-ar{
+			/* direction: rtl; */
+		}
+	</style>
+@endsection
 @section('content')
 <!-- begin:: Content -->
 <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
@@ -10,7 +16,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Environmental Policy</h2>
+			<h2>السياسة البيئية</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
@@ -22,18 +28,18 @@
 				<div class="procedure_div">
 					<div class="row">
 						<div class="col-lg-12 text-right">
-							<a onclick="qualityshowpolicy()" class="addBtn">Add Environmental Policy</a>
+							<a onclick="qualityshowpolicy()" class="addBtn">إضافة السياسة البيئية</a>
 						</div>
 					</div>
 
 					<div class="quality_add_div">
 						<form action="{{ route('environment_policy') }}" id="addcust" method="post">
 							@csrf
-							<h3>Add Environmental Policy</h3>
+							<h3>إضافة السياسة البيئية</h3>
 							<div class="row">
 								<div class="col-lg-12">
 									<div class="form-group">
-										<label>Enter additional Environmental Policies that are specific to your working Environment and Business activities</label><br>
+										<label>يرجى إدخال سياسات بيئية إضافية خاصة ببيئة عملك وأنشطة شركتك </label><br>
 										<textarea name="message" class="form-control" placeholder="Set a maximum for the number of character that can be entered to 450.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
 									</div>
 								</div>
@@ -47,23 +53,23 @@
 				</div>
 
 				<div class="procedure_div">
-				    <p>Each country has its own regulations and laws relating to Environmental Legislation within the workplace. These must be complied with by both the employer and the company employees. It is the obligation of the company to ensure that they are aware and understand their responsibilities and regularly check for updates and changes.</p>
-				    <p>{{ $companyName}} will develop and maintain procedures to identify and support the reduction of negative environmental impacts, determine controls and then implement them. These controls will be reviewed and monitored on a regular basis. The company will take all reasonable steps to reduce environmental impacts within the workplace and to provide guidance on the measures that should be applied within the hierarchy of control. </p>
-					<p><b><span class="authName">{{ $companyName}}</span></b> is committed to continually monitoring and improving the environmental performance of the company. It will regularly measure its impact on the environment and set targets to ensure ongoing improvement.</p>
-					<p>It is the policy of <b><span class="authName">{{ $companyName}}</span></b> to:</p>
+				    <p>لكل دولة أنظمتها وقوانينها الخاصة المعنية بالتشريعات البيئية داخل مكان العمل. ويتعيّن على صاحب العمل وموظفيه الالتزام بهذه التشريعات. ويجب أن تحرص الشركة على التأكد من درايتهم وفهمهم لمسؤولياتهم والتحقق بانتظام من التحديثات والتغييرات.</p>
+				    <p>{{ $companyName}} يعمل على تطوير واحترام اتباع إجراءات من شأنها تحديد ودعم عمليات الحد من التأثيرات السلبية على البيئة، وتحديد الضوابط ثم تنفيذها. تتم مراجعة هذه الضوابط ومراقبتها بشكل منتظم. وتتخذ الشركة جميع الخطوات المعقولة لتقليص مدى التأثيرات البيئية داخل مكان العمل، وتقديم التوجيه بشأن التدابير التي ينبغي تطبيقها ضمن التسلسل الهرمي للرقابة.</p>
+					<p><b><span class="authName">{{ $companyName}}</span></b> يكون بالإجراء المستمر لعمليات المراقبة وتحسين الأداء البيئي للشركة. وسيتم قياس مدى تأثيرها على البيئة بانتظام وتحديد الأهداف لضمان التحسين المستمر. </p>
+					<p>تتمثل سياسة <b><span class="authName">{{ $companyName}}</span></b> في:</p>
 					<ol>
-						<li>Strive to prevent pollution in its processes and at its facilities.</li>
-						<li>Comply with all current legislation regarding environmental issues.</li>
-						<li>Encourage its suppliers to adopt similar principles where possible.</li>
-						<li>Set, monitor and review environmental performance, targets and objectives.</li>
-						<li>Ensure its staff understand the importance of protecting the environment and enlist their support to raise awareness and strive to improve the company’s performance.</li>
-						<li>To continually improve the environmental performance of the company.</li>
-						<li>Actively promote recycling within the company and, where possible, its suppliers.</li>
-						<li>Seek to minimise harmful emissions of its fleet and power usage.</li>
-						<li>Minimise waste by regular evaluation of operations and efficiency.</li>
-						<li>Source a product range or supply services that will minimise the environmental impact of the company’s distribution and production.</li>
+						<li class="list-items-ar">السعي جاهدًا لمنع التلوث في عملياتها ومرافقها.</li>
+						<li class="list-items-ar">الالتزام بجميع التشريعات الحالية ذات الصلة بالقضايا البيئية.</li>
+						<li class="list-items-ar">تشجيع مورّدي الشركة على اعتماد مبادئ مماثلة حيثما أمكن ذلك.</li>
+						<li class="list-items-ar">تحديد ومراقبة ومراجعة الأداء البيئي والأهداف والغايات.</li>
+						<li class="list-items-ar">التأكد من فهم موظفي الشركة لمدى أهمية حماية البيئة وحشد دعمهم لرفع مستوى التوعية، والسعي لتحسين أداء الشركة.</li>
+						<li class="list-items-ar">التحسين المستمر للأداء البيئي للشركة.</li>
+						<li class="list-items-ar">الترويج بنشاط لإعادة التدوير داخل الشركة ومورديها حيثما أمكن ذلك.</li>
+						<li class="list-items-ar">السعي إلى تقليل الانبعاثات الضارة لأسطولها واستخدام الطاقة.</li>
+						<li class="list-items-ar">Mتقليل الهدر عبر التقييم الدوري للعمليات والكفاءة.</li>
+						<li class="list-items-ar">الحصول على مجموعة منتجات أو خدمات توريد من شأنها تقليل التأثير البيئي لتوزيع الشركة وإنتاجها.</li>
 				
-						<h5 class="mt-6" style="position: relative; left: -35px; margin-top: 15px">Additional Policies:</h5>
+						<h5 class="mt-6" style="position: relative; left: -35px; margin-top: 15px">سياسات إضافية: </h5>
 					
 						 <!-- Display the previous policy -->
 						 @php
@@ -92,9 +98,9 @@
                            <li>{{$environmental->message}}</li>
                            @endforeach --}}
 					</ol>
-					<p>On behalf of <b><span class="authName">{{ $companyName}}</span></b>:</p>
-					<p>Name: <span class="authName">{{Auth::user()->director}}</span> </p>
-					<p>Date: {{date("d-F-Y")}}</p>
+					<p>بالنيابة عن:  <b><span class="authName">{{ $companyName}}</span></b></p>
+					<p>الاسم: <span class="authName">{{Auth::user()->director}}</span> </p>
+					<p>التاريخ: {{date("d-F-Y")}}</p>
 				</div>
 			</div>
 		</div>
