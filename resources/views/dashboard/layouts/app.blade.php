@@ -28,27 +28,76 @@
 		<!-- end:: Header Mobile -->
 		<div class="kt-grid kt-grid--hor kt-grid--root">
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-
-				@include('dashboard.includes.sidebar')
 				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-
-                    @include('dashboard.includes.primary-header')
+					@include('dashboard.includes.primary-header')
                     @toastr_css
-					<!-- <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"> -->
-
-
-						{{--@include('dashboard.includes.content-header')--}}
-						<!-- begin:: Content -->
-						@yield('content')
-						<!-- end:: Content -->
-					<!-- </div> -->
-
+					@yield('content')
                     @include('dashboard.includes.footer')
                     @toastr_js
                     @toastr_render
+					@include('dashboard.includes.sidebar')
 				</div>
 			</div>
 		</div>
+		
+		{{-- <div class="kt-grid kt-grid--hor kt-grid--root">
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"> <!-- Main content -->
+					<div class="col-md-9 order-2 order-md-1" style="
+						float: right;
+    width: 75%; /* Adjust as needed */
+    /* You might need to adjust other properties like margins */
+    margin-left: 0;
+    margin-right: 0;
+						"> <!-- Content area (move to the left) -->
+						@include('dashboard.includes.primary-header')
+						@toastr_css
+						@yield('content')
+						@include('dashboard.includes.footer')
+						@toastr_js
+						@toastr_render
+					</div>
+					<div class="col-md-3 order-1 order-md-2" style="
+					float: left; /* Sidebar stays on the right */
+    width: 25%; /* Adjust as needed */
+    margin-left: 0;
+    margin-right: 0;
+					"> <!-- Sidebar (stays on the right) -->
+						@include('dashboard.includes.sidebar')
+					</div>
+				</div>
+			</div>
+		</div> --}}
+		
+
+		{{-- <div class="kt-grid kt-grid--hor kt-grid--root">
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+					@include('dashboard.includes.primary-header')
+					@toastr_css
+		
+					<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"> <!-- Begin main content -->
+						<div class="col-md-9 order-2 order-md-1"> <!-- Main content -->
+							@yield('content')
+						</div>
+		
+						<!-- Move the sidebar to the right -->
+						<div class="col-md-3 order-1 order-md-2"> <!-- Sidebar -->
+							@include('dashboard.includes.sidebar')
+						</div>
+					</div>
+		
+					<!-- End main content -->
+					@include('dashboard.includes.footer')
+					@toastr_js
+					@toastr_render
+				</div>
+			</div>
+		</div> --}}
+		
+
+		
+
 
 		<!-- end:: Page -->
 

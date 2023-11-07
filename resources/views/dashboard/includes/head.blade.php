@@ -106,7 +106,9 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
 		@stack('styles')
 	</head>
-<style>.iti {
+<style>
+
+.iti {
 display:block !important;
     
 }</style>
