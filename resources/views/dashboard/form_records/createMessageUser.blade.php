@@ -24,6 +24,10 @@
 		.ms-options-wrap button{
 			border: 1px solid #0d47b3;
 		}
+
+		.right-text{
+			text-align: right;
+		}
 	</style>
 @endsection
 @section('content')
@@ -49,8 +53,8 @@
 				<span class="kt-portlet__head-icon">
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					Login reminder Message
+				<h3 style="color:black; font-weight: bold; margin-right: 4px;">
+					رسالة تذكير تسجيل الدخول
 				</h3>
 			</div>
 			<div class="kt-portlet__head-toolbar">
@@ -114,11 +118,11 @@
     			<div class="kt-portlet__body">
     				<input type="hidden" name="id" id="editvalue" value="">
     				<div class="form-group row">
-    					<div class="col-lg-8">
+    					<div class="col-lg-8 text-right" >
     						<label for="title">الموضوع</label>
     						<input type="text" id="title" name="title" class="form-control" placeholder="Please enter Message Subject" required>
     					</div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 text-right">
     						<label for="attachment">المرفق</label>
     						<div class="kt-input-icon kt-input-icon--right">
     						<input type="file" name="attachment" class="form-control" id="attachment">
@@ -127,13 +131,13 @@
     
     
     
-    					<div class="col-lg-12">
+    					<div class="col-lg-12 text-right">
     						<label for="message"><p> رسالة إلى المسؤول</p></label>
     						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="Please enter your Message"></textarea>
     					</div>
     					<br>
-    					<div class="col-lg-12">
-    						<label for="address1">Send to:</label>
+    					<div class="col-lg-12 text-right">
+    						<label for="address1">ارسل إلى</label>
     						<input name="userid" class="form-control" value="Admin" disabled>
     					</div>
     					<div class="col-lg-2">

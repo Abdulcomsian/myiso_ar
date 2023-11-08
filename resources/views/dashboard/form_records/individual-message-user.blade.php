@@ -36,9 +36,9 @@
 				<span class="kt-portlet__head-icon">
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					Subject - {{ $message_information[0]->title }}
-				</h3>
+				<h5 style="color:black; margin-right: 4px;">
+					الموضوع - {{ $message_information[0]->title }}
+				</h5>
 			</div>
 
 		</div>
@@ -52,12 +52,12 @@
 				<div class="card">
 					<div class="card-header" id="heading{{ $item->id }}">
 						<h2 class="mb-0">
-							<button class="btn btn-link" type="button" data-toggle="collapse"
+							<button class="btn btn-link float-right" type="button" data-toggle="collapse"
 								data-target="#collapse{{ $item->id }}" aria-expanded="{{ $key === 0 ? 'true' : 'false' }}"
 								aria-controls="collapse{{ $item->id }}">
-								From - Me
+								مني
 							</button>
-							<div class="float-right" style="display: flex; font-size: 14px; color: #888; padding-top: 12px; padding-right: 10px;">
+							<div class="float-left"  style="display: flex; font-size: 14px; color: #888; padding-top: 12px; padding-right: 10px;">
 								@if ($item->attachement)
 									<a href="{{ asset($item->attachement) }}" download><i class="fa fa-download"> Attachment</i></a>
 								@endif
@@ -72,7 +72,7 @@
 					<div id="collapse{{ $item->id }}" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="heading{{ $item->id }}"
 						data-parent="#accordionExample">
 						<div class="card-body">
-							{{ $item->message }}
+							<p> {{ $item->message }} </p>
 						</div>
 					</div>
 				</div>
@@ -80,13 +80,13 @@
 				<div class="card">
 					<div class="card-header" id="heading{{ $item->id }}">
 						<h2 class="mb-0">
-							<button class="btn btn-link" type="button" data-toggle="collapse"
+							<button class="btn btn-link float-right" type="button" data-toggle="collapse"
 								data-target="#collapse{{ $item->id }}" aria-expanded="{{ $key === 0 ? 'true' : 'false' }}"
 								aria-controls="collapse{{ $item->id }}">
-								From - {{ $item->name }}
+								من - {{ $item->name }}
 							</button>
 							
-							<div class="float-right" style="display: flex; font-size: 14px; color: #888; padding-top: 12px; padding-right: 10px;">
+							<div class="float-left" style="display: flex; font-size: 14px; color: #888; padding-top: 12px; padding-right: 10px;">
 								@if ($item->attachement)
 									<a href="{{ asset($item->attachement) }}" download><i class="fa fa-download"> Attachment</i></a>
 								@endif
@@ -100,7 +100,7 @@
 					<div id="collapse{{ $item->id }}" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="heading{{ $item->id }}"
 						data-parent="#accordionExample">
 						<div class="card-body">
-							{{ $item->message }}
+							<p> {{ $item->message }} </p>
 						</div>
 					</div>
 				</div>
@@ -110,7 +110,7 @@
 
 
 
-			<h2 class="mb-0 mt-2">
+			<h2 class="mb-0 mt-2" style="text-align: right;">
 				<button class="btn btn-primary" type="button" onclick="replyBox()" id="replyButton">Reply</button>
 			</h2>
 			@foreach ($message_information as $item)
@@ -128,8 +128,8 @@
 					<div class="kt-input-icon kt-input-icon--right">
 						<input type="file" name="attachment" class="form-control" id="attachment">
 					</div>
-					<button type="submit" class="btn btn-primary mt-2" id="sendReplyButton">Send</button>
 					<button type="button" class="btn btn-primary mt-2" id="cancelReplyButton">Cancel</button>
+					<button type="submit" class="btn btn-primary mt-2" id="sendReplyButton">Send</button>
 				</div>
 			</form>
 			@endforeach

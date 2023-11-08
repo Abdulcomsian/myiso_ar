@@ -30,9 +30,9 @@
 				<span class="kt-portlet__head-icon">
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					Inbox
-				</h3>
+				<h4 style="color:black; margin-right: 4px;">
+					صندوق الوارد
+				</h4>
 				
 			</div>
 			{{-- <div class="procedure_div">
