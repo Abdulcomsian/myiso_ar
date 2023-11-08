@@ -10,7 +10,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>P1 - Documented Information</h2>
+			<h2>P1 - معلومات موثقة</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
@@ -18,70 +18,67 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="procedure_div">
-					<h4>1. Purpose and scope</h4>
-					<p>This procedure sets out how documents are created, authorised, distributed, revised and updated.<br>
-                    This procedure ensures that all documents and records which form part of the management system are stored securely and have a minimum stipulated retention time. In some cases the retention time is required by statute. The procedure also sets out the back-up routine for documents held on computer.</p>
-                    <h4 class="m-t-20">2. Responsibility</h4>
-                    <p>The quality representative is responsible for the administration of document control procedures and obtaining the correct authorisations. Maintaining document identity and issue status, controlling distribution, updating, and keeping archive files is the responsibility of the online system.<br>
-                     {{Auth::user()->director}}  plays the major part in the retention of records outside this system, but other members of staff are designated to hold certain records as detailed in this procedure.</p>
-                    <h4 class="m-t-20">3. Controlled documents</h4>
-                    <h5 class="m-t-20">3.1 Definition</h5>
-                    <p>Controlled documents are documents which must be authorised before issue, are given an issue and/or revision status and are issued to this system that automatically controls revisions of the document.</p>
-                    <p>The controlled documents are:</p>
-                    <p>Management Manual</p>
-                    <p>Operating Procedures</p>
-                    <p>Work Instructions</p>
-                    <h5 class="m-t-20">3.2 Authorisation</h5>
-                    <p>Each issue or revision of a controlled document shall be either be authorised by the appropriate person, or controlled by this online system:</p>
-                    <p>Management Manual –  {{Auth::user()->director}} </p>
-                    <p>Registers –  {{Auth::user()->director}} </p>
-                    <p>Operating Procedures –  {{Auth::user()->director}} </p>
-                    <p>Work Instructions –  {{Auth::user()->director}} </p>
-                    <p>The authorisation shall be either recorded on the document, or be registered on this system.</p>
-                    <h5 class="m-t-20">3.3 Page layout</h5>
-                    <p>When on paper external to this system, all documents shall display a page count.</p>
-                    <h5 class="m-t-20">3.4 Issue and revision status</h5>
-                    <p>All documents controlled externally shall carry a revision status. The Manual and the baseline procedures are automatically controlled by this system and therefore do not need to carry a revision status providing they are viewed online. If these procedures are printed or used outside this system, their issue status or date printed needs to be specified as these documents are considered uncontrolled.</p>
-                    <p>Operating Procedures and Work Instructions can carry an issue number or they can be controlled by issue date. When any part of one of these documents is revised, the whole document shall be re-issued.</p>
-                    <p>An archive file shall be used to store previous revisions of each externally controlled document. This system shall manage previous revisions and copies are available upon request.</p>
-                    <h5 class="m-t-20">3.5 Identification of changes</h5>
-                    <p>Changes where considered appropriate, shall be identified in the FAQ section.</p>
-                    <h5 class="m-t-20">3.6 Distribution</h5>
-                    <p>The organisation may only refer to this system as the master document. In the event of a hard copy being required, this will be uncontrolled. The master copy shall be held on the electronic system.</p>
-                    <h5 class="m-t-20">3.7 Archives</h5>
-                    <p>When documents are re-issued or revised, a copy of the original document or pages are placed in an archive file and are available if requested.</p>
-                    <h5 class="m-t-20">3.8 Local documents held on computer for direct reference</h5>
-                    <p>Where documents are held on computer for direct reference there is no need for formal records of issues and distribution. The document shall carry a record showing the date created or last amended.<br>When any such document is altered, users shall be advised by e-mail, that an alteration has been made.<br>If any computer held document is printed for any purpose, the printed copy shall be uncontrolled and shall be destroyed after use.</p>
-                    <h5 class="m-t-20">3.9 Uncontrolled documents</h5>
-                    <p>If a copy of a controlled document is issued for information only, e.g. to a customer, it shall be marked confidential and uncontrolled.</p>
-                    <h4 class="m-t-20">4. Forms</h4>
-                    <p>Forms are a direct link to the record database and shall be issue controlled as other documents are.
-					Issue status shall be denoted and the date of the current version shall be noted in the index.</p>
-					<h4 class="m-t-20">5. Documents of external origin</h4>
-					<h5 class="m-t-20">5.1 Master copies</h5>
-					<p>The quality representative shall keep the master copy of all reference documents of external origin, e.g. British Standards, copies of legislation, codes of practice.
-					</p>
-					<h5 class="m-t-20">5.2 Updating standards</h5>
-					<p>Updated standards shall be checked every 6 months by visiting the appropriate website.</p>
-					<h5 class="m-t-20">5.3 Updating legislation</h5>
-					<p>There shall be a means of ensuring that the organisation is kept up-to-date with any changes to legislation, codes of practice, etc., which are relevant.
-					 {{Auth::user()->director}}  shall incorporate any changes to existing legislation, or any new relevant legislation, into the Register of Legislation.</p>
-					<h5 class="m-t-20">5.4 Obtaining up-to-date documents</h5>
-					<p>When a document of external origin is found to have been updated, the Director shall decide whether there is a need to obtain a new copy immediately or not. In either case, the existing copy shall be marked uncontrolled until a new copy is obtained.</p>
-					<p>Documents marked uncontrolled shall be used for information only; if the document is required for definitive use, the user shall check that the relevant text is still current; if not, an up-to-date copy shall be obtained.</p>
-					<h4 class="m-t-20">6. Obsolete documents</h4>
-					<p>When documents are revised, they shall be issued to all locations where they are needed for the efficient functioning of the management system and obsolete documents shall be withdrawn.</p>
-					<p>Where obsolete or invalid documents need to be retained for legal or historical reasons, they shall clearly be marked as withdrawn.</p>
-					<h4 class="m-t-20">7. Legibility</h4>
-					<p>Every person who fills in a form or other record shall ensure that everything, including any initials or signature, is legible.</p>
-					<h4 class="m-t-20">8. Retention time</h4>
-					<p>Retention times and computer back up procedures are defined in the control of records procedure.<br>
-                    The documents that are to be retained, other than located electronically, their location and the retention times shall be recorded. General records held within this system have an indefinite retention time.<br>
-                    The three year retention period for documents which demonstrate the performance of the management system is in accord with the three year review cycle set by UKAS.<br>
-                    Remember that when statutory documents have an extended period of validity, the retention time starts when the document expires.<br>
-                    All records held outside this electronic system are to be identified, indexed within this system and stored securely so that they are protected and secure. Records may be disposed of on the authority of the holder when the retention time has expired.</p>
-                    <h4 class="m-t-20">9. Computer records</h4>
-                    <p>Computer records held outside this system shall be backed up securely off-site. Records held within this system are backed up separately.</p>
+					<h4>1. الغرض والنطاق</h4>
+					<p>يحدد هذا الإجراء طريقة إعداد الوثائق وترخيصها وتوزيعها ومراجعتها وتحديثها.<br>
+                        يضمن هذا الإجراء أن جميع الوثائق والسجلات التي تشكل جزءًا من نظام الإدارة مخزنة بأمان ولها حد أدنى من الوقت المخصص للاحتفاظ بها. يكون وقت الاحتفاظ في بعض الحالات مطلوبًا بموجب القانون. يحدد الإجراء أيضًا روتين النسخ الاحتياطي للوثائق المخزنة على الكمبيوتر.</p>
+                    <h4 class="m-t-20">2. المسؤولية</h4>
+                    <p>يتولى ممثل الجودة مسؤولية إدارة إجراءات الرقابة على الوثائق والحصول على التراخيص الصحيحة. تقع مسؤولية الحفاظ على هوية الوثائق وحالة الإصدار ومراقبة التوزيع والتحديث والاحتفاظ بملفات الأرشيف على عاتق نظام الإنترنت.<br>
+                        يتولى  {{Auth::user()->director}} مهمة الدور الرئيسي في الاحتفاظ بالسجلات خارج هذا النظام، ولكن أعضاء آخرين من الموظفين معينون للاحتفاظ بسجلات محدّدة كما هو مفصّل في هذا الإجراء.</p>
+                    <h4 class="m-t-20">3. الوثائق الخاضعة للرقابة</h4>
+                    <h5 class="m-t-20">3.1 التعريف</h5>
+                    <p>الوثائق الخاضعة للرقابة هي الوثائق التي يجب اعتمادها قبل إصدارها، وتحصل على حالة إصدار و/أو مراجعة وتُصدر إلى هذا النظام الذي يتحكم تلقائيًا بمراجعات الوثيقة.</p>
+                    <p>الوثائق الخاضعة للرقابة هي:</p>
+                    <p>دليل الإدارة</p>
+                    <p>إجراءات التشغيل</p>
+                    <p>تعليمات العمل</p>
+                    <h5 class="m-t-20">3.2 الترخيص</h5>
+                    <p>يجب أن تصدر الموافقة على كل إصدار أو مراجعة لوثيقة خاضعة للرقابة من قبل الشخص المناسب، أو أن تخضع للرقابة من خلال هذا النظام عبر الإنترنت:</p>
+                    <p>دليل الإدارة –  {{Auth::user()->director}} </p>
+                    <p>السجلات –  {{Auth::user()->director}} </p>
+                    <p>إجراءات التشغيل  –  {{Auth::user()->director}} </p>
+                    <p>تعليمات العمل  –  {{Auth::user()->director}} </p>
+                    <p>ويجب تسجيل التفويض على الوثيقة أو في هذا النظام.</p>
+                    <h5 class="m-t-20">3.3 تخطيط الصفحة</h5>
+                    <p>عند الكتابة على ورق خارج هذا النظام، يجب أن تعرض جميع الوثائق عدد الصفحات.</p>
+                    <h5 class="m-t-20">3.4 حالة الإصدار والمراجعة</h5>
+                    <p>يجب أن تحمل جميع الوثائق الخاضعة للرقابة بشكل خارجي حالة مراجعة. يخضع الدليل والإجراءات الأساسية للضبط تلقائيًا بواسطة هذا النظام، وبالتالي ليس هناك حاجة للتحقق من حالة المراجعة ما دامت تُعرض على الإنترنت. إذا طُبعت هذه الإجراءات أو خضعت للاستخدام خارج هذا النظام، فيجب تحديد حالة إصدارها أو تاريخ طباعتها حيث تعتبر هذه الوثائق غير خاضعة للرقابة.</p>
+                    <p>يمكن أن تحمل إجراءات التشغيل وتعليمات العمل رقم إصدار أو أن تخضع للرقابة حسب تاريخ الإصدار. عند مراجعة أي جزء من هذه الوثائق، يجب إعادة إصدار الوثيقة بأكملها.</p>
+                    <p>يجب استخدام ملف أرشيف لتخزين المراجعات السابقة لكل وثيقة تُراقب من الخارج. يقوم هذا النظام بإدارة المراجعات السابقة وتوفير النسخ عند الطلب.</p>
+                    <h5 class="m-t-20">3.5 تحديد التغييرات</h5>
+                    <p>ستحدّد التغييرات التي تعتبر مناسبة في قسم الأسئلة الشائعة.</p>
+                    <h5 class="m-t-20">3.6 التوزيع</h5>
+                    <p>يمكن أن تُشير المنظمة إلى هذا النظام فقط باسم الوثيقة الرئيسية. وعند الحاجة إلى نسخة ورقية، لن تخضع للرقابة. يجب الاحتفاظ بالنسخة الأساسية على النظام الإلكتروني.</p>
+                    <h5 class="m-t-20">3.7 الأرشيف</h5>
+                    <p>عند إعادة إصدار الوثائق أو مراجعتها، تُوضع نسخة من الوثيقة أو الصفحات الأصلية في ملف أرشيف وتكون متاحة عند الطلب.</p>
+                    <h5 class="m-t-20">3.8 الوثائق المحلية المحفوظة على الكمبيوتر للرجوع إليها بشكل مباشر</h5>
+                    <p>إذا كانت الوثائق محفوظة على الكمبيوتر للرجوع إليها مباشرةً، ليس هناك حاجة إلى سجلات رسمية لحالات الإصدار والتوزيع. يجب أن تحمل الوثيقة سجلًا يوضح تاريخ إنشائها أو إجراء آخر تعديل عليها.<br>عند تعديل أي وثيقة من هذا النوع، سيتلقى المستخدمون إخطارًا عبر البريد الإلكتروني بأنه قد تم إجراء تغيير.<br>إذا طُبعت أي وثيقة محفوظة على الكمبيوتر لأي غرض من الأغراض، فلن تخضع النسخة المطبوعة للرقابة وسيجري إتلافها بعد الاستخدام.</p>
+                    <h5 class="m-t-20">3.9الوثائق غير الخاضعة للرقابة</h5>
+                    <p>إذا تم إصدار نسخة من وثيقة خاضعة للرقابة للعلم فقط، على سبيل المثال للعميل، يجب أن تُوضع علامة عليها بأنها سرية وغير خاضعة للرقابة.</p>
+                    <h4 class="m-t-20">4. النماذج</h4>
+                    <p>النماذج هي رابط مباشر لقاعدة بيانات السجلات ويجب أن يخضع إصدارها للرقابة مثل الوثائق الأخرى. يجب تحديد حالة الإصدار وتدوين تاريخ الإصدار الحالي في الفهرس.</p>
+					<h4 class="m-t-20">5. الوثائق خارجية المنشأ</h4>
+					<h5 class="m-t-20">5.1 النسخ الأصلية</h5>
+					<p>يجب على ممثل الجودة الاحتفاظ بالنسخة الأصلية لجميع الوثائق المرجعية خارجية المنشأ، مثل المعايير البريطانية، والنسخ من التشريعات، وقواعد الممارسة.</p>
+					<h5 class="m-t-20">5.2 تحديث المعايير</h5>
+					<p>يجب التحقق من المعايير المحدّثة كل 6 أشهر عن طريق زيارة الموقع الإلكتروني المناسب.</p>
+					<h5 class="m-t-20">5.3 تحديث التشريعات</h5>
+					<p>يجب أن تكون هناك وسيلة لضمان بقاء المنظمة على اطلاع دائم بأي تغييرات ذات صلة في التشريعات وقواعد الممارسة. يقوم {{Auth::user()->director}} بدمج أي تغييرات على التشريعات الحالية، أو أي تشريعات جديدة ذات صلة، في سجل التشريعات.</p>
+					<h5 class="m-t-20">5.4 الحصول على أحدث الوثائق</h5>
+					<p>عند اكتشاف أن وثيقة خارجية المنشأ قد تم تحديثها، يقرر المدير ما إذا كانت هناك حاجة للحصول على نسخة جديدة على الفور أم لا. وفي الحالتين، يجب وضع علامة على النسخة الحالية بأنها غير خاضعة للرقابة حتى الحصول على نسخة جديدة.</p>
+					<p>يجب استخدام الوثائق التي وُضع عليها علامة "غير خاضعة للرقابة" للعلم فقط؛ إذا كانت الوثيقة مطلوبة للاستخدام النهائي، فيجب على المستخدم التحقق من أن النص ذي الصلة لا يزال محدثًا؛ إذا لم يكن الأمر كذلك، فيجب الحصول على نسخة محدثة.</p>
+					<h4 class="m-t-20">6. الوثائق القديمة</h4>
+					<p>عند مراجعة الوثائق، يجري إصدارها إلى جميع المواقع حيث يستلزم وجودها لضمان فعالية نظام الإدارة، كما يجري سحب الوثائق القديمة.</p>
+					<p>عندما يلزم الاحتفاظ بالوثائق القديمة أو غير الصالحة لأسباب قانونية أو تاريخية، يجب الإشارة إليها بوضوح على أنها مسحوبة.</p>
+					<h4 class="m-t-20">7. الوضوح</h4>
+					<p>يجب على كل شخص يملأ نموذجًا أو سجلًا آخر التحقق من أن كل شيء - بما في ذلك أي اختصارات اسمية أو توقيعات - مقروء وواضح.</p>
+					<h4 class="m-t-20">8. وقت الاحتفاظ</h4>
+					<p>تكون أوقات الاحتفاظ وإجراءات النسخ الاحتياطي على الكمبيوتر محددة في إجراءات الرقابة على السجلات.<br>
+                        يجب تسجيل الوثائق المُراد الاحتفاظ بها، بخلاف تلك الموجودة إلكترونيًا، بالإضافة إلى موقعها وأوقات الاحتفاظ بها. السجلات العامة المحفوظة ضمن هذا النظام لها وقت احتفاظ غير محدد.<br>
+                        يتوافق وقت الاحتفاظ بالوثائق التي تثبت أداء نظام الإدارة لمدة ثلاث سنوات مع دورة المراجعة لمدة ثلاث سنوات التي حددتها دائرة الاعتماد في المملكة المتحدة.<br>
+                        تذكّر أنه عندما تكون الوثائق القانونية ذات فترة صلاحية ممتدة، فإن وقت الاحتفاظ يبدأ عند انتهاء صلاحية الوثيقة.<br>
+                        يجب تحديد جميع السجلات المحفوظة خارج هذا النظام الإلكتروني وفهرستها ضمن هذا النظام وتخزينها بشكل آمن لضمان حمايتها وأمانها. يمكن التخلص من السجلات بناءً على إذن الحائز عليها عند انتهاء وقت الاحتفاظ بها.</p>
+                    <h4 class="m-t-20">9. سجلات الكمبيوتر</h4>
+                    <p>تُنتج نسخة احتياطية لسجلات الكمبيوتر المحفوظة خارج هذا النظام بشكل آمن خارج الموقع، كما تُنتج نسخة احتياطية من السجلات الموجودة ضمن هذا النظام بشكل منفصل.</p>
 				</div>
 			</div>
 		</div>

@@ -23,7 +23,7 @@
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
 			<!-- <h2>Servicing a Contract Process</h2> -->
-			<h2>Servicing a contract process</h2>
+			<h2>خدمة عملية العقد</h2>
 		</div>
 	</div>
 	<div class="procedure_div">
@@ -36,31 +36,28 @@
                          
 
 								
-								<button type="submit" class="submitBtn">Remove</button>
+								<button type="submit" class="submitBtn">يزيل</button>
                     		</form>
                     		@endif
                     		</div>
                     		<div class="col-lg-3 col-xl-2 text-right">
-                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">ADD ALTERNATIVE PROCESS</a>
+                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">إضافة عملية بديلة</a>
                     		</div>
                     	</div>
                     	<div class="work_instruction_from_div">
-    <form enctype='multipart/form-data' action="{{url('uploadimg')}}" method="post">
+                       <form enctype='multipart/form-data' action="{{url('uploadimg')}}" method="post">
                             @csrf
-  <input type="hidden" name="user_id" value="<?php echo Auth::id(); ?>"/>
+                        <input type="hidden" name="user_id" value="<?php echo Auth::id(); ?>"/>
                             <div class="row">
                     				<div class="col-lg-6 d-flex align-items-center">
                     					<div class="form-group">
-											<label>Upload Photo:</label><br>
-		<input type="file" class="form-control" name="serv_process_photo">
-
+											<label>تحميل صورة:</label><br>
+		                           <input type="file" class="form-control" name="serv_process_photo">
+								   <button type="submit" class="submitBtn ml-2" style="margin-top: 10px;">إرسال</button>
 										</div>
-										<button type="submit" class="submitBtn ml-2">SUBMIT</button>
+										{{-- <button type="submit" class="submitBtn ml-2" style="margin-top: 10px;">إرسال</button> --}}
                     				</div>
-                    				
                     			</div>
-
-								
                     		</form>
                     	</div>
                     </div>
@@ -70,10 +67,10 @@
 			<div class="col-lg-12">
 				<div class="procedure_div">
 					@if($img) <img src="{{ $img }}" class="img-fluid"> @endif
-					<p class="m-t-20">This process is to be used when completing the contract from the customer.</p>
-					<p>Input: Reception of the purchase order from the customer.</p>
-					<p>Output: Delivery and invoice of the goods or service.</p>
-					<p>Process owner is: <span class="authName">{{Auth::user()->servicing_process}}</span></p>
+					<p class="m-t-20">تستخدم هذه العملية عند استكمال العقد من طرف العميل</p>
+					<p>المدخلات: استلام أمر الشراء من العميل</p>
+					<p>المخرجات: تسليم وفوترة البضائع أو الخدمات.</p>
+					<p>مالك العملية:  <span class="authName">{{Auth::user()->servicing_process}}</span></p>
 				</div>
 			</div>
 		</div>

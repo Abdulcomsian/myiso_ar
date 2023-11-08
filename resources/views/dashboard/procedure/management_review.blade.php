@@ -10,7 +10,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>P3 - Management Review</h2>
+			<h2>السياسة 3 – مراجعة الإدارة</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
@@ -18,31 +18,27 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="procedure_div">
-					<h4>1. Purpose and scope</h4>
-					<p>This procedure sets out the requirements of management review, whereby top management ensures performance and structure of the management system.</p>
-                    <h4 class="m-t-20">2. Responsibility</h4>
-                    <p>TThe Director is responsible for chairing the management review meetings and is responsible for convening meetings, preparing and distributing the agenda, preparing and circulating minutes and action plans, and following up to ensure that action plans are completed.</p>
-                    <h4 class="m-t-20">3. Management review meetings</h4>
-                    <h5 class="m-t-20">3.1 Frequency and purpose</h5>
-                    <p>Management review meetings shall be held every 12 months to review the management system to ensure its continuing suitability for the needs and objectives of the organisation, and the adequacy and effectiveness, and to set and progress objectives and targets.</p>
-                    <h5 class="m-t-20">3.2 Attendees</h5>
-                    <p>The meetings shall be attended by the management team. Attendees shall be recorded in the management review record.</p>
-                    <h5 class="m-t-20">3.3 Agenda</h5>
-                    <p>The following standard agenda shall apply. Other items shall be added as appropriate.</p>
-                    <p>Review of any actions outstanding from previous meetings.</p>
-                    <p>Review of nonconformities and incidents, complaints and audit findings.</p>
-                    <p>Confirmation of risk management actions if necessary.</p>
-                    <p>Review of progress towards the achievement of improvement objectives and targets.</p>
-                    <p>Review of the Policy, Management Manual and Operating Procedures to ensure that they are still consistent with and relevant to, the overall policies and objectives of the organisation.</p>
-                    <p>Review of the improvement objectives and targets for the coming year.</p>
-                    <p>Setting of improvement action plans for the coming year. Consider who is responsible, when they will be
-                        completed and what is considered a success. Objectives should be both
-                        quality based and financial. Consider aligning objectives to the quality
-                        policy.</p>
-                    <p>Review of training needs.</p>
-                    <h5 class="m-t-20">3.4 Follow up</h5>
-                    <p>The Director shall record minutes of the meeting including the action points and those responsible for action. The minutes shall be distributed to all concerned.
-					The Director shall follow-up the actions and document when they have been completed.</p>
+					<h4>1. الغرض والنطاق</h4>
+					<p>يوضح هذا الإجراء متطلبات مراجعة الإدارة، حيث تضمن الإدارة العليا أداء النظام الإداري وهيكلته.</p>
+                    <h4 class="m-t-20">2. المسؤولية</h4>
+                    <p>يتحمل المدير مسؤولية رئاسة اجتماعات مراجعة الإدارة وهو مسؤول عن عقد الاجتماعات والإعداد لها وتوزيع جدول الأعمال وإعداد مذكرات الاجتماع وخطط الأعمال وتعميمها ومتابعتها لضمان استكمال خطط الأعمال.</p>
+                    <h4 class="m-t-20">3. اجتماعات مراجعة الإدارة</h4>
+                    <h5 class="m-t-20">3.1 التكرار والغرض</h5>
+                    <p>يجب عقد اجتماعات مراجعة الإدارة كل 12 شهرًا لمراجعة النظام الإداري لضمان ملاءمته المستمرة لاحتياجات المنظمة وأهدافها، وكفايته وفعاليته، ولتحديد الأهداف والغايات والتقدّم المُحرز بها.</p>
+                    <h5 class="m-t-20">3.2  الحضور</h5>
+                    <p>يجب أن يحضر فريق الإدارة الاجتماعات، ويجب تسجيل الحضور في سجل مراجعة الإدارة.</p>
+                    <h5 class="m-t-20">3.3 جدول الأعمال</h5>
+                    <p>يجب تطبيق جدول الأعمال القياسي التالي. ويجب إضافة عناصر أخرى حسب الحاجة.</p>
+                    <p>مراجعة أي أعمال عالقة من الاجتماعات السابقة.</p>
+                    <p>مراجعة حالات عدم المطابقة والحوادث، والشكاوى ونتائج التدقيق.</p>
+                    <p>التأكيد على أعمال إدارة المخاطر إذا لزم الأمر.</p>
+                    <p>مراجعة التقدّم المُحرز لتحقيق الأهداف والغايات من التحسين.</p>
+                    <p>مراجعة السياسة، ودليل الإدارة وإجراءات التشغيل لضمان استمرار اتساقها مع سياسات المنظمة وأهدافها بشكل شامل وما يتعلق بها.</p>
+                    <p>مراجعة أهداف التحسين والغايات منها للعام التالي.</p>
+                    <p>وضع خطط أعمال للتحسين للعام التالي. تحديد الشخص المسؤول عنها، ووقت استكمالها وما يجب وضعه في الاعتبار لتحقيق النجاح. يجب أن تستند الأهداف إلى كل من الجودة والحالة المالية، مع الوضع في الاعتبار مواءمة الأهداف مع سياسة الجودة.</p>
+                    <p>مراجعة احتياجات التدريب.</p>
+                    <h5 class="m-t-20">3.4  المتابعة</h5>
+                    <p>يجب أن يسجل المدير مذكرات الاجتماع، بما في ذلك نقاط الأعمال وتلك المسؤولة عن الأعمال. يجب توزيع مذكرات الاجتماع على جميع الأفراد المعنيين. يجب أن يتابع المدير الأعمال ويوثقها عند استكمالها.</p>
 				</div>
 			</div>
 		</div>

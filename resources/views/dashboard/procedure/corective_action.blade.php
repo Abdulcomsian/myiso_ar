@@ -10,7 +10,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>P2 - Corrective Actions Including Non-Conformities</h2>
+			<h2>المرحلة 2 – الإجراءات التصحيحية بما فيها حالات عدم المطابقة</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
@@ -18,25 +18,25 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="procedure_div">
-					<h4>1. Purpose and scope</h4>
-					<p>This procedure ensures that if and when an incident occurs or a complaint is received, the circumstances are investigated and appropriate short-term and long-term corrective action is taken. Corrective actions shall be reviewed for effectiveness after an appropriate period of time.</p>
-                    <h4 class="m-t-20">2. Responsibility</h4>
-                    <p>All staff is responsible for reporting incidents. The Director in conjunction with other managers agrees what corrective action is required and ensures that the action is taken and is effective and reviewed.</p>
-                    <h4 class="m-t-20">3. Incidents</h4>
-                    <p>Incidents may arise from:</p>
-                    <p>A failure to observe Operating Procedures</p>
-                    <p>An inadequate Operating Procedure</p>
-                    <p>Unforeseen circumstances, e.g. abnormal operating conditions</p>
-                    <p>Complaints</p>
-                    <h4 class="m-t-20">4. Registering the incident</h4>
-                    <p>Incidents shall be recorded in the Non-conformance section of this system.</p>
-                    <h4 class="m-t-20">5. Corrective action</h4>
-                    <p>Action to prevent recurrence of identified issues - or subsequent similar issues - is considered to be part of the corrective action process.</p>
-                    <h4 class="m-t-20">6. Evaluation of Effectiveness</h4>
-                    <p>The Director shall in due course check that the corrective action has been completed and that it has been effective, or is likely to be effective, in preventing a repeat of the incident.</p>
-                    <h4 class="m-t-20">7. Reporting to management.</h4>
-                    <p>A summary of previous corrective actions and non-conformities is reported to the management review meeting.</p>
-                    <p>Management Reviews are used to review the management system and to identify areas of potential concern and required action to be taken to prevent problems before they occur. In particular future changes likely to impact the business and management system are identified, and where appropriate projects and training programmes are established to ensure these changes are managed to prevent issues arising. These meetings also review actions already taken in respect of such potential issues. Records for management review meetings are maintained by this system.</p>
+					<h4>1. الغرض والنطاق</h4>
+					<p>يضمن هذا الإجراء التحقيق في حالات وقوع الحوادث أو تلقي الشكاوى، واتخاذ الإجراءات التصحيحية المناسبة على المدى القريب والبعيد. ينبغي مراجعة الإجراءات التصحيحية بعد فترة زمنية مناسبة للتأكد من فعاليتها.</p>
+                    <h4 class="m-t-20">2. المسؤولية</h4>
+                    <p>قع على عاتق جميع الموظفين مسؤولية الإبلاغ عن الحوادث. يوافق المدير، بالتعاون مع المديرين الآخرين، على الإجراء التصحيحي المطلوب ويضمن اتخاذ الإجراء وفعاليته ومراجعته</p>
+                    <h4 class="m-t-20">3. الحوادث</h4>
+                    <p>قد تنشأ الحوادث عن:</p>
+                    <p>عدم مراعاة إجراءات التشغيل</p>
+                    <p>إجراء تشغيل غير مناسب</p>
+                    <p>ظروف غير متوقعة، كما هي الحال مع ظروف التشغيل غير الطبيعية</p>
+                    <p>الشكاوي</p>
+                    <h4 class="m-t-20">4. تسجيل الحادثة</h4>
+                    <p>يتم تسجيل الحوادث في قسم عدم المطابقة بهذا النظام.</p>
+                    <h4 class="m-t-20">5. اجراء تصحيحي</h4>
+                    <p>يعتبر الإجراء المتخذ لمنع تكرار المشكلات المحددة - أو المشكلات المماثلة اللاحقة - جزءًا من عملية الإجراء التصحيحي.</p>
+                    <h4 class="m-t-20">6. الإجراء التقييمي</h4>
+                    <p>يتعيّن على المدير التحقق في الوقت المناسب من اكتمال الإجراء التصحيحي وفعاليته، أو احتمال أن يكون فعالًا من حيث منع تكرار الحادثة.</p>
+                    <h4 class="m-t-20">7. تقديم التقارير إلى الإدارة.</h4>
+                    <p>يُرفع ملخص عن الإجراءات التصحيحية وحالات عدم المطابقة السابقة إلى اجتماع مراجعة الإدارة.</p>
+                    <p>تُستخدم المراجعات الإدارية لمراجعة نظام الإدارة وتحديد مجالات الاهتمام المحتملة والإجراء المطلوب اتخاذه لمنع المشكلات قبل وقوعها. على وجه الخصوص، يحتمل أن تضمن التغييرات المستقبلية إدارة هذه التغييرات منعًا لظهور المشكلات. كما تُعنى هذه الاجتماعات بمراجعة الإجراءات المتخذة مسبقًا فيما يخص هذه المشكلات المحتملة. يحتفظ هذا النظام بسجلات اجتماعات المراجعة الإدارية.</p>
 				</div>
 			</div>
 		</div>

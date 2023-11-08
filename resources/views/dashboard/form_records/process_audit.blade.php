@@ -10,27 +10,23 @@
         <!--Begin::Section-->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
-                <h2>Process Audits</h2>
+                <h2>تدقيق العمليات</h2>
             </div>
         </div>
         <section id="procedure_section">
 
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Process audits are sometimes known as job audits or vertical audits. These audits are performed
-                        by the auditor selecting a routine job and making sure that it is processed correctly. The audit
-                        frequency should be based on past results and the importance of the process to the company.</p>
-                    <p>To add a record, click on the “Add
-                        Process Audit Details” button. To amend a record, click on the edit icon of
-                        the entry that needs to be modified.</p>
+                    <p> يُشار إلى تدقيق العمليات عادةً باسم مراجعة الوظائف، أو عمليات التدقيق الرأسية؛ وتتضمن إجراء التدقيق عبر اختيار المدقق لإحدى المهمات الروتينية، والتأكد من معالجتها بشكل صحيح. ينبغي أن يعتمد تكرار التدقيق على النتائج السابقة وأهمية العملية بالنسبة للشركة.</p>
+                    <p>لإضافة سجل، يرجى النقر على زر "إضافة تفاصيل تدقيق العملية". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد ذي الصلة.</p>
 
                     <div class="procedure_div">
                         <div class="row">
                             <div class="col-lg-12 text-right">
 
-                                <a href="{{ asset('download_process_audit/Process-Audit.pdf') }}" target="_blank" class="addBtn">Download Process Audits</a>
+                                <a href="{{ asset('download_process_audit/Process-Audit.pdf') }}" target="_blank" class="addBtn">تحميل عمليات التدقيق</a>
 
-                                <a onclick="processAuditForm()" class="addBtn">Add process audit details</a>
+                                <a onclick="processAuditForm()" class="addBtn"> إضافة تفاصيل تدقيق العملية</a>
 
                             </div>
                         </div>
@@ -52,9 +48,9 @@
                                     </div> --}}
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Process Being Audited:</label>
+                                            <label>العملية التي يتم تدقيقها:</label>
                                             <input type="text" name="processAudit" class="form-control"
-                                                   placeholder="Enter Process Name" id="processAudit"
+                                                   placeholder="أدخل اسم العملية" id="processAudit"
                                                    required="required">
                                         </div>
                                     </div>
@@ -62,14 +58,14 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Auditor:</label>
+                                            <label>مدقق حسابات:</label>
                                             <input type="text" name="auditor" class="form-control"
-                                                   placeholder="Enter Auditor name:" required="required">
+                                                   placeholder="أدخل اسم المراجع" required="required">
                                         </div>
                                     </div>
                                     <div class="colAttach Evidence:-lg-6">
                                         <div class="form-group">
-                                            <label>Audit Date (DD/MM/YYYY):</label>
+                                            <label>تاريخ التدقيق (يوم/شهر/سنة):</label>
                                             <input type="date" max="2999-12-31" name="auditDate" class="form-control"
                                                    required="required">
                                         </div>
@@ -78,43 +74,43 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Number of Non-Conformities:</label>
+                                            <label>عدد حالات عدم المطابقة:</label>
                                             <input type="text" name="nonConformities" min="0" id="nonConformities1"
                                                    required class="form-control "
-                                                   placeholder="Enter Number of Non-Conformities">
+                                                   placeholder="أدخل عدد حالات عدم المطابقة">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Number of Observations:</label>
+                                            <label>عدد الملاحظات:</label>
                                             <input type="number" name="Observations" min="0" class="form-control "
-                                                   placeholder="Enter no of observations" required="required">
+                                                   placeholder="أدخل عدد من الملاحظات" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Non-Conformance Report Reference (if applicable):</label>
+                                            <label>مرجع تقرير عدم المطابقة (إن وجد):</label>
                                             <input type="text" name="nonConfReport"
-                                                   class="form-control validate_number" placeholder="Enter Report Reference:">
+                                                   class="form-control validate_number" placeholder="أدخل مرجع التقرير">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Audit Actions:</label>
+                                            <label>إجراءات التدقيق:</label>
                                             <textarea name="AdutiActions" class="form-control"
-                                                      placeholder="Enter Audit Actions:" required="required"></textarea>
+                                                      placeholder="أدخل إجراءات التدقيق" required="required"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Audit Frequency (Months):</label>
+                                            <label>تكرار التدقيق (أشهر):</label>
                                             <input type="number" min="1" max="12" name="dateFrequency"
                                                    id="dateFrequency" class="form-control"
-                                                   placeholder="Enter Frequency Month" required="required">
+                                                   placeholder="أدخل شهر التردد" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -125,18 +121,18 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>1 - Is this process included in the Quality Manual or Work Instructions and is it still relevant?</label>
+                                            <label>1 - هل تم إدراج هذه العملية في دليل الجودة أو تعليمات العمل، وهل لا تزال ذات صلة؟</label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
-                                                    <input type="radio" required value="Yes" name="qmsCorects"> Yes
+                                                    <input type="radio" required value="Yes" name="qmsCorects">	نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" required name="qmsCorects"> No
+                                                    <input type="radio" value="No" required name="qmsCorects"> 	لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" required name="qmsCorects"> NA
+                                                    <input type="radio" value="NA" required name="qmsCorects"> 	لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -144,7 +140,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: (يرجى إدخال دليل:)</label>
                                             <input type="text" name="evidence" class="form-control"
                                                    placeholder="Enter Evidence:">
                                         </div>
@@ -154,19 +150,19 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>2 - Is this process being implemented in the Quality Manual or Work Instructions?</label>
+                                            <label>2 - هل يجري تنفيذ هذه العملية في دليل الجودة أو تعليمات العمل؟</label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" required name="needExpactations">
-                                                    Yes
+                                                    	نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" required name="needExpactations"> No
+                                                    <input type="radio" value="No" required name="needExpactations"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" required name="needExpactations"> NA
+                                                    <input type="radio" value="NA" required name="needExpactations"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -174,7 +170,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل:</label>
                                             <input type="text" class="form-control" name="evidance2"
                                                    placeholder="Enter Evidence:">
                                         </div>

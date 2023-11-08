@@ -22,7 +22,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Competency Process</h2>
+			<h2>عملية الكفاءة</h2>
 		</div>
 	</div>
 		<div class="procedure_div">
@@ -35,12 +35,12 @@
                          
 
 								
-								<button type="submit" class="submitBtn">Remove</button>
+								<button type="submit" class="submitBtn">يزيل</button>
                     		</form>
                     		@endif
                     		</div>
                     		<div class="col-lg-3 col-xl-2 text-right">
-                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">ADD ALTERNATIVE PROCESS</a>
+                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">أضف عملية بديلة</a>
                     		</div>
                     	</div>
                     	<div class="work_instruction_from_div">
@@ -50,16 +50,13 @@
                             <div class="row">
                     				<div class="col-lg-6 d-flex align-items-center">
                     					<div class="form-group">
-											<label>Upload Photo:</label><br>
-		                          <input type="file" class="form-control" name="comp_process_photo">
-
+											<label>حمل الصورة:</label><br>
+		                                  <input type="file" class="form-control" name="comp_process_photo">
+								          <button type="submit" class="submitBtn ml-2" style="margin-top: 10px;">إرسال</button>
 										</div>
-										<button type="submit" class="submitBtn ml-2">SUBMIT</button>
+										{{-- <button type="submit" class="submitBtn ml-2">إرسال</button> --}}
                     				</div>
-                    				
                     			</div>
-
-								
                     		</form>
                     	</div>
                     </div>
@@ -69,10 +66,10 @@
 			<div class="col-lg-12">
 				<div class="procedure_div">
 				@if($img) <img src="{{ $img }}" class="img-fluid"> @endif
-					<p class="m-t-20">This process controls the training and competency of the company staff.</p>
-					<p>Input: Requirement to increase the competency of the employees, either through new starters or increased training of existing staff members.</p>
-					<p>Output: Increased staff levels of competency.</p>
-					<p>Process owner is: <span class="authName">{{Auth::user()->competency_process}}
+					<p class="m-t-20">تتحكم هذه العملية في تدريب وكفاءة موظفي الشركة.</p>
+					<p>المدخلات: الحاجة إلى زيادة كفاءة الموظفين، إما من خلال المبتدئين الجدد أو زيادة تدريب الموظفين الحاليين.</p>
+					<p>المخرج: زيادة مستويات كفاءة الموظفين.</p>
+					<p>صاحب العملية هو: <span class="authName">{{Auth::user()->competency_process}}
 					<!--{{Auth::user()->director}}-->
 					</span></p>
 				</div>

@@ -11,19 +11,19 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Requirements Due</h2>
+			<h2>المتطلبات المستحقة</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-			<p>This section can be considered as a diary shown on your MyISOOnline control panel. Simply add items that need to be recalled on a regular basis, such as when management reviews are due, or calibration audits are required.</p>
-					<p>To add a requirement, click on the “Add a Requirement” then enter the information you would like to be reminded of and set the reminder date using the calendar.</p>
+			<p>يمكن اعتبار هذا القسم كمفكرة تظهر في لوحة التحكم الخاصة بمنصة MyISOOnline الخاصة بك. ما عليك سوى إضافة العناصر التي تحتاج إلى استدعائها بشكل منتظم، كما هو الحال عند استحقاق إجراء مراجعات على الإدارة أو يكون إجراء تدقيقات على المعايرة مطلوبًا.</p>
+					<p>لإضافة متطلبات، انقر على "إضافة أحد المتطلبات" ثم أدخل المعلومات التي ترغب في تذكيرك بها واضبط تاريخ التذكير باستخدام التقويم.</p>
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="requirementFrom()" class="addBtn">Add a Requirement</a>
+                    			<a onclick="requirementFrom()" class="addBtn">إضافة أحد المتطلبات</a>
                     		</div>
                     	</div>
                     	<div class="requirments_from_div">
@@ -31,26 +31,26 @@
                             <form action="{{route('requiemntform')}}" method="POST">
                                  @csrf
                     			<div class="form-group">
-									<label>Requirement:</label>
-									<input type="text" name="requirement" class="form-control"  placeholder="Enter Requirement:" required>
+									<label>المتطلبات: (أدخل المتطلبات:)</label>
+									<input type="text" name="requirement" class="form-control"  placeholder="أدخل المتطلبات:" required>
 								</div>
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Requirement Completion Date of the Activity (DD/MM/YYYY):</label>
+											<label> تاريخ استكمال متطلبات النشاط (يوم/شهر/سنة)</label>
 											<input type="date" max="2999-12-31" name="completiondate" max="2999-12-31" class="form-control" required>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Periodicity (Months):</label>
-											<input type="number" name="month" id="month" oninput="this.value = Math.abs(this.value)" min="1" max="12" class="form-control" placeholder="Enter Months:" required>
+											<label> التواتر الدوري (بالأشهر): (أدخل الأشهر:)</label>
+											<input type="number" name="month" id="month" oninput="this.value = Math.abs(this.value)" min="1" max="12" class="form-control" placeholder="أدخل الأشهر:" required>
 										</div>
 									</div>
 								</div>
 								
-								<button type="submit" class="submitBtn">SUBMIT</button>
-								<button onclick="requirementFrom()" style="float: right;margin-right: 6px;border: none;background: #646c9a;color: #fff;padding: 8px 47px;border-radius: 5px;" type="reset"> Cancel </button>
+								<button type="submit" class="submitBtn"> إرسال</button>
+								<button onclick="requirementFrom()" style="float: right;margin-right: 6px;border: none;background: #646c9a;color: #fff;padding: 8px 47px;border-radius: 5px;" type="reset">  إلغاء </button>
                     		</form>
                     	</div>
                     </div>
@@ -62,12 +62,12 @@
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th>No.</th>
-											<th>Requirements</th>
-											<th>Date Completed</th>
-											<th>Periodicity (Months)</th>
-											<th>Due Date</th>
-											<th>Action</th>
+											<th> العدد.</th>
+											<th> المتطلبات</th>
+											<th>تاريخ الاستكمال</th>
+											<th>التواتر الدوري (بالأشهر)</th>
+											<th>تاريخ الاستحقاق</th>
+											<th> الإجراء</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -101,19 +101,19 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Requirements</h5>
+				<h5 class="modal-title" id="exampleModalLabel">حذف المتطلبات</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
             <form action="{{url('deleteRequirement/'.$data->id)}}" method="GET">
                     @csrf
                     <!---input type="text" name="id" value="" id="re_id"--->
 
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
 				<button type="submit" class="btn btn-danger">Yes</button>
 				</form>
 			</div>
@@ -146,7 +146,7 @@
 														<div class="modal-dialog" role="document">
 														<div class="modal-content">
 														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLabel"> Requirements Due </h5>
+															<h5 class="modal-title" id="exampleModalLabel">المتطلبات المستحقة</h5>
 															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 															</button>
@@ -164,8 +164,8 @@
                             </div> --}}
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Surname:</label><br>
-                                    <input type="text" class="form-control" name="surname" placeholder="Enter Surname">
+                                    <label>اسم العائلة:</label><br>
+                                    <input type="text" class="form-control" name="surname" placeholder="أدخل اللقب:">
                                 </div>
                             </div>
                         </div>
@@ -173,13 +173,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>First Name:</label>
-                                    <input type="text" class="form-control" name="first_name"  placeholder="Enter First Name">
+                                    <label>الاسم الأول:</label>
+                                    <input type="text" class="form-control" name="first_name"  placeholder="أدخل الاسم الأول:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group edit-emp-number-div">
-                                    <label>Employee ID:</label> 
+                                    <label>هوية الموظف:</label> 
                                     <input type="text" name="empNumber" required class="form-control" data-type="edit">
          		  <!--                         <select name="empNumber" required class="form-control">-->
 											<!--    <option>Select One</option>-->
@@ -195,28 +195,28 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Start Date (YYYY/MM/DD):</label>
+                                    <label>تاريخ البدء (YYYY/MM/DD):</label>
                                     <input name="startDate" max="2999-12-31" type="date" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Job Details:</label>
-                                    <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Details:">
+                                    <label>تفاصيل الوظيفة:</label>
+                                    <input type="text" name="jobdetails" class="form-control"  placeholder="أدخل تفاصيل الوظيفة:">
                                 </div>
                             </div>
                         </div>
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="form-group">
-							<label>Upload Employee CV:</label>
+							<label>تحميل السيرة الذاتية للموظف:</label>
 							<input name="employee_cv" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf">
 						</div>
 					</div>
 				</div>
 			</div>
 															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 															</div>
 															</div>
 														</div>
@@ -240,7 +240,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Amend a Requirement.</h5>
+				<h5 class="modal-title" id="exampleModalLabel">تعديل أحد المتطلبات.</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
             </div>
@@ -249,22 +249,22 @@
 				@csrf
                     <input type="hidden" name="requirment_id" value="" id="id_feild">
                     <div class="form-group">
-						<label>Requirement:</label>
-						<input type="text" class="form-control" value="" name="requirment_title" placeholder="Enter Requirement:" required>
+						<label>متطلبات:</label>
+						<input type="text" class="form-control" value="" name="requirment_title" placeholder="أدخل المتطلبات:" required>
 					</div>
 					<div class="form-group">
-						<label>Requirement Completion Date of the Activity (DD/MM/YYYY):</label>
-						<input type="date" max="2999-12-31" max="2999-12-31" class="form-control" value="" name="completion_date" placeholder="Enter Requirement:" required>
+						<label>تاريخ اكتمال المتطلبات للنشاط (يوم/شهر/سنة):</label>
+						<input type="date" max="2999-12-31" max="2999-12-31" class="form-control" value="" name="completion_date" placeholder="أدخل المتطلبات:" required>
 					</div>
 					<div class="form-group">
-						<label>Periodicity (Months):</label>
-						<input type="number" class="form-control" oninput="this.value = Math.abs(this.value)" min="1" max="12" value="" name="periods" placeholder="Enter Months:" required>
+						<label>الدورية (الأشهر):</label>
+						<input type="number" class="form-control" oninput="this.value = Math.abs(this.value)" min="1" max="12" value="" name="periods" placeholder="أدخل الأشهر:" required>
 					</div>
 
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
 				
 
             </div>

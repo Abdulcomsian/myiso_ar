@@ -22,7 +22,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Purchasing Process</h2>
+			<h2>عملية الشراء</h2>
 		</div>
 	</div>
 		<div class="procedure_div">
@@ -35,49 +35,47 @@
                          
 
 								
-								<button type="submit" class="submitBtn">Remove</button>
+								<button type="submit" class="submitBtn">يزيل</button>
                     		</form>
                     		@endif
                     		</div>
                     		<div class="col-lg-3 col-xl-2 text-right">
-                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">ADD ALTERNATIVE PROCESS</a>
+                    			<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">إضافة عملية بديلة</a>
                     		</div>
                     	</div>
                     	<div class="work_instruction_from_div">
-    <form enctype='multipart/form-data' action="{{url('uploadimg')}}" method="post">
+                         <form enctype='multipart/form-data' action="{{url('uploadimg')}}" method="post">
                             @csrf
-  <input type="hidden" name="user_id" value="<?php echo Auth::id(); ?>"/>
+                          <input type="hidden" name="user_id" value="<?php echo Auth::id(); ?>"/>
                             <div class="row">
                     				<div class="col-lg-6 d-flex align-items-center">
                     					<div class="form-group">
-											<label>Upload Photo:</label><br>
-		<input type="file" class="form-control" name="purch_process_photo">
+											<label>تحميل صورة:</label><br>
+		                     <input type="file" class="form-control" name="purch_process_photo">
+		                     <button type="submit" class="submitBtn ml-2" style="margin-top: 10px;">إرسال</button>
 
 										</div>
-										<button type="submit" class="submitBtn ml-2">SUBMIT</button>
+										
                     				</div>
-                    				
                     			</div>
-
-								
                     		</form>
                     	</div>
                     </div>
-	<section id="procedure_section">
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="procedure_div">
+			<section id="procedure_section">
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="procedure_div">
 
-				@if($img) <img src="{{ $img }}" class="img-fluid"> @endif
-					<p class="m-t-20">This process is to be used when purchasing goods or services from an external supplier.</p>
-					<p>Input: The requirement to purchase</p>
-					<p>Output: Reception and implementation of supplied goods or services.</p>
-					<p>Process owner is: <span class="authName">{{Auth::user()->purchasing_process}}</span></p>
+						@if($img) <img src="{{ $img }}" class="img-fluid"> @endif
+							<p class="m-t-20">تستخدم هذه العملية عند شراء البضائع أو الخدمات من  مزوّد خارجي.</p>
+							<p>المدخلات: متطلبات الشراء</p>
+							<p>المخرجات: استلام البضائع والخدمات المشتراة، وتنفيذها.</p>
+							<p>مالك العملية:  <span class="authName">{{Auth::user()->purchasing_process}}</span></p>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</section>
+			</section>
 
 	<!--End::Section-->
 </div>

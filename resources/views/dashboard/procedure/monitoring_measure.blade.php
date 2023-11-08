@@ -10,7 +10,7 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>P4 - Monitoring and measuring equipment</h2>
+			<h2>السياسة 4 – معدات المراقبة والقياس</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
@@ -18,29 +18,27 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="procedure_div">
-					<h4>1. Purpose and scope</h4>
-					<p>This procedure ensures that equipment used to measure, monitor or control operating parameters is maintained and calibrated to preserve its efficiency and accuracy.</p>
-                    <h4 class="m-t-20">2. Responsibility</h4>
-                    <p>The Director is responsible for defining measuring and monitoring equipment which needs to be maintained or calibrated and ensuring that action is taken at the correct time. The results of calibration are assessed and appropriate action taken if equipment has fallen out of calibration. Records are kept using this record.</p>
-                    <h4 class="m-t-20">3. Equipment to be calibrated or maintained</h4>
-                    <p>Each piece of equipment which requires calibration or regular maintenance shall be uniquely identified.</p>
-                    <h4 class="m-t-20">4. Calibration</h4>
-                    <h5 class="m-t-20">4.1 Records</h5>
-                    <p>Each piece of equipment shall be entered onto the record form, which will also act as a recall system.</p>
-                    <h5 class="m-t-20">4.2 Methods of calibration</h5>
-                    <p>Unless the equipment is marked ‘For indication purposes only’ all calibrations shall be traceable to nationally recognised standards. If this is not possible, the basis of the method of calibration shall be stated.</p>
-                    <p>When appropriate or necessary, an approved external calibration service may be used. This can be the original manufacturer or his agent, or a NAMAS/UKAS or ISO 9001 approved test house.</p>
-                    <p>Calibration shall be carried out in suitable working environment conditions.</p>
-                    <h5 class="m-t-20">4.3 Results of calibration</h5>
-                    <p>The results of calibration shall be compared with the tolerance. When calibration is carried out by a subcontractor, the results shall be reviewed and, if acceptable, the certificate shall be initialled and dated. If calibration is satisfactory, the Calibration Record shall be annotated ‘OK’.</p>
-                    <h4 class="m-t-20">5. Calibration failure</h4>
-                    <p>If a piece of equipment falls out of tolerance, it shall be withdrawn from use and repaired and re-calibrated, or be withdrawn permanently and replaced.
-					The validity of measurements taken prior to the failure shall be reviewed and a decision taken whether any retrospective action needs to be taken.</p>
-					<h4 class="m-t-20">6. Retest dates</h4>
-                    <p>Ideally, when equipment has been calibrated it should be labelled to show the next retest date.
-					Retest dates shall also be shown on the schedule as part of the computer based recall program.</p>
-					<h4 class="m-t-20">7. Test software</h4>
-                    <p>Software used for measuring and monitoring shall be validated prior to use.</p>
+					<h4>1. الغرض والنطاق</h4>
+					<p>من شأن هذا الإجراء ضمان صيانة المعدات المستخدمة لقياس معلمات التشغيل أو مراقبتها أو التحكم فيها ومعايرتها للحفاظ على مدى كفاءتها ودقتها.</p>
+                    <h4 class="m-t-20">2. المسؤولية</h4>
+                    <p>يتحمل المدير المسؤولية عن تحديد معدات القياس والمراقبة التي تحتاج إلى صيانة، أو معايرتها، والتأكد من اتخاذ الإجراءات المناسبة في الوقت الصحيح. يتم تقييم نتائج المعايرة واتخاذ الإجراءات المناسبة في حال خروج المعدات عن المعايرة. كما يتم الاحتفاظ بالسجلات باستخدام هذا السجل.</p>
+                    <h4 class="m-t-20">3. المعدات التي يتعيّن معايرتها أو صيانتها</h4>
+                    <p>ينبغي تمييز كل قطعة من المعدات التي تتطلب معايرة أو صيانة دورية.</p>
+                    <h4 class="m-t-20">4. المعايرة</h4>
+                    <h5 class="m-t-20">4.1 السجلات</h5>
+                    <p>ينبغي إدخال كل قطعة من المعدات في نموذج التسجيل، والذي يتم اعتباره بمثابة نظام استدعاء.</p>
+                    <h5 class="m-t-20">4.2 أساليب المعايرة</h5>
+                    <p>مالم يتم وضع علامة "لأغراض الإشارة فقط" على الجهاز، يجب أن تكون جميع المعايرات قابلة للتتبع وفقًا للمعايير المعترف بها وطنيًا. وفي حال تعذّر ذلك، يجب التنويه إلى أساس أسلوب المعايرة.</p>
+                    <p>عندما يكون ذلك مناسبًا أو ضروريًا، يمكن استخدام خدمة معايرة خارجية معتمدة، وقد تتمثل في المصنّع الأصلي أو وكيله، أو مركز اختبار معتمد من الهيئة الوطنية لاعتماد القياس/ هيئة خدمات الاعتماد في المملكة المتحدة أو ISO 9001.</p>
+                    <p>يجب تنفيذ المعايرة في ظروف عمل منسبة.</p>
+                    <h5 class="m-t-20">4.3 نتائج المعايرة</h5>
+                    <p>يجب مقارنة نتائج المعايرة مع التفاوت المسموح به. عند تنفيذ المعايرة بواسطة مقاول من الباطن، يجب مراجعة النتائج وأن تكون الشهادة موقّعة بالأحرف الأولى ومؤرّخة، وذلك في حالة قبول النتاج. إذا كانت المعايرة مُرضية، فيجب الإشارة إلى سجل المعايرة بـ "موافق".</p>
+                    <h4 class="m-t-20">5. فشل المعايرة</h4>
+                    <p>في حال وقوع إحدى المعدات خارج التفاوت المسموح به، يجب سحبها من الاستخدام وإصلاحها وإعادة معايرتها، أو سحبها نهائيًا واستبدالها. يجب مراجعة صحة القياسات التي تم إجراؤها قبل الفشل واتخاذ قرار بشأن الحاجة لاتخاذ أي إجراء بأثر رجعي.</p>
+					<h4 class="m-t-20">6. تواريخ إعادة الاختبار</h4>
+                    <p>من الناحية المثالية، عندما تتم معايرة المعدات، يجب أن يتم وضع علامة عليها لإظهار تاريخ إعادة الاختبار التالي. يجب أيضًا إظهار تواريخ إعادة الاختبار في الجدول كجزء من برنامج الاستدعاء المعتمد على الكمبيوتر.</p>
+					<h4 class="m-t-20">7. برامج الاختبار</h4>
+                    <p>يجب التحقق من صحة البرامج المستخدمة في القياس والمراقبة قبل الاستخدام.</p>
 				</div>
 			</div>
 		</div>

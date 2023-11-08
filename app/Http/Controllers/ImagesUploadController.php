@@ -192,6 +192,7 @@ class ImagesUploadController extends Controller
         return redirect()->back()
        ->with('message', 'Image Removed successfully.');
     }
+    
     public function sale_process(){
         $img_exist ="";
        $user = Auth::user();
