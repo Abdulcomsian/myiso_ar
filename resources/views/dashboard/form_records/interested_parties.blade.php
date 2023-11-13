@@ -10,19 +10,19 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Interested Parties</h2>
+			<h2>الأطراف المعنية</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-					<p>Section 4.2 of the ISO9001:2015 standard requires the understanding the needs and expectations of interested parties. This register is a place where these can be documented if you so wish. The Quality Manual in section 4.2.2 defines who the interested parties are.</p>
-					<p>To add a record, click on the “Add Interested Parties” button. To amend a record, click on the edit icon of the entry that needs to be modified."</p>
+					<p>يتطلب القسم 4.2 من شهادة الآيزو القياسية (ISO9001:2015) فهم احتياجات الأطراف المعنية وتوقعاتها. ويمكن توثيق مثل هذه المعلومات كما ترغب في هذا السجل. أما دليل الجودة في القسم 4،2،2 فهو يحدد من هي هذه الأطراف المعنية. </p>
+					<p>لإضافة سجل، يرجى النقر على زر "إضافة أطراف معنية". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله. </p>
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="processinterestedForm()" class="addBtn">ADD Interested Parties</a>
+                    			<a onclick="processinterestedForm()" class="addBtn">إضافة أطراف معنية </a>
                     		</div>
                     	</div>
                     	<div class="process_interested_from_div" style="display:none;    position: relative;bottom: 10px;">
@@ -31,22 +31,22 @@
                     			<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label>Interested Party:</label>
-											<input type="text" name="interestedparty" required class="form-control"  placeholder="Enter Interested Parties e.g Customers, Suppliers, Employees:">
+											<label>الطرف المعني:</label>
+											<input type="text" name="interestedparty" required class="form-control"  placeholder="(يرجى إدخال الطرف المعني، مثل العملاء، المزودين، الموظفين)">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label>Needs and Expectations</label>
-											<input type="text" name="needs" class="form-control"  required placeholder="Enter Need & Expectations:">
+											<label>الاحتياجات والتوقعات </label>
+											<input type="text" name="needs" class="form-control"  required placeholder="يرجى إدخال الاحتياجات والتوقعات">
 										</div>
 									</div>
 								</div>
 <!--<button type="button" class="btn btn-secondary" onclick="processinterestedForm()">Cancel</button>-->
-								<button type="submit" class="submitBtn">SUBMIT</button>
-								<button type="reset" onclick="processinterestedForm()" class="submitBtn" style="margin-right: 7px;">Cancel</button>
+								<button type="submit" class="submitBtn">رسال </button>
+								<button type="reset" onclick="processinterestedForm()" class="submitBtn" style="margin-right: 7px;">إلغاء </button>
                     		</form>
                     	</div>
                     </div>
@@ -57,11 +57,11 @@
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th>S-No.</th>
-											<th>Interested Parties</th>
-											<th>Needs and Expectations</th>
-											<th>Created At</th>
-											<th>Action</th>
+											<th>رقم سري</th>
+											<th>إضافة أطراف معنية </th>
+											<th>الاحتياجات والتوقعات </th>
+											<th>تم إنشاء هذا السجل في</th>
+											<th>فعل</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -105,19 +105,19 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Interested Party</h5>
+				<h5 class="modal-title" id="exampleModalLabel">حذف الطرف المهتم</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
 				<form action="{{route('deleteInterested')}} " method="POST">
 				@csrf
                     <input type="hidden" name="id" value="" id="re_id">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>
@@ -127,7 +127,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content modal-lg">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Interested Party Details</h5>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل الأطراف المهتمة</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
             </div>
@@ -138,24 +138,24 @@
                     <div class="row">
 						<div class="col-lg-12">
 							<div class="form-group">
-								<label>Interested Party:</label>
-								<input type="text" name="interestedparty" required class="form-control"  placeholder="Enter Interested Parties e.g Customers, Suppliers, Employees:">
+								<label>طرف مهتم:</label>
+								<input type="text" name="interestedparty" required class="form-control"  placeholder="يرجى إدخال الطرف المعني، مثل العملاء، المزودين، الموظفين:">
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="form-group">
-								<label>Needs & Expectations</label>
-								<input type="text" name="needs" required class="form-control"  placeholder="Enter Need & Expectations:">
+								<label>الاحتياجات والتوقعات </label>
+								<input type="text" name="needs" required class="form-control"  placeholder="أدخل الحاجة والتوقعات:">
 							</div>
 						</div>
 					</div>
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
 
             </div>
         </form>
@@ -167,7 +167,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content ">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">View Interested Party Details</h5>
+				<h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل الأطراف المهتمة</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
             </div>
@@ -179,16 +179,16 @@
                        
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Interested Party:</label>
-                                <input type="text" name="interestedparty" required placeholder="Enter Interested Parties e.g Customers, Suppliers, Employees:" class="form-control" >
+                                <label>طرف مهتم:</label>
+                                <input type="text" name="interestedparty" required placeholder="يرجى إدخال الطرف المعني، مثل العملاء، المزودين، الموظفين" class="form-control" >
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Needs & Expectations:</label>
-                                <input type="text" name="needs" required placeholder="Enter Need & Expectations:" class="form-control" >
+                                <label>الاحتياجات والتوقعات:</label>
+                                <input type="text" name="needs" required placeholder="يرجى إدخال الاحتياجات والتوقعات:" class="form-control" >
                             </div>
                         </div>
                         
@@ -196,7 +196,7 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 			
 
             </div>
