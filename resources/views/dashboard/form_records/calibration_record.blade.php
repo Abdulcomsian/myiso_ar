@@ -10,24 +10,20 @@
         <!--Begin::Section-->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
-                <h2>Add or Amend a Calibration Record</h2>
+                <h2>إضافة أو تعديل سجل معايرة </h2>
             </div>
         </div>
         <section id="procedure_section">
 
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Calibration is the testing and/or parameter settings of machinery or instruments to ensure they
-                        are working correctly. Depending on the environment this could be heavy machinery or a desktop
-                        printer. </p>
+                    <p>المعايرة هي إعدادات الاختبار و/ أو مواضع المعلَمات التي تستهدف الآليات أو الأجهزة للتأكد من أنها تعمل بالشكل الصحيح. وبالاعتماد على بيئة العمل، قد تكون هذه عبارة عن آليات ثقيلة أو طابعة مكتبية.  </p>
 
-                    <p>To add a record, click on the “Add Calibration Record” button. All Calibration Records created
-                        require a frequency of calibration, this is shown on your MyISOOnline control panel as a
-                        reminder.</p>
+                    <p>لإضافة سجل، يرجى النقر على زر "إضافة سجل معايرة". تتطلب جميع سجلات المعايرة معرفة عدد مرات المعايرة، وتظهر هذه المعلومة كتذكير على لوحة التحكم الخاصة بك على MyISOOnline </p>
                     <div class="procedure_div">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <a onclick="calibrationForm()" class="addBtn">ADD CALIBRATION RECORD</a>
+                                <a onclick="calibrationForm()" class="addBtn">إضافة سجل المعايرة</a>
                             </div>
                         </div>
                         <div class="calibration_from_div">
@@ -42,9 +38,9 @@
                                     </div> --}}
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Equipment Name:</label><br>
+                                            <label>اسم الجهاز: </label><br>
                                             <input type="text" class="form-control" name="equipment"
-                                                   placeholder="Enter Equipment Name:" required="required">
+                                                   placeholder="يرجى إدخال رقم تعريف العميل" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -52,100 +48,102 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Serial Number:</label>
+                                            <label>الرقم التسلسلي: </label>
                                             <input type="text" class="form-control" name="serialNum"
-                                                   placeholder="Enter Serial Number:" required="required">
+                                                   placeholder="يرجى إدخال اسم العميل" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Location:</label>
+                                            <label>الموقع: </label>
                                             <input type="text" class="form-control" name="locaction"
-                                                   placeholder="Enter Location:" required="required">
+                                                   placeholder="يرجى إدخال عنوان العمل الكامل للعميل" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Test Method Reference:</label>
+                                            <label>مرجع طريقة الاختبار: </label>
                                             <input type="text" class="form-control" name="testMethod"
-                                                   placeholder="Enter Test Method Reference:" required="required">
+                                                   placeholder="يرجى إدخال رقم هاتف العميل بادئًا برمز الدولة" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Acceptance Criteria:</label>
+                                            <label>معايير القبول: </label>
                                             <input type="text" class="form-control" name="acceptance"
-                                                   placeholder="Enter Acceptance Criteria:" required="required">
+                                                   placeholder="يرجى إدخال عنوان البريد الإلكتروني للعميل" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Date Calibrated:</label>
+                                            <label>تاريخ المعايرة: </label>
                                             <input type="date" max="2999-12-31" class="form-control"
-                                                   name="calibratedDate" required="required">
+                                                   name="calibratedDate" placeholder="يرجى إدخال اسم جهة الاتصال الخاصة بالعميل"  required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Certificate Number:</label>
+                                            <label>رقم الشهادة: </label>
                                             <input type="text" class="form-control" name="certificatenumber"
-                                                   placeholder="Enter Certificate Number:" required="required">
+                                                   placeholder="يرجى إدخال رقم الشهادة" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Frequency (Months):</label>
+                                            <label>عدد مرات المعايرة (بالأشهر):</label>
                                             <input type="number" oninput="this.value = Math.abs(this.value)" min="1"
                                                    max="12" name="freq" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Report Reviewer:</label>
+                                            <label>مراجع التقرير: </label>
                                             <input type="text" class="form-control" name="reportRev"
-                                                   placeholder="Enter report reviewer's name:" required="required">
+                                                   placeholder="يرجى إدخال اسم مراجع التقرير" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Pass or Fail:</label>
+                                            <label>اجتاز الاختبار أم فشل في اجتيازه:</label>
                                             <select name="sentence" class="form-control" required="required">
-                                                <option value="">Select One</option>
-                                                <option value="Pass">Pass</option>
-                                                <option value="Fail">Fail</option>
+                                                <option value="">اختر واحدة</option>
+                                                <option value="Pass">	اجتاز الاختبار</option>
+                                                <option value="Fail">	فشل في اجتياز الاختبار </option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Attach Evidence: <span class="text-danger"
+                                            <label>إرفاق الدليل: ملفات بصيغ : <span class="text-danger"
                                                                           style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                             <input name="attach_evidence" type="file" class="form-control"
                                                    accept="all">
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Any other issues or points to Note:</label>
+                                            <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
                                             <input type="text"  name="issues_points" placeholder="Any other issues or points to Note" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="submitBtn">SUBMIT</button>
+                                <button type="submit" class="submitBtn">يُقدِّم</button>
                                 <button type="reset" onclick="calibration()" class="submitBtn"
-                                        style="margin-right: 7px;">Cancel
+                                        style="margin-right: 7px;">يلغي
                                 </button>
                                 <!--<button type="button"  class="btn btn-secondary submitBtn " style="margin-right:7px;">Cancel</button>-->
                             </form>
@@ -160,13 +158,13 @@
                                        id="kt_table_agent">
                                     <thead>
                                     <tr>
-                                        <th>Equipment ID</th>
+                                        <th>المعايرة المستحقة </th>
                                         <!--<th>Equipment ID</th>-->
-                                        <th>Equipment Name</th>
-                                        <th>Serial Number</th>
-                                        <th>Date Calibrated</th>
-                                        <th>Date Due</th>
-                                        <th>Action</th>
+                                        <th>اسم الجهاز</th>
+                                        <th>الرقم التسلسلي</th>
+                                        <th>تاريخ المعايرة </th>
+                                        <th>تاريخ تنفيذ المعايرة</th>
+                                        <th>النشاط</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -230,7 +228,7 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                                    Calibration Due</h5>
+                                                                    استحقاق المعايرة</h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
@@ -247,9 +245,9 @@
                                                                     </div> --}}
                                                                     <div class="col-lg-12">
                                                                         <div class="form-group">
-                                                                            <label>Equipment Name:</label><br>
+                                                                            <label>اسم الجهاز:</label><br>
                                                                             <input type="text" class="form-control" name="equipment"
-                                                                                   placeholder="Enter Equipment Name:" required="required">
+                                                                                   placeholder="أدخل اسم الجهاز:" required="required">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -257,75 +255,75 @@
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Serial Number:</label>
+                                                                            <label>الرقم التسلسلي:</label>
                                                                             <input type="text" class="form-control" name="serialNum"
-                                                                                   placeholder="Enter Serial Number:" required="required">
+                                                                                   placeholder="أدخل الرقم التسلسلي:" required="required">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Location:</label>
+                                                                            <label>الموقع:</label>
                                                                             <input type="text" class="form-control" name="locaction"
-                                                                                   placeholder="Enter Location:" required="required">
+                                                                                   placeholder="إدخال الدولة:" required="required">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Test Method Reference:</label>
+                                                                            <label>طريقة الاختبار:</label>
                                                                             <input type="text" class="form-control" name="testMethod"
-                                                                                   placeholder="Enter Test Method Reference:" required="required">
+                                                                                   placeholder="أدخل مرجع طريقة الاختبار:" required="required">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Acceptance Criteria:</label>
+                                                                            <label>معايير القبول:</label>
                                                                             <input type="text" class="form-control" name="acceptance"
-                                                                                   placeholder="Enter Acceptance Criteria:" required="required">
+                                                                                   placeholder="أدخل معايير القبول:" required="required">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Date Calibrated:</label>
+                                                                            <label>تاريخ المعايرة :</label>
                                                                             <input type="date" max="2999-12-31" class="form-control"
                                                                                    name="calibratedDate" required="required">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Certificate Number:</label>
+                                                                            <label>رقم الشهادة:</label>
                                                                             <input type="text" class="form-control" name="certificatenumber"
-                                                                                   placeholder="Enter Certificate Number:" required="required">
+                                                                                   placeholder="أدخل رقم الشهادة:" required="required">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Frequency (Months):</label>
+                                                                            <label>عدد مرات المعايرة (بالأشهر):</label>
                                                                             <input type="number" oninput="this.value = Math.abs(this.value)" min="1"
                                                                                    max="12" name="freq" class="form-control" required="required">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Report Reviewer:</label>
+                                                                            <label>مراجع التقرير: </label>
                                                                             <input type="text" class="form-control" name="reportRev"
-                                                                                   placeholder="Enter report reviewer's name:" required="required">
+                                                                                   placeholder="يرجى إدخال اسم مراجع التقرير" required="required">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
                                                                         <div class="form-group">
-                                                                            <label>Pass or Fail:</label>
+                                                                            <label>اجتاز الاختبار أم فشل في اجتيازه:</label>
                                                                             <select name="sentence" class="form-control" required="required">
-                                                                                <option value="">Select One</option>
-                                                                                <option value="Pass">Pass</option>
-                                                                                <option value="Fail">Fail</option>
+                                                                                <option value="">اختر واحدة</option>
+                                                                                <option value="Pass">	اجتاز الاختبار</option>
+                                                                                <option value="Fail">	فشل في اجتياز الاختبار </option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -333,7 +331,7 @@
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
                                                                         <div class="form-group">
-                                                                            <label>Attach Evidence <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
+                                                                            <label>إرفاق الدليل: ملفات بصيغ  <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
                                                                             <div class="evidence_attachemnt_div"></div>
                                                                         </div>
                                                                     </div>
@@ -341,15 +339,15 @@
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
                                                                         <div class="form-group">
-                                                                            <label>Any other issues or points to Note:</label>
-                                                                            <input type="text" name="issues_points" placeholder="Any other issues or points to Note" class="form-control" />
+                                                                            <label>أي مشاكل أو نقاط أخرى يجب ملاحظتها:</label>
+                                                                            <input type="text" name="issues_points" placeholder="أي مشاكل أو نقاط أخرى يجب ملاحظتها" class="form-control" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Close
+                                                                        data-dismiss="modal">يغلق
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -365,23 +363,22 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Deleting
-                                                            Entry</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">حذف الإدخال</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>Are you sure you want to delete this entry?</p>
+                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <form action="{{url('/calibration_delete')}}" method="POST">
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{$data->id}}"/>
                                                             <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">No
+                                                                    data-dismiss="modal">لا
                                                             </button>
-                                                            <button type="submit" class="btn btn-danger">Yes</button>
+                                                            <button type="submit" class="btn btn-danger">نعم</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -395,26 +392,27 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="procedure_div m-t-20">
                         <div class="requirments_table_div">
-                            <h4>Total Items Listed</h4>
+                            <h4>إجمالي البنود المدرجة </h4>
                             <div class="kt-portlet__body table-responsive">
                                 <!--begin: Datatable -->
                                 <table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive"
                                        id="kt_table_agent">
                                     <thead>
                                     <tr>
-                                        <th>Equipment ID</th>
-                                        <th>Equipment Name</th>
-                                        <th>Serial Number</th>
-                                        <th>Location</th>
-                                        <th>Test Method</th>
-                                        <th>Acceptance Criteria</th>
-                                        <th>Date Calibrated</th>
-                                        <th>Certificate Number</th>
-                                        <th>Frequency (M)</th>
-                                        <th>Reviewer</th>
-                                        <th>Sentence</th>
+                                        <th>رقم تعريف الجهاز</th>
+                                        <th>اسم الجهاز</th>
+                                        <th>الرقم التسلسلي</th>
+                                        <th> الموقع</th>
+                                        <th>طريقة الاختبار</th>
+                                        <th>معايير القبول</th>
+                                        <th>تاريخ المعايرة </th>
+                                        <th>رقم الشهادة</th>
+                                        <th>عدد مرات المعايرة </th>
+                                        <th>المراجع </th>
+                                        <th>الحكم </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -454,30 +452,31 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deleting Entry</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف الإدخال</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this entry?</p>
+                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
                 <div class="modal-footer">
                     <form action="" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                        <button type="submit" class="btn btn-danger">نعم</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="editSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Supplier</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">تحرير المورد</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -486,14 +485,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>ID Number:</label><br>
-                                    <input type="number" class="form-control" placeholder="Enter ID:">
+                                    <label>رقم الهوية:</label><br>
+                                    <input type="number" class="form-control" placeholder="أدخل المعرف:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier Name:</label><br>
-                                    <input type="text" class="form-control" placeholder="Enter Supplier Name:">
+                                    <label>اسم المورد:</label><br>
+                                    <input type="text" class="form-control" placeholder="أدخل اسم المورد:">
                                 </div>
                             </div>
                         </div>
@@ -501,73 +500,73 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier Address:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Supplier Address:">
+                                    <label>عنوان المورد:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل عنوان المورد:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>City:</label>
-                                    <input type="text" class="form-control" placeholder="Enter City:">
+                                    <label>مدينة:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل المدينة:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>County or State:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Country or State:">
+                                    <label>مقاطعة أو الدولة:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل الدولة أو الولاية:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Post Code or Zip Code:</label>
+                                    <label>الرمز البريدي أو الرمز البريدي:</label>
                                     <input type="text" class="form-control"
-                                           placeholder="Enter Customer Contact Number:">
+                                           placeholder="أدخل رقم اتصال العميل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Country:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Country">
+                                    <label>دولة:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل البلد">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier Telephone:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Supplier Telephone:">
+                                    <label>هاتف المورد:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل رقم هاتف المورد:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier Email::</label>
-                                    <input type="email" class="form-control" placeholder="Enter Supplier Email:">
+                                    <label>البريد الإلكتروني للمورد:</label>
+                                    <input type="email" class="form-control" placeholder="أدخل البريد الإلكتروني للمورد:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier Contact Name:</label>
+                                    <label>اسم جهة اتصال المورد:</label>
                                     <input type="text" class="form-control"
-                                           placeholder="Enter Supplier Contact Number:">
+                                           placeholder="أدخل رقم اتصال المورد:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Supplier Service:</label>
-                                    <input type="email" class="form-control" placeholder="Enter Supplier Service:">
+                                    <label>خدمة الموردين:</label>
+                                    <input type="email" class="form-control" placeholder="أدخل خدمة المورد:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Attach Evidence: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                                    <label>إرفاق الأدلة: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                     <input name="attach_evidence" type="file" class="form-control"
                                            accept="all">
                                 </div>
@@ -576,7 +575,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Any other issues or points to Note:</label>
+                                    <label>أي مشاكل أو نقاط أخرى يجب ملاحظتها:</label>
                                     <input type="text" name="issues_points" placeholder="Any other issues or points to Note" class="form-control" />
                                 </div>
                             </div>
@@ -587,8 +586,8 @@
                     <form action="" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
-                        <button type="submit" class="btn btn-danger">Update</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+                        <button type="submit" class="btn btn-danger">تحديث</button>
                     </form>
                 </div>
             </div>
@@ -600,7 +599,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Calibration Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل المعايرة</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -617,9 +616,9 @@
                             </div> --}}
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Equipment Name:</label><br>
+                                    <label>اسم الجهاز:</label><br>
                                     <input type="text" class="form-control" name="equipment"
-                                           placeholder="Enter Equipment Name:" required="required">
+                                           placeholder="أدخل اسم الجهاز:" required="required">
                                 </div>
                             </div>
                         </div>
@@ -627,62 +626,62 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Serial Number:</label>
+                                    <label>رقم سري:</label>
                                     <input type="text" class="form-control" name="serialNum"
-                                           placeholder="Enter Serial Number:" required="required">
+                                           placeholder="أدخل الرقم التسلسلي:" required="required">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Location:</label>
+                                    <label> الموقع</label>
                                     <input type="text" class="form-control" name="locaction"
-                                           placeholder="Enter Location:" required="required">
+                                           placeholder="إدخال الدولة:" required="required">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Test Method Reference:</label>
+                                    <label>مرجع طريقة الاختبار:</label>
                                     <input type="text" class="form-control" name="testMethod"
-                                           placeholder="Enter Test Method Reference:" required="required">
+                                           placeholder="أدخل مرجع طريقة الاختبار:" required="required">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Acceptance Criteria:</label>
+                                    <label>معايير القبول:</label>
                                     <input type="text" class="form-control" name="acceptance"
-                                           placeholder="Enter Acceptance Criteria:" required="required">
+                                           placeholder="أدخل معايير القبول:" required="required">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Date Calibrated:</label>
+                                    <label>تاريخ المعايرة:</label>
                                     <input type="date" max="2999-12-31" class="form-control" name="calibratedDate"
                                            required="required">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Certificate Number:</label>
+                                    <label>رقم شهادة:</label>
                                     <input type="text" class="form-control" name="certificatenumber"
-                                           placeholder="Enter Certificate Number:" required="required">
+                                           placeholder="أدخل رقم الشهادة:" required="required">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Frequency (Months):</label>
+                                    <label>عدد مرات المعايرة :</label>
                                     <input type="number" oninput="this.value = Math.abs(this.value)" min="1" max="12"
                                            name="freq" class="form-control" required="required">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Report Reviewer:</label>
+                                    <label>مراجع التقرير:</label>
                                     <input type="text" class="form-control" name="reportRev"
                                            placeholder="Enter Report Reviewer:" required="required">
                                 </div>
@@ -691,11 +690,11 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Pass or Fail:</label>
+                                    <label>اجتاز الاختبار أم فشل في اجتيازه:</label>
                                     <select name="sentence" class="form-control" required="required" id="sentence">
-                                        <option value="">Select One</option>
-                                        <option value="Pass">Pass</option>
-                                        <option value="Fail">Fail</option>
+                                        <option value="">اختر واحدة</option>
+                                        <option value="Pass">	اجتاز الاختبار</option>
+                                        <option value="Fail">	فشل في اجتياز الاختبار </option>
                                     </select>
                                 </div>
                             </div>
@@ -703,7 +702,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Attach Evidence: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                                    <label>إرفاق الدليل: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                     <input name="attach_evidence" type="file" class="form-control"
                                            accept="all">
                                 </div>
@@ -712,13 +711,13 @@
                         <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Any other issues or points to Note:</label>
-                                            <input type="text" id="issues_points" name="issues_points" placeholder="Any other issues or points to Note" class="form-control" />
+                                            <label>أي مشاكل أو نقاط أخرى يجب ملاحظتها:</label>
+                                            <input type="text" id="issues_points" name="issues_points" placeholder="أي مشاكل أو نقاط أخرى يجب ملاحظتها" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
-                        <button type="submit" class="submitBtn ml-2">Update</button>
-                        <button type="button" class="submitBtn" data-dismiss="modal" aria-label="Close">Cancel</button>
+                        <button type="submit" class="submitBtn ml-2">تحديث</button>
+                        <button type="button" class="submitBtn" data-dismiss="modal" aria-label="Close">يلغي</button>
                     </form>
                 </div>
             </div>

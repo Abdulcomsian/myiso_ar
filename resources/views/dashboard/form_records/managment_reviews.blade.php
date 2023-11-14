@@ -10,21 +10,21 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Management Reviews</h2>
+			<h2>مراجعات الإدارة</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-            <p>Management Reviews are to ensure that the company can measure the effectiveness of the management system, whilst focusing on the direction of the business and its continual improvement. These should be conducted monthly, quarterly, semiannually, or annually depending on the size and nature of the business.</p>
+            <p>صُممت المراجعات الإدارية لتقييم كفاءة نظام الإدارة مع توجيه مسار الأعمال نحو التحسين المستمر. وينبغي إجراء هذه المراجعات بشكلٍ شهري أو ربع سنوي أو نصف سنوي أو سنويًا وذلك بناءً على حجم العمل وطبيعته</p>
 
-				<p>To add a record, click on the “Add Management review” button. To amend a record, click on the edit icon of the entry that needs to be modified or deleted.</p>
+				<p>لإضافة سجل، انقر زر "إضافة مراجعة إدارية". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد تعديله أو حذفه.</p>
 
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="managemnetReviewForm()" class="addBtn">ADD MANAGEMENT REVIEW</a>
+                    			<a onclick="managemnetReviewForm()" class="addBtn">إضافة مراجعة إدارية </a>
                     		</div>
                     	</div>
                     	<div class="managemnet_review_from_div">
@@ -40,7 +40,7 @@
                                     <input type="hidden" class="form-control" name="mgtreviewId" value="241">
                     				<div class="col-lg-12">
                     					<div class="form-group">
-											<label>Management Review Date:</label><br>
+											<label>تاريخ المراجعة الإدارية: </label><br>
 											<input type="date" max="2999-12-31" required class="form-control" name="reviewdate">
 										</div>
                     				</div>
@@ -49,14 +49,14 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Management Review Meeting Attendees:</label>
-                                            <textarea class="form-control" name="meetingatt" required placeholder="Enter attendees name:" cols="30" rows="4"></textarea>
+											<label>الحضور في اجتماع المراجعة الإدارية: </label>
+                                            <textarea class="form-control" name="meetingatt" required placeholder="أدخل اسم الحضور:" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Review of previous meeting minutes:</label>
-                                            <textarea class="form-control" name="prevmeeting" required placeholder="Enter Previous meetings key points" cols="30" rows="4"></textarea>
+											<label>مراجعة محضر الاجتماع السابق: </label>
+                                            <textarea class="form-control" name="prevmeeting" required placeholder="أدخل النقاط الرئيسية للاجتماعات السابقة" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 								</div>
@@ -64,13 +64,14 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Changes in external and internal issues that are relevant to the quality management system and changes recommended:</label>
-                                            <textarea class="form-control" name="recommendedchange" required placeholder="Enter Changes" cols="30" rows="4"></textarea>
+											<label>التعديلات في الشؤون الخارجية والداخلية التي تخص نظام إدارة الجودة والتغييرات الموصى بها:</label>
+                                            <textarea class="form-control" name="recommendedchange" required placeholder="أدخل التغييرات" cols="30" rows="4"></textarea>
 										</div>
 									</div>
+
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Summarise customer satisfaction surveys and feedback from relevant interested parties:</label>
+											<label>تقديم ملخص لاستطلاعات رضا العملاء وردود الفعل من الأطراف المعنية ذات الصلة:</label>
                                             <textarea class="form-control" placeholder="Enter Summary" name="sammarisecustomr" required placeholder="" cols="30" rows="4"></textarea>
 										</div>
 									</div>
@@ -79,29 +80,14 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comment on previous objectives:</label>
-                                            <textarea class="form-control" name="prevobjectv" placeholder="Enter Comments of Previous Objects" required placeholder="" cols="30" rows="4"></textarea>
+											<label>تقديم الملاحظات على الأهداف السابقة: </label>
+                                            <textarea class="form-control" name="prevobjectv" placeholder="أدخل تعليقات الكائنات السابقة" required placeholder="" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Process Audit performance and conformity of products and services:</label>
-                                            <textarea class="form-control" placeholder="Enter Feedback of performance of products and services created in process audits" name="conformity" required  placeholder="" cols="30" rows="4"></textarea>
-										</div>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Nonconformities and corrective actions:</label>
-                                            <textarea class="form-control" name="nonconformities" required placeholder="Enter Nonconformities and corrective actions" cols="30" rows="4"></textarea>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Monitoring and measurement results:</label>
-                                            <textarea class="form-control" name="monitoringres" required  placeholder="Enter Outcome" cols="30" rows="4"></textarea>
+											<label>إجراء تدقيق لأداء المنتجات والخدمات ومطابقتها مع معايير الجودة:</label>
+                                            <textarea class="form-control" placeholder="أدخل تعليقات حول أداء المنتجات والخدمات التي تم إنشاؤها في عمليات تدقيق العمليات" name="conformity" required  placeholder="" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 								</div>
@@ -109,14 +95,15 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comment on Audit results:</label>
-                                            <textarea class="form-control" name="auditres" required placeholder="Enter comments of audit findings" cols="30" rows="4"></textarea>
+											<label>تحديد حالات عدم المطابقة والإجراءات التصحيحية المناسبة:</label>
+                                            <textarea class="form-control" name="nonconformities" required placeholder="أدخل حالات عدم المطابقة والإجراءات التصحيحية" cols="30" rows="4"></textarea>
 										</div>
 									</div>
+
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comment on the performance of external providers:</label>
-                                            <textarea class="form-control" name="externalprovider" required placeholder="Enter Comments of external providers performance" cols="30" rows="4"></textarea>
+											<label>تحديد نتائج المراقبة والإشراف والقياس:</label>
+                                            <textarea class="form-control" name="monitoringres" required  placeholder="أدخل النتيجة" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 								</div>
@@ -124,51 +111,65 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>The adequacy of resources and changes recommended:</label>
-                                            <textarea class="form-control" name="adequacy" required placeholder="Enter Comments of adequacy of the resources and recommended changes" cols="30" rows="4"></textarea>
+											<label>تقديم الملاحظات حول نتائج التدقيق: </label>
+                                            <textarea class="form-control" name="auditres" required placeholder="أدخل التعليقات على نتائج التدقيق" cols="30" rows="4"></textarea>
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>تقديم الملاحظات بشأن أداء مزودي الخدمات الخارجيين: </label>
+                                            <textarea class="form-control" name="externalprovider" required placeholder="أدخل تعليقات أداء مقدمي الخدمات الخارجيين" cols="30" rows="4"></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>ضمان دقة الموارد والتغييرات الموصى بها: </label>
+                                            <textarea class="form-control" name="adequacy" required placeholder="أدخل التعليقات حول مدى كفاية الموارد والتغييرات الموصى بها" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>The effectiveness of actions taken to address risks and opportunities:</label>
-                                            <textarea class="form-control" name="effectiveness" required placeholder= "Enter Effectiveness of actions" cols="30" rows="4"></textarea>
+											<label>ضمان فعالية الإجراءات المتخذة لمعالجة المخاطر واستغلال الفرص: </label>
+                                            <textarea class="form-control" name="effectiveness" required placeholder= "أدخل فعالية الإجراءات" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label>Add New Quality Objectives, Targets and
-                                        opportunities for improvement. Consider who is
-                                        responsible, when they will be completed and
-                                        what is considered a success. Objectives should be both quality based and financial. Consider aligning objectives to the quality policy:</label>
+											<label>إضافة أهداف الجودة الجديدة والمستهدفات وفرص التحسين، مع مراعاة الأطراف المسؤولة والجداول الزمنية للإنجاز ومعايير النجاح. وينبغي أن تشمل هذه الأهداف جوانب الجودة والجوانب المالية، مع أخذ المواءمة مع سياسة الجودة في الاعتبار:</label>
                                             <textarea class="form-control" name="newquality" required placeholder="Enter New Quality Objectives" cols="30" rows="4"></textarea>
 										</div>
 									</div>
 								</div>
 								
-								<button type="submit" class="submitBtn">SUBMIT</button>
-								<button type="reset" onclick="mngmnt_reviews()" class="submitBtn" style="margin-right:12px;">Cancel</button>
+								<button type="submit" class="submitBtn">يُقدِّم</button>
+								<button type="reset" onclick="mngmnt_reviews()" class="submitBtn" style="margin-right:12px;">يلغي</button>
 								
 								
 								<!--<button  onclick="customerForm()" type="reset" class="submitBtn"style="margin-right: 8px;">Cancel</button>-->
                     		</form>
                     	</div>
                     </div>
+
                     <div class="procedure_div">
                     	<div class="requirments_table_div">
-                    		<h4>Management Review</h4>
+                    		<h4> مراجعة الإدارة</h4>
                     		<div class="kt-portlet__body table-responsive">
 								<!--begin: Datatable -->
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th>ID Number</th>
-											<th>Date</th>
-											<th>Attendees</th>
-											<th>Planned Objectives</th>
+											<th> رقم الهوية</th>
+											<th>التاريخ</th>
+											<th>الحضور</th>
+											<th> الأهداف المرجوة</th>
 											<!--<th>Detail View</th>-->
-											<th>Action</th>
+											<th>الإجراء</th>
 										</tr>
                                     </thead>
                                     <tbody>
@@ -209,36 +210,40 @@
 </div>
 	</section>
 
+
+
 	<!--End::Section-->
 </div>
 <div class="modal fade" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Management review</h5>
+				<h5 class="modal-title" id="exampleModalLabel">حذف مراجعة الإدارة</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
             <form action="{{route('deletemgtreview')}}" method="POST">
 				@csrf
                     <input type="hidden" name="id" id="validid">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
 
+
+
 <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">View Management Reviews Details</h5>
+				<h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل مراجعات الإدارة</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
@@ -254,7 +259,7 @@
                             </div> -->
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Management Review Date:</label><br>
+                                    <label>تاريخ المراجعة الإدارية: </label><br>
                                     <input type="date" readonly disabled class="form-control" name="1reviewdate">
                                 </div>
                             </div>
@@ -263,13 +268,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Management Review Meeting Attendees:</label>
-                                    <input type="text" readonly disabled class="form-control" name="1meetingatt" placeholder="Enter attendees name:">
+                                    <label>الحضور في اجتماع المراجعة الإدارية: </label>
+                                    <input type="text" readonly disabled class="form-control" name="1meetingatt" placeholder="أدخل اسم الحضور:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Review of previous meeting minutes:</label>
+                                    <label>مراجعة محضر الاجتماع السابق: </label>
                                     <input type="text" readonly disabled class="form-control" name="1prevmeeting" placeholder="">
                                 </div>
                             </div>
@@ -277,55 +282,55 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Changes in external and internal issues that are relevant to the quality management system and changes recommended:</label>
-                                    <input type="text" readonly disabled class="form-control" placeholder="Enter Changes" name="1recommendedchange">
+                                    <label>التعديلات في الشؤون الخارجية والداخلية التي تخص نظام إدارة الجودة والتغييرات الموصى بها:</label>
+                                    <input type="text" readonly disabled class="form-control" placeholder="أدخل التغييرات" name="1recommendedchange">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Summarise customer satisfaction surveys and feedback from relevant interested parties:</label>
-                                    <input type="text" readonly disabled class="form-control" placeholder="Enter Summary" name="1sammarisecustomr">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Comment on previous objectives:</label>
-                                    <input type="text" readonly disabled class="form-control" placeholder="Enter Comments of Previous Objects" name="1prevobjectv">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Process performance and conformity of products and services:</label>
-                                    <input type="text" readonly disabled placeholder="Enter Feedback of performance of products and services" class="form-control" name="1conformity">
+                                    <label>تقديم ملخص لاستطلاعات رضا العملاء وردود الفعل من الأطراف المعنية ذات الصلة:</label>
+                                    <input type="text" readonly disabled class="form-control" placeholder="أدخل الملخص" name="1sammarisecustomr">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Nonconformities and corrective actions:</label>
-                                    <input type="text" readonly disabled class="form-control" placeholder="Enter Nonconformities and corrective actions" name="1nonconformities">
+                                    <label>تقديم الملاحظات على الأهداف السابقة: </label>
+                                    <input type="text" readonly disabled class="form-control" placeholder="أدخل تعليقات الكائنات السابقة" name="1prevobjectv">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Monitoring and measurement results:</label>
-                                    <input type="text" readonly disabled class="form-control" placeholder="Enter Outcome" name="1monitoringres">
+                                    <label>إجراء تدقيق لأداء المنتجات والخدمات ومطابقتها مع معايير الجودة:</label>
+                                    <input type="text" readonly disabled placeholder="أدخل تعليقات حول أداء المنتجات والخدمات" class="form-control" name="1conformity">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Comment on Audit results:</label>
+                                    <label>حديد حالات عدم المطابقة والإجراءات التصحيحية المناسبة:</label>
+                                    <input type="text" readonly disabled class="form-control" placeholder="أدخل حالات عدم المطابقة والإجراءات التصحيحية" name="1nonconformities">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>تحديد نتائج المراقبة والإشراف والقياس:</label>
+                                    <input type="text" readonly disabled class="form-control" placeholder="أدخل النتيجة" name="1monitoringres">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>تقديم الملاحظات حول نتائج التدقيق: </label>
                                     <input type="text" readonly disabled class="form-control" name="1auditres">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Comment on the performance of external providers:</label>
+                                    <label>تقديم الملاحظات بشأن أداء مزودي الخدمات الخارجيين: </label>
                                     <input type="text" readonly disabled class="form-control" name="1externalprovider">
                                 </div>
                             </div>
@@ -333,13 +338,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>The adequacy of resources and changes recommended:</label>
+                                    <label>ضمان دقة الموارد والتغييرات الموصى بها: </label>
                                     <input type="text" readonly disabled class="form-control" name="1adequacy">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>The effectiveness of actions taken to address risks and opportunities:</label>
+                                    <label>ضمان فعالية الإجراءات المتخذة لمعالجة المخاطر واستغلال الفرص: </label>
                                     <input type="text" readonly disabled class="form-control" name="1effectiveness">
                                 </div>
                             </div>
@@ -347,7 +352,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Add New Quality Objectives and opportunities for improvement. Consider who is responsible, when they will be completed and what is considered a success:</label>
+                                    <label>إضافة أهداف الجودة الجديدة والمستهدفات وفرص التحسين، مع مراعاة الأطراف المسؤولة والجداول الزمنية للإنجاز ومعايير النجاح. وينبغي أن تشمل هذه الأهداف جوانب الجودة والجوانب المالية، مع أخذ المواءمة مع سياسة الجودة في الاعتبار:</label>
                                     <input type="text" readonly disabled class="form-control" name="1newquality">
                                 </div>
                             </div>
@@ -356,7 +361,7 @@
 			</div>
 			<div class="modal-footer">
 
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 
             </div>
         </form>
@@ -368,7 +373,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Management Reviews Details</h5>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل مراجعات الإدارة</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
@@ -386,7 +391,7 @@
                             </div> -->
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Management Review Date:</label><br>
+                                    <label>تاريخ المراجعة الإدارية: </label><br>
                                     <input type="date" max="2999-12-31" required class="form-control" name="reviewdate">
                                 </div>
                             </div>
@@ -395,13 +400,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Management Review Meeting Attendees:</label>
-                                    <input type="text" class="form-control" required name="meetingatt" placeholder="Enter attendees name:">
+                                    <label>الحضور في اجتماع المراجعة الإدارية: </label>
+                                    <input type="text" class="form-control" required name="meetingatt" placeholder="أدخل اسم الحضور:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Review of previous meeting minutes:</label>
+                                    <label>مراجعة محضر الاجتماع السابق: </label>
                                     <input type="text" class="form-control" required name="prevmeeting" placeholder="">
                                 </div>
                             </div>
@@ -409,55 +414,55 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Changes in external and internal issues that are relevant to the quality management system and changes recommended:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Changes" required name="recommendedchange">
+                                    <label>التعديلات في الشؤون الخارجية والداخلية التي تخص نظام إدارة الجودة والتغييرات الموصى بها:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل التغييرات" required name="recommendedchange">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Summarise customer satisfaction surveys and feedback from relevant interested parties:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Summary" required name="sammarisecustomr">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Comment on previous objectives:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Comments of Previous Objects" required name="prevobjectv">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Process performance and conformity of products and services:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Feedback of performance of products and services" required  name="conformity">
+                                    <label>تقديم ملخص لاستطلاعات رضا العملاء وردود الفعل من الأطراف المعنية ذات الصلة:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل الملخص" required name="sammarisecustomr">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Nonconformities and corrective actions:</label>
-                                    <input type="text" class="form-control"placeholder="Enter Nonconformities and corrective actions"  name="nonconformities">
+                                    <label>تقديم الملاحظات على الأهداف السابقة: </label>
+                                    <input type="text" class="form-control" placeholder="أدخل تعليقات الكائنات السابقة" required name="prevobjectv">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Monitoring and measurement results:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Outcome" required name="monitoringres">
+                                    <label>جراء تدقيق لأداء المنتجات والخدمات ومطابقتها مع معايير الجودة:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل تعليقات حول أداء المنتجات والخدمات" required  name="conformity">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Comment on Audit results:</label>
+                                    <label>تحديد حالات عدم المطابقة والإجراءات التصحيحية المناسبة:</label>
+                                    <input type="text" class="form-control"placeholder="أدخل حالات عدم المطابقة والإجراءات التصحيحية"  name="nonconformities">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>تحديد نتائج المراقبة والإشراف والقياس:</label>
+                                    <input type="text" class="form-control" placeholder="أدخل النتيجة" required name="monitoringres">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>تقديم الملاحظات حول نتائج التدقيق: </label>
                                     <input type="text" class="form-control" required name="auditres">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Comment on the performance of external providers:</label>
+                                    <label>تقديم الملاحظات بشأن أداء مزودي الخدمات الخارجيين: </label>
                                     <input type="text" class="form-control"  required name="externalprovider">
                                 </div>
                             </div>
@@ -465,13 +470,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>The adequacy of resources and changes recommended:</label>
+                                    <label>ضمان دقة الموارد والتغييرات الموصى بها: </label>
                                     <input type="text" class="form-control" required name="adequacy">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>The effectiveness of actions taken to address risks and opportunities:</label>
+                                    <label>ضمان فعالية الإجراءات المتخذة لمعالجة المخاطر واستغلال الفرص: </label>
                                     <input type="text" class="form-control" required name="effectiveness">
                                 </div>
                             </div>
@@ -479,7 +484,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Add New Quality Objectives and opportunities for improvement. Consider who is responsible, when they will be completed and what is considered a success:</label>
+                                    <label>إضافة أهداف الجودة الجديدة والمستهدفات وفرص التحسين، مع مراعاة الأطراف المسؤولة والجداول الزمنية للإنجاز ومعايير النجاح. وينبغي أن تشمل هذه الأهداف جوانب الجودة والجوانب المالية، مع أخذ المواءمة مع سياسة الجودة في الاعتبار:</label>
                                     <input type="text" class="form-control" required name="newquality">
                                 </div>
                             </div>
@@ -488,8 +493,8 @@
 			</div>
 			<div class="modal-footer">
 
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
 
             </div>
         </form>

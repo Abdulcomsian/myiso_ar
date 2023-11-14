@@ -10,19 +10,19 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Accident Risk Assessments</h2>
+			<h2>تقييمات مخاطر الحوادث</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h5>Scope:</h5>
-				<p>This procedure details possible scenarios of potential accidents and compares this with risk and consequence of such an accident occurring. It will also provide details as to what measures have been taken to reduce the risk of such accidents occurring.</p>
+				<h5>النطاق:</h5>
+				<p>يتضمن هذا الإجراء تفاصيل حول السيناريوهات المحتملة لوقوع حوادث، ويجري مقارنة للمخاطر أو العواقب المترتبة على وقوع مثل هذه الحوادث. </p>
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="accidentRiskForm()" class="addBtn">Add Accident Risk Assessment</a>
+                    			<a onclick="accidentRiskForm()" class="addBtn">إضافة تقييم مخاطر وقوع حوادث</a>
                     		</div>
                     	</div>
                     	<div class="accident_risk_from_div">
@@ -31,14 +31,14 @@
                     			<div class="row">
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Scenario - Describe the activity:</label><br>
-											<input type="text" class="form-control" placeholder="Enter Activity" required name="activityscenario">
+											<label>سيناريو – صِف النشاط</label><br>
+											<input type="text" class="form-control" placeholder="أدخل النشاط" required name="activityscenario">
 										</div>
                     				</div>
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Risk likelihood of scenario occuring - Enter a number between 1-6 (6 being most likely):</label><br>
-											<input type="number" class="form-control" min="1" max="6" required name="risklikehood" placeholder="Enter likelihood"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+											<label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى الاحتمالية الأعلى)</label><br>
+											<input type="number" class="form-control" min="1" max="6" required name="risklikehood" placeholder="أدخل الاحتمالية"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 										</div>
                                     </div>
 
@@ -47,54 +47,54 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Risk severity - Enter a number between 1-6 (6 being most severe):</label>
-											<input type="number" min="1" max="6" required class="form-control" name="riskseverity" placeholder="Enter severity:" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+											<label>شدة الخطر – يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الشدة الأعلى)</label>
+											<input type="number" min="1" max="6" required class="form-control" name="riskseverity" placeholder="أدخل الخطورة:" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>If an environmental accident, what gets out and how much:</label>
-											<input type="text" class="form-control"  placeholder="Enter Potential Outcome:" required name="envaccident" placeholder="">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>If an environmental accident, where does it end up?</label>
-											<input type="text" class="form-control" placeholder="Enter Location" required name="envaccidental">
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>What are the consequences?:</label>
-											<input type="text" class="form-control"  placeholder="Enter Potential Consequences"  required name="consequences">
+											<label>في حال كان الحادث ذا طبيعة بيئية، ما الذي يمكن إنقاذه وكم التكلفة؟ </label>
+											<input type="text" class="form-control"  placeholder="أدخل النتيجة المحتملة:" required name="envaccident" placeholder="">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>What can prevent or reduce the risk?:</label>
-											<input type="text" class="form-control" required   placeholder="Enter preventative solutions"  name="reducerisk">
-									</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Revised Risk likelihood of scenario occuring following prevention step - A number between 1-6 (6 being most likely):</label>
-											<input type="number" class="form-control" required min="1" max="6" name="revisedrisk" placeholder="Enter new reduced risk level" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+											<label>في حال كان حادثًا ذا طبيعة بيئية، أين ينتهي أثره؟ </label>
+											<input type="text" class="form-control" placeholder="إدخال الدولة" required name="envaccidental">
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Revised Risk severity following prevention step - A number between 1-6 (6 being most severe):</label>
-											<input type="number" class="form-control" required min="1" max="6"  name="reviseRiskSever" placeholder="Enter new reduced risk severity level" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+											<label>ما هي العواقب المترتبة على هذا الحادث؟ </label>
+											<input type="text" class="form-control"  placeholder="أدخل العواقب المحتملة"  required name="consequences">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>ما الذي قد يحول دون وقوع الحادث أو يخفف من خطر وقوعه؟ :</label>
+											<input type="text" class="form-control" required   placeholder="أدخل الحلول الوقائية"  name="reducerisk">
+									</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>الاحتمالية المعدلة لوقوع السيناريو بعد خطوة المنع - يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الاحتمالية الأعلى)</label>
+											<input type="number" class="form-control" required min="1" max="6" name="revisedrisk" placeholder="أدخل مستوى جديد منخفض المخاط" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>شدة خطر وقوع الحادث المعدلة بعد خطوة المنع - يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الأعلى شدة)</label>
+											<input type="number" class="form-control" required min="1" max="6"  name="reviseRiskSever" placeholder="أدخل مستوى خطورة منخفض جديد" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 										</div>
 									</div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label>Attach Evidence: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                                                <label>إرفاق الدليل:  <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                                 <input name="attach_evidence" type="file" class="form-control"
                                                        accept="all">
                                             </div>
@@ -102,27 +102,27 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Any other issues or points to note?</label>
-                                            <textarea name="any_issues" class="form-control" placeholder="Enter Any other issues:"></textarea>
+                                            <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
+                                            <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
                                         </div>
                                     </div>
 								</div>
-								<button type="submit" class="submitBtn">SUBMIT</button>
-									<button type="reset" onclick="accidentRiskForm()" class="btn btn-secondary submitBtn " style="margin-right:7px;">Cancel</button>
+								<button type="submit" class="submitBtn">يُقدِّم</button>
+									<button type="reset" onclick="accidentRiskForm()" class="btn btn-secondary submitBtn " style="margin-right:7px;">يلغي</button>
                     		</form>
                     	</div>
                     </div>
                     <div class="procedure_div">
                     	<div class="requirments_table_div">
-                    		<h4>Total Accident Risk Assessments Listed</h4>
+                    		<h4>إجمالي التقييمات المدرجة لخطر وقوع حوادث </h4>
                     		<div class="kt-portlet__body table-responsive">
 								<!--begin: Datatable -->
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th>Scenario</th>
+											<th>السيناريو</th>
 											<!--<th>Detail View</th>-->
-											<th>Action</th>
+											<th>النشاط </th>
 										</tr>
                                     </thead>
                                     <tbody>
@@ -154,35 +154,38 @@
 
 	</section>
 
+
+
 	<!--End::Section-->
 </div>
 <div class="modal fade" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Accident Risk</h5>
+				<h5 class="modal-title" id="exampleModalLabel">حذف مخاطر الحوادث</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
             <form action="{{route('deleteRisk')}}" method="POST">
 				@csrf
 				<input type="hidden" name="id" value="" id="idform">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+
 <div class="modal fade" id="editInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">View Accident Risk Assessments</h5>
+				<h5 class="modal-title" id="exampleModalLabel">عرض تقييمات مخاطر الحوادث</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
@@ -192,13 +195,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Scenario - Describe the activity:</label><br>
+                                <label>سيناريو – صِف النشاط:</label><br>
                                 <input type="text" class="form-control" required name="activityscenario">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Risk likelihood of scenario occuring - Enter a number between 1-6 (6 being most likely):</label><br>
+                                <label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى الاحتمالية الأعلى):</label><br>
                                 <input type="number" class="form-control" min="1" max="6" required name="risklikehood" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
@@ -207,27 +210,27 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Risk severity - Enter a number between 1-6 (6 being most severe):</label>
-                                <input type="number" class="form-control" required name="riskseverity" min="1" max="6" placeholder="Enter Management Review Meeting:" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                <label>شدة الخطر – يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الشدة الأعلى):</label>
+                                <input type="number" class="form-control" required name="riskseverity" min="1" max="6" placeholder="أدخل اجتماع مراجعة الإدارة:" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>If an environmental accident, what gets out and how much:</label>
-                                <input type="text" class="form-control" required name="envaccident" placeholder="Enter Review Previous Meeting:">
+                                <label>في حال كان الحادث ذا طبيعة بيئية، ما الذي يمكن إنقاذه وكم التكلفة؟ </label>
+                                <input type="text" class="form-control" required name="envaccident" placeholder="أدخل مراجعة الاجتماع السابق:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>If an environmental accident, where does it end up?</label>
+                                <label> في حال كان حادثًا ذا طبيعة بيئية، أين ينتهي أثره؟ </label>
                                 <input type="text" class="form-control"  required name="envaccidental">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>What are the consequences?:</label>
+                                <label>ما هي العواقب المترتبة على هذا الحادث؟ :</label>
                                 <input type="text" class="form-control" required name="consequences">
                             </div>
                         </div>
@@ -235,50 +238,51 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>What can prevent or reduce the risk?:</label>
+                                <label>ما الذي قد يحول دون وقوع الحادث أو يخفف من خطر وقوعه؟ </label>
                                 <input type="text" class="form-control" required name="reducerisk">
                         </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Revised Risk likelihood of scenario occuring following prevention step - A number between 1-6 (6 being most likely):</label>
+                                <label>الاحتمالية المعدلة لوقوع السيناريو بعد خطوة المنع - يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الاحتمالية الأعلى)</label>
                                 <input type="number" class="form-control" min="1" max="6" required name="revisedrisk" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Revised Risk severity following prevention step - A number between 1-6 (6 being most severe):</label>
+                                <label>شدة خطر وقوع الحادث المعدلة بعد خطوة المنع - يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الأعلى شدة):</label>
                                 <input type="number" class="form-control" min="1" required  max="6" name="reviseRiskSever" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Attach Evidence <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
+                                <label>إرفاق الدليل <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
                                 <div class="evidence_attachemnt_div"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Any other issues or points to note?</label>
-                                <textarea name="any_issues" class="form-control" placeholder="Enter Any other issues:"></textarea>
+                                <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
+                                <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
                             </div>
                         </div>
                     </div>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">يغلق</button>
                 </form>
 		</div>
 	</div>
 </div>
 </div>
+
 <div class="modal fade" id="editmodalData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Accident Risk Assessments</h5>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير تقييمات مخاطر الحوادث</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
             </div>
-            <form  action="{{route('accidentedit')}}" method="POST" enctype="multipart/form-data">>
+            <form  action="{{route('accidentedit')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 			<div class="modal-body">
                 <input type="hidden" id="editrisk" name="id" value="">
@@ -286,13 +290,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Scenario - Describe the activity:</label><br>
+                                <label>سيناريو – صِف النشاط</label><br>
                                 <input type="text" class="form-control" required  name="activityscenario">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Risk likelihood of scenario occuring - Enter a number between 1-6 (6 being most likely):</label><br>
+                                <label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى الاحتمالية الأعلى)</label><br>
                                 <input type="number" class="form-control validate_number" min="1" max="6" required name="risklikehood" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
@@ -301,27 +305,27 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Risk severity - Enter a number between 1-6 (6 being most severe):</label>
-                                <input type="number" class="form-control validate_number" required  min="1" max="6" name="riskseverity" placeholder="Enter Management Review Meeting:" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                <label>شدة الخطر – يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الشدة الأعلى):</label>
+                                <input type="number" class="form-control validate_number" required  min="1" max="6" name="riskseverity" placeholder="أدخل اجتماع مراجعة الإدارة:" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>If an environmental accident, what gets out and how much:</label>
-                                <input type="text" class="form-control" required  name="envaccident" placeholder="Enter Review Previous Meeting:">
+                                <label>في حال كان الحادث ذا طبيعة بيئية، ما الذي يمكن إنقاذه وكم التكلفة؟ :</label>
+                                <input type="text" class="form-control" required  name="envaccident" placeholder="أدخل مراجعة الاجتماع السابق:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>If an environmental accident, where does it end up?</label>
+                                <label> في حال كان حادثًا ذا طبيعة بيئية، أين ينتهي أثره؟ </label>
                                 <input type="text" class="form-control" required  name="envaccidental">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>What are the consequences?:</label>
+                                <label>ما هي العواقب المترتبة على هذا الحادث؟ :</label>
                                 <input type="text" class="form-control" required name="consequences">
                             </div>
                         </div>
@@ -329,41 +333,41 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>What can prevent or reduce the risk?:</label>
+                                <label>ما الذي قد يحول دون وقوع الحادث أو يخفف من خطر وقوعه؟ :</label>
                                 <input type="text" class="form-control" required  name="reducerisk">
                         </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Revised Risk likelihood of scenario occuring following prevention step - A number between 1-6 (6 being most likely):</label>
+                                <label>الاحتمالية المعدلة لوقوع السيناريو بعد خطوة المنع - يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الاحتمالية الأعلى)</label>
                                 <input type="number" class="form-control validate_number" min="1" required max="6" required name="revisedrisk" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Revised Risk severity following prevention step - A number between 1-6 (6 being most severe):</label>
+                                <label>شدة خطر وقوع الحادث المعدلة بعد خطوة المنع - يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الأعلى شدة):</label>
                                 <input type="number" class="form-control validate_number" min="1" required max="6" name="reviseRiskSever" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Attach Evidence: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                                <label>إرفاق الدليل:  <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                 <input name="attach_evidence" type="file" class="form-control"
                                        accept="all">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Any other issues or points to note?</label>
-                                <textarea name="any_issues" class="form-control" placeholder="Enter Any other issues:"></textarea>
+                                <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
+                                <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
                             </div>
                         </div>
                     </div>
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
-            <button type="submit" class="btn btn-danger">Update</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+            <button type="submit" class="btn btn-danger">تحديث</button>
         </div>
     </form>
 	</div>

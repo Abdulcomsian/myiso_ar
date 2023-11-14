@@ -11,20 +11,20 @@
         <!--Begin::Section-->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
-                <h2>Customers</h2>
+                <h2>العملاء</h2>
             </div>
         </div>
         <section id="procedure_section">
 
             <div class="row">
                 <div class="col-lg-12">
-                <p>Customers should be listed so that internal audits can be carried out on their delivery / service quality assessments, but also used to assist with customer satisfaction surveys. </p>
-					<p>To add a record, click on the “Add Customer” button. To amend a record, click on the edit icon of the entry that needs to be modified.</p>
+                <p>يجب إدراج العملاء حتى يمكن إجراء عمليات التدقيق الداخلية عند تقييمات التسليم/جودة الخدمة، لكن تُستخدم أيضًا للمساعدة في استبيانات رضا العملاء.</p>
+					<p> لإضافة سجل، انقر على الزر "إضافة عميل". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد تعديله.</p>
                     @if(Session::has('Error'))<h5 class="text-danger">  {{ Session::get('Error') }} </h5>@endif
                     <div class="procedure_div">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <a onclick="customerForm()" class="addBtn">ADD CUSTOMER</a>
+                                <a onclick="customerForm()" class="addBtn">إضافة عملاء:</a>
                             </div>
                         </div>
                         <div class="customer_from_div">
@@ -32,7 +32,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <h3> Add Customer:</h3>
+                                        <h3> إضافة عملاء: </h3>
                                     </div>
                                     <!--	<div class="form-group">-->
                                     <!--		<label>Add Customer Details</label>-->
@@ -41,16 +41,15 @@
                                     <!--</div>-->
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer ID
-                                                Number:</label>
-                                            <input type="number" min="1" max="100000" required class="form-control validate_number" name="idNumber" id="idNumber" placeholder="Enter Customer ID Number.">
+                                            <label>رقم تعريف العميل: </label>
+                                            <input type="number" min="1" max="100000" required class="form-control validate_number" name="idNumber" id="idNumber" placeholder="أدخل رقم تعريف العميل">
                                             <span id="numbererror" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer Name:</label><br>
-                                            <input type="text" class="form-control" required name="name" id="name" placeholder="Enter Customer Name:">
+                                            <label>اسم العميل: </label><br>
+                                            <input type="text" class="form-control" required name="name" id="name" placeholder="أدخل اسم العميل:">
                                         </div>
                                     </div>
                                 </div>
@@ -67,14 +66,14 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Business Address:</label>
-                                            <input type="text" class="form-control" required name="address" placeholder="Enter customer’s full business address">
+                                            <label>عنوان العمل: </label>
+                                            <input type="text" class="form-control" required name="address" placeholder="أدخل عنوان عمل العميل كاملاً">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer Telephone:</label>
-                                            <input type="text" class="form-control" required name="create_phone_number" id="phoneNumber" pattern="\d*" placeholder="Enter customer phone number starting with the country code.">
+                                            <label>هاتف العميل: </label>
+                                            <input type="text" class="form-control" required name="create_phone_number" id="phoneNumber" pattern="\d*" placeholder="أدخل رقم هاتف العميل بدءًا برمز البلد">
                                             <input type="hidden" name="create_phone_number_country_code" id="phonecode">
                                             <input type="hidden" name="create_phone_number_flag" id="phoneflag">
                                         </div>
@@ -83,38 +82,37 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer Email Address:</label>
-                                            <input type="email" class="form-control" required name="Email" placeholder="Enter Customer Email:">
+                                            <label>عنوان البريد الإلكتروني للعميل: </label>
+                                            <input type="email" class="form-control" required name="Email" placeholder="دخل البريد الإلكتروني للعميل:">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer Contact Name:</label>
-                                            <input type="text" class="form-control" required name="contactName" placeholder="Enter customer contact person’s name.">
+                                            <label> اسم جهة الاتصال الخاصة بالعميل: </label>
+                                            <input type="text" class="form-control" required name="contactName" placeholder="أدخل اسم الشخص المسؤول عن الاتصال بالعميل">
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="submitBtn">SUBMIT</button>
-                                <button  onclick="customerForm()" type="reset" class="submitBtn"style="margin-right: 8px;">Cancel</button>
+                                <button type="submit" class="submitBtn">يُقدِّم</button>
+                                <button  onclick="customerForm()" type="reset" class="submitBtn"style="margin-right: 8px;">يلغي</button>
                             </form>
                         </div>
                     </div>
                     <div class="procedure_div">
                         <div class="requirments_table_div">
-                            <h4>Total Customers Listed</h4>
+                            <h4>إجمالي العملاء المدرجين</h4>
                             <div class="kt-portlet__body table-responsive">
                                 <!--begin: Datatable -->
                                 <table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="">
                                     <thead>
                                     <tr>
-                                        <th>Customer ID</th>
-                                        <th>Customer Name</th>
-                                        <th>Business Address</th>
-                                        <th>Customer Phone Number</th>
-                                        <th>Email Address</th>
-                                        <th>Contact
-                                            Person</th>
-                                        <th>Action</th>
+                                        <th> معرّف العميل</th>
+                                        <th>اسم العميل</th>
+                                        <th> عنوان العمل</th>
+                                        <th> رقم هاتف العميل</th>
+                                        <th>عنوان البريد الإلكتروني</th>
+                                        <th>جهة الاتصال</th>
+                                        <th> الإجراء</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -159,7 +157,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Customer Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل العميل</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -171,15 +169,15 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer ID Number:</label><br>
-                                    <input type="number" class="form-control validate_number" name="idNumber" id="editidNumber" placeholder="Enter ID:" required>
+                                    <label>رقم تعريف العميل: </label><br>
+                                    <input type="number" class="form-control validate_number" name="idNumber" id="editidNumber" placeholder="أدخل رقم تعريف العميل" required>
                                     <span id="editnumbererror" class="text-dagner"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Name:</label><br>
-                                    <input type="text" class="form-control" name="name"  placeholder="Enter Customer Name:" required>
+                                    <label>اسم العميل: </label><br>
+                                    <input type="text" class="form-control" name="name"  placeholder="أدخل اسم العميل:" required>
                                 </div>
                             </div>
                         </div>
@@ -187,13 +185,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Business Address:</label>
-                                    <input type="text" class="form-control" name="address"required placeholder="Enter customer’s full business address." required>
+                                    <label>عنوان العمل: </label>
+                                    <input type="text" class="form-control" name="address"required placeholder="أدخل عنوان عمل العميل كاملاً" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Telephone:</label>
+                                    <label>هاتف العميل: </label>
                                     <div id='edit_phone'>
                                     </div>
                                     <input type="hidden" name="edit_phone_code" id="editphonecode">
@@ -204,19 +202,19 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Email Address:</label>
-                                    <input type="email" class="form-control" name="Email" placeholder="Enter Customer Email:" required>
+                                    <label>عنوان البريد الإلكتروني للعميل: </label>
+                                    <input type="email" class="form-control" name="Email" placeholder="أدخل البريد الإلكتروني للعميل:" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Contact Name:</label>
-                                    <input type="text" class="form-control" name="contactName" placeholder="Enter Customer Contact Number:" required>
+                                    <label>اسم جهة الاتصال الخاصة بالعميل: </label>
+                                    <input type="text" class="form-control" name="contactName" placeholder="أدخل اسم الشخص المسؤول عن الاتصال بالعميل" required>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="submitBtn">Update</button>
-                        <button type="button" class="submitBtn btn-secondary"  data-dismiss="modal" aria-label="Close" style="margin-right:20px;">Cancel</button>
+                        <button type="submit" class="submitBtn">تحديث</button>
+                        <button type="button" class="submitBtn btn-secondary"  data-dismiss="modal" aria-label="Close" style="margin-right:20px;">يلغي</button>
                     </form>
                 </div>
             </div>
@@ -228,7 +226,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View Customer Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل العميل</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -240,15 +238,15 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer ID Number:</label><br>
-                                    <input type="number" readonly class="form-control" name="idNumber" placeholder="Enter ID:">
+                                    <label> رقم تعريف العميل: </label><br>
+                                    <input type="number" readonly class="form-control" name="idNumber" placeholder="أدخل رقم تعريف العميل">
 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Name:</label><br>
-                                    <input type="text" readonly class="form-control" name="name"  placeholder="Enter Customer Name:">
+                                    <label> اسم العميل: </label><br>
+                                    <input type="text" readonly class="form-control" name="name"  placeholder="أدخل اسم العميل:">
                                 </div>
                             </div>
                         </div>
@@ -256,13 +254,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Business Address:</label>
-                                    <input type="text" readonly  class="form-control" name="address" placeholder="Enter customer’s full business address.">
+                                    <label>عنوان العمل: </label>
+                                    <input type="text" readonly  class="form-control" name="address" placeholder="أدخل عنوان عمل العميل كاملاً">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Telephone:</label>
+                                    <label>هاتف العميل: </label>
 
                                     <div id='view_phone'>
 
@@ -274,18 +272,18 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Email Address:</label>
-                                    <input type="email" readonly  class="form-control" name="Email" placeholder="Enter Customer Email:">
+                                    <label>عنوان البريد الإلكتروني للعميل: </label>
+                                    <input type="email" readonly  class="form-control" name="Email" placeholder="أدخل البريد الإلكتروني للعميل:)">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Contact Name:</label>
-                                    <input type="text" readonly class="form-control" name="contactName" placeholder="Enter Customer Contact Number:">
+                                    <label>اسم جهة الاتصال الخاصة بالعميل: </label>
+                                    <input type="text" readonly class="form-control" name="contactName" placeholder="أدخل اسم الشخص المسؤول عن الاتصال بالعميل">
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-secondary"  data-dismiss="modal" aria-label="Close" style="margin-right:20px;">Close</button>
+                        <button type="button" class="btn btn-secondary"  data-dismiss="modal" aria-label="Close" style="margin-right:20px;">يغلق</button>
                     </form>
                 </div>
             </div>
@@ -297,19 +295,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deleting an entry.</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف إدخال.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this entry?</p>
+                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
                 <div class="modal-footer">
                     <form action="{{route('deletecustomeradmin')}}" method="POST">
                         @csrf
                         <input type="hidden" id="re_id" value="" name="id">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                        <button type="submit" class="btn btn-danger">نعم</button>
                     </form>
                 </div>
             </div>

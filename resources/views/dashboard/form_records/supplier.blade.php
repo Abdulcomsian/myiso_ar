@@ -11,36 +11,36 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Suppliers</h2>
+			<h2>الموردون</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-            <p>A Suppliers review is a tool to monitor and grade the performance levels of your suppliers, this performance indicator can target all areas of contact with the supplier.</p>
-			<p>To add a record, click on the "Add Supplier" button. To amend or delete a record, click on the edit or delete icon of the entry that needs to be modified or deleted.</p>
+            <p>مراجعة الموردين هي أداة لمراقبة مستويات أداء الموردين لديك وتصنيفهم، ويمكن أن يستهدف مؤشر الأداء هذا جميع مجالات الاتصال بالمورد.</p>
+			<p>لإضافة سجل، انقر على زر "إضافة مورّد". لتعديل سجل أو حذفه، انقر على رمز التحرير أو الحذف الخاص بالقيد المراد تعديله أو حذفه. </p>
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="supplierForm()" class="addBtn">ADD SUPPLIER</a>
+                    			<a onclick="supplierForm()" class="addBtn">إضافة مورد</a>
                     		</div>
                     	</div>
                     	<div class="supplier_from_div">
                             <form action="{{route('supplier')}} "  id="addcust" method="post">
                                 @csrf
-								<h3>Add Supplier Details</h3>
+								<h3>إضافة تفاصيل المورد</h3>
                     			<div class="row">
                     				<div class="col-lg-12">
                     					<div class="form-group">
-											<label>Supplier ID Number:</label><br>
-											<input type="number" class="form-control validate_number" min="1" name="idnumber" required placeholder="Enter ID:">
+											<label>رقم تعريف المورد:</label><br>
+											<input type="number" class="form-control validate_number" min="1" name="idnumber" required placeholder="أدخل المعرف:">
 										</div>
                     				</div>
                     				<div class="col-lg-12">
                     					<div class="form-group">
-											<label>Supplier Name:</label><br>
-											<input type="text" class="form-control" required name="suppliername" placeholder="Enter Supplier Name:">
+											<label>اسم المورد:</label><br>
+											<input type="text" class="form-control" required name="suppliername" placeholder="أدخل اسم المورد:">
 										</div>
                     				</div>
                     			</div>
@@ -48,8 +48,8 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label>Supplier Address:</label>
-											<input type="text" name="supplieraddress" required class="form-control" placeholder="Enter Supplier Address:">
+											<label>عنوان المورد:</label>
+											<input type="text" name="supplieraddress" required class="form-control" placeholder="أدخل عنوان المورد:">
 										</div>
 									</div>
 									{{-- <div class="col-lg-6">
@@ -76,15 +76,14 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Country:</label>
-											<input type="text" name="suppliercountry" required class="form-control" placeholder="Enter Country">
+											<label> البلد:</label>
+											<input type="text" name="suppliercountry" required class="form-control" placeholder="أدخل البلد">
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Supplier
-												Phone Number:</label>
-											<input type="text" name="supplierphn"required id="supplierphn" class="form-control" placeholder="Enter phone number">
+											<label>رقم هاتف المورد:</label>
+											<input type="text" name="supplierphn"required id="supplierphn" class="form-control" placeholder="أدخل رقم الهاتف">
 											<input type="hidden" name="phonecode" id="phonecode">
 											<input type="hidden" name="phoneflag" id="phoneflag">
 										</div>
@@ -93,53 +92,50 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Supplier Email
-												Address:</label>
-											<input type="email" name="supplieremail"required class="form-control" placeholder="Enter Supplier Email address:">
+											<label>عنوان البريد الإلكتروني للمورد:</label>
+											<input type="email" name="supplieremail"required class="form-control" placeholder="أدخل عنوان البريد الإلكتروني للمورد:">
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Supplier Contact Name:</label>
-											<input type="text" name="supplierContactNumber"required class="form-control" placeholder="Enter supplier contact person’s name.">
+											<label>اسم جهة الاتصال بالمورد:</label>
+											<input type="text" name="supplierContactNumber"required class="form-control" placeholder="أدخل اسم جهة الاتصال الخاصة بالمورد.">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label>Services:</label>
-											<input type="text" name="supplierservc"required required class="form-control" placeholder="Enter Supplier Services">
+											<label>خدمات:</label>
+											<input type="text" name="supplierservc"required required class="form-control" placeholder="أدخل خدمات الموردين">
 										</div>
 									</div>
 									</div>
-								<button type="submit"  class="submitBtn">SUBMIT</button>
-								<button type="reset" onclick="supplierForm()" class="btn btn-secondary submitBtn " style="margin-right:7px;">Cancel</button>
+								<button type="submit"  class="submitBtn">يُقدِّم</button>
+								<button type="reset" onclick="supplierForm()" class="btn btn-secondary submitBtn " style="margin-right:7px;">يلغي</button>
                     		</form>
                     	</div>
                     </div>
                     <div class="procedure_div">
                     	<div class="requirments_table_div">
-                    		<h4>Total Suppliers Listed</h4>
+                    		<h4>إجمالي الموردين المدرجين</h4>
                     		<div class="kt-portlet__body table-responsive">
 								<!--begin: Datatable -->
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th class="w-100-px">Supplier ID
-												Number</th>
-											<th>Supplier Name</th>
-											<th>Supplier Address</th>
+											<th class="w-100-px"> رقم تعريف المورد:</th>
+											<th>اسم المورد</th>
+											<th> عنوان المورد</th>
 											{{-- <th>City</th> --}}
-											<th>Country</th>
+											<th>البلد</th>
 											{{-- <th>Postcode</th> --}}
 											<!--<th>Country Code</th>-->
-											<th>Supplier Phone Number</th>
-											<th>Email Address</th>
-											<th>Contact
-												Person</th>
-											<th>Services</th>
-											<th class="w-100-px">Action</th>
+											<th>رقم هاتف المورد</th>
+											<th> عنوان البريد الإلكتروني للمورد</th>
+											<th>اسم جهة الاتصال بالمورد</th>
+											<th> الخدمات</th>
+											<th class="w-100-px">النشاط</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -181,7 +177,7 @@
 														<div class="modal-dialog" role="document">
 														<div class="modal-content">
 														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLabel">Suppliers</h5>
+															<h5 class="modal-title" id="exampleModalLabel">الموردين</h5>
 															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 															</button>
@@ -199,8 +195,9 @@
                             </div> --}}
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Surname:</label><br>
-                                    <input type="text" class="form-control" name="surname" placeholder="Enter Surname">
+                                    <label>اسم العائلة:</label><br>
+                                    <input type="text" class="form-control" name="surname" placeholder="أدخل اللقب
+                                    ">
                                 </div>
                             </div>
                         </div>
@@ -208,13 +205,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>First Name:</label>
-                                    <input type="text" class="form-control" name="first_name"  placeholder="Enter First Name">
+                                    <label>الاسم الأول:</label>
+                                    <input type="text" class="form-control" name="first_name"  placeholder="أدخل الاسم الأول">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group edit-emp-number-div">
-                                    <label>Employee ID:</label> 
+                                    <label>هوية الموظف:</label> 
                                     <input type="text" name="empNumber" required class="form-control" data-type="edit">
          		                            <!--                         <select name="empNumber" required class="form-control">-->
 											<!--    <option>Select One</option>-->
@@ -230,28 +227,28 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Start Date (YYYY/MM/DD):</label>
+                                    <label>تاريخ البدء (سنين/الشهر/أيام):</label>
                                     <input name="startDate" max="2999-12-31" type="date" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Job Details:</label>
-                                    <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Details:">
+                                    <label>تفاصيل الوظيفة:</label>
+                                    <input type="text" name="jobdetails" class="form-control"  placeholder="أدخل تفاصيل الوظيفة:">
                                 </div>
                             </div>
                         </div>
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="form-group">
-							<label>Upload Employee CV:</label>
+							<label>تحميل السيرة الذاتية للموظف:</label>
 							<input name="employee_cv" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf">
 						</div>
 					</div>
 				</div>
 			</div>
 															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 															</div>
 															</div>
 														</div>
@@ -273,29 +270,30 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Supplier</h5>
+				<h5 class="modal-title" id="exampleModalLabel">حذف المورد</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
             <form action="{{route('deleteSupplier')}}" method="POST">
                 @csrf
 				<input type="hidden" name="id" id="re_id" value="">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>
 	</div>
     </div>
+
     <div class="modal fade" id="editSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Supplier</h5>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير المورد</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
@@ -307,13 +305,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>ID Number:</label><br>
+                                <label>رقم الهوية:</label><br>
                                 <input type="number" required class="form-control" name="idnumber" placeholder="">
                             </div>
                         </div> 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Supplier Name:</label><br>
+                                <label>اسم المورد:</label><br>
                                 <input type="text" required class="form-control" name="suppliername" placeholder="">
                             </div>
                         </div>
@@ -322,7 +320,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Supplier Address:</label>
+                                <label>عنوان المورد:</label>
                                 <input type="text" required name="supplieraddress" class="form-control" placeholder="">
                             </div>
                         </div>
@@ -356,7 +354,7 @@
                         </div> --}}
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Supplier Telephone:</label>
+                                <label>هاتف المورد:</label>
                                 <div id="edit_supplier_phone">
 
                                 </div>
@@ -368,32 +366,31 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Supplier Email
-									Address:</label>
-                                <input type="email" required name="supplieremail" class="form-control" placeholder="Enter Supplier Email address">
+                                <label>عنوان البريد الإلكتروني للمورد:</label>
+                                <input type="email" required name="supplieremail" class="form-control" placeholder="أدخل عنوان البريد الإلكتروني للمورد">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Supplier Contact Name:</label>
-                                <input type="text" name="supplierContactNumber" required class="form-control" placeholder="Enter supplier contact person’s name">
+                                <label>اسم جهة اتصال المورد:</label>
+                                <input type="text" name="supplierContactNumber" required class="form-control" placeholder="أدخل اسم جهة الاتصال الخاصة بالمورد">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Services:</label>
-                                <input type="text" name="supplierservc" required class="form-control" placeholder="Enter Supplier Services">
+                                <label>خدمات:</label>
+                                <input type="text" name="supplierservc" required class="form-control" placeholder="أدخل خدمات الموردين">
                             </div>
                         </div>
                         </div>
 
 			</div>
 			<div class="modal-footer">
-			    	<button type="button" class="btn btn-secondary submitBtn" data-dismiss="modal">Cancel</button>
+			    	<button type="button" class="btn btn-secondary submitBtn" data-dismiss="modal">يلغي</button>
 				<!--<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>-->
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
             </div>
             </form>
 		</div>
@@ -406,7 +403,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View Supplier Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل المورد</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -418,16 +415,15 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier ID
-                                        number:</label><br>
-                                    <input type="number" class="form-control" name="idnumber" placeholder="Enter ID:" readonly>
+                                    <label>رقم هوية المورد:</label><br>
+                                    <input type="number" class="form-control" name="idnumber" placeholder="أدخل المعرف:" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Supplier Name:</label><br>
+                                    <label>اسم المورد:</label><br>
                                     <input type="text" class="form-control" name="suppliername"
-                                           placeholder="Enter Supplier Name:" readonly>
+                                           placeholder="أدخل اسم المورد:" readonly>
                                 </div>
                             </div>
                         </div>
@@ -435,9 +431,9 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Supplier Address:</label>
+                                    <label>عنوان المورد:</label>
                                     <input type="text" name="supplieraddress" class="form-control"
-                                           placeholder="Enter Supplier Address:" readonly>
+                                           placeholder="أدخل عنوان المورد:" readonly>
                                 </div>
                             </div>
                             {{-- <div class="col-lg-6">
@@ -464,14 +460,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Country:</label>
+                                    <label>البلد::</label>
                                     <input type="text" name="suppliercountry" class="form-control"
-                                           placeholder="Enter Country" readonly>
+                                           placeholder="أدخل البلد" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label style="display:block;">Supplier Telephone:</label>
+                                    <label style="display:block;">هاتف المورد:</label>
                                     <div id="view_phone_div">
                                     </div>
                                     <input type="hidden" name="phonecode" id="phonecode2">
@@ -482,34 +478,32 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier Email Address:</label>
+                                    <label>عنوان البريد الإلكتروني للمورد:</label>
                                     <input type="email" name="supplieremail" class="form-control"
-                                           placeholder="Enter Supplier Email:" readonly>
+                                           placeholder="أدخل البريد الإلكتروني للمورد:" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Supplier Contact Name:</label>
+                                    <label> اسم جهة الاتصال بالمورد:</label>
                                     <input type="text" name="supplierContactNumber" class="form-control"
-                                           placeholder="Enter Supplier Contact Number:" readonly>
+                                           placeholder="أدخل رقم اتصال المورد:" readonly>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Services:</label>
+                                    <label>الخدمات::</label>
                                     <input type="text" name="supplierservc" class="form-control"
-                                           placeholder="Enter Supplier Service:" readonly>
+                                           placeholder="أدخل خدمة المورد:" readonly>
                                 </div>
                             </div>
                         </div>
 
                 </div>
                 <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
                 </div>
                 </form>
             </div>

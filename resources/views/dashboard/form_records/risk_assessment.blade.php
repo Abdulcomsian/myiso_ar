@@ -11,19 +11,19 @@
 	<!--Begin::Section-->
 	<div class="row">
 		<div class="col-xl-12 col-lg-12">
-			<h2>Risk Assessments</h2>
+			<h2>تقييم المخاطر</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h5>Scope:</h5>
-				<p>This procedure details possible scenarios of potential in accepting a contract and compares this with risk and consequence of issues occurring.</p>
+				<h5>النطاق:</h5>
+				<p>يوضح هذا الإجراء تفاصيل السيناريوهات المحتملة لإمكانية الموافقة على أحد العقود، ويقارنها مع مخاطر وعواقب ما يحدث من مشكلات.</p>
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="riskAssessment()" class="addBtn">ADD A RISK ASSESSMENT</a>
+                    			<a onclick="riskAssessment()" class="addBtn">إضافة تقييم للمخاطر</a>
                     		</div>
                     	</div>
                     	<div class="risk_assessment_from_div">
@@ -32,13 +32,13 @@
                     			<div class="row">
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Job Number:</label><br>
+											<label>رقم الوظيفة:</label><br>
 											<input type="text" min="1" class="form-control validate_number" name="jobNumber" required>
 										</div>
                     				</div>
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Date (MM/DD/YYY):</label><br>
+											<label>التاريخ (شهر/يوم/سنة):</label><br>
 											<input type="date" max="2999-12-31" class="form-control" name="date" required>
 										</div>
                     				</div>
@@ -47,18 +47,18 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Can I meet the quality standard?:</label>
+											<label>هل يمكنني تلبية متطلبات معايير الجودة؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="qualitySatandard" value="Yes" required> Yes
+														<input type="radio" name="qualitySatandard" value="Yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="qualitySatandard" value="No"> No
+														<input type="radio" name="qualitySatandard" value="No"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="qualitySatandard" value="NA"> NA
+														<input type="radio" name="qualitySatandard" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -66,8 +66,8 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentsstandard">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentsstandard">
 										</div>
 									</div>
                                 </div>
@@ -75,18 +75,18 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Can I meet the delivery date?:</label>
+											<label> هل يمكنني الالتزام بموعد التسليم؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="delevryStandard" value="yes" required> Yes
+														<input type="radio" name="delevryStandard" value="yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="delevryStandard" value="no"> No
+														<input type="radio" name="delevryStandard" value="no"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="delevryStandard" value="NA"> NA
+														<input type="radio" name="delevryStandard" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -94,26 +94,27 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentsdelvery">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentsdelvery">
 										</div>
 									</div>
 								</div>
+
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Can I meet the price?:</label>
+											<label>هل يمكنني تلبية متطلبات السعر؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="priceRequiremnt" value="yes" required> Yes
+														<input type="radio" name="priceRequiremnt" value="yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="priceRequiremnt" value="No"> No
+														<input type="radio" name="priceRequiremnt" value="No"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="priceRequiremnt" value="NA"> NA
+														<input type="radio" name="priceRequiremnt" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -121,26 +122,27 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentprice">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentprice">
 										</div>
 									</div>
 								</div>
+
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Could interested parties be deemed affected?:</label>
+											<label>هل يمكن اعتبار الأطراف المعنية متأثرة؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="interestedDeemed" value="Yes" required> Yes
+														<input type="radio" name="interestedDeemed" value="Yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="interestedDeemed" value="No"> No
+														<input type="radio" name="interestedDeemed" value="No"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="interestedDeemed" value="NA"> NA
+														<input type="radio" name="interestedDeemed" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -148,32 +150,34 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentsDeemed">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentsDeemed">
 										</div>
 									</div>
 								</div>
+
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Decision Comment:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="DecisionComment" required>
+											<label>التعليق على القرار:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="DecisionComment" required>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Delivery Date (MM/DD/YYY):</label>
+											<label>موعد التسليم (شهر/يوم/سنة):</label>
 											<input type="date"  max="2999-12-31" class="form-control"  placeholder="Enter Comment" name="dateDevelry" required>
 										</div>
 									</div>
 								</div>
+
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Risk Probability (see instructions) - 4 = Very likely, 3 = Likely, 2 = Not likely, 1 = Very unlikely:</label>
+											<label>احتمالية المخاطرة (انظر التعليمات) – 4 = محتمل جدًا، 3 = محتمل، 2 = غير متوقع، 1 = غير متوقع نهائيًا:</label>
 											<!--<input type="number" class="form-control" name="RiskProbability">-->
 																						<select name="RiskProbability" id="RiskProbability" class="form-control" required>
-											    <option value="">Select One</option>
+											    <option value="">حدد واحدًا</option>
 											    
 											    <option value="4">4</option>
 											    <option value="3">3</option>
@@ -185,11 +189,11 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Risk Severity (see instructions) - 4 = Catastrophic, 3 = Critical, 2 = Marginal, 1 = Negligible:</label>
+											<label>شدة المخاطر (انظر التعليمات) – 4 = كارثيّة، 3 = خطيرة، 2 = هامشية، 1 = لا تُذكر:</label>
 											<!--<input type="number" class="form-control" name="riskSeverity">-->
 											
 											<select name="riskSeverity" id="riskSeverity" class="form-control" required>
-											    <option value="">Select One</option>
+											    <option value="">حدد واحدًا</option>
 											    
 											    <option value="4">4</option>
 											    <option value="3">3</option>
@@ -202,27 +206,28 @@
 									</div>
 								</div>
 							
-								<button type="submit" class="submitBtn">SUBMIT</button>
-									<button onclick="riskAssessment()" type="reset" class="submitBtn" data-dismiss="modal" style="margin-right:7px;">Cancel</button>
+								<button type="submit" class="submitBtn">يُقدِّم</button>
+									<button onclick="riskAssessment()" type="reset" class="submitBtn" data-dismiss="modal" style="margin-right:7px;">يلغي</button>
                     		</form>
                     	</div>
                     </div>
+
                     <div class="procedure_div">
                     	<div class="requirments_table_div">
-                    		<h4>Total Risk Assessments Listed</h4>
+                    		<h4>إجمالي تقييمات المخاطر المدرجة</h4>
                     		<div class="kt-portlet__body table-responsive">
 								<!--begin: Datatable -->
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th>Risk ID Number</th>
-											<th>Job Number</th>
-											<th>Order Date</th>
-											<th>Quality Accepted?</th>
-											<th>Delivery Accepted?</th>
-											<th>Price Accepted?</th>
-                                            <th>Risk Decision</th>
-                                            <th>Action</th>
+											<th>رقم معرف المخاطرة</th>
+											<th>رقم الوظيفة</th>
+											<th>تاريخ الطلب</th>
+											<th> هل تمت الموافقة على الجودة؟</th>
+											<th>هل تمت الموافقة على التسليم؟</th>
+											<th>هل تمت الموافقة على السعر؟</th>
+                                            <th>القرار بشأن المخاطرة</th>
+                                            <th> الإجراء</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -250,7 +255,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel2">View Risk Assessments</h5>
+				<h5 class="modal-title" id="exampleModalLabel2">عرض تقييمات المخاطر</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
             </div>
@@ -261,13 +266,13 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Job Number:</label><br>
+								<label>رقم الوظيفة:</label><br>
 								<input disabled type="text" class="form-control" name="jobNumber" value="{{$data->jobNumber}}">
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Date (MM/DD/YYY):</label><br>
+								<label>التاريخ (شهر/يوم/سنة):</label><br>
 								<input disabled type="date" max="2999-12-31" class="form-control" name="date" value="{{$data->date}}" disabled>
 							</div>
 						</div>
@@ -276,18 +281,18 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Can I meet the quality standard?:</label>
+								<label> هل يمكنني تلبية متطلبات معايير الجودة؟: </label>
 									<div class="kt-radio-inline">
 										<label class="kt-radio">
-											<input disabled type="radio" name="qualitySatandard" value="Yes" {{$data->qualitySatandard == "Yes" ? 'checked':''}}> Yes
+											<input disabled type="radio" name="qualitySatandard" value="Yes" {{$data->qualitySatandard == "Yes" ? 'checked':''}}> نعم
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="qualitySatandard" value="No" {{$data->qualitySatandard == "No" ? 'checked':''}}> No
+											<input disabled type="radio" name="qualitySatandard" value="No" {{$data->qualitySatandard == "No" ? 'checked':''}}> لا
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="qualitySatandard" value="NA"  {{$data->qualitySatandard == "NA" ? 'checked':''}}> NA
+											<input disabled type="radio" name="qualitySatandard" value="NA"  {{$data->qualitySatandard == "NA" ? 'checked':''}}> لا ينطبق
 											<span></span>
 										</label>
 									</div>
@@ -295,7 +300,7 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Comments:</label>
+								<label>تعليقات:</label>
 								<input disabled type="text" class="form-control"  placeholder="Enter Comment" name="commentsstandard" value="{{$data->commentsstandard}}">
 							</div>
 						</div>
@@ -304,18 +309,18 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Can I meet the delivery date?:</label>
+								<label> هل يمكنني الالتزام بموعد التسليم؟</label>
 									<div class="kt-radio-inline">
 										<label class="kt-radio">
-											<input disabled type="radio" name="delevryStandard" value="yes"  {{ $data->delevryStandard == "yes" ? 'checked':'' }}> Yes
+											<input disabled type="radio" name="delevryStandard" value="yes"  {{ $data->delevryStandard == "yes" ? 'checked':'' }}> نعم
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="delevryStandard" value="no"  {{ $data->delevryStandard == "no" ? 'checked':''}}> No
+											<input disabled type="radio" name="delevryStandard" value="no"  {{ $data->delevryStandard == "no" ? 'checked':''}}> لا
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="delevryStandard" value="NA"  {{ $data->delevryStandard == "NA" ? 'checked':''}}> NA
+											<input disabled type="radio" name="delevryStandard" value="NA"  {{ $data->delevryStandard == "NA" ? 'checked':''}}> لا ينطبق
 											<span></span>
 										</label>
 									</div>
@@ -323,26 +328,27 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Comments:</label>
+								<label>تعليقات:</label>
 								<input disabled type="text" class="form-control"  placeholder="Enter Comment" name="commentsdelvery" value="{{$data->commentsdelvery}}">
 							</div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Can I meet the price?: ({{$data->priceRequiremnt}})</label>
+								<label>هل يمكنني تلبية متطلبات السعر؟ ({{$data->priceRequiremnt}})</label>
 									<div class="kt-radio-inline">
 										<label class="kt-radio">
-											<input disabled type="radio" name="priceRequiremnt" value="yes"  {{ $data->priceRequiremnt == "yes" ? 'checked':'' }}> Yes
+											<input disabled type="radio" name="priceRequiremnt" value="yes"  {{ $data->priceRequiremnt == "yes" ? 'checked':'' }}> نعم
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="priceRequiremnt" value="No"  {{ $data->priceRequiremnt == "No" ? 'checked':'' }}> No
+											<input disabled type="radio" name="priceRequiremnt" value="No"  {{ $data->priceRequiremnt == "No" ? 'checked':'' }}> لا
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="priceRequiremnt" value="NA"  {{ $data->priceRequiremnt == "NA" ? 'checked':'' }}> NA
+											<input disabled type="radio" name="priceRequiremnt" value="NA"  {{ $data->priceRequiremnt == "NA" ? 'checked':'' }}> لا ينطبق
 											<span></span>
 										</label>
 									</div>
@@ -350,26 +356,27 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Comments:</label>
-								<input disabled type="text" class="form-control"  placeholder="Enter Comment" name="commentprice" value="{{$data->commentprice}}">
+								<label>تعليقات:</label>
+								<input disabled type="text" class="form-control"  placeholder="أدخل التعليق" name="commentprice" value="{{$data->commentprice}}">
 							</div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Could interested parties be deemed affected?:</label>
+								<label>هل يمكن اعتبار الأطراف المعنية متأثرة؟</label>
 									<div class="kt-radio-inline">
 										<label class="kt-radio">
-											<input disabled type="radio" name="interestedDeemed" value="Yes"  {{ $data->interestedDeemed == "Yes" ? 'checked':'' }}> Yes
+											<input disabled type="radio" name="interestedDeemed" value="Yes"  {{ $data->interestedDeemed == "Yes" ? 'checked':'' }}> نعم
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="interestedDeemed" value="No"  {{ $data->interestedDeemed == "No" ? 'checked':'' }}> No
+											<input disabled type="radio" name="interestedDeemed" value="No"  {{ $data->interestedDeemed == "No" ? 'checked':'' }}> لا
 											<span></span>
 										</label>
 										<label class="kt-radio">
-											<input disabled type="radio" name="interestedDeemed" value="NA"  {{ $data->interestedDeemed == "NA" ? 'checked':'' }}> NA
+											<input disabled type="radio" name="interestedDeemed" value="NA"  {{ $data->interestedDeemed == "NA" ? 'checked':'' }}> لا ينطبق
 											<span></span>
 										</label>
 									</div>
@@ -377,22 +384,22 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Comments:</label>
-								<input disabled type="text" class="form-control"  placeholder="Enter Comment" name="commentsDeemed" value="{{$data->commentsDeemed}}">
+								<label>تعليقات:</label>
+								<input disabled type="text" class="form-control"  placeholder="أدخل التعليق" name="commentsDeemed" value="{{$data->commentsDeemed}}">
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Decision Comment:</label>
-								<input disabled type="text" class="form-control"  placeholder="Enter Comment" name="DecisionComment" value="{{$data->DecisionComment}}">
+								<label>التعليق على القرار:</label>
+								<input disabled type="text" class="form-control"  placeholder="أدخل التعليق" name="DecisionComment" value="{{$data->DecisionComment}}">
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Delivery Date (MM/DD/YYY):</label>
-								<input disabled type="date" max="2999-12-31" class="form-control"  placeholder="Enter Comment" name="dateDevelry" value="{{$data->dateDevelry}}">
+								<label>موعد التسليم (شهر/يوم/سنة):</label>
+								<input disabled type="date" max="2999-12-31" class="form-control"  placeholder="أدخل التعليق" name="dateDevelry" value="{{$data->dateDevelry}}">
 							</div>
 						</div>
 					</div>
@@ -400,10 +407,10 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Risk Probability (see instructions) - 4 = Very likely, 3 = Likely, 2 = Not likely, 1 = Very unlikely:</label>
+											<label>احتمالية المخاطرة (انظر التعليمات) – 4 = محتمل جدًا، 3 = محتمل، 2 = غير متوقع، 1 = غير متوقع نهائيًا:</label>
 											<!--<input disabled type="number" class="form-control" name="RiskProbability">-->
 											<select name="RiskProbability" id="RiskProbability" class="form-control" disabled>
-											    <option value="">Select One</option>
+											    <option value="">حدد واحدًا</option>
 											    
 											    <option value="4" {{ $data->RiskProbability == "4" ? 'selected="selected"':'' }}>4</option>
 											    <option value="3" {{ $data->RiskProbability == "3" ? 'selected="selected"':'' }}>3</option>
@@ -415,11 +422,11 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Risk Severity (see instructions) - 4 = Catastrophic, 3 = Critical, 2 = Marginal, 1 = Negligible:</label>
+											<label>شدة المخاطر (انظر التعليمات) – 4 = كارثيّة، 3 = خطيرة، 2 = هامشية، 1 = لا تُذكر:</label>
 											<!--<input disabled type="number" class="form-control" name="riskSeverity">-->
 											
 											<select name="riskSeverity" id="riskSeverity" class="form-control" disabled>
-											    <option value="">Select One</option>
+											    <option value="">حدد واحدًا</option>
 											    
 											    <option value="4" {{ $data->riskSeverity == "4" ? 'selected="selected"':'' }}>4</option>
 											    <option value="3" {{ $data->riskSeverity == "3" ? 'selected="selected"':'' }}>3</option>
@@ -434,7 +441,7 @@
             </div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
             </div>
         </form>
 		</div>
@@ -456,15 +463,15 @@
                       <div class="modal-content">
                         <form action="{{ route('delete_assesment') }}" method="post">
                           <div class="modal-header justify-content-center"> @csrf 
-                            <div class="modal-profile"> Deleting an entry </div>
+                            <div class="modal-profile"> حذف إدخال </div>
                           </div>
                           <div class="modal-body text-center">
-                            <p>Are you sure you want to delete this entry?</p>
+                            <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                           </div>
                           <div class="modal-footer">
                               <input type="hidden" name="id" value="{{$data->id}}">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
                           </div>
                         </form>
                       </div>
@@ -495,7 +502,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Risk Assessments</h5>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير تقييمات المخاطر</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
             </div>
@@ -507,13 +514,13 @@
 			<div class="row">
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Job Number:</label><br>
+											<label>رقم الوظيفة:</label><br>
 											<input type="text" min="1" class="form-control validate_number" name="jobNumber" >
 										</div>
                     				</div>
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Date (MM/DD/YYY):</label><br>
+											<label>التاريخ (شهر/يوم/سنة):</label><br>
 											<input type="date" max="2999-12-31" class="form-control" name="date" required>
 										</div>
                     				</div>
@@ -522,18 +529,18 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Can I meet the quality standard?:</label>
+											<label>هل يمكنني تلبية متطلبات معايير الجودة؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="qualitySatandard" value="Yes" required> Yes
+														<input type="radio" name="qualitySatandard" value="Yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="qualitySatandard" value="No"> No
+														<input type="radio" name="qualitySatandard" value="No"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="qualitySatandard" value="NA"> NA
+														<input type="radio" name="qualitySatandard" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -541,8 +548,8 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentsstandard">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentsstandard">
 										</div>
 									</div>
                                 </div>
@@ -550,18 +557,18 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Can I meet the delivery date?:</label>
+											<label>هل يمكنني الالتزام بموعد التسليم؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="delevryStandard" value="yes" required> Yes
+														<input type="radio" name="delevryStandard" value="yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="delevryStandard" value="no"> No
+														<input type="radio" name="delevryStandard" value="no"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="delevryStandard" value="NA"> NA
+														<input type="radio" name="delevryStandard" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -569,26 +576,26 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentsdelvery">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentsdelvery">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Can I meet the price?:</label>
+											<label>هل يمكنني تلبية متطلبات السعر؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="priceRequiremnt" value="yes" required> Yes
+														<input type="radio" name="priceRequiremnt" value="yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="priceRequiremnt" value="No"> No
+														<input type="radio" name="priceRequiremnt" value="No"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="priceRequiremnt" value="NA"> NA
+														<input type="radio" name="priceRequiremnt" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -596,26 +603,26 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentprice">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentprice">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Could interested parties be deemed affected?:</label>
+											<label> هل يمكن اعتبار الأطراف المعنية متأثرة؟</label>
 												<div class="kt-radio-inline">
 													<label class="kt-radio">
-														<input type="radio" name="interestedDeemed" value="Yes" required> Yes
+														<input type="radio" name="interestedDeemed" value="Yes" required> نعم
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="interestedDeemed" value="No"> No
+														<input type="radio" name="interestedDeemed" value="No"> لا
 														<span></span>
 													</label>
 													<label class="kt-radio">
-														<input type="radio" name="interestedDeemed" value="NA"> NA
+														<input type="radio" name="interestedDeemed" value="NA"> لا ينطبق
 														<span></span>
 													</label>
 												</div>
@@ -623,32 +630,32 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Comments:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="commentsDeemed">
+											<label>تعليقات:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="commentsDeemed">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Decision Comment:</label>
-											<input type="text" class="form-control"  placeholder="Enter Comment" name="DecisionComment" required>
+											<label>التعليق على القرار:</label>
+											<input type="text" class="form-control"  placeholder="أدخل التعليق" name="DecisionComment" required>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Delivery Date (MM/DD/YYY):</label>
-											<input type="date"  max="2999-12-31" class="form-control"  placeholder="Enter Comment" name="dateDevelry" required>
+											<label>موعد التسليم (شهر/يوم/سنة):</label>
+											<input type="date"  max="2999-12-31" class="form-control"  placeholder="أدخل التعليق" name="dateDevelry" required>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Risk Probability (see instructions) - 4 = Very likely, 3 = Likely, 2 = Not likely, 1 = Very unlikely:</label>
+											<label>احتمالية المخاطرة (انظر التعليمات) – 4 = محتمل جدًا، 3 = محتمل، 2 = غير متوقع، 1 = غير متوقع نهائيًاP:</label>
 											<!--<input type="number" class="form-control" name="RiskProbability">-->
 																						<select name="RiskProbability" id="RiskProbability" class="form-control" required>
-											    <option value="">Select One</option>
+											    <option value="">حدد واحدًا</option>
 											    
 											    <option value="4">4</option>
 											    <option value="3">3</option>
@@ -661,11 +668,11 @@
 									
 																		<div class="col-lg-6">
 										<div class="form-group">
-											<label>Risk Severity (see instructions) - 4 = Catastrophic, 3 = Critical, 2 = Marginal, 1 = Negligible:</label>
+											<label>شدة المخاطر (انظر التعليمات) – 4 = كارثيّة، 3 = خطيرة، 2 = هامشية، 1 = لا تُذكر:</label>
 											<!--<input type="number" class="form-control" name="riskSeverity">-->
 											
 											<select name="riskSeverity" id="riskSeverity" class="form-control" required>
-											    <option value="">Select One</option>
+											    <option value="">حدد واحدًا</option>
 											    
 											    <option value="4">4</option>
 											    <option value="3">3</option>
@@ -684,8 +691,8 @@
 			
 	</div>
 	<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right:20px;">Cancel</button>
-								<button type="submit" class="submitBtn">Update</button>
+									<button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right:20px;">يلغي</button>
+								<button type="submit" class="submitBtn">تحديث</button>
 	</div>
 </div>
 </div>
