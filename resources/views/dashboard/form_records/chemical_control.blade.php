@@ -46,13 +46,13 @@
                         create substances. These could cause harm to employees, contractors and other people.</p>
                     <p>Sometimes substances are easily recognised as harmful. Common substances such as paint, bleach or
                         dust from natural materials may also be harmful.</p> -->
-                        <p>Chemical Control or Control of Substances Hazardous to Health (COSHH) is a method that allows employers to control substances that are hazardous to health. Prevent or reduce workers exposure to hazardous substances by maintaining a current information log of these substances.</p>
-                        <p>To add a record, click on the “Add COSHH” button. To amend a record, click on the edit icon of the entry that needs to be modified or deleted.</p>
+                        <p>صُمم نظام الرقابة على المواد التي تُشكل خطرًا على الصحة (COSHH) لتمكين أصحاب العمل من مراقبة المواد التي تُشكل خطرًا على الصحة، فضلًا عن وضع معايير خاصة للحد من أو تقليل تعرّض الموظفين للمواد الخطرة من خلال الاحتفاظ بسجل معلومات يخضع للتحديث المستمر عن هذه المواد. </p>
+                        <p>لإضافة سجل، يرجى النقر على زر "إضافة COSHH". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله أو حذفه. </p>
 
                     <div class="procedure_div">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <a onclick="processinterestedForm()" class="addBtn">Add COSHH</a>
+                                <a onclick="processinterestedForm()" class="addBtn">إضافة COSHH</a>
                             </div>
                         </div>
                         <div class="process_interested_from_div" style="display:none">
@@ -61,67 +61,63 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Chemical Name:</label>
+                                            <label>الاسم الكيميائي: </label>
                                             <input type="text" name="chemicalname" class="form-control" required
-                                                   placeholder="Enter Chemical Name">
+                                                   placeholder="أدخل الاسم الكيميائي">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Chemical Description (What are the main constituents):</label>
+                                            <label>الوصف الكيميائي (ما هي العناصر الرئيسية في هذه المادة):</label>
                                             <input type="text" name="chemical_desc" class="form-control" required
-                                                   placeholder="Enter Chemical Description">
+                                                   placeholder="أدخل الوصف الكيميائي">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Chemical Type (Gas, liquid or solid):</label>
+                                            <label>الحالة الكيميائية (غاز، سائل، صلب):</label>
                                             <input type="text" name="chemical_type" class="form-control" required
-                                                   placeholder="Enter Chemical Type (Gas, liquid or solid)">
+                                                   placeholder="أدخل النوع الكيميائي (غاز، سائل، صلب)">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Location Used (Consider area or department where the chemical is
-                                                being used:</label>
+                                            <label>موقع الاستخدام (مثال ذلك المنطقة أو القسم الذي تُستخدم فيه هذه المادة):</label>
                                             <input type="text" name="location" class="form-control" required
-                                                   placeholder="Enter Location Used (Consider area or department where the chemical is being used">
+                                                   placeholder="أدخل الموقع المستخدم (ضع في اعتبارك المنطقة أو القسم الذي يتم استخدام المادة الكيميائية فيه">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Activity Hazard (Consider chemical use, making additions, chemical
-                                                discarding etc):</label>
+                                            <label>الخطر المترتب على الأنشطة (مثال ذلك الاستخدام الكيميائي وإجراء إضافات للمادة والتخلص منها، وغير ذلك):</label>
                                             <input type="text" name="activity_hazard" class="form-control" required
-                                                   placeholder="Enter Activity Hazard (Consider chemical use, making additions, chemical discarding etc)">
+                                                   placeholder="أدخل خطر النشاط (ضع في اعتبارك استخدام المواد الكيميائية، وعمل الإضافات، والتخلص من المواد الكيميائية، وما إلى ذلك)">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Identified Chemical Hazard (Consider Corrosive; Very Toxic; Oxidiser
-                                                etc):</label>
+                                            <label>الأخطار الكيميائية المثبتة (مثال ذلك أن تؤدي المادة إلى التآكل أو أن تكون عالية السمّية أو مؤكسدة) :</label>
                                             <input type="text" name="identified_chazard" class="form-control" required
-                                                   placeholder="Enter Identified Chemical Hazard">
+                                                   placeholder="أدخل المخاطر الكيميائية المحددة">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Identified Hazard (Consider Splashes and breathing fume vapour
-                                                etc):</label>
+                                            <label>الأخطار المثبتة (مثال ذلك البقع أو استنشاق بخار الأدخنة وغير ذلك):</label>
                                             <input type="text" name="identified_hazard" class="form-control" required
-                                                   placeholder="Enter Identified Hazard">
+                                                   placeholder="أدخل المخاطر المحددة">
                                         </div>
                                     </div>
                                 </div>
@@ -129,44 +125,41 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Target Organs:</label>
+                                            <label>الأجهزة المستهدفة:</label>
                                             <input type="text" name="target_organs" class="form-control" required
-                                                   placeholder="Enter Target Organs">
+                                                   placeholder="أدخل الأجهزة المستهدفة">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Who is at Risk:</label>
+                                            <label>الفئات الأكثر عرضة للخطر: </label>
                                             <input type="text" name="who_risk" class="form-control" required
-                                                   placeholder="Who is at Risk:">
+                                                   placeholder="الفئات الأكثر عرضة للخطر: ">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Protection Required (Consider gloves, glasses, overalls or shoes
-                                                etc):</label>
+                                            <label>وسائل الحماية المطلوبة (مثال ذلك ارتداء قفازات أو نظارات أو لباس العمل أو الأحذية وغير ذلك):</label>
                                             <input type="text" name="protection_required" class="form-control" required
-                                                   placeholder="Enter Protection Required">
+                                                   placeholder="أدخل الحماية المطلوبة">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Is this chemical still used in production or legacy?</label>
+                                            <label>هل لا تزال هذه المادة الكيميائية مستخدمة في عملية الإنتاج أم توقف استخدامها؟</label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
-                                                    <input type="radio" required value="Yes" name="still_used"> Yes,
-                                                    still used
+                                                    <input type="radio" required value="Yes" name="still_used"> نعم، لا تزال مستخدمة
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" required value="No" name="still_used"> No,
-                                                    legacy
+                                                    <input type="radio" required value="No" name="still_used">ا، توقف استخدامها
                                                     <span></span>
                                                 </label>
 
@@ -177,7 +170,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Attach Evidence: <span class="text-danger"
+                                            <label>إرفاق الدليل: <span class="text-danger"
                                                                           style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                             <input name="attach_evidence" type="file" class="form-control"
                                                    accept="all">
@@ -185,16 +178,16 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Any other issues or points to note?</label>
+                                            <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
                                             <textarea name="any_issues" class="form-control"
-                                                      placeholder="Enter Any other issues:"></textarea>
+                                                      placeholder="أدخل أي مشاكل أخرى:"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div style="text-align: right; width: 100%;">
-                                    <button type="submit" class="submitBtn">SUBMIT</button>
+                                    <button type="submit" class="submitBtn">يُقدِّم</button>
                                     <button type="reset" onclick="cosh()" class="submitBtn" style="margin-right: 7px;">
-                                        Cancel
+                                        يلغي
                                     </button>
                                 </div>
                         </form>
@@ -208,14 +201,14 @@
                                    id="kt_table_agent">
                                 <thead>
                                 <tr>
-                                    <th>S-No</th>
-                                    <th>Chemical Name</th>
-                                    <th>Chemical Description</th>
-                                    <th>Location</th>
-                                    <th>Activity</th>
-                                    <th>Still used</th>
+                                    <th>الرقم التسلسلي</th>
+                                    <th>الاسم الكيميائي </th>
+                                    <th>الوصف الكيميائي </th>
+                                    <th>موقع الاستخدام </th>
+                                    <th>النشاط </th>
+                                    <th>لا زالت قيد الاستخدام </th>
                                     <!--	<th>Created At</th>-->
-                                    <th>Action</th>
+                                    <th>النشاط </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -286,23 +279,22 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Deleting Chemical
-                                                        Record</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">حذف السجل الكيميائي</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Are you sure you want to delete this entry?</p>
+                                                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="{{url('/chemical_control_delete')}}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{$data->id}}">
                                                         <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">No
+                                                                data-dismiss="modal">لا
                                                         </button>
-                                                        <button type="submit" class="btn btn-danger">Yes</button>
+                                                        <button type="submit" class="btn btn-danger">نعم                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -325,19 +317,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deleting Chemical Control</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف الرقابة الكيميائية</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure?Do you really want to delete this?.</p>
+                    <p>هل أنت متأكد؟ هل تريد حقا حذف هذا؟.</p>
                 </div>
                 <div class="modal-footer">
                     <form action="{{route('deleteInterested')}} " method="POST">
                         @csrf
                         <input type="hidden" name="id" value="" id="re_id">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                        <button type="submit" class="btn btn-danger">نعم</button>
                     </form>
                 </div>
             </div>
@@ -348,7 +340,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content modal-lg">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Chemical Control Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل التحكم الكيميائي</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -359,75 +351,72 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Chemical Control:</label>
+                                    <label>الرقابة على المواد الكيميائية :</label>
                                     <input type="text" name="chemical_name" required class="form-control"
-                                           placeholder="Enter Chemical Name">
+                                           placeholder="أدخل الاسم الكيميائي">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Chemical Description (What are the main constituents):</label>
+                                    <label>الوصف الكيميائي (ما هي المكونات الرئيسية):</label>
                                     <input type="text" name="chemical_desc" required class="form-control"
-                                           placeholder="Enter Chemical Description">
+                                           placeholder="أدخل الوصف الكيميائي">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Chemical Type (Gas, liquid or solid):</label>
+                                    <label>النوع الكيميائي (غاز أو سائل أو صلب):</label>
                                     <input type="text" name="chemical_type" required class="form-control"
-                                           placeholder="Enter Chemical Type">
+                                           placeholder="أدخل النوع الكيميائي">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Location Used (Consider area or department where the chemical is being
-                                        used:</label>
+                                    <label>الموقع المستخدم (ضع في اعتبارك المنطقة أو القسم الذي تستخدم فيه المادة الكيميائية):</label>
                                     <input type="text" name="location" required class="form-control"
-                                           placeholder="Enter Location">
+                                           placeholder="إدخال الدولة">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Activity Hazard (Consider chemical use, making additions, chemical discarding
-                                        etc):</label>
+                                    <label>خطر النشاط (ضع في اعتبارك استخدام المواد الكيميائية، وعمل الإضافات، والتخلص من المواد الكيميائية، وما إلى ذلك):</label>
                                     <input type="text" name="activity_hazard" required class="form-control"
-                                           placeholder="Enter Activity Hazard">
+                                           placeholder="أدخل خطر النشاط">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Identified Chemical Hazard (Consider Corrosive; Very Toxic; Oxidiser
-                                        etc):</label>
+                                    <label>المخاطر الكيميائية المحددة (ضع في اعتبارك المواد المسببة للتآكل، والسامة جدًا، والمؤكسدات، وما إلى ذلك):</label>
                                     <input type="text" name="identified_chazard" required class="form-control"
-                                           placeholder="Enter Identified Chemical Hazard" id="identified_chazard">
+                                           placeholder="أدخل المخاطر الكيميائية المحددة" id="identified_chazard">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Identified Hazard (Consider Splashes and breathing fume vapour etc):</label>
+                                    <label>المخاطر التي تم تحديدها (ضع في اعتبارك البقع واستنشاق بخار الدخان وما إلى ذلك):</label>
                                     <input type="text" name="identified_hazard" required class="form-control"
-                                           placeholder="Enter Identified Hazard" id="identified_hazard">
+                                           placeholder="أدخل المخاطر المحددة" id="identified_hazard">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Target Organ</label>
+                                    <label>الجهاز المستهدف</label>
                                     <input type="text" name="target_hazard" required class="form-control"
-                                           placeholder="Enter Identified Target Hazard">
+                                           placeholder="أدخل خطر الهدف المحدد">
                                 </div>
                             </div>
                         </div>
@@ -436,17 +425,16 @@
                                 <div class="form-group">
                                     <label>Who is at Risk</label>
                                     <input type="text" name="who_risk" required class="form-control"
-                                           placeholder="Enter Who is at Risk">
+                                           placeholder="أدخل من هو في خطر">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Protection Required (Consider gloves, glasses, overalls or shoes
-                                        etc):</label>
+                                    <label>الحماية المطلوبة (ضع في اعتبارك القفازات أو النظارات أو الملابس أو الأحذية وما إلى ذلك):</label>
                                     <input type="text" name="protection_required" required class="form-control"
-                                           placeholder="Protection Required">
+                                           placeholder="الحماية مطلوبة">
                                 </div>
                             </div>
                         </div>
@@ -455,14 +443,14 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Is this chemical still used in production or legacy?</label>
+                                    <label>هل لا تزال هذه المادة الكيميائية تستخدم في الإنتاج أم في الإرث؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" name="still_used"> Yes
+                                            <input type="radio" value="Yes" name="still_used"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" name="still_used"> No
+                                            <input type="radio" value="No" name="still_used"> لا
                                             <span></span>
                                         </label>
                                     </div>
@@ -478,24 +466,25 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Attach Evidence: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                                    <label>إرفاق الدليل: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                     <input name="attach_evidence" type="file" class="form-control"
                                            accept="all">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Any other issues or points to note?</label>
+                                    <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ 
+                                    </label>
                                     <textarea name="any_issues" class="form-control"
-                                              placeholder="Enter Any other issues:"></textarea>
+                                              placeholder="أدخل أي مشاكل أخرى:"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Update</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+                        <button type="submit" class="btn btn-danger">تحديث</button>
 
                     </div>
                 </form>
@@ -503,12 +492,13 @@
         </div>
     </div>
 
+
     <div class="modal fade" id="viewinterestedparty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View Chemical Control Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل التحكم الكيميائي</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -519,66 +509,63 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Chemical Control</label>
+                                    <label> الرقابة على المواد الكيميائية </label>
                                     <input type="text" name="chemical_name" required class="form-control"
-                                           placeholder="Enter Chemical Name:">
+                                           placeholder="أدخل الاسم الكيميائي:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Chemical Description (What are the main constituents):</label>
+                                    <label>الوصف الكيميائي (ما هي المكونات الرئيسية):</label>
                                     <input type="text" name="chemical_desc" required class="form-control"
-                                           placeholder="Enter Chemical Description:">
+                                           placeholder="أدخل الوصف الكيميائي:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Chemical Type (Gas, liquid or solid):</label>
+                                    <label>النوع الكيميائي (غاز أو سائل أو صلب):</label>
                                     <input type="text" name="chemical_type" required class="form-control"
-                                           placeholder="Enter Chemical Type:">
+                                           placeholder="أدخل النوع الكيميائي:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Location Used (Consider area or department where the chemical is being
-                                        used:</label>
+                                    <label>الموقع المستخدم (ضع في اعتبارك المنطقة أو القسم الذي تستخدم فيه المادة الكيميائية):</label>
                                     <input type="text" name="location" required class="form-control"
-                                           placeholder="Enter Location:">
+                                           placeholder="إدخال الدولة:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Activity Hazard (Consider chemical use, making additions, chemical discarding
-                                        etc):</label>
+                                    <label>خطر النشاط (ضع في اعتبارك استخدام المواد الكيميائية، وعمل الإضافات، والتخلص من المواد الكيميائية، وما إلى ذلك):</label>
                                     <input type="text" name="activity_hazard" required class="form-control"
-                                           placeholder="Enter Activity Hazard:">
+                                           placeholder="أدخل خطر النشاط:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Identified Chemical Hazard (Consider Corrosive; Very Toxic; Oxidiser
-                                        etc):</label>
+                                    <label>المخاطر الكيميائية المحددة (ضع في اعتبارك المواد المسببة للتآكل، والسامة جدًا، والمؤكسدات، وما إلى ذلك):</label>
                                     <input type="text" name="identified_chazard" required class="form-control"
-                                           placeholder="Enter Identified Chemical Hazard:">
+                                           placeholder="أدخل المخاطر الكيميائية المحددة:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Identified Hazard (Consider Splashes and breathing fume vapour etc):</label>
+                                    <label>المخاطر التي تم تحديدها (ضع في اعتبارك البقع واستنشاق بخار الدخان وما إلى ذلك):</label>
                                     <input type="text" name="identified_hazard" required class="form-control"
-                                           placeholder="Enter Identified Hazard:">
+                                           placeholder="أدخل المخاطر المحددة:">
                                 </div>
                             </div>
                         </div>
@@ -594,19 +581,18 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Who is at Risk</label>
+                                    <label>من في عرضة للخطر :</label>
                                     <input type="text" name="who_risk" required class="form-control"
-                                           placeholder="Enter Who is at Risk:">
+                                           placeholder="من في عرضة للخطر">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Protection Required (Consider gloves, glasses, overalls or shoes
-                                        etc):</label>
+                                    <label>الحماية المطلوبة (ضع في اعتبارك القفازات أو النظارات أو الملابس أو الأحذية وما إلى ذلك):</label>
                                     <input type="text" name="protection_required" required class="form-control"
-                                           placeholder="Protection Required:">
+                                           placeholder="الحماية المطلوبة:">
                                 </div>
                             </div>
                         </div>
@@ -615,14 +601,14 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Is this chemical still used in production or legacy?</label>
+                                    <label>هل لا تزال هذه المادة الكيميائية تستخدم في الإنتاج أم في الإرث؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" required value="Yes" name="still_used"> Yes
+                                            <input type="radio" required value="Yes" name="still_used"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" required value="No" name="still_used"> No
+                                            <input type="radio" required value="No" name="still_used"> لا
                                             <span></span>
                                         </label>
                                     </div>
@@ -638,14 +624,14 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Attach Evidence <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
+                                    <label>إرفاق الدليل:  <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
                                     <div class="evidence_attachemnt_div"></div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Any other issues or points to note?</label>
-                                    <textarea name="any_issues" class="form-control" placeholder="Enter Any other issues:"></textarea>
+                                    <label>هل هناك أي قضايا أو نقاط أخرى يجب ملاحظتها؟</label>
+                                    <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
 
                                 </div>
                             </div>
@@ -653,9 +639,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
                     </div>
                 </form>
             </div>
