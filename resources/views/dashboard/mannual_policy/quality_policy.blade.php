@@ -1,6 +1,11 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
+<style>
+	.text-right{
+		text-align: right;
+	}
+</style>
 <!-- begin:: Content -->
 <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
 
@@ -9,7 +14,7 @@
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
+		<div class="col-xl-12 col-lg-12 text-right">
 			<h2>سياسة الجودة</h2>
 		</div>
 	</div>
@@ -26,7 +31,7 @@
 						</div>
 					</div>
 
-					<div class="quality_add_div">
+					<div class="quality_add_div text-right">
 						<form action="{{ route('add_quality') }}" id="addcust" method="post">
 							@csrf
 							<h3>إضافة سياسة الجودة</h3>
@@ -45,7 +50,7 @@
 					</div>
 				</div>
 
-				<div class="procedure_div">
+				<div class="procedure_div text-right">
 					<p>تلتزم إدارة <b><span class="authName">{{ $companyName}}</span></b> بتقديم المنتجات والخدمات التي تفوق دومًا احتياجات عملائنا من حيث الجودة والقيمة، فضلًا عن تلبية توقعات الجهات المعنيّة.</p>
 					<p>تستند مثل هذه المنتجات على ركائز كفاءتنا المتمثلة في إدارة العملاء، وإدارة الإيرادات، والالتزام بالامتثال لجميع القواعد والمصادقة المعمول بها.</p>
 					<p>بناء عليه، جرى وضع السياسات التالية ضمانًا لتطوير أعمال مربحة تعمّ فوائدها على جميع أصحاب المصلحة، بما في ذلك الجهات المعنية:</p>

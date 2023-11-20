@@ -1,6 +1,11 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
+<style>
+	.text-right{
+		text-align: right;
+	}
+</style>
 <!-- begin:: Content -->
 <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
 
@@ -9,7 +14,7 @@
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
+		<div class="col-xl-12 col-lg-12 text-right">
 			<h2>سياسة الصحة والسلامة</h2>
 		</div>
 	</div>
@@ -19,7 +24,7 @@
 			
 		?>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-12 text-right">
 
 				<div class="procedure_div">
 					<div class="row">

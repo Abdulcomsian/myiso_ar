@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-
-	<!--
-	Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 7
-	Author: KeenThemes
-	Website: http://www.keenthemes.com/
-	Contact: support@keenthemes.com
-	Follow: www.twitter.com/keenthemes
-	Dribbble: www.dribbble.com/keenthemes
-	Like: www.facebook.com/keenthemes
-	Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-	Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-	License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
-	-->
-	<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	@include('dashboard.includes.head')
+@include('dashboard.includes.head')
 	<!-- begin::Body -->
 	<body class="kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed 	kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
@@ -28,7 +11,7 @@
 		<!-- end:: Header Mobile -->
 		<div class="kt-grid kt-grid--hor kt-grid--root">
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt-wrapper">
 					@include('dashboard.includes.primary-header')
                     @toastr_css
 					@yield('content')

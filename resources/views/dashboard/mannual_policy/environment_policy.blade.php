@@ -1,8 +1,8 @@
 @extends('dashboard.layouts.app')
 @section('css')
 	<style>
-		.list-items-ar{
-			/* direction: rtl; */
+		.text-right{
+			text-align: right;
 		}
 	</style>
 @endsection
@@ -15,7 +15,7 @@
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
+		<div class="col-xl-12 col-lg-12 text-right">
 			<h2>السياسة البيئية</h2>
 		</div>
 	</div>
@@ -25,9 +25,9 @@
 		?>
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="procedure_div">
+				<div class="procedure_div text-right">
 					<div class="row">
-						<div class="col-lg-12 text-right">
+						<div class="col-lg-12">
 							<a onclick="qualityshowpolicy()" class="addBtn">إضافة السياسة البيئية</a>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 					</div>
 				</div>
 
-				<div class="procedure_div">
+				<div class="procedure_div text-right">
 				    <p>لكل دولة أنظمتها وقوانينها الخاصة المعنية بالتشريعات البيئية داخل مكان العمل. ويتعيّن على صاحب العمل وموظفيه الالتزام بهذه التشريعات. ويجب أن تحرص الشركة على التأكد من درايتهم وفهمهم لمسؤولياتهم والتحقق بانتظام من التحديثات والتغييرات.</p>
 				    <p>{{ $companyName}} يعمل على تطوير واحترام اتباع إجراءات من شأنها تحديد ودعم عمليات الحد من التأثيرات السلبية على البيئة، وتحديد الضوابط ثم تنفيذها. تتم مراجعة هذه الضوابط ومراقبتها بشكل منتظم. وتتخذ الشركة جميع الخطوات المعقولة لتقليص مدى التأثيرات البيئية داخل مكان العمل، وتقديم التوجيه بشأن التدابير التي ينبغي تطبيقها ضمن التسلسل الهرمي للرقابة.</p>
 					<p><b><span class="authName">{{ $companyName}}</span></b> يكون بالإجراء المستمر لعمليات المراقبة وتحسين الأداء البيئي للشركة. وسيتم قياس مدى تأثيرها على البيئة بانتظام وتحديد الأهداف لضمان التحسين المستمر. </p>
@@ -69,7 +69,7 @@
 						<li class="list-items-ar">Mتقليل الهدر عبر التقييم الدوري للعمليات والكفاءة.</li>
 						<li class="list-items-ar">الحصول على مجموعة منتجات أو خدمات توريد من شأنها تقليل التأثير البيئي لتوزيع الشركة وإنتاجها.</li>
 				
-						<h5 class="mt-6" style="position: relative; left: -35px; margin-top: 15px">سياسات إضافية: </h5>
+						<h5 class="mt-3">سياسات إضافية: </h5>
 					
 						 <!-- Display the previous policy -->
 						 @php

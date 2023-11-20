@@ -31676,14 +31676,17 @@ td>.kt-radio.kt-radio--single {
     padding-top: 0;
 }
 
-.kt-radio-list .kt-radio {
+/* .kt-radio-list .kt-radio {
     display: block;
     text-align: left;
-}
+} */
 
 .kt-radio-list .kt-radio:last-child {
     margin-bottom: 5px;
 }
+
+
+
 
 .kt-radio-inline {
     padding: 0 0;

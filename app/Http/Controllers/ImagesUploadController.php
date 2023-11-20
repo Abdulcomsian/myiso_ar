@@ -29,7 +29,7 @@ class ImagesUploadController extends Controller
 				     );
             $insert = DB::table('images_uploads')->insert($insert_data);
       }
-            return redirect()->back()->with('message', 'Image uploaded successfully.');
+            return redirect()->back()->with('message', 'تم تحميل الصورة بنجاح.');
        
     }
     
@@ -52,7 +52,7 @@ class ImagesUploadController extends Controller
             $insert = DB::table('images_uploads')->insert($insert_data);
       }
              return redirect()->back()
-       ->with('message', 'Image uploaded successfully.');
+       ->with('message', 'تم تحميل الصورة بنجاح.');
     }
     
     if ($file = $request->file('serv_process_photo')) {
@@ -76,7 +76,7 @@ class ImagesUploadController extends Controller
 		    );
       }
              return redirect()->back()
-       ->with('message', 'Image uploaded successfully.');
+       ->with('message', 'تم تحميل الصورة بنجاح.');
     }
     if ($file = $request->file('comp_process_photo')) {
          
@@ -99,7 +99,7 @@ class ImagesUploadController extends Controller
 		    );
       }
              return redirect()->back()
-       ->with('message', 'Image uploaded successfully.');
+       ->with('message', 'تم تحميل الصورة بنجاح.');
     }
      if ($file = $request->file('process_int_photo')) {
          
@@ -122,7 +122,7 @@ class ImagesUploadController extends Controller
 		    );
       }
              return redirect()->back()
-       ->with('message', 'Image uploaded successfully.');
+       ->with('message', 'تم تحميل الصورة بنجاح.');
     }
     if ($file = $request->file('organogram')) {
          
@@ -130,11 +130,13 @@ class ImagesUploadController extends Controller
      
       $r = rand();
       $ext = $request->file('organogram')->extension();
-         $img_only = 'management_organogram_'.$r.'.'.$ext;
+      $img_only = 'management_organogram_'.$r.'.'.$ext;
+        // dd($img_only);
        $file->move($optimizePath.'/',$img_only);
        $img = asset('public/uploads/process/'.$img_only);
+    //    dd($img);
 
-      if(DB::table('images_uploads')->Where('user_id',$user->id)->exists()){
+      if(DB::table('images_uploads')->where('user_id',$user->id)->exists()){
             $update = DB::table('images_uploads')->where('user_id',$user->id)->update([ 'management_organogram' => $img]); 
       } else{   
           $insert_data = array(
@@ -145,7 +147,7 @@ class ImagesUploadController extends Controller
 		    );
       }
              return redirect()->back()
-       ->with('message', 'Image uploaded successfully.');
+       ->with('message', 'تم تحميل الصورة بنجاح');
     }
     
     return redirect()->back();
@@ -155,47 +157,47 @@ class ImagesUploadController extends Controller
       $user = Auth::user(); 
        $update = DB::table('images_uploads')->where('user_id',$user->id)->update(['sales_process' => NULL]); 
         return redirect()->back()
-       ->with('message', 'Image Removed successfully.');
+       ->with('message', 'تمت إزالة الصورة بنجاح.');
     }
     public function purchprocess(){
         
       $user = Auth::user(); 
        $update = DB::table('images_uploads')->where('user_id',$user->id)->update(['purchasing_process' => NULL]); 
         return redirect()->back()
-       ->with('message', 'Image Removed successfully.');
+       ->with('message', 'تمت إزالة الصورة بنجاح.');
     }
     public function servicingprocess(){
         
       $user = Auth::user(); 
        $update = DB::table('images_uploads')->where('user_id',$user->id)->update(['servicing_contract' => NULL]); 
         return redirect()->back()
-       ->with('message', 'Image Removed successfully.');
+       ->with('message', 'تمت إزالة الصورة بنجاح.');
     }
     public function comptprocess(){
         
       $user = Auth::user(); 
        $update = DB::table('images_uploads')->where('user_id',$user->id)->update(['competency_process' => NULL]); 
         return redirect()->back()
-       ->with('message', 'Image Removed successfully.');
+       ->with('message', 'تمت إزالة الصورة بنجاح.');
     }
     public function processinteraction(){
         
       $user = Auth::user(); 
        $update = DB::table('images_uploads')->where('user_id',$user->id)->update(['process_interaction' => NULL]); 
         return redirect()->back()
-       ->with('message', 'Image Removed successfully.');
+       ->with('message', 'تمت إزالة الصورة بنجاح.');
     }
     public function mgmtorg(){
         
       $user = Auth::user(); 
        $update = DB::table('images_uploads')->where('user_id',$user->id)->update(['management_organogram' => NULL]); 
         return redirect()->back()
-       ->with('message', 'Image Removed successfully.');
+       ->with('message', 'تمت إزالة الصورة بنجاح.');
     }
     
     public function sale_process(){
         $img_exist ="";
-       $user = Auth::user();
+        $user = Auth::user();
         $user_exists = DB::table('images_uploads')->Where('user_id',$user->id)->count();
 
         if($user_exists == 0){
@@ -211,7 +213,7 @@ class ImagesUploadController extends Controller
                 $img_exist = "No";
             }
         }
-        // echo $img;exit;
+        // dd($img);
         return view('dashboard.processes.sale_processes',compact('img', 'img_exist'));
         
     }
@@ -285,7 +287,7 @@ class ImagesUploadController extends Controller
         $user = Auth::user();
 		
 		$user_exists = DB::table('images_uploads')->Where('user_id',$user->id)->count();
-$img_exist ="";
+        $img_exist ="";
         if($user_exists == 0){
              $img= DB::table('admin_org_structure_images')->pluck('process_interaction')[0];
         }else{

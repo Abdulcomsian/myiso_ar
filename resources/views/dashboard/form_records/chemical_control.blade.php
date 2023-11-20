@@ -3,19 +3,15 @@
 @section('content')
     <!-- begin:: Content -->
     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-
         <!--Begin::Dashboard 1-->
-
-
         <!--Begin::Section-->
         <div class="row">
-            <div class="col-xl-12 col-lg-12">
+            <div class="col-xl-12 col-lg-12 text-right">
                 <h2>COSHH</h2>
             </div>
         </div>
         <section id="procedure_section">
-
-            <div class="row">
+            <div class="row text-right">
                 <div class="col-lg-12">
                     <!-- <p>Control of Substances Hazardous to Health (COSHH). COSHH is a method that allows employers to
                         control substances that are hazardous to health. You can prevent or reduce workers exposure to
@@ -50,7 +46,7 @@
                         <p>لإضافة سجل، يرجى النقر على زر "إضافة COSHH". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله أو حذفه. </p>
 
                     <div class="procedure_div">
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-lg-12 text-right">
                                 <a onclick="processinterestedForm()" class="addBtn">إضافة COSHH</a>
                             </div>
@@ -280,9 +276,8 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">حذف السجل الكيميائي</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                    </button>
+                                                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                                                    </a>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
@@ -312,14 +307,14 @@
 
         <!--End::Section-->
     </div>
-    <div class="modal fade" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">حذف الرقابة الكيميائية</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+					</a>
                 </div>
                 <div class="modal-body">
                     <p>هل أنت متأكد؟ هل تريد حقا حذف هذا؟.</p>
@@ -335,14 +330,14 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="editinterestedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="editinterestedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content modal-lg">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل التحكم الكيميائي</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+					</a>
                 </div>
                 <form action="{{route('chemicalUpdate')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -493,14 +488,14 @@
     </div>
 
 
-    <div class="modal fade" id="viewinterestedparty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="viewinterestedparty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل التحكم الكيميائي</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+					</a>
                 </div>
                 <form>
                     @csrf
