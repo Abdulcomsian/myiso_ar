@@ -9,13 +9,12 @@
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
+		<div class="col-xl-12 col-lg-12 text-right">
 			<h2>السياسة 5 - عمليات التدقيق</h2>
 		</div>
 	</div>
-	<section id="procedure_section">
-		
-		<div class="row">
+	<section id="procedure_section">		
+		<div class="row text-right">
 			<div class="col-lg-12">
 				<div class="procedure_div">
 					<h4>1. الغرض والنطاق</h4>

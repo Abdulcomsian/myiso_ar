@@ -9,13 +9,12 @@
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
+		<div class="col-xl-12 col-lg-12 text-right">
 			<h2>الأطراف المعنية</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
-
-		<div class="row">
+		<div class="row text-right">
 			<div class="col-lg-12">
 					<p>يتطلب القسم 4.2 من شهادة الآيزو القياسية (ISO9001:2015) فهم احتياجات الأطراف المعنية وتوقعاتها. ويمكن توثيق مثل هذه المعلومات كما ترغب في هذا السجل. أما دليل الجودة في القسم 4،2،2 فهو يحدد من هي هذه الأطراف المعنية. </p>
 					<p>لإضافة سجل، يرجى النقر على زر "إضافة أطراف معنية". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله. </p>
@@ -25,7 +24,7 @@
                     			<a onclick="processinterestedForm()" class="addBtn">إضافة أطراف معنية </a>
                     		</div>
                     	</div>
-                    	<div class="process_interested_from_div" style="display:none;    position: relative;bottom: 10px;">
+                    	<div class="process_interested_from_div mt-4" style="display:none; position: relative;bottom: 10px;">
                     		<form action="{{route('interestedform')}}" method="POST">
                                 @csrf
                     			<div class="row">
@@ -101,13 +100,13 @@
 
 	<!--End::Section-->
 </div>
-<div class="modal fade" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">حذف الطرف المهتم</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+				</a>
 			</div>
 			<div class="modal-body">
 				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
@@ -123,13 +122,13 @@
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="editinterestedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="editinterestedmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content modal-lg">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل الأطراف المهتمة</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+				</a>
             </div>
             <form action="{{route('interestedUpdate')}}" method="POST">
                 @csrf
@@ -155,7 +154,7 @@
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-				<button type="submit" class="btn btn-danger">تحديث</button>
+				<button type="submit" class="btn btn-danger mx-2">تحديث</button>
 
             </div>
         </form>
@@ -163,13 +162,13 @@
 	</div>
 </div>
 
-<div class="modal fade" id="viewinterestedparty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="viewinterestedparty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content ">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل الأطراف المهتمة</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+				</a>
             </div>
             <form>
                 @csrf
