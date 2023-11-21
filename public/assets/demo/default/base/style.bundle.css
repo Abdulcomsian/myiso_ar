@@ -37266,9 +37266,11 @@ body {
     }
     .kt-aside--fixed .kt-wrapper {
         /* padding-left: 255px; */
+        padding-right: 255px;
     }
     .kt-aside--fixed.kt-aside--minimize .kt-wrapper {
         /* padding-left: 70px; */
+        padding-right: 70px;
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
@@ -40980,7 +40982,7 @@ body {
 
 .kt-content {
     padding: 25px;
-    padding-right: 270px;
+    /* padding-right: 270px; */
 }
 
 .kt-subheader--enabled.kt-subheader--transparent:not(.kt-subheader--fixed) .kt-content {
