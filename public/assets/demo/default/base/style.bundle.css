@@ -37302,7 +37302,8 @@ body {
     }
     .kt-subheader--fixed.kt-aside--minimize-hover .kt-subheader,
     .kt-subheader--fixed.kt-aside--minimize .kt-subheader {
-        left: 70px;
+        /* left: 70px; */
+        right: 70px;
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
@@ -37344,7 +37345,8 @@ body {
         transition: height 0.3s ease;
     }
     .kt-header--fixed.kt-aside--minimize .kt-header {
-        left: 70px;
+        /* left: 70px; */
+        right: 70px;
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
@@ -39852,7 +39854,8 @@ body {
     .kt-aside--fixed.kt-aside--minimize-hover .kt-header {
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
-        left: 70px;
+        /* left: 70px; */
+        right: 70px;
     }
     .kt-aside--fixed.kt-aside--minimize-hover .kt-wrapper {
         -webkit-transition: all 0.3s ease;
