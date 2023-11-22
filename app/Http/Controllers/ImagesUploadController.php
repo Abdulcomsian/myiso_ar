@@ -22,7 +22,8 @@ class ImagesUploadController extends Controller
 
       if(DB::table('images_uploads')->Where('user_id',$user->id)->exists()){
             $update = DB::table('images_uploads')->where('user_id',$user->id)->update(['sales_process' => $img]); 
-      } else{   
+      } else
+      {   
             $insert_data = array(
 					   'sales_process' => $img,
 					   'user_id' => $user->id
@@ -33,7 +34,8 @@ class ImagesUploadController extends Controller
        
     }
     
-    if ($file = $request->file('purch_process_photo')) {
+    if ($file = $request->file('purch_process_photo')) 
+    {
       $optimizePath = public_path('/uploads/process');         
       $r = rand();
       $ext = $request->file('purch_process_photo')->extension();
