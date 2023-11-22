@@ -13,7 +13,7 @@
         @if (session()->has('message'))
             <div class="alert alert-success alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{ session()->get('message') }}
+                <span class="mx-2">{{ session()->get('message') }}</span>
             </div>
         @endif
 
@@ -38,7 +38,7 @@
                         <form action="{{ url('mgmtorg') }}" method="post">
                             @csrf
                             <input type="hidden" name="user_id" value="<?php echo Auth::id(); ?>" />
-                            <button type="submit" class="submitBtn">Remove</button>
+                            <button type="submit" class="submitBtn">يزيل</button>
                         </form>
                     @endif
                 </div>
@@ -60,10 +60,10 @@
             </div>
         </div>
         <section id="procedure_section">
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="procedure_div">
+                    {{-- @dd($img) --}}
                         @if ($img)
                             <img src="{{ $img }}" class="img-fluid">
                         @endif

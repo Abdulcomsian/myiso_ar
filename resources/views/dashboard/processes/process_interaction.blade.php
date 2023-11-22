@@ -8,7 +8,7 @@
         @if (session()->has('message'))
             <div class="alert alert-success alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{ session()->get('message') }}
+                <span class="mx-2">{{ session()->get('message') }}</span>
             </div>
         @endif
 
@@ -25,9 +25,9 @@
         </div>
         <div class="procedure_div text-right">
             <div class="row">
+                <a onclick="workInstructionFrom()" class="addBtn">أضف عملية
+                    بديلة</a>
                 <div class="col-lg-9 col-xl-10">
-					<a style="position: relative;top: 9px;" onclick="workInstructionFrom()" class="addBtn">أضف عملية
-                        بديلة</a>
                     @if ($img_exist == 'Yes')
                         <form action="{{ url('processinteraction') }}" method="post">
                             @csrf
