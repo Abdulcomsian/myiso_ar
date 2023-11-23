@@ -314,8 +314,9 @@
                                         <!--                 <td>{{ date('d/m/Y', $d) }}</td>-->
                                         <td>{{ date('d/m/Y', strtotime($data->calibratedDate)) }}</td>
                                         <td>{{ $data->freq }}</td>
-                                        @php$d = strtotime("+$data->freq months", strtotime($data->calibratedDate));
-                                        @endphp
+                                        <?php
+                                        $d = strtotime("+$data->freq months", strtotime($data->calibratedDate));
+                                        ?>
                                         <td> {{ date('d/m/Y', $d) }}</td>
                                         <td><a href="javascript:;" data-toggle="modal" data-id="{{ $data->id }}"
                                                 class="calibrationModal" class="btn btn-sm btn-clean btn-icon btn-icon-md"

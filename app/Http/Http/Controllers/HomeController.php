@@ -33,6 +33,7 @@ class HomeController extends Controller
         if($userType =='admin'){
             return view('dashboard.admin.index');
         }else{
+            dd("userlogin");
             return view('dashboard.index');
         }
     }

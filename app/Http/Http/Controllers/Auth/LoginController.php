@@ -33,8 +33,8 @@ class LoginController extends Controller
     {
       
         $role = Auth::user()->role_type; 
-        // print_r($role);
-        // exit;
+        print_r($role);
+        exit;
         switch ($role) 
         {
           case 'admin':
