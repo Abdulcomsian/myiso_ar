@@ -175,9 +175,9 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="modal-content">
 											<div class="modal-header">
 												<h5 class="modal-title" id="exampleModalLabel">الشروط والأحكام الخاصة بشركة جيه إم إي المنطقة الحرة</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
+												<a data-dismiss="modal" aria-label="Close">
+													<i class="fa fa-times" aria-hidden="true"></i>
+												</a>
 											</div>
 											<div class="modal-body">
 												<h6><strong>الموافقة على الشروط</strong></h6>

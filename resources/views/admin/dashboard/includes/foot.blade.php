@@ -174,6 +174,20 @@
 		      	cell2.innerHTML='<div class="plane_input"><input type="text" id="amount" name="amount" class="form-control" placeholder="Your Customer Notes"></div>';
 		      	cell3.innerHTML='<div class="input-group date"><input type="text" name="dob" class="form-control" readonly value="{{\Carbon\Carbon::now()->format('d/m/Y')}}" id="dob" /><div class="input-group-append"><span class="input-group-text"><i class="la la-calendar"></i></span></div></div>';
 			})
+			$(function(){
+                var current = location.pathname;
+                $('.kt-menu__nav  li a').each(function(){
+                    var $this = $(this);
+                    // if the current path is like this link, make it active
+                    if($this.attr('href').indexOf(current) !== -1){
+                        $this.parent().addClass('li_active');
+                        $this.parent().parent().parent().parent().addClass('kt-menu__item--open');
+                        // var parent_li=$('.kt-menu__nav  li').hasClass('li_active');
+                        // var li_parent=parent_li.parent();
+                        // console.log(li_parent);
+                    }
+                })
+            });
 		</script>
 		<script type="text/javascript">
 			function resetForm() {
