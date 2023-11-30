@@ -209,7 +209,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit User Detail</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">تعديل تفاصيل المستخدم</h5>
                             <div type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"
                                     aria-hidden="true"></i></div>
                         </div>
@@ -222,20 +222,20 @@
                                     <input type="hidden" name="id" id="editvalue" value="">
                                     <div class="form-group row">
                                         <div class="col-lg-4 text-right">
-                                            <label for="address2">Company ID:</label>
+                                            <label for="address2">هوية الشركة:</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="number" id="order_number" name="order_number" required
                                                     class="form-control" placeholder="Enter Company ID Number" readonly>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="name">Username:</label>
+                                            <label for="name">اسم المستخدم</label>
                                             <input type="text" id="name" required name="name"
                                                 class="form-control" placeholder="Enter name" readonly>
                                             <!--<span class="form-text text-muted">Please enter your Username</span>-->
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="name">Email Address:</label>
+                                            <label for="name">عنوان البريد الإلكتروني</label>
                                             <input type="text" required id="name" name="email"
                                                 class="form-control" placeholder="Enter email" readonly>
                                             <!--<span class="form-text text-muted">Please enter your Email Address</span>-->
@@ -248,7 +248,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-lg-4 text-right">
-                                            <label for="password">Password:</label>
+                                            <label for="password">كلمة المرور</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="password" id="password" name="password" class="form-control"
                                                     placeholder="Enter password" readonly>
@@ -256,7 +256,7 @@
                                                 <!-- Button trigger modal -->
                                                 <a href="#" class="text-black pass_model_btn" data-toggle="modal"
                                                     data-target="#passwordModel">
-                                                    Request for Change password
+                                                    طلب تغيير كلمة المرور
                                                 </a>
 
                                                 <!-- Modal -->
@@ -266,20 +266,16 @@
                                                     <div class="modal-dialog shadow" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="passwordModelLabel">Request
-                                                                    for Change password </h5>
-                                                                <button type="button" class="close pass_model_close"
-                                                                    data-dismiss="hhh" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                                <h5 class="modal-title" id="passwordModelLabel">طلب تغيير كلمة المرور </h5>
+                                                                <a data-dismiss="true" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
                                                             </div>
                                                             <div class="modal-body">
-                                                                You can not change your password, send a message to admin
-                                                                from Contact Us page to change the password.
+                                                                لا يمكنك تغيير كلمة المرور الخاصة بك، قم بإرسال رسالة إلى المشرف
+                                                                من صفحة اتصل بنا لتغيير كلمة المرور.
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"
-                                                                    class="btn btn-primary pass_model_close">Done</button>
+                                                                    class="btn btn-primary pass_model_close">منتهي</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -290,20 +286,20 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="phone">Company Name:</label>
+                                            <label for="phone">اسم الشركة</label>
                                             <input type="text" id="company_name" name="company_name"
                                                 class="form-control" placeholder="Enter Company Name" readonly>
                                             <!-- <span class="form-text text-muted">Please enter your email</span> -->
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="phone">Company Address:</label>
+                                            <label for="phone">عنوان الشركة</label>
                                             <textarea id="company_address" name="company_address" required class="form-control"
                                                 placeholder="Enter Company Address" readonly></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-lg-4 text-right">
-                                            <label for="state">Company Phone:</label>
+                                            <label for="state">رقم هاتف الشركة</label>
                                             <div class="kt-input-icon kt-input-icon--right" id='edit_phone'>
                                             </div>
                                             <input type="hidden" name="phonecode" id="phonecode">
@@ -311,12 +307,12 @@
 
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="country">Country:</label>
+                                            <label for="country">الدولة</label>
                                             <input type="text" id="country" name="country" required
                                                 class="form-control" placeholder="Enter Country">
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="city">Managing Director:</label>
+                                            <label for="city">العضو المنتدب/ الرئيس التنفيذي</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="text" id="director" required name="director"
                                                     class="form-control" placeholder="Enter a Name">
@@ -325,14 +321,13 @@
                                     </div>
                                     <div class="form-group row text-right">
                                         <div class="col-lg-4">
-                                            <label for="person_iso">Person Responsible for ISO:</label>
+                                            <label for="person_iso">الشخص المسؤول عن الآيزو</label>
                                             <input type="text" id="person_iso" name="person_iso" class="form-control"
                                                 placeholder="Iso Person Name" required>
                                             <!--<span class="form-text text-muted">Please enter the ISO contact person's name</span>-->
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="contact_iso">Contact number of
-                                                the Person Responsible for ISO:</label>
+                                            <label for="contact_iso">جهة الاتصال الخاصة بمنصة ISO</label>
                                             <div class="kt-input-icon kt-input-icon--right" id='edit_iso'>
 
                                             </div>
@@ -341,8 +336,7 @@
 
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="email_iso">Email Address of
-                                                the Person Responsible for ISO.:</label>
+                                            <label for="email_iso">عنوان البريد الإلكتروني الخاص بمنصة ISO</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="email" id="email_iso" name="email_iso"
                                                     class="form-control" placeholder="Enter Email Address" required>
@@ -355,14 +349,14 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-lg-4 text-right">
-                                            <label for="zip">Sales Process Owner:</label>
+                                            <label for="zip">الجهة المسؤولة عن عملية المبيعات</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="text" id="sales_process" required name="sales_process"
                                                     class="form-control" placeholder="Enter Sales Process">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="password">Purchasing Process Owner:</label>
+                                            <label for="password">الجهة المسؤولة عن عملية الشراء</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="text" id="purchasing_process" required
                                                     name="purchasing_process" class="form-control"
@@ -370,7 +364,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label class="">Servicing of Contract Process Owner:</label>
+                                            <label class="">الجهة المسؤولة عن عملية تقديم الخدمات</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="text" id="servicing_process" required
                                                     name="servicing_process" class="form-control"
@@ -381,7 +375,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-lg-6 text-right">
-                                            <label for="address1">Competency Process Owner:</label>
+                                            <label for="address1">الجهة المسؤولة عن عملية الكفاءة</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="text" id="competency_process" required
                                                     name="competency_process" class="form-control"
@@ -389,14 +383,14 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6 text-right">
-                                            <label for="address2">Company Profile: </label>
+                                            <label for="address2">ملف الشركة:</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <input type="file" id="company_profile" name="company_profile"
                                                     class="form-control" placeholder="Company Profile">
                                                 <div class="downloadlink">
                                                     <a target="_blank"
                                                         href="https://myisoonline.com/public/{{ Auth::user()->company_profile }}"
-                                                        target="blank">View Profile</a>
+                                                        target="blank">عرض الصفحة الشخصية</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -404,7 +398,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-lg-12 text-right">
-                                            <label for="scope">Business Scope:</label>
+                                            <label for="scope">نطاق الأعمال</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <textarea id="scope" row="6" style="height:200px;" required name="scope" class="form-control"></textarea>
                                             </div>
@@ -414,7 +408,7 @@
                                     <div class="form-group row">
 
                                         <div class="col-lg-8 text-right">
-                                            <label for="user_image">Company Description</label>
+                                            <label for="user_image">وصف الشركة</label>
                                             <div class="kt-input-icon kt-input-icon--right">
                                                 <!--<input type="text" id="Company_overview" name="Company_overview" class="form-control" placeholder="" style="height: 30px;">-->
 
@@ -425,7 +419,7 @@
                                         </div>
                                         <div class="col-lg-4 text-right">
 
-                                            <label for="user_image">Company Logo</label>
+                                            <label for="user_image">شعار الشركة</label>
 
                                             <div class="kt-input-icon kt-input-icon--right">
 
@@ -440,8 +434,7 @@
                                                 <input type="file" accept="image/*" name="user_image" id="image-upload"
                                                             onchange="loadFile(event)">
 
-                                                        <p><label for="file" style="cursor: pointer;">Attach JPEG file
-                                                                only</label></p>
+                                                        <p><label for="file" style="cursor: pointer;">إرفاق ملف بصيغة JPEG فقط</label></p>
 
                                                         <p><img id="output" width="200px" height="200px"></p>
 
@@ -456,7 +449,7 @@
                                         <div class="form-group row">
 
                                             <div class="col-lg-4 text-right">
-                                                <label for="iso9001_certificate">ISO9001 Certificate:</label>
+                                                <label for="iso9001_certificate">شهادة ISO9001:</label>
                                                 <!--<input type="file" id="iso9001_certificate" accept=".pdf" name="iso9001_certificate" >-->
                                                     <span id="view_9001"> </span>&nbsp;
                                                     <!--<a href="#" data-handle="iso9001" class="delete-certificate">Delete</a>-->
@@ -464,13 +457,13 @@
 
                                                 </div>
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso9001_expirydate">Expiry date:</label>
+                                                    <label for="iso9001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                                     <input type="date" readonly id="iso9001_expirydate"
                                                         max="2999-12-31" name="iso9001_expirydate" class="form-control"
                                                         placeholder="Expiry Date">
                                                 </div>
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso9001_description">Description:</label>
+                                                    <label for="iso9001_description">الوصف:</label>
                                                     <textarea id="iso9001_description" readonly name="iso9001_description" class="form-control"
                                                         placeholder="Description for ISO9001 Certificate"></textarea>
                                                 </div>
@@ -480,20 +473,20 @@
                                             <div class="form-group row">
 
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso14001_certificate">ISO14001 Certificate:</label>
+                                                    <label for="iso14001_certificate">شهادة ISO14001:</label>
                                                     <!--<input type="file" id="iso14001_certificate" accept=".pdf" name="iso14001_certificate" >-->
                                                     <span id="view_14001"> </span>&nbsp;
                                                     <!--<a href="#" data-handle="iso14001" class="delete-certificate">Delete</a>-->
                                                     <!--<button type="button" class="new-file-upload" onclick="document.getElementById('iso14001_certificate').click()">Attach File</button>-->
                                                 </div>
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso14001_expirydate">Expiry date:</label>
+                                                    <label for="iso14001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                                     <input type="date" readonly id="iso14001_expirydate"
                                                         max="2999-12-31" name="iso14001_expirydate" class="form-control"
                                                         placeholder="Expiry Date">
                                                 </div>
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso14001_description">Description:</label>
+                                                    <label for="iso14001_description">الوصف:</label>
                                                     <textarea id="iso14001_description" readonly name="iso14001_description" class="form-control"
                                                         placeholder="Description for ISO14001 Certificate"></textarea>
                                                 </div>
@@ -503,20 +496,20 @@
                                             <div class="form-group row">
 
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso45001_certificate">ISO45001 Certificate:</label>
+                                                    <label for="iso45001_certificate">شهادة ISO45001:</label>
                                                     <!--<input type="file" id="iso45001_certificate" accept=".pdf" name="iso45001_certificate" >-->
                                                     <span id="view_45001"> </span>&nbsp;
                                                     <!--<a href="#" data-handle="iso45001" class="delete-certificate">Delete</a>-->
                                                     <!--<button  type="button"  class="new-file-upload" onclick="document.getElementById('iso45001_certificate').click()">Attach File</button>-->
                                                 </div>
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso45001_expirydate">Expiry date:</label>
+                                                    <label for="iso45001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                                     <input type="date" readonly id="iso45001_expirydate"
                                                         max="2999-12-31" name="iso45001_expirydate" class="form-control"
                                                         placeholder="Expiry Date">
                                                 </div>
                                                 <div class="col-lg-4 text-right">
-                                                    <label for="iso45001_description">Description:</label>
+                                                    <label for="iso45001_description">الوصف:</label>
                                                     <textarea id="iso45001_description" readonly name="iso45001_description" class="form-control"
                                                         placeholder="Description for ISO45001 Certificate"></textarea>
                                                 </div>
@@ -525,8 +518,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="reset" class="btn btn-secondary"
-                                            data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-danger">Update</button>
+                                            data-dismiss="modal">يلغي</button>
+                                        <button type="submit" class="btn btn-danger mx-2">تحديث البيانات</button>
                                     </div>
                         </form>
                     </div>

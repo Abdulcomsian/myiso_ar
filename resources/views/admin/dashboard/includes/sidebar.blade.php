@@ -53,7 +53,7 @@
                                 </g>
                             </svg> 
                         </span>
-                        <span class="kt-menu__link-text">Dashboard</span>
+                        <span class="kt-menu__link-text">لوحة المتابعة</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                 </li>
@@ -62,7 +62,7 @@
                         <span class="kt-menu__link-icon">
                             <i class="fa fa-user-plus" aria-hidden="true"></i>
                         </span>
-                        <span class="kt-menu__link-text">Add User</span>
+                        <span class="kt-menu__link-text">إضافة مستخدم</span>
                     </a>
                 </li>
                 <li class="kt-menu__item {{ Request::is('user*') ? 'kt-menu__item--open' : '' }}  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
@@ -70,8 +70,7 @@
                         <span class="kt-menu__link-icon">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </span>
-                        <span class="kt-menu__link-text">View Users
-                            List</span>
+                        <span class="kt-menu__link-text">عرض قائمة المستخدمين</span>
                     </a>
                 </li>
                 <!----<li class="kt-menu__item {{ Request::is('user*') ? 'kt-menu__item--open' : '' }}  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
@@ -89,7 +88,7 @@
                         <span class="kt-menu__link-icon">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
-                        <span class="kt-menu__link-text">Notifications</span>
+                        <span class="kt-menu__link-text">الإخطارات</span>
                         <span class="badge badge-primary count_notifications" style="color:#FFF !important;"></span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
@@ -101,7 +100,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Create Message</span>
+                                    <span class="kt-menu__link-text">إنشاء رسالة</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
@@ -109,7 +108,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Inbox</span>
+                                    <span class="kt-menu__link-text">صندوق الرسائل</span>
                                 </a>
                             </li>
 
@@ -118,7 +117,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Sent</span>
+                                    <span class="kt-menu__link-text"> تم الإرسال</span>
                                 </a>
                             </li>
                             
@@ -141,7 +140,7 @@
                         <span class="kt-menu__link-icon">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
-                        <span class="kt-menu__link-text">Notifications (Old)</span>
+                        <span class="kt-menu__link-text">الإخطارات (Old)</span>
                         {{-- <span class="badge badge-primary count_notifications" style="color:#FFF !important;"></span> --}}
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
@@ -161,7 +160,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Inbox</span>
+                                    <span class="kt-menu__link-text">صندوق الرسائل</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
@@ -169,7 +168,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Sent</span>
+                                    <span class="kt-menu__link-text">تم الإرسال</span>
                                 </a>
                             </li>
                             
@@ -184,7 +183,7 @@
                         <span class="kt-menu__link-icon">
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                         </span>
-                        <span class="kt-menu__link-text">Information for Users</span>
+                        <span class="kt-menu__link-text">معلومات خاصة بالمستخدمين</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                     <div class="kt-menu__submenu ">
@@ -195,7 +194,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">FAQs</span>
+                                    <span class="kt-menu__link-text">الأسئلة الشائعة</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
@@ -203,7 +202,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Videos</span>
+                                    <span class="kt-menu__link-text">مقاطع الفيديو</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
@@ -211,7 +210,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Quick Links</span>
+                                    <span class="kt-menu__link-text"> روابط سريعة</span>
                                 </a>
                             </li>
 

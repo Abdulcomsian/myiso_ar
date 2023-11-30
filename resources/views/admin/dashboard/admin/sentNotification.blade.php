@@ -48,8 +48,8 @@
                     <span class="kt-portlet__head-icon">
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
-                    <h3 class="kt-portlet__head-title">
-                        Sent
+                    <h3 class="kt-portlet__head-title mx-2">
+                        تم الإرسال
                     </h3>
 
                 </div>

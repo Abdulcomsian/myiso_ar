@@ -4,7 +4,7 @@
 <!-- begin:: Content -->
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-	<div class="row">
+	<div class="row text-right">
 		<div class="col-lg-12">
 
 
@@ -15,15 +15,15 @@
 						<span class="kt-portlet__head-icon">
 							<i class="kt-font-brand flaticon2-line-chart"></i>
 						</span>
-						<h3 class="kt-portlet__head-title">
-							User Forms
+						<h3 class="kt-portlet__head-title mx-2">
+							نماذج المستخدم
 						</h3>
 					</div>
 					<div class="kt-portlet__head-toolbar">
 						<div class="kt-portlet__head-wrapper">
 							<a href="/view_user" class="btn btn-clean btn-icon-sm">
+								خلف
 								<i class="la la-long-arrow-left"></i>
-								Back
 							</a>
 							&nbsp;
 							
@@ -39,14 +39,14 @@
 						
 						<thead>
 					<tr class="odd gradeX">
-								<th>ID</th>
-								<th>Forms and Records</th>
-								<th>Actions</th>
+								<th>الرقم</th>
+								<th>النماذج والسجلات</th>
+								<th>أجراءات</th>
 							</tr>
 							<tr class="odd gradeX">
 								
 								<td>1</td>
-								<td>Requirements Due</td>
+								<td>المتطلبات المطلوبة</td>
 								<td>
 								<a  href="/requiremntCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
@@ -55,7 +55,7 @@
 							</tr>
 							<tr class="odd gradeX">
 								<td>2</td>
-								<td>Process Audits</td>
+								<td>عمليات تدقيق العمليات</td>
 
 								<td>
 									<a  href="/ProcessCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -65,7 +65,7 @@
 							</tr>
 						<tr class="odd gradeX">
 								<td>3</td>
-								<td>Interested Parties</td>
+								<td>الأطراف المهتمة</td>
 								
 								<td>
 									<a  href="/interested_parties/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details: Interested Parties">
@@ -75,7 +75,7 @@
 							</tr>
 						<tr class="odd gradeX">
 								<td>4</td>
-								<td>QMS Audits</td>
+								<td>عمليات تدقيق نظام إدارة الجودة</td>
 								
 								<td>
 									<a  href="/AuditsCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -85,7 +85,7 @@
 							</tr>
 							<tr class="odd gradeX">
 								<td>5</td>
-								<td>Non-Conformities</td>
+								<td>عدم المطابقة</td>
 								
 								<td>
 									<a  href="/nonConformCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -95,7 +95,7 @@
 							</tr>
 				<tr class="odd gradeX">
 								<td>6</td>
-								<td>Customers</td>
+								<td>عملاء</td>
 								
 								<td>
 									<a  href="/customerCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -105,7 +105,7 @@
 							</tr>
 				<tr class="odd gradeX">
 								<td>7</td>
-								<td>Customer Review</td>
+								<td>رأي العميل</td>
 								
 								<td>
 									<a  href="/customerReviewad/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -115,7 +115,7 @@
 							</tr>
 				<tr class="odd gradeX">
 								<td>8</td>
-								<td>Suppliers</td>
+								<td>الموردين</td>
 								
 								<td>
 									<a href="/supplierCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -125,7 +125,7 @@
 							</tr>
 				<tr class="odd gradeX">
 								<td>9</td>
-								<td>Calibration</td>
+								<td>معايرة</td>
 								
 								<td>
 									<a href="/calibrationcheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -137,7 +137,7 @@
 
 				<tr class="odd gradeX">
 								<td>10</td>
-								<td>Employees</td>
+								<td>موظفين</td>
 								
 								<td>
 									<a  href="/EmployeCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -147,7 +147,7 @@
 							</tr>
 				<tr class="odd gradeX">
 								<td>11</td>
-								<td>Management Reviews</td>
+								<td>مراجعات الإدارة</td>
 								
 								<td>
 									<a href="/managementCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -157,7 +157,7 @@
 							</tr>
 				<tr class="odd gradeX">
 								<td>12</td>
-								<td>Maintenance Records</td>
+								<td>سجلات الصيانة</td>
 								
 								<td>
 									<a href="/maintainRecCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -167,7 +167,7 @@
 							</tr>
 				<tr class="odd gradeX">
 								<td>13</td>
-								<td>Accident Risk Assessments</td>
+								<td>تقييمات مخاطر الحوادث</td>
 								
 								<td>
 									<a href="/AccidentCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -178,7 +178,7 @@
 
 				<tr class="odd gradeX">
 								<td>14</td>
-								<td>Risk Assessments</td>
+								<td>تقييم المخاطر</td>
 								
 								<td>
 									<a href="/riskAssesmntCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -189,7 +189,7 @@
 
 				    <tr class="odd gradeX">
 					<td>15</td>
-					<td>Chemical Control</td>
+					<td>التحكم الكيميائي</td>
 					
 					<td>
 						<a href="/chemicalcheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
@@ -199,7 +199,7 @@
 				</tr>
 				<tr class="odd gradeX">
 								<td>16</td>
-								<td>Work Instructions</td>
+								<td>تعليمات العمل</td>
 								<td>
 									<a  href="/workinstructionCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
@@ -211,7 +211,7 @@
 				
 				<tr class="odd gradeX">
 					<td>17</td>
-					<td>Additional Policies</td>
+					<td>سياسات إضافية</td>
 					<td>
 						<a  href="/additionalpolicies/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 							<i class="fa fa-eye"></i>

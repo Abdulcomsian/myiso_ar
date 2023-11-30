@@ -53,14 +53,14 @@
 										</g>
 									</svg>
 						</span>
-						<span class="kt-menu__link-text">Dashboard</span>
+						<span class="kt-menu__link-text">لوحة المتابعة</span>
 						<i class="kt-menu__ver-arrow la la-angle-right kt-menu__toggle"></i>
 					</a>
 					<div class="kt-menu__submenu">
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 							<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">	  <span class="kt-menu__link">
-									<span class="kt-menu__link-text">Document Register</span>
+									<span class="kt-menu__link-text">سجل الوثيقة</span>
 									<span class="kt-menu__link-badge">
 										<span class="kt-badge kt-badge--rounded kt-badge--brand">
 										2
@@ -73,7 +73,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Document Register</span>
+									<span class="kt-menu__link-text">سجل الوثيقة</span>
 								</a>
 							</li>
 						</ul>
@@ -84,14 +84,14 @@
 						<span class="kt-menu__link-icon">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
-						<span class="kt-menu__link-text">Manuals and Policies</span>
+						<span class="kt-menu__link-text">الأدلة والسياسات</span>
 						<i class="kt-menu__ver-arrow la la-angle-right"></i>
 					</a>
 					<div class="kt-menu__submenu ">
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 							<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">	  <span class="kt-menu__link">
-									<span class="kt-menu__link-text">User Pages</span>
+									<span class="kt-menu__link-text">صفحات المستخدم</span>
 									<span class="kt-menu__link-badge">
 										<span class="kt-badge kt-badge--rounded kt-badge--brand">
 										2
@@ -104,7 +104,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Quality Manual</span>
+									<span class="kt-menu__link-text">دليل الجودة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -112,7 +112,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Quality Policy</span>
+									<span class="kt-menu__link-text"> سياسة الجودة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -120,7 +120,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Environmental Policy</span>
+									<span class="kt-menu__link-text"> السياسة البيئية</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -128,7 +128,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Health and Safety Policy</span>
+									<span class="kt-menu__link-text"> سياسة الصحة والسلامة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -136,7 +136,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Management Organogram</span>
+									<span class="kt-menu__link-text"> الهيكل التنظيمي للإدارة</span>
 								</a>
 							</li>
 						</ul>
@@ -147,14 +147,14 @@
 						<span class="kt-menu__link-icon">
 							<i class="fa fa-spinner" aria-hidden="true"></i>
 						</span>
-						<span class="kt-menu__link-text">Processes</span>
+						<span class="kt-menu__link-text">العمليات</span>
 						<i class="kt-menu__ver-arrow la la-angle-right"></i>
 					</a>
 					<div class="kt-menu__submenu ">
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 							<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">	  <span class="kt-menu__link">
-									<span class="kt-menu__link-text">User Pages</span>
+									<span class="kt-menu__link-text">صفحات المستخدم</span>
 									<span class="kt-menu__link-badge">
 										<span class="kt-badge kt-badge--rounded kt-badge--brand">
 										2
@@ -167,7 +167,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">QP1-Sales Process</span>
+									<span class="kt-menu__link-text">إجراء الجودة 1 - عملية المبيعات</span>
 								</a>
 							</li>
 							<li class="kt-menu__item" aria-haspopup="true">
@@ -175,7 +175,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">QP2-Purchasing Process</span>
+									<span class="kt-menu__link-text">إجراء الجودة 2 - عملية الشراء</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -183,7 +183,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">QP3-Servicing of a Contract</span>
+									<span class="kt-menu__link-text">إجراء الجودة 3 - تنفيذ بنود العقد</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -191,7 +191,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">QP4-Competency Process</span>
+									<span class="kt-menu__link-text">إجراء الجودة 4 - عملية الكفاءة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -199,7 +199,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Process Interaction</span>
+									<span class="kt-menu__link-text">تفاعل العملية</span>
 								</a>
 							</li>
 						</ul>
@@ -210,14 +210,14 @@
 						<span class="kt-menu__link-icon">
 							<i class="fa fa-gear"></i>
 						</span>
-						<span class="kt-menu__link-text">Procedures</span>
+						<span class="kt-menu__link-text">الإجراءات</span>
 						<i class="kt-menu__ver-arrow la la-angle-right"></i>
 					</a>
 					<div class="kt-menu__submenu ">
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 							<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">	  <span class="kt-menu__link">
-									<span class="kt-menu__link-text">User Pages</span>
+									<span class="kt-menu__link-text">صفحات المستخدم</span>
 									<span class="kt-menu__link-badge">
 										<span class="kt-badge kt-badge--rounded kt-badge--brand">
 										2
@@ -230,7 +230,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">P1-Documented Information</span>
+									<span class="kt-menu__link-text">الإجراء 1 - المعلومات الموثقة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -238,7 +238,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">P2-Corrective Actions</span>
+									<span class="kt-menu__link-text text-right">الإجراء 2 - الإجراءات التصحيحية بما في ذلك حالات عدم المطابقة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -246,7 +246,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">P3-Management Review</span>
+									<span class="kt-menu__link-text">الإجراء 3 - المراجعة الإدارية</span>
 								</a>
 							</li>
 							<li class="kt-menu__item" aria-haspopup="true">
@@ -254,7 +254,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">P4-Monitoring and measuring equipment</span>
+									<span class="kt-menu__link-text">الإجراء 4 - أدوات الرقابة والقياس</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -262,7 +262,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">P5-Audits</span>
+									<span class="kt-menu__link-text">الإجراء 5 - عمليات التدقيق</span>
 								</a>
 							</li>
 						</ul>
@@ -273,14 +273,14 @@
 						<span class="kt-menu__link-icon">
 							<i class="fab fa-wpforms"></i>
 						</span>
-						<span class="kt-menu__link-text">Forms and Records</span>
+						<span class="kt-menu__link-text">النماذج والسجلات</span>
 						<i class="kt-menu__ver-arrow la la-angle-right"></i>
 					</a>
 					<div class="kt-menu__submenu ">
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 							<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">	  <span class="kt-menu__link">
-									<span class="kt-menu__link-text">User Pages</span>
+									<span class="kt-menu__link-text">صفحات المستخدم</span>
 									<span class="kt-menu__link-badge">
 										<span class="kt-badge kt-badge--rounded kt-badge--brand">
 										2
@@ -293,7 +293,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Requirements Due</span>
+									<span class="kt-menu__link-text">المتطلبات المطلوبة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -301,7 +301,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Process Audits</span>
+									<span class="kt-menu__link-text"> عمليات التدقيق</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -309,7 +309,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Interested Parties</span>
+									<span class="kt-menu__link-text">الأطراف المعنية</span>
 								</a>
 							</li>
 							
@@ -318,7 +318,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">QMS Audits</span>
+									<span class="kt-menu__link-text">عمليات تدقيق نظام إدارة الجودة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -326,7 +326,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Non-Conformities</span>
+									<span class="kt-menu__link-text">حالات عدم المطابقة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -334,7 +334,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Customers</span>
+									<span class="kt-menu__link-text">العملاء</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -342,7 +342,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Customer Review</span>
+									<span class="kt-menu__link-text">مراجعة العملاء</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -350,7 +350,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Suppliers</span>
+									<span class="kt-menu__link-text">الموردون</span>
 								</a>
 							</li>
 							<li class="kt-menu__item" aria-haspopup="true">
@@ -358,7 +358,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Calibration</span>
+									<span class="kt-menu__link-text">المعايرة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -366,7 +366,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Employees</span>
+									<span class="kt-menu__link-text">الموظفون</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -374,7 +374,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Management Reviews</span>
+									<span class="kt-menu__link-text">المراجعات الإدارية</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -382,7 +382,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Maintenance Records</span>
+									<span class="kt-menu__link-text"> سجلات الصيانة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -390,7 +390,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Accident Risk Assessments</span>
+									<span class="kt-menu__link-text">تقييمات مخاطر الحوادث</span>
 								</a>
 							</li>
 
@@ -399,7 +399,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Risk Assessments</span>
+									<span class="kt-menu__link-text"> التحكم الكيميائي</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -407,7 +407,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Chemical Control</span>
+									<span class="kt-menu__link-text"> تقييمات المخاطر</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -415,7 +415,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Work Instructions</span>
+									<span class="kt-menu__link-text">تعليمات العمل</span>
 								</a>
 							</li>
 						</ul>
@@ -436,7 +436,7 @@
                         <span class="kt-menu__link-icon">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
-                        <span class="kt-menu__link-text">Notifications</span>
+                        <span class="kt-menu__link-text">الإخطارات</span>
                         <span class="badge badge-primary count_notifications" style="color:#FFF !important;"></span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
@@ -448,7 +448,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Create Message</span>
+                                    <span class="kt-menu__link-text">إنشاء رسالة</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
@@ -456,7 +456,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Inbox</span>
+                                    <span class="kt-menu__link-text">صندوق الرسائل</span>
                                 </a>
                             </li>
 
@@ -465,7 +465,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Sent</span>
+                                    <span class="kt-menu__link-text">تم الإرسال</span>
                                 </a>
                             </li>
                             
@@ -504,7 +504,7 @@
 						<span class="kt-menu__link-icon">
 							<i class="fab fa-wpforms"></i>
 						</span>
-						<span class="kt-menu__link-text">Support</span>
+						<span class="kt-menu__link-text">الدعم</span>
 						<i class="kt-menu__ver-arrow la la-angle-right"></i>
 					</a>
 					<div class="kt-menu__submenu ">
@@ -515,7 +515,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">FAQ's</span>
+									<span class="kt-menu__link-text">الأسئلة الشائعة</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -523,7 +523,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">Training Videos</span>
+									<span class="kt-menu__link-text">فيديوهات التدريب</span>
 								</a>
 							</li>
 							<!--<li class="kt-menu__item " aria-haspopup="true">-->
@@ -542,7 +542,7 @@
 						<span class="kt-menu__link-icon">
 							<i class="fab fa-wpforms"></i>
 						</span>
-						<span class="kt-menu__link-text">ISO Online Courses</span>
+						<span class="kt-menu__link-text">دورات ISO عبر الإنترنت</span>
 						<i class="kt-menu__ver-arrow la la-angle-right"></i>
 					</a>
 					<div class="kt-menu__submenu ">

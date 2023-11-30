@@ -72,8 +72,8 @@
                     <span class="kt-portlet__head-icon">
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
-                    <h3 class="kt-portlet__head-title">
-                        Disscussion
+                    <h3 class="kt-portlet__head-title mx-2">
+                        مناقشة
                     </h3>
                 </div>
 
@@ -81,8 +81,8 @@
             <div class="kt-portlet__body">
                 <h2 class="col-md-12 mb-0 mt-2">
                     <a href="{{ route('receiveNotification') }}">
-                        <button class="btn btn-primary mb-3" type="button"><i class="fa fa-arrow-left"
-                                aria-hidden="true"></i>Back</button>
+                        <button class="btn btn-primary mb-3" type="button">خلف<i class="fa fa-arrow-left"
+                                aria-hidden="true"></i></button>
                     </a>
                     {{-- <button class="btn btn-primary mb-3" type="button" onclick="replyBox()">Reply</button> --}}
                 </h2>
@@ -118,7 +118,7 @@
                         <div class="col-md-12">
                             @foreach ($message_information as $item)
                                 @if (Auth::user()->id == $item->send_by)
-                                    <div class="card mb-3 ml-5">
+                                    <div class="card mb-3 mr-5">
                                         <div class="card-header">
                                             <div class="d-flex justify-content-between">
                                                 <div>
@@ -131,30 +131,28 @@
                                         </div>
                                         <div class="card-body">
                                             @if ($item->title)
-                                                <h5 class="card-title">Subject: {{ $item->title }}</h5>
+                                                <h5 class="card-title text-right">Subject: {{ $item->title }}</h5>
                                             @else
-                                                <h5 class="card-title">(no subject)</h5>
+                                                <h5 class="card-title text-right">(no subject)</h5>
                                             @endif
                                             <p class="card-text">{{ $item->message }}</p>
-                                            @if ($item->attachement)
-                                                <a href="{{ asset($item->attachement) }}" download>
+                                            @if ($item->attachement)                                            
+                                               <p><a href="{{ asset($item->attachement) }}" download>
                                                     <i class="fa fa-paperclip"></i> Attachment
-                                                </a>
+                                                </a></p>
                                             @endif
                                         </div>
                                     </div>
                                 @else
                                     <div class="card mb-3">
                                         {{-- using modal reply popup  --}}
-                                        <div class="card-header">
-                                            <div class="row">
-                                                <div class="col-md-8">
+                                        <div class="card-header"> 
+                                            <div class="d-flex justify-content-between">
+                                                <div>
                                                     <strong>From - {{ $item->name }}</strong>
                                                 </div>
-                                                <div class="col-md-4 text-right">
-                                                    <span
-                                                        class="text-muted">{{ date('d/m/Y H:i:sA', strtotime($item->created_at)) }}</span>
-                                                    
+                                                <div class="text-muted">
+                                                    {{ date('d/m/Y H:i:sA', strtotime($item->created_at)) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -165,12 +163,11 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">                                                                                      
-                                                        <h5 class="modal-title" id="replyModalLabel">Replying to
+                                                        <h5 class="modal-title" id="replyModalLabel">الرد على
                                                             {{ $item->name }}</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+                                                        <a data-dismiss="modal" aria-label="Close">
+                                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                                        </a>
                                                     </div>
                                                     <div class="modal-body">
                                                         <form action="{{ route('storeReplyMessageAdmin') }}" method="post" enctype="multipart/form-data">
@@ -182,14 +179,14 @@
                                                                     <input type="hidden" name="sender" value="{{ $item->send_by }}">
                                                                     <input type="hidden" name="parentId" id="parentMessageId" value="">
                                                                     <textarea class="form-control" name="replyMessage" rows="4" id="replyTextarea" placeholder="Write your reply here"></textarea>
-                                                                    <label class="form-label mt-2" for="attachment">Add Attachment (If Any)</label>
+                                                                    <p><label class="form-label mt-2" for="attachment">إضافة مرفق (إن وجد)</label></p>
                                                                     <div class="kt-input-icon kt-input-icon--right">
                                                                         <input type="file" name="attachment"
                                                                             class="form-control" id="attachment">
                                                                     </div>                                                                   
                                                                 </div>
                                                                 <div class="text-right mt-2">
-                                                                    <button type="submit" class="btn btn-primary mt-2" id="sendReplyButton">Send <i
+                                                                    <button type="submit" class="btn btn-primary mt-2" id="sendReplyButton">يرسل <i
                                                                             class="fa fa-paper-plane" aria-hidden="true"></i></button>
                                                                 </div>
                                                             </form>
@@ -208,23 +205,23 @@
                                         ?>
                                         <div class="card-body">
                                             @if ($item->title)
-                                                <h5 class="card-title">Subject: {{ $item->title }}</h5>
+                                                <h5 class="card-title text-right">Subject: {{ $item->title }}</h5>
                                             @else
-                                                <h5 class="card-title">(no subject)</h5>
+                                                <h5 class="card-title text-right">(no subject)</h5>
                                             @endif
                                             <p class="card-text">{{ $item->message }}</p>
                                             @if ($item->attachement)
-                                            <a href="{{ asset($item->attachement) }}" download>
+                                            <p><a href="{{ asset($item->attachement) }}" download>
                                                 <i class="fa fa-paperclip"></i> Attachment
-                                            </a>
+                                            </a></p>
                                             @endif
-                                            <br><button class="btn btn-primary mt-2 reply-button" 
+                                            <br><p><button class="btn btn-primary mt-2 reply-button text-right" 
                                             data-message-subject="{{ $item->title }}" 
                                             data-unique-id="{{ $item->unique_id }}"
                                             data-parent-id="{{ $parent_message_id }}" 
                                             type="button"
                                             data-toggle="modal" 
-                                            data-target="#replyModal">Reply</button>
+                                            data-target="#replyModal">Reply</button></p> 
                                         </div>
                                     </div>
                                 @endif

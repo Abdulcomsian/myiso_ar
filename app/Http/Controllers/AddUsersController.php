@@ -362,9 +362,9 @@ public function store(Request $request)
             $addusers->expiry_date = $expiry;
 
             $addusers->save();
-            return redirect('/add_user')->with("Success", "User added Successfully.");
+            return redirect('/add_user')->with("Success", "تمت إضافة المستخدم بنجاح.");
         } catch (Exception $exc) {
-            return redirect('/add_user')->with("Error", "Error saving data, please try again.");
+            return redirect('/add_user')->with("Error", "حدث خطأ أثناء حفظ البيانات، يرجى المحاولة مرة أخرى.");
         }
     }
 
@@ -591,7 +591,7 @@ public function store(Request $request)
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['send_by'] = $user_id;
         if($users==NULL){
-            return redirect()->back()->with('error', 'Please select at least one User');
+            return redirect()->back()->with('error', 'الرجاء تحديد مستخدم واحد على الأقل');
         }else{
             foreach ($users as $user){
                 $randomBytes = random_bytes(4); 
@@ -607,7 +607,7 @@ public function store(Request $request)
                 // $user->notify($notificationMessage);
                 DB::table('users_messages')->where('id', $request->input('replied'))->update(['replied' => 1]);
             }
-            return redirect()->back()->with('success', 'Your message has been Sent');
+            return redirect()->back()->with('success', 'تم ارسال رسالتك');
         }
     }
 
@@ -1545,7 +1545,7 @@ public function store(Request $request)
 					'category' => $request['category']
 				)
 			);
-	session()->flash('msg', 'Question added successfully.');
+	session()->flash('msg', 'تمت إضافة السؤال بنجاح.');
     return redirect()->back();
     }
 
@@ -1553,7 +1553,7 @@ public function store(Request $request)
         $insert = DB::table('faqs_categories')->insert(
 			array('name' => $request['faq_cate'])
 		);
-	session()->flash('msg', 'Category added successfully.');
+	session()->flash('msg', 'تمت إضافة الفئة بنجاح.');
     return redirect()->back();
     }
 	public function faq_edit($id){
@@ -1574,19 +1574,19 @@ public function store(Request $request)
 					'category' => $request['category']
 				)
 			);
-	session()->flash('msg', 'Question updated successfully.');
+	session()->flash('msg', 'تم تحديث السؤال بنجاح.');
     return redirect(url('/all_faqs'));
 	}
 
 	public function faq_delete(Request $request){
 		DB::table('faqs')->delete($request['id']);
-			session()->flash('msg', 'FAQ deleted successfully.');
+			session()->flash('msg', 'تم حذف الأسئلة الشائعة بنجاح.');
     return redirect()->back();
 	}
 
 	public function cat_delete(Request $request){
 		DB::table('faqs_categories')->delete($request['id']);
-			session()->flash('msg', 'Category deleted successfully.');
+			session()->flash('msg', 'تم حذف الفئة بنجاح.');
         return redirect()->back();
 	}
 
@@ -1598,7 +1598,7 @@ public function store(Request $request)
 					'category' => $request['category']
 				)
 			);
-	session()->flash('msg', 'Quick link added successfully.');
+	session()->flash('msg', 'تمت إضافة الرابط السريع بنجاح.');
     return redirect()->back();
     }
 
@@ -1612,7 +1612,7 @@ public function store(Request $request)
     $insert = DB::table('quick_links_categories')->insert(
 			array('name' => $request['quicklink_cate'])
 		);
-	session()->flash('msg', 'Quick link category added successfully.');
+	session()->flash('msg', 'تمت إضافة فئة الارتباط السريع بنجاح.');
 	 return redirect(url('/all_quick_links'));
 
     }
@@ -1632,19 +1632,19 @@ public function store(Request $request)
 					'category' => $request['category']
 				)
 			);
-	session()->flash('msg', 'Quick link updated successfully.');
+	session()->flash('msg', 'تم تحديث الرابط السريع بنجاح.');
     return redirect(url('/all_quick_links'));
 	}
 
     public function quick_link_delete(Request $request){
 		DB::table('quick_links')->delete($request['id']);
-			session()->flash('msg', 'Quick link deleted successfully.');
+			session()->flash('msg', 'تم حذف الرابط السريع بنجاح.');
     return redirect()->back();
 	}
 
 	 public function quick_link_category_delete(Request $request){
 		DB::table('quick_links_categories')->delete($request->category_id);
-		session()->flash('msg', 'Category deleted successfully.');
+		session()->flash('msg', 'تم حذف الفئة بنجاح.');
         return redirect()->back();
 	}
 /**/
@@ -1671,7 +1671,7 @@ public function store(Request $request)
 				)
 			);
 
-	session()->flash('msg', 'Video added successfully.');
+	session()->flash('msg', 'تمت إضافة الفيديو بنجاح.');
     return redirect()->back();
     }
 
@@ -1694,13 +1694,13 @@ public function store(Request $request)
 					'video' => $request['video']
 				)
 			);
-	session()->flash('msg', 'Video updated successfully.');
+	session()->flash('msg', 'تم تحديث الفيديو بنجاح.');
     return redirect(url('/all_videos'));
 	}
 
     public function video_delete(Request $request){
 		DB::table('videos')->delete($request['id']);
-			session()->flash('msg', 'Video deleted successfully.');
+			session()->flash('msg', 'تم حذف الفيديو بنجاح.');
     return redirect()->back();
 	}
 
@@ -1728,7 +1728,7 @@ public function store(Request $request)
             if ($validator->fails())
             {
                 return response()->json([
-                    'message'=> 'Please try again ,validation failed',
+                    'message'=> 'الرجاء المحاولة مرة أخرى، فشل التحقق من الصحة',
                     'status'=> 0
                 ]);
             }
@@ -1747,7 +1747,7 @@ public function store(Request $request)
             ]);
         }catch (\Exception $exception){
             return response()->json([
-                'message'=> 'Please try again ,validation failed',
+                'message'=> 'الرجاء المحاولة مرة أخرى، فشل التحقق من الصحة',
                 'status'=> 0
             ]);
         }

@@ -29,7 +29,7 @@
 @section('content')
 <style>tr.New>td {    color: #000 !important;    font-weight: 800;    cursor: pointer;}tr.New>button {    color: #FFF !important;    font-weight: 800;    cursor: pointer;}</style>
 <!-- begin:: Content -->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="kt-content  kt-grid__item kt-grid__item--fluid text-right" id="kt_content">
 	@if ($message = Session::get('success'))
 	<div class="alert alert-light alert-elevate" role="alert">
 		<!-- <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div> -->
@@ -59,8 +59,8 @@
 				<span class="kt-portlet__head-icon">
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					Login reminder Message
+				<h3 class="kt-portlet__head-title mx-2">
+					رسالة تذكير تسجيل الدخول
 				</h3>
 			</div>
 			<div class="kt-portlet__head-toolbar">
@@ -125,11 +125,11 @@
     				<input type="hidden" name="id" id="editvalue" value="">
     				<div class="form-group row">
     					<div class="col-lg-8">
-    						<label for="title">Subject:</label>
+    						<label for="title">الموضوع</label>
     						<input type="text" id="title" name="title" class="form-control" placeholder="Please enter Message Subject">
     					</div>
                         <div class="col-md-4">
-    						<label for="attachment">Attachment</label>
+    						<label for="attachment">المرفق</label>
     						<div class="kt-input-icon kt-input-icon--right">
     						<input type="file" name="attachment" class="form-control" id="attachment">
     						</div>
@@ -138,12 +138,12 @@
     
     
     					<div class="col-lg-12">
-    						<label for="message">Message:</label>
+    						<label for="message">رسالة إلى المسؤول</label>
     						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="Please enter your Message"></textarea>
     					</div>
     					<br>
     					<div class="col-lg-4">
-    						<label for="address1">Select Last Login Start Date:</label>
+    						<label for="address1">حدد تاريخ بدء آخر تسجيل دخول:</label>
 							<!-- <div class="kt-input-icon kt-input-icon--right"> -->
     							<input type="text" name="startdate" id="start_date" class="form-control startdate" id="last_login">
     						<!-- </div> -->
@@ -157,7 +157,7 @@
     						</div> -->
     					</div>
 						<div class="col-lg-4">
-    						<label for="address1">Select Last Login End Date:</label>
+    						<label for="address1">حدد تاريخ انتهاء آخر تسجيل دخول:</label>
 							<!-- <div class="kt-input-icon kt-input-icon--right"> -->
     							<input type="text" name="enddate" id="end_date" class="form-control enddate" id="last_login">
     						<!-- </div> -->
@@ -171,20 +171,20 @@
     						</div> -->
     					</div>
     					<div class="col-lg-4">
-    						<label for="address1">Filter By Certificate:</label>
+    						<label for="address1">التصفية حسب الشهادة:</label>
     						<div class="kt-input-icon kt-input-icon--right">
     							<select id="filter_by_certificate" class="form-control">
-    								<option value="">Select Certificate</option>
-    								<option value="iso9001_certificate">ISO9001 Certificate</option>
-    								<option value="iso14001_certificate">ISO14001 Certificate</option>
-    								<option value="iso45001_certificate">ISO45001 Certificate</option>
-    								<option value="ims">IMS</option>
-    								<option value="all">ALL</option>
+    								<option value="">حدد الشهادة</option>
+    								<option value="iso9001_certificate">شهادة ISO9001</option>
+    								<option value="iso14001_certificate">شهادة ISO14001</option>
+    								<option value="iso45001_certificate">شهادة ISO45001</option>
+    								<option value="ims">آي إم إس</option>
+    								<option value="all">الجميع</option>
     							</select>
     						</div>
     					</div>
     					<div class="col-lg-12">
-    						<label for="address1">Send to:</label>
+    						<label for="address1">ارسل إلى:</label>
     						<div class="kt-input-icon kt-input-icon--right">
     							<select name="userid[]" id="langOpt3" class="form-control" multiple>
     								@foreach ($users as $item)
@@ -206,7 +206,7 @@
     	</div>
     
     	<div class="modal-footer">
-    		<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm"><i class="fa fa-paper-plane"></i>  Send </button>
+    		<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm"> يرسل  <i class="fa fa-paper-plane fa-flip-horizontal"></i></button>
     	</div>
     
     </form>

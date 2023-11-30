@@ -48,7 +48,7 @@
         <!--Begin::Dashboard 1-->
 
         <!--Begin::Section-->
-        <div class="row">
+        <div class="row text-right">
             <div class="col-xl-4">
 
                 <!--begin:: Widgets/Activity-->
@@ -89,7 +89,7 @@
                                             </svg> </span>
                                         <span class="kt-widget17__subtitle text-warning">
                                             <a href="{{ url('quality_manual') }}">
-                                                Main Procedures and Forms</a>
+                                                الإجراءات والنماذج الرئيسية</a>
                                         </span>
                                     </div>
                                     <div class="kt-widget17__item newColor">
@@ -109,7 +109,7 @@
                                             </svg> </span>
                                         <span class="kt-widget17__subtitle text-success">
                                             <a href="{{ url('sale_processes') }}">
-                                                Processes</a>
+                                                العمليات</a>
 
                                         </span>
                                     </div>
@@ -132,7 +132,7 @@
                                             </svg> </span>
                                         <span class="kt-widget17__subtitle text-warning">
                                             <a href="{{ url('documented_information') }}">
-                                                Procedures</a>
+                                                الإجراءات</a>
 
                                         </span>
                                     </div>
@@ -157,7 +157,7 @@
                                                 </svg><!--end::Svg Icon--></span>
                                         </span>
                                         <span class="kt-widget17__subtitle">
-                                            <a href="{{ url('requirements_aspect') }}"> Forms and Records</a>
+                                            <a href="{{ url('requirements_aspect') }}"> النماذج والسجلات</a>
 
                                         </span>
                                     </div>
@@ -182,7 +182,7 @@
                                         <span class="kt-widget17__subtitle">
 
                                             <a href="{{ url('work_instruction') }}">
-                                                Local Work Instructions</a>
+                                                تعليمات العمل المحلية</a>
                                         </span>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Requirements Due.
+                                المتطلبات المطلوبة:
                             </h3>
                         </div>
                     </div>
@@ -212,12 +212,12 @@
                             id="kt_table_agent">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Requirements</th>
-                                    <th>Date Completed</th>
-                                    <th>Periodicity (Months)</th>
-                                    <th>Due Date</th>
-                                    <th>Action</th>
+                                    <th>الرقم</th>
+                                    <th>المتطلبات</th>
+                                    <th>تاريخ الاستكمال</th>
+                                    <th>التواتر (بالأشهر)</th>
+                                    <th>تاريخ الاستحقاق</th>
+                                    <th>الإجراء</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -275,7 +275,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Calibration Due
+                                المعايرة المطلوبة
                             </h3>
                         </div>
                     </div>
@@ -287,13 +287,13 @@
                             id="kt_table_agent">
                             <thead>
                                 <tr>
-                                    <th>Equipment ID</th>
-                                    <th>Equipment Name</th>
-                                    <th>Serial Number</th>
-                                    <th>Date Calibrated</th>
-                                    <th>Frequency</th>
-                                    <th>Date Due</th>
-                                    <th>Action</th>
+                                    <th>رقم تعريف الأداة</th>
+                                    <th>اسم الأداة</th>
+                                    <th>الرقم التسلسلي</th>
+                                    <th>تاريخ المعايرة</th>
+                                    <th>معدل التكرار</th>
+                                    <th>تاريخ الاستحقاق</th>
+                                    <th>الإجراء</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -314,8 +314,9 @@
                                         <!--                 <td>{{ date('d/m/Y', $d) }}</td>-->
                                         <td>{{ date('d/m/Y', strtotime($data->calibratedDate)) }}</td>
                                         <td>{{ $data->freq }}</td>
-                                        @php$d = strtotime("+$data->freq months", strtotime($data->calibratedDate));
-                                        @endphp
+                                        <?php
+                                        $d = strtotime("+$data->freq months", strtotime($data->calibratedDate));
+                                        ?>
                                         <td> {{ date('d/m/Y', $d) }}</td>
                                         <td><a href="javascript:;" data-toggle="modal" data-id="{{ $data->id }}"
                                                 class="calibrationModal" class="btn btn-sm btn-clean btn-icon btn-icon-md"
@@ -354,7 +355,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                ISO Certificates
+                                شهادات ISO
                             </h3>
                         </div>
                     </div>
@@ -370,10 +371,10 @@
                                     id="kt_table_agent">
                                     <thead>
                                         <tr>
-                                            <th>Certificate</th>
-                                            <th>Link</th>
-                                            <th>Description</th>
-                                            <th>Expiry</th>
+                                            <th>الشهادة</th>
+                                            <th>الرابط</th>
+                                            <th>الوصف</th>
+                                            <th>تاريخ انتهاء الصلاحية</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -430,7 +431,7 @@
                     <div class="kt-portlet__head" style="border-bottom: none">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Audit Report
+                                تقرير التدقيق
                             </h3>
                         </div>
                     </div>
@@ -439,10 +440,10 @@
                             <div class="row ml-0 mr-0 table-responsive">
                                 @if (!empty($user['audit_report']))
                                     <a href="public/{{ $user['audit_report'] }}" target="_blank" class="text-dark ml-2">
-                                        Click to view Audit report
+                                        انقر لعرض تقرير التدقيق
                                     </a>
                                 @else
-                                    <p class="text-dark ml-2">Not found</p>
+                                    <p class="text-dark ml-2">غير معثور عليه</p>
                                 @endif
                             </div>
                         </div>
@@ -450,7 +451,7 @@
                     <div class="kt-portlet__head" style="border-bottom: none">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Auditor Comments
+                                ملاحظات المدقق
                             </h3>
                         </div>
                     </div>
@@ -460,7 +461,7 @@
                                 @if (!empty($user['audit_comment']))
                                     {{ $user['audit_comment'] }}
                                 @else
-                                    <p class="text-dark ml-2">Not Comment</p>
+                                    <p class="text-dark ml-2">لا تعليق</p>
                                 @endif
                             </div>
                         </div>
@@ -481,19 +482,20 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deleting Calibration Due</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف استحقاق المعايرة</h5>
+                    <a data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="modal-body">
-                    <p>Do you really want to delete this entry?</p>
+                    <p>هل تريد حقًا حذف هذا الإدخال؟</p>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('deletecaliberinfo') }}" method="POST">
                         @csrf
                         <input type="hidden" name="id" id="req_id2" value="" />
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                        <button type="submit" class="btn btn-danger">نعم</button>
                     </form>
                 </div>
             </div>
@@ -506,20 +508,20 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deleting Requirements Due</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف المتطلبات المستحقة</h5>
+                    <a data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this entry?</p>
+                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                     <form action="{{ route('deleteRequirementadmin') }}" method="POST">
                         @csrf
                         <input type="hidden" name="id" id="req_id" value="" />
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Delete Requirement</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">حذف المتطلبات</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
                 </div>
                 </form>
             </div>
