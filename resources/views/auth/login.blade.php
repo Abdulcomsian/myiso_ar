@@ -116,7 +116,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="kt-login__container">
 							<div class="kt-login__logo">
 								<a href="#">
-									<img src="{{asset('/assets/media/logos/ISOOnline Arabic Logo.jpg')}}" class="img-fluid">
+									<img src="{{asset('assets/media/logos/ISOOnline Arabic Logo.jpg')}}" class="img-fluid">
 								</a>
 							</div>
 							<div class="kt-login__signin">
