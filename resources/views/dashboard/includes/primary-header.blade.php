@@ -113,7 +113,7 @@
                          <a href="{{ route('userprofile') }}">
                              <div class="kt-header__topbar-wrapper">
                                  <span class="kt-header__topbar-icon my_account_text">
-                                     My Account
+                                 حسابي
                                  </span>
 
                              </div>
@@ -129,7 +129,7 @@
                          <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                              <div class="kt-header__topbar-user">
                                  {{-- <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span> --}}
-                                 <span class="kt-header__topbar-username kt-hidden-mobile">Sign Out</span>
+                                 <span class="kt-header__topbar-username kt-hidden-mobile">خروج</span>
                                  <img class="kt-hidden" alt="Pic" src="../assets/media/users/300_25.jpg" />
 
                                  <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
@@ -162,10 +162,10 @@
                                  <div class="kt-notification__custom">
                                      <form action="{{ route('logout') }}" method="GET">
                                          <input type="submit" class="btn btn-label-brand btn-sm btn-bold"
-                                             value="Sign Out">
+                                             value="خروج">
                                      </form>
 
-                                     {{-- <a href="custom_user_login-v2.html" target="_blank" class="btn btn-label-brand btn-sm btn-bold">Sign Out</a> --}}
+                                     {{-- <a href="custom_user_login-v2.html" target="_blank" class="btn btn-label-brand btn-sm btn-bold">خروج</a> --}}
 
                                  </div>
                              </div>
@@ -188,7 +188,7 @@
                      <div class="kt-subheader__main">
                          <h3 class="kt-subheader__title">{{ Auth::user()->company_name }}</h3>
                          <span class="kt-subheader__separator kt-subheader__separator--v"></span>
-                         <span class="kt-subheader__desc"><b>Company ID:</b> {{ Auth::user()->order_number }} </span>
+                         <span class="kt-subheader__desc"><b>هوية الشركة:</b> {{ Auth::user()->order_number }} </span>
                          <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
                              <input type="text" class="form-control" placeholder="Search order..."
                                  id="generalSearch">
@@ -201,7 +201,7 @@
                          <div class="kt-subheader__wrapper">
                              <span class="kt-subheader__separator kt-subheader__separator--v">
                                  <p class="kt-subheader__title">
-                                     <b>Expiry Date:</b>
+                                     <b>تاريخ انتهاء الصلاحية:</b>
                                      @php
                                          $iso9001 = Auth::user()->iso9001_expirydate;
                                          $iso14001 = Auth::user()->iso14001_expirydate;

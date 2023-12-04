@@ -134,10 +134,10 @@ License: You must have a valid license purchased only from themeforest(the above
 								<form class="kt-form" method="POST" action="{{ route('login') }}">
 									@csrf
 									<div class="input-group">
-										<input class="form-control @error('email') is-invalid @enderror" type="email"  placeholder="Email Address" name="email" autocomplete="off" value="{{ old('email') }}" required autocomplete="email" autofocus>
+										<input class="form-control @error('email') is-invalid @enderror" type="email"  placeholder="عنوان البريد الإلكتروني" name="email" autocomplete="off" value="{{ old('email') }}" required autocomplete="email" autofocus>
 									</div>
 									<div class="input-group">
-										<input class="form-control" type="password" placeholder="Password" name="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+										<input class="form-control" type="password" placeholder="كلمة المرور" name="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 									</div>
 									<div class="d-flex justify-content-between kt-login__extra pl-0 ml-0 mt-3" id="login_box">
 										<div class="">
@@ -148,15 +148,15 @@ License: You must have a valid license purchased only from themeforest(the above
 													<input class="form-check-input agreeInput mt-0 mr-1" id="firstCheckbox" type="checkbox" value="">
 													<button type="button" style="margin-right: 10px;" class="btn p-0 modal_btn" data-toggle="modal" data-target="#exampleModal">
 														<label class="form-check-label" style="width:300px;">
-															I Agree to the Terms and Conditions
+														أوافق على الشروط والأحكام.
 														</label>
 													</button>
 		
 												<!-- Modal -->
 												</div>
 										</div>
-										<div class="">
-											<a href="javascript:;" id="kt_login_forgot" style="font-size:15px;" class="kt-login__link">Forgot Password</a>
+										<div class="mt-4">
+											<a href="javascript:;" id="kt_login_forgot" style="font-size:15px; text-wrap: nowrap;" class="kt-login__link">هل نسيت كلمة المرور؟</a>
 										</div>
 										
 										
@@ -230,7 +230,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<div class="kt-login__actions">
 										{{-- id="kt_login_signin_submit"  --}}
-										<button type="submit" class="btn btn-brand btn-pill kt-login__btn-primary" id="SignIN" disabled>Sign In</button>
+										<button type="submit" class="btn btn-brand btn-pill kt-login__btn-primary" id="SignIN" disabled>تسجيل الدخول</button>
 									</div>
 								</form>
 							</div>
@@ -245,10 +245,10 @@ License: You must have a valid license purchased only from themeforest(the above
 										<input placeholder="Fullname" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 									</div>
 									<div class="input-group">
-										<input  placeholder="Email Address"  autocomplete="off" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+										<input  placeholder="عنوان البريد الإلكتروني"  autocomplete="off" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 									</div>
 									<div class="input-group">
-										<input  type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password">
+										<input  type="password" placeholder="كلمة المرور" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password">
 									</div>
 									<div class="input-group">
 										<input class="form-control" type="password" placeholder="Confirm Password" name="password_confirmation">
@@ -264,26 +264,26 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<div class="kt-login__actions">
 										<button id="kt_login_signup_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
-										<button id="kt_login_signup_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
+										<button id="kt_login_signup_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">إلغاء</button>
 									</div>
 								</form>
 							</div>
 							<div class="kt-login__forgot">
 								<div class="kt-login__head">
-									<h3 class="kt-login__title">Forgot Password</h3>
+									<h3 class="kt-login__title">هل نسيت كلمة المرور؟</h3>
 									<div class="kt-login__desc" style="color: #6a6f74;
-								">Enter your email address to reset your password.</div>
+								">أدخل عنوان بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.</div>
 								</div>
 								<form class="kt-form" action="{{ route('password.reset.email') }}" method="POST">
 									@csrf
 									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Email Address" name="email" id="kt_email" autocomplete="off">
+										<input class="form-control" type="text" placeholder="عنوان البريد الإلكتروني" name="email" id="kt_email" autocomplete="off">
 									</div>
 									<div class="kt-login__actions">
 										{{-- <button>g</button> --}}
-{{--										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>Submit</button>&nbsp;&nbsp;--}}
-										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>Submit</button>&nbsp;&nbsp;
-										<button id="kt_login_forgot_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
+{{--										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>تقديم</button>&nbsp;&nbsp;--}}
+										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>تقديم</button>&nbsp;&nbsp;
+										<button id="kt_login_forgot_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">إلغاء</button>
 									</div>
 								</form>
 							</div>

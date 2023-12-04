@@ -137,10 +137,10 @@
 									<div class="kt-notification">
 										<div class="kt-notification__custom">
                                             <form action="{{route('logout')}} " method="GET">
-                                               <input type="submit" class="btn btn-label-brand btn-sm btn-bold" value="Sign Out">
+                                               <input type="submit" class="btn btn-label-brand btn-sm btn-bold" value="خروج">
                                             </form>
 
-											{{-- <a href="custom_user_login-v2.html" target="_blank" class="btn btn-label-brand btn-sm btn-bold">Sign Out</a> --}}
+											{{-- <a href="custom_user_login-v2.html" target="_blank" class="btn btn-label-brand btn-sm btn-bold">خروج</a> --}}
 										</div>
 									</div>
 
@@ -160,9 +160,9 @@
 						<!-- begin:: Content Head -->
 						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
 							<div class="kt-subheader__main">
-								<h3 class="kt-subheader__title">Welcome</h3>
+								<h3 class="kt-subheader__title">مرحباً</h3>
 								<span class="kt-subheader__separator kt-subheader__separator--v"></span>
-								<span class="kt-subheader__desc">Admin</span>
+								<span class="kt-subheader__desc">مسؤل</span>
 								<div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
 									<input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
 									<span class="kt-input-icon__icon kt-input-icon__icon--right">
