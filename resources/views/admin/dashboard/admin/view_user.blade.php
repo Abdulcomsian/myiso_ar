@@ -357,6 +357,11 @@
                                     onclick="get_history({{$item->id}});">
                                     <i class="fa fa-eye"></i>
                                 </button>
+
+                                {{-- Button used to show the Email sending Details who haven`t logged In for 3, 6, 10 Months  --}}
+                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View Customer Details" onclick="userEmailDetail({{$item->id}})">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>                                
+                                </button>
                         
 
                         <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit Customer"
@@ -471,6 +476,27 @@
         </div>
     </div>
 
+
+    {{-- Modal for showing the email details of the clients who haven`t login  --}}
+    <div class="modal fade" id="user-email-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">تفاصيل البريد الإلكتروني للمستخدم</h5>
+                    <a data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    
+                    <div id="userDetailEmailTable"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <!-- Modal for Login History -->
 {{-- <div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1495,6 +1521,22 @@
             });
         }
 
+        function userEmailDetail(id){
+                $.ajax({
+                    type: "post",
+                    url: "{{route('user.email.details')}}",
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                    data:{
+                        user_id: id,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:function(response){
+                        // console.log(response);
+                        $('#userDetailEmailTable').html(response.list);
+                        $("#user-email-details").modal('show');
+                    }
+                })
+            }
 
             function editDetails(data) 
             {

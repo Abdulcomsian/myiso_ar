@@ -65,7 +65,7 @@
                                     <label for="address2">هوية الشركة:</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="order_number" name="order_number" class="form-control"
-                                            placeholder="Enter Company ID Number" required>
+                                            placeholder="أدخل رقم هوية الشركة" required>
                                         <span id="numbererror" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -73,14 +73,14 @@
                                 <div class="col-lg-3">
                                     <label for="name">عنوان البريد الإلكتروني</label>
                                     <input type="email" id="email" name="email" class="form-control"
-                                        placeholder="Enter email address" required>
+                                        placeholder="أدخل عنوان البريد الالكتروني" required>
                                     <!---<span class="form-text text-muted">Please enter Email Address</span>--->
                                 </div>
 
                                 <div class="col-lg-3">
                                     <label for="name">اسم المستخدم</label>
                                     <input type="text" id="name" name="name" class="form-control"
-                                        placeholder="Enter Username" required>
+                                        placeholder="ادخل اسم المستخدم" required>
                                     <!---<span class="form-text text-muted">Please enter the client's Username</span>---->
                                 </div>
 
@@ -88,7 +88,7 @@
                                     <label for="password">كلمة المرور:</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="password" id="password" name="password" class="form-control"
-                                            placeholder="Enter password" required>
+                                            placeholder="أدخل كلمة المرور" required>
                                         <!--//pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$"-->
                                         <!---<span class="form-text text-muted">Minimum 6 characters, at least 1 number & at least 1 Capital letter</span>--->
 
@@ -100,17 +100,17 @@
                                 <div class="col-lg-4">
                                     <label for="company_name">اسم الشركة</label>
                                     <input type="text" id="company_name" name="company_name" class="form-control"
-                                        placeholder="Enter Company Name" required>
+                                        placeholder="أدخل اسم الشركة" required>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="company_address">عنوان الشركة</label>
-                                    <textarea id="company_address" name="company_address" class="form-control" placeholder="Enter Company Address" required></textarea>
+                                    <textarea id="company_address" name="company_address" class="form-control" placeholder="أدخل عنوان الشركة" required></textarea>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="phone">رقم هاتف الشركة</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="phone" name="phone" class="form-control"
-                                            placeholder="Phone" required>
+                                            placeholder="هاتف" required>
                                         <input type="hidden" name="phonecode" id="phonecode">
                                         <input type="hidden" name="phoneflag" id="phoneflag">
                                     </div>
@@ -120,14 +120,14 @@
                                 <div class="col-lg-6">
                                     <label for="country">الدولة</label>
                                     <input type="text" id="country" name="country" class="form-control"
-                                        placeholder="Enter Country" required>
+                                        placeholder="أدخل البلد" required>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <label for="director">العضو المنتدب/ الرئيس التنفيذي</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="director" name="director" class="form-control"
-                                            placeholder="Enter a Name" required>
+                                            placeholder="إدخال اسم" required>
                                     </div>
 
                                 </div>
@@ -136,14 +136,14 @@
                                 <div class="col-lg-4">
                                     <label for="person_iso">الشخص المسؤول عن الآيزو</label>
                                     <input type="text" id="person_iso" name="person_iso" class="form-control"
-                                        placeholder="Iso Person Name" required>
+                                        placeholder="اسم شخص ISO" required>
                                     <!--<span class="form-text text-muted">Please enter the ISO contact person's name</span>-->
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="contact_iso" style="text-align:left;">جهة الاتصال الخاصة بمنصة ISO</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="contact_iso" name="contact_iso" class="form-control"
-                                            placeholder="Enter Contact Number" required>
+                                            placeholder="أدخل رقم الاتصال" required>
                                         <input type="hidden" name="isophonecode" id="isophonecode">
                                         <input type="hidden" name="isophoneflag" id="isophoneflag">
                                     </div>
@@ -153,7 +153,7 @@
                                     <label for="email_iso text-left" style="text-align:left;">عنوان البريد الإلكتروني الخاص بمنصة ISO</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="email" id="email_iso" name="email_iso" class="form-control"
-                                            placeholder="Enter Email Address" required>
+                                            placeholder="أدخل عنوان البريد الالكتروني" required>
                                         <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i
                                                     class="la la-bookmark-o"></i></span></span>
                                         <!--<span class="form-text text-muted">Please enter the Iso Email</span>-->
@@ -168,21 +168,21 @@
                                     <label for="sales_process">الجهة المسؤولة عن عملية المبيعات</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="sales_process" name="sales_process"
-                                            class="form-control" placeholder="Enter a Name." required>
+                                            class="form-control" placeholder="إدخال اسم" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="purchasing_process">الجهة المسؤولة عن عملية الشراء</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="purchasing_process" name="purchasing_process"
-                                            class="form-control" placeholder="Enter a Name." required>
+                                            class="form-control" placeholder="إدخال اسم" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <label class="" for="servicing_process">الجهة المسؤولة عن عملية تقديم الخدمات</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="servicing_process" name="servicing_process"
-                                            class="form-control" placeholder="Enter a Name." required>
+                                            class="form-control" placeholder="إدخال اسم" required>
                                     </div>
                                 </div>
                             </div>
@@ -192,14 +192,14 @@
                                     <label for="address1">الجهة المسؤولة عن عملية الكفاءة</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="text" id="competency_process" name="competency_process"
-                                            class="form-control" placeholder="Enter a Name." required>
+                                            class="form-control" placeholder="إدخال اسم" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="address2">ملف الشركة / نظرة عامة على الأعمال:</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="file" id="company_profile" name="company_profile"
-                                            class="form-control" placeholder="Company Profile" required>
+                                            class="form-control" placeholder="ملف الشركة" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -246,7 +246,7 @@
                                     <label for="user_image">وصف الشركة:</label>
                                     <div class="kt-input-icon kt-input-icon--right">
 
-                                        <textarea id="Company_overview" name="Company_overview" class="form-control" placeholder="Enter Company Overview"
+                                        <textarea id="Company_overview" name="Company_overview" class="form-control" placeholder="أدخل نظرة عامة على الشركة"
                                             style="height: 190px;" required></textarea>
 
                                     </div>
@@ -294,7 +294,7 @@
                                 <div class="col-lg-4">
                                     <label for="iso9001_description">الوصف:</label>
                                     <textarea id="iso9001_description" name="iso9001_description" class="form-control"
-                                        placeholder="Description for ISO9001 Certificate"></textarea>
+                                        placeholder="وصف شهادة ISO9001"></textarea>
                                 </div>
 
                             </div>
@@ -319,7 +319,7 @@
                                 <div class="col-lg-4">
                                     <label for="iso14001_description">الوصف:</label>
                                     <textarea id="iso14001_description" name="iso14001_description" class="form-control"
-                                        placeholder="Description for ISO14001 Certificate"></textarea>
+                                        placeholder="وصف شهادة ISO14001"></textarea>
                                 </div>
 
                             </div>
@@ -344,7 +344,7 @@
                                 <div class="col-lg-4">
                                     <label for="iso45001_description">الوصف:</label>
                                     <textarea id="iso45001_description" name="iso45001_description" class="form-control"
-                                        placeholder="Description for ISO45001 Certificate"></textarea>
+                                        placeholder="وصف شهادة ISO45001"></textarea>
                                 </div>
                             </div>
 
@@ -356,7 +356,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="iso45001_certificate">تعليق التدقيق</label>
-                                    <textarea id="audit_comment" name="audit_comment" class="form-control" placeholder="Audit Comment"></textarea>
+                                    <textarea id="audit_comment" name="audit_comment" class="form-control" placeholder="تعليق التدقيق"></textarea>
                                 </div>
                             </div>
 
