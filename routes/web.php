@@ -473,8 +473,8 @@ Route::group(['middleware' => ['auth','admin']], function ()
 // });
 
 
-// Route::get('testViewEmail/{totalDays}', function(){
-//     return view('mails.monthWiseEmail');
-// });
+Route::get('testViewEmail/{totalDays}', function(){
+    return view('mails.monthWiseEmail');
+});
 
 /*************** One time script for easily changes to running project end ***************/

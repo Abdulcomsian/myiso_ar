@@ -99,10 +99,10 @@ class AddUsersController extends Controller
         $list = '<table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Login Date & Time</th>
-                <th>IP Address</th>
-                <th>Browser</th>
+                <th>الرقم</th>
+                <th>تاريخ ووقت تسجيل الدخول</th>
+                <th>IP عنوان</th>
+                <th>المتصفح</th>
             </tr>
         </thead>
         <tbody>';
@@ -141,9 +141,9 @@ class AddUsersController extends Controller
         $list = '<table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Status</th>
-                <th>Date</th>
+                <th>الرقم</th>
+                <th>حالة</th>
+                <th>تاريخ</th>
             </tr>
         </thead>
         <tbody>';

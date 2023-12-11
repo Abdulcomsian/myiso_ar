@@ -120,7 +120,7 @@
     				<div class="form-group row">
     					<div class="col-lg-8 text-right" >
     						<label for="title">الموضوع</label>
-    						<input type="text" id="title" name="title" class="form-control" placeholder="Please enter Message Subject" required>
+    						<input type="text" id="title" name="title" class="form-control" placeholder="الرجاء إدخال موضوع الرسالة" required>
     					</div>
                         <div class="col-md-4 text-right">
     						<label for="attachment">المرفق</label>
@@ -133,12 +133,12 @@
     
     					<div class="col-lg-12 text-right">
     						<label for="message"><p> رسالة إلى المسؤول</p></label>
-    						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="Please enter your Message"></textarea>
+    						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="أدرج رسالتك من فضلك"></textarea>
     					</div>
     					<br>
     					<div class="col-lg-12 text-right">
     						<label for="address1">ارسل إلى</label>
-    						<input name="userid" class="form-control" value="Admin" disabled>
+    						<input name="userid" class="form-control" value="مسؤل" disabled>
     					</div>
     					<div class="col-lg-2">
     

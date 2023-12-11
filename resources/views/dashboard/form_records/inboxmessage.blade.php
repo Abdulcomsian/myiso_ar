@@ -132,10 +132,10 @@
 			<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_user">
 				<thead>
 					<tr>
-						<th>No.</th>
-						<th>From</th>
-						<th>Subject</th>
-						<td>Received at</td>						
+						<th>الرقم</th>
+						<th>من</th>
+						<th>موضوع</th>
+						<td>تلقى في</td>						
 					</tr>
 				</thead>
 				<tbody>

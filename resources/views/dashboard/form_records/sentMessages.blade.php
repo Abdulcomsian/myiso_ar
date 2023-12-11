@@ -29,7 +29,7 @@
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
 				<h3 class="kt-portlet__head-title">
-					Sent Messages
+					الرسائل المرسلة
 				</h3>
 			</div>
 			<div class="kt-portlet__head-toolbar">
@@ -92,10 +92,10 @@
 			<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_user">
 				<thead>
 					<tr>
-						<th>No.</th>
-						<th>To</th>
-						<th>Subject</th>
-						<td>Sent at</td>						
+						<th>الرقم</th>
+						<th>إلى</th>
+						<th>موضوع</th>
+						<td>أرسلت في</td>						
 					</tr>
 				</thead>
 				<tbody>

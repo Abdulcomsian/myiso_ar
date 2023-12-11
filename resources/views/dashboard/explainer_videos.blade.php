@@ -7,8 +7,8 @@
 	<!--Begin::Dashboard 1-->
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
-			<h2>Training Videos</h2>
+		<div class="col-xl-12 col-lg-12 text-right">
+			<h2>فيديوهات التدريب</h2>
 		</div>
 	</div>
 	<section id="procedure_section" class="mt-3">
