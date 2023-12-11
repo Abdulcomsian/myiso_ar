@@ -557,3 +557,10 @@ display:block !important;
     width: 100%;
   }
 }
+
+
+.iti__country-list {
+  position: relative !important;
+  text-align: right !important;
+  width: 300px;
+}

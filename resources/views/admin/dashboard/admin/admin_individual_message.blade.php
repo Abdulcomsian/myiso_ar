@@ -122,7 +122,7 @@
                                         <div class="card-header">
                                             <div class="d-flex justify-content-between">
                                                 <div>
-                                                    <strong>From - Me</strong>
+                                                    <strong>مني</strong>
                                                 </div>
                                                 <div class="text-muted">
                                                     {{ date('d/m/Y H:i:sA', strtotime($item->created_at)) }}
@@ -131,14 +131,14 @@
                                         </div>
                                         <div class="card-body">
                                             @if ($item->title)
-                                                <h5 class="card-title text-right">Subject: {{ $item->title }}</h5>
+                                                <h5 class="card-title text-right">موضوع: {{ $item->title }}</h5>
                                             @else
-                                                <h5 class="card-title text-right">(no subject)</h5>
+                                                <h5 class="card-title text-right">(لا يوجد عنوان)</h5>
                                             @endif
                                             <p class="card-text">{{ $item->message }}</p>
                                             @if ($item->attachement)                                            
                                                <p><a href="{{ asset($item->attachement) }}" download>
-                                                    <i class="fa fa-paperclip"></i> Attachment
+                                                    <i class="fa fa-paperclip"></i> مرفق
                                                 </a></p>
                                             @endif
                                         </div>
@@ -149,7 +149,7 @@
                                         <div class="card-header"> 
                                             <div class="d-flex justify-content-between">
                                                 <div>
-                                                    <strong>From - {{ $item->name }}</strong>
+                                                    <strong>من - {{ $item->name }}</strong>
                                                 </div>
                                                 <div class="text-muted">
                                                     {{ date('d/m/Y H:i:sA', strtotime($item->created_at)) }}
@@ -178,7 +178,7 @@
                                                                     <input type="hidden" name="receiver" value="{{ $item->send_to }}">
                                                                     <input type="hidden" name="sender" value="{{ $item->send_by }}">
                                                                     <input type="hidden" name="parentId" id="parentMessageId" value="">
-                                                                    <textarea class="form-control" name="replyMessage" rows="4" id="replyTextarea" placeholder="Write your reply here"></textarea>
+                                                                    <textarea class="form-control" name="replyMessage" rows="4" id="replyTextarea" placeholder="اكتب ردك هنا"></textarea>
                                                                     <p><label class="form-label mt-2" for="attachment">إضافة مرفق (إن وجد)</label></p>
                                                                     <div class="kt-input-icon kt-input-icon--right">
                                                                         <input type="file" name="attachment"
@@ -205,14 +205,14 @@
                                         ?>
                                         <div class="card-body">
                                             @if ($item->title)
-                                                <h5 class="card-title text-right">Subject: {{ $item->title }}</h5>
+                                                <h5 class="card-title text-right">موضوع: {{ $item->title }}</h5>
                                             @else
-                                                <h5 class="card-title text-right">(no subject)</h5>
+                                                <h5 class="card-title text-right">(لا يوجد عنوان)</h5>
                                             @endif
                                             <p class="card-text">{{ $item->message }}</p>
                                             @if ($item->attachement)
                                             <p><a href="{{ asset($item->attachement) }}" download>
-                                                <i class="fa fa-paperclip"></i> Attachment
+                                                <i class="fa fa-paperclip"></i> مرفق
                                             </a></p>
                                             @endif
                                             <br><p><button class="btn btn-primary mt-2 reply-button text-right" 
@@ -221,7 +221,7 @@
                                             data-parent-id="{{ $parent_message_id }}" 
                                             type="button"
                                             data-toggle="modal" 
-                                            data-target="#replyModal">Reply</button></p> 
+                                            data-target="#replyModal">رد</button></p> 
                                         </div>
                                     </div>
                                 @endif

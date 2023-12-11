@@ -193,9 +193,8 @@
     							</select>
     						</div>
     					</div>
-    					<div class="col-lg-2">
-    
-    						<div class="kt-input-icon kt-input-icon--right">
+    					<div class="col-lg-2">    
+    						<div class="kt-input-icon kt-input-icon--left">
     
     						</div>
     					</div>
@@ -238,7 +237,8 @@
 			"format": 'mm/dd/yyyy',
 			"startDate": '01/01/2017',
 			"endDate": today,
-			"setDate": today
+			"setDate": today,
+			"autoclose": true,
 		}).on('changeDate', function(e){
         	start_date = $("#start_date").val();
 			end_date = $("#end_date").val();
@@ -256,13 +256,15 @@
 							$(".ms-options ul").html(res[0]);
 						},
 					});
-			
+					// $('.startdate').datepicker('hide');
     	});
 		$('.enddate').datepicker({
 			todayHighlight: true,
 			"format": 'mm/dd/yyyy',
 			"endDate": today,
-			"setDate": today}).on('changeDate', function(e){
+			"setDate": today,
+			"autoclose": true,
+		}).on('changeDate', function(e){
 				start_date = $("#start_date").val();
 				end_date = $("#end_date").val();
 				filter_by_certificate = $("#filter_by_certificate").val();

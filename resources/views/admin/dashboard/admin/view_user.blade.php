@@ -1514,6 +1514,25 @@
                     $('#loginHistoryTable table').DataTable({
                         paging: true,
                         pageLength: 10,
+                        "language": {
+                            // "sProcessing": "Procesando...",
+                            "sLengthMenu": "عرض _MENU_ إدخالات",
+                            // "sZeroRecords": "No se encontraron resultados",
+                            // "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "عرض السجلات من _START_ إلى _END_ من إجمالي _TOTAL_ السجلات",
+                            "sInfoEmpty": "عرض السجلات من 0 إلى 0 من إجمالي 0 سجلات",
+                            // "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            // "sInfoPostFix": "",
+                            "sSearch": "يبحث:",
+                            // "sUrl": "",
+                            // "sInfoThousands": ",",
+                            // "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sPrevious": "سابق",
+                                "sLast": "آخر",
+                                "sNext": "التالي",
+                            }
+                        },
                     });
 
                     $('#viewUser').modal('show');
