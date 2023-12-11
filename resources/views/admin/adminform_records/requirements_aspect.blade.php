@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label>متطلبات:</label>
                             <input type="text" class="form-control" name="requirement" aria-describedby="emailHelp"
-                                placeholder="Enter Requirement:" required>
+                                placeholder="أدخل المتطلبات:" required>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -78,7 +78,7 @@
                                     <label>الدورية (الأشهر):</label>
                                     <input type="number" min="1" max="12" name="period"
                                         class="form-control validate_number" aria-describedby="emailHelp"
-                                        placeholder="Enter Months:" required>
+                                        placeholder="أدخل الأشهر:" required>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
                                                                         <label>متطلبات:</label>
                                                                         <input type="text" class="form-control"
                                                                             name="requirment_title"
-                                                                            placeholder="Enter Requirement:"
+                                                                            placeholder="أدخل المتطلبات:"
                                                                             value="{{ $data->requirment_title }}"
                                                                             readonly>
                                                                     </div>
@@ -246,7 +246,7 @@
                                                                             (يوم/شهر/سنة):</label>
                                                                         <input type="date" class="form-control"
                                                                             name="completion_date" required
-                                                                            placeholder="Enter Requirement:"
+                                                                            placeholder="أدخل المتطلبات:"
                                                                             value="{{ $data->completion_date }}" readonly>
                                                                     </div>
                                                                     <div class="form-group">
@@ -255,7 +255,7 @@
                                                                             class="form-control periodicity"
                                                                             onkeyup="myFunction()" min="1"
                                                                             max="12" name="periods" required
-                                                                            placeholder="Enter Months:"
+                                                                            placeholder="أدخل الأشهر:"
                                                                             value="{{ $data->periods }}" readonly>
                                                                     </div>
 
@@ -327,17 +327,17 @@
                         <div class="form-group">
                             <label>متطلبات:</label>
                             <input type="text" class="form-control" value="" name="requirment_title" required
-                                placeholder="Enter Requirement:">
+                                placeholder="أدخل المتطلبات:">
                         </div>
                         <div class="form-group">
                             <label>تاريخ اكتمال المتطلبات للنشاط (يوم/شهر/سنة):</label>
                             <input type="date" class="form-control" value="" name="completion_date" required
-                                placeholder="Enter Requirement:">
+                                placeholder="أدخل المتطلبات:">
                         </div>
                         <div class="form-group">
                             <label>الدورية (الأشهر):</label>
                             <input type="number" class="form-control periodicity" onkeyup="myFunction()" min="1"
-                                max="12" value="" name="periods" required placeholder="Enter Months:">
+                                max="12" value="" name="periods" required placeholder="أدخل الأشهر:">
                         </div>
 
                     </div>

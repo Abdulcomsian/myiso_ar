@@ -63,7 +63,7 @@
 					رسالة تذكير تسجيل الدخول
 				</h3>
 			</div>
-			<div class="kt-portlet__head-toolbar">
+			<div class="kt-portlet__head-toolbasr">
 				<div class="kt-portlet__head-wrapper">
 					<div class="kt-portlet__head-actions">
 						<div class="dropdown dropdown-inline">
@@ -126,7 +126,7 @@
     				<div class="form-group row">
     					<div class="col-lg-8">
     						<label for="title">الموضوع</label>
-    						<input type="text" id="title" name="title" class="form-control" placeholder="Please enter Message Subject">
+    						<input type="text" id="title" name="title" class="form-control" placeholder="الرجاء إدخال موضوع الرسالة">
     					</div>
                         <div class="col-md-4">
     						<label for="attachment">المرفق</label>
@@ -139,7 +139,7 @@
     
     					<div class="col-lg-12">
     						<label for="message">رسالة إلى المسؤول</label>
-    						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="Please enter your Message"></textarea>
+    						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="أدرج رسالتك من فضلك"></textarea>
     					</div>
     					<br>
     					<div class="col-lg-4">
@@ -346,7 +346,7 @@
 
 		$('#langOpt3').multiselect({
 			columns: 1,
-			placeholder: 'Select Users',
+			placeholder: 'حدد المستخدمين',
 			search: true,
 			selectAll: true,
 		});

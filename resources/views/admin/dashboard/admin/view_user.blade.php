@@ -642,7 +642,7 @@
                                     <label for="name">عنوان البريد الإلكتروني</label>
 
                                     <input type="text" id="email" name="email" class="form-control"
-                                           placeholder="Enter email">
+                                           placeholder="أدخل البريد الإلكتروني">
 
                                     <span class="form-text text-muted">الرجاء إدخال عنوان البريد الإلكتروني</span>
 
@@ -653,7 +653,7 @@
                                     <label for="name">اسم المستخدم</label>
 
                                     <input type="text" id="name" name="name" class="form-control"
-                                           placeholder="Enter name">
+                                           placeholder="أدخل الاسم">
 
                                     <span class="form-text text-muted">الرجاء إدخال اسم المستخدم الخاص بالعميل</span>
 
@@ -669,7 +669,7 @@
                                     <div class="kt-input-icon kt-input-icon--right">
 
                                         <input type="password" id="password" name="password" class="form-control"
-                                               placeholder="Enter password">
+                                               placeholder="أدخل كلمة المرور">
                                         <span class="form-text text-muted">الحد الأدنى 6 أحرف، رقم واحد على الأقل وحرف واحد كبير على الأقل</span>
                                         <!--<span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-bookmark-o"></i></span></span>-->
 
@@ -680,14 +680,14 @@
                                 <div class="col-lg-4">
                                     <label for="company_name">اسم الشركة</label>
                                     <input type="text" id="company_name" name="company_name" class="form-control"
-                                           placeholder="Enter Company Name">
+                                           placeholder="أدخل اسم الشركة">
                                 </div>
 
 
                                 <div class="col-lg-4">
                                     <label for="company_address">عنوان الشركة</label>
                                     <textarea id="company_address" name="company_address" class="form-control"
-                                              placeholder="Enter Company Address"></textarea>
+                                              placeholder="أدخل عنوان الشركة"></textarea>
                                 </div>
 
 
@@ -709,7 +709,7 @@
                                 <div class="col-lg-4">
                                     <label for="country">الدولة</label>
                                     <input type="text" id="country" name="country" class="form-control"
-                                           placeholder="Enter Country">
+                                           placeholder="أدخل البلد">
                                 </div>
                                 <div class="col-lg-4">
 
@@ -718,7 +718,7 @@
                                     <div class="kt-input-icon kt-input-icon--right">
 
                                         <input type="text" id="director" name="director" class="form-control"
-                                               placeholder="Managing Director">
+                                               placeholder="المدير العام">
 
                                     </div>
 
@@ -730,7 +730,7 @@
                                 <div class="col-lg-4">
                                     <label for="name">الشخص المسؤول عن الآيزو</label>
                                     <input type="text" id="person_iso" name="person_iso" class="form-control"
-                                           placeholder="Iso Person Name" required>
+                                           placeholder="اسم شخص ISO" required>
                                     <span class="form-text text-muted">الرجاء إدخال اسم جهة اتصال ISO</span>
                                 </div>
                                 <div class="col-lg-4">
@@ -744,7 +744,7 @@
                                     <label for="password">عنوان البريد الإلكتروني الخاص بمنصة ISO</label>
                                     <div class="kt-input-icon kt-input-icon--right">
                                         <input type="email" id="email_iso" name="email_iso" class="form-control"
-                                               placeholder="Enter Iso Email" required>
+                                               placeholder="أدخل البريد الإلكتروني ايزو" required>
                                         <!--<span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-bookmark-o"></i></span></span>-->
                                         <span class="form-text text-muted">الرجاء إدخال عنوان البريد الإلكتروني الخاص بمسؤول اتصال ISO</span>
 
@@ -763,7 +763,7 @@
                                     <div class="kt-input-icon kt-input-icon--right">
 
                                         <input type="text" id="sales_process" name="sales_process" class="form-control"
-                                               placeholder="Enter Sales Process">
+                                               placeholder="أدخل عملية المبيعات">
 
                                     </div>
 
@@ -776,7 +776,7 @@
                                     <div class="kt-input-icon kt-input-icon--right">
 
                                         <input type="text" id="purchasing_process" name="purchasing_process"
-                                               class="form-control" placeholder="Purchasing Process Owner">
+                                               class="form-control" placeholder="مالك عملية الشراء">
 
                                     </div>
 
@@ -789,7 +789,7 @@
                                     <div class="kt-input-icon kt-input-icon--right">
 
                                         <input type="text" id="servicing_process" name="servicing_process"
-                                               class="form-control" placeholder="Servicing of Contract Process Owner">
+                                               class="form-control" placeholder="خدمة مالك عملية العقد">
 
                                     </div>
 
@@ -807,7 +807,7 @@
                                     <div class="kt-input-icon kt-input-icon--right">
 
                                         <input type="text" id="competency_process" name="competency_process"
-                                               class="form-control" placeholder="Enter address1">
+                                               class="form-control" placeholder="أدخل العنوان1">
 
                                     </div>
 
@@ -819,7 +819,7 @@
                                     <div class="kt-input-icon kt-input-icon--right">
 
                                         <input type="file" id="company_profile" name="company_profile"
-                                               class="form-control" placeholder="Company Profile">
+                                               class="form-control" placeholder="ملف الشركة">
 
                                         <span class="form-text text-muted" id="downloadlink">
 
@@ -924,14 +924,14 @@
                                 <div class="col-lg-4">
                                     <label for="iso9001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                     <input type="date" id="iso9001_expirydate" max="31-12-2999"
-                                    name="iso9001_expirydate" class="form-control" placeholder="Expiry Date">
+                                    name="iso9001_expirydate" class="form-control" placeholder="تاريخ الانتهاء">
                                 </div>                     
                                 
                                 
                                 <div class="col-lg-4">
                                     <label for="iso9001_description">الوصف:</label>
                                     <textarea id="iso9001_description" name="iso9001_description" class="form-control"
-                                              placeholder="Description for ISO9001 Certificate"></textarea>
+                                              placeholder="وصف شهادة ISO9001"></textarea>
                                 </div>
                             </div>
 
@@ -955,7 +955,7 @@
                                 <div class="col-lg-4">
                                     <label for="iso14001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                     <input type="date" id="iso14001_expirydate" max="2999-12-31"
-                                           name="iso14001_expirydate" class="form-control" placeholder="Expiry Date">
+                                           name="iso14001_expirydate" class="form-control" placeholder="تاريخ الانتهاء">
                                 </div>
 
                                 {{-- <div class="col-lg-4">
@@ -968,7 +968,7 @@
                                 <div class="col-lg-4">
                                     <label for="iso14001_description">الوصف:</label>
                                     <textarea id="iso14001_description" name="iso14001_description" class="form-control"
-                                              placeholder="Description for ISO14001 Certificate"></textarea>
+                                              placeholder="وصف شهادة ISO14001"></textarea>
                                 </div>
 
                             </div>
@@ -999,7 +999,7 @@
                                 <div class="col-lg-4">
                                     <label for="iso45001_description">الوصف:</label>
                                     <textarea id="iso45001_description" name="iso45001_description" class="form-control"
-                                              placeholder="Description for ISO45001 Certificate"></textarea>
+                                              placeholder="وصف شهادة ISO45001"></textarea>
                                 </div>
 
                             </div>
@@ -1014,7 +1014,7 @@
                                 <div class="col-lg-4">
                                     <label for="audit_comment">تعليق التدقيق</label>&nbsp;&nbsp;
                                     <textarea id="audit_comment" name="audit_comment" class="form-control"
-                                              placeholder="Description Audit Comment"></textarea>
+                                              placeholder="وصف تعليق التدقيق"></textarea>
                                 </div>
                             </div>
 
