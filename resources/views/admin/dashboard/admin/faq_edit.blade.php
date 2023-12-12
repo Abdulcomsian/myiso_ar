@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label for="question">سؤال:</label>
                                 <input type="text" id="question" name="question" class="form-control"
-                                    placeholder="Question:" required="required" value="{{ $faq->question }}" />
+                                    placeholder="سؤال:" required="required" value="{{ $faq->question }}" />
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">

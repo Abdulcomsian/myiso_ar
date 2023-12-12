@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label for="title">عنوان:</label>
                                 <input type="text" id="title" name="title" class="form-control"
-                                    placeholder="Title:" required="required" />
+                                    placeholder="عنوان:" required="required" />
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">

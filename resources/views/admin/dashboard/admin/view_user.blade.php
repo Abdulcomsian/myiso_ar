@@ -1589,7 +1589,7 @@
 
                 $("input[name='sales_process']").val(data.sales_process);
                 if (data.company_profile != null) {
-                    $('#downloadlink').html('<a target="_blank" href="public/' + data.company_profile + '">View Profile</a>');
+                    $('#downloadlink').html('<a target="_blank" href="public/' + data.company_profile + '">عرض الصفحة الشخصية</a>');
                 }
                 //  $("input[name='company_profile']").val(data.company_profile);
 

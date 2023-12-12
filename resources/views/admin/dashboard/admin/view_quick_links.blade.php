@@ -51,14 +51,14 @@
                             @csrf <div class="form-group">
                                 <label for="title">عنوان الرابط السريع:</label>
                                 <input type="text" id="title" name="title" class="form-control"
-                                    placeholder="Title:" required="required" />
+                                    placeholder="عنوان:" required="required" />
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="link">URL</label>
                                         <input type="text" name="link" id="link" class="form-control"
-                                            placeholder="Link:" required="required">
+                                            placeholder="وصلة:" required="required">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -88,7 +88,7 @@
                             @csrf <div class="form-group">
                                 <label for="quicklink_cate">فئة الأسئلة الشائعة:</label>
                                 <input type="text" id="quicklink_cate" name="quicklink_cate" class="form-control"
-                                    placeholder="Category" required="required" />
+                                    placeholder="فئة" required="required" />
                             </div>
 
                             <button type="submit" class="submitBtn">يُقدِّم</button>

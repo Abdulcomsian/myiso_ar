@@ -140,7 +140,7 @@
                         <span class="kt-menu__link-icon">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
-                        <span class="kt-menu__link-text">الإخطارات (Old)</span>
+                        <span class="kt-menu__link-text">الإخطارات (القديمة)</span>
                         {{-- <span class="badge badge-primary count_notifications" style="color:#FFF !important;"></span> --}}
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>

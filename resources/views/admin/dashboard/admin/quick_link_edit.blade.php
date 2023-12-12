@@ -39,14 +39,14 @@
                             <div class="form-group">
                                 <label for="title">عنوان الرابط السريع:</label>
                                 <input type="text" id="title" name="title" class="form-control"
-                                    placeholder="Title:" required="required" value="{{ $quick_link->title }}" />
+                                    placeholder="عنوان:" required="required" value="{{ $quick_link->title }}" />
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="answer">URL</label>
                                         <input type="text" name="link" id="link" class="form-control"
-                                            placeholder="http://" required="required" value="{{ $quick_link->link }}">
+                                            placeholder="وصلة" required="required" value="{{ $quick_link->link }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

@@ -51,7 +51,7 @@
                             @csrf <div class="form-group">
                                 <label for="question">سؤال:</label>
                                 <input type="text" id="question" name="question" class="form-control"
-                                    placeholder="Question:" required="required" />
+                                    placeholder="سؤال:" required="required" />
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -88,7 +88,7 @@
                             @csrf <div class="form-group">
                                 <label for="faq_cate">فئة الأسئلة الشائعة:</label>
                                 <input type="text" id="faq_cate" name="faq_cate" class="form-control"
-                                    placeholder="Category" required="required" />
+                                    placeholder="فئة" required="required" />
                             </div>
 
                             <button type="submit" class="submitBtn">يُقدِّم</button>

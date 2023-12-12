@@ -662,8 +662,8 @@
             "language": {
                 // "sProcessing": "Procesando...",
                 "sLengthMenu": "عرض _MENU_ إدخالات",
-                // "sZeroRecords": "No se encontraron resultados",
-                // "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sZeroRecords": "لم يتم العثور على نتائج",
+                "sEmptyTable": "لا توجد بيانات متاحة في الجدول",
                 "sInfo": "عرض السجلات من _START_ إلى _END_ من إجمالي _TOTAL_ السجلات",
                 // "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 // "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
