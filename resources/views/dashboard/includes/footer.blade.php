@@ -7,7 +7,7 @@
 						<div class="kt-footer__menu">
 							{{-- <a href="#" target="_blank" class="kt-footer__menu-link kt-link">About</a>
 							<a href="#" target="_blank" class="kt-footer__menu-link kt-link">Team</a> --}}
-							<a href="{{url('contact_us')}}" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
+							<a href="{{url('create-message')}}" target="_blank" class="kt-footer__menu-link kt-link">اتصل بنا</a>
 						</div>
 					</div>
 					
