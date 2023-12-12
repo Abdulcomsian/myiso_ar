@@ -65,7 +65,7 @@
                                         <div class="form-group">
                                             <label>اسم الموظف:</label>
                                             <input type="text" class="form-control employee_name" name="employee_name"
-                                                placeholder="Enter Employee Name">
+                                                placeholder="أدخل اسم الموظف">
                                         </div>
                                     </div>
 

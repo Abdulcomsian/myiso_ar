@@ -139,7 +139,7 @@
                                         <div class="form-group">
                                             <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
                                             <input type="text" name="issues_points"
-                                                placeholder="Any other issues or points to Note" class="form-control" />
+                                                placeholder="أدخل أي مشكلات أو نقاط أخرى لملاحظة اسم الموظف" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
@@ -736,7 +736,7 @@
                                 <div class="form-group">
                                     <label>مراجع التقرير:</label>
                                     <input type="text" class="form-control" name="reportRev"
-                                        placeholder="Enter Report Reviewer:" required="required">
+                                        placeholder="أدخل مراجع التقرير:" required="required">
                                 </div>
                             </div>
                         </div>

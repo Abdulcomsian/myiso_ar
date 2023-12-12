@@ -76,7 +76,7 @@
                                         <div class="form-group">
                                             <label>تقديم ملخص لاستطلاعات رضا العملاء وردود الفعل من الأطراف المعنية ذات
                                                 الصلة:</label>
-                                            <textarea class="form-control" placeholder="Enter Summary" name="sammarisecustomr" required placeholder=""
+                                            <textarea class="form-control" placeholder="أدخل الملخص" name="sammarisecustomr" required placeholder=""
                                                 cols="30" rows="4"></textarea>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                                 المسؤولة والجداول الزمنية للإنجاز ومعايير النجاح. وينبغي أن تشمل هذه الأهداف
                                                 جوانب الجودة والجوانب المالية، مع أخذ المواءمة مع سياسة الجودة في
                                                 الاعتبار:</label>
-                                            <textarea class="form-control" name="newquality" required placeholder="Enter New Quality Objectives" cols="30"
+                                            <textarea class="form-control" name="newquality" required placeholder="أدخل أهداف الجودة الجديدة" cols="30"
                                                 rows="4"></textarea>
                                         </div>
                                     </div>

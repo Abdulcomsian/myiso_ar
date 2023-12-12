@@ -40,14 +40,14 @@
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label>يرجى إدخال سياسات بيئية إضافية خاصة ببيئة عملك وأنشطة شركتك </label><br>
-										<textarea name="message" class="form-control" placeholder="Set a maximum for the number of character that can be entered to 450.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
+										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 450.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
 									</div>
 								</div>
 							</div>
 
 							<input type="hidden" name="status" value="2" />
-							<button type="submit" class="submitBtn">SUBMIT</button>
-							<button type="reset" onclick="qualityshowpolicy()" class="btn btn-secondary submitBtn" style="margin-right:7px;">Cancel</button>
+							<button type="submit" class="submitBtn">يُقدِّم</button>
+							<button type="reset" onclick="qualityshowpolicy()" class="btn btn-secondary submitBtn" style="margin-right:7px;">يلغي</button>
 						</form>
 					</div>
 				</div>
