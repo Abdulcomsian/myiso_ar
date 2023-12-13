@@ -408,7 +408,7 @@
 									<!--<div class="col-lg-12">-->
 									<!--	<div class="form-group">-->
 									<!--		<label>Evidence:</label>-->
-									<!--		<input type="text" class="form-control" name="evidence30" placeholder="Enter Evidence::">-->
+									<!--		<input type="text" class="form-control" name="evidence30" placeholder="أدخل الأدلة::">-->
 									<!--	</div>-->
 									<!--</div>-->
 							</div>
@@ -552,7 +552,7 @@
 									<!--<div class="col-lg-12">-->
 									<!--	<div class="form-group">-->
 									<!--		<label>Evidence:</label>-->
-									<!--		<input type="text" class="form-control" name="evidence30" placeholder="Enter Evidence::">-->
+									<!--		<input type="text" class="form-control" name="evidence30" placeholder="أدخل الأدلة::">-->
 									<!--	</div>-->
 									<!--</div>-->
 							</div>

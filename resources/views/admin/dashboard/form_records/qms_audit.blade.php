@@ -58,7 +58,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -85,7 +85,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -112,7 +112,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -139,7 +139,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -166,7 +166,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -193,7 +193,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -220,7 +220,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -247,7 +247,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -274,7 +274,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -301,7 +301,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -328,7 +328,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -355,7 +355,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -382,7 +382,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -409,7 +409,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -436,7 +436,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -463,7 +463,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -490,7 +490,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -517,7 +517,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -544,7 +544,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -571,7 +571,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -598,7 +598,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -625,7 +625,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -652,7 +652,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -679,7 +679,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -706,7 +706,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -733,7 +733,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -760,7 +760,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -787,7 +787,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -801,7 +801,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label>Date Completed (YYYY/MM/DD):</label>
-											<input type="date"  max="2999-12-31" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+											<input type="date"  max="2999-12-31" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -895,7 +895,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>
@@ -922,7 +922,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>
@@ -949,7 +949,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>
@@ -976,7 +976,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>
@@ -1003,7 +1003,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>
@@ -1030,7 +1030,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>
@@ -1057,7 +1057,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>
@@ -1084,7 +1084,7 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Evidence:</label>
-								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Evidence::">
+								<input type="text" class="form-control" aria-describedby="emailHelp" placeholder="أدخل الأدلة::">
 							</div>
 						</div>
 					</div>

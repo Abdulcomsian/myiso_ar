@@ -1175,7 +1175,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" name="evidence" class="form-control"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1203,7 +1203,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidance2"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1232,7 +1232,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence3"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1262,7 +1262,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidance4"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1293,7 +1293,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence5"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1323,7 +1323,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" name="evidance7" class="form-control"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1353,7 +1353,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" name="evidance7_1" class="form-control"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1384,7 +1384,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidance8"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1414,7 +1414,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidance10"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1444,7 +1444,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidance12"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1474,7 +1474,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" name="evidence13" class="form-control"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1503,7 +1503,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidance14"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1531,7 +1531,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="Enter Evidence:"
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
                                     name="evidence17">
                             </div>
                         </div>
@@ -1562,7 +1562,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence15"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1590,7 +1590,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="Enter Evidence:"
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
                                     name="evidence17">
                             </div>
                         </div>
@@ -1624,7 +1624,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence18"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1652,7 +1652,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="Enter Evidence:"
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
                                     name="evidence19">
                             </div>
                         </div>
@@ -1682,7 +1682,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence20"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1711,7 +1711,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence21"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1741,7 +1741,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="Enter Evidence:"
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
                                     name="evidence22">
                             </div>
                         </div>
@@ -1771,7 +1771,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence23"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1801,7 +1801,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" name="evidence24" class="form-control"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1831,7 +1831,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence25"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1859,7 +1859,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence26"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1887,7 +1887,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence27"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1916,7 +1916,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence28"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1945,7 +1945,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" name="evidence29" class="form-control"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -1973,7 +1973,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence30"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
@@ -2001,7 +2001,7 @@
                             <div class="form-group">
                                 <label>الدليل: </label>
                                 <input type="text" class="form-control" name="evidence31"
-                                    placeholder="Enter Evidence:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                         <div class="col-lg-12">

@@ -194,7 +194,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidence" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidence" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -221,7 +221,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidance2" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidance2" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -248,7 +248,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidence3"  placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidence3"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -276,7 +276,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidance4"  placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidance4"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -304,7 +304,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidence5" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidence5" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -332,7 +332,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance7" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance7" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -360,7 +360,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance8" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance8" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -388,7 +388,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance9" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance9" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -416,7 +416,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance10" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance10" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -537,7 +537,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidence" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidence" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -564,7 +564,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidance2" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidance2" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -591,7 +591,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidence3"  placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidence3"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -619,7 +619,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidance4"  placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidance4"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -647,7 +647,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" class="form-control" name="evidence5" placeholder="Enter Evidence::">
+											<input type="text" class="form-control" name="evidence5" placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -675,7 +675,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance7" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance7" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -703,7 +703,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance8" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance8" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -731,7 +731,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance9" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance9" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>
@@ -759,7 +759,7 @@
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Evidence:</label>
-											<input type="text" name="evidance10" class="form-control"  placeholder="Enter Evidence::">
+											<input type="text" name="evidance10" class="form-control"  placeholder="أدخل الأدلة::">
 										</div>
 									</div>
 								</div>

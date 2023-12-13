@@ -106,7 +106,7 @@
                                 <p>4.2.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="022px;"> انظر <a href="{{ url('/quality_policy') }}">Quality Policy</a></p>
+                                <p style="022px;"> انظر <a href="{{ url('/quality_policy') }}">سياسة الجودة</a></p>
                             </div>
                         </div>
                         <div class="list_div">
@@ -119,7 +119,7 @@
                                     الأطراف المعنية تشمل العملاء والالتزامات القانونية والموظفين والمقاولين والموردين
                                     والمنطقة المحيطة بالشركة. الشركة. كما تشمل قائمة الأطراف المعنية الجهات المتأثرة
                                     بالقانون العام لحماية البيانات. ويمكن توثيق احتياجاتهم وتوقعاتهم بشكل أكبر <a
-                                        href="{{ url('interesting_parties') }}">here</a>.</p>
+                                        href="{{ url('interesting_parties') }}">هنا</a>.</p>
                             </div>
                         </div>
                         <div class="list_div">
