@@ -41,7 +41,7 @@
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label>يرجى إدخال مزيد من سياسات الصحة والسلامة الخاصة ببيئة عملك وأنشطة شركتك </label><br>
-										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 450.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
+										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 10000.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
 									</div>
 								</div>
 							</div>
