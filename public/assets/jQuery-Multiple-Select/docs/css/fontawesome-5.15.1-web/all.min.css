@@ -6091,7 +6091,7 @@
     font-weight: 400;
     font-display: block;
     src: url("../../fonts/A_Nefel_Adeti.ttf");
-    /* src: url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.woff2) format("woff2"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.woff) format("woff"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.ttf) format("truetype"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.svg#fontawesome) format("svg") */
+    src: url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.woff2) format("woff2"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.woff) format("woff"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.ttf) format("truetype"), url(../../fonts/fontawesome-5.15.1-web/fa-brands-400.svg#fontawesome) format("svg")
 }
 
 .fab {
@@ -6105,7 +6105,7 @@
     font-weight: 400;
     font-display: block;
     src: url("../../fonts/A_Nefel_Adeti.ttf");
-    /* src: url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.eot?#iefix) format("embedded-opentype"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.woff2) format("woff2"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.woff) format("woff"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.ttf) format("truetype"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.svg#fontawesome) format("svg") */
+    src: url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.eot?#iefix) format("embedded-opentype"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.woff2) format("woff2"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.woff) format("woff"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.ttf) format("truetype"), url(../../fonts/fontawesome-5.15.1-web/fa-regular-400.svg#fontawesome) format("svg")
 }
 
 .far {
@@ -6119,7 +6119,7 @@
     font-weight: 900;
     font-display: block;
     src: url("../../fonts/A_Nefel_Adeti.ttf");
-    /* src: url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.woff2) format("woff2"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.woff) format("woff"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.ttf) format("truetype"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.svg#fontawesome) format("svg") */
+    src: url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.woff2) format("woff2"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.woff) format("woff"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.ttf) format("truetype"), url(../../fonts/fontawesome-5.15.1-web/fa-solid-900.svg#fontawesome) format("svg")
 }
 
 .fa,

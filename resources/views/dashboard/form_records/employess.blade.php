@@ -993,21 +993,21 @@
         }
 
         function deleteempl(id) {
-            $("#modallabel").html("Deleting Employee");
+            $("#modallabel").html("حذف الموظف");
             $("#res_id").val(id);
             $("#type").val('employee');
             $("#deleteSupplier").modal('show');
         }
 
         function deleteemplskill(id) {
-            $("#modallabel").html("Deleting Employee Skill");
+            $("#modallabel").html("حذف مهارة الموظف");
             $("#res_id").val(id);
             $("#type").val('employeeskill');
             $("#deleteSupplier").modal('show');
         }
 
         function deleteempltraining(id) {
-            $("#modallabel").html("Deleting Employee Training");
+            $("#modallabel").html("حذف تدريب الموظفين");
             $("#res_id").val(id);
             $("#type").val('employeetraining');
             $("#deleteSupplier").modal('show');
