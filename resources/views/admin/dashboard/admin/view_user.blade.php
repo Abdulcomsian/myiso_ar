@@ -398,7 +398,7 @@
 
                                     </button>
 
-                                    <a href="/edit_user/{{$item->id}}" class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                    <a href="edit_user/{{$item->id}}" class="btn btn-sm btn-clean btn-icon btn-icon-md"
                                        title="View Customer Forms">
 
 								             <span class="svg-icon svg-icon-primary w17">
