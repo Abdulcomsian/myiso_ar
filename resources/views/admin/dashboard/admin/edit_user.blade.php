@@ -48,7 +48,7 @@
 								<td>1</td>
 								<td>المتطلبات المطلوبة</td>
 								<td>
-								<a  href="/requiremntCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+								<a  href="requiremntCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -58,7 +58,7 @@
 								<td>عمليات تدقيق العمليات</td>
 
 								<td>
-									<a  href="/ProcessCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a  href="ProcessCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -68,7 +68,7 @@
 								<td>الأطراف المهتمة</td>
 								
 								<td>
-									<a  href="/interested_parties/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details: Interested Parties">
+									<a  href="interested_parties/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details: Interested Parties">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -78,7 +78,7 @@
 								<td>عمليات تدقيق نظام إدارة الجودة</td>
 								
 								<td>
-									<a  href="/AuditsCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a  href="AuditsCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -88,7 +88,7 @@
 								<td>عدم المطابقة</td>
 								
 								<td>
-									<a  href="/nonConformCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a  href="nonConformCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -98,7 +98,7 @@
 								<td>عملاء</td>
 								
 								<td>
-									<a  href="/customerCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a  href="customerCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -108,7 +108,7 @@
 								<td>رأي العميل</td>
 								
 								<td>
-									<a  href="/customerReviewad/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a  href="customerReviewad/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -118,7 +118,7 @@
 								<td>الموردين</td>
 								
 								<td>
-									<a href="/supplierCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a href="supplierCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -128,7 +128,7 @@
 								<td>معايرة</td>
 								
 								<td>
-									<a href="/calibrationcheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a href="calibrationcheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -140,7 +140,7 @@
 								<td>موظفين</td>
 								
 								<td>
-									<a  href="/EmployeCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a  href="EmployeCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -150,7 +150,7 @@
 								<td>مراجعات الإدارة</td>
 								
 								<td>
-									<a href="/managementCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a href="managementCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -160,7 +160,7 @@
 								<td>سجلات الصيانة</td>
 								
 								<td>
-									<a href="/maintainRecCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a href="maintainRecCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -170,7 +170,7 @@
 								<td>تقييمات مخاطر الحوادث</td>
 								
 								<td>
-									<a href="/AccidentCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a href="AccidentCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -181,7 +181,7 @@
 								<td>تقييم المخاطر</td>
 								
 								<td>
-									<a href="/riskAssesmntCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a href="riskAssesmntCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -192,7 +192,7 @@
 					<td>التحكم الكيميائي</td>
 					
 					<td>
-						<a href="/chemicalcheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+						<a href="chemicalcheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 							<i class="fa fa-eye"></i>
 						</a>
 					</td>
@@ -201,7 +201,7 @@
 								<td>16</td>
 								<td>تعليمات العمل</td>
 								<td>
-									<a  href="/workinstructionCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+									<a  href="workinstructionCheck/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 										<i class="fa fa-eye"></i>
 									</a>
 								</td>
@@ -213,7 +213,7 @@
 					<td>17</td>
 					<td>سياسات إضافية</td>
 					<td>
-						<a  href="/additionalpolicies/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
+						<a  href="additionalpolicies/{{ request()->route('id') }}" class="btn btn-sm btn-clean btn-icon btn-icon-md"  title="Customer Details">
 							<i class="fa fa-eye"></i>
 						</a>
 					</td>
