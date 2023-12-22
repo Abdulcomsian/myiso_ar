@@ -25,6 +25,9 @@ License: You must have a valid license purchased only from themeforest(the above
     .kt-checkbox > input:checked ~ span {
     border: 1px solid #000;
 	}
+	.inner-login-style{
+			width: 300px;
+		}
 	.kt-checkbox > span:after {
 		border: 1px solid black;
 	}
@@ -59,6 +62,17 @@ License: You must have a valid license purchased only from themeforest(the above
 		#firstCheckoxDev{
 			margin-top:30px !important;
         }
+
+		.login-style{
+			display: flex;
+			flex-direction: column;
+		}
+
+		#kt_login_forgot{
+			float: right;
+		}
+
+		
 	}
 	@media screen and (min-width: 1300px){
 		#firstCheckboxDev{
@@ -138,30 +152,25 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<div class="input-group">
 										<input class="form-control" type="password" placeholder="كلمة المرور" name="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-									</div>
-									<div class="d-flex justify-content-between kt-login__extra pl-0 ml-0 mt-3" id="login_box">
-										<div class="">
-
-											<div class="form-check AgreeUl pl-0 ml-2 mt-4 d-flex align-items-center" id="firstCheckoxDev">
+									</div>									
+									<div class="d-flex justify-content-between kt-login__extra mt-3 login-style" id="login_box">
+											<div class="form-check AgreeUl pl-0 ml-2 mt-4 d-flex align-items-center inner-login-style" id="firstCheckoxDev">
 													<!-- Button trigger modal -->
 													<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> -->
 													<input class="form-check-input agreeInput mt-0 mr-1" id="firstCheckbox" type="checkbox" value="">
-													<button type="button" style="margin-right: 10px;" class="btn p-0 modal_btn" data-toggle="modal" data-target="#exampleModal">
-														<label class="form-check-label" style="width:300px;">
+													<button type="button" style="position: absolute; right: 30px; text-align:right;" class="btn p-0 modal_btn" data-toggle="modal" data-target="#exampleModal">
+														<label class="form-check-label">
 														أوافق على الشروط والأحكام.
 														</label>
 													</button>
 		
 												<!-- Modal -->
-												</div>
-										</div>
+											</div>
 										<div class="mt-4">
-											<a href="javascript:;" id="kt_login_forgot" style="font-size:15px; text-wrap: nowrap;" class="kt-login__link">هل نسيت كلمة المرور؟</a>
+											<a href="javascript:;" id="kt_login_forgot" style="font-size:15px; text-wrap: nowrap; float: left;" class="kt-login__link">هل نسيت كلمة المرور؟</a>
 										</div>
-										
-										
-
 									</div>
+									
 									<div class="row kt-login__extra pl-0 ml-0 mt-3">
 										<div class="col p-0">
 											<!--<label class="kt-checkbox">-->
@@ -220,7 +229,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													</div> -->
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 											</div>
 											</div>
 										</div>
