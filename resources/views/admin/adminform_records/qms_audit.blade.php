@@ -9,23 +9,26 @@
 
         <!--Begin::Section-->
         <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <h2>QMS Audits</h2>
+            <div class="col-xl-12 col-lg-12 text-right">
+                <h2>إضافة تفاصيل تدقيق نظام إدارة الجودة</h2>
             </div>
         </div>
         <section id="procedure_section">
 
             <div class="row">
                 <div class="col-lg-12">
-                <p>This audit is a horizontal audit against each clause in the standard. The frequency of this audit will typically be annually and is used to determine the level of compliance to your ISO Standard.</p>
-					<p>To add a record, click on the “Add QMS Audit Details” button. To amend a record, click on the edit icon of the entry that needs to be modified. Audits will be conducted in accordance with <a href="{{url('auidt')}}">Audits</a></p>
+                    <p>يُعد هذا التدقيق تدقيقًا أفقيًا لكل بند في المعيار. وعادةً ما سيتكرر هذا التدقيق سنويًا ويُستخدم
+                        للوقوف على مستوى مطابقتك لمعيار الآيزو.</p>
+                    <p>لإضافة سجل، انقر على زر "إضافة تفاصيل تدقيق نظام إدارة الجودة". ولتعديل سجل، انقر على أيقونة تعديل
+                        الإدخال الواجب تعديله. وستُجرى عمليات التدقيق بموجب التالية <a href="{{ url('auidt') }}">عمليات
+                            التدقيق </a></p>
                     <div class="procedure_div">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <a onclick="qmsAudit()" class="addBtn">Add QMS Audit Details</a>
+                                <a onclick="qmsAudit()" class="addBtn">إضافة تفاصيل تدقيق نظام إدارة الجودة</a>
                             </div>
                         </div>
-                        <div class="qms_audit_from_div">
+                        <div class="qms_audit_from_div text-right">
 
                             <form action="{{route('qmsaudit')}}" method="POST" enctype="multipart/form-data" class="addForm">
                                 @csrf
@@ -52,23 +55,23 @@
                                 <!--	</div>-->
                                 <!--</div>-->
 
-                                <div class="row">
+                                <div class="row text-right">
                                     <div class="col-lg-12">
                                         <div class="form-group">
 
-                                            <label>4.1 Understanding the organization and its Context. (internal & External Issues) Is this accurate?</label>
+                                            <label>4.1 الإلمام بالمؤسسة وإطار عملها. هل يصح هذا الأمر؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="qmsCorects"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="qmsCorects"> No
+                                                    <input type="radio" value="No" name="qmsCorects"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="qmsCorects"> NA
+                                                    <input type="radio" value="NA" name="qmsCorects"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -76,28 +79,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: (إدراج الدليل:)</label>
                                             <input type="text" name="evidence" class="form-control"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row text-right">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>4.2 Understanding interested parties' requirements and expectations. Is this still accurate?</label>
+                                            <label>4.2 استيعاب احتياجات الأطراف المعنية وتوقعاتهم. هل ما يزال هذا صحيحًا؟
+                                            </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="needExpactations"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="needExpactations"> No
+                                                    <input type="radio" value="No" name="needExpactations"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="needExpactations"> NA
+                                                    <input type="radio" value="NA" name="needExpactations"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -105,28 +109,27 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance2"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>4.3 Identifying the scope of the quality management system. Is this still correct?</label>
+                                            <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction3"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
+                                                </label>
+                                                <label class="kt-radio">
+                                                    <input type="radio" value="No" name="correction3"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction3"> No
-                                                    <span></span>
-                                                </label>
-                                                <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction3"> NA
+                                                    <input type="radio" value="NA" name="correction3"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -134,28 +137,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence3"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>4.4 Quality management system and its procedures. Is this still relevant to the business?</label>
+                                            <label>4.4 نظام إدارة الجودة وعملياته. هل العمليات تابعة ومناسبة وتحقق التفاعل؟
+                                            </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction4"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction4"> No
+                                                    <input type="radio" value="No" name="correction4"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction4"> NA
+                                                    <input type="radio" value="NA" name="correction4"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -164,28 +168,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance4"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>5.1 Leadership and commitment. Is top management responsible for the quality system, and is it customer-oriented?</label>
+                                            <label>5.1 القيادة والالتزام. هل تتحمل الإدارة العليا المسؤولية عن نظام الجودة
+                                                وهل ينصب اهتمامها على العملاء؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction5"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction5"> No
+                                                    <input type="radio" value="No" name="correction5"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction5"> NA
+                                                    <input type="radio" value="NA" name="correction5"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -194,28 +199,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence5"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>5.2 Policy. Is the quality policy established and accurate, reviewed and communicated?</label>
+                                            <label>5.2 السياسة. هل سياسة الجودة معمول بها ومعلنة وتتحلى بالدقة وتخضع
+                                                للمراجعة؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction6"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction6"> No
+                                                    <input type="radio" value="No" name="correction6"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction6"> NA
+                                                    <input type="radio" value="NA" name="correction6"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -224,28 +230,28 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" name="evidance7" class="form-control"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>5.3 Organizational roles, responsibilities and authorities. Are these assigned and communicated?</label>
+                                            <label>5.3 الأدوار والمسؤوليات والصلاحيات المؤسسية. هل هي محددة ومعلنة؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction7"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction7"> No
+                                                    <input type="radio" value="No" name="correction7"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction7"> NA
+                                                    <input type="radio" value="NA" name="correction7"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -254,28 +260,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" name="evidance7_1" class="form-control"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>6.1 Actions to address risks and opportunities. Are risks and opportunities managed, understood and evaluated?</label>
+                                            <label>6.1 إجراءات التعامل مع المخاطر والفرص. هل تتم إدارة المخاطر والفرص
+                                                واستيعابها ومراجعتها؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction8"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction8"> No
+                                                    <input type="radio" value="No" name="correction8"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction8"> NA
+                                                    <input type="radio" value="NA" name="correction8"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -284,28 +291,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance8"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>6.2 Quality objectives and planning to achieve them. Are objectives established and tracked during Management Review?</label>
+                                            <label>6.2 أهداف الجودة والتخطيط لتحقيقها. هل تُحدد الأهداف ضمن مراجعة الإدارة
+                                                ويجري متابعتها؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction9"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction9"> No
+                                                    <input type="radio" value="No" name="correction9"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction9"> NA
+                                                    <input type="radio" value="NA" name="correction9"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -314,28 +322,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance10"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>6.3 Planning of changes. Has anything changed recently to comply with section 6.3 of the standard?</label>
+                                            <label>6.3 التخطيط للتغييرات. هل تم التخطيط لأي تغييرات لاستيفاء البند 6.3 من
+                                                المعيار؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction11"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction11"> No
+                                                    <input type="radio" value="No" name="correction11"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction11"> NA
+                                                    <input type="radio" value="NA" name="correction11"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -344,28 +353,30 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance12"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>7.1 Resources. Are there sufficient resources available? Considering people, infrastructure, process-operating environment, resource monitoring and measurement, and organizational knowledge.</label>
+                                            <label>7.1 الموارد. هل يتوفر ما يكفي من الموارد؟ ضع في اعتبارك الأشخاص والبنية
+                                                التحتية وبيئة تشغيل العمليات ومراقبة الموارد والمعارف التنظيمية وتقديرها.
+                                            </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction12"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction12"> No
+                                                    <input type="radio" value="No" name="correction12"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction12"> NA
+                                                    <input type="radio" value="NA" name="correction12"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -374,28 +385,28 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" name="evidence13" class="form-control"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>7.2 Competence. Are the training records being updated?</label>
+                                            <label>7.2 الصلاحية. هل سجلات التدريب حديثة؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction13"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction13"> No
+                                                    <input type="radio" value="No" name="correction13"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction13"> NA
+                                                    <input type="radio" value="NA" name="correction13"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -404,28 +415,28 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance14"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>7.3 Awareness. Does employee awareness comply with standard's section 7.3?</label>
+                                            <label>7.3 الاطلاع. هل يستوفي اطلاع الموظف البند 7.3 من المعيار؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction14"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction14"> No
+                                                    <input type="radio" value="No" name="correction14"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction14"> NA
+                                                    <input type="radio" value="NA" name="correction14"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -434,28 +445,28 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
-                                            <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                                   name="evidence14">
+                                            <label>الدليل: </label>
+                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                                name="evidence17">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>7.4 Communication. Does communication comply with standard’s section 7.4?</label>
+                                            <label>7.4 التواصل. هل يستوفي التواصل البند 7.4 من المعيار؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction15"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction15"> No
+                                                    <input type="radio" value="No" name="correction15"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction15"> NA
+                                                    <input type="radio" value="NA" name="correction15"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -464,28 +475,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence15"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>7.5 Documented information. is all documentation related to the quality system being regulated as mentioned in P1?</label>
+                                            <label>7.5 توثيق المعلومات. هل تخضع جميع المستندات المتعلقة بنظام الجودة
+                                                للتدقيق؟</label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction16"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction16"> No
+                                                    <input type="radio" value="No" name="correction16"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction16"> NA
+                                                    <input type="radio" value="NA" name="correction16"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -494,28 +506,28 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
-                                            <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                                   name="evidence17">
+                                            <label>الدليل: </label>
+                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                                name="evidence17">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>8.1 Planning and managing operations. Is the control system up to date and functional?</label>
+                                            <label>8.1 التخطيط التشغيلي والمراقبة. هل نظام المراقبة حديث وفعال؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correciton17"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correciton17"> No
+                                                    <input type="radio" value="No" name="correciton17"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correciton17"> NA
+                                                    <input type="radio" value="NA" name="correciton17"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -525,28 +537,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence18"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>8.2 Requirements for products and services. Are customer communications successful, and has expectations for goods and services been established, examined, and recorded?</label>
+                                            <label>8.2 متطلبات المنتجات والخدمات. هل يتسم التواصل مع العملاء بالفعالية وهل
+                                                تم تحديد متطلبات المنتجات والخدمات ومراجعتها وتوثيقها؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction18"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction18"> No
+                                                    <input type="radio" value="No" name="correction18"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction18"> NA
+                                                    <input type="radio" value="NA" name="correction18"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -554,28 +567,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
-                                            <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                                   name="evidence19">
+                                            <label>الدليل: </label>
+                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                                name="evidence19">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>8.3 Design and development of products and services. Are the requirements of this standard met?</label>
+                                            <label>8.3 تصميم المنتجات والخدمات وتطويرها. هل تم استيفاء متطلبات هذا
+                                                المعيار؟</label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction19"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction19"> No
+                                                    <input type="radio" value="No" name="correction19"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction19"> NA
+                                                    <input type="radio" value="NA" name="correction19"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -584,28 +598,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence20"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>8.4 Control over procedures, goods, and services that are delivered by third parties. Are the external processes, products and services being regulated?</label>
+                                            <label>8.4 التحكم في العمليات والمنتجات والخدمات المقدمة من الخارج. هل تخضع
+                                                العمليات والمنتجات والخدمات المقدمة من الخارج للمراقبة؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction20"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction20"> No
+                                                    <input type="radio" value="No" name="correction20"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction20"> NA
+                                                    <input type="radio" value="NA" name="correction20"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -613,28 +628,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence21"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>8.5 Production and service provision. Production and service delivery, including after-delivery operations, are they under control?</label>
+                                            <label>8.5 الإنتاج وتقديم الخدمات. هل يخضع الإنتاج وتقديم الخدمات، بما في ذلك
+                                                الأنشطة اللاحقة للتسليم للمراقبة؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction21"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction21"> No
+                                                    <input type="radio" value="No" name="correction21"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction21"> NA
+                                                    <input type="radio" value="NA" name="correction21"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -644,28 +660,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
-                                            <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                                   name="evidence22">
+                                            <label>الدليل: </label>
+                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                                name="evidence22">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>8.6 Release of products and services. Are products and services completed and checked before release to the customer?</label>
+                                            <label>8.6 إصدار المنتجات والخدمات. هل تكتمل المنتجات والخدمات قبل إصدارها
+                                                للعملاء؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction22"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction22"> No
+                                                    <input type="radio" value="No" name="correction22"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction22"> NA
+                                                    <input type="radio" value="NA" name="correction22"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -674,59 +691,59 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence23"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>8.7 Control of nonconforming outputs. Does the records being updated?</label>
+                                            <label>8.7 مراقبة المخرجات غير المطابقة. هل يتم الإمساك بالسجلات وتحديثها؟
+                                            </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction23"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction23"> No
+                                                    <input type="radio" value="No" name="correction23"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction23"> NA
+                                                    <input type="radio" value="NA" name="correction23"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
-
-
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" name="evidence24" class="form-control"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>9.1 Monitoring, measurement, analysis and evaluation, including section 9.1.3. Monitoring, measurement, analysis, and evaluation are carried out and recorded?</label>
+                                            <label>9.1 الرصد والتقدير والتحليل والتقييم، بما في ذلك البند 9.1.3. هل تُنفذ
+                                                عمليات الرصد والتقدير والتحليل والتقييم وتُوثق؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction24"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction24"> No
+                                                    <input type="radio" value="No" name="correction24"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction24"> NA
+                                                    <input type="radio" value="NA" name="correction24"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -735,28 +752,28 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence25"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>9.1.2 Customer satisfaction. Have customer satisfaction surveys been completed?</label>
+                                            <label>9.1.2 رضا العملاء. هل اكتملت استبيانات رضا العملاء؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction25"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction25"> No
+                                                    <input type="radio" value="No" name="correction25"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction25"> NA
+                                                    <input type="radio" value="NA" name="correction25"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -764,28 +781,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence26"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>9.2 Internal audit. Are regular internal audits planned and completed?</label>
+                                            <label>9.2 التدقيق الداخلي. هل تم التخطيط لعمليات التدقيق الداخلي واستكمالها؟
+                                            </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction26"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction26"> No
+                                                    <input type="radio" value="No" name="correction26"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction26"> NA
+                                                    <input type="radio" value="NA" name="correction26"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -793,28 +811,30 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence27"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>9.3 Management review. Has the management review been planned and completed?</label>
+                                            <label>9.3 المراجعة الإدارية. هل تم التخطيط للمراجعة الإدارية واستكمالها؟
+                                            </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction27"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction27"> No
+                                                    <input type="radio" value="No" name="correction27"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction27"> NA
+                                                    <input type="radio" value="NA" name="correction27"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -823,28 +843,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence28"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>10.1 Improvement - Has the organization identified and prioritized areas for improvement and taken any necessary steps to meet customer expectations and improve client satisfaction?</label>
+                                            <label>10.1 التحسين - هل حددت المؤسسة واختارت فرصًا للتحسين ونفذت أي إجراءات
+                                                لازمة لتلبية متطلبات العملاء وتعزيز رضاهم؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction28"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction28"> No
+                                                    <input type="radio" value="No" name="correction28"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction28"> NA
+                                                    <input type="radio" value="NA" name="correction28"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -852,28 +873,29 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" name="evidence29" class="form-control"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>10.2 Nonconformity and corrective action - Are these Properly documented?</label>
+                                            <label>10.2 عدم المطابقة والإجراءات التصحيحية - هل تُوثق هذه الإجراءات بشكل
+                                                صحيح؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction30"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction30"> No
+                                                    <input type="radio" value="No" name="correction30"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction30"> NA
+                                                    <input type="radio" value="NA" name="correction30"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -882,27 +904,27 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label>Evidence:</label>
+                                        <label>الدليل: </label>
                                         <input type="text" class="form-control" name="evidence30"
-                                               placeholder="أدخل الأدلة:">
+                                            placeholder="إدراج الدليل:">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>10.3 Continual improvement - Is there proof that the company has been continuously improving?</label>
+                                            <label>10.3 استمرار التحسين - هل هناك دليل على استمرار تحسن الشركة؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
                                                     <input type="radio" value="Yes" name="correction29"
-                                                           required="required"> Yes
+                                                        required="required"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="No" name="correction29"> No
+                                                    <input type="radio" value="No" name="correction29"> لا
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="NA" name="correction29"> NA
+                                                    <input type="radio" value="NA" name="correction29"> لا ينطبق
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -910,60 +932,58 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Evidence:</label>
+                                            <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence31"
-                                                   placeholder="أدخل الأدلة:">
+                                                placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Attach Evidence (jpeg, mp3, mp4, .xls, doc):</label>
+                                            <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
                                             <input name="attach_evidence" type="file" class="form-control"
-                                                   accept="image/*,.doc, .docx,.txt,.pdf">
+                                                accept="image/*,.doc, .docx,.txt,.pdf">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Audit Comments and Actions:</label>
+                                            <label>تعليقات وإجراءات التدقيق: </label>
                                             <input type="text" class="form-control" name="audit_comments_actions"
-                                                   required="required" placeholder="Enter Comment:">
+                                                required="required" placeholder="إدراج تعليق:)">
                                         </div>
                                     </div>
+
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Date Completed (DD/MM/YYYY)):</label>
-                                            <input type="date" max="2999-12-31" placeholder="dd-mm-yyyy" data-date=""
-                                                   data-date-format="DD MM YYYY" name="competedDate"
-                                                   class="form-control" placeholder="أدخل الأدلة:"
-                                                   required="required">
+                                            <label>تاريخ تعبئة البيانات (يوم/شهر/سنة)):</label>
+                                            <input type="date" max="2999-12-31" name="competedDate"
+                                                class="form-control" placeholder="أدخل الأدلة:" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Auditor Name:</label>
+                                            <label>اسم المدقق: </label>
                                             <input type="text" class="form-control" name="auditrName"
-                                                   placeholder="Enter Auditor Name:" required="required">
+                                                placeholder="إدراج اسم المدقق:)" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Any other issues or point to note?</label>
+                                            <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟ </label>
                                             <input type="text" name="any_issues" class="form-control"
-                                                   placeholder="Enter Any other issues:">
+                                                placeholder="إدراج أي مواضيع أخرى:)">
                                         </div>
                                     </div>
                                 </div>
 
-                                <button type="submit" class="submitBtn">SUBMIT</button>
+                                <button type="submit" class="submitBtn">يُقدِّم</button>
                                 <button type="reset" style="margin-right: 10px;" class="btn btn-secondary submitBtn"
-                                        onclick="qmsAudit()">Cancel
-                                </button>
+                                    onclick="qmsAudit()">يلغي</button>
 
                             </form>
 
@@ -971,23 +991,26 @@
                         </div>
                     </div>
                     <div class="procedure_div">
-                        <div class="requirments_table_div">
-                            <a href="/edit_user/{{ $urlparam['userid'] }}"
-                               class="btn btn-clean btn-icon-sm mb-2 back_icon" style="float: right;">
-                                <i class="la la-long-arrow-left"></i>
-                                Back
-                            </a>
-                            <h4>Total Audits Listed</h4>
+                        <div class="requirments_table_div">      
+                            <div class="row">
+                                <h4 class="col-11 text-right">إجمالي عمليات التدقيق المدرجة</h4>
+                                <a href="/edit_user/{{ $urlparam['userid'] }}"
+                                class="btn btn-clean btn-icon-sm mb-2 back_icon col-1">
+                                خلف
+                                 <i class="la la-long-arrow-left"></i>
+                             </a>
+                            </div>                     
+                           
                             <div class="kt-portlet__body table-responsive">
                                 <!--begin: Datatable -->
                                 <table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive"
                                        id="kt_table_agent">
                                     <thead>
-                                    <tr>
-                                        <th>QMS Audit ID</th>
-                                        <th>Audit Date</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>الرقم التعريفي لتدقيق نظام إدارة الجودة</th>
+                                            <th>تاريخ التدقيق</th>
+                                            <th>الإجراء</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @php
@@ -1045,28 +1068,30 @@
                                                 <div class="modal fade modal-mini modal-primary" id="confirm-{{$d_id}}"
                                                      tabindex="-1" role="dialog" aria-labelledby="confirm"
                                                      aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <form action="{{route('deleteqmsAudit')}}" method="post">
-                                                                <div class="modal-header justify-content-center"> @csrf
-                                                                    <div class="modal-profile"><h5>Deleting QMS Audit
-                                                                            Details</h5></div>
-                                                                </div>
-                                                                <div class="modal-body text-center">
-                                                                    <p>Are you sure you want to delete this entry?</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <input type="hidden" name="id" value="{{$d_id}}">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">No
-                                                                    </button>
-                                                                    <button type="submit" class="btn btn-danger">Yes
-                                                                    </button>
-                                                                </div>
-                                                            </form>
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form action="{{ route('deleteqmsAudit') }}"
+                                                                    method="post">
+                                                                    <div class="modal-header"> @csrf
+                                                                        <div class="modal-profile">
+                                                                            <h5>حذف تفاصيل تدقيق نظام إدارة الجودة</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-body text-center">
+                                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="hidden" name="id"
+                                                                            value="{{ $item->id }}">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">لا</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">نعم</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
                                             </td>
                                         </tr>
@@ -1083,14 +1108,14 @@
         <!--End::Section-->
     </div>
 
-    <div class="modal fade" id="editProcessAudit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="editProcessAudit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View QMS Audit details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل تدقيق نظام إدارة الجودة</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+					</a>
                 </div>
                 <div class="modal-body">
 
@@ -1106,18 +1131,18 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>4.1 Understanding the organization and its context. Is this correct?</label>
+                                <label>4.1 الإلمام بالمؤسسة وإطار عملها. هل يصح هذا الأمر؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="qmsCorects"> Yes
+                                        <input type="radio" value="Yes" name="qmsCorects"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="qmsCorects"> No
+                                        <input type="radio" value="No" name="qmsCorects"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="qmsCorects"> NA
+                                        <input type="radio" value="NA" name="qmsCorects"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1125,28 +1150,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" name="evidence" class="form-control" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" name="evidence" class="form-control"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>4.2 Understanding the needs and expectations of interested parties. Is this still
-                                    correct?</label>
+                                <label>4.2 استيعاب احتياجات الأطراف المعنية وتوقعاتهم. هل ما يزال هذا صحيحًا؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="needExpactations"> Yes
+                                        <input type="radio" value="Yes" name="needExpactations"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="needExpactations"> No
+                                        <input type="radio" value="No" name="needExpactations"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="needExpactations"> NA
+                                        <input type="radio" value="NA" name="needExpactations"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1154,27 +1178,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidance2" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidance2"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>4.3 Determining the scope of the quality management system. Is this still
-                                    correct?</label>
+                                <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction3"> Yes
+                                        <input type="radio" value="Yes" name="correction3"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction3"> No
+                                        <input type="radio" value="No" name="correction3"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction3"> NA
+                                        <input type="radio" value="NA" name="correction3"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1182,56 +1206,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence3" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence3"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>4.4 Quality management system and its processes. Are processes owned, relevant
-                                    and show interaction?</label>
+                                <label>4.4 نظام إدارة الجودة وعملياته. هل العمليات تابعة ومناسبة وتحقق التفاعل؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction4"> Yes
+                                        <input type="radio" value="Yes" name="correction4"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction4"> No
+                                        <input type="radio" value="No" name="correction4"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction4"> NA
-                                        <span></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidance4" placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>5.1 Leadership and commitment. Is top level management accountable for the
-                                    quality system and is it customer focused?</label>
-                                <div class="kt-radio-list">
-                                    <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction5"> Yes
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction5"> No
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction5"> NA
+                                        <input type="radio" value="NA" name="correction4"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1240,27 +1235,28 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence5" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidance4"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>5.2 Policy. Is the quality policy established and accurate, reviewed and
-                                    communicated?</label>
+                                <label>5.1 القيادة والالتزام. هل تتحمل الإدارة العليا المسؤولية عن نظام الجودة وهل ينصب
+                                    اهتمامها على العملاء؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction6"> Yes
+                                        <input type="radio" value="Yes" name="correction5"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction6"> No
+                                        <input type="radio" value="No" name="correction5"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction6"> NA
+                                        <input type="radio" value="NA" name="correction5"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1269,27 +1265,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" name="evidance7" class="form-control" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence5"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>5.3 Organizational roles, responsibilities and authorities. Are these assigned
-                                    and communicated?</label>
+                                <label>5.2 السياسة. هل سياسة الجودة معمول بها ومعلنة وتتحلى بالدقة وتخضع للمراجعة؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction7"> Yes
+                                        <input type="radio" value="Yes" name="correction6"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction7"> No
+                                        <input type="radio" value="No" name="correction6"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction7"> NA
+                                        <input type="radio" value="NA" name="correction6"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1298,28 +1294,57 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
+                                <label>الدليل: </label>
+                                <input type="text" name="evidance7" class="form-control"
+                                    placeholder="أدخل الأدلة:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>5.3 الأدوار والمسؤوليات والصلاحيات المؤسسية. هل هي محددة ومعلنة؟</label>
+                                <div class="kt-radio-list">
+                                    <label class="kt-radio">
+                                        <input type="radio" value="Yes" name="correction7"> نعم
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="No" name="correction7"> لا
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="NA" name="correction7"> لا ينطبق
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>الدليل: </label>
                                 <input type="text" name="evidance7_1" class="form-control"
-                                       placeholder="أدخل الأدلة:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>6.1 Actions to address risks and opportunities. Are risks and opportunities
-                                    managed, understood and reviewed?</label>
+                                <label>6.1 إجراءات التعامل مع المخاطر والفرص. هل تتم إدارة المخاطر والفرص واستيعابها
+                                    ومراجعتها؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction8"> Yes
+                                        <input type="radio" value="Yes" name="correction8"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction8"> No
+                                        <input type="radio" value="No" name="correction8"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction8"> NA
+                                        <input type="radio" value="NA" name="correction8"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1328,27 +1353,28 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidance8" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidance8"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>6.2 Quality objectives and planning to achieve them. Are objectives set at
-                                    Management Review and monitored?</label>
+                                <label>6.2 أهداف الجودة والتخطيط لتحقيقها. هل تُحدد الأهداف ضمن مراجعة الإدارة ويجري
+                                    متابعتها؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction9"> Yes
+                                        <input type="radio" value="Yes" name="correction9"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction9"> No
+                                        <input type="radio" value="No" name="correction9"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction9"> NA
+                                        <input type="radio" value="NA" name="correction9"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1357,27 +1383,28 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidance10" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidance10"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>6.3 Planning of changes. Have any changes occurred been planned to meet section
-                                    6.3 of the standard?</label>
+                                <label>6.3 التخطيط للتغييرات. هل تم التخطيط لأي تغييرات لاستيفاء البند 6.3 من
+                                    المعيار؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction11"> Yes
+                                        <input type="radio" value="Yes" name="correction11"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction11"> No
+                                        <input type="radio" value="No" name="correction11"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction11"> NA
+                                        <input type="radio" value="NA" name="correction11"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1386,28 +1413,28 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidance12" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidance12"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>7.1 Resources. Are satisfactory resources in place? Consider people,
-                                    infrastructure, environment for the operation of processes, monitoring and measuring
-                                    resources and organizational knowledge.</label>
+                                <label>7.1 الموارد. هل يتوفر ما يكفي من الموارد؟ ضع في اعتبارك الأشخاص والبنية التحتية وبيئة
+                                    تشغيل العمليات ومراقبة الموارد والمعارف التنظيمية وتقديرها.</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction12"> Yes
+                                        <input type="radio" value="Yes" name="correction12"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction12"> No
+                                        <input type="radio" value="No" name="correction12"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction12"> NA
+                                        <input type="radio" value="NA" name="correction12"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1416,26 +1443,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" name="evidence13" class="form-control" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" name="evidence13" class="form-control"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>7.2 Competence. Are the training records current?</label>
+                                <label>7.2 الصلاحية. هل سجلات التدريب حديثة؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction13"> Yes
+                                        <input type="radio" value="Yes" name="correction13"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction13"> No
+                                        <input type="radio" value="No" name="correction13"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction13"> NA
+                                        <input type="radio" value="NA" name="correction13"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1444,26 +1472,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidance14" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidance14"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>7.3 Awareness. Does employee awareness meet section 7.3 of the standard?</label>
+                                <label>7.3 الاطلاع. هل يستوفي اطلاع الموظف البند 7.3 من المعيار؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction14"> Yes
+                                        <input type="radio" value="Yes" name="correction14"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction14"> No
+                                        <input type="radio" value="No" name="correction14"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction14"> NA
+                                        <input type="radio" value="NA" name="correction14"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1472,26 +1501,57 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:" name="evidence14">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
+                                    name="evidence17">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>7.4 Communication. Does communication meet section 7.4 of the standard?</label>
+                                <label>7.4 التواصل. هل يستوفي التواصل البند 7.4 من المعيار؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction15"> Yes
+                                        <input type="radio" value="Yes" name="correction15"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction15"> No
+                                        <input type="radio" value="No" name="correction15"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction15"> NA
+                                        <input type="radio" value="NA" name="correction15"> لا ينطبق
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence15"
+                                    placeholder="أدخل الأدلة:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>7.5 توثيق المعلومات. هل تخضع جميع المستندات المتعلقة بنظام الجودة للتدقيق؟</label>
+                                <div class="kt-radio-list">
+                                    <label class="kt-radio">
+                                        <input type="radio" value="Yes" name="correction16"> نعم
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="No" name="correction16"> لا
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="NA" name="correction16"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1500,172 +1560,30 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence15" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
+                                    name="evidence17">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>7.5 Documented information. Are all documents pertaining to the quality system
-                                    controlled?</label>
+                                <label>8.1 التخطيط التشغيلي والمراقبة. هل نظام المراقبة حديث وفعال؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction16"> Yes
+                                        <input type="radio" value="Yes" name="correciton17"
+                                            class="correciton17"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction16"> No
+                                        <input type="radio" value="No" name="correciton17"
+                                            class="correciton17"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction16"> NA
-                                        <span></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:" name="evidence17">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.1 Operational planning and control. Is the controlling system current and
-                                    effective?</label>
-                                <div class="kt-radio-list">
-                                    <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correciton17"> Yes
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="No" name="correciton17"> No
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correciton17"> NA
-                                        <span></span>
-                                    </label>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence18" placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.2 Requirements for products and services. Is customer communication effective
-                                    and has the requirements for products and services been defined, reviewed and
-                                    documented?</label>
-                                <div class="kt-radio-list">
-                                    <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction18"> Yes
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction18"> No
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction18"> NA
-                                        <span></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:" name="evidence19">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.3 Design and development of products and services. Are the requirements of this
-                                    standard met?</label>
-                                <div class="kt-radio-list">
-                                    <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction19"> Yes
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction19"> No
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction19"> NA
-                                        <span></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence20" placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.4 Control of externally provided processes, products and services. Are
-                                    externally provided processes, products and services controlled?</label>
-                                <div class="kt-radio-list">
-                                    <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction20"> Yes
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction20"> No
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction20"> NA
-                                        <span></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence21" placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.5 Production and service provision. Is production and service provision
-                                    controlled, including post delivery activities?</label>
-                                <div class="kt-radio-list">
-                                    <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction21"> Yes
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction21"> No
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction21"> NA
+                                        <input type="radio" value="NA" name="correciton17"
+                                            class="correciton17"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1675,27 +1593,56 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:" name="evidence22">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence18"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>8.6 Release of products and services. Are products and services completed before
-                                    release to the customer?</label>
+                                <label>8.2 متطلبات المنتجات والخدمات. هل يتسم التواصل مع العملاء بالفعالية وهل تم تحديد
+                                    متطلبات المنتجات والخدمات ومراجعتها وتوثيقها؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction22"> Yes
+                                        <input type="radio" value="Yes" name="correction18"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction22"> No
+                                        <input type="radio" value="No" name="correction18"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction22"> NA
+                                        <input type="radio" value="NA" name="correction18"> لا ينطبق
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
+                                    name="evidence19">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>8.3 تصميم المنتجات والخدمات وتطويرها. هل تم استيفاء متطلبات هذا المعيار؟</label>
+                                <div class="kt-radio-list">
+                                    <label class="kt-radio">
+                                        <input type="radio" value="Yes" name="correction19"> نعم
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="No" name="correction19"> لا
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="NA" name="correction19"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1704,26 +1651,57 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence23" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence20"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>8.7 Control of nonconforming outputs. Are records kept and up to date?</label>
+                                <label>8.4 التحكم في العمليات والمنتجات والخدمات المقدمة من الخارج. هل تخضع العمليات
+                                    والمنتجات والخدمات المقدمة من الخارج للمراقبة؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction23"> Yes
+                                        <input type="radio" value="Yes" name="correction20"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction23"> No
+                                        <input type="radio" value="No" name="correction20"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction23"> NA
+                                        <input type="radio" value="NA" name="correction20"> لا ينطبق
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence21"
+                                    placeholder="أدخل الأدلة:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>8.5 الإنتاج وتقديم الخدمات. هل يخضع الإنتاج وتقديم الخدمات، بما في ذلك الأنشطة
+                                    اللاحقة للتسليم للمراقبة؟</label>
+                                <div class="kt-radio-list">
+                                    <label class="kt-radio">
+                                        <input type="radio" value="Yes" name="correction21"> نعم
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="No" name="correction21"> لا
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="NA" name="correction21"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1733,27 +1711,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" name="evidence24" class="form-control" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
+                                    name="evidence22">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>9.1 Monitoring, measurement, analysis and evaluation, including section 9.1.3. Is
-                                    monitoring, measurement, analysis and evaluation performed and documented?</label>
+                                <label>8.6 إصدار المنتجات والخدمات. هل تكتمل المنتجات والخدمات قبل إصدارها للعملاء؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction24"> Yes
+                                        <input type="radio" value="Yes" name="correction22"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction24"> No
+                                        <input type="radio" value="No" name="correction22"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction24"> NA
+                                        <input type="radio" value="NA" name="correction22"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1762,82 +1740,58 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence25" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence23"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>9.1.2 Customer satisfaction. Have customer satisfaction surveys been
-                                    completed?</label>
+                                <label>8.7 مراقبة المخرجات غير المطابقة. هل يتم الإمساك بالسجلات وتحديثها؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction25"> Yes
+                                        <input type="radio" value="Yes" name="correction23"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction25"> No
+                                        <input type="radio" value="No" name="correction23"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction25"> NA
+                                        <input type="radio" value="NA" name="correction23"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
+
+
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence26" placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>9.2 Internal audit. Are internal audits planned and completed?</label>
-                                <div class="kt-radio-list">
-                                    <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction26"> Yes
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction26"> No
-                                        <span></span>
-                                    </label>
-                                    <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction26"> NA
-                                        <span></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence27" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" name="evidence24" class="form-control"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>9.3 Management review. Has the management review been planned and
-                                    completed?</label>
+                                <label>9.1 الرصد والتقدير والتحليل والتقييم، بما في ذلك البند 9.1.3. هل تُنفذ عمليات الرصد
+                                    والتقدير والتحليل والتقييم وتُوثق؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction27"> Yes
+                                        <input type="radio" value="Yes" name="correction24"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction27"> No
+                                        <input type="radio" value="No" name="correction24"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction27"> NA
+                                        <input type="radio" value="NA" name="correction24"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1846,28 +1800,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence28" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence25"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>10.1 Improvement - Has the organization determined and selected opportunities for
-                                    improvement and implemented any necessary actions to meet customer requirements and
-                                    enhance customer satisfaction?</label>
+                                <label>9.1.2 رضا العملاء. هل اكتملت استبيانات رضا العملاء؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction28"> Yes
+                                        <input type="radio" value="Yes" name="correction25"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction28"> No
+                                        <input type="radio" value="No" name="correction25"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction28"> NA
+                                        <input type="radio" value="NA" name="correction25"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1875,27 +1828,27 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" name="evidence29" class="form-control" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence26"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>10.2 Nonconformity and corrective action - Are these correctly
-                                    documented?</label>
+                                <label>9.2 التدقيق الداخلي. هل تم التخطيط لعمليات التدقيق الداخلي واستكمالها؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction30"> Yes
+                                        <input type="radio" value="Yes" name="correction26"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction30"> No
+                                        <input type="radio" value="No" name="correction26"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction30"> NA
+                                        <input type="radio" value="NA" name="correction26"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1903,27 +1856,57 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence30" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence27"
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>10.3 Continual improvement - Is there evidence that the company has continually
-                                    improved?</label>
+                                <label>9.3 المراجعة الإدارية. هل تم التخطيط للمراجعة الإدارية واستكمالها؟</label>
                                 <div class="kt-radio-list">
                                     <label class="kt-radio">
-                                        <input type="radio" value="Yes" name="correction29"> Yes
+                                        <input type="radio" value="Yes" name="correction27"> نعم
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="No" name="correction29"> No
+                                        <input type="radio" value="No" name="correction27"> لا
                                         <span></span>
                                     </label>
                                     <label class="kt-radio">
-                                        <input type="radio" value="NA" name="correction29"> NA
+                                        <input type="radio" value="NA" name="correction27"> لا ينطبق
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence28"
+                                    placeholder="أدخل الأدلة:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>10.1 التحسين - هل حددت المؤسسة واختارت فرصًا للتحسين ونفذت أي إجراءات لازمة لتلبية
+                                    متطلبات العملاء وتعزيز رضاهم؟</label>
+                                <div class="kt-radio-list">
+                                    <label class="kt-radio">
+                                        <input type="radio" value="Yes" name="correction28"> نعم
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="No" name="correction28"> لا
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="NA" name="correction28"> لا ينطبق
                                         <span></span>
                                     </label>
                                 </div>
@@ -1931,15 +1914,71 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Evidence:</label>
-                                <input type="text" class="form-control" name="evidence31" placeholder="أدخل الأدلة:">
+                                <label>الدليل: </label>
+                                <input type="text" name="evidence29" class="form-control"
+                                    placeholder="أدخل الأدلة:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>10.2 عدم المطابقة والإجراءات التصحيحية - هل تُوثق هذه الإجراءات بشكل صحيح؟</label>
+                                <div class="kt-radio-list">
+                                    <label class="kt-radio">
+                                        <input type="radio" value="Yes" name="correction30"> نعم
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="No" name="correction30"> لا
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="NA" name="correction30"> لا ينطبق
+                                        <span></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Attach Evidence (jpeg, mp3, mp4, .xls, doc):</label>
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence30"
+                                    placeholder="أدخل الأدلة:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>10.3 استمرار التحسين - هل هناك دليل على استمرار تحسن الشركة؟</label>
+                                <div class="kt-radio-list">
+                                    <label class="kt-radio">
+                                        <input type="radio" value="Yes" name="correction29"> نعم
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="No" name="correction29"> لا
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio">
+                                        <input type="radio" value="NA" name="correction29"> لا ينطبق
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>الدليل: </label>
+                                <input type="text" class="form-control" name="evidence31"
+                                    placeholder="أدخل الأدلة:">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
                                 <div class="evidence_attachemnt_div">
-
                                 </div>
                             </div>
                         </div>
@@ -1947,55 +1986,55 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Audit Comments and Actions:</label>
+                                <label>تعليقات وإجراءات التدقيق: </label>
                                 <input type="text" class="form-control" name="audit_comments_actions"
-                                       placeholder="Enter Comment:">
+                                    placeholder="إدراج تعليق:">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Date Completed (YYYY/MM/DD):</label>
+                                <label>تاريخ تعبئة البيانات (يوم/شهر/سنة):</label>
                                 <input type="date" max="2999-12-31" name="competedDate" class="form-control"
-                                       placeholder="أدخل الأدلة:">
+                                    placeholder="أدخل الأدلة:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Auditor Name:</label>
+                                <label>سم المدقق: </label>
                                 <input type="text" class="form-control" name="auditrName"
-                                       placeholder="Enter Auditor Name:">
+                                    placeholder="إدراج اسم المدقق:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Any other issues or points to note?</label>
+                                <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟</label>
                                 <input type="text" class="form-control" name="any_issues" required
-                                       placeholder="Enter any other Issue">
+                                    placeholder="إدراج أي مواضيع أخرى:">
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="geteditdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="geteditdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit QMS Audit Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل تدقيق نظام إدارة الجودة</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+					</a>
                 </div>
                 <form action="{{route('update_qmsaudit')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -2007,9 +2046,9 @@
                     <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                     <div class="modal-body">
 
-                        <input type="hidden" value="" id="test_a" name="id"/>
+                        <input type="hidden" value="" id="test_a" name="id" />
                         <!--                 <div class="row">-->
-                        <!--    <div class="col-lg-12">-->
+                        {{--				Any other issue:  <!--    <div class="col-lg-12">--> --}}
                         <!--        <div class="form-group">-->
                         <!--            <label>QMS Audit ID Number:</label>-->
                         <!--            <input type="number" name="QmsauditNumber" class="form-control"  placeholder="Enter QMS Audit ID:" readonly>-->
@@ -2019,18 +2058,18 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>4.1 Understanding the organization and its context. Is this correct?</label>
+                                    <label>4.1 الإلمام بالمؤسسة وإطار عملها. هل يصح هذا الأمر؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="qmsCorects"> Yes
+                                            <input required type="radio" value="Yes" name="qmsCorects"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="qmsCorects"> No
+                                            <input required type="radio" value="No" name="qmsCorects"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" name="qmsCorects"> NA
+                                            <input required type="radio" value="NA" name="qmsCorects"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2038,28 +2077,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" name="evidence" class="form-control"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>4.2 Understanding the needs and expectations of interested parties. Is this
-                                        still correct?</label>
+                                    <label>4.2 استيعاب احتياجات الأطراف المعنية وتوقعاتهم. هل ما يزال هذا صحيحًا؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="needExpactations"> Yes
+                                            <input required type="radio" value="Yes" name="needExpactations"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="needExpactations"> No
+                                            <input required type="radio" value="No" name="needExpactations"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="needExpactations"> NA
+                                            <input required type="radio" value="NA" name="needExpactations"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2067,28 +2106,27 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidance2"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>4.3 Determining the scope of the quality management system. Is this still
-                                        correct?</label>
+                                    <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction3"> Yes
+                                            <input required type="radio" value="Yes" name="correction3"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction3"> No
+                                            <input required type="radio" value="No" name="correction3"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction3"> NA
+                                            <input required type="radio" value="NA" name="correction3"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2096,28 +2134,27 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence3"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>4.4 Quality management system and its processes. Are processes owned,
-                                        relevant and show interaction?</label>
+                                    <label>4.4 نظام إدارة الجودة وعملياته. هل العمليات تابعة ومناسبة وتحقق التفاعل؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction4"> Yes
+                                            <input required type="radio" value="Yes" name="correction4"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction4"> No
+                                            <input required type="radio" value="No" name="correction4"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction4"> NA
+                                            <input required type="radio" value="NA" name="correction4"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2126,28 +2163,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidance4"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>5.1 Leadership and commitment. Is top level management accountable for the
-                                        quality system and is it customer focused?</label>
+                                    <label>5.1 القيادة والالتزام. هل تتحمل الإدارة العليا المسؤولية عن نظام الجودة وهل ينصب
+                                        اهتمامها على العملاء؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction5"> Yes
+                                            <input required type="radio" value="Yes" name="correction5"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction5"> No
+                                            <input required type="radio" value="No" name="correction5"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction5"> NA
+                                            <input required type="radio" value="NA" name="correction5"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2156,28 +2193,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence5"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>5.2 Policy. Is the quality policy established and accurate, reviewed and
-                                        communicated?</label>
+                                    <label>5.2 السياسة. هل سياسة الجودة معمول بها ومعلنة وتتحلى بالدقة وتخضع
+                                        للمراجعة؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction6"> Yes
+                                            <input required type="radio" value="Yes" name="correction6"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction6"> No
+                                            <input required type="radio" value="No" name="correction6"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction6"> NA
+                                            <input required type="radio" value="NA" name="correction6"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2186,28 +2223,27 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" name="evidance7" class="form-control"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>5.3 Organizational roles, responsibilities and authorities. Are these
-                                        assigned and communicated?</label>
+                                    <label>5.3 الأدوار والمسؤوليات والصلاحيات المؤسسية. هل هي محددة ومعلنة؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction7"> Yes
+                                            <input required type="radio" value="Yes" name="correction7"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction7"> No
+                                            <input required type="radio" value="No" name="correction7"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction7"> NA
+                                            <input required type="radio" value="NA" name="correction7"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2216,28 +2252,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" name="evidance7_1" class="form-control"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>6.1 Actions to address risks and opportunities. Are risks and opportunities
-                                        managed, understood and reviewed?</label>
+                                    <label>6.1 إجراءات التعامل مع المخاطر والفرص. هل تتم إدارة المخاطر والفرص واستيعابها
+                                        ومراجعتها؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction8"> Yes
+                                            <input required type="radio" value="Yes" name="correction8"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction8"> No
+                                            <input required type="radio" value="No" name="correction8"> لا
                                             <span></span>
                                         </label>
-                                        <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction8"> NA
+                                        <label required class="kt-radio">
+                                            <input type="radio" value="NA" name="correction8"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2246,28 +2282,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidance8"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>6.2 Quality objectives and planning to achieve them. Are objectives set at
-                                        Management Review and monitored?</label>
+                                    <label>6.2 أهداف الجودة والتخطيط لتحقيقها. هل تُحدد الأهداف ضمن مراجعة الإدارة ويجري
+                                        متابعتها؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction9"> Yes
+                                            <input required type="radio" value="Yes" name="correction9"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction9"> No
+                                            <input required type="radio" value="No" name="correction9"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction9"> NA
+                                            <input required type="radio" value="NA" name="correction9"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2276,28 +2312,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidance10"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>6.3 Planning of changes. Have any changes occurred been planned to meet
-                                        section 6.3 of the standard?</label>
+                                    <label>6.3 التخطيط للتغييرات. هل تم التخطيط لأي تغييرات لاستيفاء البند 6.3 من
+                                        المعيار؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction11"> Yes
+                                            <input required type="radio" value="Yes" name="correction11"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction11"> No
+                                            <input required type="radio" value="No" name="correction11"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction11"> NA
+                                            <input required type="radio" value="NA" name="correction11"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2306,29 +2343,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidance12"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>7.1 Resources. Are satisfactory resources in place? Consider people,
-                                        infrastructure, environment for the operation of processes, monitoring and
-                                        measuring resources and organizational knowledge.</label>
+                                    <label>7.1 الموارد. هل يتوفر ما يكفي من الموارد؟ ضع في اعتبارك الأشخاص والبنية التحتية
+                                        وبيئة تشغيل العمليات ومراقبة الموارد والمعارف التنظيمية وتقديرها</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction12"> Yes
+                                            <input required type="radio" value="Yes" name="correction12"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction12"> No
+                                            <input required type="radio" value="No" name="correction12"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction12"> NA
+                                            <input required type="radio" value="NA" name="correction12"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2337,27 +2374,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" name="evidence13" class="form-control"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>7.2 Competence. Are the training records current?</label>
+                                    <label>7.2 الصلاحية. هل سجلات التدريب حديثة؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction13"> Yes
+                                            <input required type="radio" value="Yes" name="correction13"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction13"> No
+                                            <input required type="radio" value="No" name="correction13"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction13"> NA
+                                            <input required type="radio" value="NA" name="correction13"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2366,28 +2404,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidance14"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>7.3 Awareness. Does employee awareness meet section 7.3 of the
-                                        standard?</label>
+                                    <label>7.3 الاطلاع. هل يستوفي اطلاع الموظف البند 7.3 من المعيار؟</label>
                                     <div class="kt-radio-list">
-                                        <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction14"> Yes
+                                        <label required class="kt-radio">
+                                            <input type="radio" value="Yes" name="correction14"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction14"> No
+                                            <input required type="radio" value="No" name="correction14"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction14"> NA
+                                            <input required type="radio" value="NA" name="correction14"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2396,28 +2434,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
-                                    <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                           name="evidence14">
+                                    <label>الدليل: </label>
+                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                        name="evidence17">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>7.4 Communication. Does communication meet section 7.4 of the
-                                        standard?</label>
+                                    <label>7.4 التواصل. هل يستوفي التواصل البند 7.4 من المعيار؟</label>
                                     <div class="kt-radio-list">
-                                        <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction15"> Yes
+                                        <label required class="kt-radio">
+                                            <input type="radio" value="Yes" name="correction15"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction15"> No
+                                            <input required type="radio" value="No" name="correction15"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction15"> NA
+                                            <input required type="radio" value="NA" name="correction15"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2426,28 +2464,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence15"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>7.5 Documented information. Are all documents pertaining to the quality
-                                        system controlled?</label>
+                                    <label>7.5 توثيق المعلومات. هل تخضع جميع المستندات المتعلقة بنظام الجودة
+                                        للتدقيق؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction16"> Yes
+                                            <input required type="radio" value="Yes" name="correction16"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction16"> No
+                                            <input required type="radio" value="No" name="correction16"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction16"> NA
+                                            <input required type="radio" value="NA" name="correction16"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2456,28 +2495,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
-                                    <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                           name="evidence17">
+                                    <label>الدليل: </label>
+                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                        name="evidence17">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>8.1 Operational planning and control. Is the controlling system current and
-                                        effective?</label>
+                                    <label>8.1 التخطيط التشغيلي والمراقبة. هل نظام المراقبة حديث وفعال؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correciton17"> Yes
+                                            <input required type="radio" value="Yes" name="correciton17"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correciton17"> No
+                                            <input required type="radio" value="No" name="correciton17"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correciton17"> NA
+                                            <input required type="radio" value="NA" name="correciton17"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2487,29 +2526,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence18"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>8.2 Requirements for products and services. Is customer communication
-                                        effective and has the requirements for products and services been defined,
-                                        reviewed and documented?</label>
+                                    <label>8.2 متطلبات المنتجات والخدمات. هل يتسم التواصل مع العملاء بالفعالية وهل تم تحديد
+                                        متطلبات المنتجات والخدمات ومراجعتها وتوثيقها؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction18"> Yes
+                                            <input required type="radio" value="Yes" name="correction18"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction18"> No
+                                            <input required type="radio" value="No" name="correction18"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction18"> NA
+                                            <input required type="radio" value="NA" name="correction18"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2517,28 +2556,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
-                                    <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                           name="evidence19">
+                                    <label>الدليل: </label>
+                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                        name="evidence19">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>8.3 Design and development of products and services. Are the requirements of
-                                        this standard met?</label>
+                                    <label>8.3 تصميم المنتجات والخدمات وتطويرها. هل تم استيفاء متطلبات هذا المعيار؟</label>
                                     <div class="kt-radio-list">
-                                        <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction19"> Yes
+                                        <label required class="kt-radio">
+                                            <input type="radio" value="Yes" name="correction19"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction19"> No
+                                            <input required type="radio" value="No" name="correction19"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction19"> NA
+                                            <input required type="radio" value="NA" name="correction19"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2547,28 +2586,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence20"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>8.4 Control of externally provided processes, products and services. Are
-                                        externally provided processes, products and services controlled?</label>
+                                    <label>8.4 التحكم في العمليات والمنتجات والخدمات المقدمة من الخارج. هل تخضع العمليات
+                                        والمنتجات والخدمات المقدمة من الخارج للمراقبة؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction20"> Yes
+                                            <input required type="radio" value="Yes" name="correction20"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction20"> No
+                                            <input required type="radio" value="No" name="correction20"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction20"> NA
+                                            <input required type="radio" value="NA" name="correction20"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2576,28 +2616,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence21"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>8.5 Production and service provision. Is production and service provision
-                                        controlled, including post delivery activities?</label>
+                                    <label>8.5 الإنتاج وتقديم الخدمات. هل يخضع الإنتاج وتقديم الخدمات، بما في ذلك الأنشطة
+                                        اللاحقة للتسليم للمراقبة؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction21"> Yes
+                                            <input required type="radio" value="Yes" name="correction21"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction21"> No
+                                            <input required type="radio" value="No" name="correction21"> لا
                                             <span></span>
                                         </label>
-                                        <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction21"> NA
+                                        <label required class="kt-radio">
+                                            <input type="radio" value="NA" name="correction21"> لا ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2607,28 +2647,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
-                                    <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                           name="evidence22">
+                                    <label>الدليل: </label>
+                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
+                                        name="evidence22">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>8.6 Release of products and services. Are products and services completed
-                                        before release to the customer?</label>
+                                    <label>8.6 إصدار المنتجات والخدمات. هل تكتمل المنتجات والخدمات قبل إصدارها
+                                        للعملاء؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction22"> Yes
+                                            <input required type="radio" value="Yes" name="correction22"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction22"> No
+                                            <input required type="radio" value="No" name="correction22"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction22"> NA
+                                            <input required type="radio" value="NA" name="correction22"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2637,28 +2678,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence23"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>8.7 Control of nonconforming outputs. Are records kept and up to
-                                        date?</label>
+                                    <label>8.7 مراقبة المخرجات غير المطابقة. هل يتم الإمساك بالسجلات وتحديثها؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction23"> Yes
+                                            <input required type="radio" value="Yes" name="correction23"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction23"> No
+                                            <input required type="radio" value="No" name="correction23"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction23"> NA
+                                            <input required type="radio" value="NA" name="correction23"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2668,29 +2709,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" name="evidence24" class="form-control"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>9.1 Monitoring, measurement, analysis and evaluation, including section
-                                        9.1.3. Is monitoring, measurement, analysis and evaluation performed and
-                                        documented?</label>
+                                    <label>9.1 الرصد والتقدير والتحليل والتقييم، بما في ذلك البند 9.1.3. هل تُنفذ عمليات
+                                        الرصد والتقدير والتحليل والتقييم وتُوثق؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction24"> Yes
+                                            <input required type="radio" value="Yes" name="correction24"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction24"> No
+                                            <input required type="radio" value="No" name="correction24"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction24"> NA
+                                            <input required type="radio" value="NA" name="correction24"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2699,28 +2740,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence25"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>9.1.2 Customer satisfaction. Have customer satisfaction surveys been
-                                        completed?</label>
+                                    <label>9.1.2 رضا العملاء. هل اكتملت استبيانات رضا العملاء؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction25"> Yes
+                                            <input required type="radio" value="Yes" name="correction25"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction25"> No
+                                            <input required type="radio" value="No" name="correction25"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction25"> NA
+                                            <input required type="radio" value="NA" name="correction25"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2728,27 +2769,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence26"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>9.2 Internal audit. Are internal audits planned and completed?</label>
+                                    <label>9.2 التدقيق الداخلي. هل تم التخطيط لعمليات التدقيق الداخلي واستكمالها؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction26"> Yes
+                                            <input required type="radio" value="Yes" name="correction26"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction26"> No
+                                            <input required type="radio" value="No" name="correction26"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction26"> NA
+                                            <input required type="radio" value="NA" name="correction26"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2756,28 +2798,28 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence27"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>9.3 Management review. Has the management review been planned and
-                                        completed?</label>
+                                    <label>9.3 المراجعة الإدارية. هل تم التخطيط للمراجعة الإدارية واستكمالها؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction27"> Yes
+                                            <input required type="radio" value="Yes" name="correction27"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction27"> No
+                                            <input required type="radio" value="No" name="correction27"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction27"> NA
+                                            <input required type="radio" value="NA" name="correction27"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2786,29 +2828,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence28"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>10.1 Improvement - Has the organization determined and selected opportunities
-                                        for improvement and implemented any necessary actions to meet customer
-                                        requirements and enhance customer satisfaction?</label>
+                                    <label>10.1 التحسين - هل حددت المؤسسة واختارت فرصًا للتحسين ونفذت أي إجراءات لازمة
+                                        لتلبية متطلبات العملاء وتعزيز رضاهم؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction28"> Yes
+                                            <input required type="radio" value="Yes" name="correction28"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction28"> No
+                                            <input required type="radio" value="No" name="correction28"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction28"> NA
+                                            <input required type="radio" value="NA" name="correction28"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2816,28 +2858,29 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" name="evidence29" class="form-control"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>10.2 Nonconformity and corrective action - Are these correctly
-                                        documented?</label>
+                                    <label>10.2 عدم المطابقة والإجراءات التصحيحية - هل تُوثق هذه الإجراءات بشكل
+                                        صحيح؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction30"> Yes
+                                            <input required type="radio" value="Yes" name="correction30"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction30"> No
+                                            <input required type="radio" value="No" name="correction30"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction30"> NA
+                                            <input required type="radio" value="NA" name="correction30"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
@@ -2845,88 +2888,87 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence30"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="إدراج الدليل:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>10.3 Continual improvement - Is there evidence that the company has
-                                        continually improved?</label>
+                                    <label>10.3 استمرار التحسين - هل هناك دليل على استمرار تحسن الشركة؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
-                                            <input type="radio" value="Yes" required name="correction29"> Yes
+                                            <input required type="radio" value="Yes" name="correction29"> نعم
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="No" required name="correction29"> No
+                                            <input required type="radio" value="No" name="correction29"> لا
                                             <span></span>
                                         </label>
                                         <label class="kt-radio">
-                                            <input type="radio" value="NA" required name="correction29"> NA
+                                            <input required type="radio" value="NA" name="correction29"> لا
+                                            ينطبق
                                             <span></span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Evidence:</label>
+                                    <label>الدليل: </label>
                                     <input type="text" class="form-control" name="evidence31"
-                                           placeholder="أدخل الأدلة:">
+                                        placeholder="أدخل الأدلة:">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Attach Evidence (jpeg, mp3, mp4, .xls, doc):</label>
+                                    <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
                                     <input name="attach_evidence" type="file" class="form-control"
-                                           accept="image/*,.doc, .docx,.txt,.pdf">
+                                        accept="image/*,.doc, .docx,.txt,.pdf">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Audit Comments and Actions:</label>
-                                    <input type="text" class="form-control" name="audit_comments_actions" required
-                                           placeholder="Enter Comment:">
+                                    <label>تعليقات وإجراءات التدقيق: </label>
+                                    <input type="text" class="form-control" name="audit_comments_actions"
+                                        placeholder="إدراج تعليق:">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Date Completed (MM/DD/YYYY):</label>
-                                    <input type="date" max="2999-12-31" name="competedDate" required
-                                           class="form-control" placeholder="أدخل الأدلة:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Auditor Name:</label>
-                                    <input type="text" class="form-control" name="auditrName" required
-                                           placeholder="Enter Auditor Name:">
+                                    <label>تاريخ تعبئة البيانات (يوم/شهر/سنة):</label>
+                                    <input required type="date" max="2999-12-31" name="competedDate"
+                                        class="form-control" placeholder="أدخل الأدلة:">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Any other issues or points to note?</label>
+                                    <label>اسم المدقق: </label>
+                                    <input type="text" class="form-control" required name="auditrName"
+                                        placeholder="إدراج اسم المدقق:">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟ </label>
                                     <input type="text" class="form-control" name="any_issues" required
-                                           placeholder="Enter any other Issue">
+                                        placeholder="إدراج أي مواضيع أخرى:">
                                 </div>
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger">Update</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">تحديث</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
                     </div>
                 </form>
             </div>

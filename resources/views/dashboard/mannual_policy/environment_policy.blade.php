@@ -68,36 +68,11 @@
 						<li class="list-items-ar">السعي إلى تقليل الانبعاثات الضارة لأسطولها واستخدام الطاقة.</li>
 						<li class="list-items-ar">Mتقليل الهدر عبر التقييم الدوري للعمليات والكفاءة.</li>
 						<li class="list-items-ar">الحصول على مجموعة منتجات أو خدمات توريد من شأنها تقليل التأثير البيئي لتوزيع الشركة وإنتاجها.</li>
-				
-						<h5 class="mt-3">سياسات إضافية: </h5>
-					
-						 <!-- Display the previous policy -->
-						 @php
-							
-							// $message = explode(PHP_EOL, $previousPolicy->message);
-							if($previousPolicy!=null){
-							$lines = explode("\r\n", $previousPolicy->message); // or use PHP PHP_EOL constant
-							// dd($lines);
-							if ( !empty($lines) ) 
-							{
-								foreach ( $lines as $line ) 
-								{
-									if($line == NULL){continue;}else
-									{
-									echo '<li>'. trim( $line ) .'</li>';
-								}
-								}
-							}
-							}
-						 @endphp		
-						{{-- 
-							@if ($previousPolicy)
-							<li>{{ $previousPolicy->message }}</li>
-							@endif  
-							@foreach ($useraddpolicy as $environmental)
-                           <li>{{$environmental->message}}</li>
-                           @endforeach --}}
 					</ol>
+					<h5 class="mt-3">سياسات إضافية: </h5>
+					@if ($previousPolicy)
+					<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap;">{{ $previousPolicy->message }}</pre>
+					@endif  
 					<p>بالنيابة عن:  <b><span class="authName">{{ $companyName}}</span></b></p>
 					<p>الاسم: <span class="authName">{{Auth::user()->director}}</span> </p>
 					<p>التاريخ: {{date("d-F-Y")}}</p>
