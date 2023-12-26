@@ -14,28 +14,30 @@
             text-decoration: none !important;
         }</style>
     <!-- begin:: Content -->
-    <div class="kt-content  kt-grid__item kt-grid__item--fluid view_user_content" id="kt_content">
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid view_user_content text-right" id="kt_content">
 
         <!--Begin::Dashboard 1-->
 
 
         <!--Begin::Section-->
         <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <h2>Customers</h2>
+            <div class="col-xl-12 col-lg-12 text-right">
+                <h2>العملاء</h2>
             </div>
         </div>
         <section id="procedure_section">
 
             <div class="row">
                 <div class="col-lg-12">
-                <p>Customers should be listed so that internal audits can be carried out on their delivery / service quality assessments, but also used to assist with customer satisfaction surveys. </p>
-					<p>To add a record, click on the “Add Customer” button. To amend a record, click on the edit icon of the entry that needs to be modified.</p>
+                    <p>يجب إدراج العملاء حتى يمكن إجراء عمليات التدقيق الداخلية عند تقييمات التسليم/جودة الخدمة، لكن تُستخدم
+                        أيضًا للمساعدة في استبيانات رضا العملاء.</p>
+                    <p> لإضافة سجل، انقر على الزر "إضافة عميل". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد تعديله.
+                    </p>
                     @if(Session::has('Error'))<h5 class="text-danger">  {{ Session::get('Error') }} </h5>@endif
                     <div class="procedure_div">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <a onclick="customerForm()" class="addBtn">ADD CUSTOMER</a>
+                                <a onclick="customerForm()" class="addBtn">إضافة عملاء:</a>
                             </div>
                         </div>
                         <div class="customer_from_div">
@@ -43,40 +45,39 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <h3> Add Customer</h3>
+                                        <h3> إضافة عملاء: </h3>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer ID
-                                                Number:</label>
+                                            <label>رقم تعريف العميل: </label>
                                             <input type="number" min="1" max="100000" required
                                                    class="form-control validate_number" name="idNumber" id="idNumber"
-                                                   placeholder="Enter Customer ID Number.">
+                                                   placeholder="أدخل رقم تعريف العميل">
                                             <span id="numbererror" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer Name:</label><br>
+                                            <label>اسم العميل: </label><br>
                                             <input type="text" class="form-control" required name="name" id="name"
-                                                   placeholder="Enter Customer Name:">
+                                            placeholder="أدخل اسم العميل:">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Business Address:</label>
+                                            <label>عنوان العمل: </label>
                                             <input type="text" class="form-control" required name="address"
-                                                   placeholder="Enter customer’s full business address">
+                                            placeholder="أدخل عنوان عمل العميل كاملاً">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label style="display:block;">Customer Telephone:</label>
+                                            <label style="display:block;">هاتف العميل:</label>
                                             <input type="text" class="form-control" required name="create_phone_number"
-                                                   id="create_phone_number" placeholder="Enter customer phone number starting with the country code.">
+                                                   id="create_phone_number" placeholder="أدخل رقم هاتف العميل بدءًا برمز البلد">
                                             <input type="hidden" name="create_phone_number_country_code" id="create_phone_number_country_code">
                                             <input type="hidden" name="create_phone_number_flag" id="create_phone_number_flag">
                                         </div>
@@ -85,16 +86,16 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer Email Address:</label>
+                                            <label>عنوان البريد الإلكتروني للعميل:</label>
                                             <input type="email" class="form-control" required name="Email"
-                                                   placeholder="Enter Customer Email:">
+                                                   placeholder="دخل البريد الإلكتروني للعميل">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Customer Contact Name:</label>
+                                            <label>اسم جهة الاتصال الخاصة بالعميل:</label>
                                             <input type="text" class="form-control" required name="contactName"
-                                                   placeholder="Enter customer contact person’s name.">
+                                                   placeholder="أدخل اسم الشخص المسؤول عن الاتصال بالعميل">
                                         </div>
                                     </div>
                                 </div>
@@ -103,9 +104,9 @@
                                 @endphp
                                 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                                 <input type="hidden" name="is_admin" value="admin">
-                                <button class="submitBtn" id="add_customer_submit_button">SUBMIT</button>
+                                <button class="submitBtn" id="add_customer_submit_button">يُقدِّم</button>
                                 <button onclick="customerForm()" type="reset" class="submitBtn"
-                                        style="margin-right: 8px;">Cancel
+                                        style="margin-right: 8px;">يلغي
                                 </button>
                             </form>
                         </div>
@@ -113,11 +114,11 @@
                     <div class="procedure_div">
                         <div class="requirments_table_div">
                             <div class="d-flex justify-content-between">
-                                <h4>Total Customers Listed</h4>
-                                <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
+                                <h4>إجمالي العملاء المدرجين</h4>
+                                {{-- <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
                                     <i class="la la-long-arrow-left"></i>
                                     Back
-                                </a>
+                                </a> --}}
                             </div>
                             <!--<button>Add an entry</button>-->
 
@@ -127,15 +128,13 @@
                                        id="kt_table_agent2">
                                     <thead>
                                     <tr>
-                                        <th>Customer ID Number</th>
-                                        <th>Customer Name</th>
-                                        <th>Business Address</th>
-                                        <th>Customer Phone Number</th>
-                                        <th>Email Address</th>
-                                        <th>Contact
-                                            Person
-                                        </th>
-                                        <th>Action</th>
+                                        <th> معرّف العميل</th>
+                                        <th>اسم العميل</th>
+                                        <th> عنوان العمل</th>
+                                        <th> رقم هاتف العميل</th>
+                                        <th>عنوان البريد الإلكتروني</th>
+                                        <th>جهة الاتصال</th>
+                                        <th> الإجراء</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -183,19 +182,18 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Deleting an entry.</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        </button>
+                        <h5 class="modal-title" id="exampleModalLabel">حذف إدخال.</h5>
+                        <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this entry?</p>
+                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                     </div>
                     <div class="modal-footer">
                         <form action="{{route('deletecustomeradmin')}}" method="POST">
                             @csrf
                             <input type="hidden" id="re_id" value="" name="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-danger">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                            <button type="submit" class="btn btn-danger">نعم</button>
                         </form>
                     </div>
                 </div>
@@ -204,14 +202,14 @@
         <!--End::Section-->
     </div>
 
-    <div class="modal fade" id="EditCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="EditCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> Edit Customer Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل العميل</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="modal-body">
                     <form action="{{route('editCustomers')}} " id="edit_form" name="edit_form" method="POST">
@@ -228,17 +226,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer ID Number:</label><br>
+                                    <label>رقم تعريف العميل: </label><br>
                                     <input type="number" class="form-control" name="idNumber" id"editidNumber"
-                                    placeholder="Enter ID:" required>
+                                    placeholder="أدخل رقم تعريف العميل" required>
                                     <span id="editnumbererror" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Name:</label><br>
+                                    <label>اسم العميل: </label><br>
                                     <input type="text" class="form-control" name="name"
-                                           placeholder="Enter Customer Name:" required>
+                                    placeholder="أدخل اسم العميل:" required>
                                 </div>
                             </div>
                         </div>
@@ -246,16 +244,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Business
-                                        Address:</label>
-                                    <input type="text" class="form-control" name="address" placeholder="Enter customer’s full business
-								address" required>
+                                    <label>عنوان العمل: </label>
+                                    <input type="text" class="form-control" name="address" placeholder="أدخل عنوان عمل العميل كاملاً" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
 
                                 <div class="form-group">
-                                    <label style="display:block;">Customer Telephone:</label>
+                                    <label style="display:block;">هاتف العميل</label>
                                     <div id="edit_phone_div">
                                     </div>
                                 </div>
@@ -266,35 +262,35 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Email Address</label>
+                                    <label>عنوان البريد الإلكتروني للعميلs</label>
                                     <input type="email" class="form-control" name="Email"
-                                           placeholder="Enter Customer Email:" required>
+                                           placeholder="أدخل البريد الإلكتروني للعميل:" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Contact Name:</label>
+                                    <label>اسم جهة الاتصال الخاصة بالعميل:</label>
                                     <input type="text" class="form-control" name="contactName"
-                                           placeholder="Enter Customer Contact Number:" required>
+                                           placeholder="أدخل رقم اتصال العميل:" required>
                                 </div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"
-                                style="margin-right:20px;">Cancel
+                                style="margin-right:20px;">يلغي
                         </button>
-                        <button type="submit" class="submitBtn" id="update_customer_button">Update</button>
+                        <button type="submit" class="submitBtn" id="update_customer_button">تحديث</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <!--VIEW-->
-    <div class="modal fade" id="ViewCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="ViewCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View Customer Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل العميل</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -306,17 +302,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer ID Number:</label><br>
+                                    <label> رقم تعريف العميل: </label><br>
                                     <input type="number" readonly class="form-control" name="idNumber"
-                                           placeholder="Enter ID:">
+                                    placeholder="أدخل رقم تعريف العميل">
 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Name:</label><br>
+                                    <label> اسم العميل: </label><br>
                                     <input type="text" readonly class="form-control" name="name"
-                                           placeholder="Enter Customer Name:">
+                                    placeholder="أدخل اسم العميل:">
                                 </div>
                             </div>
                         </div>
@@ -324,14 +320,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Business Address:</label>
+                                    <label>عنوان العمل: </label>
                                     <input type="text" readonly class="form-control" name="address"
-                                           placeholder="Enter customer’s full business address.">
+                                    placeholder="أدخل عنوان عمل العميل كاملاً">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Telephone:</label>
+                                    <label>هاتف العميل:</label>
                                     <div id="view_phone_div">
                                     </div>
                                 </div>
@@ -340,21 +336,21 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Email Address:</label>
+                                    <label>عنوان البريد الإلكتروني للعميل:</label>
                                     <input type="email" readonly class="form-control" name="Email"
-                                           placeholder="Enter Customer Email:">
+                                           placeholder="أدخل البريد الإلكتروني للعميل:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Customer Contact Name:</label>
+                                    <label>اسم جهة اتصال العميل:</label>
                                     <input type="text" readonly class="form-control" name="contactName"
-                                           placeholder="Enter Customer Contact Number:">
+                                           placeholder="أدخل رقم اتصال العميل:">
                                 </div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"
-                                style="margin-right:20px;">Close
+                                style="margin-right:20px;">يغلق
                         </button>
                     </form>
                 </div>

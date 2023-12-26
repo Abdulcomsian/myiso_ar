@@ -2,27 +2,29 @@
 
 @section('content')
 <!-- begin:: Content -->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="kt-content  kt-grid__item kt-grid__item--fluid text-right" id="kt_content">
 
 	<!--Begin::Dashboard 1-->
 
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
-			<h2>Customer Review</h2>
+		<div class="col-xl-12 col-lg-12 text-right">
+			<h2>رأي العميل</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-			<p>Customer reviews are a tool to monitor and grade the performance levels of your customers, this performance indicator can target all areas of contact with the customer.</p>
-			<p>To add a record, click on the “Add Customer Evaluation” button. To amend a record, click on the edit icon of the entry that needs to be modified.</p>
+				<p>تقييمات العملاء هي بمثابة أداة لمراقبة وتصنيف مستويات أداء عملائك. وقد يستهدف مؤشر الأداء هذا جميع
+					نقاط الاتصال مع العميل. </p>
+				<p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم عميل". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة
+					بالقيد المراد تعديله. </p>
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="customerReview()" class="addBtn">ADD CUSTOMER EVALUATION</a>
+                    			<a onclick="customerReview()" class="addBtn">إضافة تقييم عميل</a>
                     		</div>
                     	</div>
                     	<div class="customer_review_from_div">
@@ -42,11 +44,12 @@
                     				</div> --}}
                     				<div class="col-lg-12">
                     					<div class="form-group">
-											<label>Customer ID Number:</label><br>
+											<label>رقم تعريف العميل: </label><br>
 											
 											<!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
 											<select class="form-control" name="cus_id" required="required">
-												<option value="" disabled selected>Select Customer Id</option>
+												<option value="" disabled selected>يرجى اختيار رقم تعريف العميل
+												</option>
                                                 @foreach($all_customers as $customer)
                                                 <option value="{{$customer->idNumber}}">{{$customer->idNumber}}</option>
                                                 @endforeach
@@ -62,41 +65,49 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Quality Score (0-10):</label>
-											<input type="number" min="0" max="10" id="qualityScore"  placeholder="Enter Quality Score" class="form-control" name="qualityScore" required="required">
+											<label> التقييم من حيث الجودة (0 – 10):</label>
+											<input type="number" min="0" max="10" id="qualityScore"
+                                                class="form-control"
+                                                placeholder=" يرجى إدخال النقاط المحرزة فيما يتعلق  بالجودة"
+                                                name="qualityScore" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Price Score (0-10):</label>
-											<input type="number" class="form-control"min="0" max="10" name="priceScore" required="required">
-										</div>
+                                            <label>التقييم من حيث السعر: (0 – 10):</label>
+                                            <input type="number" class="form-control"min="0" max="10"
+                                                name="priceScore" required="required">
+                                        </div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Delivery Score (0-10):</label>
-											<input type="number"min="0" max="10" class="form-control" name="DScore" required="required" placeholder="Enter Delivery Score">
-										</div>
+                                            <label>التقييم من حيث التسليم: (0 – 10): </label>
+                                            <input type="number"min="0" max="10" class="form-control" name="DScore"
+                                                required="required"
+                                                placeholder=" يرجى إدخال النقاط المحرزة فيما يتعلق  بالتسليم">
+                                        </div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>Overall Score (0-10):</label>
-											<input type="number" class="form-control"min="0" max="10" name="OveralScore" required="required">
-										</div>
+                                            <label>النتيجة الإجمالية (0-10):</label>
+                                            <input type="number" class="form-control"min="0" max="10"
+                                                name="OveralScore" required="required">
+                                        </div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label>Assessment Date (MM/DD/YYYY):</label>
-											<input type="date" class="form-control" max="2999-12-31" name="AssesmentDate" required="required">
-										</div>
+                                            <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
+                                            <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate"
+                                                required="required">
+                                        </div>
 									</div>
 								</div>
-								<button  class="submitBtn" type="submit">SUBMIT</button>
-								<button  class="btn btn-secondary submitBtn" type="reset" onclick="customerReview()" style="margin-right: 6px;">Cancel</button>
+								<button  class="submitBtn" type="submit">يُقدِّم</button>
+								<button  class="btn btn-secondary submitBtn" type="reset" onclick="customerReview()" style="margin-right: 6px;">يلغي</button>
                     		</form>
                     	</div>
                     </div>
@@ -104,27 +115,27 @@
                     <div class="procedure_div">
                     	<div class="requirments_table_div">
 							<div class="d-flex justify-content-between mb-2">
-								<h4>Customer Review Details</h4>
-								<a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
+								<h4>تفاصيل تقييم العميل </h4>
+								{{-- <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
 									<i class="la la-long-arrow-left"></i>
 									Back
-								</a>
+								</a> --}}
 							</div>
                     		<div class="kt-portlet__body table-responsive">
 								<!--begin: Datatable -->
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive">
 									<thead>
 										<tr>
-											<th>Customer Review ID</th>
-											<th>Customer ID Number</th>
-											<th>Customer</th>
-											<th>Quality</th>
-											<th>Price</th>
-											<th>Delivery</th>
-											<th>Overall</th>
-                                            <th>Review Date</th>
-                                            <th>Action</th>
-										</tr>
+                                            <th>رقم تقييم العميل</th>
+                                            <th>رقم تعريف العميل</th>
+                                            <th>اسم العميل</th>
+                                            <th>الجودة </th>
+                                            <th>السعر </th>
+                                            <th>التسليم </th>
+                                            <th>الإجمالي</th>
+                                            <th>تاريخ التقييم </th>
+                                            <th>النشاط </th>
+                                        </tr>
 									</thead>
 									<tbody>
                                         @foreach ($customer_review as $data)
@@ -156,9 +167,10 @@
 												<div class="modal-dialog modal-lg" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLabel">View Customer Evaluation Details</h5>
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															</button>
+															<h5 class="modal-title" id="exampleModalLabel">رأي
+																العميل</h5>
+																<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+																</a>
 														</div>
 														<div class="modal-body">
 											                
@@ -166,8 +178,8 @@
 											                        
 											                        <div class="col-lg-12">
 											                            <div class="form-group">
-											                                <label>Customer ID Number:</label><br>
-											                                <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:" value="{{$data->cus_id}}" readonly>
+											                                <label>رقم هوية العميل:</label><br>
+											                                <input type="number" class="form-control" name="cus_id" placeholder="أدخل معرف العميل:" value="{{$data->cus_id}}" readonly>
 											                            </div>
 											                        </div>
 											                    </div>
@@ -175,13 +187,13 @@
 											                    <div class="row">
 											                        <div class="col-lg-6">
 											                            <div class="form-group">
-											                                <label>Quality Score (0-10):</label>
+											                                <label>نقاط الجودة (0-10):</label>
 											                                <input type="number" min="0" max="10" class="form-control" name="qualityScore" value="{{$data->qualityScore}}" readonly>
 											                            </div>
 											                        </div>
 											                        <div class="col-lg-6">
 											                            <div class="form-group">
-											                                <label>Price Score (0-10):</label>
+											                                <label>نقاط السعر (0-10):</label>
 											                                <input type="number" min="0" max="10" class="form-control" name="priceScore" value="{{$data->priceScore}}" readonly>
 											                            </div>
 											                        </div>
@@ -189,13 +201,13 @@
 											                    <div class="row">
 											                        <div class="col-lg-6">
 											                            <div class="form-group">
-											                                <label>Delivery Score (0-10):</label>
+											                                <label>درجة التسليم (0-10):</label>
 											                                <input type="number" class="form-control"min="0" max="10"name="DScore"  value="{{$data->DScore}}" readonly>
 											                            </div>
 											                        </div>
 											                        <div class="col-lg-6">
 											                            <div class="form-group">
-											                                <label>Overall Score (0-10):</label>
+											                                <label>النتيجة الإجمالية (0-10):</label>
 											                                <input type="number" class="form-control" min="0" max="10"  name="OveralScore" value="{{$data->OveralScore}}" readonly>
 											                            </div>
 											                        </div>
@@ -203,13 +215,13 @@
 											                    <div class="row">
 											                        <div class="col-lg-12">
 											                            <div class="form-group">
-											                                <label>Assessment Date (MM/DD/YYYY):</label>
+											                                <label>تاريخ التقييم (شهر/يوم/سنة):</label>
 											                                <input type="date" max="2999-12-31" class="form-control" name="AssesmentDate" value="{{$data->AssesmentDate}}" readonly>
 											                            </div>
 											                        </div>
 											                    </div>
 																
-																<button  class="btn btn-secondary submitBtn" type="reset" data-dismiss="modal" aria-label="Close" style="margin-right: 6px;">Cancel</button>
+																<button  class="btn btn-secondary submitBtn" type="reset" data-dismiss="modal" aria-label="Close" style="margin-right: 6px;">يلغي</button>
 											              
 													</div>
 												</div>
@@ -264,9 +276,9 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Customer Evaluation Details</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل تقييم العملاء</h5>
+				<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+				</a>
 			</div>
 			<div class="modal-body">
                 <form method="POST" action="{{route('editCustomerReview')}} ">
@@ -285,8 +297,8 @@
                         </div> --}}
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Customer ID Number:</label><br>
-                                <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:" readonly>
+                                <label>رقم هوية العميل:</label><br>
+                                <input type="number" class="form-control" name="cus_id" placeholder="أدخل معرف العميل:" readonly>
                             </div>
                         </div>
                     </div>
@@ -294,13 +306,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Quality Score (0-10):</label>
+                                <label>نقاط الجودة (0-10):</label>
                                 <input type="number" min="0" max="10" class="form-control" name="qualityScore" required="required">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Price Score (0-10):</label>
+                                <label>نقاط السعر (0-10):</label>
                                 <input type="number" min="0" max="10" class="form-control" name="priceScore" required="required">
                             </div>
                         </div>
@@ -308,13 +320,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Delivery Score (0-10):</label>
+                                <label>درجة التسليم (0-10):</label>
                                 <input type="number" class="form-control"min="0" max="10"name="DScore" required="required">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Overall Score (0-10):</label>
+                                <label>النتيجة الإجمالية (0-10):</label>
                                 <input type="number" class="form-control" min="0" max="10"  name="OveralScore" required="required">
                             </div>
                         </div>
@@ -322,14 +334,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Assessment Date (MM/DD/YYYY):</label>
+                                <label>تاريخ التقييم (شهر/يوم/سنة):</label>
                                 <input type="date" max="2999-12-31" class="form-control" name="AssesmentDate" required="required">
                             </div>
                         </div>
                     </div>
-                    <button  class="submitBtn"  type="submit">Update</button>
+                    <button  class="submitBtn"  type="submit">تحديث</button>
 					
-					<button  class="btn btn-secondary submitBtn" type="reset" data-dismiss="modal" aria-label="Close" style="margin-right: 6px;">Cancel</button>
+					<button  class="btn btn-secondary submitBtn" type="reset" data-dismiss="modal" aria-label="Close" style="margin-right: 6px;">يلغي</button>
                 </form>
 		</div>
 	</div>
@@ -339,19 +351,19 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Customer Review Details</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="exampleModalLabel">حذف تفاصيل مراجعة العميل</h5>
+				<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+				</a>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
 			<form action="{{route('deleteCustomerRivewAdmin')}}" method="POST">
 				@csrf
 			<input type="hidden" id="re_id" value="" name="id">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>
