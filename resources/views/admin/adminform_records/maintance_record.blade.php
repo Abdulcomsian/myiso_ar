@@ -2,29 +2,31 @@
 
 @section('content')
 <!-- begin:: Content -->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="kt-content  kt-grid__item kt-grid__item--fluid text-right" id="kt_content">
 
 	<!--Begin::Dashboard 1-->
 
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
-			<h2>Maintenance Records</h2>
-		</div>
+        <div class="col-xl-12 col-lg-12 text-right">
+            <h2>سجلات الصيانة</h2>
+        </div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-            <p>Carrying out frequent maintenance checks and repairs are necessary to maintain production and service. Maintenance Reviews within the working environment including equipment should be carried out monthly, quarterly, semiannually, or annually depending on the size and nature of the business.</p>
-
-<p>To add a record, click on the “Add Maintenance Record” button. To amend a record, click on the edit icon of the entry that needs to be modified or deleted.</p>
+                <p>تنفيذ فحوصات الصيانة الدورية والإصلاحات يعد أمرًا ضروريًا للحفاظ على الإنتاج والخدمة. يجب تنفيذ
+                    مراجعات الصيانة داخل بيئة العمل، بما في ذلك المعدات، شهريًا، أو كل ثلاثة أشهر، أو كل ستة أشهر أو
+                    سنويًا، وفقًا لحجم العمل وطبيعته.</p>
+                <p>لإضافة سجل، انقر على الزر "إضافة سجل صيانة". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد
+                    تعديله أو حذفه.</p>
                     <div class="procedure_div">
                     	<div class="row">
-                    		<div class="col-lg-12 text-right">
-                    				<a onclick="maintanceRecordForm()" class="addBtn">Add Maintenance records</a>
-                    		</div>
+                            <div class="col-lg-12 text-right">
+                                <a onclick="maintanceRecordForm()" class="addBtn">إضافة سجل صيانة</a>
+                            </div>
                     	</div>
                     <div class="maintance_record_from_div">
                         <form action="{{route('maintain_rec')}} " method="POST" enctype="multipart/form-data">
@@ -41,82 +43,92 @@
 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                     				<div class="col-lg-12">
                     					<div class="form-group">
-											<label>Maintenance Record Date (DD/MM/YYYY):</label><br>
-											<input type="date" max="2999-12-31" class="form-control" name="mrdate" required>
-										</div>
+                                            <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label><br>
+                                            <input type="date" max="2999-12-31" class="form-control" name="mrdate"
+                                                required>
+                                        </div>
                     				</div>
                     			</div>
 
 								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Maintenance Record Item:</label>
-											<input type="text" class="form-control" placeholder="Enter Object name:" name="mritem" required>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Maintenance Record Activity:</label>
-											<input type="text" class="form-control" placeholder="Enter Activity:" name="mractivity" required>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Maintenance Location:</label>
-											<input type="text" class="form-control"  placeholder="Enter Location" name="mlocation" required>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Maintenance Record Observations:</label>
-											<input type="text" class="form-control" placeholder="Enter Observation"  name="mrobservation" required>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Maintenance Record Actions:</label>
-											<input type="text" class="form-control" placeholder="Enter Action Taken" name="mractions" required>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Maintenance Record Activity Performed By:</label>
-											<input type="text" class="form-control" placeholder="Enter Name of person carrying out maintenance" name="mractivityperofrmby" required>
-										</div>
-									</div>
-								</div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Attach Evidence: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
-                                            <input name="attach_evidence" type="file" class="form-control"
-                                                   accept="all">
+                                            <label>عنصر سجل الصيانة:</label>
+                                            <input type="text" class="form-control" placeholder="أدخل اسم الكائن:"
+                                                name="mritem" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Any other issues or points to note?</label>
-                                            <textarea name="any_issues" class="form-control" placeholder="Enter Any other issues:"></textarea>
+                                            <label>نشاط سجل الصيانة:</label>
+                                            <input type="text" class="form-control" placeholder="أدخل النشاط:"
+                                                name="mractivity" required>
                                         </div>
                                     </div>
                                 </div>
-								<button type="submit" class="submitBtn">SUBMIT</button>
-								<button type="reset" onclick="maintanceRecordForm()" class="submitBtn" style="margin-right: 10px;">Cancel</button>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>موقع الصيانة:</label>
+                                            <input type="text" class="form-control" placeholder="إدخال الدولة"
+                                                name="mlocation" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>ملاحظات سجل الصيانة:</label>
+                                            <input type="text" class="form-control" placeholder="أدخل الملاحظة"
+                                                name="mrobservation" required>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>إجراء سجل الصيانة:</label>
+                                            <input type="text" class="form-control" placeholder="أدخل الإجراء المتخذ"
+                                                name="mractions" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>تم إجراء نشاط سجل الصيانة بواسطة:</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="أدخل اسم الشخص الذي يقوم بالصيانة" name="mractivityperofrmby"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>دليل المرفق: <span class="text-danger"
+                                                    style="color:#000 !important;">(jpeg, mp3, mp4, .xls,
+                                                    doc)</span></label>
+                                            <input name="attach_evidence" type="file" class="form-control"
+                                                accept="all">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label> هل يوجد أي مشاكل أو نقاط أخرى ترغب في تدوينها؟</label>
+                                            <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+								<button type="submit" class="submitBtn">يُقدِّم</button>
+								<button type="reset" onclick="maintanceRecordForm()" class="submitBtn" style="margin-right: 10px;">يلغي</button>
                     		</form>
                     	</div>
                     </div>
                     <div class="procedure_div">
                     	<div class="requirments_table_div">
                             <div class="d-flex justify-content-between mb-2">
-                                <h4>Total Records Listed</h4>
-                                <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
+                                <h4> إجمالي السجلات المدرجة</h4>
+                                {{-- <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
                                     <i class="la la-long-arrow-left"></i>
                                     Back
-                                </a>
+                                </a> --}}
                             </div>
                             <!--<button>Add an Entry</button>-->
                     		<div class="kt-portlet__body table-responsive">
@@ -124,16 +136,16 @@
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th>Maintenance Record ID</th>
-											<th>Maintenance Record Date</th>
-											<th>Item</th>
-											<th>Activity</th>
-											<th>Location</th>
-											<th>Observations</th>
-											<th>Actions</th>
-                                            <th>Performed By</th>
-                                            <th>Maintenance Record Actions</th>
-										</tr>
+                                            <th>معرّف الصيانة</th>
+                                            <th>التاريخ</th>
+                                            <th>العنصر</th>
+                                            <th>النشاط</th>
+                                            <th>الموقع</th>
+                                            <th>ملاحظات</th>
+                                            <th>الإجراءات</th>
+                                            <th> تم بواسطة</th>
+                                            <th>الإجراء</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         @php
@@ -172,36 +184,36 @@
 
 	<!--End::Section-->
 </div>
-<div class="modal fade" id="deleteSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting an entry.</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="exampleModalLabel"> حذف إدخال.</h5>
+				<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                </a>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+                <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
 			
 					<form action="{{route('deletemaintanceRecAdmin')}}" method="POST">
 						@csrf
 						<input type="hidden" name="id" id="re_id" value="">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-						<button type="submit" class="btn btn-danger">Yes</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+						<button type="submit" class="btn btn-danger">نعم</button>
 						</form>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="editepmloyee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="editepmloyee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Maintenance Record Details</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل سجل الصيانة</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
             </div>
 		<form action="{{route('editmentainance')}} " method="POST" enctype="multipart/form-data">
             @csrf
@@ -222,36 +234,39 @@
                         </div> --}}
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Maintenance Record Date (DD/MM/YYYY):</label><br>
-                                <input type="date" class="form-control" name="mrdate">
+                                <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label><br>
+                                <input type="date" max="2999-12-31" class="form-control" name="mrdate">
                             </div>
                         </div>
                     </div>
 
+                   
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Item:</label>
-                                <input type="text" class="form-control" name="mritem" placeholder="Enter Management Review Meeting:">
+                                <label>عنصر سجل الصيانة:</label>
+                                <input type="text" class="form-control" name="mritem"
+                                    placeholder="أدخل اجتماع مراجعة الإدارة:">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Activity:</label>
-                                <input type="text" class="form-control" name="mractivity" placeholder="Enter Review Previous Meeting:">
+                                <label>نشاط سجل الصيانة:</label>
+                                <input type="text" class="form-control" name="mractivity"
+                                    placeholder="أدخل مراجعة الاجتماع السابق:">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Location:</label>
+                                <label>موقع الصيانة:</label>
                                 <input type="text" class="form-control" name="mlocation">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Observations:</label>
+                                <label>ملاحظات سجل الصيانة:</label>
                                 <input type="text" class="form-control" name="mrobservation">
                             </div>
                         </div>
@@ -259,13 +274,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Actions:</label>
+                                <label>إجراء سجل الصيانة:</label>
                                 <input type="text" class="form-control" name="mractions">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Activity Performed By:</label>
+                                <label>تم إجراء نشاط سجل الصيانة بواسطة:</label>
                                 <input type="text" class="form-control" name="mractivityperofrmby">
                             </div>
                         </div>
@@ -273,35 +288,35 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Attach Evidence: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
-                                <input name="attach_evidence" type="file" class="form-control"
-                                       accept="all">
+                                <label>دليل المرفق: <span class="text-danger" style="color:#000 !important;">(jpeg,
+                                        mp3, mp4, .xls, doc)</span></label>
+                                <input name="attach_evidence" type="file" class="form-control" accept="all">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Any other issues or points to note?</label>
-                                <textarea name="any_issues" class="form-control" placeholder="Enter Any other issues:"></textarea>
+                                <label>هل يوجد أي مشاكل أو نقاط أخرى ترغب في تدوينها؟</label>
+                                <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
                             </div>
                         </div>
                     </div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
             </div>
         </form>
 		</div>
 	</div>
 </div>
 <!--VIEW--->
-<div class="modal fade" id="viewMR" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="viewMR" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">View Maintenance Record Details</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+                <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل سجل الصيانة</h5>
+                <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                </a>
             </div>
 		<form >
             @csrf
@@ -316,8 +331,8 @@
                         </div> --}}
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Maintenance Record Date:</label><br>
-                                <input type="date" class="form-control" name="mrdate" disabled>
+                                <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label><br>
+                                <input type="date" max="2999-12-31" class="form-control" name="mrdate" disabled>
                             </div>
                         </div>
                     </div>
@@ -325,27 +340,29 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Item:</label>
-                                <input type="text" class="form-control" name="mritem" placeholder="Enter Management Review Meeting:" disabled>
+                                <label>عنصر سجل الصيانة:</label>
+                                <input type="text" class="form-control" name="mritem"
+                                    placeholder="أدخل اجتماع مراجعة الإدارة:" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Activity:</label>
-                                <input type="text" class="form-control" name="mractivity" placeholder="Enter Review Previous Meeting:" disabled>
+                                <label>نشاط سجل الصيانة:</label>
+                                <input type="text" class="form-control" name="mractivity"
+                                    placeholder="أدخل مراجعة الاجتماع السابق:" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Location:</label>
+                                <label>موقع الصيانة:</label>
                                 <input type="text" class="form-control" name="mlocation" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Observations:</label>
+                                <label>ملاحظات سجل الصيانة:</label>
                                 <input type="text" class="form-control" name="mrobservation" disabled>
                             </div>
                         </div>
@@ -353,13 +370,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Actions:</label>
+                                <label> إجراء سجل الصيانة:</label>
                                 <input type="text" class="form-control" name="mractions" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance Record Activity Performed By:</label>
+                                <label>تم إجراء نشاط سجل الصيانة بواسطة:</label>
                                 <input type="text" class="form-control" name="mractivityperofrmby" disabled>
                             </div>
                         </div>
@@ -367,20 +384,22 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Attach Evidence <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
+                                <label>دليل المرفق: <span class="text-danger" style="color:#000 !important;">(jpeg,
+                                        mp3, mp4, .xls, doc)</span>:</label>
                                 <div class="evidence_attachemnt_div"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Any other issues or points to note?</label>
-                                <textarea name="any_issues" class="form-control" placeholder="Enter Any other issues:"></textarea>
+                                <label>هل يوجد أي مشاكل أو نقاط أخرى ترغب في تدوينها؟</label>
+                                <input type="text" name="any_issues" disabled class="form-control"
+                                    placeholder="Enter Any other issues:">
                             </div>
                         </div>
                     </div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
             </div>
         </form>
 		</div>

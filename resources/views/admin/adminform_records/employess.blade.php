@@ -17,23 +17,24 @@
 </style>
 @section('content')
 <!-- begin:: Content -->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="kt-content  kt-grid__item kt-grid__item--fluid text-right" id="kt_content">
 
 	<!--Begin::Dashboard 1-->
 
 
 	<!--Begin::Section-->
 	<div class="row">
-		<div class="col-xl-12 col-lg-12">
-			<h2>Employees</h2>
+		<div class="col-xl-12 col-lg-12 text-right">
+			<h2>الموظفون</h2>
 		</div>
 	</div>
 	<section id="procedure_section">
 
 		<div class="row">
 			<div class="col-lg-12">
-			<p>Adding Employees will accurately store all relevant information of working staff, including training & skills.</p>
-			<p>To add a record, click on the “Add Employee” button. To amend a record, click on the edit icon of the entry that needs to be modified or deleted.</p>
+				<p>إضافة الموظفين سيحفظ جميع معلومات طاقم العمل ذات الصلة بدقة، بما في ذلك التدريب والمهارات.</p>
+				<p>لإضافة سجل، انقر على الزر "إضافة موظف". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد تعديله
+					أو حذفه.</p>
 				@if(Session::has('Error'))
 					<h5 class="text-danger">  {{ Session::get('Error') }} </h5>
 				@endif
@@ -42,8 +43,8 @@
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="employeeForm()" class="addBtn">ADD EMPLOYEE</a>
-                    		</div>
+                                <a onclick="employeeForm()" class="addBtn">إضافة موظف</a>
+                            </div>
                     	</div>
                     	<div class="employee_from_div">
                         <form method="POST" action="{{ route('employee') }}" enctype="multipart/form-data" class="addForm">
@@ -57,45 +58,51 @@
                     				</div> --}}
                     				<div class="col-lg-12">
                     					<div class="form-group">
-											<label>Surname:</label><br>
-											<input type="text" class="form-control" required name="surname" placeholder="Enter Surname">
-										</div>
+                                            <label>اللقب:</label><br>
+                                            <input type="text" class="form-control" name="surname" required
+                                                placeholder="أدخل اللقب" data-type="add">
+                                        </div>
                     				</div>
                     			</div>
 
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label>First Name:</label>
-											<input type="text" class="form-control" name="first_name"  required placeholder="Enter First Name">
-										</div>
+                                            <label>الاسم الأول:</label>
+                                            <input type="text" class="form-control" name="first_name" required
+                                                placeholder="أدخل الاسم الأول">
+                                        </div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group add-emp-number-div">
-											<label>Employee ID Number:</label>
-											<input name="empNumber" type="text" class="form-control"  required placeholder="Enter Employee ID Number" data-type="add">
-										</div>
+                                            <label> رقم تعريف الموظف:</label>
+                                            <input name="empNumber" type="text" class="form-control" required
+                                                placeholder="أدخل رقم هوية الموظف" data-type="add">
+                                        </div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Start Date (MM/DD/YYYY):</label>
-											<input name="startDate" max="2999-12-31" type="date" required class="form-control" >
-										</div>
-										<div class="form-group">
-											<label>Upload Employee CV:</label>
-											<input name="employee_cv" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf">
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label>Job Description:</label>
-											<!-- <input type="text" name="jobdetails"  class="form-control" required placeholder="Enter Job Description"> -->
-											<textarea name="jobdetails"  cols="20" rows="5" class="form-control" placeholder="Enter Job Description:"></textarea>
-										</div>
-									</div>
-								</div>
+								<<div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>تاريخ البدء (يوم/شهر/سنة):</label>
+                                            <input name="startDate" max="2999-12-31" required type="date"
+                                                class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>تحميل السيرة الذاتية للموظف:</label>
+                                            <input name="employee_cv" type="file" class="form-control"
+                                                accept="image/*,.doc, .docx,.txt,.pdf">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>الوصف الوظيفي:</label>
+                                            <!-- <input type="text" name="jobdetails" required class="form-control"  placeholder="Enter Job Description"> -->
+                                            <textarea name="jobdetails" cols="20" rows="5" class="form-control" placeholder="أدخل الوصف الوظيفي:"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
 								<!-- <div class="row">
 									<div class="col-lg-6">
 										
@@ -106,16 +113,16 @@
                                 @endphp
 								<input type="hidden" name="is_admin" value="admin"/>
 								<input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}"/>
-								<button type="reset" onclick="emp1()" class="submitBtn" style="margin-left: 7px;">Cancel</button>
-								<button class="submitBtn">SUBMIT</button>
+								<button type="reset" onclick="emp1()" class="submitBtn" style="margin-left: 7px;">يلغي</button>
+								<button class="submitBtn">يُقدِّم</button>
                     		</form>
                     	</div>
                     </div>
                     <div class="procedure_div m-t-20">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="employeeSkillForm()" class="addBtn">ADD PROCESS SKILL FOR EMPLOYEE</a>
-                    		</div>
+                                <a onclick="employeeSkillForm()" class="addBtn">إضافة مهارات العمليات للموظف</a>
+                            </div>
                     	</div>
                     	<div class="employee_skill_from_div">
                         <form action="{{ route('empSkills')}}" method="POST">
@@ -123,9 +130,10 @@
                     			<div class="row">
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Employee ID Number:</label><br>
+											<label>رقم تعريف الموظف:</label><br>
 											<select name="empid" required class="form-control">
-											   <option  value="" selected="selected" disabled="disabled">Select One</option>
+												<option value="" selected="selected" disabled="disabled">حدد واحدًا
+                                                </option>
 											    @if(isset($userinfo) && $userinfo!= "")
 													@foreach($userinfo as $item)
 														<option value="{{$item->id}}" title="{{ $item->first_name }}">{{$item->empNumber.' ('.$item->first_name.')'}}</option>
@@ -136,7 +144,7 @@
                     				</div>
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Skill:</label><br>
+											<label>المهارة:</label><br>
 											<input type="text" required  name="empskill" class="form-control"  placeholder="Enter Skills Name">
 										</div>
                     				</div>
@@ -146,16 +154,16 @@
                                 @endphp
 								<input type="hidden" name="is_admin" value="admin"/>
 								<input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}"/>
-								<button type="reset" onclick="emp2()" class="submitBtn" style="margin-left: 7px;">Cancel</button>
-								<button type="submit" class="submitBtn">SUBMIT</button>
+								<button type="reset" onclick="emp2()" class="submitBtn" style="margin-left: 7px;">يلغي</button>
+								<button type="submit" class="submitBtn">يُقدِّم</button>
                     		</form>
                     	</div>
                     </div>
                     <div class="procedure_div m-t-20">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
-                    			<a onclick="employeeRecordForm()" class="addBtn">ADD A TRAINING RECORD FOR EMPLOYEE</a>
-                    		</div>
+                                <a onclick="employeeRecordForm()" class="addBtn"> إضافة سجل تدريب للموظف</a>
+                            </div>
                     	</div>
                     	<div class="employee_record_from_div">
                             <form action=" {{route('empTraining')}} " method="POST">
@@ -163,9 +171,10 @@
                     			<div class="row">
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Employee ID Number:</label><br>
+											<label>رقم تعريف الموظف:</label><br>
 											<select name="empid" required class="form-control">
-											   <option  value="" selected="selected" disabled="disabled">Select One</option>
+											    <option value="" selected="selected" disabled="disabled">حدد واحدًا
+                                                </option>
 											    @if(isset($userinfo) && $userinfo!= "")
 													@foreach($userinfo as $item)
 														<option value="{{$item->id}}" title="{{ $item->first_name }}">{{$item->empNumber.' ('.$item->first_name.')'}}</option>
@@ -176,17 +185,18 @@
                     				</div>
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>Training Date (MM/DD/YYYY):</label><br>
-											<input type="date" required max="2999-12-31" class="form-control" name="traningdate">
-										</div>
+                                            <label>تاريخ التدريب (شهر/يوم/سنة):</label><br>
+                                            <input type="date" max="2999-12-31" required class="form-control"
+                                                name="traningdate">
+                                        </div>
                     				</div>
                     			</div>
                     			<div class="row">
                     				<div class="col-lg-12">
                     					<div class="form-group">
-											<label>Training Details:</label><br>
-											<input type="text" placeholder="Enter Training Details" required class="form-control"  name="traningdetails">
-										</div>
+                                            <label>تفاصيل التدريب:</label><br>
+                                            <input type="text" class="form-control" required name="traningdetails">
+                                        </div>
                     				</div>
                     			</div>
                     			 @php 
@@ -194,8 +204,8 @@
                                 @endphp
 								<input type="hidden" name="is_admin" value="admin"/>
 								<input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}"/>
-								<button type="reset" onclick="emp3()" class="submitBtn" style="margin-left: 7px;">Cancel</button>
-								<button type="submit" class="submitBtn">SUBMIT</button>
+								<button type="reset" onclick="emp3()" class="submitBtn" style="margin-left: 7px;">يلغي</button>
+								<button type="submit" class="submitBtn">يُقدِّم</button>
                     		</form>
                     	</div>
                     </div>
@@ -204,11 +214,11 @@
                     <div class="procedure_div">
                     	<div class="requirments_table_div">
 							<div class="d-flex justify-content-between mb-2">
-								<h4>Total Employees Listed</h4>
-								<a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
+								<h4>إجمالي الموظفين المدرجين</h4>
+								{{-- <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
 									<i class="la la-long-arrow-left"></i>
 									Back
-								</a>
+								</a> --}}
 							</div>
 
                     		<div class="kt-portlet__body table-responsive">
@@ -216,15 +226,15 @@
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th class="E_id">Employee ID Number</th>
-											<th class="surname">Surname</th>
-											<th class="firstname">Firstname</th>
-											<th>Job Details</th>
-											<th>CV</th>
-											<th>Start Date</th>
-                                            <!--<th>Job Title</th>-->
-                                            <th class="actions">Action</th>
-										</tr>
+                                            <th style="width:170px;">رقم تعريف الموظف</th>
+                                            <th style="width:150px;">اللقب</th>
+                                            <th style="width:150px;">الاسم الأول</th>
+                                            <!--<th>Employee Number</th>-->
+                                            <th style="width:200px;">تاريخ البدء </th>
+                                            <th style="width:240px;">الوصف الوظيفي</th>
+                                            <th style="width:120px;">السيرة الذاتية</th>
+                                            <th style="width:150px;">النشاط</th>
+                                        </tr>
 									</thead>
 									<tbody>
 										@php
@@ -306,7 +316,8 @@
 														<div class="modal-dialog" style="height:75%;" role="document">
 															<div class="modal-content">
 																<div class="modal-header">
-																	<h5 class="modal-title" id="exampleModalLabel">View CV</h5>
+																	<h5 class="modal-title" id="viewcvLabel">عرض
+																		السيرة الذاتية</h5>
 																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																		<span aria-hidden="true">&times;</span>
 																	</button>
@@ -316,14 +327,16 @@
 																</div>
 																<div class="modal-footer">
 																	<a id="downloadLink" href="#" download>
-																		<h5 class="modal-title" style="float:right;text-align:Right;">Download CV</h5>
+																		<h5 class="modal-title"
+                                                                                style="float:right;text-align:Right;">تحميل
+                                                                                السيرة الذاتية</h5>
 																	</a>
 																</div>
 															</div>
 														</div>
 													</div>
 												@else
-													No data found
+												لاتوجد بيانات
 												@endif
 											</td>
 											
@@ -347,51 +360,66 @@
 													<div class="modal-dialog" role="document">
 													<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Total Employees Listed</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-														</button>
+														<h5 class="modal-title" id="exampleModalLabel">إجمالي
+															الموظفين المدرجين</h5>
+															<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+															</a>
 													</div>
 													 <div class="modal-body">
 
-								                        <div class="row">
-								                            <div class="col-lg-12">
-								                                <div class="form-group">
-								                                    <label>Surname:</label><br>
-								                                    <input type="text" class="form-control" name="surname" placeholder="Enter Surname" value="{{$item->surname}}" readonly>
-								                                </div>
-								                            </div>
-								                        </div>
+														<div class="row">
+															<div class="col-lg-12">
+																<div class="form-group">
+																	<label>اسم العائلة:</label><br>
+																	<input type="text" class="form-control"
+																		name="surname"
+																		placeholder="أدخل اللقب"
+																		value="{{ $item->surname }}" readonly>
+																</div>
+															</div>
+														</div>
 
+														<div class="row">
+															<div class="col-lg-6">
+																<div class="form-group">
+																	<label>الاسم الأول:</label>
+																	<input type="text" class="form-control"
+																		name="first_name"
+																		placeholder="أدخل الاسم الأول"
+																		value="{{ $item->first_name }}"
+																		readonly>
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="form-group edit-emp-number-div">
+																	<label>هوية الموظف:</label>
+																	<input type="text" name="empNumber"
+																		required class="form-control"
+																		data-type="edit"
+																		value="{{ $item->empNumber }}"
+																		readonly>
+																</div>
+															</div>
+														</div>
 								                        <div class="row">
-								                            <div class="col-lg-6">
-								                                <div class="form-group">
-								                                    <label>First Name:</label>
-								                                    <input type="text" class="form-control" name="first_name"  placeholder="Enter First Name" value="{{$item->first_name}}" readonly>
-								                                </div>
-								                            </div>
-								                            <div class="col-lg-6">
-								                                <div class="form-group edit-emp-number-div">
-								                                    <label>Employee ID:</label> 
-								                                    <input type="text" name="empNumber" required class="form-control" data-type="edit" value="{{$item->empNumber}}" readonly>
-								                                </div>
-								                            </div>
-								                        </div>
-								                        <div class="row">
-								                            <div class="col-lg-6">
-								                                <div class="form-group">
-								                                    <label>Start Date (YYYY/MM/DD):</label>
-								                                    <input name="startDate" max="2999-12-31" type="date" class="form-control" value="{{$item->startDate}}" readonly>
-								                                </div>
-								                            </div>
-								                            <div class="col-lg-6">
-								                                <div class="form-group">
-								                                    <label>Job Description:</label>
-								                                    <!-- <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Description:" value="{{$item->jobdetails}}" readonly> -->
-																	<textarea name="jobdetails" id="" cols="20" rows="5" class="form-control" placeholder="Enter Job Description:">{{$item->jobdetails}}</textarea>
-								                                </div>
-								                            </div>
-								                        </div>
+															<div class="col-lg-6">
+																<div class="form-group">
+																	<label>تاريخ البدء (يوم/شهر/سنة):</label>
+																	<input name="startDate" max="2999-12-31"
+																		type="date" class="form-control"
+																		value="{{ $item->startDate }}"
+																		readonly>
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="form-group">
+																	<label>الوصف الوظيفي</label>
+																	<!-- <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Details:" value="{{ $item->jobdetails }}" readonly> -->
+																	<textarea name="jobdetails" id="" cols="20" rows="5" class="form-control"
+																		placeholder="أدخل الوصف الوظيفي:">{{ $item->jobdetails }}</textarea>
+																</div>
+															</div>
+														</div>
 												<!-- <div class="row">
 													<div class="col-lg-6">
 														<div class="form-group">
@@ -402,7 +430,7 @@
 												</div> -->
 											</div>
 														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 														</div>
 														</div>
 													</div>
@@ -419,29 +447,21 @@
 					</div>
 					 <div class="procedure_div m-t-20">
                     	<div class="requirments_table_div">
-                    		<h4>Total Employee Skills Listed</h4>
+                    		<h4>إجمالي مهارات الموظف المدرجة</h4>
                     		<div class="kt-portlet__body table-responsive">
 								<!--begin: Datatable -->
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											{{-- <th>Skills ID</th> --}}
-											<th class="E_id">Employee ID Number</th>
-											<th class="surname">Last Name</th>
-											<th class="firstname"> First Name</th>
-                                            <th>Skills</th>
-                                            <th class="actions">Actions</th>
-											<!-- 
-											<th class="E_id">Employee ID Number</th>
-											<th class="surname">Surname</th>
-											<th class="firstname">Firstname</th>
-											<th>Job Details</th>
-											<th>CV</th>
-											<th>Start Date</th>
-                                            <th>Job Title</th>
-                                            <th class="actions">Action</th> -->
+                                            <!--<th>Skills ID</th>-->
+                                            <th style="width:170px;">رقم تعريف الموظف:</th>
+                                            <th style="width:150px;">اللقب</th>
+                                            <th style="width:150px;">الاسم الأول</th>
+                                            <!--<th>Employee Number</th>-->
+                                            <th style="width:560px;">المهارة:</th>
+                                            <th style="width:150px;">النشاط</th>
 
-										</tr>
+                                        </tr>
                                     </thead>
                                     <tbody>
 										@php
@@ -473,34 +493,42 @@
 													<div class="modal-dialog" role="document">
 													<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Total Employee Skills Listed</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-														</button>
+														<h5 class="modal-title" id="exampleModalLabel">إجمالي
+															مهارات الموظفين المدرجة</h5>
+															<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+															</a>
 													</div>
 													
 													 <div class="modal-body">
 
 								                        <div class="row">
-								                            <div class="col-lg-6">
-								                                <div class="form-group">
-								                                    <label>Employee ID Number:</label><br>
-								                                    <input type="text" class="form-control" name="surname" placeholder="Enter Surname" value="{{$item->empNumber}}" readonly>
-								                                </div>
-								                            </div>
-								                            <div class="col-lg-6">
-								                                <div class="form-group">
-								                                    <label>Skill:</label>
-								                                    <input type="text" class="form-control" name="first_name"  placeholder="Enter First Name" value="{{$item->empskill}}" readonly>
-								                                </div>
-								                            </div>
-								                        </div>
+															<div class="col-lg-6">
+																<div class="form-group">
+																	<label>رقم تعريف الموظف:</label><br>
+																	<input type="text" class="form-control"
+																		name="surname"
+																		placeholder="أدخل اللقب"
+																		value="{{ $item->empNumber }}"
+																		readonly>
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="form-group">
+																	<label>المهارة:</label>
+																	<input type="text" class="form-control"
+																		name="first_name"
+																		placeholder="أدخل الاسم الأول"
+																		value="{{ $item->empskill }}"
+																		readonly>
+																</div>
+															</div>
+														</div>
 
 								                        
 												
 												</div>
 														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 														</div>
 														
 													</div>
@@ -518,30 +546,22 @@
 					</div>
 					<div class="procedure_div m-t-20">
                     	<div class="requirments_table_div">
-                    		<h4>Training Record Summary</h4>
+                    		<h4>ملخص سجل التدريب</h4>
                     		<div class="kt-portlet__body table-responsive">
 								<!--begin: Datatable -->
 								<table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive" id="kt_table_agent">
 									<thead>
 										<tr>
-											<th class="E_id">Employee ID Number</th>
-											<th class="surname">Surname</th>
-											<th class="firstname">First Name</th>
-											<th>Start Date</th>
-											{{-- <th>Employee Stamp Number</th> --}}
-											<th>Training Date</th>
-                                            <th>Training Details</th>
-                                            <th class="actions">Actions</th>
+                                            <th style="width:170px;">رقم تعريف الموظف</th>
+                                            <th style="width:150px;">اللقب</th>
+                                            <th style="width:150px;">الاسم الأول</th>
+                                            <th style="width:200px;">تاريخ البدء</th>
+                                            {{-- <th>Employee Stamp Number</th> --}}
+                                            <th style="width:240px;">تاريخ التدريب</th>
+                                            <th style="width:120px;"> تفاصيل التدريب</th>
+                                            <th style="width:150px;"> الإجراءات</th>
 
-											<!-- <th class="E_id">Employee ID Number</th>
-											<th class="surname">Surname</th>
-											<th class="firstname">Firstname</th>
-											<th>Job Details</th>
-											<th>CV</th>
-											<th>Start Date</th>
-                                            <th class="actions">Action</th> -->
-
-										</tr>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($emptraining as $item)
@@ -572,24 +592,32 @@
 													<div class="modal-dialog" role="document">
 													<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Training Record Summary</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-														</button>
+														<h5 class="modal-title" id="exampleModalLabel">ملخص
+															سجل التدريب</h5>
+															<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+															</a>
 													</div>
 														<div class="modal-body">
 
 															<div class="row">
 																<div class="col-lg-6">
 																	<div class="form-group">
-																		<label>Employee ID:</label><br>
-																		<input type="text" class="form-control" name="surname" placeholder="Enter Employee ID" value="{{$item->empNumber}}" readonly>
+																		<label>رقم تعريف الموظف</label><br>
+																		<input type="text" class="form-control"
+																			name="surname"
+																			placeholder="أدخل معرف الموظف"
+																			value="{{ $item->empNumber }}"
+																			readonly>
 																	</div>
 																</div>
 																<div class="col-lg-6">
 																	<div class="form-group">
-																		<label>Training Date (MM/DD/YYYY):</label>
-																		<input type="text" class="form-control" name="first_name"  placeholder="Enter First Name" value="{{$item->traningdate}}" readonly>
+																		<label>تاريخ التدريب (يوم/شهر/سنة):</label>
+																		<input type="text" class="form-control"
+																			name="first_name"
+																			placeholder="أدخل الاسم الأول"
+																			value="{{ $item->traningdate }}"
+																			readonly>
 																	</div>
 																</div>
 															</div>
@@ -597,14 +625,18 @@
 															<div class="row">
 																<div class="col-lg-12">
 																	<div class="form-group edit-emp-number-div">
-																		<label>Training Details</label>
-																		<input type="text" name="empNumber" required class="form-control" data-type="edit" value="{{$item->traningdetails}}" readonly>
+																		<label>تفاصيل التدريب</label>
+																		<input type="text" name="empNumber"
+																			required class="form-control"
+																			data-type="edit"
+																			value="{{ $item->traningdetails }}"
+																			readonly>
 																	</div>
 																</div>
 															</div>
 														</div>
 														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 														</div>
 														</div>
 													</div>
@@ -625,123 +657,131 @@
 
 	<!--End::Section-->
 </div>
-<div class="modal fade" id="deleteskill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="deleteskill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Employee Details 22</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="modallabel">حذف الموظف</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
 			</div>
-			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+			<div class="modal-body ">
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
 			<form action="{{route('deleteEmployeeadmin')}}" method="POST">
 				@csrf
 					<input type="hidden" name="type" value="" id="type2"/>
 					<input type="hidden" name="id" id="re_id2" value="">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="deleteSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Employee Details 1</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="modallabel">حذف الموظف</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
 			</div>
-			<div class="modal-body">
-				<p>Are you sure you want to delete this entry?</p>
+			<div class="modal-body ">
+				<p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
 			</div>
 			<div class="modal-footer">
 			<form action="{{route('deleteEmployeeadmin')}}" method="POST">
 				@csrf
 					<input type="hidden" name="type" value="" id="type"/>
 					<input type="hidden" name="id" id="re_id" value="">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="editepmloyee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="editepmloyee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير الموظف</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
             </div>
             <form method="POST" action=" {{ route('editemployee') }} " enctype="multipart/form-data">
                 @csrf
 			<div class="modal-body">
 
-                        <div class="row">
-                            <input type="hidden" name="id" id="editproject" value="">
+				<div class="row">
+					<input type="hidden" name="id" id="editproject" value="">
 
-                            {{-- <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>System ID Number:</label><br>
-                                    <input type="number" readonly class="form-control"  name="systemid">
-                                </div>
-                            </div> --}}
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Surname:</label><br>
-                                    <input type="text" class="form-control" name="surname" placeholder="Enter Surname">
-                                </div>
-                            </div>
-                        </div>
+					{{-- <div class="col-lg-6">
+						<div class="form-group">
+							<label>System ID Number:</label><br>
+							<input type="number" class="form-control"  name="systemid">
+						</div>
+					</div> --}}
+					<div class="col-lg-12">
+						<div class="form-group">
+							<label>اللقب:</label><br>
+							<input type="text" class="form-control" name="surname" placeholder="أدخل اللقب">
+						</div>
+					</div>
+				</div>
 
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>First Name:</label>
-                                    <input type="text" class="form-control" name="first_name"  placeholder="Enter First Name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group edit-emp-number-div">
-                                    <label>Employee ID:</label> 
-                                    <input type="text" name="empNumber" required class="form-control" data-type="edit">
-			           <!--                         <select name="empNumber" required class="form-control">-->
-														<!--    <option>Select One</option>-->
-														<!--    @if(isset($userinfo) && $userinfo!= "")-->
-														<!--    @foreach($userinfo as $item)-->
-														<!--    <option value="{{$item->id}}" title="{{ $item->first_name }}">{{$item->empNumber.' ('.$item->first_name.')'}}</option>-->
-														<!--    @endforeach-->
-														<!--    @endif-->
-											<!--</select>-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Start Date (YYYY/MM/DD):</label>
-                                    <input name="startDate" max="2999-12-31" type="date" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Job Description:</label>
-                                    <!-- <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Description:"> -->
-									<textarea name="jobdetails" id="jobdetails2" cols="20" rows="5" class="form-control" placeholder="Enter Job Description:"></textarea>
-                                </div>
-                            </div>
-                        </div>
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="form-group">
-							<label>Upload Employee CV:</label>
-							<input name="employee_cv" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf">
+							<label>الاسم الأول</label>
+							<input type="text" class="form-control" name="first_name"
+								placeholder="أدخل الاسم الأول">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group edit-emp-number-div">
+							<label>هوية الموظف:</label>
+							<input type="text" name="empNumber" required class="form-control"
+								data-type="edit">
+							<!--                         <select name="empNumber" required class="form-control">-->
+							<!--    <option>Select One</option>-->
+							<!--    @if (isset($userinfo) && $userinfo != '')
+-->
+							<!--    @foreach ($userinfo as $item)
+-->
+							<!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
+							<!--
+@endforeach-->
+							<!--
+@endif-->
+							<!--</select>-->
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label>تاريخ البدء (يوم/شهر/سنة):</label>
+							<input name="startDate" max="2999-12-31" type="date" class="form-control">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label>الوصف الوظيفي:</label>
+							<!-- <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Description:"> -->
+							<textarea name="jobdetails" id="jobdetails2" cols="20" rows="5" class="form-control"
+								placeholder="أدخل الوصف الوظيفي:"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label>تحميل السيرة الذاتية للموظف:</label>
+							<input name="employee_cv" type="file" class="form-control"
+								accept="image/*,.doc, .docx,.txt,.pdf">
 						</div>
 					</div>
 				</div>
@@ -752,8 +792,8 @@
 				<input type="hidden" name="is_admin" value="admin"/>
 				<input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}"/>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
             </div>
         </form>
 		</div>
@@ -761,36 +801,38 @@
 </div>
 
 <!--employe skills-->
-<div class="modal fade" id="editepmloyeeskills" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="editepmloyeeskills" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير الموظف</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
             </div>
             <form method="POST" action="{{route('update-employes-skill')}}">
                 @csrf
 			<div class="modal-body">
-                <div class="row">
-    				<div class="col-lg-6">
-    					<div class="form-group">
-							<label>Employee ID Number:</label><br>
-							<input readonly name="editempid" type="number" class="form-control">
-							<input type="hidden" name="employskillid" value=""/>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label>رقم تعريف الموظف</label><br>
+							<input name="editempid" readonly type="number" class="form-control">
+							<input type="hidden" required placeholder="أدخل رقم هوية الموظف"
+								name="employskillid" value="" />
 						</div>
-    				</div>
-    				<div class="col-lg-6">
-    					<div class="form-group">
-							<label>Skill:</label><br>
-							<input type="text" name="editempskill" class="form-control" placeholder="Enter Skills Name:">
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label>المهارة:</label><br>
+							<input type="text" name="editempskill" required class="form-control"
+								placeholder="أدخل اسم المهارات:">
 						</div>
-    				</div>
-    			</div>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
             </div>
         </form>
 		</div>
@@ -799,44 +841,44 @@
 
 
 <!--edit employ traninging-->
-<div class="modal fade" id="editepmloyeetraining" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-right" id="editepmloyeetraining" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Employee Training</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
+				<h5 class="modal-title" id="exampleModalLabel">تحرير تدريب الموظفين</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
             </div>
             <form method="POST" action="{{route('update-employes-training')}}">
                 @csrf
 			<div class="modal-body">
                 <div class="row">
-    				<div class="col-lg-6">
-    					<div class="form-group">
-    						<label>Employee ID:</label><br>
-    						<input type="hidden" name="edittrainid"/>
-    						<input type="number"  readonly class="form-control" name="editempidt">
-    					</div>
-    				</div>
-    				<div class="col-lg-6">
-    					<div class="form-group">
-    						<label>Training Date (MM/DD/YYYY):</label><br>
-    						<input type="date" max="2999-12-31" class="form-control" name="edittraningdate">
-    					</div>
-    				</div>
-    			</div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label>هوية الموظف:</label><br>
+							<input type="hidden" name="edittrainid" />
+							<input type="number" readonly class="form-control" name="editempidt">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label>تاريخ التدريب (يوم/شهر/سنة):</label><br>
+							<input type="date" max="2999-12-31" class="form-control" name="edittraningdate">
+						</div>
+					</div>
+				</div>
     			<div class="row">
-    				<div class="col-lg-12">
-    					<div class="form-group">
-							<label>Training Details:</label><br>
+					<div class="col-lg-12">
+						<div class="form-group">
+							<label>تفاصيل التدريب:</label><br>
 							<input type="text" class="form-control" name="edittraningdetails">
 						</div>
-    				</div>
-    			</div>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="submit" class="btn btn-danger">Update</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+				<button type="submit" class="btn btn-danger">تحديث</button>
             </div>
         </form>
 		</div>

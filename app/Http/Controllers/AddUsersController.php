@@ -703,7 +703,6 @@ public function store(Request $request)
     public function calibrationcheck($request){
         $caliber=calibration::where('user_id',$request)->orderBy('id','DESC')->get();
         return view('admin.adminform_records.calibration_record',compact('caliber'));
-
     }
     
     public function EmployeCheck($request)
