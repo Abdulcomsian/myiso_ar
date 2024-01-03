@@ -71,7 +71,7 @@
 					</ol>
 					<h5 class="mt-3">سياسات إضافية: </h5>
 					@if ($previousPolicy)
-					<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap;">{{ $previousPolicy->message }}</pre>
+					<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap; overflow:hidden;">{{ $previousPolicy->message }}</pre>
 					@endif  
 					<p>بالنيابة عن:  <b><span class="authName">{{ $companyName}}</span></b></p>
 					<p>الاسم: <span class="authName">{{Auth::user()->director}}</span> </p>

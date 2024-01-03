@@ -64,7 +64,7 @@
 					<!-- Display the previous policy -->
 					<h5 class="m-t-10">سياسات إضافية:</h5>
 					@if ($previousPolicy)
-						<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap;">{{ $previousPolicy->message }}</pre>
+						<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap; overflow: hidden;">{{ $previousPolicy->message }}</pre>
 					@endif  
 						{{-- @foreach ($useraddpolicy as $policy)
                         <p>{{$policy->message}}</p>

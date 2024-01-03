@@ -21,7 +21,7 @@
 					</div>
 					<div class="kt-portlet__head-toolbar">
 						<div class="kt-portlet__head-wrapper">
-							<a href="/view_user" class="btn btn-clean btn-icon-sm">
+							<a href="{{url('/view_user')}}" class="btn btn-clean btn-icon-sm">
 								خلف
 								<i class="la la-long-arrow-left"></i>
 							</a>

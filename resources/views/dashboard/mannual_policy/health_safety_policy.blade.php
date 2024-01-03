@@ -66,7 +66,7 @@
 					<h5 class="m-t-10">الغاية:</h5>
 					<p>تحدد هذه الوثيقة السياسة والممارسات التي سيتم اعتمادها ضمانًا لإجراء تقييمات مناسبة وكافية للمخاطر وفقًا لمتطلبات الأنظمة المعمول بها ذات الصلة. وتصف الوثيقة نظام إجراء تقييمات المخاطر العامة في <b><span class="authName">{{ $companyName}}</span></b> في إطار برنامج إدارة السلامة والصحة والبيئة. لا يشمل هذا الإجراء تقييمات المخاطر التي جرت في إطار مراقبة المعادن الخطرة والمواد الكيميائية والمواد الأخرى، أو التعامل معها، أو استخدام شاشات العرض والإجراءات المتكررة.</p>
 					@if ($previousPolicy)
-					<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap;">{{ $previousPolicy->message }}</pre>
+					<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap; overflow:hidden;">{{ $previousPolicy->message }}</pre>
 					@endif  
 					{{-- @foreach ($useraddpolicy as $health)
 						<p>{{$health->message}}</p>
