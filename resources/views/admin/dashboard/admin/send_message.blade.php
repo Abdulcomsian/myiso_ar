@@ -60,7 +60,7 @@
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
 				<h3 class="kt-portlet__head-title mx-2">
-					رسالة تذكير تسجيل الدخول
+					إنشاء رسالة
 				</h3>
 			</div>
 			<div class="kt-portlet__head-toolbasr">
