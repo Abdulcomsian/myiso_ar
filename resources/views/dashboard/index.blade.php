@@ -382,7 +382,7 @@
                                             <tr>
                                                 <th>ISO9001</th>
                                                 <td>
-                                                    <a href="public/{{ $user['iso9001_certificate'] }}" target="_blank">
+                                                    <a href="{{ $user['iso9001_certificate'] }}" target="_blank">
                                                         <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                                                     </a>
                                                 </td>
@@ -394,7 +394,7 @@
                                             <tr>
                                                 <th>ISO14001</th>
                                                 <td>
-                                                    <a href="public/{{ $user['iso14001_certificate'] }}" target="_blank">
+                                                    <a href="{{ $user['iso14001_certificate'] }}" target="_blank">
                                                         <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                                                     </a>
                                                 </td>
@@ -406,7 +406,7 @@
                                             <tr>
                                                 <th>ISO45001</th>
                                                 <td>
-                                                    <a href="public/{{ $user['iso45001_certificate'] }}" target="_blank">
+                                                    <a href="{{ $user['iso45001_certificate'] }}" target="_blank">
                                                         <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                                                     </a>
                                                 </td>
@@ -439,7 +439,7 @@
                         <div class="kt-widget17 p-4">
                             <div class="row ml-0 mr-0 table-responsive">
                                 @if (!empty($user['audit_report']))
-                                    <a href="public/{{ $user['audit_report'] }}" target="_blank" class="text-dark ml-2">
+                                    <a href="{{ $user['audit_report'] }}" target="_blank" class="text-dark ml-2">
                                         انقر لعرض تقرير التدقيق
                                     </a>
                                 @else

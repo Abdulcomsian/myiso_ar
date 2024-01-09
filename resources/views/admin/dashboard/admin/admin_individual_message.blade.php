@@ -73,7 +73,7 @@
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title mx-2">
-                        {{$other_user_detail->name}}
+                        {{$other_user_detail->name}}    
                     </h3>
                 </div>
 

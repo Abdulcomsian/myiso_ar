@@ -8,8 +8,7 @@
 	<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 		<div class="kt-aside__brand-logo">
 			<a href="{{ url('/home') }}">
-				<img alt="Logo" src="public/{{Auth::user()->profile_image}}" width="84px"/>
-
+				<img alt="Logo" src="{{Auth::user()->profile_image}}" width="84px"/>
 			</a>
 		</div>
 		<div class="kt-aside__brand-tools">
@@ -502,7 +501,8 @@
 					<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 					<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
 						<span class="kt-menu__link-icon">
-							<i class="fab fa-wpforms"></i>
+							{{-- <i class="fab fa-wpforms"></i> --}}
+							<i class="fa fa-book" aria-hidden="true"></i>
 						</span>
 						<span class="kt-menu__link-text">الدعم</span>
 						<i class="kt-menu__ver-arrow la la-angle-right"></i>

@@ -54,7 +54,7 @@
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
 				<h3 style="color:black; font-weight: bold; margin-right: 4px;">
-					رسالة تذكير تسجيل الدخول
+					إنشاء رسالة
 				</h3>
 			</div>
 			<div class="kt-portlet__head-toolbar">

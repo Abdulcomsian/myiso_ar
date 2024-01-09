@@ -353,18 +353,18 @@
                                 <td>
                                     {{-- eye view option hide in Action column in admin --}}
 
-                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View Customer Details" value=""
-                                    onclick="get_history({{$item->id}});">
-                                    <i class="fa fa-eye"></i>
+                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="سجل تسجيل الدخول" value=""
+                                onclick="get_history({{$item->id}});">
+                                <i class="fas fa-sign-in-alt"></i>
                                 </button>
 
                                 {{-- Button used to show the Email sending Details who haven`t logged In for 3, 6, 10 Months  --}}
-                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View Customer Details" onclick="userEmailDetail({{$item->id}})">
+                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="تفاصيل تذكير النشاط" onclick="userEmailDetail({{$item->id}})">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>                                
                                 </button>
                         
 
-                        <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit Customer"
+                        <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="تحرير العميل"
                                             onclick="editDetails({{$item}});">
 
                                         <span class="svg-icon svg-icon-md">									<svg
@@ -383,7 +383,7 @@
 
 
                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="deleteUser({{$item->id}})" title="Delete Customer">
+                                            onclick="deleteUser({{$item->id}})" title="حذف العميل">
 
                                         <span class="svg-icon svg-icon-md">									<svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -399,7 +399,7 @@
                                     </button>
 
                                     <a href="edit_user/{{$item->id}}" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                       title="View Customer Forms">
+                                       title="عرض نماذج العملاء">
 
 								             <span class="svg-icon svg-icon-primary w17">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -482,7 +482,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تفاصيل البريد الإلكتروني للمستخدم</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">تفاصيل تذكير النشاط</h5>
                     <a data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </a>
