@@ -123,7 +123,7 @@
 
 
 			<h2 class="mb-0 mt-2" style="text-align: right;">
-				<button class="btn btn-primary" type="button" onclick="replyBox()" id="replyButton">Reply</button>
+				<button class="btn btn-primary" type="button" onclick="replyBox()" id="replyButton">جواب</button>
 			</h2>
 			@foreach ($message_information as $item)
 			<form action="{{ route('storeReplyMessageUser') }}" method="post" enctype="multipart/form-data">
@@ -135,13 +135,13 @@
 					<input type="hidden" name="sender" value="{{ $item->send_by }}">
 					<input type="hidden" name="parentId" value="{{ $parent_message_id }}">
 					<textarea class="form-control" name="replyMessage" rows="4" id="replyTextarea"
-					placeholder="Write your reply here"></textarea>
-					<label class="form-label mt-2" for="attachment">Add Attachment (If Any)</label>
+					placeholder="اكتب ردك هنا"></textarea>
+					<label class="form-label mt-2" style="float: right;" for="attachment">إضافة مرفق (إن وجد)</label>
 					<div class="kt-input-icon kt-input-icon--right">
 						<input type="file" name="attachment" class="form-control" id="attachment">
 					</div>
-					<button type="button" class="btn btn-primary mt-2" id="cancelReplyButton">Cancel</button>
-					<button type="submit" class="btn btn-primary mt-2" id="sendReplyButton">Send</button>
+					<button type="button" class="btn btn-primary mt-2" id="cancelReplyButton">يلغي</button>
+					<button type="submit" class="btn btn-primary mt-2" id="sendReplyButton">يرسل</button>
 				</div>
 			</form>
 			@endforeach
@@ -150,24 +150,24 @@
 </div>
 <script>
 
-    const accordionItems = document.querySelectorAll('.card');
+    // const accordionItems = document.querySelectorAll('.card');
 
-    accordionItems.forEach((item) => {
-        const button = item.querySelector('button');
+    // accordionItems.forEach((item) => {
+    //     const button = item.querySelector('button');
 
-        button.addEventListener('click', () => {
-            const collapse = item.querySelector('.collapse');
-            const expanded = button.getAttribute('aria-expanded') === 'true';
+    //     button.addEventListener('click', () => {
+    //         const collapse = item.querySelector('.collapse');
+    //         const expanded = button.getAttribute('aria-expanded') === 'true';
 
-            if (expanded) {
-                collapse.classList.remove('show');
-                button.setAttribute('aria-expanded', 'false');
-            } else {
-                collapse.classList.add('show');
-                button.setAttribute('aria-expanded', 'true');
-            }
-        });
-    });
+    //         if (expanded) {
+    //             collapse.classList.remove('show');
+    //             button.setAttribute('aria-expanded', 'false');
+    //         } else {
+    //             collapse.classList.add('show');
+    //             button.setAttribute('aria-expanded', 'true');
+    //         }
+    //     });
+    // });
 
 	function deleteUser(id) {
         var userid = id;
