@@ -11,7 +11,7 @@
 	.image-hover {
 		position: absolute;
 		top: 12px;
-		left: 25px;
+		right: 25px;
 		opacity: 0;
 	}
 
