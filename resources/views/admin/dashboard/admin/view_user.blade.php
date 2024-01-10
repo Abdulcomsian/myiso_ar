@@ -249,9 +249,10 @@
                                 <!----- <td>{ ->phonecode.' '. ->phone}</td> ----->
 
                                 <td><?php
-                                    if (isset($item->profile_image)) {
-                                        $logo = "<img src='https://myisoonline.com/public/" . $item->profile_image . "' width='60px'>";
-                                    } echo ($item->profile_image != "") ? $logo : ""  ?></td>
+                                    if (isset($item->profile_image)) { ?>
+                                        {{-- $logo = "<img src='https://myisoonline.com/public/" . $item->profile_image . "' width='60px'>"; --}}
+                                       <img src='{{$item->profile_image}}' width='60px'>;
+                                    <?php } ?></td>
 
                                 <td>
                                     @if($item->created_at !=NULL)
