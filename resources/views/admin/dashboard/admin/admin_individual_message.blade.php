@@ -49,6 +49,9 @@
             width: 100%;
             /* Underline expands from left to right on hover */
         }
+        .height-400{
+		height: 400px;
+	    }
     </style>
     <!-- begin:: Content -->
     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
@@ -135,7 +138,15 @@
                                             @else
                                                 <h5 class="card-title text-right">(لا يوجد عنوان)</h5>
                                             @endif
-                                            <p class="card-text">{{ $item->message }}</p>
+                                            @if($item->total_days == 90)
+                                                <iframe src="{{ url('/three-month-email') }}" class="w-100 height-400"></iframe>
+                                            @elseif($item->total_days == 180)
+                                                <iframe src="{{ url('/six-month-email') }}" class="w-100 height-400"></iframe>
+                                            @elseif($item->total_days == 300)
+                                                <iframe src="{{ url('/ten-month-email') }}" class="w-100 height-400"></iframe>
+                                            @else
+                                                <p class="card-text">{{ $item->message }}</p>
+                                            @endif
                                             @if ($item->attachement)                                            
                                                <p><a href="{{ asset($item->attachement) }}" download>
                                                     <i class="fa fa-paperclip"></i> مرفق
