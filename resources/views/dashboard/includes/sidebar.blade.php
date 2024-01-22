@@ -422,7 +422,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text"> التحكم الكيميائي</span>
+									<span class="kt-menu__link-text"> تقييمات المخاطر</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -430,7 +430,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text"> تقييمات المخاطر</span>
+									<span class="kt-menu__link-text"> التحكم الكيميائي</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">

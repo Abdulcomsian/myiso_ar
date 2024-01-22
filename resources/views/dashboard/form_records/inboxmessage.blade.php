@@ -31,7 +31,7 @@
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
 				<h4 style="color:black; margin-right: 4px;">
-					صندوق الوارد
+					صندوق الرسائل
 				</h4>
 				
 			</div>
@@ -146,7 +146,7 @@
 						
                             <tr data-item-id = "{{ $item->unique_id }}" data-href = "{{ route('individualMessageUser', ['id'=>$item->unique_id]) }}"  class="{{($item->status == 0) ? 'New' : 'read'}} ">
                                     <td>{{$count}}</td>
-                                    <td> {{$item->company_name . ' (' . $counter . ')'}} </td>
+                                    <td> {{$item->name . ' (' . $counter . ')'}} </td>
                                     <td>{{$item->title}}</td>
                                     <td>{{date("d/m/Y H:i:sA", strtotime($item->updated_at) )}}</td>
                                     {{-- <td>

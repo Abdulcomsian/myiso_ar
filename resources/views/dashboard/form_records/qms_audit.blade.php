@@ -118,8 +118,8 @@
                                             <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟ </label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
-                                                    <input type="radio" value="Yes" name="correction3"
-                                                        required="required"> نعم
+                                                    <input type="radio" value="Yes" name="correction3" required="required">نعم
+                                                    <span></span>
                                                 </label>
                                                 <label class="kt-radio">
                                                     <input type="radio" value="No" name="correction3"> لا

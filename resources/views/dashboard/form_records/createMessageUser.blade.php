@@ -138,7 +138,7 @@
     					<br>
     					<div class="col-lg-12 text-right">
     						<label for="address1">ارسل إلى</label>
-    						<input name="userid" class="form-control" value="مسؤل" disabled>
+    						<input name="userid" class="form-control" value="مسؤول" disabled>
     					</div>
     					<div class="col-lg-2">
     

@@ -29,7 +29,7 @@
 					<i class="kt-font-brand flaticon2-line-chart"></i>
 				</span>
 				<h3 class="kt-portlet__head-title">
-					الرسائل المرسلة
+					تم الإرسال
 				</h3>
 			</div>
 			<div class="kt-portlet__head-toolbar">
@@ -105,7 +105,7 @@
 					<?php $count++; $counter = App\SendNotifications::where('unique_id', $item->unique_id)->count(); ?>
                             <tr  data-href = "{{ route('individualMessageUser', ['id'=>$item->unique_id]) }}" class="read">
                                     <td>{{$count}}</td>
-                                    <td> {{$item->company_name . ' (' . $counter . ')'}} </td>
+                                    <td> {{$item->name . ' (' . $counter . ')'}} </td>
                                     <td>{{$item->title}}</td>
                                     <td>{{date("d/m/Y H:i:sA", strtotime($item->updated_at) )}}</td>
                                     {{-- <td>

@@ -39,7 +39,6 @@ class ResetPasswordController extends Controller
 
 
         if ($success && !empty($from_email) && !empty($from_name) && $to_email){
-
             Mail::send([], [], function ($message) use ($from_email,$from_name,$to_email,$reset_pass_email) {
                 $message->to($to_email,'Admin')
                     ->from($from_email,$from_name)
