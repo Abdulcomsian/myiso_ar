@@ -155,7 +155,7 @@ var KTLoginGeneral = function() {
 	                    signInForm.clearForm();
 	                    signInForm.validate().resetForm();
 
-	                    showErrorMsg(signInForm, 'success', 'Thank you. To complete your registration please check your email.');
+	                    showErrorMsg(signInForm, 'success', 'شكرا لك. لاستكمال التسجيل، يرجى التحقق من بريدك الإلكتروني.');
 	                }, 2000);
                 }
             });
@@ -193,10 +193,10 @@ var KTLoginGeneral = function() {
                     var msg = '';
                     if (response.success === true){
                         type = 'success';
-                        msg = 'Your Password reset notification sent successfully to ISOOnline Admin team who will reset & forward on your new password.';
+                        msg = 'تم إرسال إشعار إعادة تعيين كلمة المرور الخاص بك بنجاح إلى فريق الإدارة في أيزونلاين الذي سيقوم بإعادة تعيين كلمة المرور الجديدة وإرسالها';
                     }else{
                         type = 'danger';
-                        msg = 'Something went wrong, try again.';
+                        msg = 'حدث خطأ ما، حاول مرة أخرى';
                     }
 
                 	setTimeout(function() {

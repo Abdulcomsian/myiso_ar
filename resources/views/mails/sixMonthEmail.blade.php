@@ -20,16 +20,16 @@
                 <?php if(isset($clientName)) { ?>
                     عزيزي {{$clientName}}
                 <?php }else{ ?>
-                    عزيزي العميل
+                    السادة المحترمون،
                 <?php } ?>
                 </strong></p>
             <p>
-                تعتمد صلاحية شهادة الأيزو الخاصة بك على الحفاظ على وثائقك. اعتبارًا من الآن، لم يتم إجراء نشاط كافٍ على حسابك. يرجى العمل على تحديث سجلاتك والحفاظ عليها
+                تعتمد صلاحية شهادة الآيزو الخاصة بك على الحفاظ على وثائقك. وحتى الآن، لم يتم القيام بنشاط كاف على حسابك. يرجى العمل على تحديث سجلاتك والاحتفاظ بها
             </p>
             <p>
-                للحصول على أي مساعدة أو توضيح، يرجى زيارة قسم الدعم في حسابك حيث ستجد دروس فيديو وأدوات مفيدة أخرى. وبدلاً من ذلك، فريقنا على استعداد لتقديم الدعم لك في أي أسئلة قد تكون لديك.
+                للحصول على أي مساعدة أو توضيح، يرجى زيارة قسم الدعم في حسابك حيث ستجد مقاطع فيديو تعليمية وأدوات مفيدة أخرى. أو بدلا من ذلك، فإن فريقنا على استعداد لدعمك في أي أسئلة قد تكون لديك.
             </p>
-            <p>يعد اهتمامك الفوري أمرًا بالغ الأهمية لضمان الصلاحية المستمرة لشهادات ISO الخاصة بك.</p>
+            <p>لا بد من الاهتمام الفوري لضمان الصلاحية المستمرة لشهادات الآيزو الخاصة بك.</p>
 
         </div>
 
@@ -44,14 +44,12 @@
                     <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ $clientEmail }}</td> 
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><strong>لم يقم العميل بتسجيل الدخول إلى MyISO لآخر مرة:</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ $totalDays }} أيام</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><strong>لم يوقع العميل على mylso لآخر:</strong></td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ $totalDays }} عدد الأيام</td>
                 </tr>
             </table>        
-            
             <a href="https://myisoonline.com/" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
             class="button">تسجيل الدخول</a>
-            
         <?php } ?>
     </div>
 

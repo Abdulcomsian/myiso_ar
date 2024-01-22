@@ -5,41 +5,6 @@
 	.text-right{
 		text-align: center;
 	}
-    .custom-file-input-tag {
-  position: relative;
-  display: inline-block;
-
-}
-
-.input-file {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.file-label {
-    display: inline-block;
-    padding: 4px 11px;
-    background-color: #E5E5E5;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 0px;
-    border: 1px solid #2547B3;
-}
-
-.file-text {
-  display: inline-block;
-  margin-right: 8px;
-}
-
-.file-chosen {
-  display: none;
-}
 </style>
     <!-- begin:: Content -->
     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
@@ -90,8 +55,8 @@
                                 <div class="custom-file-input-tag form-control">
                                     <input type="file" id="fileInput" class="input-file" name="organogram"/>
                                     <label for="fileInput" class="file-label">
-                                      <span class="file-text">اختر ملف</span>
-                                      <span class="file-chosen">لم يتم اختيار ملف</span>
+                                      <span class="file-text">اختيار الملف</span>
+                                      <span class="file-chosen">لم يتم اختيار ملف</span>
                                     </label>
                                 </div>
                                 <button type="submit" class="submitBtn mt-2">يُقدِّم</button>
@@ -115,20 +80,6 @@
         </section>
         <!--End::Section-->
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const fileInput = document.getElementById('fileInput');
-        const fileText = document.querySelector('.file-text');
-        const fileChosen = document.querySelector('.file-chosen');
-
-        fileInput.addEventListener('change', function() {
-            const fileName = fileInput.value.split(/\\|\//).pop();
-            fileText.style.display = 'none';
-            fileChosen.style.display = 'inline-block';
-            fileChosen.textContent = fileName;
-        });
-        });
-    </script>
 @endsection
 
 <!-- end:: Content -->

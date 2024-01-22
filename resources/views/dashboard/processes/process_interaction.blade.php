@@ -45,7 +45,14 @@
                         <div class="col-lg-6 d-flex align-items-center">
                             <div class="form-group">
                                 <label>حمل الصورة:</label><br>
-                                <input type="file" class="form-control" name="process_int_photo">
+                                {{-- <input type="file" class="form-control" name="process_int_photo"> --}}
+                                <div class="custom-file-input-tag form-control">
+                                    <input type="file" id="fileInput" class="input-file" name="process_int_photo"/>
+                                    <label for="fileInput" class="file-label">
+                                      <span class="file-text">اختيار الملف</span>
+                                      <span class="file-chosen">لم يتم اختيار ملف</span>
+                                    </label>
+                                </div>
                                 <button type="submit" class="submitBtn ml-2" style="margin-top: 10px;">إرسال</button>
 
                             </div>

@@ -197,9 +197,16 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="address2">ملف الشركة / نظرة عامة على الأعمال:</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
+                                    {{-- <div class="kt-input-icon kt-input-icon--right">
                                         <input type="file" id="company_profile" name="company_profile"
                                             class="form-control" placeholder="ملف الشركة" required>
+                                    </div> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name=company_profile" required/>
+                                        <label for="fileInput" class="file-label">
+                                          <span class="file-text">اختيار الملف</span>
+                                          <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -277,8 +284,15 @@
 
                                 <div class="col-lg-3">
                                     <label for="iso9001_certificate">شهادة ISO9001:</label>
-                                    <input type="file" id="iso9001_certificate" accept=".pdf"
-                                        name="iso9001_certificate">
+                                    {{-- <input type="file" id="iso9001_certificate" accept=".pdf"
+                                        name="iso9001_certificate"> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name="iso9001_certificate" accept=".pdf"/>
+                                        <label for="fileInput" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                     <!--<button type="button" class="new-file-upload" onclick="document.getElementById('iso9001_certificate').click()">Attach File</button>-->
 
                                 </div>
@@ -303,8 +317,15 @@
 
                                 <div class="col-lg-3">
                                     <label for="iso14001_certificate">شهادة ISO14001:</label>
-                                    <input type="file" id="iso14001_certificate" accept=".pdf"
-                                        name="iso14001_certificate">
+                                    {{-- <input type="file" id="iso14001_certificate" accept=".pdf"
+                                        name="iso14001_certificate"> --}}
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="fileInput" class="input-file" name="iso14001_certificate" accept=".pdf"/>
+                                            <label for="fileInput" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
                                     <!--<button type="button" class="new-file-upload" onclick="document.getElementById('iso14001_certificate').click()">Attach File</button>-->
                                 </div>
 
@@ -328,8 +349,15 @@
 
                                 <div class="col-lg-3">
                                     <label for="iso45001_certificate">شهادة ISO45001:</label>
-                                    <input type="file" id="iso45001_certificate" accept=".pdf"
-                                        name="iso45001_certificate">
+                                    {{-- <input type="file" id="iso45001_certificate" accept=".pdf"
+                                        name="iso45001_certificate"> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name="iso45001_certificate" accept=".pdf"/>
+                                        <label for="fileInput" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                     <!--<button  type="button"  class="new-file-upload" onclick="document.getElementById('iso45001_certificate').click()">Attach File</button>-->
                                 </div>
 
@@ -352,7 +380,14 @@
                             <div class="form-group row">
                                 <div class="col-lg-3">
                                     <label for="iso45001_certificate">تقرير التدقيق</label>
-                                    <input type="file" id="audit_report" accept=".pdf" name="audit_report">
+                                    {{-- <input type="file" id="audit_report" accept=".pdf" name="audit_report"> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name="audit_report" accept=".pdf"/>
+                                        <label for="fileInput" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="iso45001_certificate">تعليق التدقيق</label>

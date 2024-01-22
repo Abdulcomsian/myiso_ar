@@ -819,8 +819,15 @@
 
                                     <div class="kt-input-icon kt-input-icon--right">
 
-                                        <input type="file" id="company_profile" name="company_profile"
-                                               class="form-control" placeholder="ملف الشركة">
+                                        {{-- <input type="file" id="company_profile" name="company_profile"
+                                               class="form-control" placeholder="ملف الشركة"> --}}
+                                               <div class="custom-file-input-tag form-control">
+                                                <input type="file" id="fileInput" class="input-file" name="company_profile"/>
+                                                <label for="fileInput" class="file-label">
+                                                  <span class="file-text">اختيار الملف</span>
+                                                  <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                </label>
+                                            </div>
 
                                         <span class="form-text text-muted" id="downloadlink">
 
@@ -913,8 +920,15 @@
                                     <label for="iso9001_certificate">شهادة ISO9001:</label>&nbsp;&nbsp;
                                     <span id="view_9001"> </span>&nbsp;&nbsp;
                                     <a href="#" data-handle="iso9001" class="iso9001 delete-certificate">يمسح</a>
-                                    <input type="file" id="iso9001_certificate" accept=".pdf"
-                                           name="iso9001_certificate">
+                                    {{-- <input type="file" id="iso9001_certificate" accept=".pdf"
+                                           name="iso9001_certificate"> --}}
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="fileInput" class="input-file" name="iso9001_certificate" accept=".pdf"/>
+                                            <label for="fileInput" class="file-label">
+                                              <span class="file-text">اختيار الملف</span>
+                                              <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
                                     <!--<button type="button" class="new-file-upload"-->
                                     <!--        onclick="document.getElementById('iso9001_certificate').click()">Attach File-->
                                     <!--</button>-->
@@ -945,8 +959,15 @@
                                     <label for="iso14001_certificate">شهادة ISO14001:</label>&nbsp;&nbsp;<span
                                             id="view_4001"></span>&nbsp;&nbsp;<a href="#" data-handle="iso14001"
                                                                                  class="iso4001 delete-certificate">يمسح</a>
-                                    <input type="file" id="iso14001_certificate" accept=".pdf"
-                                           name="iso14001_certificate">
+                                    {{-- <input type="file" id="iso14001_certificate" accept=".pdf"
+                                           name="iso14001_certificate"> --}}
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="fileInput" class="input-file" name="iso14001_certificate" accept=".pdf"/>
+                                            <label for="fileInput" class="file-label">
+                                              <span class="file-text">اختيار الملف</span>
+                                              <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
                                     <!--<button type="button" class="new-file-upload"-->
                                     <!--        onclick="document.getElementById('iso14001_certificate').click()">Attach-->
                                     <!--    File-->
@@ -980,8 +1001,15 @@
                                     <label for="iso45001_certificate">شهادة ISO45001:</label>&nbsp;&nbsp;
                                     <span id="view_45001"></span>
                                     &nbsp;&nbsp; <a href="#" data-handle="iso45001" class="iso45001 delete-certificate">يمسح</a>
-                                    <input type="file" id="iso45001_certificate" accept=".pdf"
-                                           name="iso45001_certificate">
+                                    {{-- <input type="file" id="iso45001_certificate" accept=".pdf"
+                                           name="iso45001_certificate"> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name="iso45001_certificate" accept=".pdf"/>
+                                        <label for="fileInput" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-4">
@@ -1010,7 +1038,14 @@
                                     <span id="edit_audit_report"></span>
                                     &nbsp;&nbsp; <a href="#" data-handle="audit_report"
                                                     class="audit_report delete-certificate">يمسح</a>
-                                    <input type="file" id="audit_report" accept=".pdf" name="audit_report">
+                                    {{-- <input type="file" id="audit_report" accept=".pdf" name="audit_report"> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name="audit_report" accept=".pdf"/>
+                                        <label for="fileInput" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="audit_comment">تعليق التدقيق</label>&nbsp;&nbsp;

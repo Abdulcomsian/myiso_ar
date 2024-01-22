@@ -42,14 +42,14 @@ class ResetPasswordController extends Controller
             Mail::send([], [], function ($message) use ($from_email,$from_name,$to_email,$reset_pass_email) {
                 $message->to($to_email,'Admin')
                     ->from($from_email,$from_name)
-                    ->subject('Password Reset Notification')
+                    ->subject('إشعار إعادة تعيين كلمة المرور')
                     ->setBody(
                         '<br>
-                <h3>Hi, Admin!</h3>
+                <h3>مرحبا، المسؤول!</h3>
                 <br>
-                <p>Please reset password for this <b>'.$reset_pass_email.'</b> email.</p>
+                <p>يرجى إعادة تعيين كلمة المرور لهذا البريد الإلكتروني. <b>'.$reset_pass_email.'</b></p>
                 <br>
-                <h4>Thank you!</h4>
+                <h4>شكرا لك!</h4>
                 <h4><a href="https://www.myisoonline.com/">Myisoonline.com</a></h4>',
                         'text/html'); // for HTML rich messages
             });

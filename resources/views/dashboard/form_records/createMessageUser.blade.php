@@ -124,9 +124,16 @@
     					</div>
                         <div class="col-md-4 text-right">
     						<label for="attachment">المرفق</label>
-    						<div class="kt-input-icon kt-input-icon--right">
-    						<input type="file" name="attachment" class="form-control" id="attachment">
-    						</div>
+    						{{-- <div class="kt-input-icon kt-input-icon--right"> --}}
+								<div class="custom-file-input-tag form-control">
+                                    <input type="file" id="fileInput" class="input-file" name="attachment"/>
+                                    <label for="fileInput" class="file-label">
+                                      <span class="file-text">اختيار الملف</span>
+                                      <span class="file-chosen">لم يتم اختيار ملف</span>
+                                    </label>
+                                </div>
+    						{{-- <input type="file" name="attachment" class="form-control" id="attachment"> --}}
+    						{{-- </div> --}}
     					</div>
     
     

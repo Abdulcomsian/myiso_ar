@@ -20,14 +20,14 @@
                 <?php if(isset($clientName)) { ?>
                     عزيزي {{$clientName}}
                 <?php }else{ ?>
-                    عزيزي العميل
+                    السادة المحترمون،
                 <?php } ?>
                 </strong></p>
             <p>
-                هذه متابعة لمراسلاتنا الأخيرة بخصوص أهمية تحديث المستندات الخاصة بك، لتجنب إلغاء شهادتك.
+                وتأتي هذه الوثيقة استكمالا لمراسلاتنا الأخيرة بشأن أهمية تحديث وثائقكم لتجنب إلغاء شهادتكم..
             </p>
             <p>
-                الوقت هو جوهر المسألة. يرجى التصرف بشكل عاجل لضمان استمرار صلاحية شهادة الأيزو الخاصة بك.
+                الوقت هو جوهرنا، يرجى العمل بشكل عاجل لضمان استمرار صلاحية شهادة الآيزو الخاصة بك.
             </p>
 
         </div>
@@ -43,11 +43,10 @@
                     <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ $clientEmail }}</td> 
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><strong>لم يقم العميل بتسجيل الدخول إلى MyISO لآخر مرة:</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ $totalDays }} أيام</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><strong>لم يوقع العميل على mylso لآخر:</strong></td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ $totalDays }} عدد الأيام</td>
                 </tr>
-            </table>        
-            
+            </table>
             <a href="https://myisoonline.com/" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
             class="button">تسجيل الدخول</a>
         <?php } ?>

@@ -137,9 +137,16 @@
 					<textarea class="form-control" name="replyMessage" rows="4" id="replyTextarea"
 					placeholder="اكتب ردك هنا"></textarea>
 					<label class="form-label mt-2" style="float: right;" for="attachment">إضافة مرفق (إن وجد)</label>
-					<div class="kt-input-icon kt-input-icon--right">
-						<input type="file" name="attachment" class="form-control" id="attachment">
-					</div>
+					{{-- <div class="kt-input-icon kt-input-icon--right"> --}}
+						{{-- <input type="file" name="attachment" class="form-control" id="attachment"> --}}
+						<div class="custom-file-input-tag form-control">
+							<input type="file" id="fileInput" class="input-file" name="attachment"/>
+							<label for="fileInput" style="float: right;" class="file-label">
+							  <span class="file-text">اختيار الملف</span>
+							  <span class="file-chosen">لم يتم اختيار ملف</span>
+							</label>
+						</div>
+					{{-- </div> --}}
 					<button type="button" class="btn btn-primary mt-2" id="cancelReplyButton">يلغي</button>
 					<button type="submit" class="btn btn-primary mt-2" id="sendReplyButton">يرسل</button>
 				</div>

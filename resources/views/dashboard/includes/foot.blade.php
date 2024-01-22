@@ -387,5 +387,19 @@
 			});
 			
 		</script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+			const fileInput = document.getElementById('fileInput');
+			const fileText = document.querySelector('.file-text');
+			const fileChosen = document.querySelector('.file-chosen');
+
+			fileInput.addEventListener('change', function() {
+				const fileName = fileInput.value.split(/\\|\//).pop();
+				fileText.style.display = 'none';
+				fileChosen.style.display = 'inline-block';
+				fileChosen.textContent = fileName;
+			});
+			});
+		</script>
 		@include('script') 
 		
