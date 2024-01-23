@@ -186,9 +186,8 @@ var KTLoginGeneral = function() {
 
             form.ajaxSubmit({
                 url: '/password-reset-email',
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 method:'POST',
-                success: function(response, status, xhr, form) { 
+                success: function(response, status, xhr, $form) { 
                 	// similate 2s delay
                     var type = '';
                     var msg = '';
