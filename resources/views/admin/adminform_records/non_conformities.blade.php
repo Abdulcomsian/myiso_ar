@@ -88,13 +88,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>اسم الموظف:</label>
                                             <input type="text" class="form-control Employee_name" name="employee_name"
                                                 placeholder="أدخل اسم الموظف">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     {{-- <div class="col-lg-6">
                                     <div class="form-group">
@@ -113,20 +113,17 @@
                                         <div class="form-group">
                                             <label>فئة السبب الجذري:</label>
                                             <select name="root_cause_category" class="form-control">
-                                                <option value="Other">آخر</option>
-                                                <option value="Planning">تخطيط</option>
-                                                <option value="Production">إنتاج</option>
-                                                <option value="Non-liable">غير مسؤول</option>
-                                                <option value="Training">تمرين</option>
-                                                <option value="Management">إدارة</option>
-                                                <option value="Human Factor">العامل البشري</option>
+                                                <option value="آخر">آخر</option>
+                                                <option value="تخطيط">تخطيط</option>
+                                                <option value="إنتاج">إنتاج</option>
+                                                <option value="غير مسؤول">غير مسؤول</option>
+                                                <option value="تمرين">تمرين</option>
+                                                <option value="إدارة">إدارة</option>
+                                                <option value="العامل البشري">العامل البشري</option>
                                             </select>
                                         </div>
                                     </div>
 
-
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تفاصيل الخطأ:</label>
@@ -134,6 +131,9 @@
                                                 placeholder="أدخل وصف الخطأ">
                                         </div>
                                     </div>
+
+                                </div>
+                                <div class="row">                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>السبب الجذري:</label>
@@ -141,8 +141,7 @@
                                                 placeholder="أدخل السبب الجذري">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>الإجراءات التصحيحية الفورية:</label>
@@ -150,6 +149,8 @@
                                                 placeholder="أدخل الإجراء التصحيحي الفوري">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>إجراءات لمنع التكرار:</label>
@@ -157,8 +158,7 @@
                                                 placeholder="أدخل الإجراء لمنع التكرار.">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>فعالية العمل لمنع التكرار:</label>
@@ -166,6 +166,8 @@
                                                 placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تاريخ مراجعة النفاذ (شهر/يوم/سنة):</label>
@@ -173,8 +175,6 @@
                                                 placeholder="أدخل منع التكرار">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>المراجعة تم إجراؤها بواسطة:</label>
@@ -182,6 +182,9 @@
                                                 placeholder="إدخال اسم.">
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>التاريخ عندما NC
@@ -190,8 +193,6 @@
                                                 placeholder="أدخل منع التكرار">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>التاريخ عندما NC
@@ -200,6 +201,8 @@
                                                 placeholder="أدخل المراجعة المنفذة">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>الوقت المتوقع لاستجابة العميل (بالأيام):</label>
@@ -207,8 +210,6 @@
                                                 name="CRE" placeholder="أدخل عدد الأيام">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تأثير المنتج (نعم أو لا):</label>
@@ -219,7 +220,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>تم إغلاق NCR (نعم أو لا):</label>
                                             <select name="NCR_closed" class="form-control">
@@ -298,7 +302,7 @@
                                     <thead>
                                         <tr>
                                             <th>رقم هوية NCR</th>
-                                            <th>المورد</th>
+                                            <th>الموظف الذي أبلغ عن NCR</th>
                                             <th>رقم معرف التخصيص</th>
                                             <th>الاسم المخصص</th>
                                             <th>تفاصيل الخطأ</th>
@@ -390,21 +394,21 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View Non-Conformity Details.</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل عدم المطابقة</h5>
                     <div class="row" style="margin-left: 43px;">
                     </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row text-right">
                     <div class="col-md-12 p-3">
                         <form>
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Supplier Name:</label>
+                                        <label>اسم المورد:</label>
                                         <input type="text" readonly disabled class="form-control" name="supplier_data"
                                             placeholder="Enter Supplier">
                                     </div>
@@ -412,11 +416,11 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Customer ID Number:</label>
+                                        <label>رقم معرف المورد:</label>
 
                                         <select readonly disabled class="form-control" name="customerID"
                                             id="customer_id_">
-                                            <option value="">Enter Customer ID Number:</option>
+                                            <option value="">أدخل رقم هوية المورد</option>
                                             @foreach ($customers as $customer)
                                                 <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
                                                 </option>
@@ -425,21 +429,28 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Customer Name:</label>
+                                        <label>اسم الزبون:</label>
                                         <input type="text" readonly disabled
                                             class="form-control customer_name_edit_display" name="CustomerName"
-                                            placeholder="Enter Customer Name" id="customer_name">
+                                            placeholder="أدخل اسم العميل" id="customer_name">
                                     </div>
-                                </div>
-
+                                </div> --}}
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Employee ID Number:</label>
+                                        <label>اسم الموظف:</label>
+                                        <input type="text" readonly disabled
+                                            class="form-control employee_name_edit_display" name="employee_name"
+                                            placeholder="أدخل اسم الموظف" id="employee_name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>رقم هوية الموظف:</label>
                                         <select readonly disabled class="form-control" name="employee_id"
                                             id="employee_id">
-                                            <option value="">Enter Employee ID Number:</option>
+                                            <option value="">أدخل رقم هوية الموظف:</option>
                                             @foreach ($employees as $employee)
                                                 <option value="{{ $employee->empNumber }}">{{ $employee->empNumber }}
                                                     {{-- @dd($customer) --}}
@@ -447,131 +458,125 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div>                               
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Employee Name:</label>
-                                        <input type="text" readonly disabled
-                                            class="form-control employee_name_edit_display" name="employee_name"
-                                            placeholder="Enter Employee Name" id="employee_name">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Root Cause Category:</label>
+                                        <label>فئة السبب الجذري:</label>
                                         <input type="text" name="root_cause_category" readonly disabled id=""
                                             value="" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>تفاصيل الخطأ:</label>
+                                        <input type="text" readonly disabled class="form-control" name="description"
+                                            placeholder="أدخل وصف الخطأ">
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row">                                
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Fault Description:</label>
-                                        <input type="text" readonly disabled class="form-control" name="description"
-                                            placeholder="Enter Fault Description">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Root Cause:</label>
+                                        <label>السبب الجذري:</label>
                                         <input type="text" readonly disabled class="form-control" name="rootCause"
-                                            placeholder="Enter Root Cause">
+                                            placeholder="أدخل السبب الجذري">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Immediate Corrective Action:</label>
+                                        <label>الإجراءات التصحيحية الفورية:</label>
                                         <input type="text" readonly disabled class="form-control" name="immediateCorp"
-                                            placeholder="Enter Immediate Corrective Action">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Action to Prevent Recurrence:</label>
-                                        <input type="text" readonly disabled class="form-control" name="actionPrevent"
-                                            placeholder="Enter Prevent Recurrence">
+                                            placeholder="أدخل الإجراء التصحيحي الفوري">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row">                                
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Effectiveness of Action to Prevent Recurrence:</label>
+                                        <label>إجراءات لمنع التكرار:</label>
+                                        <input type="text" readonly disabled class="form-control" name="actionPrevent"
+                                            placeholder="أدخل منع التكرار">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>فعالية العمل لمنع التكرار:</label>
                                         <input type="text" readonly disabled class="form-control"
                                             name="ActionRecurnce"
-                                            placeholder="Enter details of the effectiveness of action/s to prevent recurrence">
+                                            placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                               
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Effectiveness Review Date (MM/DD/YYY):</label>
+                                        <label>تاريخ مراجعة النفاذ (شهر/يوم/سنة):</label>
                                         <input type="date" class="form-control" name="effectiveDate"
-                                            placeholder="Enter Prevent Recurrence">
+                                            placeholder="أدخل منع التكرار">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Review Performed By:</label>
+                                        <label>المراجعة تم إجراؤها بواسطة:</label>
                                         <input type="text" readonly disabled class="form-control" name="reviewdBy"
-                                            placeholder="Enter Review Performed">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Date when NC
-                                            was processed (MM/DD/YYY):</label>
-                                        <input type="date" readonly disabled class="form-control" name="dateNcP"
-                                            placeholder="Enter Prevent Recurrence">
+                                            placeholder="أدخل المراجعة المنفذة">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Date when NC
-                                            was received (MM/DD/YYY):</label>
+                                        <label>التاريخ عندما NC
+                                            تم استلامه (شهر/يوم/سنة):</label>
                                         <input type="date" readonly disabled class="form-control" name="dateNcR"
                                             placeholder="Enter Review Performed">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Customer Response Expected Time (Days):</label>
-                                        <input type="number" readonly disabled
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                            class="form-control validate_number" name="CRE"
-                                            placeholder="Enter Number of Days">
+                                        <label>التاريخ عندما NC
+                                            تمت معالجتها (شهر/يوم/سنة):</label>
+                                        <input type="date" readonly disabled class="form-control" name="dateNcP"
+                                            placeholder="أدخل منع التكرار">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Product Impact (Yes or No):</label>
+                                        <label>تأثير المنتج (نعم أو لا):</label>
 
                                         <select readonly disabled name="PI" class="form-control">
                                             <option value=""></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
+                                            <option value="Yes">نعم</option>
+                                            <option value="No">لا</option>
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>NCR closed (Yes or No):</label>
+                                        <label>الوقت المتوقع لاستجابة العميل (بالأيام):</label>
+                                        <input type="number" readonly disabled
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                            class="form-control validate_number" name="CRE"
+                                            placeholder="أدخل عدد الأيام">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>تم إغلاق NCR (نعم أو لا):</label>
                                         <select name="NCR_closed" class="form-control">
                                             <option value=""></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
+                                            <option value="Yes">نعم</option>
+                                            <option value="No">لا</option>
                                         </select>
                                     </div>
                                 </div>
@@ -589,7 +594,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
                 </div>
             </div>
         </div>
@@ -598,14 +603,14 @@
 
 
 
-    <div class="modal fade" id="editConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade text-right" id="editConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Non Confirmities</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">تحرير عدم التأكيدات</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
                 </div>
 
                 <div class="form-row">
@@ -621,17 +626,17 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Supplier Name:</label>
+                                        <label>اسم المورد:</label>
                                         <input type="text" readonly class="form-control" name="supplier_data"
-                                            placeholder="Enter Supplier Name" id="supplier_name">
+                                            placeholder="أدخل اسم المورد" id="supplier_name">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Customer ID Number:</label>
+                                        <label>رقم معرف المورد:</label>
 
                                         <select readonly class="form-control" name="customerID" id="customer_id_">
-                                            <option value="">Enter Customer ID Number:</option>
+                                            <option value="">أدخل رقم هوية المورد</option>
                                             @foreach ($customers as $customer)
                                                 <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
                                                 </option>
@@ -639,21 +644,28 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Customer Name:</label>
+                                        <label>اسم الزبون:</label>
                                         <input type="text" readonly disabled
                                             class="form-control customer_name_edit_display" name="CustomerName"
-                                            placeholder="Enter Customer Name" id="customer_name">
+                                            placeholder="أدخل اسم العميل" id="customer_name">
                                     </div>
-                                </div>
-
+                                </div> --}}
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Employee ID Number:</label>
+                                        <label>اسم الموظف:</label>
+                                        <input type="text" readonly disabled
+                                            class="form-control employee_name_edit_display" name="employee_name"
+                                            placeholder="أدخل اسم الموظف" id="employee_name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>رقم هوية الموظف:</label>
 
                                         <select readonly class="form-control" name="employee_id" id="employee_id_">
-                                            <option value="">Enter Employee ID Number:</option>
+                                            <option value="">أدخل رقم هوية الموظف:</option>
                                             @foreach ($employees as $employee)
                                                 <option value="{{ $employee->empNumber }}">{{ $employee->empNumber }}
                                                     {{-- @dd($customer) --}}
@@ -663,134 +675,127 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Employee Name:</label>
-                                        <input type="text" readonly disabled
-                                            class="form-control employee_name_edit_display" name="employee_name"
-                                            placeholder="Enter Employee Name" id="employee_name">
-                                    </div>
-                                </div>
+                               
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Root Cause Category:</label>
+                                        <label>فئة السبب الجذري:</label>
                                         <select name="root_cause_category" class="form-control" required>
-                                            <option value="Other">Other</option>
-                                            <option value="Planning">Planning</option>
-                                            <option value="Production">Production</option>
-                                            <option value="Non-liable">Non-liable</option>
-                                            <option value="Training">Training</option>
-                                            <option value="Management">Management</option>
-                                            <option value="Human Factor">Human Factor</option>
+                                            <option value="آخر">آخر</option>
+                                            <option value="تخطيط">تخطيط</option>
+                                            <option value="إنتاج">إنتاج</option>
+                                            <option value="غير مسؤول">غير مسؤول</option>
+                                            <option value="تمرين">تمرين</option>
+                                            <option value="إدارة">إدارة</option>
+                                            <option value="العامل البشري">العامل البشري</option>
                                         </select>
                                         <!--<input type="text" name="root_cause_category" id="" value="" class="form-control" required>-->
 
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Fault Description:</label>
+                                        <label>تفاصيل الخطأ:</label>
                                         <input type="text" class="form-control" name="description"
-                                            placeholder="Enter Fault Description" required>
+                                            placeholder="أدخل وصف الخطأ" required>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">                                
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Root Cause:</label>
+                                        <label>السبب الجذري:</label>
                                         <input type="text" class="form-control" name="rootCause"
-                                            placeholder="Enter Root Cause" required>
+                                            placeholder="أدخل السبب الجذري" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Immediate Corrective Action:</label>
+                                        <label>الإجراءات التصحيحية الفورية:</label>
                                         <input type="text" class="form-control" name="immediateCorp"
-                                            placeholder="Enter Immediate Corrective Action" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Action to Prevent Recurrence:</label>
-                                        <input type="text" class="form-control" name="actionPrevent"
-                                            placeholder="Enter Prevent Recurrence" required>
+                                            placeholder="أدخل الإجراء التصحيحي الفوري" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row">                               
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Effectiveness of Action to Prevent Recurrence:</label>
+                                        <label>إجراءات لمنع التكرار:</label>
+                                        <input type="text" class="form-control" name="actionPrevent"
+                                            placeholder="أدخل منع التكرار" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>فعالية العمل لمنع التكرار:</label>
                                         <input type="text" class="form-control" name="ActionRecurnce"
-                                            placeholder="Enter details of the effectiveness of action/s to prevent recurrence"
+                                            placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها"
                                             required>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">                                
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Effectiveness Review Date (MM/DD/YYY):</label>
+                                        <label>تاريخ مراجعة النفاذ (شهر/يوم/سنة):</label>
                                         <input type="date" class="form-control" name="effectiveDate"
-                                            placeholder="Enter Prevent Recurrence" required>
+                                            placeholder="أدخل منع التكرار" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Review Performed By:</label>
+                                        <label>المراجعة تم إجراؤها بواسطة:</label>
                                         <input type="text" class="form-control" name="reviewdBy"
-                                            placeholder="Enter Review Performed" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Date NC Processed (MM/DD/YYY):</label>
-                                        <input type="date" class="form-control" name="dateNcP"
-                                            placeholder="Enter Prevent Recurrence" required>
+                                            placeholder="أدخل المراجعة المنفذة" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row">                                
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Date NC Received (MM/DD/YYY):</label>
-                                        <input type="date" class="form-control" name="dateNcR"
-                                            placeholder="Enter Review Performed" required>
+                                        <label>تاريخ معالجة NC (شهر/يوم/سنة):</label>
+                                        <input type="date" class="form-control" name="dateNcP"
+                                            placeholder="أدخل منع التكرار" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Customer Response Expected Time (Days):</label>
+                                        <label>تاريخ استلام NC (شهر/يوم/سنة):</label>
+                                        <input type="date" class="form-control" name="dateNcR"
+                                            placeholder="أدخل المراجعة المنفذة" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">                                
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>الوقت المتوقع لاستجابة العميل (بالأيام):</label>
                                         <input type="number"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                             class="form-control validate_number" name="CRE"
                                             placeholder="Enter Number of Days" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Product Impact (Yes or No):</label>
+                                        <label>تأثير المنتج (نعم أو لا):</label>
 
                                         <select name="PI" class="form-control">
                                             <option value=""></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
+                                            <option value="Yes">نعم</option>
+                                            <option value="No">لا</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                            </div>
+                            <div class="row">                               
+                                <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label>NCR closed (Yes or No):</label>
+                                        <label>تم إغلاق NCR (نعم أو لا):</label>
                                         <select name="NCR_closed" class="form-control">
                                             <option value=""></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
+                                            <option value="Yes">نعم</option>
+                                            <option value="No">لا</option>
                                         </select>
                                     </div>
                                 </div>
@@ -802,8 +807,8 @@
                                 <input type="hidden" name="is_admin" value="admin" />
                                 <input type="hidden" name="user_id" id="user_id"
                                     value="{{ $urlparam['userid'] }}" />
-                                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-danger">Update</button>
+                                <button type="reset" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+                                <button type="submit" class="btn btn-danger">تحديث</button>
 
                             </div>
                         </form>
@@ -818,19 +823,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deleting an entry.</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف إدخال.</h5>
+                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this entry?</p>
+                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('deleteNonConfrm') }}" method="POST">
                         @csrf
                         <input type="hidden" id="re_id" value="" name="id">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                        <button type="submit" class="btn btn-danger">نعم</button>
                     </form>
                 </div>
             </div>

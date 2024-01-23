@@ -251,7 +251,7 @@
                                 <td><?php
                                     if (isset($item->profile_image)) { ?>
                                         {{-- $logo = "<img src='https://myisoonline.com/public/" . $item->profile_image . "' width='60px'>"; --}}
-                                       <img src='{{$item->profile_image}}' width='60px'>;
+                                       <img src='{{$item->profile_image}}' width='60px'>
                                     <?php } ?></td>
 
                                 <td>
@@ -1657,7 +1657,8 @@
                 $("input[name='iso45001_expirydate']").val(data.iso45001_expirydate);
                 $("textarea[name='iso45001_description']").val(data.iso45001_description);
 
-                let logo_src = "https://myisoonline.com/public/" + data.profile_image;
+                // let logo_src = "https://myisoonline.com/public/" + data.profile_image;
+                let logo_src = data.profile_image;
                 $("#output").attr("src", logo_src);
             
 

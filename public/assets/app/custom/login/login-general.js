@@ -163,7 +163,7 @@ var KTLoginGeneral = function() {
     }
 
     var handleForgotFormSubmit = function() {
-        $('#kt_login_forgot_submit').click(function(e) {
+        $('document').on('click', '#kt_login_forgot_submit', function(e){
             e.preventDefault();
             // console.log('Here in forgot');
             var btn = $(this);
@@ -215,6 +215,9 @@ var KTLoginGeneral = function() {
                 }
             });
         });
+        // $('#kt_login_forgot_submit').click(function(e) {
+            
+        // });
     }
 
     // Public Functions
