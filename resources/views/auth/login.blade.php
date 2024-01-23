@@ -14,9 +14,6 @@ License: You must have a valid license purchased only from themeforest(the above
 -->
 
 <html lang="en">
-<head>
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
-</head>
 <style>
 	/* This is will change the direction from Right to LEFT  */
 	*{
