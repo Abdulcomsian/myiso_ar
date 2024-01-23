@@ -163,7 +163,7 @@ var KTLoginGeneral = function() {
     }
 
     var handleForgotFormSubmit = function() {
-        $('document').on('click', '#kt_login_forgot_submit', function(e){
+        $('#kt_login_forgot_submit').click(function(e) {
             e.preventDefault();
             // console.log('Here in forgot');
             var btn = $(this);
@@ -187,7 +187,7 @@ var KTLoginGeneral = function() {
             form.ajaxSubmit({
                 url: '/password-reset-email',
                 method:'POST',
-                success: function(response, status, xhr, $form) { 
+                success: function(response, status, xhr, form) { 
                 	// similate 2s delay
                     var type = '';
                     var msg = '';
@@ -215,9 +215,6 @@ var KTLoginGeneral = function() {
                 }
             });
         });
-        // $('#kt_login_forgot_submit').click(function(e) {
-            
-        // });
     }
 
     // Public Functions
