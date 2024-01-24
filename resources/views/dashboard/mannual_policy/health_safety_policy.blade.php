@@ -73,7 +73,7 @@
 						@endforeach --}}
 					<p>بالنيابة عن : <b><span class="authName">{{ $companyName}}</span></b></p>
 					<p>الاسم: <span class="authName">{{Auth::user()->director}}</span></p>
-					<p>التاريخ: {{date("d-F-Y")}}</p>
+					<p>التاريخ: {{$date}}</p>
 				</div>
 			</div>
 		</div>

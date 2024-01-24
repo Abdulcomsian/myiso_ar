@@ -66,7 +66,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>اسم الموظف:</label>
+                                            <label>الموظف الذي أبلغ عن NCR</label>
                                             <input type="text" class="form-control employee_name" name="employee_name"
                                                 placeholder="أدخل اسم الموظف">
                                         </div>
@@ -126,7 +126,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>تفاصيل الخطأ:</label>
+                                            <label>وصف NCR</label>
                                             <input type="text" class="form-control" name="description"
                                                 placeholder="أدخل وصف الخطأ">
                                         </div>
@@ -302,10 +302,11 @@
                                     <thead>
                                         <tr>
                                             <th>رقم هوية NCR</th>
-                                            <th>الموظف الذي أبلغ عن NCR</th>
+                                            <th>اسم المورد</th>
                                             <th>رقم معرف التخصيص</th>
-                                            <th>الاسم المخصص</th>
-                                            <th>تفاصيل الخطأ</th>
+                                            <th>الموظف الذي أبلغ عن NCR</th>
+                                            <th>رقم هوية الموظف</th>
+                                            <th>وصف NCR</th>
                                             <th>فئة</th>
                                             <th>تاريخ معالجة NCR.</th>
 
@@ -323,7 +324,8 @@
                                                 <td>{{ $i++ }} </td>
                                                 <td> {{ $data->supplier_data }}</td>
                                                 <td> {{ $data->customerID }}</td>
-                                                <td>{{ $data->employee_name }}</td>
+                                                <td>{{ $data->employee_name }}</td> 
+                                                <td>{{ $data->employee_id }}</td> 
                                                 <td> {{ $data->description }}</td>
                                                 <td> {{ $data->root_cause_category }}</td>
                                                 <td> {{ $data->dateNcR }}</td>
@@ -439,7 +441,7 @@
                                 </div> --}}
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>اسم الموظف:</label>
+                                        <label>الموظف الذي أبلغ عن NCR</label>
                                         <input type="text" readonly disabled
                                             class="form-control employee_name_edit_display" name="employee_name"
                                             placeholder="أدخل اسم الموظف" id="employee_name">
@@ -469,7 +471,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>تفاصيل الخطأ:</label>
+                                        <label>وصف NCR</label>
                                         <input type="text" readonly disabled class="form-control" name="description"
                                             placeholder="أدخل وصف الخطأ">
                                     </div>
@@ -654,7 +656,7 @@
                                 </div> --}}
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>اسم الموظف:</label>
+                                        <label>الموظف الذي أبلغ عن NCR</label>
                                         <input type="text" readonly disabled
                                             class="form-control employee_name_edit_display" name="employee_name"
                                             placeholder="أدخل اسم الموظف" id="employee_name">
@@ -695,7 +697,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>تفاصيل الخطأ:</label>
+                                        <label>وصف NCR</label>
                                         <input type="text" class="form-control" name="description"
                                             placeholder="أدخل وصف الخطأ" required>
                                     </div>
