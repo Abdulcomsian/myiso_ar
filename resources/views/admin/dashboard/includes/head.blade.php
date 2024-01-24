@@ -73,10 +73,10 @@ License: You must have a valid license purchased only from themeforest(the above
         </script>
         <style>
 		.dataTables_filter {
-   width: 50%;
-   float: right;
-   text-align: right;
-}
+			width: 50%;
+			float: right;
+			text-align: right;
+		}
 		</style>
 		<!-- Include jQuery library -->
 		<!-- Include Bootstrap CSS -->
@@ -179,5 +179,44 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
 		@yield('styles')
 	</head>
+	<style>
+		
+		.custom-file-input-tag {
+		position: relative;
+		display: inline-block;
+
+		}
+
+		.input-file {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
+		}
+
+		.file-label {
+			display: inline-block;
+			padding: 4px 11px;
+			background-color: #E5E5E5;
+			color: #fff;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-bottom: 0px;
+			border: 1px solid #2547B3;
+		}
+
+		.file-text {
+		display: inline-block;
+		margin-right: 8px;
+		}
+
+		.file-chosen {
+		display: none;
+		}
+	</style>
+
 
 	<!-- end::Head -->
