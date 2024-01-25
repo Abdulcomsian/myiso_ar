@@ -63,9 +63,9 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>اسم الموظف:</label>
+                                            <label>الموظف الذي أبلغ عن NCR</label>
                                             <input type="text" class="form-control employee_name" name="employee_name"
-                                                placeholder="أدخل اسم الموظف">
+                                                placeholder="الموظف الذي أبلغ عن NCR">
                                         </div>
                                     </div>
 
@@ -133,9 +133,9 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>وصف الخطأ: </label>
+                                            <label>	وصف NCR </label>
                                             <input type="text" required class="form-control" name="description"
-                                                placeholder="أدخل وصف الخطأ" required>
+                                                placeholder="أدخل وصف NCR" required>
                                         </div>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>إغلاق حالة عدم المطابقة (نعم أو لا):</label>
                                             <select name="NCR_closed" class="form-control">
@@ -294,14 +294,16 @@
                                     id="kt_table_agent">
                                     <thead>
                                         <tr>
-                                            <th>رقم مُعرف حالة عدم المطابقة</th>
-                                            <th>رقم هوية المورد</th>
+                                            <th>رقم هوية NCR</th>
                                             <th>اسم المورد</th>
-                                            <th>وصف الخطأ</th>
-                                            <th>الفئة</th>
-                                            <th>تاريخ معالجة حالة عدم المطابقة</th>
+                                            <th>رقم معرف التخصيص</th>
                                             <th>الموظف الذي أبلغ عن NCR</th>
-                                            <th>الإجراء</th>
+                                            <th>رقم هوية الموظف</th>
+                                            <th>وصف NCR</th>
+                                            <th>فئة</th>
+                                            <th>تاريخ معالجة NCR.</th>
+
+                                            <th>فعل</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -311,13 +313,13 @@
                                         @foreach ($customers_nonconform as $data)
                                             <tr>
                                                 <td>{{ $i++ }} </td>
+                                                <td> {{ $data->supplier_data }}</td>
                                                 <td> {{ $data->customerID }}</td>
-                                                <td>{{ $data->supplier_data }}</td>
+                                                <td>{{ $data->employee_name }}</td> 
+                                                <td>{{ $data->employee_id }}</td> 
                                                 <td> {{ $data->description }}</td>
                                                 <td> {{ $data->root_cause_category }}</td>
-                                                <td>{{ date('d/m/Y', strtotime($data->dateNcR)) }}</td>
-                                                {{-- <td> {{ $data->supplier_data }} </td> --}}
-                                                <td> {{ $data->employee_name }} </td>
+                                                <td> {{ $data->dateNcR }}</td>
                                                 <td> <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
                                                         title="View" value="{{ $data->customerID }}"
                                                         onclick="getEid({{ json_encode($data) }});">
@@ -430,10 +432,10 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>اسم الموظف:</label>
+                                        <label>الموظف الذي أبلغ عن NCR</label>
                                         <input type="text" readonly disabled
                                             class="form-control employee_name_edit_display" name="employee_name"
-                                            placeholder="Enter Employee Name" id="employee_name">
+                                            placeholder="الموظف الذي أبلغ عن NCR" id="employee_name">
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg-6">
@@ -470,9 +472,9 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>تفاصيل الخطأ:</label>
+                                        <label>	وصف NCR</label>
                                         <input type="text" readonly disabled class="form-control" name="description"
-                                            placeholder="أدخل وصف الخطأ">
+                                            placeholder="أدخل وصف NCR">
                                     </div>
                                 </div>
                             </div>
@@ -568,7 +570,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>تم إغلاق NCR (نعم أو لا):</label>
                                         <select name="NCR_closed" class="form-control">
@@ -645,10 +647,10 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>اسم الموظف:</label>
+                                        <label>الموظف الذي أبلغ عن NCR</label>
                                         <input type="text"
                                             class="form-control employee_name_edit_display employee_name"
-                                            name="employee_name" placeholder="أدخل اسم الموظف" id="employee_name">
+                                            name="employee_name" placeholder="الموظف الذي أبلغ عن NCR" id="employee_name">
                                     </div>
                                 </div>
 
@@ -705,9 +707,9 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>تفاصيل الخطأ:</label>
+                                        <label>	وصف NCR</label>
                                         <input type="text" required class="form-control" name="description"
-                                            placeholder="أدخل وصف الخطأ" required>
+                                            placeholder="أدخل وصف NCR" required>
                                     </div>
                                 </div>
                             </div>
@@ -810,7 +812,7 @@
 
                             <div class="row">
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>تم إغلاق NCR (نعم أو لا):</label>
                                         <select name="NCR_closed" class="form-control">
