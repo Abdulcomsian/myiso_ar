@@ -940,8 +940,15 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
-                                            <input name="attach_evidence" type="file" class="form-control"
-                                                accept="image/*,.doc, .docx,.txt,.pdf">
+                                            {{-- <input name="attach_evidence" type="file" class="form-control"
+                                                accept="image/*,.doc, .docx,.txt,.pdf"> --}}
+                                            <div class="custom-file-input-tag form-control">
+                                                <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="image/*,.doc, .docx,.txt,.pdf"/>
+                                                <label for="fileInput" class="file-label">
+                                                    <span class="file-text">اختيار الملف</span>
+                                                    <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2925,8 +2932,15 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
-                                    <input name="attach_evidence" type="file" class="form-control"
-                                        accept="image/*,.doc, .docx,.txt,.pdf">
+                                    {{-- <input name="attach_evidence" type="file" class="form-control"
+                                        accept="image/*,.doc, .docx,.txt,.pdf"> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="image/*,.doc, .docx,.txt,.pdf"/>
+                                        <label for="fileInput" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
