@@ -142,6 +142,11 @@
                                                 @endphp
                                                 <td>{{ date('d/m/Y', $d) }}</td>
                                                 <td>
+                                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                                                        title="View Customer Details" value="" o
+                                                        data-toggle="modal" data-target="#modal{{ $data->id }}"><i
+                                                            class="fa fa-eye"></i>
+                                                    </button>
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit"
                                                         onclick="getEid({{ json_encode($data) }});"> <svg
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -214,11 +219,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                                        title="View Customer Details" value="" o
-                                                        data-toggle="modal" data-target="#modal{{ $data->id }}"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
+                                                    
                                                     <div class="modal fade" id="modal{{ $data->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
