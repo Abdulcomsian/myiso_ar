@@ -194,7 +194,7 @@ class SendNotificationsController extends Controller
         // $user->notify($notificationMessage);
 
         // DB::table('users_messages')->where('id', $request->input('replied'))->update(['replied' => 1]);
-        return redirect()->back()->with('success', 'Your message has been Sent');
+        return redirect()->back()->with('success', 'تم ارسال رسالتك');
     }
 
     public function sentNotifications(){
