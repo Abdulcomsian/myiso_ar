@@ -49,7 +49,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>رقم معرف المورد:</label>
+                                            <label>رقم هوية المورد</label>
                                             {{-- <h1>here</h1> --}}
                                             <select onchange="get_customer(this)" required class="form-control"
                                                 name="customerID" id="customer_id">
@@ -303,7 +303,7 @@
                                         <tr>
                                             <th>رقم هوية NCR</th>
                                             <th>اسم المورد</th>
-                                            <th>رقم معرف التخصيص</th>
+                                            <th>رقم هوية المورد</th>
                                             <th>الموظف الذي أبلغ عن NCR</th>
                                             <th>رقم هوية الموظف</th>
                                             <th>وصف NCR</th>
@@ -418,7 +418,7 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>رقم معرف المورد:</label>
+                                        <label>رقم هوية المورد</label>
 
                                         <select readonly disabled class="form-control" name="customerID"
                                             id="customer_id_">
@@ -635,7 +635,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>رقم معرف المورد:</label>
+                                        <label>رقم هوية المورد</label>
 
                                         <select readonly class="form-control" name="customerID" id="customer_id_">
                                             <option value="">أدخل رقم هوية المورد</option>
