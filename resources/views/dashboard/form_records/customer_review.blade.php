@@ -13,8 +13,7 @@
         <section id="procedure_section">
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <p>تقييمات العملاء هي بمثابة أداة لمراقبة وتصنيف مستويات أداء عملائك. وقد يستهدف مؤشر الأداء هذا جميع
-                        نقاط الاتصال مع العميل. </p>
+                    <p>تتقييمات العملاء هي أداة لمراقبة ومستويات الأداء التي يقدمها عملاؤك، يمكن لمؤشر الأداء هذا أن يستهدف جميع مجالات الاتصال مع العميل. </p>
                     <p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم عميل". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة
                         بالقيد المراد تعديله. </p>
                     <div class="procedure_div">
@@ -83,13 +82,29 @@
                                                 name="OveralScore" required="required">
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
                                             <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate"
                                                 required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
+                                            <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">                       
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>إرفاق الأدلة:</label>
+                                            <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
+                                            <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
+                                            {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -146,9 +161,7 @@
                                                 <td>{{ date('d/m/Y', strtotime($data->AssesmentDate)) }} </td>
                                                 <td>
                                                     <!-- new  -->
-                                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                                        title="View Customer Details" value="" o data-toggle="modal"
-                                                        data-target="#model3"><i class="fa fa-eye"></i>
+                                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md" onclick="getView({{$data}});" title="View Customer Details" value="" o data-toggle="modal" data-target="#model3"><i class="fa fa-eye"></i>
                                                     </button>
 
 
@@ -166,83 +179,81 @@
                                                                 <div class="modal-body">
 
                                                                     <div class="row">
-                                                                        <input type="hidden" name="id"
-                                                                            id="editproject" value="">
-
                                                                         {{-- <div class="col-lg-6">
-		<div class="form-group">
-			<label>System ID Number:</label><br>
-			<input type="number" readonly class="form-control"  name="systemid">
-		</div>
-	</div> --}}
+                                                                        <div class="form-group">
+                                                                            <label>Customer Review ID Number (See table below. For amendments only):</label><br>
+                                                                            <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
+                                                                        </div>
+                                                                    </div> --}}
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>اسم العائلة:</label><br>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="surname"
-                                                                                    placeholder="أدخل اللقب">
+                                                                                <label>رقم هوية العميل:</label><br>
+                                                                                <input type="number" class="form-control" required name="cus_id"
+                                                                                    placeholder="أدخل معرف العميل:" readonly>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                            
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>الاسم الأول:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="first_name"
-                                                                                    placeholder="أدخل الاسم الأول">
+                                                                                <label> التقييم من حيث الجودة: (0 – 10):</label>
+                                                                                <input type="number" min="0" max="10" required class="form-control"
+                                                                                    name="qualityScore">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-lg-6">
-                                                                            <div class="form-group edit-emp-number-div">
-                                                                                <label>هوية الموظف:</label>
-                                                                                <input type="text" name="empNumber"
-                                                                                    required class="form-control"
-                                                                                    data-type="edit">
-                                                                                <!--                         <select name="empNumber" required class="form-control">-->
-                                                                                <!--    <option>Select One</option>-->
-                                                                                <!--    @if (isset($userinfo) && $userinfo != '')
-    -->
-                                                                                <!--    @foreach ($userinfo as $item)
-    -->
-                                                                                <!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
-                                                                                <!--
-    @endforeach-->
-                                                                                <!--
-    @endif-->
-                                                                                <!--</select>-->
+                                                                            <div class="form-group">
+                                                                                <label>التقييم من حيث السعر: (0 – 10):</label>
+                                                                                <input type="number" min="0" max="10" required class="form-control"
+                                                                                    name="priceScore">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>تاريخ البدء
-                                                                                    (السنة/الشهر/اليوم):</label>
-                                                                                <input name="startDate" max="2999-12-31"
-                                                                                    type="date" class="form-control">
+                                                                                <label>التقييم من حيث التسليم: (0 – 10): </label>
+                                                                                <input type="number" class="form-control" required min="0" max="10"
+                                                                                    name="DScore">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>تفاصيل الوظيفة:</label>
-                                                                                <input type="text" name="jobdetails"
-                                                                                    class="form-control"
-                                                                                    placeholder="أدخل تفاصيل الوظيفة:">
+                                                                                <label>النتيجة الإجمالية (0-10)</label>
+                                                                                <input type="number" class="form-control" required min="0" max="10"
+                                                                                    name="OveralScore">
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                   
+                                            
                                                                     <div class="row">
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>تحميل السيرة الذاتية للموظف:</label>
-                                                                                <input name="employee_cv" type="file"
-                                                                                    class="form-control"
-                                                                                    accept="image/*,.doc, .docx,.txt,.pdf">
+                                                                                <label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label>
+                                                                                <input type="date" max="2999-12-31" required class="form-control"
+                                                                                    name="AssesmentDate" required="required">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
+                                                                                <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <label>إرفاق الأدلة:</label>
+                                                                                <input type="file" class="form-control" name="attach_evidence" required="required">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                            
+                                                                    <button class="btn btn-secondary" type="reset" data-dismiss="modal"
+                                                                        aria-label="Close" style="margin-right: 6px;">يلغي</button>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -397,12 +408,28 @@
                                 </div>
                             </div>
                         </div>
+                       
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label>
                                     <input type="date" max="2999-12-31" required class="form-control"
                                         name="AssesmentDate" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
+                                    <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>إرفاق الأدلة:</label>
+                                    <input type="file" class="form-control" name="attach_evidence" required="required">
                                 </div>
                             </div>
                         </div>
@@ -431,4 +458,20 @@
         $("input[name='qualityScore']").val(data.qualityScore);
         $("#editcustomer_rev").modal('show');
     }
+
+    function getView(data){
+		console.log(data);
+        $("input[name='AssesmentDate']").val(data.AssesmentDate);
+        $("input[name='DScore']").val(data.DScore);
+        $("input[name='OveralScore']").val(data.OveralScore);
+        $("input[name='cus_id']").val(data.cus_id);
+        $("input[name='priceScore']").val(data.priceScore);
+        $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='revnumber']").val(data.revnumber);
+        $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='other_issue']").val(data.other_issues);
+		var assetUrl = $("#assetUrl").val();
+    	$("a[name='attach_evidence']").attr("href", assetUrl + "/" + data.attach_evidence);
+        // $("#editcustomer_rev").modal('show');
+	}
 </script>

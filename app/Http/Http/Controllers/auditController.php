@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Audit;
 use Illuminate\Support\Facades\Auth;
+use App\Workinstructions;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,8 @@ class auditController extends Controller
     public function index(Request $request)
     {
         $userid=Auth::user()->id;
-        $audit=Audit::where('user_id',$userid)->get();
-        return view('dashboard.form_records.process_audit',compact('audit'));
+        $workInstructionsData = Workinstructions::where('user_id', $userid)->get();
+        return view('dashboard.form_records.process_audit',compact('audit', 'workInstructionsData'));
     }
 
     /**

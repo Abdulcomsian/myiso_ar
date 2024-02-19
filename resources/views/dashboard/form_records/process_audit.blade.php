@@ -44,8 +44,15 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>العملية التي يتم تدقيقها:</label>
-                                            <input type="text" name="processAudit" class="form-control"
-                                                placeholder="أدخل اسم العملية" id="processAudit" required="required">
+                                            {{-- <input type="text" name="processAudit" id="processAudit" class="form-control"
+                                                   placeholder="Enter Process / Work Instruction title" required> --}}
+                                            <select name="processAudit" class="form-control">
+                                                @isset($workInstructionsData)
+                                                    @foreach($workInstructionsData as $item)
+                                                        <option value="{{$item->workinstruction}}">{{$item->workinstruction}}</option>
+                                                    @endforeach
+                                                @endisset
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -625,8 +632,15 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>العملية التي يتم تدقيقها:</label>
-                                    <input type="text" name="processAudit" id="processAudit" class="form-control"
-                                        placeholder="أدخل اسم العملية" required>
+                                    {{-- <input type="text" name="processAudit" id="processAudit" class="form-control"
+                                           placeholder="Enter Process / Work Instruction title" required> --}}
+                                    <select name="processAudit" class="form-control">
+                                        @isset($workInstructionsData)
+                                            @foreach($workInstructionsData as $item)
+                                                <option value="{{$item->workinstruction}}">{{$item->workinstruction}}</option>
+                                            @endforeach
+                                        @endisset
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1380,9 +1394,11 @@
 @endsection
 @section('myscript')
     <script>
-        function getEid(data) {
+       function getEid(data) 
+        {
             console.log(data);
-            if ($(".process_audit_from_div").is(":visible")) {
+            if ($(".process_audit_from_div").is(":visible")) 
+            {
                 processAuditForm();
             }
             $("#id_feild").val(data.id);
@@ -1395,7 +1411,14 @@
             $("input[name='dateFrequency']").val(data.dateFrequency);
             $("input[name='nonConfReport']").val(data.nonConfReport);
             $("input[name='nonConformities']").val(data.nonConformities);
-            $("input[name='processAudit']").val(data.processAudit);
+            // $("select[name='processAudit']").val(data.processAudit);
+            $("select[name='processAudit'] option").each(function() {
+                if ($(this).val() === data.processAudit) {
+                    $(this).prop("selected", true);
+                } else {
+                    $(this).prop("selected", false);
+                }
+            });
             $("input[name='any_issues']").val(data.any_issues);
 
             $("input[name='evidance2']").val(data.evidance2);
@@ -1421,7 +1444,6 @@
 
             $("#editProcessAudit").modal('show');
         }
-
 
         function viewaudit(data) {
             console.log(data);
