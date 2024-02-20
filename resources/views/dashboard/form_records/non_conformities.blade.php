@@ -33,7 +33,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>اسم المورد:</label>
-                                            <input type="text" required class="form-control" name="supplier_data"
+                                            <input type="text" required class="form-control supplier_name" name="supplier_data"
                                                 placeholder="أدخل اسم المورد">
                                         </div>
                                     </div>
@@ -859,7 +859,8 @@
     </div>
 @endsection
 <script>
-    function get_customer(obj) {
+     function get_customer(obj) 
+    {
         $this = $(obj);
         $id = $this.val();
         $user_id = document.getElementById('user_id2').value;
@@ -872,12 +873,11 @@
                 id: $id,
                 user_id: $user_id,
             },
-        }).done(function(response) {
+        }).done(function (response) 
+        {
             //let ids = array();
             response2 = JSON.parse(response);
-
-            $this.closest(".row").find(".customer_name").val(response2.name);
-
+            $this.closest(".row").find(".supplier_name").val(response2.name);
         });
 
     }
