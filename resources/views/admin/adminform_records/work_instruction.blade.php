@@ -20,7 +20,7 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<p>تعليمات العمل هي الإجراءات التي يتم استخدامها محليًا لدعم ما تفعله الشركة. إذا كنت تستخدم مستندات خارجية لهذا النظام، فلا بأس طالما تمت الإشارة إليها هنا. قم بذلك عن طريق تسجيل تفاصيل تعليمات العمل ووضع ملخص مختصر في قسم النطاق. سيضمن هذا إدراج تعليمات العمل الخارجي الخاصة بك في سجل المستندات.</p>
+                <p>يشار إلى تعليمات العمل أيضًا باسم العمليات. ويتم استخدامها كدليل خطوة بخطوة لكيفية إجراء نشاط في مكان العمل. ويجب استخدام هذا القسم لإنشاء أنشطة يتم تحديدها لاحقًا لإجراء عمليات تدقيق داخلية من عمليات تدقيق العمليات الخاصة بك. . إذا كنت تستخدم مستندات خارجية لهذا النظام، فلا بأس طالما تمت الإشارة إليها هنا. قم بذلك عن طريق تسجيل تفاصيل تعليمات العمل ووضع ملخص مختصر في قسم النطاق.</p>
                     <div class="procedure_div">
                     	<div class="row">
                     		<div class="col-lg-12 text-right">
@@ -40,8 +40,8 @@
                     			<div class="row">
                     				<div class="col-lg-6">
                     					<div class="form-group">
-											<label>عنوان تعليمات العمل:</label><br>
-											<input type="text" class="form-control" name="workinstruction" required="required">
+											<label>تعليمات العمل / عنوان العملية:</label><br>
+											<input type="text" class="form-control" name="workinstruction" placeholder="إضافة تعليمات/عملية العمل" required="required">
 										</div>
                     				</div>
                     				<div class="col-lg-6">
@@ -342,9 +342,9 @@
                     <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>عنوان إرشادات العمل:</label><br>
-                                    <input type="text" readyonly disabled class="form-control" name="workinstruction">
-                                </div>
+											<label>تعليمات العمل / عنوان العملية:</label><br>
+											<input type="text" class="form-control" name="workinstruction" placeholder="إضافة تعليمات/عملية العمل" required="required">
+										</div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -518,9 +518,9 @@
                         
                         <div class="col-lg-6">
                             <div class="form-group">
-                                    <label>عنوان إرشادات العمل:</label><br>
-                                    <input type="text" class="form-control" name="workinstruction">
-                                </div>
+											<label>تعليمات العمل / عنوان العملية:</label><br>
+											<input type="text" class="form-control" name="workinstruction" placeholder="إضافة تعليمات/عملية العمل" required="required">
+										</div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">

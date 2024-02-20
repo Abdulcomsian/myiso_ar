@@ -17,12 +17,10 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <p>تُعرف عمليات تدقيق العمليات أحيانًا باسم عمليات تدقيق الوظائف أو عمليات التدقيق الرأسي. يتم إجراء
-                        عمليات التدقيق هذه عن طريق اختيار المدقق لمهمة روتينية والتأكد من معالجتها بشكل صحيح. يجب أن يعتمد
-                        تكرار التدقيق على النتائج السابقة وأهمية العملية بالنسبة للشركة.</p>
-                    <p>لإضافة سجل، انقر فوق
-                        زر "إضافة تدقيق العملية". لتعديل أو حذف سجل، انقر على تحرير
-                        أو أيقونة الحذف للمدخل الذي يحتاج إلى تعديل أو حذف.</p>
+                    <p>يُشار أيضًا إلى عمليات تدقيق العمليات باسم عمليات تدقيق تعليمات العمل، ويتم إجراء عمليات التدقيق هذه بواسطة المدقق الداخلي. يجب أن يعتمد تكرار التدقيق على النتائج السابقة وأهمية العملية بالنسبة للشركة.</p>
+                    <p>لإضافة سجل، انقر فوق "إضافة".
+                        زر "تفاصيل تدقيق العملية". لتعديل سجل، انقر على أيقونة التحرير الخاصة
+                        الإدخال الذي يحتاج إلى تعديل.</p>
 
                     <div class="procedure_div">
                         <div class="row">
@@ -57,9 +55,18 @@
 									</div> --}}
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>عملية:</label>
-                                            <input type="text" name="processAudit" class="form-control processAudit"
-                                                placeholder="أدخل اسم العملية:" required>
+                                            <label>عنوان العملية/تعليمات العمل الذي يتم تدقيقه:</label>
+                                            {{-- <input type="text" name="processAudit" class="form-control"
+                                                   placeholder="Enter Process / Work Instruction title" id="processAudit"
+                                                   required="required"> --}}
+
+                                            <select name="processAudit" class="form-control">
+                                                @isset($workInstructionsData)
+                                                    @foreach($workInstructionsData as $item)
+                                                        <option value="{{$item->workinstruction}}">{{$item->workinstruction}}</option>
+                                                    @endforeach
+                                                @endisset
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -600,13 +607,22 @@
                                 <input type="number" name="auditId" class="form-control"  placeholder="Enter Audit ID:">
                             </div>
                         </div> --}}
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>أدخل اسم العملية</label>
-                                    <input type="text" name="processAudit" class="form-control"
-                                        placeholder="أدخل اسم العملية:" required>
-                                </div>
-                            </div>
+                        <div class="col-lg-12">
+							<div class="form-group">
+								<label>عنوان العملية/تعليمات العمل الذي يتم تدقيقه:</label>
+								{{-- <input type="text" name="processAudit" class="form-control"
+									   placeholder="Enter Process / Work Instruction title" id="processAudit"
+									   required="required"> --}}
+
+								<select name="processAudit" class="form-control">
+									@isset($workInstructionsData)
+										@foreach($workInstructionsData as $item)
+											<option value="{{$item->workinstruction}}">{{$item->workinstruction}}</option>
+										@endforeach
+									@endisset
+								</select>
+							</div>
+						</div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -1004,7 +1020,7 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>العملية قيد التدقيق:</label>
+                                    <label>عنوان العملية/تعليمات العمل الذي يتم تدقيقه:</label>
                                     <input type="text" name="processAudit" class="form-control"
                                         placeholder="أدخل الأشهر:" disabled>
                                 </div>

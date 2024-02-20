@@ -98,12 +98,27 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-lg-12">
+									<div class="col-lg-6">
 										<div class="form-group">
                                             <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
                                             <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate"
                                                 required="required">
                                         </div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
+											<input type="text" class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+										</div>
+									</div>
+								</div>
+	
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label>إرفاق الأدلة:</label>
+											<input type="file" class="form-control" name="attach_evidence" required="required">
+										</div>
 									</div>
 								</div>
 								<button  class="submitBtn" type="submit">يُقدِّم</button>
@@ -134,6 +149,8 @@
                                             <th>التسليم </th>
                                             <th>الإجمالي</th>
                                             <th>تاريخ التقييم </th>
+											<th>حالات أخرى</th>
+											<th>الأدلة المرفقة</th>
                                             <th>النشاط </th>
                                         </tr>
 									</thead>
@@ -150,6 +167,9 @@
                                             <td>{{$data->priceScore}} </td>
 											<td>{{$data->DScore}} </td>
 											<td>{{$data->OveralScore}} </td>
+											@isset($data->attach_evidence)
+                                        	<td><a href="{{asset('customer_review_evidence/' . $data->attach_evidence)}}" target="_blank">استعراض الملف</a></td>
+											@endisset
                                             <td>{{date('d/m/Y', strtotime($data->AssesmentDate))}} </td>
                                             <td>
                                                 <button  class="btn btn-sm btn-clean btn-icon btn-icon-md" title="info" value="" onclick="getEid({{$data}});">
@@ -213,13 +233,29 @@
 											                        </div>
 											                    </div>
 											                    <div class="row">
-											                        <div class="col-lg-12">
+											                        <div class="col-lg-6">
 											                            <div class="form-group">
 											                                <label>تاريخ التقييم (شهر/يوم/سنة):</label>
 											                                <input type="date" max="2999-12-31" class="form-control" name="AssesmentDate" value="{{$data->AssesmentDate}}" readonly>
 											                            </div>
 											                        </div>
-											                    </div>
+																	<div class="col-lg-6">
+																		<div class="form-group">
+																			<label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
+																			<input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+																		</div>
+																	</div>
+																</div>
+																<div class="row">                       
+																	<div class="col-lg-12">
+																		<div class="form-group">
+																			<label>إرفاق الأدلة:</label>
+																			<input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
+																			<a href="" name="attach_evidence">View Attached Evidence</a>
+																			{{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
+																		</div>
+																	</div>
+																</div>
 																
 																<button  class="btn btn-secondary submitBtn" type="reset" data-dismiss="modal" aria-label="Close" style="margin-right: 6px;">يلغي</button>
 											              
@@ -332,10 +368,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>تاريخ التقييم (شهر/يوم/سنة):</label>
                                 <input type="date" max="2999-12-31" class="form-control" name="AssesmentDate" required="required">
+                            </div>
+                        </div>
+						<div class="col-lg-6">
+                            <div class="form-group">
+                                <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
+                                <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>إرفاق الأدلة:</label>
+                                <input type="file" class="form-control" name="attach_evidence" required="required">
                             </div>
                         </div>
                     </div>
@@ -372,20 +422,37 @@
 
 @endsection
 <script>
-    function getEid(data){
+     function getEid(data) {
         console.log(data);
 
         $("#editid").val(data.id);
-         $("input[name='AssesmentDate']").val(data.AssesmentDate);
-         $("input[name='DScore']").val(data.DScore);
-         $("input[name='OveralScore']").val(data.OveralScore);
-         $("input[name='cus_id']").val(data.cus_id);
-         $("input[name='priceScore']").val(data.priceScore);
-         $("input[name='qualityScore']").val(data.qualityScore);
-         $("input[name='revnumber']").val(data.revnumber);
-         $("input[name='qualityScore']").val(data.qualityScore);
-         $("#editcustomer_rev").modal('show');
-     }
+        $("input[name='AssesmentDate']").val(data.AssesmentDate);
+        $("input[name='DScore']").val(data.DScore);
+        $("input[name='OveralScore']").val(data.OveralScore);
+        $("input[name='cus_id']").val(data.cus_id);
+        $("input[name='priceScore']").val(data.priceScore);
+        $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='revnumber']").val(data.revnumber);
+        $("input[name='qualityScore']").val(data.qualityScore);
+		$("input[name='other_issue']").val(data.other_issues);
+        $("#editcustomer_rev").modal('show');
+    }
+
+	function getView(data){
+		console.log(data);
+        $("input[name='AssesmentDate']").val(data.AssesmentDate);
+        $("input[name='DScore']").val(data.DScore);
+        $("input[name='OveralScore']").val(data.OveralScore);
+        $("input[name='cus_id']").val(data.cus_id);
+        $("input[name='priceScore']").val(data.priceScore);
+        $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='revnumber']").val(data.revnumber);
+        $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='other_issue']").val(data.other_issues);
+		var assetUrl = $("#assetUrl").val();
+    	$("a[name='attach_evidence']").attr("href", assetUrl + "/" + data.attach_evidence);
+        // $("#model3").modal('show');
+	}
 	 function deletedata(data){
 		$("#re_id").val(data.id);
          $("#deleteRequirment").modal('show');
