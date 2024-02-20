@@ -109,6 +109,7 @@ class CustomerReviewController extends Controller
      */
     public function update(Request $request)
     {
+        // dd($request->all());
         if($request->file('attach_evidence')){
             $file = $request->file('attach_evidence');
             $filename = rand() . time() . '.' . $request->file('attach_evidence')->getClientOriginalExtension();

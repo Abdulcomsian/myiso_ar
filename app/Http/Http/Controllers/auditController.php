@@ -19,6 +19,7 @@ class auditController extends Controller
     {
         $userid=Auth::user()->id;
         $workInstructionsData = Workinstructions::where('user_id', $userid)->get();
+        dd($workInstructionsData);
         return view('dashboard.form_records.process_audit',compact('audit', 'workInstructionsData'));
     }
 

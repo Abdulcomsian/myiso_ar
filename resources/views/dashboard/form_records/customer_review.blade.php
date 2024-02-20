@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="customer_review_from_div">
-                            <form method="POST" action="{{ route('customer_rview') }} ">
+                            <form method="POST" action="{{ route('customer_rview') }} " enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     {{-- <div class="col-lg-6">
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>                                
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
                                             <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate"
@@ -103,8 +103,15 @@
                                         <div class="form-group">
                                             <label>إرفاق الأدلة:</label>
                                             <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
-                                            <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
+                                            {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
                                             {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
+                                            <div class="custom-file-input-tag form-control">
+                                                <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
+                                                <label for="fileInput" class="file-label">
+                                                    <span class="file-text">اختيار الملف</span>
+                                                    <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -132,6 +139,8 @@
                                             <th>التسليم </th>
                                             <th>الإجمالي</th>
                                             <th>تاريخ التقييم </th>
+                                            <th>حالات أخرى </th>
+                                            <th>إرفاق الأدلة </th>
                                             <th>النشاط </th>
                                         </tr>
                                     </thead>
@@ -159,6 +168,12 @@
                                                 <td>{{ $data->OveralScore }} </td>
 
                                                 <td>{{ date('d/m/Y', strtotime($data->AssesmentDate)) }} </td>
+                                                <td>{{$data->other_issues}}</td>
+                                                <td>
+                                                    @isset($data->attach_evidence)
+                                                    <a href="{{asset('customer_review_evidence/' . $data->attach_evidence)}}" target="_blank">View Evidence</a>
+                                                    @endisset
+                                                </td>
                                                 <td>
                                                     <!-- new  -->
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md" onclick="getView({{$data}});" title="View Customer Details" value="" o data-toggle="modal" data-target="#model3"><i class="fa fa-eye"></i>
@@ -229,7 +244,7 @@
                                                                    
                                             
                                                                     <div class="row">
-                                                                        <div class="col-lg-12">
+                                                                        <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label>
                                                                                 <input type="date" max="2999-12-31" required class="form-control"
@@ -247,7 +262,7 @@
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
                                                                                 <label>إرفاق الأدلة:</label>
-                                                                                <input type="file" class="form-control" name="attach_evidence" required="required">
+                                                                               <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -357,7 +372,7 @@
 					</a>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('editCustomerReview') }} ">
+                    <form method="POST" action="{{ route('editCustomerReview') }} " enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" id="editid">
                         <div class="row">
@@ -411,7 +426,7 @@
                        
 
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label>
                                     <input type="date" max="2999-12-31" required class="form-control"
@@ -429,7 +444,16 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>إرفاق الأدلة:</label>
-                                    <input type="file" class="form-control" name="attach_evidence" required="required">
+                                    <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
+                                    {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
+                                    {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
+                                        <label for="fileInput" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -456,6 +480,7 @@
         $("input[name='qualityScore']").val(data.qualityScore);
         $("input[name='revnumber']").val(data.revnumber);
         $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='other_issue']").val(data.other_issues);
         $("#editcustomer_rev").modal('show');
     }
 

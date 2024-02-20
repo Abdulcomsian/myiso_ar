@@ -7,6 +7,7 @@ use App\Helpers\HelperFunctions;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Http\Request;
+use App\Workinstructions;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use PDF;
@@ -24,7 +25,8 @@ class auditController extends Controller
     {
         $userid=Auth::user()->id;
         $audit=Audit::where('user_id',$userid)->orderBy('id','DESC')->get();
-        return view('dashboard.form_records.process_audit',compact('audit'));
+        $workInstructionsData = Workinstructions::where('user_id', $userid)->get();
+        return view('dashboard.form_records.process_audit',compact('audit', 'workInstructionsData'));
     }
 
     /**
