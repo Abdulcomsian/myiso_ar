@@ -52,7 +52,7 @@
                                                     id="customer_id">
                                                     <option value="">أدخل رقم هوية المورد:</option>
                                                     @foreach ($customers as $customer)
-                                                        <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
+                                                        <option value="{{ $customer->idnumber }}">{{ $customer->idnumber }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -419,10 +419,10 @@
                                             </select>
                                         @else
                                             <select readonly disabled class="form-control" name="customerID"
-                                                id="customer_id_{{ $customer->idNumber }}">
+                                                id="customer_id_{{ $customer->idnumber }}">
                                                 <option value="">أدخل رقم هوية العميل:</option>
                                                 @foreach ($customers as $customer)
-                                                    <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
+                                                    <option value="{{ $customer->idnumber }}">{{ $customer->idnumber }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -634,10 +634,10 @@
                                             </select>
                                         @else
                                             <select readonly class="form-control" name="customerID"
-                                                id="customer_id_{{ $customer->idNumber }}">
+                                                id="customer_id_{{ $customer->idnumber }}">
                                                 <option value="">أدخل رقم هوية المورد:</option>
                                                 @foreach ($customers as $customer)
-                                                    <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
+                                                    <option value="{{ $customer->idnumber }}">{{ $customer->idnumber }}
                                                     </option>
                                                 @endforeach
                                             </select>
