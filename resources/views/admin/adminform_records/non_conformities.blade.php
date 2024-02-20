@@ -42,7 +42,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>اسم المورد:</label>
-                                            <input type="text" required class="form-control" name="supplier_data"
+                                            <input type="text" required class="form-control supplier_name" name="supplier_data"
                                                 placeholder="أدخل اسم المورد">
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                                 <option value="" selected="selected" disabled="disabled">أدخل رقم هوية
                                                     المورد</option>
                                                 @foreach ($customers as $customer)
-                                                    <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
+                                                    <option value="{{ $customer->idnumber }}">{{ $customer->idnumber }}
                                                         {{-- @dd($customer) --}}
                                                     </option>
                                                 @endforeach
@@ -424,7 +424,7 @@
                                             id="customer_id_">
                                             <option value="">أدخل رقم هوية المورد</option>
                                             @foreach ($customers as $customer)
-                                                <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
+                                                <option value="{{ $customer->idnumber }}">{{ $customer->idnumber }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -640,7 +640,7 @@
                                         <select readonly class="form-control" name="customerID" id="customer_id_">
                                             <option value="">أدخل رقم هوية المورد</option>
                                             @foreach ($customers as $customer)
-                                                <option value="{{ $customer->idNumber }}">{{ $customer->idNumber }}
+                                                <option value="{{ $customer->idnumber }}">{{ $customer->idnumber }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -863,7 +863,7 @@
             // console.log(response);
             response2 = JSON.parse(response);
 
-            $this.closest(".row").find(".customer_name").val(response2.name);
+            $this.closest(".row").find(".supplier_name").val(response2.name);
 
         });
 
