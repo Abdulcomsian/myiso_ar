@@ -327,7 +327,7 @@
 				</a>
 			</div>
 			<div class="modal-body">
-                <form method="POST" action="{{route('editCustomerReview')}} ">
+                <form method="POST" action="{{route('editCustomerReview')}} " enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="editid">
                                @php 
