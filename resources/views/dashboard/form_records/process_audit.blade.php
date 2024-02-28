@@ -47,6 +47,7 @@
                                             {{-- <input type="text" name="processAudit" id="processAudit" class="form-control"
                                                    placeholder="Enter Process / Work Instruction title" required> --}}
                                             <select name="processAudit" class="form-control">
+                                                <option value="">حدد الخيار</option>
                                                 @isset($workInstructionsData)
                                                     @foreach($workInstructionsData as $item)
                                                         <option value="{{$item->workinstruction}}">{{$item->workinstruction}}</option>
