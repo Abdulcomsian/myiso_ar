@@ -13,7 +13,7 @@
         <section id="procedure_section">
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <p>تتقييمات العملاء هي أداة لمراقبة ومستويات الأداء التي يقدمها عملاؤك، يمكن لمؤشر الأداء هذا أن يستهدف جميع مجالات الاتصال مع العميل. </p>
+                    <p>تقييمات العملاء هي أداة لمراقبة وتصنيف مستويات الأداء التي يقدمها عملاؤك، ويمكن لمؤشر الأداء هذا أن يستهدف جميع مجالات الاتصال مع العميل. على سبيل المثال: "جودة الخدمة أو المنتج" "دقة وقت التسليم" "مداراة موظفينا" أو ما شابه ذلك وذات صلة</p>
                     <p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم عميل". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة
                         بالقيد المراد تعديله. </p>
                     <div class="procedure_div">
@@ -32,7 +32,7 @@
 											<input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
 										</div>
                     				</div> --}}
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>رقم تعريف العميل: </label><br>
                                             <!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
@@ -46,6 +46,12 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+										<div class="form-group">
+											<label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+											<input class="form-control" type="text" name="product_activity_area" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
+										</div>
+									</div>
                                 </div>
 
                                 <div class="row">
@@ -62,7 +68,7 @@
                                         <div class="form-group">
                                             <label>التقييم من حيث السعر: (0 – 10):</label>
                                             <input type="number" class="form-control"min="0" max="10"
-                                                name="priceScore" required="required">
+                                                name="priceScore" required="required" placeholder="إذا كان قابلا للتطبيق">
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +85,7 @@
                                         <div class="form-group">
                                             <label>النتيجة الإجمالية (0-10):</label>
                                             <input type="number" class="form-control"min="0" max="10"
-                                                name="OveralScore" required="required">
+                                            name="OveralScore" required="required" placeholder="أدخل السعر الإجمالي">
                                         </div>
                                     </div>
                                 </div>                                
@@ -141,6 +147,7 @@
                                             <th>تاريخ التقييم </th>
                                             <th>حالات أخرى </th>
                                             <th>إرفاق الأدلة </th>
+                                            <th>المنتج / النشاط / المنطقة التي تتم مراجعتها</th>
                                             <th>النشاط </th>
                                         </tr>
                                     </thead>
@@ -175,6 +182,9 @@
                                                     @endisset
                                                 </td>
                                                 <td>
+                                                    {{$data->product_activity_area}}
+                                                </td>      
+                                                <td>
                                                     <!-- new  -->
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md" onclick="getView({{$data}});" title="View Customer Details" value="" o data-toggle="modal" data-target="#model3"><i class="fa fa-eye"></i>
                                                     </button>
@@ -200,11 +210,17 @@
                                                                             <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
                                                                         </div>
                                                                     </div> --}}
-                                                                        <div class="col-lg-12">
+                                                                        <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label>رقم هوية العميل:</label><br>
                                                                                 <input type="number" class="form-control" required name="cus_id"
                                                                                     placeholder="أدخل معرف العميل:" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                                                                <input class="form-control" type="text" name="product_activity_area_id" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة" value="" readonly>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -382,11 +398,18 @@
                                 <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
                             </div>
                         </div> --}}
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>رقم هوية العميل:</label><br>
                                     <input type="number" class="form-control" required name="cus_id"
                                         placeholder="أدخل معرف العميل:" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                    <!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
+                                    <input class="form-control" type="text" name="product_activity_area_edit" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
                                 </div>
                             </div>
                         </div>
@@ -475,11 +498,12 @@
         $("input[name='AssesmentDate']").val(data.AssesmentDate);
         $("input[name='DScore']").val(data.DScore);
         $("input[name='OveralScore']").val(data.OveralScore);
-        $("input[name='cus_id']").val(data.cus_id);
+        $("select[name='cus_id']").val(data.cus_id);
         $("input[name='priceScore']").val(data.priceScore);
         $("input[name='qualityScore']").val(data.qualityScore);
         $("input[name='revnumber']").val(data.revnumber);
         $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='product_activity_area_edit']").val(data.product_activity_area);
         $("input[name='other_issue']").val(data.other_issues);
         $("#editcustomer_rev").modal('show');
     }
@@ -492,6 +516,7 @@
         $("input[name='cus_id']").val(data.cus_id);
         $("input[name='priceScore']").val(data.priceScore);
         $("input[name='qualityScore']").val(data.qualityScore);
+        $("input[name='product_activity_area_id']").val(data.product_activity_area);
         $("input[name='revnumber']").val(data.revnumber);
         $("input[name='qualityScore']").val(data.qualityScore);
         $("input[name='other_issue']").val(data.other_issues);

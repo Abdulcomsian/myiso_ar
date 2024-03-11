@@ -17,8 +17,7 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<p>تقييمات العملاء هي بمثابة أداة لمراقبة وتصنيف مستويات أداء عملائك. وقد يستهدف مؤشر الأداء هذا جميع
-					نقاط الاتصال مع العميل. </p>
+				<p>تقييمات العملاء هي أداة لمراقبة وتصنيف مستويات الأداء التي يقدمها عملاؤك، ويمكن لمؤشر الأداء هذا أن يستهدف جميع مجالات الاتصال مع العميل. على سبيل المثال: "جودة الخدمة أو المنتج" "دقة وقت التسليم" "مداراة موظفينا" أو ما شابه ذلك وذات صلة</p>
 				<p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم عميل". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة
 					بالقيد المراد تعديله. </p>
                     <div class="procedure_div">
@@ -42,11 +41,9 @@
 											<input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
 										</div>
                     				</div> --}}
-                    				<div class="col-lg-12">
+                    				<div class="col-lg-6">
                     					<div class="form-group">
 											<label>رقم تعريف العميل: </label><br>
-											
-											<!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
 											<select class="form-control" name="cus_id" required="required">
 												<option value="" disabled selected>يرجى اختيار رقم تعريف العميل
 												</option>
@@ -54,12 +51,16 @@
                                                 <option value="{{$customer->idNumber}}">{{$customer->idNumber}}</option>
                                                 @endforeach
 											</select>
-										@if(isset($all_customers) && $all_customers != "")@else 
-											<!--<p>No Customers associated!</p>-->
-											@endif
 											
 										</div>
                     				</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+											<input class="form-control" type="text" name="product_activity_area" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
+										</div>
+									</div>
                     			</div>
 
 								<div class="row">
@@ -76,7 +77,7 @@
 										<div class="form-group">
                                             <label>التقييم من حيث السعر: (0 – 10):</label>
                                             <input type="number" class="form-control"min="0" max="10"
-                                                name="priceScore" required="required">
+                                                name="priceScore" required="required" placeholder="إذا كان قابلا للتطبيق">
                                         </div>
 									</div>
 								</div>
@@ -93,7 +94,7 @@
 										<div class="form-group">
                                             <label>النتيجة الإجمالية (0-10):</label>
                                             <input type="number" class="form-control"min="0" max="10"
-                                                name="OveralScore" required="required">
+                                                name="OveralScore" required="required" placeholder="أدخل السعر الإجمالي">
                                         </div>
 									</div>
 								</div>
@@ -158,6 +159,7 @@
                                             <th>تاريخ التقييم </th>
 											<th>حالات أخرى</th>
 											<th>الأدلة المرفقة</th>
+											<th>المنتج / النشاط / المنطقة التي تتم مراجعتها</th>
                                             <th>النشاط </th>
                                         </tr>
 									</thead>
@@ -181,6 +183,9 @@
 												<a href="{{asset('customer_review_evidence/' . $data->attach_evidence)}}" target="_blank">استعراض الملف</a>
 												@endisset
 											</td>
+											<td>
+												{{$data->product_activity_area}}
+											</td>      
                                             <td>
                                                 <button  class="btn btn-sm btn-clean btn-icon btn-icon-md" title="info" value="" onclick="getEid({{$data}});">
                                                    <span class="svg-icon svg-icon-md">									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1">										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">											<rect x="0" y="0" width="24" height="24"></rect>											<path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#5d78ff" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) "></path>											<path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#5d78ff" fill-rule="nonzero" opacity="0.3"></path>										</g>									</svg>	                            </span>
@@ -206,12 +211,19 @@
 											                
 											                    <div class="row">
 											                        
-											                        <div class="col-lg-12">
+											                        <div class="col-lg-6">
 											                            <div class="form-group">
 											                                <label>رقم هوية العميل:</label><br>
 											                                <input type="number" class="form-control" name="cus_id" placeholder="أدخل معرف العميل:" value="{{$data->cus_id}}" readonly>
 											                            </div>
 											                        </div>
+
+																	<div class="col-lg-6">
+																		<div class="form-group">
+																			<label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+																			<input class="form-control" type="text" name="product_activity_area_id" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة" value="" readonly>
+																		</div>
+																	</div>
 											                    </div>
 
 											                    <div class="row">
@@ -341,10 +353,17 @@
                                 <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
                             </div>
                         </div> --}}
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>رقم هوية العميل:</label><br>
                                 <input type="number" class="form-control" name="cus_id" placeholder="أدخل معرف العميل:" readonly>
+                            </div>
+                        </div>
+						<div class="col-lg-6">
+                            <div class="form-group">
+                                <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                <!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
+                                <input class="form-control" type="text" name="product_activity_area_edit" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
                             </div>
                         </div>
                     </div>
@@ -446,10 +465,11 @@
         $("input[name='AssesmentDate']").val(data.AssesmentDate);
         $("input[name='DScore']").val(data.DScore);
         $("input[name='OveralScore']").val(data.OveralScore);
-        $("input[name='cus_id']").val(data.cus_id);
+        $("select[name='cus_id']").val(data.cus_id);
         $("input[name='priceScore']").val(data.priceScore);
         $("input[name='qualityScore']").val(data.qualityScore);
         $("input[name='revnumber']").val(data.revnumber);
+		$("input[name='product_activity_area_edit']").val(data.product_activity_area);
         $("input[name='qualityScore']").val(data.qualityScore);
 		$("input[name='other_issue']").val(data.other_issues);
         $("#editcustomer_rev").modal('show');
@@ -463,6 +483,7 @@
         $("input[name='cus_id']").val(data.cus_id);
         $("input[name='priceScore']").val(data.priceScore);
         $("input[name='qualityScore']").val(data.qualityScore);
+		$("input[name='product_activity_area_id']").val(data.product_activity_area);
         $("input[name='revnumber']").val(data.revnumber);
         $("input[name='qualityScore']").val(data.qualityScore);
         $("input[name='other_issue']").val(data.other_issues);

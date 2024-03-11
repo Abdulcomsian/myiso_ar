@@ -70,6 +70,7 @@ class CustomerReviewController extends Controller
          $customer->OveralScore=$request->input('OveralScore');
          $customer->AssesmentDate=$request->input('AssesmentDate');
          $customer->other_issues=$request->input('other_issue');
+         $customer->product_activity_area = $request->input('product_activity_area');
          $customer->attach_evidence = $filename;
          $customer->save();
              //  Toastr->success('Have fun storming the castle!', 'Miracle Max Says');
@@ -135,6 +136,7 @@ class CustomerReviewController extends Controller
              $customer->AssesmentDate=$request->input('AssesmentDate');
              $customer->other_issues = $request->input('other_issue');
              $customer->attach_evidence = $filename;
+             $customer->product_activity_area = $request->input('product_activity_area_edit');
              $customer->save();
              $notification = [
                 'message' => 'Record  updated successfully.!',
