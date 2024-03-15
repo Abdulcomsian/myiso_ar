@@ -17,7 +17,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <p>يُشار أيضًا إلى عمليات تدقيق العمليات باسم عمليات تدقيق تعليمات العمل، ويتم إجراء عمليات التدقيق هذه بواسطة المدقق الداخلي. يجب أن يعتمد تكرار التدقيق على النتائج السابقة وأهمية العملية بالنسبة للشركة.</p>
+                    <p>يُشار أيضًا إلى عمليات تدقيق العمليات باسم عمليات تدقيق تعليمات العمل، ويتم إجراء عمليات التدقيق هذه بواسطة المدقق الداخلي. يتم إجراء هذا التدقيق عن طريق تحديد تعليمات العمل، أو تدقيق مخطط تدفق العملية والتأكد من معالجتها بشكل صحيح.</p>
                     <p>لإضافة سجل، انقر فوق "إضافة".
                         زر "تفاصيل تدقيق العملية". لتعديل سجل، انقر على أيقونة التحرير الخاصة
                         الإدخال الذي يحتاج إلى تعديل.</p>
@@ -53,7 +53,7 @@
 											<input type="number" name="auditId" class="form-control" placeholder="Enter Audit ID:">
 										</div>
 									</div> --}}
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>عنوان العملية/تعليمات العمل الذي يتم تدقيقه:</label>
                                             {{-- <input type="text" name="processAudit" class="form-control"
@@ -62,6 +62,11 @@
 
                                             <select name="processAudit" class="form-control">
                                                 <option value="">حدد الخيار</option>
+                                                <option value="إجراء الجودة 1 - عملية المبيعات">إجراء الجودة 1 - عملية المبيعات</option>
+                                                <option value="إجراء الجودة 2 - عملية الشراء">إجراء الجودة 2 - عملية الشراء</option>
+                                                <option value="إجراء الجودة 3 - تنفيذ بنود العقد">إجراء الجودة 3 - تنفيذ بنود العقد</option>
+                                                <option value="إجراء الجودة 4 - عملية الكفاءة">إجراء الجودة 4 - عملية الكفاءة</option>
+                                                <option value="تفاعل العملية">تفاعل العملية</option>
                                                 @isset($workInstructionsData)
                                                     @foreach($workInstructionsData as $item)
                                                         <option value="{{$item->workinstruction}}">{{$item->workinstruction}}</option>
@@ -70,8 +75,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>مدقق حسابات:</label>
@@ -79,6 +82,9 @@
                                                 placeholder="أدخل اسم المراجع:" required>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                   
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تاريخ التدقيق (يوم/شهر/سنة):</label>
@@ -86,8 +92,6 @@
                                                 placeholder="dd/mm/yyyy" class="form-control" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>عدد حالات عدم المطابقة:</label>
@@ -97,6 +101,9 @@
                                                 placeholder="أدخل عدد حالات عدم المطابقة:" required>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>عدد الملاحظات:</label>
@@ -106,8 +113,6 @@
                                                 placeholder="أدخل عدد الملاحظات:" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>مرجع تقرير عدم المطابقة (إن وجد):</label>
@@ -115,15 +120,16 @@
                                                 placeholder="أدخل مرجع التقرير">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>إجراءات التدقيق:</label>
                                             <textarea required name="AdutiActions" class="form-control" placeholder="أدخل إجراءات التدقيق:" required></textarea>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تكرار التدقيق (أشهر):</label>
                                             <input type="number" required onkeyup="myFunction('auditfrequency')"
@@ -608,7 +614,7 @@
                                 <input type="number" name="auditId" class="form-control"  placeholder="Enter Audit ID:">
                             </div>
                         </div> --}}
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
 							<div class="form-group">
 								<label>عنوان العملية/تعليمات العمل الذي يتم تدقيقه:</label>
 								{{-- <input type="text" name="processAudit" class="form-control"
@@ -616,6 +622,12 @@
 									   required="required"> --}}
 
 								<select name="processAudit" class="form-control">
+                                    <option value="">حدد الخيار</option>
+                                    <option value="إجراء الجودة 1 - عملية المبيعات">إجراء الجودة 1 - عملية المبيعات</option>
+                                    <option value="إجراء الجودة 2 - عملية الشراء">إجراء الجودة 2 - عملية الشراء</option>
+                                    <option value="إجراء الجودة 3 - تنفيذ بنود العقد">إجراء الجودة 3 - تنفيذ بنود العقد</option>
+                                    <option value="إجراء الجودة 4 - عملية الكفاءة">إجراء الجودة 4 - عملية الكفاءة</option>
+                                    <option value="تفاعل العملية">تفاعل العملية</option>
 									@isset($workInstructionsData)
 										@foreach($workInstructionsData as $item)
 											<option value="{{$item->workinstruction}}">{{$item->workinstruction}}</option>
@@ -624,23 +636,22 @@
 								</select>
 							</div>
 						</div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>مدقق حسابات:</label>
+                                <input type="text" name="auditor" class="form-control"
+                                    placeholder="أدخل اسم المراجع:" required>
+                            </div>
+                        </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>مدقق حسابات:</label>
-                                    <input type="text" name="auditor" class="form-control"
-                                        placeholder="أدخل اسم المراجع:" required>
-                                </div>
-                            </div>
+                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>تاريخ التدقيق (شهر/يوم/سنة):</label>
                                     <input type="date" name="auditDate" class="form-control" required>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>عدد حالات عدم المطابقة:</label>
@@ -649,6 +660,9 @@
                                         placeholder="أدخل عدد حالات عدم المطابقة:" required>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>عدد الملاحظات:</label>
@@ -657,8 +671,6 @@
                                         placeholder="أدخل عدد الملاحظات:" required>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>مرجع تقرير عدم المطابقة (إن وجد):</label>
@@ -666,15 +678,16 @@
                                         class="form-control validate_number" placeholder="أدخل مرجع التقرير:">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>إجراءات التدقيق:</label>
                                     <textarea required name="AdutiActions" class="form-control" placeholder="أدخل إجراءات التدقيق:" required></textarea>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>تكرار التدقيق (الأشهر):</label>
                                     <input type="number" min="1" max="12"
@@ -1019,15 +1032,13 @@
                         <input type="hidden" value="" id="id_feild" name="id">
                         <div class="row">
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>عنوان العملية/تعليمات العمل الذي يتم تدقيقه:</label>
                                     <input type="text" name="processAudit" class="form-control"
                                         placeholder="أدخل الأشهر:" disabled>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>مدقق حسابات:</label>
@@ -1035,14 +1046,15 @@
                                         placeholder="أدخل المدقق:" disabled>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>تاريخ التدقيق (شهر/يوم/سنة):</label>
                                     <input type="date" name="auditDate" class="form-control" disabled>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>عدد حالات عدم المطابقة:</label>
@@ -1051,6 +1063,9 @@
                                         disabled>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>عدد الملاحظات:</label>
@@ -1058,8 +1073,6 @@
                                         placeholder="أدخل الملاحظات:" disabled>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>مرجع تقرير عدم المطابقة (إن وجد):</label>
@@ -1067,6 +1080,9 @@
                                         placeholder="أدخل مرجع التقرير:" disabled>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>إجراءات التدقيق:</label>
@@ -1074,9 +1090,7 @@
                                         placeholder="أدخل إجراءات التدقيق:" disabled>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>تكرار التدقيق (أشهر):</label>
                                     <input type="number" min="1" max="12"
