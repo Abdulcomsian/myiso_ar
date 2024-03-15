@@ -13,9 +13,7 @@
         <section id="procedure_section">
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <p>يشير عدم المطابقة إلى الفشل في تلبية واحد أو أكثر من المتطلبات المنصوص عليها وفق النحو المبين في نظام
-                        إدارة الجودة. يمكن أن يشمل ذلك سيناريوهات مثل استلام منتجات لم يتم اختبارها من أحد الموردين أو إهمال
-                        الموظف في اتخاذ الإجراءات التصحيحية عند ظهور المشكلة.</p>
+                    <p>يحدث عدم التأكيد عندما لا يفي شيء ما بالمواصفات أو المتطلبات بطريقة ما - في الخدمات أو المنتجات أو العمليات أو البضائع من المورد أو الموظفين. هناك نوعان من حالات عدم المطابقة، الصغرى والكبرى. من الأمثلة على حالات عدم المطابقة البسيطة وجود خطأ في إصدار الفواتير. من الأمثلة على حالات عدم التأكيد الرئيسية قيام الموظفين بسرقة ممتلكات الشركة.</p>
                     <p>لتسجيل حالة عدم مطابقة، انقر على زر "إضافة حالة عدم مطابقة" واتبع الخطوات الظاهرة لتوضيح الحالة
                         بالتفصيل.</p>
                     <div class="procedure_div">
@@ -29,7 +27,17 @@
                                 @csrf
                                 <input type="hidden" name="user_id2" id="user_id2" value="{{ $userid }}" />
                                 <div class="row">
-
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>عدم الثقة الصغرى أو الكبرى:</label>
+                                            <select name="minor_major" id="" class="form-control">
+                                                <option value="">حدد الخيار</option>
+                                                <option value="Minor">صغير</option>
+                                                <option value="Major">رئيسي</option>
+                                            </select>
+                                            
+                                        </div>
+                                    </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>اسم المورد:</label>
@@ -131,6 +139,9 @@
                                         </div>
                                     </div>
 
+                                   
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>	وصف NCR </label>
@@ -138,8 +149,6 @@
                                                 placeholder="أدخل وصف NCR" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>السبب الرئيسي: </label>
@@ -147,6 +156,9 @@
                                                 placeholder="أدخل السبب الرئيسي" required>
                                         </div>
                                     </div>
+                                    
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>الإجراء التصحيحي المباشر: </label>
@@ -154,8 +166,6 @@
                                                 placeholder="أدخل الإجراء التصحيحي المباشر" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>الإجراء المناسب لمنع تكرار الخطأ: </label>
@@ -164,6 +174,10 @@
                                         </div>
                                     </div>
 
+                                    
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>مدى فعالية الإجراء المناسب لمنع تكرار الخطأ: </label>
@@ -172,9 +186,6 @@
                                                 required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تاريخ مراجعة فعالية الإجراء </label>
@@ -183,6 +194,10 @@
                                         </div>
                                     </div>
 
+                                   
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>الجهة التي أجرت المراجعة:</label>
@@ -190,9 +205,6 @@
                                                 placeholder="الجهة التي أجرت المراجعة" required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تاريخ معالجة حالة عدم المطابقة :</label>
@@ -200,6 +212,10 @@
                                                 name="dateNcP" placeholder="الشهر/اليوم/السنة" required>
                                         </div>
                                     </div>
+                                    
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تاريخ استلام حالة عدم المطابقة (الشهر/اليوم/السنة):</label>
@@ -207,9 +223,6 @@
                                                 name="dateNcR" placeholder="إدخال اسم" required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>الوقت المتوقع لاستجابة العميل (بالأيام):</label>
@@ -219,6 +232,10 @@
                                                 placeholder="أدخل عدد الأيام" required>
                                         </div>
                                     </div>
+                                    
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تأثر المنتج (نعم أو لا):</label>
@@ -230,10 +247,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>إغلاق حالة عدم المطابقة (نعم أو لا):</label>
                                             <select name="NCR_closed" class="form-control">
@@ -295,6 +309,7 @@
                                     <thead>
                                         <tr>
                                             <th>رقم هوية NCR</th>
+                                            <th>عدم الثقة الصغرى أو الكبرى:</th>
                                             <th>اسم المورد</th>
                                             <th>رقم هوية المورد</th>
                                             <th>الموظف الذي أبلغ عن NCR</th>
@@ -313,6 +328,7 @@
                                         @foreach ($customers_nonconform as $data)
                                             <tr>
                                                 <td>{{ $i++ }} </td>
+                                                <td>{{$data->non_confirm_status}}</td>
                                                 <td> {{ $data->supplier_data }}</td>
                                                 <td> {{ $data->customerID }}</td>
                                                 <td>{{ $data->employee_name }}</td> 
@@ -400,7 +416,13 @@
                             <input type="hidden" name="id" value="" id="id_feild">
 
                             <div class="row">
-
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>عدم التأكيد البسيط أو الكبير:</label>
+                                        <input type="text"  class="form-control" name="minor_major"
+                                            placeholder="أدخل اسم المورد" disabled>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>اسم المورد:</label>
@@ -470,6 +492,10 @@
                                     </div>
                                 </div>
 
+                                
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>	وصف NCR</label>
@@ -477,9 +503,6 @@
                                             placeholder="أدخل وصف NCR">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>السبب الجذري:</label>
@@ -487,6 +510,10 @@
                                             placeholder="أدخل السبب الجذري">
                                     </div>
                                 </div>
+                               
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>الإجراءات التصحيحية الفورية:</label>
@@ -494,9 +521,6 @@
                                             placeholder="أدخل الإجراء التصحيحي الفوري">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>إجراءات لمنع التكرار:</label>
@@ -505,6 +529,10 @@
                                     </div>
                                 </div>
 
+                                
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>فعالية العمل لمنع التكرار:</label>
@@ -513,9 +541,6 @@
                                             placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تاريخ مراجعة النفاذ (شهر/يوم/سنة):</label>
@@ -523,6 +548,10 @@
                                             name="effectiveDate" placeholder="حدد تاريخ مراجعة الفعالية">
                                     </div>
                                 </div>
+                                
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>المراجعة تم إجراؤها بواسطة:</label>
@@ -530,9 +559,6 @@
                                             placeholder="المراجعة التي أجراها">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>التاريخ الذي تمت فيه معالجة NC (MM/DD/YYYY):</label>
@@ -540,6 +566,10 @@
                                             placeholder="أدخل منع التكرار">
                                     </div>
                                 </div>
+                               
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تاريخ استلام NC (شهر/يوم/سنة):</label>
@@ -547,9 +577,6 @@
                                             placeholder="إدخال اسم">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>الوقت المتوقع لاستجابة المورد (بالأيام):</label>
@@ -557,6 +584,10 @@
                                             name="CRE" placeholder="أدخل عدد الأيام.">
                                     </div>
                                 </div>
+                                
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تأثير المنتج (نعم أو لا):</label>
@@ -567,10 +598,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تم إغلاق NCR (نعم أو لا):</label>
                                         <select name="NCR_closed" class="form-control">
@@ -615,7 +643,17 @@
             <input type="number"  class="form-control validate_number" name="customerID" placeholder="Enter Customer ID:">
         </div> --}}
                             <div class="row">
-
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>عدم الثقة الصغرى أو الكبرى:</label>
+                                        <select class="form-control" name="minor_major"
+                                            id="">
+                                            <option value="">حدد الخيار</option>
+                                            <option value="Minor">صغير</option>
+                                            <option value="Major">رئيسي</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>اسم المورد:</label>
@@ -705,6 +743,10 @@
                                     </div>
                                 </div>
 
+                               
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>	وصف NCR</label>
@@ -712,9 +754,6 @@
                                             placeholder="أدخل وصف NCR" required>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>السبب الجذري:</label>
@@ -722,6 +761,11 @@
                                             placeholder="أدخل السبب الجذري" required>
                                     </div>
                                 </div>
+                                
+                            </div>
+
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>الإجراءات التصحيحية الفورية:</label>
@@ -729,10 +773,6 @@
                                             placeholder="أدخل الإجراء التصحيحي الفوري" required>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>إجراءات لمنع التكرار:</label>
@@ -740,6 +780,9 @@
                                             placeholder="أدخل فعالية الإجراء/الإجراءات لمنع تكرارها." required>
                                     </div>
                                 </div>
+                                
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>فعالية العمل لمنع التكرار:</label>
@@ -747,9 +790,6 @@
                                             placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تاريخ مراجعة النفاذ (شهر/يوم/سنة):</label>
@@ -757,6 +797,10 @@
                                             name="effectiveDate" placeholder="أدخل منع التكرار" required>
                                     </div>
                                 </div>
+                                
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>المراجعة تم إجراؤها بواسطة:</label>
@@ -764,10 +808,6 @@
                                             placeholder="المراجعة التي أجراها" required>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>التاريخ الذي تمت فيه معالجة NC (MM/DD/YYYY):</label>
@@ -778,6 +818,10 @@
                                             required>
                                     </div>
                                 </div>
+                               
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تاريخ استلام NC (شهر/يوم/سنة):</label>
@@ -785,10 +829,6 @@
                                             name="dateNcR" placeholder="إدخال اسم" required>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>الوقت المتوقع لاستجابة المورد (بالأيام):</label>
@@ -797,6 +837,10 @@
                                             placeholder="أدخل عدد الأيام" required="required">
                                     </div>
                                 </div>
+                                
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تأثير المنتج (نعم أو لا):</label>
@@ -808,11 +852,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>تم إغلاق NCR (نعم أو لا):</label>
                                         <select name="NCR_closed" class="form-control">
@@ -956,6 +996,7 @@
         $("input[name='rootCause']").val(data.rootCause);
         $("select[name='PI']").val(data.PI);
         $("select[name='NCR_closed']").val(data.NCR_closed);
+        $("input[name='minor_major']").val(data.non_confirm_status);
         $("input[name='root_cause_category']").val(data.root_cause_category);
         $("input[name='supplier_data']").val(data.supplier_data);
 
@@ -986,6 +1027,7 @@
         $("input[name='rootCause']").val(data.rootCause);
         $("select[name='NCR_closed']").val(data.NCR_closed);
         $("select[name='PI']").val(data.PI);
+        $("select[name='minor_major']").val(data.non_confirm_status);
         $("input[name='supplier_data']").val(data.supplier_data);
 
         $("input[name='employee_id']").val(data.employee_id);
