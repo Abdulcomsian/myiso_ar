@@ -1108,14 +1108,23 @@ public function store(Request $request)
         ->select('send_notification.*', 'users.name')
         ->get();
 
-
+        // Getting updated at field
+        $updatedAt = SendNotifications::where('send_to', $userId)
+        ->where('send_by', $otherUserId)
+        ->orwhere('send_by', $userId)
+        ->where('send_to', $userId)
+        ->orderby('send_notification.id', 'desc')
+        ->value("updated_at");
+        
         // for marking as unread
         $unreadAdminMessage = SendNotifications::where('send_to', $userId)
         ->where('send_by', $otherUserId)
         ->orwhere('send_by', $userId)
         ->where('send_to', $userId)
         ->orderby('send_notification.id', 'desc')
-        ->update(['status' => 1]);
+        ->update(['status' => 1, 'updated_at' => $updatedAt]);
+
+        
         // $user_id = Auth::user()->id;
         // $parent_message_id = SendNotifications::where('unique_id', $messageId)
         // ->where('send_by', $user_id)
