@@ -610,7 +610,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Point 1:</label>
+                                    <label>النقطة 1:</label>
                                     <input type="text" class="form-control" name="point1">
                                 </div>
                             </div>
