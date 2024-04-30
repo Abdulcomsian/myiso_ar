@@ -1625,7 +1625,7 @@
 
                 $("input[name='sales_process']").val(data.sales_process);
                 if (data.company_profile != null) {
-                    $('#downloadlink').html('<a target="_blank" href="public/' + data.company_profile + '">عرض الصفحة الشخصية</a>');
+                    $('#downloadlink').html('<a target="_blank" href="/' + data.company_profile + '">عرض الصفحة الشخصية</a>');
                 }
                 //  $("input[name='company_profile']").val(data.company_profile);
 
@@ -1665,20 +1665,20 @@
                 if (data.iso9001_certificate != null) {
                     // $('#iso9001_certificate').addClass('has_file');
                     $(".iso9001").show();
-                    $("#view_9001").append("<a target='_blank' href='https://myisoonline.com/public/" + data.iso9001_certificate + "'>View</a>");
+                    $("#view_9001").append("<a target='_blank' href='https://myisoonline.com/public/" + data.iso9001_certificate + "'>تيقن</a>");
                 } else {
                     $(".iso9001").hide();
                 }
                 if (data.iso14001_certificate != null) {
                     // $('#iso14001_certificate').addClass('has_file');
-                    $("#view_4001").append("<a target='_blank' href='https://myisoonline.com/public/" + data.iso14001_certificate + "'>View</a>");
+                    $("#view_4001").append("<a target='_blank' href='https://myisoonline.com/public/" + data.iso14001_certificate + "'>تيقن</a>");
                     $(".iso4001").show();
                 } else {
                     $(".iso4001").hide();
                 }
                 if (data.iso45001_certificate != null) {
                     // $('#iso45001_certificate').addClass('has_file');
-                    $("#view_45001").append("<a target='_blank' href='https://myisoonline.com/public/" + data.iso45001_certificate + "'>View</a>");
+                    $("#view_45001").append("<a target='_blank' href='https://myisoonline.com/public/" + data.iso45001_certificate + "'>تيقن</a>");
                     $(".iso45001").show();
 
                 } else 
@@ -1687,7 +1687,7 @@
                 }
                 if (data.audit_report != null) 
                 {
-                    $("#edit_audit_report").append("<a target='_blank' href='" + data.audit_report + "'>View</a>");
+                    $("#edit_audit_report").append("<a target='_blank' href='" + data.audit_report + "'>تيقن</a>");
                     $(".audit_report").show();
 
                 } else {

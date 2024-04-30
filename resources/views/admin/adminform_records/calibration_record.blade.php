@@ -135,7 +135,7 @@
                                                 {{-- <input name="attach_evidence" type="file" class="form-control"
                                                     accept="all"> --}}
                                                 <div class="custom-file-input-tag form-control">
-                                                    <input type="file" id="fileInput" class="input-file" name=attach_evidence" accept="all"/>
+                                                    <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
                                                     <label for="fileInput" class="file-label">
                                                         <span class="file-text">اختيار الملف</span>
                                                         <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -170,11 +170,10 @@
                             <div class="requirments_table_div">
                                 <div class="d-flex justify-content-between mb-2">
                                     <h4>استحقاق المعايرة</h4>
-                                    {{-- <a href="/edit_user/{{ $urlparam['userid'] }}"
-                                       class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
+                                    <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm mb-2 back_icon col-1" style="float: right;">
+                                        خلف
                                         <i class="la la-long-arrow-left"></i>
-                                        Back
-                                    </a> --}}
+                                    </a>
                                 </div>
                                 <!--<button>Add an entry</button>-->
                                 <div class="kt-portlet__body table-responsive">
@@ -627,7 +626,7 @@
                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
                </div>
                <div class="modal-body">
-                   <form action="{{route('calibrationedit')}}" method="POST">
+                   <form action="{{route('calibrationedit')}}" method="POST" enctype="multipart/form-data">
                        @csrf
                        @php
                            $urlparam = request()->route()->parameters;
@@ -730,7 +729,7 @@
                                    {{-- <input name="attach_evidence" type="file" class="form-control"
                                           accept="all"> --}}
                                     <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name=attach_evidence" accept="all"/>
+                                        <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
                                         <label for="fileInput" class="file-label">
                                             <span class="file-text">اختيار الملف</span>
                                             <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -932,7 +931,7 @@
             $("input[name='calibratedDate']").val(data.calibratedDate);
             $("input[name='acceptance']").val(data.acceptance);
             if (data.attach_evidence) {
-                $('.evidence_attachemnt_div').empty().append(`<span class="text-dark">Click to view evidence <a target="_blank" href="${data.attach_evidence}">Here</a></span>`);
+                $('.evidence_attachemnt_div').empty().append(`<span class="text-dark">انقر لعرض الأدلة <a target="_blank" href="${data.attach_evidence}">هنا</a></span>`);
             } else {
                 $('.evidence_attachemnt_div').empty().append('No data found');
             }

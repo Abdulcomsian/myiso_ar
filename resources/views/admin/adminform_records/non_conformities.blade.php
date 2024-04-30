@@ -337,7 +337,13 @@
                                         @foreach ($customers_nonconform as $data)
                                             <tr>
                                                 <td>{{ $i++ }} </td>
-                                                <td>{{$data->non_confirm_status}}</td>
+                                                <td>
+                                                    @if($data->non_confirm_status === 'Major')
+                                                    رئيسي
+                                                    @else
+                                                    صغير
+                                                    @endif
+                                                </td>
                                                 <td> {{ $data->supplier_data }}</td>
                                                 <td> {{ $data->customerID }}</td>
                                                 <td>{{ $data->employee_name }}</td> 

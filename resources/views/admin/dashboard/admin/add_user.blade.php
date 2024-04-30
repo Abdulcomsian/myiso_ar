@@ -202,7 +202,7 @@
                                             class="form-control" placeholder="ملف الشركة" required>
                                     </div> --}}
                                     <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name=company_profile" required/>
+                                        <input type="file" id="fileInput" class="input-file" name="company_profile" required/>
                                         <label for="fileInput" class="file-label">
                                           <span class="file-text">اختيار الملف</span>
                                           <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -301,7 +301,7 @@
                                     <label for="iso9001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                     <div class="input-group">
                                         <input type="text" id="iso9001_expirydate" name="iso9001_expirydate"
-                                            class="form-control specialInput" placeholder="dd/mm/yyyy">
+                                            class="form-control specialInput" placeholder="mm/dd/yyyy">
                                     </div>
                                 </div>
 
@@ -333,7 +333,7 @@
                                     <label for="iso14001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                     <div class="input-group">
                                         <input type="text" id="iso14001_expirydate" name="iso14001_expirydate"
-                                            class="form-control specialInput" placeholder="dd/mm/yyyy">
+                                            class="form-control specialInput" placeholder="mm/dd/yyyy">
                                     </div>
                                 </div>
 
@@ -365,7 +365,7 @@
                                     <label for="iso45001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                     <div class="input-group">
                                         <input type="text" id="iso45001_expirydate" name="iso45001_expirydate"
-                                            class="form-control specialInput" placeholder="dd/mm/yyyy">
+                                            class="form-control specialInput" placeholder="mm/dd/yyyy">
                                     </div>
                                 </div>
 
@@ -445,7 +445,7 @@
     <script>
         $(document).ready(function() {
             $('#iso9001_expirydate').datepicker({
-                dateFormat: 'dd/mm/yyyy',
+                dateFormat: 'mm/dd/yyyy',
                 autoclose: true,
                 onSelect: function(dateText, inst) {
                     $(inst).val(dateText); // Write the value in the input
@@ -457,7 +457,7 @@
     <script>
         $(document).ready(function() {
             $('#iso14001_expirydate').datepicker({
-                format: 'dd/mm/yyyy',
+                format: 'mm/dd/yyyy',
                 autoclose: true
             });
         });
@@ -466,7 +466,7 @@
     <script>
         $(document).ready(function() {
             $('#iso45001_expirydate').datepicker({
-                format: 'dd/mm/yyyy',
+                format: 'mm/dd/yyyy',
                 autoclose: true
             });
         });

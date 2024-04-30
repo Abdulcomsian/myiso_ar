@@ -11,14 +11,16 @@
 	<div class="row">
 		<div class="col-xl-12 col-lg-12 d-flex justify-content-between">
 			<h2>سياسات إضافية</h2>
-		
+			@php
+			$urlparam = request()->route()->parameters;
+		@endphp
 
 			<div class="kt-portlet__head-toolbar">
 				<div class="kt-portlet__head-wrapper">
-					{{-- <a href="/edit_user/{id}" class="btn btn-clean btn-icon-sm">
+					<a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm mb-2 back_icon col-1" style="float: right;">
+						خلف
 						<i class="la la-long-arrow-left"></i>
-						Back
-					</a> --}}
+					</a>
 					&nbsp;
 					
 				</div>

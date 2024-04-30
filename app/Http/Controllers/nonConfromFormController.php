@@ -76,11 +76,14 @@ class nonConfromFormController extends Controller
     public function store(Request $request)
     {
         // echo '<pre>'; print_r($request->all());exit;
+// dd($request->all());
     //    try{
         // dd()
         if(Auth::check() && Auth::user()->role_type == "admin")
         {
              $the_id = $request->input('user_id');
+            // echo 'is admin';
+            // exit;
         }else{
             $the_id = Auth()->user()->id;
         }

@@ -115,10 +115,10 @@
                         <div class="requirments_table_div">
                             <div class="d-flex justify-content-between">
                                 <h4>إجمالي العملاء المدرجين</h4>
-                                {{-- <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm back_icon" style="float: right;">
+                                <a href="/edit_user/{{ $urlparam['userid'] }}" class="btn btn-clean btn-icon-sm mb-2 back_icon col-1" style="float: right;">
+                                    خلف
                                     <i class="la la-long-arrow-left"></i>
-                                    Back
-                                </a> --}}
+                                </a>
                             </div>
                             <!--<button>Add an entry</button>-->
 
