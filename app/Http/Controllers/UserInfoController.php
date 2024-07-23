@@ -172,4 +172,9 @@ class UserInfoController extends Controller
 
     }
 
+
+    public function userDownload(){
+        return view("dashboard.download");
+    }
+
 }
