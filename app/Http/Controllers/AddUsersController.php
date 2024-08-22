@@ -43,10 +43,29 @@ class AddUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function index()
+    public function index(Request $request)
     {
-        $users = AddUsers::where('role_type', 'user')->orderBy('id', 'desc')->get();
-        return view('admin.dashboard.admin.view_user', compact('users'));
+       // Get the 'showusers' query parameter from the URL
+       $showUsers = $request->query('showusers');
+       // Check if the 'showusers' parameter is present and not null
+       if (!is_null($showUsers)) {
+           // Example logic based on the value of 'showusers'
+           if ($showUsers == '1') {
+               // Fetch SCAISO Users
+               $users = AddUsers::where('role_type', 'user')->where('member_scaiso', '1')->orderBy('id', 'desc')->get();
+           } else {
+               // Fetch All Users
+               $users = AddUsers::where('role_type', 'user')->orderBy('id', 'desc')->get();
+           }
+           // Return the filtered data to the view
+           return view('admin.dashboard.admin.view_user', compact('users'));
+       } else {
+           // Default case, fetch 'user' role type
+           $users = AddUsers::where('role_type', 'user')->orderBy('id', 'desc')->get();
+           // Return the default data to the view
+           return view('admin.dashboard.admin.view_user', compact('users'));
+       }
+        
     }
 
 
@@ -392,7 +411,13 @@ public function store(Request $request)
                 $addusers->company_profile = $path;
 
             }
+            if($request->input('scaiso')!=''){
+                $scaiso=1;
 
+            }
+            else{
+                $scaiso=0;
+            }
             $addusers->company_name = $request->input('company_name');
             $addusers->company_address = $request->input('company_address');
             $addusers->role_type = 'user';
@@ -405,6 +430,7 @@ public function store(Request $request)
             $current = Carbon::now();
             $expiry = $current->addYears(3);
             $addusers->expiry_date = $expiry;
+            $addusers->member_scaiso = $scaiso;
 
             $addusers->save();
             return redirect('/add_user')->with("Success", "تمت إضافة المستخدم بنجاح.");

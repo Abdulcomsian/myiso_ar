@@ -60,6 +60,19 @@
                         @csrf
                         <div class="kt-portlet__body">
                             <div class="form-group row">
+                                <div class="col-lg-12">
+                                  
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                       
+                                        <label for="iso45001_certificate">عضو في SCAISO:</label>
+                                        <input type="checkbox" id="scaiso" name="scaiso" value="1">
+                                        <span id="scaiso" class="text-danger"></span>
+                                    </div>
+                                   
+                                  
+                                </div>
+                            </div>
+                            <div class="form-group row">
 
                                 <div class="col-lg-3">
                                     <label for="address2">هوية الشركة:</label>

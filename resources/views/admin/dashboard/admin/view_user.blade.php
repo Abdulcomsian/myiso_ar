@@ -73,17 +73,24 @@
                         قائمة المستخدمين
 
                     </h3>
-
+                    <span style="margin-right: 15px;margin-top: 18px;">
+                        <form action="{{url('/view_user')}}" id="showuserform">
+                        <select name="showusers" id="showusers">
+                            <option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>كافة المستخدمين</option>
+                            <option value="1" {{ request('showusers') == 1 ? 'selected' : '' }}>مستخدمو SCAISO</option>
+                        </select>
+                    </form></span>
                 </div>
 
                 <div class="kt-portlet__head-toolbar">
-
+                    
                     <div class="kt-portlet__head-wrapper">
 
                         <div class="kt-portlet__head-actions">
 
                             <div class="dropdown dropdown-inline">
-
+                                
+                                
                                 {{-- <button type="button" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                     <i class="la la-download"></i> Export
@@ -163,7 +170,7 @@
                                     </ul>
 
                                 </div> --}}
-
+                                
                             </div>
 
                             &nbsp;
@@ -1924,7 +1931,12 @@
 
         @section('myscript')
             <script>
-
+            $(document).ready(function() {
+                $('#showusers').on('change', function() {
+                    $('#showuserform').submit();
+                });
+           
+            });
                 $('.delete-certificate').on('click', function () {
 
                     let _this = $(this),
@@ -2021,7 +2033,7 @@
 
             };
             
-
+           
 
         </script>
 

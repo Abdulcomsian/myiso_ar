@@ -1,4 +1,4 @@
- <!-- begin:: Header Mobile -->
+<!-- begin:: Header Mobile -->
  <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
      <div class="kt-header-mobile__logo">
          <a href="{{ url('/home') }}">
@@ -39,6 +39,22 @@
                                  <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
 
                                  </div>
+                             </li>
+                             <li>
+                                <div class="kt-header__topbar-item dropdown" style="    margin-top: 10px;margin-right: 10px;">
+                                    <div class="kt-header__topbar-wrapper" data-offset="30px,0px" aria-expanded="true">
+                                        <span class="kt-header__topbar-icon kt-pulse kt-pulse--brand">
+                                            
+                                            @if (Auth::user()->member_scaiso==1)
+                                            <span class="kt-subheader__desc"><img src="{{asset('assets/media/logos/sca-iso-final-logo.png')}}" width="180px"> </span>	
+                                            @endif
+                                        
+                                        </span>
+    
+               
+                                    </div>
+                                    
+                                </div>
                              </li>
                              <!--<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">DashBoard</span></a>-->
                              <!--</li>-->
