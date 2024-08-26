@@ -622,29 +622,29 @@
 							</li> --}}
 
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="#" class="kt-menu__link " target="_blank">
+								<a href="https://myisoonline.me/public/lms/courses/%d8%a2%d9%8a%d8%b2%d9%88-20159001-%d9%86%d8%b8%d8%a7%d9%85-%d8%a5%d8%af%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%ac%d9%88%d8%af%d8%a9-%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%af%d9%82%d9%82-%d8%a7/" class="kt-menu__link " target="_blank">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text"> ISO 9001:2015</span>
+									<span class="kt-menu__link-text">نظام إدارة الجودة	</span>
+								</a>	
+							</li>
+
+							<li class="kt-menu__item " aria-haspopup="true">
+								<a href="https://myisoonline.me/public/lms/courses/iso-450012018-occupational-health-safety-management-system-internal-auditor-course/" class="kt-menu__link" target="_blank">
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text">نظام إدارة الصحة والسلامة المهنية</span>
 								</a>
 							</li>
 
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="#" class="kt-menu__link" target="_blank">
+								<a href="https://myisoonline.me/public/lms/courses/iso-140012015-environmental-management-system-internal-auditor-course/" class="kt-menu__link " target="_blank">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">ISO 45001:2018</span>
-								</a>
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="#" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 14001:2015</span>
+									<span class="kt-menu__link-text">نظام الإدارةالبيئية</span>
 								</a>
 							</li>
 
