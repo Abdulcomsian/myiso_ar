@@ -1841,5 +1841,53 @@ public function store(Request $request)
             ]);
         }
     }
+      
+    public function manage_downloads(){
+        $all_downloads  = DB::table('downloads')->get();
+		return view('admin.dashboard.admin.view_downloads', compact('all_downloads'));
+    }
+    
+    
+    public function add_download(Request $request){
+       // dd($request->all());
+        $path='';
+        if( $request->hasFile('file') ) {
+            $file = $request->file('file');
+            // Get the Image Name
+            $fileName = time().'.'.$file->getClientOriginalExtension();
+            // Set the Filepath 
+            $path = public_path('uploads/downloads') ;
+            // Move the file to the upload Folder
+            $file = $file->move($path, $fileName);
+        }
+     if($request['ica_member']=='1'){
+        $icamember=1;
+     }
+     else{
+        $icamember=0;
+     }
+       $insert = DB::table('downloads')->insert(
+            array(
+                'name' => $request['name'],
+                'ICA_member' => $icamember,
+                'download_file' => $fileName
+            )
+        );
 
+    session()->flash('msg', 'تمت إضافة التنزيل بنجاح.');
+    return redirect()->back();
+    }
+
+    public function download_delete(Request $request){
+		DB::table('downloads')->delete($request['id']);
+        UserDownload::where('download_id',$request['id'])->delete();
+		session()->flash('msg', 'تم حذف التنزيل بنجاح.');
+    return redirect()->back();
+	}
+
+    public function viewUsersDownloads(){
+        // $view_downloads  = UserDownload::with('downloads')->get();
+        $users = User::with('userDownload', 'userDownload.downloads')->get();
+		return view('admin.dashboard.admin.view_users_downloads', compact('users'));
+    }
 }

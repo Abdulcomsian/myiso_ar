@@ -31,8 +31,8 @@
 	<!-- begin:: Aside -->
 	<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 		<div class="kt-aside__brand-logo">
-			<a href="{{ url('/home') }}">
-				<img alt="Logo" src="{{Auth::user()->profile_image}}" width="84px"/>
+			<a href="<?php echo e(url('/home')); ?>">
+				<img alt="Logo" src="<?php echo e(Auth::user()->profile_image); ?>" width="84px"/>
 			</a>
 		</div>
 		<div class="kt-aside__brand-tools">
@@ -65,8 +65,8 @@
 	<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 		<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 			<ul class="kt-menu__nav test123">
-				<li class="kt-menu__item {{ Request::is('home') ? 'kt-menu__item--active' : '' }} kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-					<a href="{{ route('home') }}" class="kt-menu__link">
+				<li class="kt-menu__item <?php echo e(Request::is('home') ? 'kt-menu__item--active' : ''); ?> kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+					<a href="<?php echo e(route('home')); ?>" class="kt-menu__link">
 						<span class="kt-menu__link-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
 										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -92,7 +92,7 @@
 								</span>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{ url('/document_required') }}" class="kt-menu__link ">
+								<a href="<?php echo e(url('/document_required')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -123,7 +123,7 @@
 								</span>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{ url('quality_manual') }}" class="kt-menu__link ">
+								<a href="<?php echo e(url('quality_manual')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -131,7 +131,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{ url('quality_policy') }}" class="kt-menu__link ">
+								<a href="<?php echo e(url('quality_policy')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -139,7 +139,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{ url('environment_policy') }}" class="kt-menu__link ">
+								<a href="<?php echo e(url('environment_policy')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -147,7 +147,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{ url('health_policy') }}" class="kt-menu__link ">
+								<a href="<?php echo e(url('health_policy')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -155,7 +155,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{ url('management_organogram') }}" class="kt-menu__link ">
+								<a href="<?php echo e(url('management_organogram')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -186,7 +186,7 @@
 								</span>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('sale_processes')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('sale_processes')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -194,7 +194,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item" aria-haspopup="true">
-								<a href="{{url('purchasing_processes')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('purchasing_processes')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -202,7 +202,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('servicing_contract')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('servicing_contract')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -210,7 +210,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('competency_process')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('competency_process')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -218,7 +218,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('process_interaction')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('process_interaction')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -249,7 +249,7 @@
 								</span>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('documented_information')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('documented_information')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -257,7 +257,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('corrective_action')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('corrective_action')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -265,7 +265,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('management_review')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('management_review')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -273,7 +273,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item" aria-haspopup="true">
-								<a href="{{url('monitoring_measure')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('monitoring_measure')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -281,7 +281,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('auidt')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('auidt')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -312,7 +312,7 @@
 								</span>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('requirements_aspect')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('requirements_aspect')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -320,7 +320,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('process_audit')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('process_audit')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -328,7 +328,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('interesting_parties')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('interesting_parties')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -337,7 +337,7 @@
 							</li>
 							
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('qms_audit')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('qms_audit')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -345,7 +345,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('non_confromities')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('non_confromities')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -353,7 +353,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('customer')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('customer')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -361,7 +361,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('customer_review')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('customer_review')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -369,7 +369,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('supplier')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('supplier')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -377,7 +377,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item" aria-haspopup="true">
-								<a href="{{url('calibration_record')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('calibration_record')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -385,7 +385,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('employess')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('employess')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -393,7 +393,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('add_management_review')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('add_management_review')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -401,7 +401,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('maintance_record')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('maintance_record')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -409,7 +409,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('accident_risk')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('accident_risk')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -418,7 +418,7 @@
 							</li>
 
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('risk_assessment')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('risk_assessment')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -426,7 +426,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('chemical_control')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('chemical_control')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -434,7 +434,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('work_instruction')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('work_instruction')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -444,14 +444,7 @@
 						</ul>
 					</div>
 				</li>
-				{{-- <li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-					<a href="{{ url('contact_us') }}" class="kt-menu__link kt-menu__toggle">
-						<span class="kt-menu__link-icon">
-							<i class="fa fa-mobile" aria-hidden="true"></i>
-						</span>
-						<span class="kt-menu__link-text">Contact Us</span>
-					</a>
-				</li> --}}
+				
 				
 
 				<li id="admin_notifications" class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
@@ -467,7 +460,7 @@
                         <span class="kt-menu__arrow"></span>
                         <ul class="kt-menu__subnav">
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{ route('storeMessage') }}" class="kt-menu__link ">
+                                <a href="<?php echo e(route('storeMessage')); ?>" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
@@ -475,7 +468,7 @@
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{ route('inboxMessages') }}" class="kt-menu__link ">
+                                <a href="<?php echo e(route('inboxMessages')); ?>" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
@@ -484,7 +477,7 @@
                             </li>
 
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{ route("sentMessages") }}" class="kt-menu__link ">
+                                <a href="<?php echo e(route("sentMessages")); ?>" class="kt-menu__link ">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
@@ -492,43 +485,20 @@
                                 </a>
                             </li>
                             
-                            {{-- <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{ url('/send_notifications') }}" class="kt-menu__link ">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Sent</span>
-                                </a>
-                            </li> --}}
+                            
                             
                         </ul>
                     </div>
                 </li>
 
-				{{-- <li id="notifications" class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-					<a href="{{ url('/inboxmessage') }}" class="kt-menu__link kt-menu__toggle">
-						<span class="kt-menu__link-icon">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-						<span class="kt-menu__link-text">Notifications(OLD)</span>
-						<span class="badge badge-primary count_notifications" style="color:#FFF !important;"></span>
-					</a>
-				</li>
-				<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-					<a href="{{ url('/users_messages') }}" class="kt-menu__link kt-menu__toggle">
-						<span class="kt-menu__link-icon">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-						<span class="kt-menu__link-text">Sent (OLD)</span>
-					</a>
-				</li> --}}
+				
 					<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 					<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
 						<span class="kt-menu__link-icon image-logo-hover">
-							{{-- <i class="fab fa-wpforms"></i> --}}
-							{{-- <i class="fa fa-book" aria-hidden="true"></i> --}}
-							<img class="image-main" src="{{asset('assets/media/icons/support-black-24.png')}}" alt="logo-image">
-							<img class="image-hover" src="{{asset('assets/media/icons/support-blue.png')}}" alt="logo-image">
+							
+							
+							<img class="image-main" src="<?php echo e(asset('assets/media/icons/support-black-24.png')); ?>" alt="logo-image">
+							<img class="image-hover" src="<?php echo e(asset('assets/media/icons/support-blue.png')); ?>" alt="logo-image">
 
 
 						</span>
@@ -539,7 +509,7 @@
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('faq')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('faq')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -547,7 +517,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('explainer_videos')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('explainer_videos')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -555,7 +525,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('userDownload')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('userDownload')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -563,7 +533,7 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="{{url('viewDownload')}}" class="kt-menu__link ">
+								<a href="<?php echo e(url('viewDownload')); ?>" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -572,7 +542,7 @@
 							</li>
 							
 							<!--<li class="kt-menu__item " aria-haspopup="true">-->
-							<!--	<a href="{{url('quick_links')}}" class="kt-menu__link ">-->
+							<!--	<a href="<?php echo e(url('quick_links')); ?>" class="kt-menu__link ">-->
 							<!--		<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">-->
 							<!--			<span></span>-->
 							<!--		</i>-->
@@ -594,41 +564,7 @@
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 
-							{{-- <li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 9001: AED 3000</span>
-								</a>
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link" target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 45001:	AED 3000</span>
-								</a>
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 14001: AED 3000</span>
-								</a>
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 14001: AED 3000</span>
-								</a>
-							</li> --}}
+							
 
 							<li class="kt-menu__item " aria-haspopup="true">
 								<a href="https://myisoonline.me/public/lms/courses/%d8%a2%d9%8a%d8%b2%d9%88-20159001-%d9%86%d8%b8%d8%a7%d9%85-%d8%a5%d8%af%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%ac%d9%88%d8%af%d8%a9-%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%af%d9%82%d9%82-%d8%a7/" class="kt-menu__link " target="_blank">
@@ -657,14 +593,7 @@
 								</a>
 							</li>
 
-							{{-- <li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/trainings/integrated-management-system-internal-auditor-course/" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">IMS</span>
-								</a>
-							</li>  --}}
+							
 
 						</ul>
 					</div>
@@ -678,3 +607,4 @@
 </div>
 
 <!-- end:: Aside -->
+<?php /**PATH C:\xampp\htdocs\myiso_ar\resources\views/dashboard/includes/sidebar.blade.php ENDPATH**/ ?>

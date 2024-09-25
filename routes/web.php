@@ -224,6 +224,12 @@ Route::group(['middleware' => ['auth','admin']], function ()
     // Login_History show 
     Route::post('/login-history', 'App\Http\Controllers\Auth\LoginController@login_history')->name('login-history');
 
+     // to manage downloads
+     Route::get('/downloads', 'AddUsersController@manage_downloads');
+     Route::post('/add_download', 'AddUsersController@add_download');
+     Route::post('/download_delete/{id}', 'AddUsersController@download_delete');
+     Route::get('/view_users_downloads', 'AddUsersController@viewUsersDownloads');
+
 
 });
 
@@ -362,8 +368,11 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('/users_messages', 'UserMsgController@users_messages');
     Route::post('/upd_msg_status', 'UserMsgController@upd_msg_status');
     Route::post('/get_user_inbox_count', 'UserMsgController@get_user_inbox_count');
-    Route::post('/get_admin_inbox_count', 'UserMsgController@get_admin_inbox_count')->name('get_admin_inbox_count');
-
+        Route::post('/get_admin_inbox_count', 'UserMsgController@get_admin_inbox_count')->name('get_admin_inbox_count');
+    //for users downloads
+    Route::get('/userDownload', 'UserInfoController@userDownload')->name("user.download");
+    Route::post('/get-data', 'UserInfoController@getDownloadUser')->name("user.get-data");
+    Route::get('/viewDownload', 'UserInfoController@viewDownload')->name("user.viewdownload");
     //Check if empolyee already exist for current user by assad yaqoob 6 july 2022
 
     Route::get('/check-emp-number', 'AddUsersController@checkEmpNumber');

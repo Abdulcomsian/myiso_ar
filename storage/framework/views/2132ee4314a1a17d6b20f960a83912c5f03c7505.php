@@ -1,16 +1,12 @@
-@extends('dashboard.layouts.app')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <style>section#procedure_section{padding:30px 20px;background:#FFF !important;}</style>
 <!-- begin:: Content -->
 <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
 	<!--Begin::Dashboard 1-->
 	<!--Begin::Section-->
-	{{-- <div class="row">
-		<div class="col-xl-12 col-lg-12">
-			<h2>Download</h2>
-		</div>
-	</div> --}}
+	
 	<section id="procedure_section" class="mt-3">
 		
 	<div class="container">
@@ -38,24 +34,24 @@
 
                 <tbody>
 				<?php $count=0;?>
-				@foreach($all_downloads as $download)
+				<?php $__currentLoopData = $all_downloads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $download): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 				<?php $count++; 
                
                 ?>
                     <tr>
                         
-                        <td style="text-align:center; width:20%">{{$count}}</td>
+                        <td style="text-align:center; width:20%"><?php echo e($count); ?></td>
                         
                         
-                        <td style="width:65%">{{$download->name}}</td>
+                        <td style="width:65%"><?php echo e($download->name); ?></td>
                         
                         
                        
-						<td style="width:100%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">{{$download->download_file}}</a></td>
+						<td style="width:100%"><a class="btn-fetch-data" href="<?php echo e(asset('uploads/downloads/' . $download->download_file)); ?>" data-id="<?php echo e($download->id); ?>" target="_blank"><?php echo e($download->download_file); ?></a></td>
 
 
                     </tr>
-				@endforeach	
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
                 </tbody>
             </table>
             <!--end: Video -->
@@ -79,11 +75,11 @@
 			var dataId = $(this).data('id');
 			
 			$.ajax({
-				url: "{{ route('user.get-data') }}",
+				url: "<?php echo e(route('user.get-data')); ?>",
 				type: 'POST',
 				data: {
 					id: dataId,
-					_token: "{{ csrf_token() }}"
+					_token: "<?php echo e(csrf_token()); ?>"
 				},
 				success: function(response) {
 					if (response.status === 'success') {
@@ -106,5 +102,6 @@
 		});
  
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
 <!-- end:: Content --''
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\myiso_ar\resources\views/dashboard/download.blade.php ENDPATH**/ ?>
