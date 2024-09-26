@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\AccidentRisk;
 use App\AddUsers;
 use App\Assessment;
@@ -23,6 +24,7 @@ use App\Workinstructions;
 use App\User;
 use App\LoginHistoryUser;
 use App\CustomManual;
+use App\UserDownload;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -1880,7 +1882,10 @@ public function store(Request $request)
 
     public function download_delete(Request $request){
 		DB::table('downloads')->delete($request['id']);
-        UserDownload::where('download_id',$request['id'])->delete();
+        if($request['id']!=''){
+            UserDownload::where('download_id',$request['id'])->delete();
+        }
+       
 		session()->flash('msg', 'تم حذف التنزيل بنجاح.');
     return redirect()->back();
 	}
