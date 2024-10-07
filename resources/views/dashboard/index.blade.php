@@ -458,11 +458,11 @@
                         <div class="kt-widget17 p-4">
                             <div class="row ml-0 mr-0 table-responsive">
                                 @if (!empty($user['audit_report']))
-                                    <a href="{{ $user['audit_report'] }}" target="_blank" class="text-dark ml-2">
+                                    
                                         <p style="display: flex; gap: 30px;align-items: center;"><a href="/uploads/user/pdfs/Remote-Audit-Overview.pdf" target="_blank">
                                             <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                                         </a>   <th>انقر لعرض تقرير التدقيق</th></p> 
-                                    </a>
+                                   
                                 @else
                                     <p class="text-dark ml-2">غير معثور عليه</p>
                                    
