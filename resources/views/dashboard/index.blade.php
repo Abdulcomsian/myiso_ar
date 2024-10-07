@@ -462,7 +462,10 @@
                                         انقر لعرض تقرير التدقيق
                                     </a>
                                 @else
-                                    <p class="text-dark ml-2">غير معثور عليه</p>
+                                    {{-- <p class="text-dark ml-2">غير معثور عليه</p> --}}
+                                    <p><a href="/uploads/user/pdfs/Remote-Audit-Overview.pdf" target="_blank">
+                                        <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
+                                    </a></p>
                                 @endif
                             </div>
                         </div>
@@ -480,7 +483,9 @@
                                 @if (!empty($user['audit_comment']))
                                     {{ $user['audit_comment'] }}
                                 @else
-                                    <p class="text-dark ml-2">لا تعليق</p>
+                                <p><a href="/uploads/user/pdfs/Use-Of-Certificate-and-Certification-Marks.pdf" target="_blank">
+                                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
+                                </a></p>
                                 @endif
                             </div>
                         </div>
