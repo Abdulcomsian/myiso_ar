@@ -459,13 +459,13 @@
                             <div class="row ml-0 mr-0 table-responsive">
                                 @if (!empty($user['audit_report']))
                                     <a href="{{ $user['audit_report'] }}" target="_blank" class="text-dark ml-2">
-                                        انقر لعرض تقرير التدقيق
+                                        <p><a href="/uploads/user/pdfs/Remote-Audit-Overview.pdf" target="_blank">
+                                            <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
+                                        </a>   انقر لعرض تقرير التدقيق</p> 
                                     </a>
                                 @else
-                                    {{-- <p class="text-dark ml-2">غير معثور عليه</p> --}}
-                                    <p><a href="/uploads/user/pdfs/Remote-Audit-Overview.pdf" target="_blank">
-                                        <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                                    </a></p>
+                                    <p class="text-dark ml-2">غير معثور عليه</p>
+                                   
                                 @endif
                             </div>
                         </div>
@@ -483,8 +483,8 @@
                                 @if (!empty($user['audit_comment']))
                                 <p><a href="/uploads/user/pdfs/Use-Of-Certificate-and-Certification-Marks.pdf" target="_blank">
                                     <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                                </a></p>
-                                <p class="t
+                                </a>  انقر لعرض ملاحظات المدقق</p>
+                                <p class="t`
                                 @else
                                ext-dark ml-2">لا تعليق</p>
                                 @endif
