@@ -62,14 +62,27 @@
                             <div class="form-group row">
                                 <div class="col-lg-12">
                                   
+                                    <div class="kt-input-icon kt-input-icon--right" style="margin-bottom:-50px; padding-right: 31px;"> 
+                                       
+                                        <label for="adek_school"> مدرسة أديك</label>
+                                        <input type="checkbox" name="adek_school" value="1">
+                                        <span id="adek_school" class="text-danger"></span>
+                                    </div>
+                                   
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                  
                                     <div class="kt-input-icon kt-input-icon--right">
                                        
-                                        <label for="iso45001_certificate">عضو في SCAISO:</label>
+                                        <label for="iso45001_certificate">عضو في SCAISO</label>
                                         <input type="checkbox" id="scaiso" name="scaiso" value="1">
                                         <span id="scaiso" class="text-danger"></span>
                                     </div>
                                    
-                                  
+                                    
                                 </div>
                             </div>
                             <div class="form-group row">

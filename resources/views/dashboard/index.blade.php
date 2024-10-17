@@ -457,37 +457,72 @@
                     <div class="kt-portlet__body kt-portlet__body--fit">
                         <div class="kt-widget17 p-4">
                             <div class="row ml-0 mr-0 table-responsive">
-                                @if (!empty($user['audit_report']))
-                                    
-                                        <p style="display: flex; gap: 30px;align-items: center;"><a href="/uploads/user/pdfs/Remote-Audit-Overview.pdf" target="_blank">
-                                            <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                                        </a>   <th>انقر لعرض تقرير التدقيق</th></p> 
+								@if(!empty($user['audit_report']))
+									<a href="public/{{$user['audit_report']}}" target="_blank" class="text-dark ml-2">
+										انقر لعرض تقرير التدقيق
+									</a>
+								@else
+									<p class="text-dark ml-2">ليس تقرير التدقيق</p>
                                    
-                                @else
-                                    <p class="text-dark ml-2">غير معثور عليه</p>
-                                   
-                                @endif
+								@endif
                             </div>
                         </div>
                     </div>
+
+                   
                     <div class="kt-portlet__head" style="border-bottom: none">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                ملاحظات المدقق
+                                تعليقات المدقق
                             </h3>
                         </div>
                     </div>
                     <div class="kt-portlet__body kt-portlet__body--fit">
                         <div class="kt-widget17 p-4">
                             <div class="row ml-0 mr-0 table-responsive">
-                                @if (!empty($user['audit_comment']))
-                                <p style="display: flex; gap: 30px; align-items: center;"><a href="/uploads/user/pdfs/Use-Of-Certificate-and-Certification-Marks.pdf" target="_blank">
-                                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                                </a>  <th>انقر لعرض ملاحظات المدقق</th></p>
-                                <p class="t`
+                                @if(!empty($user['audit_comment']))
+                               {{$user['audit_comment']}}
+                                </a>
                                 @else
-                               ext-dark ml-2">لا تعليق</p>
+                                    <p class="text-dark ml-2">لا تعليق</p>
+                                    
                                 @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kt-portlet__head" style="border-bottom: none">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                نظرة عامة على التدقيق عن بعد
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit">
+                        <div class="kt-widget17 p-4">
+                            <div class="row ml-0 mr-0 table-responsive">
+                                <p style="display: flex; gap: 30px;"> <a href="/uploads/user/pdfs/Remote-Audit-Overview.pdf" target="_blank">
+                                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
+                                </a></p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kt-portlet__head" style="border-bottom: none">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                استخدام الشهادات وعلامات التصديق
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit">
+                        <div class="kt-widget17 p-4">
+                            <div class="row ml-0 mr-0 table-responsive">
+                                <p style="display: flex; gap: 30px;"> <a href="/uploads/user/pdfs/Use-Of-Certificate-and-Certification-Marks.pdf" target="_blank">
+                                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
+                                </a> </p>
+
                             </div>
                         </div>
                     </div>

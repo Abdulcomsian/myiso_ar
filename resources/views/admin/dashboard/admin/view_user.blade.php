@@ -78,6 +78,7 @@
                         <select name="showusers" id="showusers">
                             <option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>كافة المستخدمين</option>
                             <option value="1" {{ request('showusers') == 1 ? 'selected' : '' }}>مستخدمو SCAISO</option>
+                            <option value="2" {{ request('showusers') == 2 ? 'selected' : '' }}>مدرسة أديك</option>
                         </select>
                     </form></span>
                 </div>

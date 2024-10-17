@@ -10,7 +10,7 @@
                     <i class="kt-font-brand flaticon2-line-chart"></i>
                 </span>
                 <h3 class="kt-portlet__head-title">
-                    التنزيلات
+                    رفع
                 </h3>
             </div>
             <div class="kt-portlet__head-toolbar">
@@ -49,10 +49,19 @@
 									<input type="text" id="name" name="name" class="form-control" placeholder="Name:" required="required"/>
 								</div>
                                 <div class="form-group">
+                                    <label for="message">وصف:</label>
+                                    <textarea name="description" id="summernote"></textarea>
+                                </div>
+                                <div class="form-group">
 									
                                  <input type="checkbox" name="ica_member" value="1">
                                  <label for="title">عضو SCA</label>
 								</div>
+                                <div class="form-group">
+									
+                                    <input type="checkbox" name="adekschool" value="1">
+                                    <label for="title">مدرسة أديك</label>
+                                   </div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
@@ -89,6 +98,7 @@
 
                         <th>اسم</th>
                         <th>عضو SCA</th>
+                        <th>مدرسة أديك</th>
                         <th>تنزيل الملف</th>
 
                         
@@ -109,19 +119,29 @@
                 else{
                     $icamember="No";
                 }
+                if($download->ADEK_school==1){
+                $adek="Yes";
+                }
+                else{
+                    $adek="No";
+                }
                 ?>
                     <tr>
                         
                         <td style="text-align:center; width:20%">{{$count}}</td>
                         
                         
-                        <td style="width:30%">{{$download->name}}</td>
+                        <td style="width:30%">{{$download->name}}
+                            <br>
+                            <div id="summernote">{!!$download->des!!} </div>
+
+                        </td>
                         
                         
                             <td style="width:30%">{{$icamember}}</td>
                        
-                          
-                            <td style="width:30%"><a href="{{asset('uploads/downloads/' . $download->download_file)}}" target="_blank">{{$download->download_file}}</a></td>
+                            <td style="width:10%">{{$adek}}</td>
+                            <td style="width:30%"><a href="{{asset('uploads/downloads/' . $download->download_file)}}" target="_blank">تحميل</a></td>
                        
                         
 
@@ -167,4 +187,23 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+        placeholder: 'Please enter your Details',
+        tabsize: 2,
+        width:700,
+        height: 150,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    });
+  </script>
 @endsection

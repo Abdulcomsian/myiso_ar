@@ -218,7 +218,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text"> التنزيلات</span>
+                                    <span class="kt-menu__link-text"> التحميلات</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">

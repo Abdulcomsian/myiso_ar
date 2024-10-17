@@ -55,7 +55,12 @@ class AddUsersController extends Controller
            if ($showUsers == '1') {
                // Fetch SCAISO Users
                $users = AddUsers::where('role_type', 'user')->where('member_scaiso', '1')->orderBy('id', 'desc')->get();
-           } else {
+           } 
+           elseif ($showUsers == '2') {
+            // Fetch SCAISO Users
+            $users = AddUsers::where('role_type', 'user')->where('adek_school', '1')->orderBy('id', 'desc')->get();
+        }
+           else {
                // Fetch All Users
                $users = AddUsers::where('role_type', 'user')->orderBy('id', 'desc')->get();
            }
@@ -276,7 +281,7 @@ class AddUsersController extends Controller
      */
 public function store(Request $request)
     {
-// dd($request->all());
+//dd($request->all());
 // dd((date("Y-m-d" , strtotime($request->iso9001_expirydate))));
         try {
             //currdisabl
@@ -420,6 +425,13 @@ public function store(Request $request)
             else{
                 $scaiso=0;
             }
+            if($request->input('adek_school')!=''){
+                $adekschool=1;
+
+            }
+            else{
+                $adekschool=0;
+            }
             $addusers->company_name = $request->input('company_name');
             $addusers->company_address = $request->input('company_address');
             $addusers->role_type = 'user';
@@ -433,6 +445,7 @@ public function store(Request $request)
             $expiry = $current->addYears(3);
             $addusers->expiry_date = $expiry;
             $addusers->member_scaiso = $scaiso;
+            $addusers->adek_school = $adekschool;
 
             $addusers->save();
             return redirect('/add_user')->with("Success", "تمت إضافة المستخدم بنجاح.");
@@ -1868,10 +1881,18 @@ public function store(Request $request)
      else{
         $icamember=0;
      }
+     if($request['adekschool']=='1'){
+        $adekschool=1;
+     }
+     else{
+        $adekschool=0;
+     }
        $insert = DB::table('downloads')->insert(
             array(
                 'name' => $request['name'],
+                'des' => $request['description'],
                 'ICA_member' => $icamember,
+                'ADEK_school' => $adekschool,
                 'download_file' => $fileName
             )
         );
