@@ -52,7 +52,11 @@
                         <td style="width:200px">{{$userdownload->downloads->name ?? ''}}</td>
                         
                         
-                        <td style="width:200px">{{$userdownload->downloads->download_file ?? ''}}</td>
+                        <td style="width:200px">
+                            تحميل
+                            {{-- {{$userdownload->downloads->download_file ?? ''}} --}}
+                        
+                        </td>
                     
                         
                         <td style="width:200px">{{$userdownload->dated ?? ''}}</td>

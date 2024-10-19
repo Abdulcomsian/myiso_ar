@@ -70,7 +70,11 @@
                                     @foreach($user->userDownload as $download)
                                     <tr>
                                         <td style="width:40%;">{{$download->downloads->name ?? ''}}</td>
-                                        <td style="width:40%;">{{$download->downloads->download_file ?? ''}}</td>
+                                        <td style="width:40%;">
+                                            تحميل
+                                            {{-- {{$download->downloads->download_file ?? ''}} --}}
+
+                                        </td>
                                         <td style="width:40%;">{{$download->dated ?? ''}}</td>
                                     </tr>
                                     @endforeach

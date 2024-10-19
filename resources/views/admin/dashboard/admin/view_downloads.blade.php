@@ -114,16 +114,16 @@
 				@foreach($all_downloads as $download)
 				<?php $count++; 
                 if($download->ICA_member==1){
-                $icamember="Yes";
+                $icamember="نعم";
                 }
                 else{
-                    $icamember="No";
+                    $icamember="لا";
                 }
                 if($download->ADEK_school==1){
-                $adek="Yes";
+                $adek="نعم";
                 }
                 else{
-                    $adek="No";
+                    $adek="لا";
                 }
                 ?>
                     <tr>
@@ -131,9 +131,10 @@
                         <td style="text-align:center; width:20%">{{$count}}</td>
                         
                         
-                        <td style="width:30%">{{$download->name}}
+                        <td style="width:30%">
+                            {!!$download->des!!} 
                             <br>
-                            <div id="summernote">{!!$download->des!!} </div>
+                            {{$download->name}}
 
                         </td>
                         
@@ -155,19 +156,19 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting Video</h5>
+				<h5 class="modal-title" id="exampleModalLabel">حذف التنزيل</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Are you sure? Do you really want to delete this?.</p>
+				<p>هل أنت متأكد؟ هل تريد حقا حذف هذا؟</p>
 			</div>
 			<div class="modal-footer">
 				<form action="{{url('/download_delete/'.$download->id)}}" method="POST">
 				@csrf
 				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+				<button type="submit" class="btn btn-danger">نعم</button>
 				</form>
 			</div>
 		</div>

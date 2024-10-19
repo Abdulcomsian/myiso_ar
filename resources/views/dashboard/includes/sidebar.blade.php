@@ -582,7 +582,7 @@
 						</ul>
 					</div>
 				</li>
-					<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+				<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 					<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
 						<span class="kt-menu__link-icon">
 							<i class="fab fa-wpforms"></i>
@@ -594,41 +594,6 @@
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
 
-							{{-- <li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 9001: AED 3000</span>
-								</a>
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link" target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 45001:	AED 3000</span>
-								</a>
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 14001: AED 3000</span>
-								</a>
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/" class="kt-menu__link " target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">ISO 14001: AED 3000</span>
-								</a>
-							</li> --}}
 
 							<li class="kt-menu__item " aria-haspopup="true">
 								<a href="https://myisoonline.me/public/lms/courses/%d8%a2%d9%8a%d8%b2%d9%88-20159001-%d9%86%d8%b8%d8%a7%d9%85-%d8%a5%d8%af%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%ac%d9%88%d8%af%d8%a9-%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%af%d9%82%d9%82-%d8%a7/" class="kt-menu__link " target="_blank">
@@ -657,16 +622,49 @@
 								</a>
 							</li>
 
-							{{-- <li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://www.isoonlinecourses.com/trainings/integrated-management-system-internal-auditor-course/" class="kt-menu__link " target="_blank">
+						
+
+						</ul>
+						
+					</div>
+				</li>
+
+				<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+					<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+						<span class="kt-menu__link-icon">
+							<i class="fab fa-wpforms"></i>
+						</span>
+						<span class="kt-menu__link-text">دورات</span>
+						<i class="kt-menu__ver-arrow la la-angle-right"></i>
+					</a>
+					<div class="kt-menu__submenu ">
+						<span class="kt-menu__arrow"></span>
+						<ul class="kt-menu__subnav">
+
+
+							<li class="kt-menu__item " aria-haspopup="true">
+								<a href="https://myisoonline.me/public/lms/courses/%D8%A3%D9%87%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AD%D9%81%D8%A7%D8%B8-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%85%D9%8A%D8%A7%D9%87-%D9%81%D9%8A-%D9%85%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84/" class="kt-menu__link " target="_blank">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">IMS</span>
+									<span class="kt-menu__link-text">أهمية الحفاظ على المياه في مكان العمل	</span>
+								</a>	
+							</li>
+
+							<li class="kt-menu__item " aria-haspopup="true">
+								<a href="https://myisoonline.me/public/lms/courses/%D8%A3%D9%87%D9%85%D9%8A%D8%A9-%D8%B5%D9%8A%D8%A7%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D8%B9%D8%AF%D8%A7%D8%AA-%D9%81%D9%8A-%D9%85%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84/" class="kt-menu__link" target="_blank">
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text">أهمية صيانة المعدات في مكان العمل</span>
 								</a>
-							</li>  --}}
+							</li>
+
+
+						
 
 						</ul>
+						
 					</div>
 				</li>
 			</ul>

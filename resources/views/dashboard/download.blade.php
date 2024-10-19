@@ -51,7 +51,10 @@
                         
                         
                        
-						<td style="width:100%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">{{$download->download_file}}</a></td>
+						<td style="width:100%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">
+							{{-- {{$download->download_file}} --}}
+							تحميل
+						</a></td>
 
 
                     </tr>
