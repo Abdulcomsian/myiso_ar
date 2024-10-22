@@ -1,7 +1,13 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-<style>section#procedure_section{padding:30px 20px;background:#FFF !important;}</style>
+<style>section#procedure_section{padding:30px 20px;background:#FFF !important;}
+    .table thead th, .table thead td {
+    font-weight: bold !important;
+    font-size: 15px !important;
+    text-align: right;
+}
+</style>
 <!-- begin:: Content -->
 <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
 	<!--Begin::Dashboard 1-->
@@ -27,6 +33,7 @@
                         <th style="text-align:center">رقم س.</th>
 
                         <th>اسم</th>
+                        <th>وصف</th>
                         <th>الملف الذي تم تنزيله</th>
 						<th>تاريخ</th>
 
@@ -46,20 +53,21 @@
                 ?>
                     <tr>
                         
-                        <td style="text-align:center; width:100px;">{{$count}}</td>
+                        <td style="text-align:right; width:7%;">{{$count}}</td>
                         
                         
-                        <td style="width:200px">{{$userdownload->downloads->name ?? ''}}</td>
+                        <td style="width:30%">{{$userdownload->downloads->name ?? ''}}</td>
                         
-                        
-                        <td style="width:200px">
+                        <td style="width:35%">
+							{{!!$userdownload->downloads->des!!}}</td>
+                        <td style="width:10%">
                             تحميل
                             {{-- {{$userdownload->downloads->download_file ?? ''}} --}}
                         
                         </td>
                     
                         
-                        <td style="width:200px">{{$userdownload->dated ?? ''}}</td>
+                        <td style="width:60%">{{$userdownload->dated ?? ''}}</td>
                        
                         
 

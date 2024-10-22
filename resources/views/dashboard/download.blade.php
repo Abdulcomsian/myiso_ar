@@ -1,7 +1,14 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-<style>section#procedure_section{padding:30px 20px;background:#FFF !important;}</style>
+<style>section#procedure_section{padding:30px 20px;background:#FFF !important;}
+    .table thead th, .table thead td {
+    font-weight: bold !important;
+    font-size: 15px;
+	text-align: right;
+}
+
+</style>
 <!-- begin:: Content -->
 <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
 	<!--Begin::Dashboard 1-->
@@ -27,8 +34,8 @@
                         <td  style="text-align:center">رقم س.</td>
 
                         <td>اسم</td>
+						<td>وصف</td>
                         <td >تنزيل الملف</td>
-
                         
 
                        
@@ -44,19 +51,20 @@
                 ?>
                     <tr>
                         
-                        <td style="text-align:center; width:20%">{{$count}}</td>
+                        <td style="text-align:right; width:10%">{{$count}}</td>
                         
                         
-                        <td style="width:65%">{{$download->name}}</td>
-                        
+                        <td style="width:25%">{{$download->name}}</td>
+                        <td style="width:60%">
+							{{!!$download->des!!}}</td>
                         
                        
-						<td style="width:100%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">
+						<td style="width:60%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">
 							{{-- {{$download->download_file}} --}}
 							تحميل
 						</a></td>
 
-
+						
                     </tr>
 				@endforeach	
                 </tbody>
@@ -109,5 +117,25 @@
 		});
  
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+        placeholder: 'Please enter your Details',
+        tabsize: 2,
+        width:700,
+        height: 150,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    });
+  </script>
 @endsection
 <!-- end:: Content --''
