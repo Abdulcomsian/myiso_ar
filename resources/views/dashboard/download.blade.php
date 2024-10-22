@@ -54,7 +54,7 @@
                         <td style="text-align:right; width:10%">{{$count}}</td>
                         
                         
-                        <td style="width:25%">{{$download->name}}</td>
+                        <td style="width:25% font-size:26px; font-weight:bold"">{{$download->name}}</td>
                         <td style="width:58%">
 							{!!$download->des!!}</td>
                         
