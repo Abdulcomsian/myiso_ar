@@ -56,7 +56,7 @@
                         
                         <td style="width:25%">{{$download->name}}</td>
                         <td style="width:60%">
-							{{!!$download->des!!}}</td>
+							{!!$download->des!!}</td>
                         
                        
 						<td style="width:60%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">

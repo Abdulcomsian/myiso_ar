@@ -59,7 +59,7 @@
                         <td style="width:30%">{{$userdownload->downloads->name ?? ''}}</td>
                         
                         <td style="width:35%">
-							{{!!$userdownload->downloads->des!!}}</td>
+							{!!$userdownload->downloads->des!!}</td>
                         <td style="width:10%">
                             تحميل
                             {{-- {{$userdownload->downloads->download_file ?? ''}} --}}
