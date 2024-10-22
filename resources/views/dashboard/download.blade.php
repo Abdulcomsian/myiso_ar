@@ -54,12 +54,12 @@
                         <td style="text-align:right; width:10%">{{$count}}</td>
                         
                         
-                        <td style="width:25% font-size:26px; font-weight:bold"">{{$download->name}}</td>
-                        <td style="width:58%">
+                        <td style="width:40% font-size:26px; font-weight:bold"">{{$download->name}}</td>
+                        <td style="width:40%">
 							{!!$download->des!!}</td>
                         
                        
-						<td style="width:50%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">
+						<td style="width:10%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">
 							{{-- {{$download->download_file}} --}}
 							تحميل
 						</a></td>
