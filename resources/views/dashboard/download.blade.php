@@ -31,7 +31,7 @@
 
                     <tr>
 
-                        <td  style="text-align:center">رقم س.</td>
+                        <td  style="text-align:right">رقم س.</td>
 
                         <td>اسم</td>
 						<td>وصف</td>

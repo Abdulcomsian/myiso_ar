@@ -30,7 +30,7 @@
 
                     <tr>
 
-                        <th style="text-align:center">رقم س.</th>
+                        <th style="text-align:right">رقم س.</th>
 
                         <th>اسم</th>
                         <th>وصف</th>
