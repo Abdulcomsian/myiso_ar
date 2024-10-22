@@ -55,11 +55,11 @@
                         
                         
                         <td style="width:25%">{{$download->name}}</td>
-                        <td style="width:60%">
+                        <td style="width:58%">
 							{!!$download->des!!}</td>
                         
                        
-						<td style="width:60%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">
+						<td style="width:50%"><a class="btn-fetch-data" href="{{asset('uploads/downloads/' . $download->download_file)}}" data-id="{{$download->id}}" target="_blank">
 							{{-- {{$download->download_file}} --}}
 							تحميل
 						</a></td>
