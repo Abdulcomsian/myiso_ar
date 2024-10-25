@@ -40,6 +40,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div id="new_video" class="collapse p-4">
+                    @php
+                    $usertypes = \App\UserType::get();
+                    @endphp
                     <h3>إضافة تحميل جديد</h3>
 
                     <form action="{{ url('/add_download') }}" method="POST" enctype="multipart/form-data">
@@ -54,14 +57,14 @@
                                 </div>
                                 <div class="form-group">
 									
-                                 <input type="checkbox" name="ica_member" value="1">
-                                 <label for="title">عضو SCA</label>
+                                    <select name="user_type" id="showusers">
+                                        <option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>All Users</option>
+                                        @foreach ($usertypes as $usertype)
+                                        <option value="{{$usertype->id}}" {{ request('showusers') == $usertype->id ? 'selected' : '' }}>{{$usertype->name}}</option> 
+                                        @endforeach
+                                    </select>
 								</div>
-                                <div class="form-group">
-									
-                                    <input type="checkbox" name="adekschool" value="1">
-                                    <label for="title">مدرسة أديك</label>
-                                   </div>
+                                
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
@@ -97,8 +100,8 @@
                         <th style="text-align:center">رقم س.</th>
 
                         <th>اسم</th>
-                        <th>عضو SCA</th>
-                        <th>مدرسة أديك</th>
+                        <th>المستخدمين</th>
+                       
                         <th>تنزيل الملف</th>
 
                         
@@ -113,18 +116,7 @@
 				<?php $count=0;?>
 				@foreach($all_downloads as $download)
 				<?php $count++; 
-                if($download->ICA_member==1){
-                $icamember="نعم";
-                }
-                else{
-                    $icamember="لا";
-                }
-                if($download->ADEK_school==1){
-                $adek="نعم";
-                }
-                else{
-                    $adek="لا";
-                }
+                
                 ?>
                     <tr>
                         
@@ -139,9 +131,8 @@
                         </td>
                         
                         
-                            <td style="width:30%">{{$icamember}}</td>
+                            <td style="width:30%">{{$download->downloadusertype->name ?? 'All'}}</td>
                        
-                            <td style="width:10%">{{$adek}}</td>
                             <td style="width:30%"><a href="{{asset('uploads/downloads/' . $download->download_file)}}" target="_blank">تحميل</a></td>
                        
                         

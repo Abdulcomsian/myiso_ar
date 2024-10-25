@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\UserType;
 Use Carbon\Carbon;
 
 class UserController extends Controller

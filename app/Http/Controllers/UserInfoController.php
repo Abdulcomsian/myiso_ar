@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AddUsers;
 use App\UserDownload;
+
 use DB;
 use Hash;
 use Illuminate\Http\Request;
@@ -176,10 +177,10 @@ class UserInfoController extends Controller
 
     public function userDownload(){
         //dd(Auth::user()->member_scaiso);
-        $member_scaiso=Auth::user()->member_scaiso;
-        $adek_school=Auth::user()->adek_school;
+        
+        $user_type=Auth::user()->user_type;
         //dd($member_scaiso);
-        $all_downloads  = DB::table('downloads')->where('ICA_member',$member_scaiso)->orwhere('adek_school',$adek_school)->get();
+        $all_downloads  = DB::table('downloads')->where('user_type',$user_type)->get();
         // if($member_scaiso==0){
         //     $all_downloads  = DB::table('downloads')->where('ICA_member',$member_scaiso)->get();
         // }else{

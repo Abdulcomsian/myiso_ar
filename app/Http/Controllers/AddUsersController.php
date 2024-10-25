@@ -25,6 +25,7 @@ use App\User;
 use App\LoginHistoryUser;
 use App\CustomManual;
 use App\UserDownload;
+use App\Download;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -54,11 +55,11 @@ class AddUsersController extends Controller
            // Example logic based on the value of 'showusers'
            if ($showUsers == '1') {
                // Fetch SCAISO Users
-               $users = AddUsers::where('role_type', 'user')->where('member_scaiso', '1')->orderBy('id', 'desc')->get();
-           } 
+               $users = AddUsers::where('role_type', 'user')->where('user_type', '1')->orderBy('id', 'desc')->get();
+            } 
            elseif ($showUsers == '2') {
             // Fetch SCAISO Users
-            $users = AddUsers::where('role_type', 'user')->where('adek_school', '1')->orderBy('id', 'desc')->get();
+            $users = AddUsers::where('role_type', 'user')->where('user_type', '2')->orderBy('id', 'desc')->get();
         }
            else {
                // Fetch All Users
@@ -444,8 +445,7 @@ public function store(Request $request)
             $current = Carbon::now();
             $expiry = $current->addYears(3);
             $addusers->expiry_date = $expiry;
-            $addusers->member_scaiso = $scaiso;
-            $addusers->adek_school = $adekschool;
+            $addusers->user_type = $request->input('user_type');
 
             $addusers->save();
             return redirect('/add_user')->with("Success", "تمت إضافة المستخدم بنجاح.");
@@ -623,7 +623,19 @@ public function store(Request $request)
             return view('admin.dashboard.admin.send_message',compact('users','adminmessage'));
         }
     }
-
+    public function fetchUsers(Request $request){
+        if($request->id == 1 || $request->id == 2){
+            $users=AddUsers::where('role_type','user')->where('user_type', $request->id)->get();
+        }else{
+            $users=AddUsers::where('role_type','user')->get();
+        }
+        if(isset($users)){
+            $html = view('components.users_dropdown', ['users' => $users])->render();
+            return response()->json(['success' => true, "html" => $html], 200);
+        }else{
+            return response()->json(['success' => false, "msg" => "Some error occurred"], 400);
+        }
+    }
 // function used to show sent notification on Admin Panel
     public function sentNotification(){
         $user_id = Auth::user()->id;
@@ -1858,7 +1870,7 @@ public function store(Request $request)
     }
       
     public function manage_downloads(){
-        $all_downloads  = DB::table('downloads')->get();
+        $all_downloads  = Download::get();
 		return view('admin.dashboard.admin.view_downloads', compact('all_downloads'));
     }
     
@@ -1875,24 +1887,12 @@ public function store(Request $request)
             // Move the file to the upload Folder
             $file = $file->move($path, $fileName);
         }
-     if($request['ica_member']=='1'){
-        $icamember=1;
-     }
-     else{
-        $icamember=0;
-     }
-     if($request['adekschool']=='1'){
-        $adekschool=1;
-     }
-     else{
-        $adekschool=0;
-     }
+     
        $insert = DB::table('downloads')->insert(
             array(
                 'name' => $request['name'],
                 'des' => $request['description'],
-                'ICA_member' => $icamember,
-                'ADEK_school' => $adekschool,
+                'user_type' => $request['user_type'],
                 'download_file' => $fileName
             )
         );

@@ -25,7 +25,7 @@
 
 		<div class="kt-portlet__body" style="width: 100%">
             <!--begin: Video -->
-            <table style="width: 100%" class="table table-striped- table-bordered table-hover table-sm table-checkable table-responsive" id="">
+            <table style="width: 100%" class="able table-striped- table-bordered table-hover table-sm table-checkable table-responsive" id="">
 
                 <thead>
 
