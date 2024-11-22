@@ -152,7 +152,46 @@ class AddUsersController extends Controller
         
         return $list;
     }
+    public function userDownloadHistory(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $users = User::with('userDownload', 'userDownload.downloads')->where('id', $user_id)->first();
+       // $loginHistory = LoginHistoryUser::where('user_id', $user_id)->orderBy('id', 'desc')->get();   
+        
+        $list = '<table class="table" width="100%">
+        <thead>
+            <tr>
+                <th>بطاقة تعريف</th>
+                <th>اسم</th>
+                 <th>وصف</th>
+                <th>الملف الذي تم تنزيله</th>
+                <th>تاريخ</th>
+            </tr>
+        </thead>
+        <tbody>';
+        
+        $i = 1;
+        if(isset($users->userDownload)){
+            foreach ($users->userDownload as $ud)
+            {
+                $list .= '<tr>';
+                $list .= '<td style="text-align: center;">' . $i . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;"><h5>' . $ud->downloads->name ?? ''  . '</h5></td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . $ud->downloads->des ?? ''  . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;"><a class="btn-fetch-data" href="'.asset('uploads/downloads/'. $ud->downloads->download_file).'" data-id="'.$ud->downloads->id.'" target="_blank"> Download ' . $ud->downloads->name ?? '' . '</a></td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . $ud->dated ?? '' . '</td>';
+                $list .= '</tr>';
+                $i++;
+            }
+        }   
+        
+        
+        $list .= '</tbody>
+        </table>';
+        
+        return $list;
 
+    }
     public function userEmailDetails(Request $request){
         $itemID = $request->input('user_id');
         // dd($itemID);
