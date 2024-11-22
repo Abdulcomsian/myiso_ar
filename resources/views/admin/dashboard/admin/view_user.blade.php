@@ -361,7 +361,7 @@
 
                                 <td>
                                     {{-- eye view option hide in Action column in admin --}}
-                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Download History" value=""
+                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="تحميل التاريخ" value=""
                                 onclick="get_downloads({{$item->id}});">
                                 <i class="fa fa-download"></i>
                                 </button>

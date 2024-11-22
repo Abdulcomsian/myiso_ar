@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="managemnet_review_from_div">
-                            <form action="{{ route('mgtreview') }}" method="POST">
+                            <form action="{{ route('mgtreview') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <!-- <div class="col-lg-6">
@@ -163,7 +163,14 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="row">
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label>الملف المرفق (PDF, jpeg, txt, .docx, doc, png):</label>
+                                            <input name="attach_file" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf,.jpeg,.png">
+										</div>
+									</div>
+								</div>
                                 <button type="submit" class="submitBtn">يُقدِّم</button>
                                 <button type="reset" onclick="mngmnt_reviews()" class="submitBtn"
                                     style="margin-right:12px;">يلغي</button>
@@ -431,13 +438,22 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>الملف المرفق (PDF, jpeg, txt, .docx, doc, png):</label>
+                                    <div class="file_attachemnt_div">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
 
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
 
                 </div>
+                
                 </form>
             </div>
         </div>
@@ -453,7 +469,7 @@
                     </a>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('mgtreviewupdate') }}" method="POST">
+                    <form action="{{ route('mgtreviewupdate') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
@@ -578,7 +594,14 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>الملف المرفق (PDF, jpeg, txt, .docx, doc, png):</label>
+                                    <input name="attach_file" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf,.jpeg,.png">
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
 
@@ -639,7 +662,11 @@
         $("input[name='1reviewdate']").val(data.reviewdate);
         $("input[name='1sammarisecustomr']").val(data.sammarisecustomr);
         console.log("modal here");
-
+        if(data.attach_file){
+			$('.file_attachemnt_div').empty().append(`<a target="_blank" href="${data.attach_file}">Click to View</a>`);
+		}else{
+			$('.file_attachemnt_div').empty().append('No data found');
+		}
         $("#DetailModal").modal('show');
     }
 
