@@ -36,16 +36,13 @@
 											<input type="number" class="form-control" required  name="systemid">
 										</div>
                     				</div> --}}
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>اللقب:</label><br>
                                             <input type="text" class="form-control" name="surname" required
                                                 placeholder="أدخل اللقب" data-type="add">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>الاسم الأول:</label>
@@ -53,7 +50,17 @@
                                                 placeholder="أدخل الاسم الأول">
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>بريد إلكتروني:</label>
+                                            <input type="email" class="form-control" name="email" required placeholder="أدخل البريد الإلكتروني">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        
                                         <div class="form-group add-emp-number-div">
                                             <label> رقم تعريف الموظف:</label>
                                             <input name="empNumber" type="text" class="form-control" required
@@ -213,6 +220,7 @@
                                             <!--<th>Employee Number</th>-->
                                             <th style="width:200px;">تاريخ البدء </th>
                                             <th style="width:240px;">الوصف الوظيفي</th>
+                                            <th style="width:240px;">بريد إلكتروني</th>
                                             <th style="width:120px;">السيرة الذاتية</th>
                                             <th style="width:150px;">النشاط</th>
                                         </tr>
@@ -229,6 +237,7 @@
 
                                                 <td> {{ date('d/m/Y', strtotime($item->startDate)) }}</td>
                                                 <td> {{ $item->jobdetails }}</td>
+                                                <td> {{ $item->email }}</td>
                                                 <td>
 
                                                     @if (!empty($item->cv))
@@ -723,6 +732,51 @@
                                                 </td>
 
                                             </tr>
+                                        @endforeach
+
+                                        @foreach ($wp_users as $wpuser)
+										@foreach($wpuser as $user)
+										@php
+											$uid= '"user_id";i:'.$user->ID.';';
+           									$options = App\CertificateOption::where('option_name', 'LIKE', "%user_cert_%")->Where('option_value', 'LIKE', "%".$uid."%")->get();
+											$finshedcourses = App\CertificateUserItems::Where('user_id', $user->ID)->where('status','finished')->get();
+
+											//print_r($options);
+											if(count($finshedcourses)>0)
+											{   
+												foreach ($finshedcourses as $key => $finshedcourse) {
+													$courses = App\CertificateCourse::where('ID',$finshedcourse->item_id)->get();
+													foreach ($courses as $key => $course) {
+														$usercourses[]= $course->post_title;
+														$postDate[]=$course->post_date;
+													}
+												   
+													$startdate=$finshedcourse->start_time;
+													$endate=$finshedcourse->end_time;
+												}
+												$laravel_employee_detail = App\Employee::where('email', $user->user_email)->first();
+										@endphp
+										@foreach($usercourses as $key => $usercourse)
+
+                                        <tr>
+											<td>{{$laravel_employee_detail->empNumber}}</td>
+                                            <td> {{$laravel_employee_detail->surname}}</td>
+											<td> {{$laravel_employee_detail->first_name}}</td>
+											<td>{{$startdate}}</td>
+											<td>{{$endate}}</td>
+											<td>
+												
+												   <li>
+													{{ $usercourse}}
+													</li>
+												
+											</td>
+											
+											<td> </td>
+                                        </tr>
+										@endforeach
+										@php } @endphp 
+										@endforeach
                                         @endforeach
                                     </tbody>
                                 </table>

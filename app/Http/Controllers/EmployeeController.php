@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Certificate;
+use App\CertificateOption;
+use Notification;
+use App\Notifications\NotifyEmployee;
 
 class EmployeeController extends Controller
 {
@@ -44,7 +48,14 @@ class EmployeeController extends Controller
         $emptraining=Employee::join('tbl_employees_traning','tbl_employees_traning.empid','=','tbl_employees.id')
             ->where('tbl_employees.user_id',$userid)->orderBy('tbl_employees_traning.created_at','DESC')->get();
 
-        return view('dashboard.form_records.employess',compact('userinfo','employess','emptraining'));
+            $users = Employee::where('user_id',$userid)->orderBy('id','DESC')->get();
+            //dd($users);
+            $wp_users = [];
+            foreach($users as $user){
+               $wp_users[] = Certificate::where('user_email', $user->email)->get();
+            }
+       
+            return view('dashboard.form_records.employess',compact('userinfo','employess','emptraining', 'wp_users'));
 
     }
     public function empSkills(Request $request){
@@ -155,6 +166,7 @@ class EmployeeController extends Controller
         $employee->systemid=123;
         $employee->surname=$request->input('surname');
         $employee->first_name=$request->input('first_name');
+        $employee->email=$request->input('email');
         $employee->empNumber=$request->input('empNumber');
         $employee->startDate=$request->input('startDate');
         $employee->jobdetails=$request->input('jobdetails');
@@ -166,6 +178,8 @@ class EmployeeController extends Controller
         }
 
         $employee->save();
+        $empName = $request->surname . ' ' . $request->first_name;
+        Notification::route("mail", $request->email)->notify(new NotifyEmployee($empName));
         return back();
     }
 

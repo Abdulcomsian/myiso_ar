@@ -652,6 +652,44 @@
 
                                         </tr>
                                         @endforeach
+										@foreach ($wp_users as $wpuser)
+											@foreach($wpuser as $user)
+											@php
+												$uid= '"user_id";i:'.$user->ID.';';
+												   $options = App\CertificateOption::where('option_name', 'LIKE', "%user_cert_%")->Where('option_value', 'LIKE', "%".$uid."%")->get();
+												//print_r($options);
+												if(count($options)>0)
+												{   
+													foreach ($options as $key => $option) {
+														$serializedata = $option->option_value;
+														$unserializedata = unserialize($serializedata);
+														$courses = App\CertificateCourse::where('ID',$unserializedata['course_id'])->get();
+													   foreach ($courses as $key => $course) {
+														$usercourses[]= $course->post_title;
+														$postDate[]=$course->post_date;
+													   }		
+														
+													}
+													$laravel_employee_detail = App\Employee::where('email', $user->user_email)->first();
+											@endphp
+											@foreach($usercourses as $key => $usercourse)
+											<tr>
+												<td>{{$laravel_employee_detail->empNumber}}</td>
+												<td> {{$laravel_employee_detail->surname}}</td>
+												<td> {{$laravel_employee_detail->first_name}}</td>
+												<td>{{$postDate[$key]}}</td>
+												<td></td>
+												<td>
+													   <li>
+														{{ $usercourse}}
+														</li>
+												</td>
+												<td> </td>
+											</tr>
+											@endforeach
+											@php } @endphp 
+											@endforeach
+											@endforeach
                                     </tbody>
 								</table>
 								<!--end: Datatable -->
