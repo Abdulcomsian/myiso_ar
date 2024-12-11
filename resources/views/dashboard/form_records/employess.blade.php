@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="employee_record_from_div">
-                            <form action=" {{ route('empTraining') }} " method="POST">
+                            <form action=" {{ route('empTraining') }} " method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -187,10 +187,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تفاصيل التدريب:</label><br>
                                             <input type="text" class="form-control" required name="traningdetails">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>تحميل شهادة التدريب (PDF, jpeg,  png):</label>
+                                            <input name="attach_file" type="file" class="form-control" accept="image/*,.pdf,.jpeg,.png">
                                         </div>
                                     </div>
                                 </div>
@@ -721,6 +727,16 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                @if ($item->attach_cert)
+																<div class="row">
+																	<div class="col-lg-12">
+																		<div class="form-group edit-emp-number-div">
+																			<label>شهادة التدريب</label><br>
+																			<a href="{{$item->attach_cert}}" target="_blank">انقر للعرض</a>
+																		</div>
+																	</div>
+																</div>
+																@endif	
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
