@@ -232,6 +232,7 @@ Route::group(['middleware' => ['auth','admin']], function ()
      Route::post('/add_download', 'AddUsersController@add_download');
      Route::post('/download_delete/{id}', 'AddUsersController@download_delete');
      Route::get('/view_users_downloads', 'AddUsersController@viewUsersDownloads');
+     Route::get('/downloads/filter', 'AddUsersController@filter')->name('downloads.filter');
 
 
 });
@@ -374,6 +375,7 @@ Route::group(['middleware' => ['auth']], function ()
         Route::post('/get_admin_inbox_count', 'UserMsgController@get_admin_inbox_count')->name('get_admin_inbox_count');
     //for users downloads
     Route::get('/userDownload', 'UserInfoController@userDownload')->name("user.download");
+    Route::get('/downloads/userfilter', 'UserInfoController@userfilter')->name('downloads.userfilter');
     Route::post('/get-data', 'UserInfoController@getDownloadUser')->name("user.get-data");
     Route::get('/viewDownload', 'UserInfoController@viewDownload')->name("user.viewdownload");
     //Check if empolyee already exist for current user by assad yaqoob 6 july 2022

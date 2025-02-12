@@ -47,14 +47,31 @@
 
                     <form action="{{ url('/add_download') }}" method="POST" enctype="multipart/form-data">
                                  @csrf 
+                                  <div class="form-group">
+                                    <label>فئة</label><br>
+
+                                    <select name="category" required="" class="form-control">
+                                        <option value="" selected="selected" disabled="disabled">Select Category</option>
+                                        <option value="Emergency Signs" title="Emergency Signs">Emergency Signs</option>
+                                        <option value="Prohibition Signs" title="Prohibition Signs">Prohibition Signs</option>
+                                        <option value="Environmental signs" title="Environmental signs">Environmental signs</option>
+                                        <option value="Mandatory Signs" title="Mandatory Signs">Mandatory Signs</option>
+                                        <option value="Warning Signs" title="Warning Signs">Warning Signs</option>
+                                    </select>
+
+                                </div>
 								<div class="form-group">
-									<label for="title">اسم:</label>
+									<label for="title">اسم</label>
 									<input type="text" id="name" name="name" class="form-control" placeholder="Name:" required="required"/>
 								</div>
                                 <div class="form-group">
+                                    <label for="message">تحميل الصورة المصغرة</label>
+                                    <input type="file" name="thumbnail" class="form-control" id="thumbnail" accept=".mp4,.avi, .png, .jpg" required="required">
+                                </div>
+                                {{-- <div class="form-group">
                                     <label for="message">وصف:</label>
                                     <textarea name="description" id="summernote"></textarea>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
 									
                                     <select name="user_type" id="showusers">
@@ -68,8 +85,12 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="video">تنزيل الملف</label>
+											<label for="video">تحميل A4</label>
 									<input type="file" name="file" class="form-control" id="file" accept=".mp4,.avi" required="required">
+										</div>
+                                        <div class="form-group">
+                                            <label for="video">تحميل A5</label>
+                                            <input type="file" name="file2" class="form-control" id="file2" accept=".mp4,.avi, .png, .jpg" required="required">
 										</div>
 									</div>
 									<div class="col-lg-12">
@@ -89,95 +110,80 @@
             </div>
         </div>
 
-        <div class="kt-portlet__body">
-            <!--begin: Video -->
-            <table class="table table-striped- table-bordered table-hover table-sm table-checkable table-responsive" id="kt_table_user">
-
-                <thead>
-
-                    <tr>
-
-                        <th style="text-align:center">رقم س.</th>
-
-                        <th>اسم</th>
-                        <th>المستخدمين</th>
-                       
-                        <th>تنزيل الملف</th>
-
-                        
-
-                        <th>الإجراءات</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-				<?php $count=0;?>
-				@foreach($all_downloads as $download)
-				<?php $count++; 
-                
-                ?>
-                    <tr>
-                        
-                        <td style="text-align:center; width:20%">{{$count}}</td>
-                        
-                        
-                        <td style="width:30%">
-                            {!!$download->des!!} 
-                            <br>
-                            {{$download->name}}
-
-                        </td>
-                        
-                        
-                            <td style="width:30%">{{$download->downloadusertype->name ?? 'All'}}</td>
-                       
-                            <td style="width:30%"><a href="{{asset('uploads/downloads/' . $download->download_file)}}" target="_blank">تحميل</a></td>
-                       
-                        
-
-                        <td>
-
-                           
-							
-							<a href="javascript:;" data-toggle="modal" data-target="#delete-{{$download->id}}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">	<span class="svg-icon svg-icon-md">									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1">										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">											<rect x="0" y="0" width="24" height="24"></rect>											<path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#5d78ff" fill-rule="nonzero"></path>											<path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#5d78ff" opacity="0.3"></path>										</g>									</svg>								</span>
-															 </a>
-<div class="modal fade" id="delete-{{$download->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">حذف التنزيل</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				</button>
-			</div>
-			<div class="modal-body">
-				<p>هل أنت متأكد؟ هل تريد حقا حذف هذا؟</p>
-			</div>
-			<div class="modal-footer">
-				<form action="{{url('/download_delete/'.$download->id)}}" method="POST">
-				@csrf
-				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
-				<button type="submit" class="btn btn-danger">نعم</button>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>									 
-
-
-                        </td>
-
-                    </tr>
-				@endforeach	
-                </tbody>
-            </table>
-            <!--end: Video -->
-
-
+   <!-- Category Dropdown -->
+   <div class="row">
+    <div class="col-md-6">
+        <div class="form-group" style="margin-left: 2em">
+            <label>:فئة</label><br>
+            <select id="category-select" name="category" required class="form-control">
+                {{-- <option value="" selected disabled>Select Category</option> --}}
+                <option value="Emergency Signs" selected>Emergency Signs</option>
+                <option value="Prohibition Signs">Prohibition Signs</option>
+                <option value="Environmental signs">Environmental signs</option>
+                <option value="Mandatory Signs">Mandatory Signs</option>
+                <option value="Warning Signs">Warning Signs</option>
+            </select>
         </div>
     </div>
+</div>
+
+<!-- Default Downloads -->
+<div id="default-downloads" style="width: 100%;">
+    @foreach($all_downloads as $download)
+  
+        <div style="display: flex; margin-left: 2em; margin-right: 2em; background:#f0f4fd; gap:80px; margin-bottom:20px; padding:30px 20px; align-items:center; border-radius:12px; ">
+            <div style="display:flex; align-items:center; gap:40px"> 
+                @if ($download->thumb_nail)
+                <div>
+                    <img src="{{ asset('uploads/downloads/' . $download->thumb_nail) }}" width="110" height="156">
+                </div>
+               
+                @endif
+                <div style="color:#084f95; font-size: 18px; font-weight:600; text-align:left;width:170px;">{{ $download->name }}</div>
+            </div>
+            
+         <div style="display: flex; gap:20px;justify-content:space-between;">
+            <div style="display: flex; flex-direction: column;gap:5px;">
+                @if ($download->download_file)
+                <a href="{{ asset('uploads/downloads/' . $download->download_file) }}" target="_blank"><img src="assets/img/a4-btn-ar.png"  style="width: 80%"></a><br>
+                @endif
+                @if ($download->download_file2)
+                <a href="{{ asset('uploads/downloads/' . $download->download_file2) }}" target="_blank"><img src="assets/img/a5-btn-ar.png"  style="width: 80%"></a><br>
+                @endif
+            </div>
+            <div>
+                <a href="javascript:;" data-toggle="modal" data-target="#delete-{{ $download->id }}" title="Delete"><img src="assets/img/delete-ar.png"  style="width: 80%"></a><br>
+            </div>
+            <div class="modal fade" id="delete-{{$download->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">حذف السجل</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>هل أنت متأكد؟ هل تريد حقًا حذف هذا؟</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{url('/download_delete/'.$download->id)}}" method="POST">
+                            @csrf
+                            
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                            <button type="submit" class="btn btn-danger">نعم</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+         </div>
+        </div>
+    @endforeach
+</div>
+
+<!-- Filtered Downloads -->
+<div id="filtered-downloads" style="display: none;">
+    <!-- This will be updated dynamically -->
 </div>
 <script>
     $(document).ready(function() {
@@ -198,4 +204,28 @@
       });
     });
   </script>
+  <script>
+    $(document).ready(function() {
+        $('#category-select').change(function() {
+            let category = $(this).val();
+
+            // Make an AJAX request to filter downloads
+            $.ajax({
+                url: "{{ route('downloads.filter') }}", // Define this route in web.php
+                type: "GET",
+                data: { category: category },
+                success: function(response) {
+                    // Hide the default downloads   
+                    $('#default-downloads').hide();
+
+                    // Display the filtered downloads
+                    $('#filtered-downloads').html(response).show();
+                },
+                error: function() {
+                    alert('Error loading downloads. Please try again.');
+                }
+            });
+        });
+    });
+</script>
 @endsection

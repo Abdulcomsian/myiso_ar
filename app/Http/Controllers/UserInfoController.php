@@ -180,7 +180,7 @@ class UserInfoController extends Controller
         
         $user_type=Auth::user()->user_type;
         //dd($member_scaiso);
-        $all_downloads  = DB::table('downloads')->where('user_type',$user_type)->get();
+        $all_downloads  = DB::table('downloads')->where('user_type',$user_type)->where('category', 'Emergency Signs')->get();
         // if($member_scaiso==0){
         //     $all_downloads  = DB::table('downloads')->where('ICA_member',$member_scaiso)->get();
         // }else{
@@ -227,6 +227,14 @@ class UserInfoController extends Controller
         //dd($view_downloads);
 		return view('dashboard.view-userdownload', compact('view_downloads'));
     }
-    
+    public function userfilter(Request $request)
+    {
+        $user_type=Auth::user()->user_type;
+        $category = $request->category;
+        $downloads = DB::table('downloads')->where('category', $category)->where('user_type',$user_type)->get();
+
+    // Return the filtered data as a view partial
+    return view('dashboard.category-download', compact('downloads'));
+    }
 
 }
