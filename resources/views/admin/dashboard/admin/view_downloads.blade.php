@@ -51,12 +51,12 @@
                                     <label>فئة</label><br>
 
                                     <select name="category" required="" class="form-control">
-                                        <option value="" selected="selected" disabled="disabled">Select Category</option>
-                                        <option value="Emergency Signs" title="Emergency Signs">Emergency Signs</option>
-                                        <option value="Prohibition Signs" title="Prohibition Signs">Prohibition Signs</option>
-                                        <option value="Environmental signs" title="Environmental signs">Environmental signs</option>
-                                        <option value="Mandatory Signs" title="Mandatory Signs">Mandatory Signs</option>
-                                        <option value="Warning Signs" title="Warning Signs">Warning Signs</option>
+                                        <option value="" selected="selected" disabled="disabled">حدد علامات</option>
+                                        <option value="Emergency Signs" title="Emergency Signs">افتات الطوارئ</option>
+                                        <option value="Prohibition Signs" title="Prohibition Signs">افتات المنع</option>
+                                        <option value="Environmental signs" title="Environmental signs">اللافتات البيئية</option>
+                                        <option value="Mandatory Signs" title="Mandatory Signs">اللافتات الإلزامية</option>
+                                        <option value="Warning Signs" title="Warning Signs">اللافتات التحذيرية</option>
                                     </select>
 
                                 </div>
@@ -117,11 +117,11 @@
             <label>:فئة</label><br>
             <select id="category-select" name="category" required class="form-control">
                 {{-- <option value="" selected disabled>Select Category</option> --}}
-                <option value="Emergency Signs" selected>Emergency Signs</option>
-                <option value="Prohibition Signs">Prohibition Signs</option>
-                <option value="Environmental signs">Environmental signs</option>
-                <option value="Mandatory Signs">Mandatory Signs</option>
-                <option value="Warning Signs">Warning Signs</option>
+                <option value="Emergency Signs" title="Emergency Signs">افتات الطوارئ</option>
+                <option value="Prohibition Signs" title="Prohibition Signs">افتات المنع</option>
+                <option value="Environmental signs" title="Environmental signs">اللافتات البيئية</option>
+                <option value="Mandatory Signs" title="Mandatory Signs">اللافتات الإلزامية</option>
+                <option value="Warning Signs" title="Warning Signs">اللافتات التحذيرية</option>
             </select>
         </div>
     </div>
