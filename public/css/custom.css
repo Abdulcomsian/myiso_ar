@@ -567,3 +567,24 @@ display:block !important;
 }
 
 
+
+
+.kt-header .kt-header__topbar .kt-header__topbar-item.kt-header__topbar-item--user .kt-header__topbar-user .kt-header__topbar-welcome {
+  color: #000;
+  font-size: 22px; margin-left:20px;
+}
+
+
+.kt-header .kt-header__topbar .kt-header__topbar-item.kt-header__topbar-item--user .kt-header__topbar-user .kt-header__topbar-username {
+  color: #000;
+  text-transform: capitalize;
+  font-size: 22px;
+}
+
+
+
+.btn.btn-clean {
+  border: 0;
+  background: transparent;
+  color: #93a2dd;  font-size: 22px;
+}
