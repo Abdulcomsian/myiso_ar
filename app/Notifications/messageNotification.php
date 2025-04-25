@@ -42,7 +42,7 @@ class messageNotification extends Notification
     {
         return (new MailMessage)
                     ->line('You have received message from '. $this->senderName)
-                    ->action('Login to MyIsoOnline', url('https://myisoonline.com/admin'))
+                    ->action('Login to MyISOArabia', url('https://myisoonline.com/admin'))
                     ->line('Thank you!');
     }
 

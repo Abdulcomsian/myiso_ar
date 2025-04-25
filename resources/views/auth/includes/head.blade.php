@@ -1,9 +1,9 @@
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>My ISO Online | Login</title>
+		<title>My ISO Arabia | Login</title>
 		<meta name="csrf-token" content="{!! csrf_token() !!}">
-		<meta name="description" content="MyISOOnline is the documentation platform for ISO Certified businesses to maintain and manage their ISO documentation system.">
+		<meta name="description" content="MyISOArabia is the documentation platform for ISO Certified businesses to maintain and manage their ISO documentation system."
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!--begin::Fonts -->

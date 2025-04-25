@@ -21631,7 +21631,7 @@ code {
 
 .kt-widget17 .kt-widget17__stats .kt-widget17__items .kt-widget17__item {
     padding: 2rem;
-    -webkit-box-flex: 1;
+    -webkit-box-flex: 1; color: #054403;
     -ms-flex: 1;
     flex: 1;
     overflow: hidden;
@@ -41134,3 +41134,11 @@ body {
         margin-left: 0;
     }
 }
+
+
+.kt-widget17 .kt-widget17__visual .kt-widget17__chart {
+  position: relative;
+  padding-top: 8rem;
+  background: #217439;
+}
+

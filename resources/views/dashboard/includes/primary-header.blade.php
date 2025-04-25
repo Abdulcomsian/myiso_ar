@@ -35,7 +35,7 @@
                              <li
                                  class="kt-menu__item  kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open kt-menu__item--here kt-menu__item--active">
                                  <a href="{{ url('/home') }}" class="kt-menu__link"><span class="kt-menu__link-text">My
-                                         ISO Online</span></a>
+                                         ISO Arabia</span></a>
                                  <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
 
                                  </div>

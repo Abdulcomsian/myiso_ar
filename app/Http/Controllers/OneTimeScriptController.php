@@ -32,7 +32,7 @@ class OneTimeScriptController extends Controller
     *
     * @author assad yaqoob
     * @date June 2022
-    * @reference MyISOOnline Stage 3 Features - point 15
+    * @reference MyISOArabia Stage 3 Features - point 15
     * @return dd() string message
     */
     public function addCvColumnToEmployeesTable(){
@@ -49,7 +49,7 @@ class OneTimeScriptController extends Controller
      *
      * @author assad yaqoob
      * @date June 2022
-     * @reference MyISOOnline Stage 3 Features - point 15
+     * @reference MyISOArabia Stage 3 Features - point 15
      * @return dd() string message
      */
     public function addAttachEvidenceColumnToAuditTable(){
@@ -66,7 +66,7 @@ class OneTimeScriptController extends Controller
      * @description addAttEviAndIssuesColToQmsAuditTbl => addAttachEvidenceAndAnyIssuesColumnToQmsAuditTable
      * @author assad yaqoob
      * @date June 2022
-     * @reference MyISOOnline Stage 3 Features - QMS audit page attachement evidence and any issues column fields
+     * @reference MyISOArabia Stage 3 Features - QMS audit page attachement evidence and any issues column fields
      * @return dd() string message
      */
     public function addAttEviAndIssuesColToQmsAuditTbl(){
