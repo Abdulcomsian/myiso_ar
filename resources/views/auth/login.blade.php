@@ -276,7 +276,52 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 								</form>
 							</div>
+							<!-- reCAPTCHA script -->
+							<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.captcha.sitekey') }}"></script>
+
+							<script>
+								grecaptcha.ready(function() {
+									grecaptcha.execute('{{ config('services.captcha.sitekey') }}', {action: 'reset_password'}).then(function(token) {
+										document.getElementById('recaptcha_token').value = token;
+									});
+								});
+							</script>
+
 							<div class="kt-login__forgot">
+								<div class="kt-login__head">
+									<h3 class="kt-login__title">هل نسيت كلمة المرور؟</h3>
+									<div class="kt-login__desc" style="color: #6a6f74;">
+										أدخل عنوان بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.
+									</div>
+								</div>
+
+								<!-- Arabic Reset Password Form -->
+								<form class="kt-form" action="{{ route('password.reset.email') }}" method="POST">
+									@csrf
+
+									<!-- reCAPTCHA token field -->
+									<input type="hidden" name="recaptcha_token" id="recaptcha_token">
+
+									<div class="input-group">
+										<input class="form-control" type="text" placeholder="عنوان البريد الإلكتروني" name="email" id="kt_email" autocomplete="off">
+										@if ($errors->has('recaptcha'))
+										<div class="alert alert-danger">{{ $errors->first('recaptcha') }}</div>
+									@endif
+									</div>
+
+									<div class="kt-login__actions">
+										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>تقديم</button>&nbsp;&nbsp;
+										<button id="kt_login_forgot_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">إلغاء</button>
+									</div>
+								</form>
+
+								<!-- Optional: Display validation errors -->
+								@if ($errors->has('recaptcha'))
+									<div class="alert alert-danger mt-2">{{ $errors->first('recaptcha') }}</div>
+								@endif
+							</div>
+
+							{{-- <div class="kt-login__forgot">
 								<div class="kt-login__head">
 									<h3 class="kt-login__title">هل نسيت كلمة المرور؟</h3>
 									<div class="kt-login__desc" style="color: #6a6f74;
@@ -288,13 +333,11 @@ License: You must have a valid license purchased only from themeforest(the above
 										<input class="form-control" type="text" placeholder="عنوان البريد الإلكتروني" name="email" id="kt_email" autocomplete="off">
 									</div>
 									<div class="kt-login__actions">
-										{{-- <button>g</button> --}}
-{{--										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>تقديم</button>&nbsp;&nbsp;--}}
-										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>تقديم</button>&nbsp;&nbsp;
+											<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary" type='submit'>تقديم</button>&nbsp;&nbsp;
 										<button id="kt_login_forgot_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">إلغاء</button>
 									</div>
 								</form>
-							</div>
+							</div> --}}
 							{{-- <div class="kt-login__account">
 								<span class="kt-login__account-msg">
 									Don't have an account yet ?
