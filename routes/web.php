@@ -136,6 +136,7 @@ Route::group(['middleware' => ['auth','admin']], function ()
     Route::post('/add_user', 'AddUsersController@store')->name('add_user');
     Route::post('/deleteuserd', 'AddUsersController@destroy')->name('deleteuserd');
     Route::post('/updateuserinfo', 'AddUsersController@update')->name('updateuserinfo');
+     Route::post('/addusernote', 'AddUsersController@addUsernote')->name('addusernote');
     Route::get('/send_notifications', 'AddUsersController@send_notifications');
     Route::get('/receive_notifications', 'AddUsersController@receive_notifications');
     Route::get('/send_message', 'AddUsersController@send_message')->name('send.message');
@@ -200,7 +201,12 @@ Route::group(['middleware' => ['auth','admin']], function ()
      Route::post('/userdownloadhistory', 'AddUsersController@userDownloadHistory')->name('userloginhistory');
     // Show Login Histroy of User by Admin
     Route::post('/userloginhistory', 'AddUsersController@userLoginHistory')->name('userloginhistory');
-
+    // Show Notes Histroy of User by Admin
+    Route::post('/usernoteshistory', 'AddUsersController@userNoteshistory')->name('usernoteshistory');
+    
+   Route::put('/updateusernote/{id}', 'AddUsersController@updateUsernote')->name('updateusernote');
+   Route::delete('/deleteusernote/{id}', 'AddUsersController@deleteUsernote')->name('deleteusernote');
+    //Route::post('/deletenote', 'AddUsersController@deleteNote')->name('deletenote');
     // Route for showing the email details of clients who haven`t login for 3, 6 or 10 months 
     Route::post('/user-email-details', 'AddUsersController@userEmailDetails')->name('user.email.details');
 

@@ -25,6 +25,15 @@
         {
             max-width: 750px;
         }
+        
+        button.btn.btn-danger {
+        background: #3758ff;
+        border-color:#3758ff;
+        }
+         #userNote .modal-body {
+            max-height: 400px;
+            overflow-y: auto;
+        }
         </style>
 
     <!-- begin:: Content -->
@@ -365,6 +374,10 @@
                                 onclick="get_downloads({{$item->id}});">
                                 <i class="fa fa-download"></i>
                                 </button>
+                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Notes History" value=""
+                                    onclick="get_notes({{$item->order_number}});">
+                                   <i class="fas fa-info-circle"></i>
+                                  </button>
                                 <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="سجل تسجيل الدخول" value=""
                                 onclick="get_history({{$item->id}});">
                                 <i class="fas fa-sign-in-alt"></i>
@@ -505,6 +518,54 @@
                 </div>
             </div>
         </div>
+    </div>
+  <!-- Modal for Admin Note -->
+     <div class="modal fade" id="userNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ملاحظات المستخدم</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+     <form class="kt-form kt-form--label-right" id="addusernotform" method="POST" action="{{ route('addusernote') }}"  enctype="multipart/form-data">
+    @csrf
+    <input type="hidden" name="editcompanyid" id="editcompanyid" value="">
+    <input type="hidden" name="_method" id="_method" value="POST"> <!-- will update dynamically -->
+    <input type="hidden" id="note_id" name="note_id" value="">
+    <div class="form-group row">
+        <div class="col-lg-12">
+            <label for="add_note">أضف ملاحظة</label>
+          <textarea id="add_note" name="note" rows="4" class="form-control" placeholder="Description Audit Comment"></textarea>
+        </div>
+    </div>
+<div class="form-group row">
+    <div class="col-lg-12">
+        <label for="note_img">ملاحظة الصورة (اختياري)</label>
+        <input type="file" name="note_img" id="note_img" class="form-control" accept="image/*">
+        <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; text-align:center; margin-top:10px;">
+            اسحب وأفلِت الصورة هنا
+        </div>
+    </div>
+</div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
+        <button type="submit" class="btn btn-danger">يُقدِّم</button>
+    </div>
+</form>
+
+                    {{-- <h1>Last Login History <span id="userName"></span></h1> --}}
+                    <div id="notesHistoryTable"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
 
@@ -1586,6 +1647,7 @@
                 },
             });
         }
+        
         function get_history(id) 
         {
             $.ajax({
@@ -1629,7 +1691,36 @@
                 },
             });
         }
+     function get_notes(id) 
+        {
+            document.getElementById("editcompanyid").value = id;
+                    $.ajax({
+                        type: "post",
+                        url: "{{ url('/usernoteshistory') }}",
+                        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                        data: {
+                            user_id: id,
+                            _token: $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (response) 
+                        {
+                            // $('#userName').text(id);
+                            $('#notesHistoryTable').html(response);
 
+                            // $('#notesHistoryTable table').DataTable({
+                            //     paging: false,
+                            //     // pageLength: 10,
+                            //     lengthChange: false, // Hides "Show entries"
+                            //     searching: false      // Hides search box
+                            // });
+                            
+                            $('#userNote').modal('show');
+                           
+                        },
+                    });
+        }
+        
+        
         function userEmailDetail(id){
                 $.ajax({
                     type: "post",
@@ -2061,6 +2152,94 @@
 
                 });
             </script>
+        <script>
+// JavaScript/jQuery to handle edit and delete actions
+
+$('#addusernotform').submit(function(e) {
+    e.preventDefault();
+
+    let formData = new FormData(this);
+    formData.append('company_id', $('#editcompanyid').val());
+    formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+    const noteId = $('#note_id').val();
+    const isEdit = noteId !== '';
+
+    // If editing, override the URL and method
+    let actionUrl = isEdit ? `/updateusernote/${noteId}` : $(this).attr('action');
+
+    $.ajax({
+        type: 'POST',
+        url: actionUrl,
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            if (response.success) {
+                $('#add_note').val('');
+                $('#note_img').val('');
+                $('#note_id').val('');
+                $('#_method').val('POST');
+                $('#addusernotform').attr('action', '{{ route("addusernote") }}');
+                get_notes($('#editcompanyid').val());
+            }
+        },
+        error: function(xhr) {
+            alert('Error: ' + xhr.responseText);
+        }
+    });
+});
+
+
+
+function editNote(noteId, noteText) {
+    $('#add_note').val(noteText);
+    $('#note_id').val(noteId);
+    $('#_method').val('PUT');
+    $('#addusernotform').attr('action', '/updateusernote/' + noteId);
+    $('#userNote').modal('show');
+}
+
+function deleteNote(id) {
+    if (confirm('Are you sure you want to delete this note?')) {
+        $.ajax({
+            url: '/deleteusernote/' + id,
+            type: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                if (response.success) {
+                    $('#note-row-' + id).remove();
+                } else {
+                    alert('Error deleting note.');
+                }
+            }
+        });
+    }
+}
+
+$('#drop-area').on('dragover', function(e) {
+    e.preventDefault();
+    $(this).css('background', '#eee');
+});
+
+$('#drop-area').on('dragleave', function(e) {
+    e.preventDefault();
+    $(this).css('background', '');
+});
+
+$('#drop-area').on('drop', function(e) {
+    e.preventDefault();
+    $(this).css('background', '');
+    let files = e.originalEvent.dataTransfer.files;
+    if (files.length > 0) {
+        $('#note_img')[0].files = files;
+    }
+});
+
+</script>
+    
         @endsection
         <script>
 

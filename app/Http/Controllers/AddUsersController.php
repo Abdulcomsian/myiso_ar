@@ -26,6 +26,7 @@ use App\LoginHistoryUser;
 use App\CustomManual;
 use App\Certificate;
 use App\UserDownload;
+use App\UserNotesHistory;
 use App\Download;
 use Carbon\Carbon;
 use Exception;
@@ -153,6 +154,53 @@ class AddUsersController extends Controller
         
         return $list;
     }
+     public function userNoteshistory(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        
+        $notesHistory = UserNotesHistory::where('company_id', $user_id)->orderBy('id', 'desc')->get();
+        //dd($notesHistory);
+        
+        $list = '<table class="table">
+            <thead>
+                <tr>
+                    <th>ملحوظة</th>
+                    <th></th>
+                    
+                    <th>التاريخ والوقت</th>
+                    <th colspan="2">فعل</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+        $i = 1;
+
+        foreach ($notesHistory as $nhistory) {
+            $list .= '<tr id="note-row-' . $nhistory->id . '">';
+            $list .= '<td style="text-align: center;">' . $i . '</td>';
+        $list .= '<td style="padding:5px 15px; text-align: left;" id="note-text-' . $nhistory->id . '">' .
+                    nl2br($nhistory->note);
+
+        if ($nhistory->note_img) {
+            $list .= '<br><img src="' . asset($nhistory->note_img) . '" alt="صورة الملاحظة" style="max-width:250px; margin-top:10px;">';
+        }
+
+        $list .= '</td>';
+            $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($nhistory->dated)) . '</td>';
+            $list .= '<td style="text-align: center;">
+                <button onclick="editNote(' . $nhistory->id . ', \'' . addslashes($nhistory->note) . '\')" class="btn btn-sm btn-clean" title="يحرر"><i class="fa fa-edit"></i></button>
+                <button onclick="deleteNote(' . $nhistory->id . ')" class="btn btn-sm btn-clean" title="يمسح"><i class="fa fa-trash"></i></button>
+            </td>';
+            $list .= '</tr>';
+            $i++;
+        }
+
+        $list .= '</tbody>
+        </table>';
+
+        return $list;
+    }
+
     public function userDownloadHistory(Request $request)
     {
         $user_id = $request->input('user_id');
@@ -1069,6 +1117,8 @@ public function store(Request $request)
         return redirect()->back();
         // return redirect("/requiremntCheck/$returnId")->with($notification);
     }
+
+
        //store audit info
     public function storeadminaudit(Request $request)
     {
@@ -1129,7 +1179,65 @@ public function store(Request $request)
             print_r($exc->getMessage());
         }
     }
+ /// to add admin note for user      
 
+public function addUsernote(Request $request)
+{
+    try {
+        $note = new UserNotesHistory;
+        $note->company_id = $request->editcompanyid;
+        $note->note = $request->input('note');
+        $note->dated = now();
+
+        if ($request->hasFile('note_img')) {
+            $file = $request->file('note_img');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/notes'), $filename);
+            $note->note_img = 'uploads/notes/' . $filename;
+        }
+
+        $note->save();
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
+
+
+public function updateUsernote(Request $request, $id)
+{
+    try {
+        $note = UserNotesHistory::findOrFail($id);
+        $note->note = $request->input('note');
+        $note->dated = now(); // or keep the original date
+
+        if ($request->hasFile('note_img')) {
+            $file = $request->file('note_img');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/notes'), $filename);
+            $note->note_img = 'uploads/notes/' . $filename;
+        }
+
+        $note->save();
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
+
+public function deleteUsernote($id)
+{
+    try {
+        $note = UserNotesHistory::findOrFail($id);
+        $note->delete();
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $exc) {
+        return response()->json(['error' => $exc->getMessage()], 500);
+    }
+}
     // function used to display the messages in old Inbox
     public function receive_notifications()
     {
