@@ -182,9 +182,9 @@ class AddUsersController extends Controller
                     nl2br($nhistory->note);
 
         if ($nhistory->note_img) {
-            $list .= '<br><img src="' . asset($nhistory->note_img) . '" alt="صورة الملاحظة" style="max-width:250px; margin-top:10px;">';
-        }
-
+            $filePath = asset('uploads/notes/' . $nhistory->note_img);
+            $list .= '<br><a href="' . $filePath . '" target="_blank">عرض المرفق</a>';
+        } 
         $list .= '</td>';
             $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($nhistory->dated)) . '</td>';
             $list .= '<td style="text-align: center;">
@@ -1189,11 +1189,11 @@ public function addUsernote(Request $request)
         $note->note = $request->input('note');
         $note->dated = now();
 
-        if ($request->hasFile('note_img')) {
-            $file = $request->file('note_img');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/notes'), $filename);
-            $note->note_img = 'uploads/notes/' . $filename;
+        if ($request->hasFile('note_file')) {
+        $file = $request->file('note_file');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('uploads/notes'), $filename);
+        $note->note_img = $filename; // this field now stores all file types
         }
 
         $note->save();
@@ -1204,19 +1204,47 @@ public function addUsernote(Request $request)
     }
 }
 
+
+// public function updateUsernote(Request $request, $id)
+// {
+//     try {
+//         $note = UserNotesHistory::findOrFail($id);
+//         $note->note = $request->input('note');
+//         $note->dated = now(); // or keep the original date
+
+//         if ($request->hasFile('note_img')) {
+//             $file = $request->file('note_img');
+//             $filename = time() . '_' . $file->getClientOriginalName();
+//             $file->move(public_path('uploads/notes'), $filename);
+//             $note->note_img = 'uploads/notes/' . $filename;
+//         }
+
+//         $note->save();
+
+//         return response()->json(['success' => true]);
+//     } catch (\Exception $e) {
+//         return response()->json(['error' => $e->getMessage()], 500);
+//     }
+// }
 
 public function updateUsernote(Request $request, $id)
 {
     try {
         $note = UserNotesHistory::findOrFail($id);
         $note->note = $request->input('note');
-        $note->dated = now(); // or keep the original date
+        $note->dated = now();
 
-        if ($request->hasFile('note_img')) {
-            $file = $request->file('note_img');
+        // Handle new file upload
+        if ($request->hasFile('note_file')) {
+            // Optional: delete old file if it exists
+            if ($note->note_img && file_exists(public_path($note->note_img))) {
+                unlink(public_path($note->note_img));
+            }
+
+            $file = $request->file('note_file');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/notes'), $filename);
-            $note->note_img = 'uploads/notes/' . $filename;
+            $note->note_img =  $filename;
         }
 
         $note->save();
@@ -1226,6 +1254,7 @@ public function updateUsernote(Request $request, $id)
         return response()->json(['error' => $e->getMessage()], 500);
     }
 }
+
 
 public function deleteUsernote($id)
 {

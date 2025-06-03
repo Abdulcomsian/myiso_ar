@@ -543,8 +543,8 @@
     </div>
 <div class="form-group row">
     <div class="col-lg-12">
-        <label for="note_img">ملاحظة الصورة (اختياري)</label>
-        <input type="file" name="note_img" id="note_img" class="form-control" accept="image/*">
+        <label for="note_file">ملاحظة الصورة (اختياري)</label>
+       <input type="file" name="note_file" id="note_file" class="form-control-file" accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx">
         <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; text-align:center; margin-top:10px;">
             اسحب وأفلِت الصورة هنا
         </div>
@@ -2177,7 +2177,7 @@ $('#addusernotform').submit(function(e) {
         success: function(response) {
             if (response.success) {
                 $('#add_note').val('');
-                $('#note_img').val('');
+                $('#note_file').val('');
                 $('#note_id').val('');
                 $('#_method').val('POST');
                 $('#addusernotform').attr('action', '{{ route("addusernote") }}');
@@ -2234,7 +2234,7 @@ $('#drop-area').on('drop', function(e) {
     $(this).css('background', '');
     let files = e.originalEvent.dataTransfer.files;
     if (files.length > 0) {
-        $('#note_img')[0].files = files;
+        $('#note_file')[0].files = files;
     }
 });
 
