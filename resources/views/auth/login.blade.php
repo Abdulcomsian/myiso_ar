@@ -34,9 +34,9 @@
 				@csrf
                     <div class="flex md:justify-between justify-center items-center mb-8 md:gap-9 gap-2">
                         <a href="https://en.myisoarabia.com/" class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500">
-                            <img src="{{asset("assets/img/google.png")}}" alt="" class="max-w-5 h-5 text-dark ">English
+                            <img src="{{asset("https://en.myisoarabia.com/assets/img/google.png")}}" alt="" class="max-w-5 h-5 text-dark ">English
                         </a>
-                        <a  href="javascript:;" lang="ar" dir="rtl" class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300  bg-primary text-white  rounded-md transition-all duration-500 group"><img src="{{asset("assets/img/facebook.png")}}" alt="" class="max-w-5 h-5 text-dark">العربية</a>
+                        <a  href="javascript:;" lang="ar" dir="rtl" class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300  bg-primary text-white  rounded-md transition-all duration-500 group"><img src="{{asset("https://en.myisoarabia.com/assets/img/facebook.png")}}" alt="" class="max-w-5 h-5 text-dark">العربية</a>
                     </div>   
 
                     <div class="mb-4">
@@ -81,12 +81,12 @@
 										<div class="modal-dialog modal-dialog-scrollable">
 											<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">الشروط والأحكام الخاصة بشركة </h5>
+												<h5 class="modal-title" id="exampleModalLabel" style="text-align: right">الشروط والأحكام الخاصة بشركة </h5>
 												<a data-dismiss="modal" aria-label="Close">
 													<i class="fa fa-times" aria-hidden="true"></i>
 												</a>
 											</div>
-											<div class="modal-body">
+											<div class="modal-body" style="text-align: right">
 												<h6><strong>الموافقة على الشروط</strong></h6>
 												<p>تنظم هذه الوثيقة العلاقة بينك وبين موقع "ماي آيزو أونلاين" (MyisoArabia™) الإلكتروني. تملُك شركة  هذا الموقع الإلكتروني وتعمل على تشغيله وإدارته. إن وصولك إلى هذا الموقع واستخدامه، بالإضافة إلى المنتجات والخدمات المقدمة من خلاله (يشار إليها مجتمعة باسم "الخدمات")، تحكمه الشروط والأحكام والإشعارات اللاحقة، والتي يشار إليها باسم ("شروط الخدمة"). من خلال تأكيد موافقتك على "الشروط والأحكام"، أنت تقرّ بأنك تفهم هذه الشروط والأحكام وتوافق على الالتزام بها. وباستخدامك لهذه الخدمات، فإنك توافق بموجب هذا على الالتزام بجميع شروط الخدمة، والتي قد نقوم بمراجعتها وتحديثها بشكل دوري. يُنصح بمراجعة هذه الصفحة والعودة إليها بشكل روتيني للبقاء على اطلاع بأي تعديلات قد أجريناها على شروط الخدمة. يرجى العلم أننا لن نتحمل المسؤولية إذا أصبح هذا الموقع غير متاح في أي وقت ولأي سبب من الأسباب. بالإضافة إلى ذلك، قد تكون هناك حالات عرضية حيث نقوم بتقييد الوصول إلى أقسام معينة أو الموقع بأكمله.</p>
 												<h6><strong> المحظورات</strong></h6>
@@ -115,10 +115,11 @@
 													<p>تشكل شروط الخدمة المذكورة أعلاه الاتفاقية الكاملة بين الطرفين وتلغي أي اتفاقيات سابقة أو متزامنة بينك وبين شركة . ولن يكون أي تنازل عن أي شرط في شروط الخدمة ساريًا إلا إذا كان خطيًا وموقعًا من قبل مدير شركة .</p>
 													<h6><strong> التواصل معنا</strong></h6>
 													<p>إذا كانت لديك أسئلة أو تعليقات حول هذه الشروط والأحكام، يرجى التواصل معنا على العنوان التالي:<br>
-														شركة <br>
-														يو جي 13-5 إيه، مركز المرافق - مناطق رأس الخيمة الاقتصادية (راكز) <br>
-													منطقة الحمرا الصناعية – منطقة حرة ،<br>
-													الإمارات العربية المتحدة
+														شركة ج. م. إنتربرايزس ذ.م.م<br>
+														المكتب 1003، مبنى C34،<br>
+														شارع الرزقي، منطقة الدانة،<br>
+														أبوظبي، الإمارات العربية المتحدة، 22207<br>
+														البريد الإلكتروني: ceo@jmegrp.com
 													<!-- <div class="ml-2">
 															<input class="form-check-input agreeInput" type="checkbox" value="" id="TermConditions">
 															<label class="form-check-label" for="TermConditions">

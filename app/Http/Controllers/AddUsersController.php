@@ -161,14 +161,24 @@ class AddUsersController extends Controller
         $notesHistory = UserNotesHistory::where('company_id', $user_id)->orderBy('id', 'desc')->get();
         //dd($notesHistory);
         
-        $list = '<table class="table">
+        // $list = '<table class="table">
+        //     <thead>
+        //         <tr>
+        //             <th>ملحوظة</th>
+        //             <th></th>
+                    
+        //             <th>التاريخ والوقت</th>
+        //             <th colspan="2">فعل</th>
+        //         </tr>
+        //     </thead>
+        //     <tbody>';
+             $list = '<table class="table">
             <thead>
                 <tr>
                     <th>ملحوظة</th>
                     <th></th>
                     
                     <th>التاريخ والوقت</th>
-                    <th colspan="2">فعل</th>
                 </tr>
             </thead>
             <tbody>';
@@ -187,10 +197,10 @@ class AddUsersController extends Controller
         } 
         $list .= '</td>';
             $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($nhistory->dated)) . '</td>';
-            $list .= '<td style="text-align: center;">
-                <button onclick="editNote(' . $nhistory->id . ', \'' . addslashes($nhistory->note) . '\')" class="btn btn-sm btn-clean" title="يحرر"><i class="fa fa-edit"></i></button>
-                <button onclick="deleteNote(' . $nhistory->id . ')" class="btn btn-sm btn-clean" title="يمسح"><i class="fa fa-trash"></i></button>
-            </td>';
+            // $list .= '<td style="text-align: center;">
+            //     <button onclick="editNote(' . $nhistory->id . ', \'' . addslashes($nhistory->note) . '\')" class="btn btn-sm btn-clean" title="يحرر"><i class="fa fa-edit"></i></button>
+            //     <button onclick="deleteNote(' . $nhistory->id . ')" class="btn btn-sm btn-clean" title="يمسح"><i class="fa fa-trash"></i></button>
+            // </td>';
             $list .= '</tr>';
             $i++;
         }
@@ -1180,7 +1190,6 @@ public function store(Request $request)
         }
     }
  /// to add admin note for user      
-
 public function addUsernote(Request $request)
 {
     try {
@@ -1203,29 +1212,6 @@ public function addUsernote(Request $request)
         return response()->json(['error' => $e->getMessage()], 500);
     }
 }
-
-
-// public function updateUsernote(Request $request, $id)
-// {
-//     try {
-//         $note = UserNotesHistory::findOrFail($id);
-//         $note->note = $request->input('note');
-//         $note->dated = now(); // or keep the original date
-
-//         if ($request->hasFile('note_img')) {
-//             $file = $request->file('note_img');
-//             $filename = time() . '_' . $file->getClientOriginalName();
-//             $file->move(public_path('uploads/notes'), $filename);
-//             $note->note_img = 'uploads/notes/' . $filename;
-//         }
-
-//         $note->save();
-
-//         return response()->json(['success' => true]);
-//     } catch (\Exception $e) {
-//         return response()->json(['error' => $e->getMessage()], 500);
-//     }
-// }
 
 public function updateUsernote(Request $request, $id)
 {
