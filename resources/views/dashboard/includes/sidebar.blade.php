@@ -32,7 +32,7 @@
 	<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 		<div class="kt-aside__brand-logo">
 			<a href="{{ url('/home') }}">
-				<img alt="Logo" src="{{Auth::user()->profile_image}}" width="84px"/>
+				<img alt="Logo" src="{{Auth::user()->profile_image}}" width="100%"/>
 			</a>
 		</div>
 		<div class="kt-aside__brand-tools">
@@ -595,8 +595,8 @@
 						<ul class="kt-menu__subnav">
 
 
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://myisoonline.me/public/lms/courses/%d8%a2%d9%8a%d8%b2%d9%88-20159001-%d9%86%d8%b8%d8%a7%d9%85-%d8%a5%d8%af%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%ac%d9%88%d8%af%d8%a9-%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%af%d9%82%d9%82-%d8%a7/" class="kt-menu__link " target="_blank">
+							<li class="kt-menu__item " aria-haspopup="true" style="text-align: right">
+								<a href="https://myisoarabia.com/public/lms/courses/%d8%a2%d9%8a%d8%b2%d9%88-20159001-%d9%86%d8%b8%d8%a7%d9%85-%d8%a5%d8%af%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%ac%d9%88%d8%af%d8%a9-%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%af%d9%82%d9%82-%d8%a7/" class="kt-menu__link " target="_blank">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -604,8 +604,8 @@
 								</a>	
 							</li>
 
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://myisoonline.me/public/lms/courses/iso-450012018-occupational-health-safety-management-system-internal-auditor-course/" class="kt-menu__link" target="_blank">
+							<li class="kt-menu__item " aria-haspopup="true" style="text-align: right">
+								<a href="https://myisoarabia.com/public/lms/courses/iso-450012018-occupational-health-safety-management-system-internal-auditor-course/" class="kt-menu__link" target="_blank">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -613,8 +613,8 @@
 								</a>
 							</li>
 
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://myisoonline.me/public/lms/courses/iso-140012015-environmental-management-system-internal-auditor-course/" class="kt-menu__link " target="_blank">
+							<li class="kt-menu__item " aria-haspopup="true" style="text-align: right">
+								<a href="https://myisoarabia.com/public/lms/courses/iso-140012015-environmental-management-system-internal-auditor-course/" class="kt-menu__link " target="_blank">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
@@ -629,6 +629,10 @@
 					</div>
 				</li>
 
+				
+				
+				
+				
 				<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 					<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
 						<span class="kt-menu__link-icon">
@@ -640,31 +644,150 @@
 					<div class="kt-menu__submenu ">
 						<span class="kt-menu__arrow"></span>
 						<ul class="kt-menu__subnav">
-
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://myisoonline.me/public/lms/courses/%D8%A3%D9%87%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AD%D9%81%D8%A7%D8%B8-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%85%D9%8A%D8%A7%D9%87-%D9%81%D9%8A-%D9%85%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84/" class="kt-menu__link " target="_blank">
+							<br>
+							
+							
+							
+							
+							
+							
+							
+							
+					<!-- ISO 9001 Menu -->		
+							
+							<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+					<a href="javascript:;" class="kt-menu__link kt-menu__toggle" style="text-align: right">
+						<span class="kt-menu__link-icon">
+							<i class="fab fa-wpforms"></i>
+						</span>
+						<span class="kt-menu__link-text"><strong>نظام إدارة الجودة</strong></span>
+						<i class="kt-menu__ver-arrow la la-angle-right"></i>
+					</a>
+					<div class="kt-menu__submenu ">
+						<span class="kt-menu__arrow"></span>
+						<ul class="kt-menu__subnav">
+							<br>
+							
+							
+							
+							
+								<li class="kt-menu__item " aria-haspopup="true" style="margin-top:15px; margin-bottom:15px">
+								<a href="https://myisoarabia.com/public/lms/courses/%d8%a3%d9%87%d9%85%d9%8a%d8%a9-%d8%b5%d9%8a%d8%a7%d9%86%d8%a9-%d8%a7%d9%84%d9%85%d8%b9%d8%af%d8%a7%d8%aa-%d9%81%d9%8a-%d9%85%d9%83%d8%a7%d9%86-%d8%a7%d9%84%d8%b9%d9%85%d9%84/" class="kt-menu__link" target="_blank" style="text-align: right; margin-bottom: 15px"  >
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">أهمية الحفاظ على المياه في مكان العمل	</span>
-								</a>	
-							</li>
-
-							<li class="kt-menu__item " aria-haspopup="true">
-								<a href="https://myisoonline.me/public/lms/courses/%D8%A3%D9%87%D9%85%D9%8A%D8%A9-%D8%B5%D9%8A%D8%A7%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D8%B9%D8%AF%D8%A7%D8%AA-%D9%81%D9%8A-%D9%85%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84/" class="kt-menu__link" target="_blank">
-									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-										<span></span>
-									</i>
-									<span class="kt-menu__link-text">أهمية صيانة المعدات في مكان العمل</span>
+									<span class="kt-menu__link-text"> أهمية صيانة المعدات في مكان العمل</span>
 								</a>
 							</li>
-
-
-						
-
+							
+							
+							
+							
+							
 						</ul>
-						
+					</div>
+				</li>
+							
+							
+					
+							
+							
+							
+							
+				<!-- ISO 45001 Menu -->		
+							
+							<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+					<a href="javascript:;" class="kt-menu__link kt-menu__toggle" style="text-align: right" style="text-align: right">
+						<span class="kt-menu__link-icon">
+							<i class="fab fa-wpforms"></i>
+						</span>
+						<span class="kt-menu__link-text"><strong>نظام إدارة الصحة والسلامة المهنية</strong></span>
+						<i class="kt-menu__ver-arrow la la-angle-right"></i>
+					</a>
+					<div class="kt-menu__submenu ">
+						<span class="kt-menu__arrow"></span>
+						<ul class="kt-menu__subnav">
+							<br>
+							
+							
+							
+							
+								<li class="kt-menu__item " aria-haspopup="true" style="margin-top:30px;">
+								<a href="https://myisoarabia.com/public/lms/courses/%d8%a3%d9%87%d9%85%d9%8a%d8%a9-%d8%aa%d8%ac%d9%86%d8%a8-%d8%a7%d9%84%d8%a7%d9%86%d8%b2%d9%84%d8%a7%d9%82%d8%a7%d8%aa-%d9%88%d8%a7%d9%84%d8%aa%d8%b9%d8%ab%d8%b1%d8%a7%d8%aa-%d9%88%d8%a7%d9%84%d8%ad/" class="kt-menu__link" target="_blank" style="text-align: right; margin-bottom: 15px" >
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text"> أهمية تجنب الانزلاقات والتعثرات والحوادث البسيطة في مكان العمل</span>
+								</a>
+							</li>
+							
+							<li class="kt-menu__item " aria-haspopup="true" style="margin-top:30px; margin-bottom:15px; text-align: right">
+								<a href="https://myisoarabia.com/public/lms/courses/%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%b1%d8%a7%d9%82%d8%a8%d8%a9-%d9%84%d9%84%d8%b3%d9%84%d8%a7%d9%85%d8%a9-%d9%81%d9%8a-%d9%85%d9%88%d8%a7%d9%82%d8%b9-%d8%a7%d9%84%d8%a8%d9%86%d8%a7%d8%a1/" class="kt-menu__link" target="_blank">
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text"> دورة المراقبة للسلامة في مواقع البناء والمكاتب</span>
+								</a>
+							</li>
+							
+							
+							
+						</ul>
+					</div>
+				</li>
+										
+							
+							
+							
+							
+							
+							
+						<!-- ISO 14001 Menu -->		
+							
+							<li class="kt-menu__item   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+					<a href="javascript:;" class="kt-menu__link kt-menu__toggle" style="text-align: right">
+						<span class="kt-menu__link-icon">
+							<i class="fab fa-wpforms"></i>
+						</span>
+						<span class="kt-menu__link-text"><strong>نظام الإدارةالبيئية</strong></span>
+						<i class="kt-menu__ver-arrow la la-angle-right"></i>
+					</a>
+					<div class="kt-menu__submenu ">
+						<span class="kt-menu__arrow"></span>
+						<ul class="kt-menu__subnav">
+							<br>
+							
+							
+							
+							
+								<li class="kt-menu__item " aria-haspopup="true" style="margin-top:15px;">
+								<a href="https://myisoarabia.com/public/lms/courses/%d8%aa%d9%82%d9%84%d9%8a%d9%84-%d8%a7%d9%84%d9%86%d9%81%d8%a7%d9%8a%d8%a7%d8%aa-%d8%a7%d9%84%d8%b9%d9%85%d9%84%d9%8a%d8%a9-%d9%81%d9%8a-%d8%a7%d9%84%d8%a8%d9%86%d8%a7%d8%a1/" class="kt-menu__link" target="_blank" style="text-align: right; margin-bottom: 15px" >
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text"> تقليل النفايات العملية في البناء</span>
+								</a>
+							</li>
+							
+							
+							
+							
+							
+						</ul>
+					</div>
+				</li>
+										
+								
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						</ul>
 					</div>
 				</li>
 			</ul>
