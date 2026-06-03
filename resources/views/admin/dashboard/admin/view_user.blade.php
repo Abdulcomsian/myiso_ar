@@ -268,7 +268,7 @@
                                 <td><?php
                                     if (isset($item->profile_image)) { ?>
                                         {{-- $logo = "<img src='https://myisoonline.me/public/" . $item->profile_image . "' width='60px'>"; --}}
-                                       <img src='{{$item->profile_image}}' width='60px'>
+                                       <img src='{{ asset($item->profile_image) }}' width='60px'>
                                     <?php } ?></td>
 
                                 <td>
