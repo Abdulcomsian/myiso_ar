@@ -63,13 +63,13 @@
 
                     <div class="mb-4">
                         
-                        <input id="email-addon" class="block w-full rounded-md py-2.5 px-4 text-dark text-base font-medium border-gray-300 focus:gray-300 focus:border-primary focus:outline-0 focus:ring-0 placeholder:text-light placeholder:text-base" type="email" name="email" placeholder="Enter your email">
+                        <input id="email-addon" class="block w-full rounded-md py-2.5 px-4 text-dark text-base font-medium border-gray-300 focus:gray-300 focus:border-primary focus:outline-0 focus:ring-0 placeholder:text-light placeholder:text-base" type="email" name="email" placeholder="عنوان البريد الإلكتروني">
                     </div>
 
                     <div class="mb-4">
                        
                         <div class="flex">
-                            <input type="password" id="password-addon" class="form-password text-dark text-base font-medium block w-full rounded-s-md py-2.5 px-4 border border-gray-300 focus:gray-300 focus:border-primary focus:outline-0 focus:ring-0 placeholder:text-light placeholder:text-base" placeholder="Enter your password" name="password">
+                            <input type="password" id="password-addon" class="form-password text-dark text-base font-medium block w-full rounded-s-md py-2.5 px-4 border border-gray-300 focus:gray-300 focus:border-primary focus:outline-0 focus:ring-0 placeholder:text-light placeholder:text-base" placeholder="كلمة المرور" name="password">
                             <button type="button" data-hs-toggle-password='{"target": "#password-addon"}' class="inline-flex items-center justify-center py-2.5 px-4 border rounded-e-md -ms-px border-gray-300">
                                 <i class="hs-password-active:hidden h-5 w-5 text-dark" data-lucide="eye"></i>
                                 <i data-lucide="eye-off" class="hidden hs-password-active:block h-5 w-5 text-dark"></i>
@@ -84,15 +84,15 @@
                             {{-- <input class="form-check-input agreeInput mt-0 mr-1" id="firstCheckbox" type="checkbox" value=""> --}}
                             <button type="button" class="btn p-0 modal_btn" data-toggle="modal" data-target="#exampleModal" style="position: absolute;left:42px;">
 								<label class=" text-base ms-2 text-light font-medium align-middle select-none" style="cursor: pointer; padding-top: 7px !important;">
-									<small>I Agree to the Terms and Conditions.</small>
+									<small>أوافق على الشروط والأحكام.</small>
 								</label>
 							</button>
                         </div>
-                        <a href="{{route('password.request')}}" class="text-base text-dark"><small>Forgot your password?</small></a>
+                        <a href="{{route('password.request')}}" class="text-base text-dark"><small>هل نسيت كلمة المرور؟</small></a>
                     </div>
 
                     <div class="text-center mb-7">
-                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-2.5 bg-primary font-bold text-base text-white rounded-md transition-all duration-500 btn-brand"  type="submit"  id="SignIN" disabled>Log In</button>
+                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-2.5 bg-primary font-bold text-base text-white rounded-md transition-all duration-500 btn-brand"  type="submit"  id="SignIN" disabled>تسجيل الدخول</button>
                     </div>
 
                    
