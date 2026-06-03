@@ -250,13 +250,13 @@
     <!-- =========== Main Section End =========== -->
     
     <!-- Preline Js -->
-    <script src="{{asset("js/en/js/preline.js")}}" ></script>
+    <script src="{{asset("js/ar/js/preline.js")}}" ></script>
 
     <!-- Lucide Js -->
-    <script src="{{asset("js/en/js/lucide.min.js")}}" ></script>
+    <script src="{{asset("js/ar/js/lucide.min.js")}}" ></script>
 
     <!-- Main App Js -->
-    <script src="{{asset("js/en/js/app.js")}}" ></script>
+    <script src="{{asset("js/ar/js/app.js")}}" ></script>
 
     </body>
 </html>
