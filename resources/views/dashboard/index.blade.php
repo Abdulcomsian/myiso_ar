@@ -499,7 +499,7 @@
                             <h3 class="kt-portlet__head-title">
                                 نظرة عامة على التدقيق عن بعد
                             </h3>
-                            <a href="/uploads/user/pdfs/Arabic-Remote-Audit-Overview.pdf" target="_blank">
+                            <a href="{{ asset('uploads/user/pdfs/Arabic-Remote-Audit-Overview.pdf') }}" target="_blank">
                                 <i class="far fa-file-pdf fa-2x" style="color:red; margin-right: 50px;"></i>
                             </a>
                         </div>
@@ -511,7 +511,7 @@
                             <h3 class="kt-portlet__head-title">
                                 استخدام الشهادات وعلامات التصديق
                             </h3>
-                            <a href="/uploads/user/pdfs/Arabic-Use-Of-Certification.pdf" target="_blank">
+                            <a href="{{ asset('uploads/user/pdfs/Arabic-Use-Of-Certification.pdf') }}" target="_blank">
                                 <i class="far fa-file-pdf fa-2x" style="color:red; margin-right: 50px;"></i>
                             </a> 
                         </div>
