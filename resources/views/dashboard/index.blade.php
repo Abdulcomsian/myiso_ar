@@ -44,6 +44,14 @@
             min-width: 180px;
         }
     }
+
+    .kt-widget17 .kt-widget17__visual .kt-widget17__chart {
+        background-color: #002c60 !important;
+    }
+
+    .newColor, .kt-widget17 .kt-widget17__stats .kt-widget17__items .kt-widget17__item {
+        background: #4580c6 !important;
+    }
 </style>
     <!-- begin:: Content -->
     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
