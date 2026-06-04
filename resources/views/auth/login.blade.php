@@ -35,7 +35,7 @@
         <div class="relative max-w-lg md:mx-auto mx-6 w-full flex flex-col justify-center bg-white rounded-lg p-6">
             <div class="text-start mb-7">
                 <a href="#" class="grow block mb-8">
-                     <img class=" mx-auto" src="{{asset("/assets/media/logos/MyISOOnline-Logo-1.png")}}" alt="images"  style="width: 450px">
+                     <img class=" mx-auto" src="{{asset("/assets/media/logos/MyISOOnline-Logo-1.png")}}" alt="images"  style="width: 450px" />
                 </a>
 
               
