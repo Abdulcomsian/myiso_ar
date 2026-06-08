@@ -25,7 +25,7 @@
       display: block;
     }
   }
-</style>	<link rel="shortcut icon" href="https://myisoonline.com/assets/media/logos/fav.png" />
+</style>	<link rel="shortcut icon" href="{{ asset('/assets/media/logos/fav.png') }}" />
 	
 	</head>
 
