@@ -19521,7 +19521,7 @@ code {
 
 .kt-notification-item-padding-x {
     padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important; background:  #db4342 !important;
+    padding-right: 1.5rem !important; background:  #4580c6 !important;
 }
 
 .kt-notification-item-margin-x {
@@ -21641,7 +21641,7 @@ code {
     box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.06);
     cursor: pointer;
     -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease; background: #db4342 !important;
+    transition: all 0.3s ease; background: #4580c6 !important;
 }
 
 .kt-widget17 .kt-widget17__stats .kt-widget17__items .kt-widget17__item .kt-widget17__icon {
@@ -41139,6 +41139,6 @@ body {
 .kt-widget17 .kt-widget17__visual .kt-widget17__chart {
   position: relative;
   padding-top: 8rem;
-  background: #4b9347;
+  background: #002c60;
 }
 
