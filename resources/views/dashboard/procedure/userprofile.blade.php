@@ -148,7 +148,7 @@
                             </tr>
                             <tr>
                                 <td>الملف التعريفي للشركة </td>
-                                <td><a href="https://myisoonline.com/public/{{ Auth::user()->company_profile }}"
+                                <td><a href="{{ asset(Auth::user()->company_profile) }}"
                                         target="blank">View Company Profile</a> </td>
 
                             </tr>
