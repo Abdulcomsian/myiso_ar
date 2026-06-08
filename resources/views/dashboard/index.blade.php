@@ -464,13 +464,13 @@
                     </div>
                     <div class="kt-portlet__body kt-portlet__body--fit">
                         <div class="kt-widget17 p-4">
-                            <div class="row ml-0 mr-0 table-responsive">
+                            <div class="row ml-0 mr-0 table-responsive" style="display: flex;align-items: center">
 								@if(!empty($user['audit_report']))
 									<a href="{{ asset($user['audit_report']) }}" target="_blank" class="text-dark ml-2">
 										انقر لعرض تقرير التدقيق
 									</a>
-									<a href="{{ asset($user['audit_report']) }}" target="_blank">
-                                     <i class="far fa-file-pdf fa-2x" style="color:red; margin-left: 50px"></i>
+									<a href="{{ asset($user['audit_report']) }}" target="_blank" class="mr-2">
+                                     <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                                      </a>
 								@else
 									<p class="text-dark ml-2">ليس تقرير التدقيق</p>
@@ -507,8 +507,8 @@
                             <h3 class="kt-portlet__head-title">
                                 نظرة عامة على التدقيق عن بعد
                             </h3>
-                            <a href="{{ asset('uploads/user/pdfs/Arabic-Remote-Audit-Overview.pdf') }}" target="_blank">
-                                <i class="far fa-file-pdf fa-2x" style="color:red; margin-right: 50px;"></i>
+                            <a href="{{ asset('uploads/user/pdfs/Arabic-Remote-Audit-Overview.pdf') }}" target="_blank" class="mr-2">
+                                <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                             </a>
                         </div>
                     </div>
@@ -519,8 +519,8 @@
                             <h3 class="kt-portlet__head-title">
                                 استخدام الشهادات وعلامات التصديق
                             </h3>
-                            <a href="{{ asset('uploads/user/pdfs/Arabic-Use-Of-Certification.pdf') }}" target="_blank">
-                                <i class="far fa-file-pdf fa-2x" style="color:red; margin-right: 50px;"></i>
+                            <a href="{{ asset('uploads/user/pdfs/Arabic-Use-Of-Certification.pdf') }}" target="_blank" class="mr-2">
+                                <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                             </a> 
                         </div>
                     </div>
@@ -530,9 +530,9 @@
                             <h3 class="kt-portlet__head-title">
                              اتفاقية شهادة ضمان الجودة
                             </h3>
-                            <a href="{{ asset($user['qa_certification']) }}" target="_blank">
-                                    <i class="far fa-file-pdf fa-2x" style="color:red; margin-left: 50px"></i>
-                                </a> 
+                            <a href="{{ asset($user['qa_certification']) }}" target="_blank" class="mr-2">
+                                <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
+                            </a> 
                         </div>
                     </div>
                      @endif
