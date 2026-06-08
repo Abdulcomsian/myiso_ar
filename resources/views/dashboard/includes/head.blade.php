@@ -111,6 +111,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <link rel="apple-touch-icon" href="https://isoarabia.com/wp-content/uploads/2025/01/fav-300x300.webp" />
 <meta name="msapplication-TileImage" content="https://isoarabia.com/wp-content/uploads/2025/01/fav-300x300.webp" />	
 
+<link rel="shortcut icon" href="{{ asset('/assets/media/logos/fav.png')}}" />
+
     @if (Request::is('products*') || Request::is('user*'))
         <!--begin::Page Vendors Styles(used by this page) -->
         <link href="{{ asset('/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
