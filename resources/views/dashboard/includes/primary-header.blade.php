@@ -157,7 +157,7 @@
 
                              <!--begin: Head -->
                              <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x"
-                                 style="background-image: url('{{ asset('assets/media/misc/bg-1.jpg') }}')">
+                                 style="background-image: url('{{ asset('assets/media/misc/bg-1.jpg') }}') !important">
                                  <div class="kt-user-card__avatar">
                                      <img class="kt-hidden" alt="Pic"
                                          src="{{ asset(Auth::user()->user_image) }}" />
