@@ -469,7 +469,7 @@
 									<a href="{{ asset($user['audit_report']) }}" target="_blank" class="text-dark ml-2">
 										انقر لعرض تقرير التدقيق
 									</a>
-									<a href="{{ asset($user['audit_report']) }}" target="_blank" class="mr-2">
+									<a href="{{ asset($user['audit_report']) }}" target="_blank">
                                      <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
                                      </a>
 								@else
