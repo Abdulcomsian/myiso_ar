@@ -58,7 +58,7 @@
                         <a href="https://myisoonline.com/fr" class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500 group">
                             <img src="{{asset("assets/img/france.png")}}" alt="" class="max-w-5 h-5 text-dark ">French
                         </a>
-                        <a href="https://myisoonline.com/pt" lang="ar"    class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500 group"><img src="{{asset("assets/img/portugal-flag.png")}}" alt="" class="max-w-5 h-5 text-dark">portuguese</a>
+                        <a href="https://myisoonline.com/pt" lang="ar"    class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500 group"><img src="{{asset("assets/img/portugal-flag.png")}}" alt="" class="max-w-5 h-5 text-dark">Portuguese</a>
                     </div>   
 
                     <div class="mb-4">
