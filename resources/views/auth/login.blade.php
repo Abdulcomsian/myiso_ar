@@ -25,6 +25,20 @@
       display: block;
     }
   }
+  #SignIN {
+    background-color: #5e85c4 !important;
+    border-color: #5e85c4 !important;
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+  #SignIN:disabled,
+  #SignIN.disabled {
+    background-color: #a8c0e0 !important;
+    border-color: #a8c0e0 !important;
+    color: #fff !important;
+    opacity: 1 !important;
+    cursor: not-allowed;
+  }
 </style>	<link rel="shortcut icon" href="{{ asset('/assets/media/logos/fav.png') }}" />
 	
 	</head>
