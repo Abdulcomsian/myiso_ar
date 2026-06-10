@@ -38,7 +38,7 @@
         background-color: #283c98 !important;
     }
 
-    .bg-primary {
+    button.bg-primary {
         --tw-bg-opacity: 1 !important;
         background-color: #5e85c4 !important;
     }
