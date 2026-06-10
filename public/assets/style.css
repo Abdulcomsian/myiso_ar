@@ -352,13 +352,13 @@ a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-prima
 }
 .btn-brand.disabled, .btn-brand:disabled {
     color: #fff;
-    background-color: #547270 !important;
-    border-color: #5d78ff;
+    background-color: #a6c3e6  !important;
+    border-color: #a6c3e6 ;
 }
 .btn-brand.disabled, .btn-brand:disabled:hover {
     color: #fff;
-    background-color: #547270 !important;
-    border-color: #5d78ff;
+    background-color: #a6c3e6  !important;
+    border-color: #a6c3e6 ;
 }
 
 /*

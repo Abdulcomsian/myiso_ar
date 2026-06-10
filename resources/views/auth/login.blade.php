@@ -25,20 +25,6 @@
       display: block;
     }
   }
-  #SignIN {
-    background-color: #5e85c4 !important;
-    border-color: #5e85c4 !important;
-    color: #fff !important;
-    opacity: 1 !important;
-  }
-  #SignIN:disabled,
-  #SignIN.disabled {
-    background-color: #a8c0e0 !important;
-    border-color: #a8c0e0 !important;
-    color: #fff !important;
-    opacity: 1 !important;
-    cursor: not-allowed;
-  }
 </style>	<link rel="shortcut icon" href="{{ asset('/assets/media/logos/fav.png') }}" />
 	
 	</head>
@@ -106,7 +92,7 @@
                     </div>
 
                     <div class="text-center mb-7">
-                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-2.5 font-bold text-base text-white rounded-md transition-all duration-500 btn-brand"  type="submit"  id="SignIN" style="background-color: #5e85c4 !important; border-color: #5e85c4 !important; color: #fff !important;" disabled>تسجيل الدخول</button>
+                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-2.5 bg-primary font-bold text-base text-white rounded-md transition-all duration-500 btn-brand"  type="submit"  id="SignIN" disabled>تسجيل الدخول</button>
                     </div>
 
                    
