@@ -149,7 +149,7 @@
     						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="أدرج رسالتك من فضلك"></textarea>
     					</div>
     					<br>
-    					<div class="col-lg-4">
+    					<div class="col-lg-4 mt-3">
     						<label for="address1">حدد تاريخ بدء آخر تسجيل دخول:</label>
 							<!-- <div class="kt-input-icon kt-input-icon--right"> -->
     							<input type="text" name="startdate" id="start_date" class="form-control startdate" id="last_login">
@@ -163,7 +163,7 @@
     							</select>
     						</div> -->
     					</div>
-						<div class="col-lg-4">
+						<div class="col-lg-4 mt-3">
     						<label for="address1">حدد تاريخ انتهاء آخر تسجيل دخول:</label>
 							<!-- <div class="kt-input-icon kt-input-icon--right"> -->
     							<input type="text" name="enddate" id="end_date" class="form-control enddate" id="last_login">
@@ -177,7 +177,7 @@
     							</select>
     						</div> -->
     					</div>
-    					<div class="col-lg-4">
+    					<div class="col-lg-4 mt-3">
     						<label for="address1">التصفية حسب الشهادة:</label>
     						<div class="kt-input-icon kt-input-icon--right">
     							<select id="filter_by_certificate" class="form-control">
