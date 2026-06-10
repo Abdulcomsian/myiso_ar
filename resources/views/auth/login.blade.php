@@ -30,8 +30,13 @@
         background-color: #5e85c4;
     }
 
-    .btn-brand:hover {
+    .btn-brand:hover , .bg-primary:hover {
         background-color: #283c98;
+    }
+
+    .bg-primary {
+        --tw-bg-opacity: 1 !important;
+        background-color: #5e85c4 !important;
     }
 
     .btn-brand:disabled,
