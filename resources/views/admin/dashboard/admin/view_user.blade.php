@@ -82,14 +82,14 @@
                         قائمة المستخدمين
 
                     </h3>
-                    <span style="margin-right: 15px;margin-top: 18px;">
+                    {{-- <span style="margin-right: 15px;margin-top: 18px;">
                         <form action="{{url('/view_user')}}" id="showuserform">
                         <select name="showusers" id="showusers">
                             <option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>كافة المستخدمين</option>
                             <option value="1" {{ request('showusers') == 1 ? 'selected' : '' }}>مستخدمو SCAISO</option>
                             <option value="2" {{ request('showusers') == 2 ? 'selected' : '' }}>مدرسة أديك</option>
                         </select>
-                    </form></span>
+                    </form></span> --}}
                 </div>
 
                 <div class="kt-portlet__head-toolbar">
