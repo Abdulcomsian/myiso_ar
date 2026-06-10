@@ -25,6 +25,22 @@
       display: block;
     }
   }
+
+   .btn-brand {
+        background-color: #5e85c4;
+    }
+
+    .btn-brand:hover {
+        background-color: #283c98;
+    }
+
+    .btn-brand:disabled,
+    .btn-brand.disabled {
+        background-color: #a6c3e6 !important;
+        border-color: #a6c3e6 !important;
+        cursor: not-allowed;
+    }
+
 </style>	<link rel="shortcut icon" href="{{ asset('/assets/media/logos/fav.png') }}" />
 	
 	</head>
