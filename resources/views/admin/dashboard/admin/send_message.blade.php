@@ -194,8 +194,8 @@
                         $usertypes = \App\UserType::get();
                    		 @endphp
     					<div class="col-lg-12" style="margin-top: 10px;">
-    						<label for="address1">ارسل إلى:</label>
-							<select name="showusers" id="showusers">
+    						<label for="address1" style="display: none;">ارسل إلى:</label>
+							<select name="showusers" id="showusers" style="display: none;">
 								<option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>كافة المستخدمين</option>
 								@foreach ($usertypes as $usertype)
 								<option value="{{$usertype->id}}" {{ request('showusers') == $usertype->id ? 'selected' : '' }}>{{$usertype->name}}</option> 
