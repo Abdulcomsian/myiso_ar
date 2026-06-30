@@ -6538,3 +6538,69 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2026-06-30 11:39:58] production.ERROR: Uncaught Error: Class "Laratrust\Models\LaratrustPermission" not found in C:\laragon\www\myiso_ar\app\Models\Permission.php:7
+Stack trace:
+#0 C:\laragon\www\myiso_ar\vendor\composer\ClassLoader.php(576): include()
+#1 C:\laragon\www\myiso_ar\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\laragon\\www\\...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Models\\Perm...')
+#3 Command line code(1): class_exists('App\\Models\\Perm...')
+#4 [internal function]: {closure}('App\\Models\\Perm...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Laratrust\\Models\\LaratrustPermission\" not found in C:\\laragon\\www\\myiso_ar\\app\\Models\\Permission.php:7
+Stack trace:
+#0 C:\\laragon\\www\\myiso_ar\\vendor\\composer\\ClassLoader.php(576): include()
+#1 C:\\laragon\\www\\myiso_ar\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Models\\\\Perm...')
+#3 Command line code(1): class_exists('App\\\\Models\\\\Perm...')
+#4 [internal function]: {closure}('App\\\\Models\\\\Perm...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown at C:/laragon/www/myiso_ar/app/Models/Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2026-06-30 11:40:58] production.ERROR: Uncaught Error: Class "Laratrust\Models\LaratrustPermission" not found in C:\laragon\www\myiso_ar\app\Models\Permission.php:7
+Stack trace:
+#0 C:\laragon\www\myiso_ar\vendor\composer\ClassLoader.php(576): include()
+#1 C:\laragon\www\myiso_ar\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\laragon\\www\\...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Models\\Perm...')
+#3 Command line code(1): class_exists('App\\Models\\Perm...')
+#4 [internal function]: {closure}('App\\Models\\Perm...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Laratrust\\Models\\LaratrustPermission\" not found in C:\\laragon\\www\\myiso_ar\\app\\Models\\Permission.php:7
+Stack trace:
+#0 C:\\laragon\\www\\myiso_ar\\vendor\\composer\\ClassLoader.php(576): include()
+#1 C:\\laragon\\www\\myiso_ar\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Models\\\\Perm...')
+#3 Command line code(1): class_exists('App\\\\Models\\\\Perm...')
+#4 [internal function]: {closure}('App\\\\Models\\\\Perm...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown at C:/laragon/www/myiso_ar/app/Models/Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2026-06-30 11:42:00] production.ERROR: Uncaught Error: Class "Laratrust\Models\LaratrustPermission" not found in C:\laragon\www\myiso_ar\app\Models\Permission.php:7
+Stack trace:
+#0 C:\laragon\www\myiso_ar\vendor\composer\ClassLoader.php(576): include()
+#1 C:\laragon\www\myiso_ar\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\laragon\\www\\...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Models\\Perm...')
+#3 Command line code(1): class_exists('App\\Models\\Perm...')
+#4 [internal function]: {closure}('App\\Models\\Perm...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Laratrust\\Models\\LaratrustPermission\" not found in C:\\laragon\\www\\myiso_ar\\app\\Models\\Permission.php:7
+Stack trace:
+#0 C:\\laragon\\www\\myiso_ar\\vendor\\composer\\ClassLoader.php(576): include()
+#1 C:\\laragon\\www\\myiso_ar\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Models\\\\Perm...')
+#3 Command line code(1): class_exists('App\\\\Models\\\\Perm...')
+#4 [internal function]: {closure}('App\\\\Models\\\\Perm...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown at C:/laragon/www/myiso_ar/app/Models/Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
