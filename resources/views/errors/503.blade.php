@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سنعود قريبًا | تحت الصيانة</title>
+    <title>We'll Be Back Soon | Under Maintenance</title>
 </head>
 <body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f8fafc; display: flex; align-items: center; justify-content: center; min-height: 100vh;">
 
@@ -14,22 +14,22 @@
         </div>
 
         <h1 style="font-size: 32px; font-weight: bold; margin-bottom: 16px; color: #0f172a;">
-            سنعود قريبًا!
+            We'll Be Back Soon!
         </h1>
 
         <p style="font-size: 18px; line-height: 1.6; color: #475569; margin-bottom: 24px;">
-            موقعنا تحت الصيانة بينما نحسّن تجربتك. شكرًا لصبرك.
+            Our site is under maintenance whilst we improve your experience. Thank you for your patience.
         </p>
 
         <p style="font-size: 16px; color: #64748b; margin-bottom: 10px;">
-            إذا كان لديك أي استفسار، يرجى مراسلتنا على:
+            If you have any inquiries, please email us at:
         </p>
         <a href="mailto:info@isoonline.com" style="font-size: 18px; color: #2563eb; font-weight: bold; text-decoration: none;">
             info@isoonline.com
         </a>
 
         <div style="margin-top: 40px; font-size: 14px; color: #94a3b8;">
-            &copy; {{ date('Y') }} ISOOnline. جميع الحقوق محفوظة.
+            &copy; {{ date('Y') }} ISOOnline. All rights reserved.
         </div>
 
     </div>
