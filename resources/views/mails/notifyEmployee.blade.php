@@ -22,7 +22,7 @@
 
     <div class="container" style="max-width: 500px; height: auto; margin: 50px auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;">
 
-        <img src="https://myisoarabia.com/assets/media/logos/MyISOArbiaLogo.png" alt="Logo" style="height: 50px; margin-bottom: 20px;">
+        <img src="{{ asset('assets/media/logos/MyISOArbiaLogo.png') }}" alt="Logo" style="height: 50px; margin-bottom: 20px;">
 
         <div class="content-area" style="text-align: left;">
 
@@ -52,7 +52,7 @@
                
 
             </p>
-            <a href="https://myisoarabia.com/public/lms/account/?action=register" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
+            <a href="{{ url('/lms/account') }}?action=register" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
             class="button">سجل الآن</a>
 
         </div>

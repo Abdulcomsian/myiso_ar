@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- <link href="{{asset("assets/style.css")}}" rel="stylesheet" type="text/css">
+ <link href="<?php echo e(asset("assets/style.css")); ?>" rel="stylesheet" type="text/css">
 <style>
   .mobile-br {
     display: none;
@@ -66,7 +66,7 @@
         cursor: not-allowed;
     }
 
-</style>	<link rel="shortcut icon" href="{{ asset('/assets/media/logos/fav.png') }}" />
+</style>	<link rel="shortcut icon" href="<?php echo e(asset('/assets/media/logos/fav.png')); ?>" />
 	
 	</head>
 
@@ -75,31 +75,32 @@
     <section class="relative h-screen w-full flex items-center justify-center bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-[#ccf9df] to-[#d1d6ff]">
         <div class="relative max-w-lg md:mx-auto mx-6 w-full flex flex-col justify-center bg-white rounded-lg p-6">
             <div class="text-start mb-7">
-                <a href="{{ route('home') }}" class="grow block mb-8">
-                     <img class=" mx-auto" src="{{asset("/assets/media/logos/MyISOOnline-Logo-1.png")}}" alt="images"  style="width: 450px" />
+                <a href="<?php echo e(route('home')); ?>" class="grow block mb-8">
+                     <img class=" mx-auto" src="<?php echo e(asset("/assets/media/logos/MyISOOnline-Logo-1.png")); ?>" alt="images"  style="width: 450px" />
                 </a>
 
               
             </div>
-			@if($errors->any())
+			<?php if($errors->any()): ?>
 				<div class="alert" style="background: red !important;color:#fff !important;">
-					{{ implode('', $errors->all(':message')) }}
+					<?php echo e(implode('', $errors->all(':message'))); ?>
+
 				</div>
-			@endif
-            <form class="text-start w-full" action="{{route('login')}}" method="POST">
-				@csrf
+			<?php endif; ?>
+            <form class="text-start w-full" action="<?php echo e(route('login')); ?>" method="POST">
+				<?php echo csrf_field(); ?>
                     <div class="flex md:justify-between justify-center items-center mb-8 md:gap-9 gap-2">
                         <a href="https://myisoonline.com/" class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500">
-                            <img src="{{asset("assets/img/google.png")}}" alt="" class="max-w-5 h-5 text-dark ">English
+                            <img src="<?php echo e(asset("assets/img/google.png")); ?>" alt="" class="max-w-5 h-5 text-dark ">English
                         </a>
                         <a href="https://myisoonline.com/ar" lang="ar" dir="rtl"   class=" group w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-primary text-white rounded-md transition-all duration-500">
-							<img src="{{asset("assets/img/facebook.png")}}" alt="" class="max-w-5 h-5 text-dark">العربية</a>
+							<img src="<?php echo e(asset("assets/img/facebook.png")); ?>" alt="" class="max-w-5 h-5 text-dark">العربية</a>
                     </div>   
                     <div class="flex md:justify-between justify-center items-center mb-8 md:gap-9 gap-2">
                         <a href="https://myisoonline.com/fr" class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500 group">
-                            <img src="{{asset("assets/img/france.png")}}" alt="" class="max-w-5 h-5 text-dark ">French
+                            <img src="<?php echo e(asset("assets/img/france.png")); ?>" alt="" class="max-w-5 h-5 text-dark ">French
                         </a>
-                        <a href="https://myisoonline.com/pt" lang="ar"    class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500 group"><img src="{{asset("assets/img/portugal-flag.png")}}" alt="" class="max-w-5 h-5 text-dark">Portuguese</a>
+                        <a href="https://myisoonline.com/pt" lang="ar"    class="w-full inline-flex items-center justify-center px-6 gap-4 py-2.5 font-medium backdrop-blur-2xl border border-gray-300 bg-white text-dark rounded-md transition-all duration-500 group"><img src="<?php echo e(asset("assets/img/portugal-flag.png")); ?>" alt="" class="max-w-5 h-5 text-dark">Portuguese</a>
                     </div>   
 
                     <div class="mb-4">
@@ -121,15 +122,15 @@
                     <div class="flex justify-between items-center flex-wrap gap-x-1 gap-y-2 mb-6 mt-3 login-terms-row">
                         <div class="inline-flex items-center">
                             <input type="checkbox" id="firstCheckbox" class="h-4 w-4 text-base rounded border-gray-300 text-dark focus:ring focus:ring-default-950/30 focus:ring-offset-0">
-                            {{-- <label class="text-base ms-2 text-light font-medium align-middle select-none" id="firstCheckbox" for="checkbox-signin">Remember me</label> --}}
-                            {{-- <input class="form-check-input agreeInput mt-0 mr-1" id="firstCheckbox" type="checkbox" value=""> --}}
+                            
+                            
                             <button type="button" class="btn p-0 modal_btn" data-toggle="modal" data-target="#exampleModal" style="position: absolute;left:42px;">
 								<label class=" text-base ms-2 text-light font-medium align-middle select-none" style="cursor: pointer; padding-top: 7px !important;">
 									<small>أوافق على الشروط والأحكام.</small>
 								</label>
 							</button>
                         </div>
-                        <a href="{{route('password.request')}}" class="text-base text-dark"><small>هل نسيت كلمة المرور؟</small></a>
+                        <a href="<?php echo e(route('password.request')); ?>" class="text-base text-dark"><small>هل نسيت كلمة المرور؟</small></a>
                     </div>
 
                     <div class="text-center mb-7">
@@ -225,13 +226,13 @@
     <!-- =========== Main Section End =========== -->
     
     <!-- Preline Js -->
-    <script src="{{asset("js/ar/js/preline.js")}}" ></script>
+    <script src="<?php echo e(asset("js/ar/js/preline.js")); ?>" ></script>
 
     <!-- Lucide Js -->
-    <script src="{{asset("js/ar/js/lucide.min.js")}}" ></script>
+    <script src="<?php echo e(asset("js/ar/js/lucide.min.js")); ?>" ></script>
 
     <!-- Main App Js -->
-    <script src="{{asset("js/ar/js/app.js")}}" ></script>
+    <script src="<?php echo e(asset("js/ar/js/app.js")); ?>" ></script>
 
     </body>
-</html>
+</html><?php /**PATH C:\laragon\www\myiso_ar\resources\views/auth/login.blade.php ENDPATH**/ ?>

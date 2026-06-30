@@ -26,7 +26,7 @@ class LoginNotificationSchedule extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Send login inactivity notifications';
 
     /**
      * Create a new command instance.
@@ -46,41 +46,63 @@ class LoginNotificationSchedule extends Command
     public function handle()
     {
         $userIdToExclude = 1011;
-        $user = User::where('last_login', '<=', Carbon::now()->subDays(90))
-        ->where('id', '!=', $userIdToExclude)
-        ->get();    
-        foreach($user as $u){
-            $lastLogin = Carbon::parse($u->last_login);
-            $totalDays = now()->diffInDays($lastLogin);
-            $toEmailAddress = "info@isoonline.com";
-            $clientName = $u->name;
-            $clientEmail = $u->email;
-                if ($totalDays == 90 || $totalDays == 180 || $totalDays == 300) {
-                    if($totalDays == 90){
-                        Notification::route('mail', $toEmailAddress)->notify(new ThreeMonthNotification($clientName, $totalDays, $clientEmail));
-                    }elseif($totalDays == 180){
-                        Notification::route('mail', $toEmailAddress)->notify(new SixMonthNotification($clientName, $totalDays, $clientEmail));
-                    }elseif($totalDays == 300){
-                        Notification::route('mail', $toEmailAddress)->notify(new TenMonthNotification($clientName, $totalDays, $clientEmail));
-                    }else{
-                        print_r("No email template Found");
-                    }
-                    $randomBytes = random_bytes(4); 
-                    $randomInt = unpack('L', $randomBytes)[1];
-                    DB::table('send_notification')->insert([
-                        'title' => 'لم تقم بتسجيل الدخول لآخر '.$totalDays.' يوم' ,
-                        'send_by' => 1011,
-                        'send_to' => $u->id,
-                        'unique_id' => intval(microtime(true) + $randomInt),
-                        'total_days' => $totalDays,
-                    ]);
-                    echo "Email Send Successfully " . $totalDays . " <br>";
-                } else {
-                    print_r("Days are not matching to 90, 180 or 300. Days are " . $totalDays);
-                    echo "<br>";
-                }
-        }
-        // info("Cron is working fine");
+        $toEmailAddress  = "info@isoonline.com";
 
+        $thresholds = [
+            300 => TenMonthNotification::class,
+            180 => SixMonthNotification::class,
+            90  => ThreeMonthNotification::class,
+        ];
+
+        $users = User::whereNotNull('last_login')
+            ->where('last_login', '<=', Carbon::now()->subDays(90))
+            ->where('id', '!=', $userIdToExclude)
+            ->get();
+
+        foreach ($users as $u) {
+            try {
+                $totalDays = (int) Carbon::parse($u->last_login)->diffInDays(now());
+
+                foreach ($thresholds as $days => $notificationClass) {
+                    if ($totalDays < $days) {
+                        continue;
+                    }
+
+                    $alreadySent = DB::table('send_notification')
+                        ->where('send_to', $u->id)
+                        ->where('total_days', $days)
+                        ->where('created_at', '>', $u->last_login)
+                        ->exists();
+
+                    if ($alreadySent) {
+                        echo "Already sent {$days}-day notification for User ID: {$u->id}<br>";
+                        break;
+                    }
+
+                    Notification::route('mail', $toEmailAddress)
+                        ->notify(new $notificationClass($u->name, $totalDays, $u->email));
+
+                    $randomInt = unpack('L', random_bytes(4))[1];
+
+                    DB::table('send_notification')->insert([
+                        'title'      => 'لم تقم بتسجيل الدخول لآخر ' . $totalDays . ' يوم',
+                        'send_by'    => 1011,
+                        'send_to'    => $u->id,
+                        'unique_id'  => intval(microtime(true) + $randomInt),
+                        'total_days' => $days,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+
+                    echo "Email Sent for User ID: {$u->id} | Threshold: {$days} | Inactive: {$totalDays} days<br>";
+                    break;
+                }
+            } catch (\Exception $e) {
+                Log::error('Login Notification Error: ' . $e->getMessage());
+                echo "Error for User ID: {$u->id} => {$e->getMessage()}<br>";
+            }
+        }
+
+        return 0;
     }
 }

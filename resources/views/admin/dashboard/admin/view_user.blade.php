@@ -12,6 +12,25 @@
             border-radius: 4px;
             border: 1px solid #0d47b3;
         }
+        #image-preview { position: relative; }
+        #image-preview img#output,
+        #image-preview img#view_output {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #fff;
+            z-index: 1;
+        }
+        #image-preview img#output:not([src]),
+        #image-preview img#output[src=""],
+        #image-preview img#view_output:not([src]),
+        #image-preview img#view_output[src=""] {
+            display: none;
+        }
+        #image-preview label[for="image-upload"] { z-index: 6; }
 
         .has_file {
             font-size: 0px !important;
@@ -267,7 +286,7 @@
 
                                 <td><?php
                                     if (isset($item->profile_image)) { ?>
-                                        {{-- $logo = "<img src='https://myisoonline.me/public/" . $item->profile_image . "' width='60px'>"; --}}
+                                        {{-- $logo = "<img src='{{ asset('/') }}" . $item->profile_image . "' width='60px'>"; --}}
                                        <img src='{{ asset($item->profile_image) }}' width='60px' />
                                     <?php } ?></td>
 
@@ -1813,7 +1832,7 @@
                 $("input[name='iso45001_expirydate']").val(data.iso45001_expirydate);
                 $("textarea[name='iso45001_description']").val(data.iso45001_description);
 
-                // let logo_src = "https://myisoonline.me/public/" + data.profile_image;
+                // let logo_src = "{{ asset('/') }}" + data.profile_image;
                 let logo_src = data.profile_image;
                 $("#output").attr("src", logo_src);
             
@@ -1821,20 +1840,20 @@
                 if (data.iso9001_certificate != null) {
                     // $('#iso9001_certificate').addClass('has_file');
                     $(".iso9001").show();
-                    $("#view_9001").append("<a target='_blank' href='https://myisoonline.me/public/" + data.iso9001_certificate + "'>تيقن</a>");
+                    $("#view_9001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso9001_certificate + "'>تيقن</a>");
                 } else {
                     $(".iso9001").hide();
                 }
                 if (data.iso14001_certificate != null) {
                     // $('#iso14001_certificate').addClass('has_file');
-                    $("#view_4001").append("<a target='_blank' href='https://myisoonline.me/public/" + data.iso14001_certificate + "'>تيقن</a>");
+                    $("#view_4001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso14001_certificate + "'>تيقن</a>");
                     $(".iso4001").show();
                 } else {
                     $(".iso4001").hide();
                 }
                 if (data.iso45001_certificate != null) {
                     // $('#iso45001_certificate').addClass('has_file');
-                    $("#view_45001").append("<a target='_blank' href='https://myisoonline.me/public/" + data.iso45001_certificate + "'>تيقن</a>");
+                    $("#view_45001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso45001_certificate + "'>تيقن</a>");
                     $(".iso45001").show();
 
                 } else 
@@ -1999,23 +2018,23 @@
                 $("input[name='iso45001_expirydate']").val(data.iso45001_expirydate);
                 $("textarea[name='iso45001_description']").val(data.iso45001_description);
 
-                let logo_src = "https://myisoonline.me/public/" + data.profile_image;
+                let logo_src = "{{ asset('/') }}" + data.profile_image;
                 $("#view_output").attr("src", logo_src);
 
 
 
                 if (data.iso9001_certificate != null) {
-                    $("#v_9001").append("<a target='_blank' href='https://myisoonline.me/public/" + data.iso9001_certificate + "'>View</a>");
+                    $("#v_9001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso9001_certificate + "'>View</a>");
                 } else {
                     $('#v_9001').append('Not Found');
                 }
                 if (data.iso14001_certificate != null) {
-                    $("#v_4001").append("<a target='_blank' href='https://myisoonline.me/public/" + data.iso14001_certificate + "'>View</a>");
+                    $("#v_4001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso14001_certificate + "'>View</a>");
                 } else {
                     $('#v_4001').append('Not Found');
                 }
                 if (data.iso45001_certificate != null) {
-                    $("#v_45001").append("<a target='_blank' href='https://myisoonline.me/public/" + data.iso45001_certificate + "'>View</a>");
+                    $("#v_45001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso45001_certificate + "'>View</a>");
                 } else {
                     $('#v_45001').append('Not Found');
                 }
