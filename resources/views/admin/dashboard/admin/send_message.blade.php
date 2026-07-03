@@ -146,7 +146,17 @@
     
     					<div class="col-lg-12">
     						<label for="message">رسالة إلى المسؤول</label>
-    						<textarea name="message" id="message" cols="20" rows="5" class="form-control" placeholder="أدرج رسالتك من فضلك"></textarea>
+    						<textarea name="message" id="message" placeholder="أدرج رسالتك من فضلك"></textarea>
+
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('message', {
+        versionCheck: false,
+        language: 'ar',
+        contentsLangDirection: 'rtl',
+        contentsLanguage: 'ar'
+    });
+</script>
     					</div>
     					<br>
     					<div class="col-lg-4 mt-3">
