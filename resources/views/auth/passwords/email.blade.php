@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MyISOArabia.com</title>
-<meta name="description" content="Established for over 25 years, ISOArabia offers expert ISO certification in Arabic and English. Fully online with support and training. ISO 9001, 14001, and 45001 tailored to your business" />
+<title>MyISOOnline.com</title>
+<meta name="description" content="Established for over 25 years, MyISOOnline offers expert ISO certification in Arabic and English. Fully online with support and training. ISO 9001, 14001, and 45001 tailored to your business" />
 	
 <link rel="icon" href="https://isoarabia.com/wp-content/uploads/2025/01/fav-100x100.webp" sizes="32x32" />
 <link rel="icon" href="https://isoarabia.com/wp-content/uploads/2025/01/fav-300x300.webp" sizes="192x192" />
 <link rel="apple-touch-icon" href="https://isoarabia.com/wp-content/uploads/2025/01/fav-300x300.webp" />
 <meta name="msapplication-TileImage" content="https://isoarabia.com/wp-content/uploads/2025/01/fav-300x300.webp" />	
-<meta name="author" content="MYISOARABIA"/>
+<meta name="author" content="MyISOOnline"/>
 <!-- Main Css -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
