@@ -231,9 +231,11 @@ class AddUsersController extends Controller
     public function userDownloadHistory(Request $request)
     {
         $user_id = $request->input('user_id');
-        $users = User::with('userDownload', 'userDownload.downloads')->where('id', $user_id)->first();
-       // $loginHistory = LoginHistoryUser::where('user_id', $user_id)->orderBy('id', 'desc')->get();   
-        
+        $users = User::with(['userDownload' => function ($q) {
+            $q->orderBy('id', 'desc');
+        }, 'userDownload.downloads'])->where('id', $user_id)->first();
+       // $loginHistory = LoginHistoryUser::where('user_id', $user_id)->orderBy('id', 'desc')->get();
+
         $list = '<table class="table" width="100%">
         <thead>
             <tr>
