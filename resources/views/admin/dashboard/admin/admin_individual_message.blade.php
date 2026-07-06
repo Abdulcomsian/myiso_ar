@@ -155,7 +155,7 @@
                                             @elseif($item->total_days == 300)
                                             <iframe src="{{ url('/ten-month-email') }}" class="w-100 height-400"></iframe>
                                             @else
-                                                <p class="card-text">{{ $item->message }}</p>
+                                                <p class="card-text">{!! $item->message !!}</p>
                                             @endif
                                             @if ($item->attachement)                                            
                                                <p><a href="{{ asset($item->attachement) }}" download>
@@ -237,7 +237,7 @@
                                             @else
                                                 <h5 class="card-title text-right">(لا يوجد عنوان)</h5>
                                             @endif
-                                            <p class="card-text">{{ $item->message }}</p>
+                                            <p class="card-text">{!! $item->message !!}</p>
                                             @if ($item->attachement)
                                             <p><a href="{{ asset($item->attachement) }}" download>
                                                 <i class="fa fa-paperclip"></i> مرفق
