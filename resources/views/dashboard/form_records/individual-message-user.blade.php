@@ -91,7 +91,7 @@
 					<div id="collapse{{ $item->id }}" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="heading{{ $item->id }}"
 						data-parent="#accordionExample">
 						<div class="card-body">
-							<p> {{ $item->message }} </p>
+							<p> {!! $item->message !!} </p>
 						</div>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 					<div id="collapse{{ $item->id }}" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="heading{{ $item->id }}"
 						data-parent="#accordionExample">
 						<div class="card-body">
-							<p> {{ $item->message }} </p>
+							<p> {!! $item->message !!} </p>
 						</div>
 					</div>
 				</div>
