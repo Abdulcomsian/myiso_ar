@@ -46,7 +46,7 @@ Route::get('/logout', function () { Auth::logout();
     return redirect('/')->with($notification);
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 /*************** All user urls and routes start ***************/
 
