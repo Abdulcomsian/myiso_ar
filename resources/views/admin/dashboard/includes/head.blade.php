@@ -26,8 +26,6 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- Add this to your HTML to include DataTables CSS and JavaScript -->
 		<link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
 		<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-		<script src="script-defining-renderLoginHistory.js"></script>
-        <script src="script-calling-renderLoginHistory.js"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -176,6 +174,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			});
 		  </script>
 		<link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('css/admin-modern.css') }}" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link href="{{ asset('css/admin-modern-layout.css') }}" rel="stylesheet" type="text/css" />
 		@yield('styles')
 	</head>
 	<style>

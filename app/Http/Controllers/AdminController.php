@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -16,9 +18,89 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // return view('admind.dashboard.index');
-        return view('admin.dashboard.index');
-    
+        $stats = [
+            'total_users'          => DB::table('users')->count(),
+            'users_this_month'     => DB::table('users')
+                ->whereYear('created_at', now()->year)
+                ->whereMonth('created_at', now()->month)
+                ->count(),
+            'total_downloads'      => DB::table('downloads')->count(),
+            'total_notifications'  => DB::table('send_notification')->count(),
+        ];
+
+        $upcomingNotifications = $this->buildUpcomingNotifications();
+
+        return view('admin.dashboard.index', compact('stats', 'upcomingNotifications'));
+    }
+
+    /**
+     * Build the "Upcoming Notifications" list for the dashboard.
+     * Matches the LoginNotificationSchedule command's rules:
+     *   - Thresholds: 90 (3-month), 180 (6-month), 300 (10-month).
+     *   - For each inactivity period (defined by last_login), each threshold
+     *     is sent at most once. Logging in resets the cycle because
+     *     dedup is scoped by created_at > last_login.
+     *   - "Upcoming" = the next unsent threshold for this period is within 10 days.
+     */
+    private function buildUpcomingNotifications()
+    {
+        $userIdToExclude = 1011;
+        $thresholds = [90, 180, 300];
+        $labels = [90 => '3 أشهر', 180 => '6 أشهر', 300 => '10 أشهر'];
+        $windowDays = 10;
+
+        $candidates = User::whereNotNull('last_login')
+            ->where('last_login', '<=', Carbon::now()->subDays(min($thresholds) - $windowDays))
+            ->where('id', '!=', $userIdToExclude)
+            ->get();
+
+        $upcoming = [];
+
+        foreach ($candidates as $u) {
+            $lastLogin    = Carbon::parse($u->last_login);
+            $daysInactive = (int) $lastLogin->diffInDays(Carbon::now());
+
+            $nextThreshold = null;
+            foreach ($thresholds as $th) {
+                $alreadySent = DB::table('send_notification')
+                    ->where('send_to', $u->id)
+                    ->where('total_days', $th)
+                    ->where('created_at', '>', $u->last_login)
+                    ->exists();
+
+                if (!$alreadySent) {
+                    $nextThreshold = $th;
+                    break;
+                }
+            }
+
+            if ($nextThreshold === null) {
+                continue;
+            }
+
+            $daysUntil = $nextThreshold - $daysInactive;
+            if ($daysUntil < 0 || $daysUntil > $windowDays) {
+                continue;
+            }
+
+            $upcoming[] = (object) [
+                'user_id'         => $u->id,
+                'name'            => $u->name ?? '—',
+                'email'           => $u->email ?? '—',
+                'last_login'      => $lastLogin,
+                'days_inactive'   => $daysInactive,
+                'threshold'       => $nextThreshold,
+                'threshold_label' => $labels[$nextThreshold],
+                'days_until'      => $daysUntil,
+                'scheduled_on'    => $lastLogin->copy()->addDays($nextThreshold),
+            ];
+        }
+
+        usort($upcoming, function ($a, $b) {
+            return $a->days_until <=> $b->days_until;
+        });
+
+        return $upcoming;
     }
 
     /**

@@ -1,231 +1,223 @@
 @extends('admin.dashboard.layouts.app')
+
 @section('content')
-<!-- begin:: Content -->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+@php
+    $usertypes = \App\UserType::get();
+@endphp
 
-    <div class="kt-portlet kt-portlet--mobile">
-        <div class="kt-portlet__head kt-portlet__head--lg">
-            <div class="kt-portlet__head-label">
-                <span class="kt-portlet__head-icon">
-                    <i class="kt-font-brand flaticon2-line-chart"></i>
-                </span>
-                <h3 class="kt-portlet__head-title">
-                    رفع
-                </h3>
-            </div>
-            <div class="kt-portlet__head-toolbar">
-                <div class="kt-portlet__head-wrapper">
-                    <div class="kt-portlet__head-actions">
-                        <div class="dropdown dropdown-inline">
+<div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding:26px;">
 
-                        </div>
-                        &nbsp;
-                        <a href="#" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="collapse"
-                            data-target="#new_video">
-                            <i class="la la-plus"></i>
-                            تحميل جديد
-                        </a>
+    {{-- Page header --}}
+    <div class="am-page-header">
+        <div>
+            <h2>إدارة التحميلات</h2>
+            <p>إدارة الموارد القابلة للتنزيل المتاحة للعملاء.</p>
+        </div>
+    </div>
 
+    {{-- Flash message --}}
+    @if ($message = Session::get('msg'))
+        <div class="am-card" style="padding:14px 20px;margin-bottom:16px;color:#1a8a5c;background:rgba(38,194,129,0.08);">
+            <i class="fa fa-check-circle"></i> {{ $message }}
+        </div>
+    @endif
+
+    {{-- Category filter pills --}}
+    <div class="am-pills">
+        @foreach ($categories as $cat)
+            <a href="{{ url('/upload?cat='.urlencode($cat)) }}" class="am-pill {{ $category === $cat ? 'active' : '' }}" data-cat="{{ $cat }}">
+                <i class="fa fa-tag"></i>
+                {{ $cat }}
+                <span class="am-pill__count">{{ $categoryCounts[$cat] ?? 0 }}</span>
+            </a>
+        @endforeach
+    </div>
+
+    {{-- Toolbar + inline form --}}
+    <div class="am-card" style="margin-bottom:16px;">
+        <div class="am-card__toolbar">
+            <form id="amDownloadsSearchForm" class="am-search" style="margin:0;flex:1;max-width:340px;" onsubmit="return false;">
+                <i class="fa fa-search"></i>
+                <input type="text" id="amDownloadsSearch" name="q" value="{{ $search }}" placeholder="ابحث بالاسم…" autocomplete="off">
+            </form>
+            <button type="button" class="am-btn am-btn-primary" id="toggleUploadForm">
+                <i class="fa fa-plus"></i> تحميل جديد
+            </button>
+        </div>
+
+        <div class="am-inline-form" id="newUploadForm" style="margin:16px 20px;">
+            <form action="{{ url('/add_download') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-row">
+                    <div>
+                        <label>الاسم</label>
+                        <input type="text" name="name" placeholder="مثال: مخرج الطوارئ" required>
+                    </div>
+                    <div>
+                        <label>الفئة</label>
+                        <select name="category" required>
+                            <option value="" disabled {{ !$category ? 'selected' : '' }}>حدد الفئة</option>
+                            @foreach ($categories as $c)
+                                <option value="{{ $c }}" {{ $category === $c ? 'selected' : '' }}>{{ $c }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label>نوع المستخدم</label>
+                        <select name="user_type">
+                            <option value="0">جميع المستخدمين</option>
+                            @foreach ($usertypes as $ut)
+                                <option value="{{ $ut->id }}">{{ $ut->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-            </div>
-        </div>
-	@if ($message = Session::get('msg'))
-		<div class="row">
-            <div class="col-md-11 pl-4 ml-4 mt-4">
-	<div class="alert alert-success alert-dismissible">{{ $message }} &nbsp; <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>
-	</div>
-	</div>
-	@endif
-        <div class="row">
-            <div class="col-md-6">
-                <div id="new_video" class="collapse p-4">
-                    @php
-                    $usertypes = \App\UserType::get();
-                    @endphp
-                    <h3>إضافة تحميل جديد</h3>
 
-                    <form action="{{ url('/add_download') }}" method="POST" enctype="multipart/form-data">
-                                 @csrf 
-                                  <div class="form-group">
-                                    <label>فئة</label><br>
-
-                                    <select name="category" required="" class="form-control">
-                                        <option value="" selected="selected" disabled="disabled">حدد علامات</option>
-                                        <option value="Emergency Signs" title="Emergency Signs">افتات الطوارئ</option>
-                                        <option value="Prohibition Signs" title="Prohibition Signs">افتات المنع</option>
-                                        <option value="Environmental signs" title="Environmental signs">اللافتات البيئية</option>
-                                        <option value="Mandatory Signs" title="Mandatory Signs">اللافتات الإلزامية</option>
-                                        <option value="Warning Signs" title="Warning Signs">اللافتات التحذيرية</option>
-                                    </select>
-
-                                </div>
-								<div class="form-group">
-									<label for="title">اسم</label>
-									<input type="text" id="name" name="name" class="form-control" placeholder="Name:" required="required"/>
-								</div>
-                                <div class="form-group">
-                                    <label for="message">تحميل الصورة المصغرة</label>
-                                    <input type="file" name="thumbnail" class="form-control" id="thumbnail" accept=".mp4,.avi, .png, .jpg" required="required">
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="message">وصف:</label>
-                                    <textarea name="description" id="summernote"></textarea>
-                                </div> --}}
-                                <div class="form-group">
-									
-                                    <select name="user_type" id="showusers">
-                                        <option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>All Users</option>
-                                        @foreach ($usertypes as $usertype)
-                                        <option value="{{$usertype->id}}" {{ request('showusers') == $usertype->id ? 'selected' : '' }}>{{$usertype->name}}</option> 
-                                        @endforeach
-                                    </select>
-								</div>
-                                
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="form-group">
-											<label for="video">تحميل A4</label>
-									<input type="file" name="file" class="form-control" id="file" accept=".mp4,.avi" required="required">
-										</div>
-                                        <div class="form-group">
-                                            <label for="video">تحميل A5</label>
-                                            <input type="file" name="file2" class="form-control" id="file2" accept=".mp4,.avi, .png, .jpg" required="required">
-										</div>
-									</div>
-									<div class="col-lg-12">
-
-									</div>
-								</div>
-								
-								<button type="submit" class="submitBtn">يُقدِّم</button>
-                    </form>
-                    
-
-
+                <div class="form-row">
+                    <div>
+                        <label>الصورة المصغرة (JPG / PNG)</label>
+                        <input type="file" name="thumbnail" accept="image/*" required>
+                    </div>
+                    <div>
+                        <label>ملف A4 (PDF)</label>
+                        <input type="file" name="file" accept=".pdf,.png,.jpg" required>
+                    </div>
+                    <div>
+                        <label>ملف A5 (PDF)</label>
+                        <input type="file" name="file2" accept=".pdf,.png,.jpg" required>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
 
-            </div>
+                <div class="form-actions">
+                    <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelUploadForm">إلغاء</button>
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i> حفظ التنزيل</button>
+                </div>
+            </form>
         </div>
+    </div>
 
-   <!-- Category Dropdown -->
-   <div class="row">
-    <div class="col-md-6">
-        <div class="form-group" style="margin-left: 2em">
-            <label>:فئة</label><br>
-            <select id="category-select" name="category" required class="form-control">
-                {{-- <option value="" selected disabled>Select Category</option> --}}
-                <option value="Emergency Signs" title="Emergency Signs">افتات الطوارئ</option>
-                <option value="Prohibition Signs" title="Prohibition Signs">افتات المنع</option>
-                <option value="Environmental signs" title="Environmental signs">اللافتات البيئية</option>
-                <option value="Mandatory Signs" title="Mandatory Signs">اللافتات الإلزامية</option>
-                <option value="Warning Signs" title="Warning Signs">اللافتات التحذيرية</option>
-            </select>
+    {{-- Grid --}}
+    <div class="am-card">
+        <div id="amDownloadsContainer" style="position:relative;">
+            @include('admin.dashboard.admin.partials.downloads_grid')
+        </div>
+    </div>
+
+</div>
+
+{{-- Shared delete modal --}}
+<div class="am-modal" id="amConfirmDelete" role="dialog" aria-modal="true">
+    <div class="am-modal__box">
+        <div class="am-modal__header">
+            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+            <h4 class="am-modal__title">حذف <span id="amConfirmType">العنصر</span>؟</h4>
+        </div>
+        <div class="am-modal__body">
+            أنت على وشك حذف <strong id="amConfirmLabel">هذا العنصر</strong> بشكل نهائي.
+            لا يمكن التراجع عن هذا الإجراء.
+        </div>
+        <div class="am-modal__footer">
+            <button type="button" class="am-btn am-btn-outline" id="amConfirmCancel">إلغاء</button>
+            <form id="amConfirmForm" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit" class="am-btn" style="background:var(--am-danger);color:#fff;">
+                    <i class="fa fa-trash"></i> نعم، احذف
+                </button>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- Default Downloads -->
-<div id="default-downloads" style="width: 100%;">
-    @foreach($all_downloads as $download)
-  
-        <div style="display: flex; margin-left: 2em; margin-right: 2em; background:#f0f4fd; gap:80px; margin-bottom:20px; padding:30px 20px; align-items:center; border-radius:12px; ">
-            <div style="display:flex; align-items:center; gap:40px"> 
-                @if ($download->thumb_nail)
-                <div>
-                    <img src="{{ asset('uploads/downloads/' . $download->thumb_nail) }}" width="110" height="156">
-                </div>
-               
-                @endif
-                <div style="color:#084f95; font-size: 18px; font-weight:600; text-align:left;width:170px;">{{ $download->name }}</div>
-            </div>
-            
-         <div style="display: flex; gap:20px;justify-content:space-between;">
-            <div style="display: flex; flex-direction: column;gap:5px;">
-                @if ($download->download_file)
-                <a href="{{ asset('uploads/downloads/' . $download->download_file) }}" target="_blank"><img src="assets/img/a4-btn-ar.png"  style="width: 80%"></a><br>
-                @endif
-                @if ($download->download_file2)
-                <a href="{{ asset('uploads/downloads/' . $download->download_file2) }}" target="_blank"><img src="assets/img/a5-btn-ar.png"  style="width: 80%"></a><br>
-                @endif
-            </div>
-            <div>
-                <a href="javascript:;" data-toggle="modal" data-target="#delete-{{ $download->id }}" title="Delete"><img src="assets/img/delete-ar.png"  style="width: 80%"></a><br>
-            </div>
-            <div class="modal fade" id="delete-{{$download->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">حذف السجل</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>هل أنت متأكد؟ هل تريد حقًا حذف هذا؟</p>
-                        </div>
-                        <div class="modal-footer">
-                            <form action="{{url('/download_delete/'.$download->id)}}" method="POST">
-                            @csrf
-                            
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
-                            <button type="submit" class="btn btn-danger">نعم</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>	
-         </div>
-        </div>
-    @endforeach
-</div>
-
-<!-- Filtered Downloads -->
-<div id="filtered-downloads" style="display: none;">
-    <!-- This will be updated dynamically -->
-</div>
 <script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-        placeholder: 'Please enter your Details',
-        tabsize: 2,
-        width:700,
-        height: 150,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-        $('#category-select').change(function() {
-            let category = $(this).val();
+(function() {
+    var baseUrl     = '{{ url("/upload") }}';
+    var currentCat  = @json($category);
 
-            // Make an AJAX request to filter downloads
-            $.ajax({
-                url: "{{ route('downloads.filter') }}", // Define this route in web.php
-                type: "GET",
-                data: { category: category },
-                success: function(response) {
-                    // Hide the default downloads   
-                    $('#default-downloads').hide();
+    // Toggle upload form
+    var toggleBtn = document.getElementById('toggleUploadForm');
+    var cancelBtn = document.getElementById('cancelUploadForm');
+    var form      = document.getElementById('newUploadForm');
+    toggleBtn && toggleBtn.addEventListener('click', function() { form.classList.toggle('open'); });
+    cancelBtn && cancelBtn.addEventListener('click', function() { form.classList.remove('open'); });
 
-                    // Display the filtered downloads
-                    $('#filtered-downloads').html(response).show();
-                },
-                error: function() {
-                    alert('Error loading downloads. Please try again.');
-                }
+    // Debounced AJAX search + pagination
+    function debounce(fn, wait) {
+        var t;
+        return function() {
+            var ctx = this, args = arguments;
+            clearTimeout(t);
+            t = setTimeout(function(){ fn.apply(ctx, args); }, wait);
+        };
+    }
+
+    var container = document.getElementById('amDownloadsContainer');
+    var input     = document.getElementById('amDownloadsSearch');
+
+    function fetchPage(page, cat) {
+        var params = new URLSearchParams();
+        params.set('cat', cat || currentCat);
+        if (input && input.value.trim() !== '') params.set('q', input.value.trim());
+        if (page) params.set('page', page);
+
+        container.style.opacity = '0.5';
+        container.style.pointerEvents = 'none';
+
+        fetch(baseUrl + '?' + params.toString(), { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(function(r){ return r.text(); })
+            .then(function(html) {
+                container.innerHTML = html;
+                container.style.opacity = '';
+                container.style.pointerEvents = '';
+                window.history.replaceState({}, '', baseUrl + '?' + params.toString());
+            })
+            .catch(function(){
+                container.style.opacity = '';
+                container.style.pointerEvents = '';
             });
+    }
+
+    // Category pill click → AJAX (no full reload)
+    document.querySelectorAll('.am-pill').forEach(function(pill) {
+        pill.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.am-pill').forEach(function(p){ p.classList.remove('active'); });
+            pill.classList.add('active');
+            currentCat = pill.getAttribute('data-cat');
+            fetchPage(1, currentCat);
         });
     });
+
+    input && input.addEventListener('input', debounce(function(){ fetchPage(1); }, 350));
+    container && container.addEventListener('click', function(e) {
+        var btn = e.target.closest('.am-page-link');
+        if (!btn || btn.disabled) return;
+        e.preventDefault();
+        var p = parseInt(btn.getAttribute('data-page'), 10);
+        if (!isNaN(p) && p > 0) fetchPage(p);
+    });
+
+    // Delete modal
+    var modal      = document.getElementById('amConfirmDelete');
+    var cForm      = document.getElementById('amConfirmForm');
+    var typeEl     = document.getElementById('amConfirmType');
+    var labelEl    = document.getElementById('amConfirmLabel');
+    var modalCancel = document.getElementById('amConfirmCancel');
+
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.am-confirm-delete');
+        if (!btn) return;
+        e.preventDefault();
+        cForm.setAttribute('action', btn.getAttribute('data-action') || '');
+        typeEl.textContent = btn.getAttribute('data-type') || 'العنصر';
+        labelEl.textContent = btn.getAttribute('data-label') || 'هذا العنصر';
+        modal.classList.add('open');
+    });
+
+    function closeModal() { modal.classList.remove('open'); }
+    modalCancel && modalCancel.addEventListener('click', closeModal);
+    modal && modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+})();
 </script>
+
 @endsection

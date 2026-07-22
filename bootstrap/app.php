@@ -37,7 +37,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (\Symfony\Component\HttpKernel\Exception\HttpException $e, $request) {
             if ($e->getStatusCode() === 419) {
                 return redirect('/')
-                    ->with('error', 'Your session has expired. Please try to login again.');
+                    ->with('error', 'انتهت صلاحية الجلسة. يرجى تسجيل الدخول مرة أخرى.');
             }
         });
     })

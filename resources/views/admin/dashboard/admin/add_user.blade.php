@@ -1,5 +1,7 @@
 @extends('admin.dashboard.layouts.app')
 @section('content')
+
+
     <!-- begin:: Content -->
     <style>
         .new-file-upload {
@@ -11,25 +13,69 @@
             font-size: 12px;
             background: #FFF;
             border-radius: 4px;
-            border: 1px solid #0d47b3;
+            border: 1px solid #2E3B9A;
         }
-/*        .custom-file-input-tag .input-file {*/
-/*    position: absolute;*/
-/*    top: 11px;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    opacity: 1;*/
-/*    cursor: pointer;*/
-/*    z-index: 0;*/
-/*    right: 11px;*/
-/*}*/
-/*        .custom-file-input-tag .file-label{*/
-/*            z-index: 9;*/
-/*            position: relative;*/
-/*        }*/
+
+        /* Modern add-user form styling */
+        .am-form .form-group.row { margin-bottom: 22px; }
+        .am-form label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #6c757d;
+            margin-bottom: 6px;
+            text-align: right !important;
+        }
+        .am-form .form-group.row > [class*="col-"] { text-align: right; }
+        .am-form .form-control {
+            border: 1px solid #e2e6ee;
+            border-radius: 8px;
+            background: #f9fafc;
+            padding: 10px 14px;
+            font-size: 13.5px;
+            color: #212529;
+            transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+        }
+        .am-form .form-control:focus {
+            outline: none;
+            background: #fff;
+            border-color: #5560C4;
+            box-shadow: 0 0 0 3px rgba(46, 59, 154, 0.10);
+        }
+        .am-form textarea.form-control { min-height: 80px; }
+        .am-form input[type="file"].form-control { padding: 8px 12px; background: #fff; }
+        .am-section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #2E3B9A;
+            margin: 8px 0 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eef1f5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .am-section-title:not(:first-of-type) { margin-top: 30px; }
     </style>
-    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding:26px;">
+
+        {{-- Modern page header --}}
+        <div class="am-page-header">
+            <div>
+                <h2>إضافة مستخدم جديد</h2>
+                <p>تسجيل حساب عميل جديد مع ملف الشركة والشهادات.</p>
+            </div>
+            <div>
+                <a href="{{ url('/view_user') }}" class="am-btn am-btn-outline">
+                    <i class="fa fa-arrow-left"></i> خلف
+                </a>
+            </div>
+        </div>
+
         <div class="row text-right">
             <div class="col-lg-12">
 
@@ -37,440 +83,371 @@
                     @php
                         $class = Session::get('Success') ? 'success' : 'danger';
                     @endphp
-                    <div class="row">
-                        <div class="col-md-12 pl-4 ml-4 mt-4">
-                            <div class="alert alert-{{ $class }} alert-dismissible">{{ $message }} &nbsp; <a
-                                    href="#" class="close mt-1" data-dismiss="alert" aria-label="close">&times;</a>
-                            </div>
-                        </div>
+                    <div class="am-card" style="padding:14px 20px;margin-bottom:16px;color:{{ $class === 'success' ? '#1a8a5c' : '#b83432' }};background:{{ $class === 'success' ? 'rgba(38,194,129,0.08)' : 'rgba(235,77,75,0.08)' }};">
+                        <i class="fa fa-{{ $class === 'success' ? 'check-circle' : 'exclamation-circle' }}"></i> {{ $message }}
                     </div>
                 @endif
 
-                <!--begin::Portlet-->
-                <div class="kt-portlet">
-                    <div class="kt-portlet__head kt-portlet__head--lg">
-                        <div class="kt-portlet__head-label">
-                            <span class="kt-portlet__head-icon">
-                                <i class="kt-font-brand flaticon2-line-chart"></i>
-                            </span>
-                            <h3 class="kt-portlet__head-title mx-2">
-                                إضافة مستخدم جديد
-                            </h3>
-                        </div>
-                        <div class="kt-portlet__head-toolbar">
-                            <div class="kt-portlet__head-wrapper">
-                                <a href="{{ url('admin') }}" class="btn btn-clean btn-icon-sm">
-                                    خلف
-                                    <i class="la la-long-arrow-left"></i>
-                                </a>
-                                &nbsp;
+                {{-- Form card --}}
+                <div class="am-card am-form">
+                    <div class="kt-portlet" style="background:transparent;box-shadow:none;border:none;margin:0;">
+                        <div class="kt-portlet__head kt-portlet__head--lg" style="display:none;"></div>
 
-                            </div>
-                        </div>
-                    </div>
+                        <!--begin::Form-->
+                        @php
+                        $usertypes = \App\UserType::get();
+                        @endphp
+                        <form class="kt-form kt-form--label-right" method="POST" action="{{ route('add_user') }}"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div class="kt-portlet__body" style="padding:26px;">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
 
-                    <!--begin::Form-->
-                    @php
-                    $usertypes = \App\UserType::get();
-                    @endphp
-                    <form class="kt-form kt-form--label-right" method="POST" action="{{ route('add_user') }}"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="kt-portlet__body">
-                            <div class="form-group row">
-                                <div class="col-lg-12">
-                                  
-                                    <div class="kt-input-icon kt-input-icon--right" style="margin-bottom:20px; padding-right: 31px;"> 
-                                       
-                                        <select name="user_type" id="user_type">
-                                            <option value="0">صارف کی قسم منتخب کریں</option>    
-                                            @foreach ($usertypes as $usertype)
-                                            <option value="{{$usertype->id}}">{{$usertype->name}}</option> 
-                                            @endforeach
-                                                   
-                                            </select>   
-                                    </div>
-                                   
-                                   
-                                </div>
-                            </div>
-                          
-                            <div class="form-group row">
+                                        <div class="kt-input-icon kt-input-icon--right" style="margin-bottom:20px; padding-right: 31px;">
 
-                                <div class="col-lg-3">
-                                    <label for="address2">هوية الشركة:</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="order_number" name="order_number" class="form-control"
-                                            placeholder="أدخل رقم هوية الشركة" required>
-                                        <span id="numbererror" class="text-danger"></span>
-                                    </div>
-                                </div>
+                                            <select name="user_type" id="user_type">
+                                                <option value="0">صارف کی قسم منتخب کریں</option>
+                                                @foreach ($usertypes as $usertype)
+                                                <option value="{{$usertype->id}}">{{$usertype->name}}</option>
+                                                @endforeach
 
-                                <div class="col-lg-3">
-                                    <label for="name">عنوان البريد الإلكتروني</label>
-                                    <input type="email" id="email" name="email" class="form-control"
-                                        placeholder="أدخل عنوان البريد الالكتروني" required>
-                                    <!---<span class="form-text text-muted">Please enter Email Address</span>--->
-                                </div>
+                                                </select>
+                                        </div>
 
-                                <div class="col-lg-3">
-                                    <label for="name">اسم المستخدم</label>
-                                    <input type="text" id="name" name="name" class="form-control"
-                                        placeholder="ادخل اسم المستخدم" required>
-                                    <!---<span class="form-text text-muted">Please enter the client's Username</span>---->
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <label for="password">كلمة المرور:</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="password" id="password" name="password" class="form-control"
-                                            placeholder="أدخل كلمة المرور" required>
-                                        <!--//pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$"-->
-                                        <!---<span class="form-text text-muted">Minimum 6 characters, at least 1 number & at least 1 Capital letter</span>--->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-
-                                <div class="col-lg-4">
-                                    <label for="company_name">اسم الشركة</label>
-                                    <input type="text" id="company_name" name="company_name" class="form-control"
-                                        placeholder="أدخل اسم الشركة" required>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="company_address">عنوان الشركة</label>
-                                    <textarea id="company_address" name="company_address" class="form-control" placeholder="أدخل عنوان الشركة" required></textarea>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="phone">رقم هاتف الشركة</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="phone" name="phone" class="form-control"
-                                            placeholder="هاتف" required>
-                                        <input type="hidden" name="phonecode" id="phonecode">
-                                        <input type="hidden" name="phoneflag" id="phoneflag">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-6">
-                                    <label for="country">الدولة</label>
-                                    <input type="text" id="country" name="country" class="form-control"
-                                        placeholder="أدخل البلد" required>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <label for="director">العضو المنتدب/ الرئيس التنفيذي</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="director" name="director" class="form-control"
-                                            placeholder="إدخال اسم" required>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    <label for="person_iso">الشخص المسؤول عن الآيزو</label>
-                                    <input type="text" id="person_iso" name="person_iso" class="form-control"
-                                        placeholder="اسم شخص ISO" required>
-                                    <!--<span class="form-text text-muted">Please enter the ISO contact person's name</span>-->
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="contact_iso" style="text-align:left;">جهة الاتصال الخاصة بمنصة ISO</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="contact_iso" name="contact_iso" class="form-control"
-                                            placeholder="أدخل رقم الاتصال" required>
-                                        <input type="hidden" name="isophonecode" id="isophonecode">
-                                        <input type="hidden" name="isophoneflag" id="isophoneflag">
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="email_iso text-left" style="text-align:left;">عنوان البريد الإلكتروني الخاص بمنصة ISO</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="email" id="email_iso" name="email_iso" class="form-control"
-                                            placeholder="أدخل عنوان البريد الالكتروني" required>
-                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i
-                                                    class="la la-bookmark-o"></i></span></span>
-                                        <!--<span class="form-text text-muted">Please enter the Iso Email</span>-->
 
                                     </div>
                                 </div>
 
+                                <h4 class="am-section-title"><i class="fa fa-key"></i> الوصول للحساب</h4>
 
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    <label for="sales_process">الجهة المسؤولة عن عملية المبيعات</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="sales_process" name="sales_process"
-                                            class="form-control" placeholder="إدخال اسم" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="purchasing_process">الجهة المسؤولة عن عملية الشراء</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="purchasing_process" name="purchasing_process"
-                                            class="form-control" placeholder="إدخال اسم" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label class="" for="servicing_process">الجهة المسؤولة عن عملية تقديم الخدمات</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="servicing_process" name="servicing_process"
-                                            class="form-control" placeholder="إدخال اسم" required>
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="form-group row">
 
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    <label for="address1">الجهة المسؤولة عن عملية الكفاءة</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="text" id="competency_process" name="competency_process"
-                                            class="form-control" placeholder="إدخال اسم" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="address2">ملف الشركة / نظرة عامة على الأعمال:</label>
-                                    {{-- <div class="kt-input-icon kt-input-icon--right">
-                                        <input type="file" id="company_profile" name="company_profile"
-                                            class="form-control" placeholder="ملف الشركة" required>
-                                    </div> --}}
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="company_profile" required/>
-                                        <label for="fileInput" class="file-label">
-                                          <span class="file-text">اختيار الملف</span>
-                                          <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="scope">نطاق الأعمال</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-                                        <textarea id="scope" name="scope" class="form-control" required></textarea>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            {{-- 	<div class="form-group row">
-
-                                <div class="col-lg-4">
-                                    <label for="lastlogin">Last login:</label>
-                                    <input type="file" id="lastlogin" name="lastlogin" class="form-control" placeholder="" value="" required>
-                                </div>
-                                <div class="col-lg-4">
-
-                                </div>
-                                <div class="col-lg-4">
-
-                                </div>
-                            </div>
-
-
-                                    <div class="form-group form-row">
-
-
-
-                            </div>
-                            <div class="form-group row">
-
-
-
-                    </div>
-                             --}}
-
-
-                            <div class="form-group row">
-
-                                <div class="col-lg-9">
-                                    <label for="user_image">وصف الشركة:</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-
-                                        <textarea id="Company_overview" name="Company_overview" class="form-control" placeholder="أدخل نظرة عامة على الشركة"
-                                            style="height: 190px;" required></textarea>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <label for="user_image">شعار الشركة:</label>
-                                    <div class="kt-input-icon kt-input-icon--right">
-
-                                        <div id="image-preview">
-                                            <label for="image-upload" id="image-label"></label>
-
-                                            <input type="file" accept="image/*" name="user_image" id="file"
-                                                onchange="loadFile(event)" required>
-                                            <p><label for="file" style="cursor: pointer;">إرفاق ملف بصيغة JPEG فقط</label>
-                                            </p>
-                                            <p><img id="output" width="200px" height="200px" /></p>
+                                    <div class="col-lg-3">
+                                        <label for="address2">هوية الشركة:</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="order_number" name="order_number" class="form-control"
+                                                placeholder="أدخل رقم هوية الشركة" required>
+                                            <span id="numbererror" class="text-danger"></span>
                                         </div>
                                     </div>
 
-                                </div>
-
-
-                            </div>
-
-                            <div class="form-group row">
-
-                                <div class="col-lg-3">
-                                    <label for="iso9001_certificate">شهادة ISO9001:</label>
-                                    {{-- <input type="file" id="iso9001_certificate" accept=".pdf"
-                                        name="iso9001_certificate"> --}}
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="iso9001_certificate" accept=".pdf"/>
-                                        <label for="fileInput" class="file-label">
-                                            <span class="file-text">اختيار الملف</span>
-                                            <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
+                                    <div class="col-lg-3">
+                                        <label for="name">عنوان البريد الإلكتروني</label>
+                                        <input type="email" id="email" name="email" class="form-control"
+                                            placeholder="أدخل عنوان البريد الالكتروني" required>
                                     </div>
-                                    <!--<button type="button" class="new-file-upload" onclick="document.getElementById('iso9001_certificate').click()">Attach File</button>-->
 
-                                </div>
+                                    <div class="col-lg-3">
+                                        <label for="name">اسم المستخدم</label>
+                                        <input type="text" id="name" name="name" class="form-control"
+                                            placeholder="ادخل اسم المستخدم" required>
+                                    </div>
 
-                                <div class="col-lg-4">
-                                    <label for="iso9001_expirydate">تاريخ انتهاء الصلاحية:</label>
-                                    <div class="input-group">
-                                        <input type="text" id="iso9001_expirydate" name="iso9001_expirydate"
-                                            class="form-control specialInput" placeholder="mm/dd/yyyy">
+                                    <div class="col-lg-3">
+                                        <label for="password">كلمة المرور:</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                placeholder="أدخل كلمة المرور" required>
+                                            <span class="form-text text-muted">6 أحرف على الأقل، ورقم واحد على الأقل، وحرف كبير واحد على الأقل</span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-4">
-                                    <label for="iso9001_description">الوصف:</label>
-                                    <textarea id="iso9001_description" name="iso9001_description" class="form-control"
-                                        placeholder="وصف شهادة ISO9001"></textarea>
+                                <h4 class="am-section-title"><i class="fa fa-building"></i> تفاصيل الشركة</h4>
+
+                                <div class="form-group row">
+
+                                    <div class="col-lg-4">
+                                        <label for="company_name">اسم الشركة</label>
+                                        <input type="text" id="company_name" name="company_name" class="form-control"
+                                            placeholder="أدخل اسم الشركة" required>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="company_address">عنوان الشركة</label>
+                                        <textarea id="company_address" name="company_address" class="form-control" placeholder="أدخل عنوان الشركة" required></textarea>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="phone">رقم هاتف الشركة</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="phone" name="phone" class="form-control"
+                                                placeholder="هاتف" required>
+                                            <input type="hidden" name="phonecode" id="phonecode">
+                                            <input type="hidden" name="phoneflag" id="phoneflag">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label for="country">الدولة</label>
+                                        <input type="text" id="country" name="country" class="form-control"
+                                            placeholder="أدخل البلد" required>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <label for="director">العضو المنتدب/ الرئيس التنفيذي</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="director" name="director" class="form-control"
+                                                placeholder="إدخال اسم" required>
+                                        </div>
+
+                                    </div>
                                 </div>
 
-                            </div>
+                                <h4 class="am-section-title"><i class="fa fa-user-shield"></i> جهة الاتصال الخاصة بالآيزو</h4>
 
-                            <div class="form-group row">
+                                <div class="form-group row">
+                                    <div class="col-lg-4">
+                                        <label for="person_iso">الشخص المسؤول عن الآيزو</label>
+                                        <input type="text" id="person_iso" name="person_iso" class="form-control"
+                                            placeholder="اسم شخص ISO" required>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="contact_iso" style="text-align:right;">جهة الاتصال الخاصة بمنصة ISO</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="contact_iso" name="contact_iso" class="form-control"
+                                                placeholder="أدخل رقم الاتصال" required>
+                                            <input type="hidden" name="isophonecode" id="isophonecode">
+                                            <input type="hidden" name="isophoneflag" id="isophoneflag">
+                                        </div>
 
-                                <div class="col-lg-3">
-                                    <label for="iso14001_certificate">شهادة ISO14001:</label>
-                                    {{-- <input type="file" id="iso14001_certificate" accept=".pdf"
-                                        name="iso14001_certificate"> --}}
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="email_iso text-left" style="text-align:right;">عنوان البريد الإلكتروني الخاص بمنصة ISO</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="email" id="email_iso" name="email_iso" class="form-control"
+                                                placeholder="أدخل عنوان البريد الالكتروني" required>
+                                            <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i
+                                                        class="la la-bookmark-o"></i></span></span>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <h4 class="am-section-title"><i class="fa fa-users-cog"></i> مسؤولو العمليات</h4>
+
+                                <div class="form-group row">
+                                    <div class="col-lg-4">
+                                        <label for="sales_process">الجهة المسؤولة عن عملية المبيعات</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="sales_process" name="sales_process"
+                                                class="form-control" placeholder="إدخال اسم" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="purchasing_process">الجهة المسؤولة عن عملية الشراء</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="purchasing_process" name="purchasing_process"
+                                                class="form-control" placeholder="إدخال اسم" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="" for="servicing_process">الجهة المسؤولة عن عملية تقديم الخدمات</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="servicing_process" name="servicing_process"
+                                                class="form-control" placeholder="إدخال اسم" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-lg-4">
+                                        <label for="address1">الجهة المسؤولة عن عملية الكفاءة</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" id="competency_process" name="competency_process"
+                                                class="form-control" placeholder="إدخال اسم" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="address2">ملف الشركة / نظرة عامة على الأعمال:</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="fileInput" class="input-file" name="company_profile" required/>
+                                            <label for="fileInput" class="file-label">
+                                              <span class="file-text">اختيار الملف</span>
+                                              <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="scope">نطاق الأعمال</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <textarea id="scope" name="scope" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <h4 class="am-section-title"><i class="fa fa-image"></i> وصف الشركة والشعار</h4>
+
+                                <div class="form-group row">
+
+                                    <div class="col-lg-9">
+                                        <label for="user_image">وصف الشركة:</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+
+                                            <textarea id="Company_overview" name="Company_overview" class="form-control" placeholder="أدخل نظرة عامة على الشركة"
+                                                style="height: 190px;" required></textarea>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <label for="user_image">شعار الشركة:</label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+
+                                            <div id="image-preview">
+                                                <label for="image-upload" id="image-label"></label>
+
+                                                <input type="file" accept="image/*" name="user_image" id="file"
+                                                    onchange="loadFile(event)" required>
+                                                <p><label for="file" style="cursor: pointer;">إرفاق ملف بصيغة JPEG فقط</label>
+                                                </p>
+                                                <p><img id="output" width="200px" height="200px" /></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <h4 class="am-section-title"><i class="fa fa-certificate"></i> شهادات الآيزو</h4>
+
+                                <div class="form-group row">
+
+                                    <div class="col-lg-3">
+                                        <label for="iso9001_certificate">شهادة ISO9001:</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="fileInput" class="input-file" name="iso9001_certificate" accept=".pdf"/>
+                                            <label for="fileInput" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <label for="iso9001_expirydate">تاريخ انتهاء الصلاحية:</label>
+                                        <div class="input-group">
+                                            <input type="text" id="iso9001_expirydate" name="iso9001_expirydate"
+                                                class="form-control specialInput" placeholder="mm/dd/yyyy">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <label for="iso9001_description">الوصف:</label>
+                                        <textarea id="iso9001_description" name="iso9001_description" class="form-control"
+                                            placeholder="وصف شهادة ISO9001"></textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+
+                                    <div class="col-lg-3">
+                                        <label for="iso14001_certificate">شهادة ISO14001:</label>
                                         <div class="custom-file-input-tag form-control">
                                             <input type="file" id="fileInput" class="input-file" name="iso14001_certificate" accept=".pdf"/>
                                             <label for="fileInput" class="file-label">
                                                 <span class="file-text">اختيار الملف</span>
-                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
                                             </label>
                                         </div>
-                                    <!--<button type="button" class="new-file-upload" onclick="document.getElementById('iso14001_certificate').click()">Attach File</button>-->
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <label for="iso14001_expirydate">تاريخ انتهاء الصلاحية:</label>
-                                    <div class="input-group">
-                                        <input type="text" id="iso14001_expirydate" name="iso14001_expirydate"
-                                            class="form-control specialInput" placeholder="mm/dd/yyyy">
                                     </div>
-                                </div>
 
-                                <div class="col-lg-4">
-                                    <label for="iso14001_description">الوصف:</label>
-                                    <textarea id="iso14001_description" name="iso14001_description" class="form-control"
-                                        placeholder="وصف شهادة ISO14001"></textarea>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group row">
-
-                                <div class="col-lg-3">
-                                    <label for="iso45001_certificate">شهادة ISO45001:</label>
-                                    {{-- <input type="file" id="iso45001_certificate" accept=".pdf"
-                                        name="iso45001_certificate"> --}}
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="iso45001_certificate" accept=".pdf"/>
-                                        <label for="fileInput" class="file-label">
-                                            <span class="file-text">اختيار الملف</span>
-                                            <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
-                                    </div>
-                                    <!--<button  type="button"  class="new-file-upload" onclick="document.getElementById('iso45001_certificate').click()">Attach File</button>-->
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <label for="iso45001_expirydate">تاريخ انتهاء الصلاحية:</label>
-                                    <div class="input-group">
-                                        <input type="text" id="iso45001_expirydate" name="iso45001_expirydate"
-                                            class="form-control specialInput" placeholder="mm/dd/yyyy">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <label for="iso45001_description">الوصف:</label>
-                                    <textarea id="iso45001_description" name="iso45001_description" class="form-control"
-                                        placeholder="وصف شهادة ISO45001"></textarea>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <div class="col-lg-3">
-                                    <label for="iso45001_certificate">تقرير التدقيق</label>
-                                    {{-- <input type="file" id="audit_report" accept=".pdf" name="audit_report"> --}}
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="audit_report" accept=".pdf"/>
-                                        <label for="fileInput" class="file-label">
-                                            <span class="file-text">اختيار الملف</span>
-                                            <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="iso45001_certificate">تعليق التدقيق</label>
-                                    <textarea id="audit_comment" name="audit_comment" class="form-control" placeholder="تعليق التدقيق"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-3">
-                                    <label for="iso45001_certificate">اتفاقية شهادة ضمان الجودة</label>
-                                    <input type="file" id="qa_certification" accept=".pdf"
-                                           name="qa_certification">
-                                </div>
-                                
-                            </div>
-                            <div class="kt-portlet__foot">
-
-                                <button type="submit" id="submit" class="submitBtn" style="margin-right: -28px;">
-                                    يُقدِّم
-                                </button>
-                                <button type="reset" class="submitBtn"
-                                    onclick="window.location.href='{{ url('/admin') }}'" style="margin-right:10px">
-                                    يلغي
-                                </button>
-
-                                {{-- -	<div class="kt-form__actions">
-                                        <div class="col-lg-4">
-                                            <a href="{{url('/admin')}}" type="reset" value="Reset" class="btn btn-primary" style="margin-right:-535px;background-color: transparent;border-radius: 16px;color: #534e4e;color: #ffffff;background-color: #5867dd;">Cancel</a>
+                                    <div class="col-lg-4">
+                                        <label for="iso14001_expirydate">تاريخ انتهاء الصلاحية:</label>
+                                        <div class="input-group">
+                                            <input type="text" id="iso14001_expirydate" name="iso14001_expirydate"
+                                                class="form-control specialInput" placeholder="mm/dd/yyyy">
                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-8">
-                                                <button type="submit" class="btn btn-primary" style="margin-right: -308px;
-                                                margin-top: -39px;
-                                                border-radius: 17px;" >Submit</button>
+                                    </div>
 
-                                            </div>
+                                    <div class="col-lg-4">
+                                        <label for="iso14001_description">الوصف:</label>
+                                        <textarea id="iso14001_description" name="iso14001_description" class="form-control"
+                                            placeholder="وصف شهادة ISO14001"></textarea>
+                                    </div>
 
+                                </div>
+
+                                <div class="form-group row">
+
+                                    <div class="col-lg-3">
+                                        <label for="iso45001_certificate">شهادة ISO45001:</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="fileInput" class="input-file" name="iso45001_certificate" accept=".pdf"/>
+                                            <label for="fileInput" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
                                         </div>
-                                    </div> --}}
-                            </div>
+                                    </div>
 
-                    </form>
+                                    <div class="col-lg-4">
+                                        <label for="iso45001_expirydate">تاريخ انتهاء الصلاحية:</label>
+                                        <div class="input-group">
+                                            <input type="text" id="iso45001_expirydate" name="iso45001_expirydate"
+                                                class="form-control specialInput" placeholder="mm/dd/yyyy">
+                                        </div>
+                                    </div>
 
-                    <!--end::Form-->
-                </div>
+                                    <div class="col-lg-4">
+                                        <label for="iso45001_description">الوصف:</label>
+                                        <textarea id="iso45001_description" name="iso45001_description" class="form-control"
+                                            placeholder="وصف شهادة ISO45001"></textarea>
+                                    </div>
+                                </div>
 
-                <!--end::Portlet-->
 
+                                <div class="form-group row">
+                                    <div class="col-lg-3">
+                                        <label for="iso45001_certificate">تقرير التدقيق</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="fileInput" class="input-file" name="audit_report" accept=".pdf"/>
+                                            <label for="fileInput" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="iso45001_certificate">تعليق التدقيق</label>
+                                        <textarea id="audit_comment" name="audit_comment" class="form-control" placeholder="تعليق التدقيق"></textarea>
+                                    </div>
+                                </div>
+                                <h4 class="am-section-title"><i class="fa fa-file-signature"></i> وثائق إضافية</h4>
+
+                                <div class="form-group row">
+                                    <div class="col-lg-3">
+                                        <label for="iso45001_certificate">اتفاقية شهادة ضمان الجودة</label>
+                                        <input type="file" id="qa_certification" accept=".pdf"
+                                               name="qa_certification">
+                                    </div>
+
+                                </div>
+                                <div class="kt-portlet__foot" style="background:transparent;border-top:1px solid var(--am-border);padding:18px 22px;display:flex;justify-content:flex-end;gap:10px;">
+                                    <button type="reset" class="am-btn am-btn-outline"
+                                        onclick="window.location.href='{{ url('/admin') }}'">
+                                        <i class="fa fa-times"></i> يلغي
+                                    </button>
+                                    <button type="submit" id="submit" class="am-btn am-btn-primary">
+                                        <i class="fa fa-check"></i> يُقدِّم
+                                    </button>
+                                </div>
+
+                        </form>
+
+                        <!--end::Form-->
+                    </div>
+
+                    <!--end::Portlet-->
+
+                </div>{{-- /.am-card --}}
 
             </div>
         </div>
@@ -578,7 +555,7 @@
             $("#isophoneflag").val(intel_iso_phone_data.iso2);
         });
     </script>
-    
+
         <script>
         document.addEventListener('DOMContentLoaded', function() {
 

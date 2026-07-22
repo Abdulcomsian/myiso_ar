@@ -40,11 +40,10 @@
         }
 
 
-        #viewUser .modal-dialog 
+        #viewUser .modal-dialog
         {
             max-width: 750px;
         }
-        
         button.btn.btn-danger {
         background: #3758ff;
         border-color:#3758ff;
@@ -53,73 +52,98 @@
             max-height: 400px;
             overflow-y: auto;
         }
-        </style>
+                </style>
 
     <!-- begin:: Content -->
 
-    <div class="kt-content  kt-grid__item kt-grid__item--fluid view_user_content" id="kt_content">
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid view_user_content" id="kt_content" style="padding:26px;">
+
+        {{-- Modern page header --}}
+        <div class="am-page-header">
+            <div>
+                <h2>عرض قائمة المستخدمين</h2>
+                <p>تصفح وتعديل وإدارة جميع حسابات العملاء.</p>
+            </div>
+            <div>
+                <a href="{{ url('/add_user') }}" class="am-btn am-btn-primary">
+                    <i class="fa fa-plus"></i> مستخدم جديد
+                </a>
+            </div>
+        </div>
+
+        {{-- Stat cards --}}
+        <div class="am-stats">
+            <div class="am-stat">
+                <span class="am-stat__icon blue"><i class="fa fa-users"></i></span>
+                <div>
+                    <p class="am-stat__label">إجمالي المستخدمين</p>
+                    <div class="am-stat__value">{{ number_format($totalUsers ?? 0) }}</div>
+                </div>
+            </div>
+            <div class="am-stat">
+                <span class="am-stat__icon green"><i class="fa fa-check-circle"></i></span>
+                <div>
+                    <p class="am-stat__label">النشطون مؤخراً</p>
+                    <div class="am-stat__value">{{ number_format($activeRecent ?? 0) }}</div>
+                </div>
+            </div>
+            <div class="am-stat">
+                <span class="am-stat__icon orange"><i class="fa fa-user-plus"></i></span>
+                <div>
+                    <p class="am-stat__label">جديد هذا الشهر</p>
+                    <div class="am-stat__value">{{ number_format($newThisMonth ?? 0) }}</div>
+                </div>
+            </div>
+            <div class="am-stat">
+                <span class="am-stat__icon cyan"><i class="fa fa-globe"></i></span>
+                <div>
+                    <p class="am-stat__label">الدول</p>
+                    <div class="am-stat__value">{{ number_format($countries ?? 0) }}</div>
+                </div>
+            </div>
+        </div>
 
         @if ($message = Session::get('success'))
-
-            <div class="alert alert-light alert-elevate" role="alert">
-
-                <!-- <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div> -->
-
-                <!-- <div class="alert-text">
-
-                    DataTables has the ability to read data from virtually any JSON data source that can be obtained by Ajax. This can be done, in its most simple form, by setting the ajax option to the address of the JSON data source.
-
-                    See official documentation <a class="kt-link kt-font-bold" href="https://datatables.net/examples/data_sources/ajax.html" target="_blank">here</a>.
-
-                </div> -->
-
-
-                <!-- <div class="alert alert-success"> -->
-
-                <p>{{ $message }}</p>
-
-                <!-- </div> -->
-
+            <div class="am-card" style="padding:14px 20px;margin-bottom:16px;color:#1a8a5c;background:rgba(38,194,129,0.08);">
+                <i class="fa fa-check-circle"></i> {{ $message }}
             </div>
-
         @endif
 
-        <div class="kt-portlet kt-portlet--mobile">
+        <div class="am-card">
+            <div class="am-card__toolbar">
+                <form method="GET" action="{{ url('/view_user') }}" class="am-search" id="amUsersSearchForm" style="margin:0;">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="q" id="amUsersSearch" value="{{ $search ?? '' }}" placeholder="ابحث عن المستخدمين بالاسم أو البريد أو الشركة أو الدولة…" autocomplete="off">
+                </form>
+            </div>
+        <div class="kt-portlet kt-portlet--mobile" style="background:transparent;box-shadow:none;border:none;margin:0;">
 
-            <div class="kt-portlet__head kt-portlet__head--lg">
+            <div class="kt-portlet__head kt-portlet__head--lg" style="display:none;">
 
                 <div class="kt-portlet__head-label">
 
-				<span class="kt-portlet__head-icon">
+					<span class="kt-portlet__head-icon">
 
-					<i class="kt-font-brand flaticon2-line-chart"></i>
+						<i class="kt-font-brand flaticon2-line-chart"></i>
 
-				</span>
+					</span>
 
-                    <h3 class="kt-portlet__head-title mx-2">
+                    <h3 class="kt-portlet__head-title">
 
                         قائمة المستخدمين
 
                     </h3>
-                    <span style="margin-right: 15px;margin-top: 18px;display: none;">
-                        <form action="{{url('/view_user')}}" id="showuserform">
-                        <select name="showusers" id="showusers">
-                            <option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>كافة المستخدمين</option>
-                            <option value="1" {{ request('showusers') == 1 ? 'selected' : '' }}>مستخدمو SCAISO</option>
-                            <option value="2" {{ request('showusers') == 2 ? 'selected' : '' }}>مدرسة أديك</option>
-                        </select>
-                    </form></span>
+
                 </div>
 
                 <div class="kt-portlet__head-toolbar">
-                    
+
                     <div class="kt-portlet__head-wrapper">
 
                         <div class="kt-portlet__head-actions">
 
                             <div class="dropdown dropdown-inline">
-                                
-                                
+
                                 {{-- <button type="button" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                     <i class="la la-download"></i> Export
@@ -199,7 +223,17 @@
                                     </ul>
 
                                 </div> --}}
-                                
+                            @php
+                                $usertypes = \App\UserType::get();
+                            @endphp
+                            <!--<form action="{{url('/view_user')}}" id="showuserform">-->
+                            <!--    <select name="showusers" id="showusers">-->
+                            <!--        <option value="0" {{ request('showusers') == 0 ? 'selected' : '' }}>All Users</option>-->
+                            <!--        @foreach ($usertypes as $usertype)-->
+                            <!--        <option value="{{$usertype->id}}" {{ request('showusers') == $usertype->id ? 'selected' : '' }}>{{$usertype->name}}</option> -->
+                            <!--        @endforeach-->
+                            <!--    </select>-->
+                            <!--</form>-->
                             </div>
 
                             &nbsp;
@@ -220,144 +254,114 @@
 
             </div>
 
-            <div class="kt-portlet__body">
-                <style>th {
-                        text-align: center;
-                    }</style>
-                <div class="table-responsive">
-
-                    <!--begin: Datatable -->
-
-                    <table class="table table-striped- table-bordered table-hover table-sm table-checkable"
-                           id="kt_table_agent2">
-
+            <div class="kt-portlet__body" style="padding:0;">
+                <div id="amUsersContainer" style="position:relative;">
+                    @include('admin.dashboard.admin.partials.users_table')
+                </div>
+            </div>
+            @php if(false): @endphp
+                <div class="am-table-wrap">
+                    <table class="am-table" id="amUsersTable-legacy">
                         <thead>
-
                         <tr>
-
-                            <!--<th>#</th>-->
-
-                            <th>هوية الشركة</th>
-                            <th>اسم الشركة</th>
-                            <!----<th>Order Number</th>--->
-                            <!----<th>Name</th>--->
-
+                            <th>الشركة</th>
+                            <th>جهة الاتصال</th>
                             <th>الدولة</th>
-                            <th>عنوان البريد الإلكتروني</th>
-
-
-                            <th>اسم المستخدم</th>
-
-                            <!--- <th>Phone</th>
-
-                            <th>Address</th>--->
-                            <th>شعار</th>
                             <th>تفعيل التسجيل</th>
                             <th>آخر تسجيل دخول</th>
-                             <th>تاريخ الانتهاء</th>
-                            <!--<th>Expiry date</th>-->
-                            <th>أجراءات</th>
-
+                            <th>تاريخ الانتهاء</th>
+                            <th style="text-align:right;">الإجراءات</th>
                         </tr>
-
                         </thead>
-
                         <tbody>
-                        @php
-                            $count = 1;
-                        @endphp
-                        @foreach ($users as $item)
+                        @foreach ($users as $item) */ @endphp
 
 
+                            @php
+                                $iso9001 = $item->iso9001_expirydate;
+                                $iso14001 = $item->iso14001_expirydate;
+                                $iso45001 = $item->iso45001_expirydate;
+                                $x = strtotime($iso9001);
+                                $y = strtotime($iso14001);
+                                $z = strtotime($iso45001);
+                                if ($x == 0 && $y == 0 && $z == 0) {
+                                    $minValueRaw = strtotime('+3 years');
+                                } else if ($x >= 0 && $y <= 0 && $z <= 0) {
+                                    $minValueRaw = $x;
+                                } else if ($x <= 0 && $y >= 0 && $z <= 0) {
+                                    $minValueRaw = $y;
+                                } else if ($x <= 0 && $y <= 0 && $z >= 0) {
+                                    $minValueRaw = $z;
+                                } else if ($x >= 0 && $y >= 0 && $z <= 0) {
+                                    $minValueRaw = min($x, $y);
+                                } else if ($x >= 0 && $y <= 0 && $z >= 0) {
+                                    $minValueRaw = min($x, $z);
+                                } else if ($x <= 0 && $y >= 0 && $z >= 0) {
+                                    $minValueRaw = min($y, $z);
+                                } else {
+                                    $minValueRaw = min($x, min($y, $z));
+                                }
+                                $minValue = date('d/m/Y', $minValueRaw);
+                                $daysToExpiry = intval(($minValueRaw - time()) / 86400);
+                            @endphp
                             <tr>
-
-                            <!--<td>{{---$item->id---}}{{$count}}</td>-->
-                                <td>{{ $item->order_number }}</td>
-                                <td>{{$item->company_name}}</td>
-                                <!--- <td>{ order_number}}</td> --->
-                                <!--- <td>{ ->name}}</td>--->
-                                <td>{{$item->country}}</td>
-                                <td>{{$item->email}}</td>
-                                <td>{{$item->name}}</td>
-
-                                
-
-                                <!----- <td>{ ->phonecode.' '. ->phone}</td> ----->
-
-                                <td><?php
-                                    if (isset($item->profile_image)) { ?>
-                                        {{-- $logo = "<img src='{{ asset('/') }}" . $item->profile_image . "' width='60px'>"; --}}
-                                       <img src='{{ asset($item->profile_image) }}' width='60px' />
-                                    <?php } ?></td>
-
                                 <td>
-                                    @if($item->created_at !=NULL)
-                                        <!-- {{ date('d/m/Y H:i:sA', strtotime($item->created_at)) }} -->
-                                        {{ date('d/m/Y', strtotime($item->created_at)) }}
+                                    <div class="am-user-cell">
+                                        <span class="am-avatar">
+                                            @if(!empty($item->profile_image))
+                                                <img src="{{ asset($item->profile_image) }}" alt="">
+                                            @else
+                                                {{ strtoupper(substr($item->company_name ?? $item->name ?? 'U', 0, 1)) }}
+                                            @endif
+                                        </span>
+                                        <div>
+                                            <span class="am-cell-primary">{{ $item->company_name ?? '—' }}</span>
+                                            <span class="am-cell-sub">المعرف: {{ $item->order_number ?? $item->id }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="am-cell-primary">{{ $item->name ?? '—' }}</span>
+                                    <span class="am-cell-sub">{{ $item->email ?? '' }}</span>
+                                </td>
+                                <td>{{ $item->country ?? '—' }}</td>
+                                <td>
+                                    @if($item->created_at)
+                                        <span class="am-chip info">{{ date('d M Y', strtotime($item->created_at)) }}</span>
+                                    @else
+                                        <span class="am-cell-sub">—</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(!empty($item->last_login))
+                                        <span class="am-cell-primary">{{ date('d M Y', strtotime($item->last_login)) }}</span>
+                                    @else
+                                        <span class="am-cell-sub">-</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($daysToExpiry < 0)
+                                        <span class="am-chip danger">منتهية الصلاحية</span>
+                                    @elseif($daysToExpiry < 30)
+                                        <span class="am-chip warning">{{ $minValue }}</span>
+                                    @else
+                                        <span class="am-chip success">{{ $minValue }}</span>
                                     @endif
                                 </td>
 
-                                 @php
-                                    $iso9001 = $item->iso9001_expirydate;
-                                    $iso14001 = $item->iso14001_expirydate;
-                                    $iso45001 =$item->iso45001_expirydate;
-                                    
-                                    $x = strtotime($iso9001);
-                                    $y = strtotime($iso14001);
-                                    $z = strtotime($iso45001);
-
-                                    
-                                      if($x == 0 &&  $y == 0  && $z == 0)
-                                      {
-                                  
-                                        $minValue = date('d/m/Y', strtotime('+3 years'));
-                                          
-                                    }else if($x >= 0 && $y <= 0  && $z <= 0)
-                                    {
-                                        $minValue=$x;
-                                        $minValue = date('d/m/Y', $minValue);
-                                    }else if($x <= 0 && $y >= 0  && $z <= 0)
-                                    {
-                             
-                                        $minValue=$y;
-                                        $minValue = date('d/m/Y', $minValue);
-                                    }else if($x <= 0 && $y <= 0  && $z >= 0)
-                                    {
-                                   
-                                        $minValue=$z;
-                                        $minValue = date('d/m/Y', $minValue);
-                                    }else if($x >= 0 && $y >= 0  && $z <=0)
-                                    {      
-                                        $minValue=min($x,$y);
-                                        $minValue = date('d/m/Y', $minValue);
-                                    }else if($x >= 0 && $y <= 0  && $z >= 0){
-                                        $minValue=min($x,$z);
-                                        $minValue = date('d/m/Y', $minValue);
-                                    }else if($x <= 0 && $y >= 0  && $z >= 0){  
-                                        $minValue=min($y,$z);
-                                        $minValue = date('d/m/Y', $minValue);
-                                    }else{
-                                   
-                                        $minValue=min($x,min($y,$z));
-                                        $minValue = date('d/m/Y', $minValue);
-                                           
-                                    }
-                                    
-                                    @endphp
-          
                                   <!--  if($iso9001==null &&  $iso14001==null  && $iso45001==null){-->
-                                  
+
                                   <!--      $minValue = date('d/m/Y', strtotime('+3 years'));-->
-                                          
+
                                   <!--  }else if($iso9001 != null && $iso14001 == null  && $iso45001 == null){-->
                                   <!--  $minValue=$x;-->
                                   <!--  $minValue = date('d/m/Y', $minValue);-->
                                   <!--  }else if($iso9001 == null && $iso14001 != null  && $iso45001 == null){-->
-                             
+
                                   <!--  $minValue=$y;-->
                                   <!--  $minValue = date('d/m/Y', $minValue);-->
                                   <!--  }else if($iso9001 == null && $iso14001 == null  && $iso45001 != null){-->
-                                   
+
                                   <!--  $minValue=$z;-->
                                   <!--$minValue = date('d/m/Y', $minValue);-->
                                   <!--  }else if($iso9001 != null && $iso14001 != null  && $iso45001 == null){  -->
@@ -370,10 +374,10 @@
                                   <!--  $minValue=min($y,$z);-->
                                   <!--      $minValue = date('d/m/Y', $minValue);-->
                                   <!--  }else{-->
-                                   
+
                                   <!--      $minValue=min($x,min($y,$z));-->
                                   <!--          $minValue = date('d/m/Y', $minValue);-->
-                                           
+
                                   <!--  }-->
                                 <td>
                                     @php if($item->last_login!=NULL){ @endphp
@@ -384,77 +388,16 @@
                                 <td>{{ $minValue }} </td>
 
 
-                                <!--<td> ->expiry_date </td>-->
-
-
-                                <td>
-                                    {{-- eye view option hide in Action column in admin --}}
-                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="تحميل التاريخ" value=""
-                                onclick="get_downloads({{$item->id}});">
-                                <i class="fa fa-download"></i>
-                                </button>
-                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Notes History" value=""
-                                    onclick="get_notes({{$item->order_number}});">
-                                   <i class="fas fa-info-circle"></i>
-                                  </button>
-                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="سجل تسجيل الدخول" value=""
-                                onclick="get_history({{$item->id}});">
-                                <i class="fas fa-sign-in-alt"></i>
-                                </button>
-
-                                {{-- Button used to show the Email sending Details who haven`t logged In for 3, 6, 10 Months  --}}
-                                <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="تفاصيل تذكير النشاط" onclick="userEmailDetail({{$item->id}})">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>                                
-                                </button>
-                        
-
-                        <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="تحرير العميل"
-                                            onclick="editDetails({{$item}});">
-
-                                        <span class="svg-icon svg-icon-md">									<svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="18px" height="18px"
-                                                    viewBox="0 0 24 24" version="1.1">										<g
-                                                        stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">											<rect
-                                                            x="0" y="0" width="24" height="24"></rect>											<path
-                                                            d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z"
-                                                            fill="#5d78ff" fill-rule="nonzero"
-                                                            transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) "></path>											<path
-                                                            d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z"
-                                                            fill="#5d78ff" fill-rule="nonzero" opacity="0.3"></path>										</g>									</svg>	                            </span>
-
-                                    </button>
-
-
-                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                            onclick="deleteUser({{$item->id}})" title="حذف العميل">
-
-                                        <span class="svg-icon svg-icon-md">									<svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="18px" height="18px"
-                                                    viewBox="0 0 24 24" version="1.1">										<g
-                                                        stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">											<rect
-                                                            x="0" y="0" width="24" height="24"></rect>											<path
-                                                            d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
-                                                            fill="#5d78ff" fill-rule="nonzero"></path>											<path
-                                                            d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
-                                                            fill="#5d78ff" opacity="0.3"></path>										</g>									</svg>								</span>
-
-                                    </button>
-
-                                    <a href="edit_user/{{$item->id}}" class="btn btn-sm btn-clean btn-icon btn-icon-md"
-                                       title="عرض نماذج العملاء">
-
-								             <span class="svg-icon svg-icon-primary w17">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                        <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                                        <path d="M4.85714286,1 L11.7364114,1 C12.0910962,1 12.4343066,1.12568431 12.7051108,1.35473959 L17.4686994,5.3839416 C17.8056532,5.66894833 18,6.08787823 18,6.52920201 L18,19.0833333 C18,20.8738751 17.9795521,21 16.1428571,21 L4.85714286,21 C3.02044787,21 3,20.8738751 3,19.0833333 L3,2.91666667 C3,1.12612489 3.02044787,1 4.85714286,1 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
-                                                                        <path d="M6.85714286,3 L14.7364114,3 C15.0910962,3 15.4343066,3.12568431 15.7051108,3.35473959 L20.4686994,7.3839416 C20.8056532,7.66894833 21,8.08787823 21,8.52920201 L21,21.0833333 C21,22.8738751 20.9795521,23 19.1428571,23 L6.85714286,23 C5.02044787,23 5,22.8738751 5,21.0833333 L5,4.91666667 C5,3.12612489 5.02044787,3 6.85714286,3 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="#5d78ff" fill-rule="nonzero"></path>
-                                                                    </g>
-                                                                </svg>
-                                            </span>
-                                    </a>
+                                <td style="text-align:right;white-space:nowrap;">
+                                    <div class="am-actions">
+                                        <button class="am-icon-btn" title="سجل التنزيلات" onclick="get_downloads({{$item->id}})"><i class="fa fa-download"></i></button>
+                                        <button class="am-icon-btn" title="سجل الملاحظات" onclick="get_notes({{$item->order_number}})"><i class="fas fa-info-circle"></i></button>
+                                        <button class="am-icon-btn" title="سجل تسجيل الدخول" onclick="get_history({{$item->id}})"><i class="fas fa-sign-in-alt"></i></button>
+                                        <button class="am-icon-btn" title="تفاصيل تذكير النشاط" onclick="userEmailDetail({{$item->id}})"><i class="fa fa-envelope"></i></button>
+                                        <button class="am-icon-btn" title="تحرير العميل" onclick="editDetails({{$item}})"><i class="fa fa-pen"></i></button>
+                                        <a href="/edit_user/{{$item->id}}" class="am-icon-btn" title="عرض نماذج العملاء"><i class="fa fa-file-alt"></i></a>
+                                        <button class="am-icon-btn danger" title="حذف العميل" onclick="deleteUser({{$item->id}})"><i class="fa fa-trash"></i></button>
+                                    </div>
                                 </td>
                             </tr>
                             @php
@@ -471,10 +414,42 @@
 
             </div>
 
+            <div class="am-pagination">
+                <div class="am-pagination__info">
+                    عرض <strong>{{ $users->firstItem() ?? 0 }}–{{ $users->lastItem() ?? 0 }}</strong> من <strong>{{ number_format($users->total()) }}</strong>
+                </div>
+                <div class="am-pagination__nav">
+                    @if ($users->onFirstPage())
+                        <button disabled>‹</button>
+                    @else
+                        <button onclick="window.location='{{ $users->previousPageUrl() }}'">‹</button>
+                    @endif
+
+                    @php
+                        $current = $users->currentPage();
+                        $last = $users->lastPage();
+                        $start = max(1, $current - 2);
+                        $end = min($last, $start + 4);
+                        $start = max(1, $end - 4);
+                    @endphp
+                    @for ($p = $start; $p <= $end; $p++)
+                        <button onclick="window.location='{{ $users->url($p) }}'" class="{{ $p == $current ? 'active' : '' }}">{{ $p }}</button>
+                    @endfor
+
+                    @if ($users->hasMorePages())
+                        <button onclick="window.location='{{ $users->nextPageUrl() }}'">›</button>
+                    @else
+                        <button disabled>›</button>
+                    @endif
+                </div>
+            </div>
+
         </div>
+        </div>{{-- /.am-card --}}
 
     </div>
 
+    @php endif; @endphp
 
     {{-- <!-- Modal for Login History -->
     <div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -497,117 +472,98 @@
         </div>
     </div> --}}
 
-    
-      {{-- working code --}}
-       <!-- Modal for dlownload History -->
-      <div class="modal fade" id="viewUserDownloads" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document" >
-            <div class="modal-content" style="width: 725px;">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تحميل التاريخ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="downloadHistoryTable"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
-                </div>
+
+      {{-- Modern modals --}}
+
+    <!-- Download History -->
+    <div class="am-modal" id="viewUserDownloads" role="dialog" aria-modal="true">
+        <div class="am-modal__box" style="max-width:820px;">
+            <div class="am-modal__header">
+                <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-download"></i></span>
+                <h4 class="am-modal__title">سجل التنزيلات</h4>
+            </div>
+            <div class="am-modal__body">
+                <div id="downloadHistoryTable"></div>
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button>
             </div>
         </div>
     </div>
-     <!-- Modal for Login History -->
-     <div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">سجل تسجيل الدخول</h5>
-                    <a data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <h1 class="text-right">سجل تسجيل الدخول الأخير <span id="userName"></span></h1>
-                    <div id="loginHistoryTable"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
-                </div>
+
+    <!-- Login History -->
+    <div class="am-modal" id="viewUser" role="dialog" aria-modal="true">
+        <div class="am-modal__box" style="max-width:820px;">
+            <div class="am-modal__header">
+                <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-sign-in-alt"></i></span>
+                <h4 class="am-modal__title">سجل تسجيل الدخول</h4>
+            </div>
+            <div class="am-modal__body">
+                <div id="loginHistoryTable"></div>
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button>
             </div>
         </div>
     </div>
-  <!-- Modal for Admin Note -->
-     <div class="modal fade" id="userNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ملاحظات المستخدم</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-     <form class="kt-form kt-form--label-right" id="addusernotform" method="POST" action="{{ route('addusernote') }}"  enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="editcompanyid" id="editcompanyid" value="">
-    <input type="hidden" name="_method" id="_method" value="POST"> <!-- will update dynamically -->
-    <input type="hidden" id="note_id" name="note_id" value="">
-    <div class="form-group row">
-        <div class="col-lg-12">
-            <label for="add_note">أضف ملاحظة</label>
-          <textarea id="add_note" name="note" rows="4" class="form-control" placeholder="Description Audit Comment"></textarea>
-        </div>
-    </div>
-<div class="form-group row">
-    <div class="col-lg-12">
-        <label for="note_file">ملاحظة الصورة (اختياري)</label>
-       <input type="file" name="note_file" id="note_file" class="form-control-file" accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx">
-        <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; text-align:center; margin-top:10px;">
-            اسحب وأفلِت الصورة هنا
-        </div>
-    </div>
-</div>
 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-        <button type="submit" class="btn btn-danger">يُقدِّم</button>
-    </div>
-</form>
+    <!-- User Notes -->
+    <div class="am-modal" id="userNote" role="dialog" aria-modal="true">
+        <div class="am-modal__box" style="max-width:820px;">
+            <div class="am-modal__header">
+                <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-sticky-note"></i></span>
+                <h4 class="am-modal__title">ملاحظات المستخدم</h4>
+            </div>
+            <div class="am-modal__body">
+                <form class="am-form" id="addusernotform" method="POST" action="{{ route('addusernote') }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="editcompanyid" id="editcompanyid" value="">
+                    <input type="hidden" name="_method" id="_method" value="POST">
+                    <input type="hidden" id="note_id" name="note_id" value="">
+                    <div class="form-group">
+                        <label for="add_note" style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);margin-bottom:6px;">أضف ملاحظة</label>
+                        <textarea id="add_note" name="note" rows="4" class="form-control" placeholder="الوصف / تعليق التدقيق" style="width:100%;padding:10px 14px;border:1px solid #e2e6ee;border-radius:8px;background:#f9fafc;font-size:13.5px;"></textarea>
+                    </div>
+                    <div class="form-group" style="margin-top:14px;">
+                        <label for="note_file" style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);margin-bottom:6px;">ملاحظة الصورة (اختياري)</label>
+                        <input type="file" name="note_file" id="note_file" class="form-control-file" accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx">
+                        <div id="drop-area" style="border:2px dashed #cbd5e1;padding:16px;text-align:center;margin-top:10px;border-radius:8px;color:var(--am-text-muted);font-size:12.5px;">
+                            <i class="fa fa-cloud-upload-alt" style="font-size:18px;margin-right:6px;"></i> اسحب وأفلِت الملف هنا
+                        </div>
+                    </div>
+                    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
+                        <button type="button" class="am-btn am-btn-outline am-modal-close">إلغاء</button>
+                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> حفظ الملاحظة</button>
+                    </div>
+                </form>
 
-                    {{-- <h1>Last Login History <span id="userName"></span></h1> --}}
+                <div style="margin-top:24px;">
+                    <h5 style="font-size:13px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);margin:0 0 12px 0;font-weight:600;">السجل</h5>
                     <div id="notesHistoryTable"></div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
-                </div>
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button>
             </div>
         </div>
     </div>
-    </div>
 
-
-    {{-- Modal for showing the email details of the clients who haven`t login  --}}
-    <div class="modal fade" id="user-email-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تفاصيل تذكير النشاط</h5>
-                    <a data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="modal-body" id="modalBody">
-                    
-                    <div id="userDetailEmailTable"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
-                </div>
+    <!-- Activity Reminder Emails -->
+    <div class="am-modal" id="user-email-details" role="dialog" aria-modal="true">
+        <div class="am-modal__box" style="max-width:720px;">
+            <div class="am-modal__header">
+                <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-envelope"></i></span>
+                <h4 class="am-modal__title">تفاصيل تذكير النشاط</h4>
+            </div>
+            <div class="am-modal__body" id="modalBody">
+                <div id="userDetailEmailTable"></div>
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button>
             </div>
         </div>
     </div>
+
 
         <!-- Modal for Login History -->
 {{-- <div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -645,7 +601,7 @@
                     </table>
                 </div>
                 {{ $loginHistory->links() }}
-            
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -658,78 +614,42 @@
 
 
 
-    <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-
-        <div class="modal-dialog" role="document">
-
-            <div class="modal-content">
-
-                <div class="modal-header">
-
-                    <h5 class="modal-title" id="exampleModalLabel">حذف المستخدم</h5>
-
-                    <a data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-
-                </div>
-
-                <div class="modal-body">
-
-                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-
-                </div>
-
-                <div class="modal-footer">
-
-                    <form action="{{route('deleteuserd')}}" method="POST">
-
-                        @csrf
-
-                        <input type="hidden" name="id" id="userid" value="">
-
-                        <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">يلغي</button>
-
-                        <button type="submit" class="btn btn-danger">نعم</button>
-
-                    </form>
-
-                </div>
-
+    <!-- Delete User -->
+    <div class="am-modal" id="deleteUser" role="dialog" aria-modal="true">
+        <div class="am-modal__box">
+            <div class="am-modal__header">
+                <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                <h4 class="am-modal__title">حذف المستخدم؟</h4>
             </div>
-
+            <div class="am-modal__body">
+                أنت على وشك حذف <strong>هذا المستخدم</strong> نهائياً. ستفقد جميع بياناته. لا يمكن التراجع عن هذا الإجراء.
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">إلغاء</button>
+                <form action="{{ route('deleteuserd') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <input type="hidden" name="id" id="userid" value="">
+                    <button type="submit" class="am-btn" style="background:var(--am-danger);color:#fff;">
+                        <i class="fa fa-trash"></i> نعم، احذف
+                    </button>
+                </form>
+            </div>
         </div>
-
     </div>
 
 
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+    <!-- Edit User Details -->
+    <div class="am-modal" id="editModal" role="dialog" aria-modal="true">
+        <div class="am-modal__box am-form" style="max-width:1100px;">
+            <div class="am-modal__header">
+                <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-user-edit"></i></span>
+                <h4 class="am-modal__title">تعديل تفاصيل المستخدم</h4>
+            </div>
 
-        <div class="modal-dialog modal-lg" role="document">
-
-            <div class="modal-content">
-
-                <div class="modal-header">
-
-                    <h5 class="modal-title" id="exampleModalLabel">تعديل تفاصيل المستخدم</h5>
-
-                    <a data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-
-                </div>
-
-                <form class="kt-form kt-form--label-right" id="addform" method="POST"
-                      action="{{route('updateuserinfo')}}" enctype="multipart/form-data">
-
-                    @csrf
-
-                    <div class="modal-body text-right">
-
-
-                        <div class="kt-portlet__body">
+            <form id="addform" method="POST" action="{{route('updateuserinfo')}}" enctype="multipart/form-data" style="display:contents;">
+                @csrf
+                <div class="am-modal__body" style="padding:26px;">
+                    <div class="kt-portlet__body" style="padding:0;">
 
                             <input type="hidden" name="id" id="editvalue" value="">
 
@@ -929,21 +849,10 @@
 
                                     <div class="kt-input-icon kt-input-icon--right">
 
-                                        {{-- <input type="file" id="company_profile" name="company_profile"
-                                               class="form-control" placeholder="ملف الشركة"> --}}
-                                               <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput" class="input-file" name="company_profile"/>
-                                                <label for="fileInput" class="file-label">
-                                                  <span class="file-text">اختيار الملف</span>
-                                                  <span class="file-chosen">لم يتم اختيار ملف</span>
-                                                </label>
-                                            </div>
+                                        <input type="file" id="company_profile" name="company_profile"
+                                               class="form-control" placeholder="ملف الشركة">
 
-                                        <span class="form-text text-muted" id="downloadlink">
-
-									 <a href="uploads/user/5f86bde211a21.pdf">حساب تعريفي</a>
-
-									</span>
+                                        <span class="form-text text-muted" id="downloadlink"></span>
 
 
                                     </div>
@@ -1029,16 +938,9 @@
                                 <div class="col-lg-4">
                                     <label for="iso9001_certificate">شهادة ISO9001:</label>&nbsp;&nbsp;
                                     <span id="view_9001"> </span>&nbsp;&nbsp;
-                                    <a href="#" data-handle="iso9001" class="iso9001 delete-certificate">يمسح</a>
-                                    {{-- <input type="file" id="iso9001_certificate" accept=".pdf"
-                                           name="iso9001_certificate"> --}}
-                                        <div class="custom-file-input-tag form-control">
-                                            <input type="file" id="fileInput" class="input-file" name="iso9001_certificate" accept=".pdf"/>
-                                            <label for="fileInput" class="file-label">
-                                              <span class="file-text">اختيار الملف</span>
-                                              <span class="file-chosen">لم يتم اختيار ملف</span>
-                                            </label>
-                                        </div>
+                                    <a href="#" data-handle="iso9001" class="iso9001 delete-certificate">حذف</a>
+                                    <input type="file" id="iso9001_certificate" accept=".pdf"
+                                           name="iso9001_certificate">
                                     <!--<button type="button" class="new-file-upload"-->
                                     <!--        onclick="document.getElementById('iso9001_certificate').click()">Attach File-->
                                     <!--</button>-->
@@ -1050,9 +952,9 @@
                                     <label for="iso9001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                     <input type="date" id="iso9001_expirydate" max="31-12-2999"
                                     name="iso9001_expirydate" class="form-control" placeholder="تاريخ الانتهاء">
-                                </div>                     
-                                
-                                
+                                </div>
+
+
                                 <div class="col-lg-4">
                                     <label for="iso9001_description">الوصف:</label>
                                     <textarea id="iso9001_description" name="iso9001_description" class="form-control"
@@ -1068,16 +970,9 @@
                                 <div class="col-lg-4">
                                     <label for="iso14001_certificate">شهادة ISO14001:</label>&nbsp;&nbsp;<span
                                             id="view_4001"></span>&nbsp;&nbsp;<a href="#" data-handle="iso14001"
-                                                                                 class="iso4001 delete-certificate">يمسح</a>
-                                    {{-- <input type="file" id="iso14001_certificate" accept=".pdf"
-                                           name="iso14001_certificate"> --}}
-                                        <div class="custom-file-input-tag form-control">
-                                            <input type="file" id="fileInput" class="input-file" name="iso14001_certificate" accept=".pdf"/>
-                                            <label for="fileInput" class="file-label">
-                                              <span class="file-text">اختيار الملف</span>
-                                              <span class="file-chosen">لم يتم اختيار ملف</span>
-                                            </label>
-                                        </div>
+                                                                                 class="iso4001 delete-certificate">حذف</a>
+                                    <input type="file" id="iso14001_certificate" accept=".pdf"
+                                           name="iso14001_certificate">
                                     <!--<button type="button" class="new-file-upload"-->
                                     <!--        onclick="document.getElementById('iso14001_certificate').click()">Attach-->
                                     <!--    File-->
@@ -1110,22 +1005,15 @@
                                 <div class="col-lg-4">
                                     <label for="iso45001_certificate">شهادة ISO45001:</label>&nbsp;&nbsp;
                                     <span id="view_45001"></span>
-                                    &nbsp;&nbsp; <a href="#" data-handle="iso45001" class="iso45001 delete-certificate">يمسح</a>
-                                    {{-- <input type="file" id="iso45001_certificate" accept=".pdf"
-                                           name="iso45001_certificate"> --}}
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="iso45001_certificate" accept=".pdf"/>
-                                        <label for="fileInput" class="file-label">
-                                            <span class="file-text">اختيار الملف</span>
-                                            <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
-                                    </div>
+                                    &nbsp;&nbsp; <a href="#" data-handle="iso45001" class="iso45001 delete-certificate">حذف</a>
+                                    <input type="file" id="iso45001_certificate" accept=".pdf"
+                                           name="iso45001_certificate">
                                 </div>
 
                                 <div class="col-lg-4">
                                     <label for="iso45001_expirydate">تاريخ انتهاء الصلاحية:</label>
                                     <input type="date" id="iso45001_expirydate" max="2999-12-31"
-                                           name="iso45001_expirydate" class="form-control" placeholder="Expiry Date">
+                                           name="iso45001_expirydate" class="form-control" placeholder="تاريخ الانتهاء">
                                 </div>
 
                                 {{-- <div class="col-lg-4">
@@ -1133,7 +1021,7 @@
                                     <input type="text" id="iso45001_expirydate" name="iso45001_expirydate" class="form-control" placeholder="dd/mm/yyyy">
                                 </div> --}}
 
-                                
+
 
                                 <div class="col-lg-4">
                                     <label for="iso45001_description">الوصف:</label>
@@ -1147,15 +1035,8 @@
                                     <label for="audit_report">تقرير التدقيق</label>&nbsp;&nbsp;
                                     <span id="edit_audit_report"></span>
                                     &nbsp;&nbsp; <a href="#" data-handle="audit_report"
-                                                    class="audit_report delete-certificate">يمسح</a>
-                                    {{-- <input type="file" id="audit_report" accept=".pdf" name="audit_report"> --}}
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="audit_report" accept=".pdf"/>
-                                        <label for="fileInput" class="file-label">
-                                            <span class="file-text">اختيار الملف</span>
-                                            <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
-                                    </div>
+                                                    class="audit_report delete-certificate">حذف</a>
+                                    <input type="file" id="audit_report" accept=".pdf" name="audit_report">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="audit_comment">تعليق التدقيق</label>&nbsp;&nbsp;
@@ -1163,35 +1044,33 @@
                                               placeholder="وصف تعليق التدقيق"></textarea>
                                 </div>
                             </div>
-                        <div class="form-group row">
+                                <div class="form-group row">
                                 <div class="col-lg-4">
-                                    <label for="qa_certification">اتفاقية شهادة ضمان الجودة</label>&nbsp;&nbsp;
+                                    <label for="qa_certification"> اتفاقية شهادة ضمان الجودة</label>&nbsp;&nbsp;
                                     <span id="edit_qa_certification"></span>
                                     &nbsp;&nbsp; <a href="#" data-handle="qa_certification"
-                                                    class="qa_certification delete-qa_certification">شهادة ضمان الجودة</a>
+                                                    class="qa_certification delete-qa_certification">حذف</a>
                                     <input type="file" id="qa_certification" accept=".pdf" name="qa_certification">
                                 </div>
-                                
-                            </div>
 
+                            </div>
                         </div>
 
 
                     </div>
 
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-
-                        <button type="submit" class="btn btn-danger">تحديث</button>
-
-                    </div>
-
-                </form>
-
-            </div>
+                <div class="am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline am-modal-close">
+                        <i class="fa fa-times"></i> إلغاء
+                    </button>
+                    <button type="submit" class="am-btn am-btn-primary">
+                        <i class="fa fa-check"></i> تحديث المستخدم
+                    </button>
+                </div>
+            </form>
 
         </div>
+    </div>
 
     </div>
 
@@ -1378,9 +1257,9 @@
 
                                             <span class="form-text text-muted" id="downloadlink">
 
-									 <a target='_blank' href="" id="view_company_profile">Profile</a>
+										 <a target='_blank' href="" id="view_company_profile">Profile</a>
 
-									</span>
+										</span>
 
 
                                         </div>
@@ -1557,18 +1436,16 @@
 
 
 
-        @endsection
-    
                 {{-- <script>
-                    document.addEventListener('DOMContentLoaded', function () 
+                    document.addEventListener('DOMContentLoaded', function ()
                     {
                         var input = document.getElementById('iso9001_expirydate');
                         input.addEventListener('input', function () {
                             var value = input.value;
-                            if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) 
+                            if (/^\d{2}\/\d{2}\/\d{4}$/.test(value))
                             {
                                 input.setCustomValidity('');
-                            } else 
+                            } else
                             {
                                 input.setCustomValidity('Please enter a date in the format dd/mm/yyyy');
                             }
@@ -1578,16 +1455,16 @@
 
 
                 {{-- <script>
-                   
+
                     document.addEventListener('DOMContentLoaded', function () {
                         var input = document.getElementById('iso14001_expirydate');
-                        input.addEventListener('input', function () 
+                        input.addEventListener('input', function ()
                         {
                             var value = input.value;
-                            if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) 
+                            if (/^\d{2}\/\d{2}\/\d{4}$/.test(value))
                             {
                                 input.setCustomValidity('');
-                            } else 
+                            } else
                             {
                                 input.setCustomValidity('Please enter a date in the format dd/mm/yyyy');
                             }
@@ -1595,16 +1472,16 @@
                     });
                 </script> --}}
 
-                
+
 
                 {{-- <script>
-                    document.addEventListener('DOMContentLoaded', function () 
+                    document.addEventListener('DOMContentLoaded', function ()
                     {
                         var input = document.getElementById('iso45001_expirydate');
-                        input.addEventListener('input', function () 
+                        input.addEventListener('input', function ()
                         {
                             var value = input.value;
-                            if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) 
+                            if (/^\d{2}\/\d{2}\/\d{4}$/.test(value))
                             {
                                 input.setCustomValidity('');
                             } else {
@@ -1614,23 +1491,123 @@
                     });
                 </script> --}}
 
-                
-                   
-            
+
+
+
         <script>
 
-            function deleteUser(id) 
+            // ------ Modern modal helpers ------
+            function openAmModal(id) { document.getElementById(id) && document.getElementById(id).classList.add('open'); }
+            function closeAmModal(id) { document.getElementById(id) && document.getElementById(id).classList.remove('open'); }
+            // Delegated close (Cancel/Close buttons + click backdrop + Escape)
+            document.addEventListener('click', function(e) {
+                var closeBtn = e.target.closest('.am-modal-close');
+                if (closeBtn) {
+                    var m = closeBtn.closest('.am-modal');
+                    if (m) m.classList.remove('open');
+                    return;
+                }
+                var modal = e.target.classList && e.target.classList.contains('am-modal') ? e.target : null;
+                if (modal) modal.classList.remove('open');
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') document.querySelectorAll('.am-modal.open').forEach(function(m){ m.classList.remove('open'); });
+            });
+
+            // ------ Client-side searchable + paginated table for AJAX-injected content ------
+            function enhanceModalTable(containerId, opts) {
+                opts = opts || {};
+                var perPage = opts.perPage || 10;
+                var container = document.getElementById(containerId);
+                if (!container) return;
+                var table = container.querySelector('table');
+                if (!table) return;
+
+                var tbody = table.querySelector('tbody');
+                if (!tbody) return;
+                var allRows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+                if (allRows.length === 0) return;
+
+                // Toolbar
+                var toolbar = document.createElement('div');
+                toolbar.className = 'am-mtable-toolbar';
+                toolbar.innerHTML = '<div class="am-mtable-search"><i class="fa fa-search"></i><input type="text" placeholder="بحث…"></div>' +
+                                    '<div style="font-size:12px;color:var(--am-text-muted);"><strong>' + allRows.length + '</strong> الإجمالي</div>';
+                container.insertBefore(toolbar, table);
+
+                // Pagination footer
+                var pager = document.createElement('div');
+                pager.className = 'am-mtable-pagination';
+                pager.innerHTML = '<div class="am-mtable-pagination__info"></div><div class="am-mtable-pagination__nav"></div>';
+                container.appendChild(pager);
+
+                var input = toolbar.querySelector('input');
+                var info  = pager.querySelector('.am-mtable-pagination__info');
+                var nav   = pager.querySelector('.am-mtable-pagination__nav');
+                var currentPage = 1;
+                var filtered = allRows.slice();
+
+                function debounce(fn, wait) { var t; return function(){ var ctx=this, args=arguments; clearTimeout(t); t=setTimeout(function(){ fn.apply(ctx,args); }, wait); }; }
+
+                function render() {
+                    var total = filtered.length;
+                    var totalPages = Math.max(1, Math.ceil(total / perPage));
+                    if (currentPage > totalPages) currentPage = totalPages;
+                    var start = (currentPage - 1) * perPage;
+                    var end = start + perPage;
+
+                    allRows.forEach(function(r){ r.style.display = 'none'; });
+                    filtered.slice(start, end).forEach(function(r){ r.style.display = ''; });
+
+                    var from = total === 0 ? 0 : start + 1;
+                    var to   = Math.min(end, total);
+                    info.innerHTML = 'عرض <strong>' + from + '–' + to + '</strong> من <strong>' + total + '</strong>';
+
+                    nav.innerHTML = '';
+                    var prev = document.createElement('button'); prev.textContent = '‹'; prev.disabled = currentPage <= 1;
+                    prev.addEventListener('click', function(){ currentPage--; render(); });
+                    nav.appendChild(prev);
+
+                    var maxBtns = 5;
+                    var startPage = Math.max(1, currentPage - Math.floor(maxBtns/2));
+                    var endPage = Math.min(totalPages, startPage + maxBtns - 1);
+                    startPage = Math.max(1, endPage - maxBtns + 1);
+                    for (var p = startPage; p <= endPage; p++) {
+                        (function(page){
+                            var b = document.createElement('button'); b.textContent = page;
+                            if (page === currentPage) b.classList.add('active');
+                            b.addEventListener('click', function(){ currentPage = page; render(); });
+                            nav.appendChild(b);
+                        })(p);
+                    }
+
+                    var next = document.createElement('button'); next.textContent = '›'; next.disabled = currentPage >= totalPages;
+                    next.addEventListener('click', function(){ currentPage++; render(); });
+                    nav.appendChild(next);
+                }
+
+                input.addEventListener('input', debounce(function() {
+                    var q = this.value.trim().toLowerCase();
+                    filtered = q === '' ? allRows.slice() : allRows.filter(function(r){ return r.textContent.toLowerCase().indexOf(q) !== -1; });
+                    currentPage = 1;
+                    render();
+                }, 250));
+
+                render();
+            }
+
+            function deleteUser(id)
             {
                 var userid = id;
                 $("#userid").val(userid);
-                $("#deleteUser").modal('show');
+                openAmModal('deleteUser');
             }
 
             var intel_phone = '';
             var intel_iso_phone = '';
 
 
-        // function get_history(id) 
+        // function get_history(id)
         // {
         // $.ajax({
         //     type: "post",
@@ -1640,7 +1617,7 @@
         //         user_id: id,
         //         _token: $('meta[name="csrf-token"]').attr('content')
         //     },
-        //         success: function (response) 
+        //         success: function (response)
         //         {
         //             // $('#userName').text(id);
         //             $('#loginHistoryTable').html(response);
@@ -1651,123 +1628,62 @@
 
 
 
-        // working code 
-        function get_downloads(id) 
-        {
+        function get_downloads(id) {
             $.ajax({
                 type: "post",
                 url: "{{ url('/userdownloadhistory') }}",
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                data: {
-                    user_id: id,
-                    _token: $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (response) 
-                {
-                    // $('#userName').text(id);
+                data: { user_id: id, _token: $('meta[name="csrf-token"]').attr('content') },
+                success: function (response) {
                     $('#downloadHistoryTable').html(response);
-
-                    // $('#downloadHistoryTable table').DataTable({
-                    //     paging: true,
-                    //     pageLength: 10,
-                    // });
-
-                    $('#viewUserDownloads').modal('show');
+                    enhanceModalTable('downloadHistoryTable');
+                    openAmModal('viewUserDownloads');
                 },
             });
         }
-        
-        function get_history(id) 
-        {
+        function get_history(id) {
             $.ajax({
                 type: "post",
                 url: "{{ url('/userloginhistory') }}",
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                data: {
-                    user_id: id,
-                    _token: $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (response) 
-                {
-                    // $('#userName').text(id);
+                data: { user_id: id, _token: $('meta[name="csrf-token"]').attr('content') },
+                success: function (response) {
                     $('#loginHistoryTable').html(response);
-
-                    $('#loginHistoryTable table').DataTable({
-                        paging: true,
-                        pageLength: 10,
-                        "language": {
-                            // "sProcessing": "Procesando...",
-                            "sLengthMenu": "عرض _MENU_ إدخالات",
-                            // "sZeroRecords": "No se encontraron resultados",
-                            // "sEmptyTable": "Ningún dato disponible en esta tabla",
-                            "sInfo": "عرض السجلات من _START_ إلى _END_ من إجمالي _TOTAL_ السجلات",
-                            "sInfoEmpty": "عرض السجلات من 0 إلى 0 من إجمالي 0 سجلات",
-                            // "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                            // "sInfoPostFix": "",
-                            "sSearch": "يبحث:",
-                            // "sUrl": "",
-                            // "sInfoThousands": ",",
-                            // "sLoadingRecords": "Cargando...",
-                            "oPaginate": {
-                                "sPrevious": "سابق",
-                                "sLast": "آخر",
-                                "sNext": "التالي",
-                            }
-                        },
-                    });
-
-                    $('#viewUser').modal('show');
+                    enhanceModalTable('loginHistoryTable');
+                    openAmModal('viewUser');
                 },
             });
         }
-     function get_notes(id) 
-        {
+        function get_notes(id) {
             document.getElementById("editcompanyid").value = id;
-                    $.ajax({
-                        type: "post",
-                        url: "{{ url('/usernoteshistory') }}",
-                        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                        data: {
-                            user_id: id,
-                            _token: $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (response) 
-                        {
-                            // $('#userName').text(id);
-                            $('#notesHistoryTable').html(response);
-
-                            // $('#notesHistoryTable table').DataTable({
-                            //     paging: false,
-                            //     // pageLength: 10,
-                            //     lengthChange: false, // Hides "Show entries"
-                            //     searching: false      // Hides search box
-                            // });
-                            
-                            $('#userNote').modal('show');
-                           
-                        },
-                    });
+            $.ajax({
+                type: "post",
+                url: "{{ url('/usernoteshistory') }}",
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                data: { user_id: id, _token: $('meta[name="csrf-token"]').attr('content') },
+                success: function (response) {
+                    $('#notesHistoryTable').html(response);
+                    enhanceModalTable('notesHistoryTable');
+                    openAmModal('userNote');
+                },
+            });
         }
-        
-        
-        function userEmailDetail(id){
-                $.ajax({
-                    type: "post",
-                    url: "{{route('user.email.details')}}",
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    data:{
-                        user_id: id,
-                        _token: $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success:function(response){
-                        // console.log(response);
-                        $('#userDetailEmailTable').html(response.list);
-                        $("#user-email-details").modal('show');
-                    }
-                })
-            }
 
-            function editDetails(data) 
+        function userEmailDetail(id) {
+            $.ajax({
+                type: "post",
+                url: "{{route('user.email.details')}}",
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                data: { user_id: id, _token: $('meta[name="csrf-token"]').attr('content') },
+                success: function (response) {
+                    $('#userDetailEmailTable').html(response.list);
+                    enhanceModalTable('userDetailEmailTable');
+                    openAmModal('user-email-details');
+                }
+            });
+        }
+
+            function editDetails(data)
             {
                 intel_phone = '';
                 intel_iso_phone = '';
@@ -1790,7 +1706,7 @@
                 $("input[name='contact_iso']").val(data.contact_number_iso);
                 $("input[name='email_iso']").val(data.emailaddress_iso);
                 //$("input[name='iso_certificates']").val(data.iso_certificate);
-                $('#view_iso').html('<a target="_blank" href="public/' + data.iso_certificate + '">View iso certificates</a>');
+                $('#view_iso').html('<a target="_blank" href="public/' + data.iso_certificate + '">عرض شهادات ISO</a>');
                 $("input[name='expiry_date']").val(data.expiry_date);
                 $("input[name='country']").val(data.country);
 
@@ -1800,7 +1716,9 @@
 
                 $("input[name='sales_process']").val(data.sales_process);
                 if (data.company_profile != null) {
-                    $('#downloadlink').html('<a target="_blank" href="/' + data.company_profile + '">عرض الصفحة الشخصية</a>');
+                    $('#downloadlink').html('<a target="_blank" href="{{ asset('/') }}' + data.company_profile + '">عرض الصفحة الشخصية</a>');
+                } else {
+                    $('#downloadlink').html('');
                 }
                 //  $("input[name='company_profile']").val(data.company_profile);
 
@@ -1832,52 +1750,54 @@
                 $("input[name='iso45001_expirydate']").val(data.iso45001_expirydate);
                 $("textarea[name='iso45001_description']").val(data.iso45001_description);
 
-                // let logo_src = "{{ asset('/') }}" + data.profile_image;
-                let logo_src = data.profile_image;
-                $("#output").attr("src", logo_src);
-            
+                if (data.profile_image) {
+                    $("#output").attr("src", "{{ asset('/') }}" + data.profile_image).show();
+                } else {
+                    $("#output").removeAttr("src").hide();
+                }
+
 
                 if (data.iso9001_certificate != null) {
                     // $('#iso9001_certificate').addClass('has_file');
                     $(".iso9001").show();
-                    $("#view_9001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso9001_certificate + "'>تيقن</a>");
+                    $("#view_9001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso9001_certificate + "'>عرض</a>");
                 } else {
                     $(".iso9001").hide();
                 }
                 if (data.iso14001_certificate != null) {
                     // $('#iso14001_certificate').addClass('has_file');
-                    $("#view_4001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso14001_certificate + "'>تيقن</a>");
+                    $("#view_4001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso14001_certificate + "'>عرض</a>");
                     $(".iso4001").show();
                 } else {
                     $(".iso4001").hide();
                 }
                 if (data.iso45001_certificate != null) {
                     // $('#iso45001_certificate').addClass('has_file');
-                    $("#view_45001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso45001_certificate + "'>تيقن</a>");
+                    $("#view_45001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso45001_certificate + "'>عرض</a>");
                     $(".iso45001").show();
 
-                } else 
+                } else
                 {
                     $(".iso45001").hide();
                 }
-                if (data.audit_report != null) 
+                if (data.audit_report != null)
                 {
-                    $("#edit_audit_report").append("<a target='_blank' href='" + data.audit_report + "'>تيقن</a>");
+                    $("#edit_audit_report").append("<a target='_blank' href='" + data.audit_report + "'>عرض</a>");
                     $(".audit_report").show();
 
                 } else {
                     $(".audit_report").hide();
                 }
-
-                 if (data.qa_certification != null) 
+                if (data.qa_certification != null)
                 {
-                    $("#edit_qa_certification").append("<a target='_blank' href='" + data.qa_certification + "'>تيقن</a>");
+                    $("#edit_qa_certification").append("<a target='_blank' href='" + data.qa_certification + "'>عرض</a>");
                     $(".qa_certification").show();
 
                 } else {
                     $(".qa_certification").hide();
                 }
-                
+
+
                 var input = document.querySelector("#phoneee");
                 if (data.phoneflag == "preferred" || data.phoneflag == null) {
                     intel_phone = window.intlTelInput(input, {
@@ -1891,7 +1811,7 @@
                         },
                     });
                 } else {
-                    intel_phone = window.intlTelInput(input, 
+                    intel_phone = window.intlTelInput(input,
                     {
                         separateDialCode: true,
                         initialCountry: data.phoneflag,
@@ -1930,19 +1850,19 @@
                     });
                 }
 
-                $("#editModal").modal('show');
+                openAmModal('editModal');
 
             }
 
             // // Add a submit event listener to replace the input value with the submitted data attribute
-            // document.querySelector("form").addEventListener("submit", function() 
+            // document.querySelector("form").addEventListener("submit", function()
             // {
             //     var input = document.getElementById("iso9001_expirydate");
             //     var submittedValue = input.getAttribute("data-submitted-value");
             //     input.value = submittedValue;
             // });
             // Add a submit event listener to replace the input value with the submitted data attribute
-            document.querySelector("form").addEventListener("submit", function() 
+            document.querySelector("form").addEventListener("submit", function()
             {
                 var input = document.getElementById("iso9001_expirydate");
                 var submittedValue = input.getAttribute("data-submitted-value");
@@ -1952,7 +1872,7 @@
 
 
 
-            function viewDetails(data) 
+            function viewDetails(data)
             {
                 $('#view_phone_div').empty().append(`<input type="text" id="view_phoneee" class="form-control" placeholder="Phone" readonly disabled>`);
                 $('#view_iso_div').empty().append(`<input type="text" id="view_contact_isooo" class="form-control" placeholder="Iso Contact number" required  readonly disabled>`);
@@ -1974,7 +1894,7 @@
                 $("#view_contact_isooo").val(data.contact_number_iso);
                 $("input[name='email_iso']").val(data.emailaddress_iso);
                 //$("input[name='iso_certificates']").val(data.iso_certificate);
-                $('#view_iso').html('<a target="_blank" href="public/' + data.iso_certificate + '">View iso certificates</a>');
+                $('#view_iso').html('<a target="_blank" href="public/' + data.iso_certificate + '">عرض شهادات ISO</a>');
 
                 $("input[name='expiry_date']").val(data.expiry_date);
                 $("input[name='country']").val(data.country);
@@ -1987,7 +1907,7 @@
                 $("input[name='sales_process']").val(data.sales_process);
 
                 if (data.company_profile != null) {
-                    $('#view_company_profile').show().attr('href', 'public/' + data.company_profile);
+                    $('#view_company_profile').show().attr('href', '{{ asset('/') }}' + data.company_profile);
                 } else {
                     $('#view_company_profile').hide();
                 }
@@ -2018,44 +1938,42 @@
                 $("input[name='iso45001_expirydate']").val(data.iso45001_expirydate);
                 $("textarea[name='iso45001_description']").val(data.iso45001_description);
 
-                let logo_src = "{{ asset('/') }}" + data.profile_image;
-                $("#view_output").attr("src", logo_src);
+                if (data.profile_image) {
+                    $("#view_output").attr("src", "{{ asset('/') }}" + data.profile_image).show();
+                } else {
+                    $("#view_output").removeAttr("src").hide();
+                }
 
 
 
                 if (data.iso9001_certificate != null) {
-                    $("#v_9001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso9001_certificate + "'>View</a>");
+                    $("#v_9001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso9001_certificate + "'>عرض</a>");
                 } else {
-                    $('#v_9001').append('Not Found');
+                    $('#v_9001').append('غير موجود');
                 }
                 if (data.iso14001_certificate != null) {
-                    $("#v_4001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso14001_certificate + "'>View</a>");
+                    $("#v_4001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso14001_certificate + "'>عرض</a>");
                 } else {
-                    $('#v_4001').append('Not Found');
+                    $('#v_4001').append('غير موجود');
                 }
                 if (data.iso45001_certificate != null) {
-                    $("#v_45001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso45001_certificate + "'>View</a>");
+                    $("#v_45001").append("<a target='_blank' href='{{ asset('/') }}" + data.iso45001_certificate + "'>عرض</a>");
                 } else {
-                    $('#v_45001').append('Not Found');
+                    $('#v_45001').append('غير موجود');
                 }
 
-                if (data.audit_report != null) {
-                    $("#v_audit_report").append("<a target='_blank' href='" + data.audit_report + "'>View</a>");
-                } else {
-                    $('#v_audit_report').append('Not Found');
-                }
                 if (data.qa_certification != null) {
-                    $("#v_qa_certification").append("<a target='_blank' href='" + data.audit_report + "'>View</a>");
-                } else 
+                    $("#v_qa_certification").append("<a target='_blank' href='" + data.audit_report + "'>عرض</a>");
+                } else
                 if (data.qa_certification != null) {
-                    $("#v_qa_certification").append("<a target='_blank' href='" + data.audit_report + "'>View</a>");
+                    $("#v_qa_certification").append("<a target='_blank' href='" + data.audit_report + "'>عرض</a>");
                 } else {
-                    $('#v_qa_certification').append('Not Found');
+                    $('#v_qa_certification').append('غير موجود');
                 }
-                
+
                 var input = document.querySelector("#view_phoneee");
                 if (data.phoneflag == "preferred" || data.phoneflag == null) {
-                    window.intlTelInput(input, 
+                    window.intlTelInput(input,
                     {
                         separateDialCode: true,
                         preferredCountries: ["us"],
@@ -2067,7 +1985,7 @@
                         },
                     });
                 } else {
-                    window.intlTelInput(input, 
+                    window.intlTelInput(input,
                     {
                         separateDialCode: true,
                         initialCountry: data.phoneflag,
@@ -2111,17 +2029,13 @@
             }
 
 
+
         </script>
 
 
         @section('myscript')
             <script>
-            $(document).ready(function() {
-                $('#showusers').on('change', function() {
-                    $('#showuserform').submit();
-                });
-           
-            });
+
                 $('.delete-certificate').on('click', function () {
 
                     let _this = $(this),
@@ -2168,6 +2082,7 @@
                         console.log(response);
                     });
                 });
+
 
                 $("#addform").submit(function () {
                     let intel_phone_data = intel_phone.getSelectedCountryData();
@@ -2221,8 +2136,40 @@
 
                 });
             </script>
+        @endsection
         <script>
-// JavaScript/jQuery to handle edit and delete actions
+
+            var loadFile = function (event) {
+
+                var image = document.getElementById('output');
+
+                image.src = URL.createObjectURL(event.target.files[0]);
+
+            };
+
+            var viewloadFile = function (event) {
+
+                var image = document.getElementById('view_output');
+
+                image.src = URL.createObjectURL(event.target.files[0]);
+
+            };
+
+            // document.getElementById('showusers').addEventListener('change', function() {
+            //     document.getElementById('showuserform').submit();
+            // });
+
+            $(document).ready(function() {
+                $('#showusers').on('change', function() {
+                    $('#showuserform').submit();
+                });
+
+            });
+        </script>
+
+
+<script>
+
 
 $('#addusernotform').submit(function(e) {
     e.preventDefault();
@@ -2270,7 +2217,7 @@ function editNote(noteId, noteText) {
 }
 
 function deleteNote(id) {
-    if (confirm('Are you sure you want to delete this note?')) {
+    if (confirm('هل أنت متأكد أنك تريد حذف هذه الملاحظة؟')) {
         $.ajax({
             url: '/deleteusernote/' + id,
             type: 'DELETE',
@@ -2281,7 +2228,7 @@ function deleteNote(id) {
                 if (response.success) {
                     $('#note-row-' + id).remove();
                 } else {
-                    alert('Error deleting note.');
+                    alert('خطأ في حذف الملاحظة.');
                 }
             }
         });
@@ -2307,32 +2254,76 @@ $('#drop-area').on('drop', function(e) {
     }
 });
 
+
+// AJAX-based search + pagination (no page refresh).
+(function() {
+    var input     = document.getElementById('amUsersSearch');
+    var form      = document.getElementById('amUsersSearchForm');
+    var container = document.getElementById('amUsersContainer');
+    if (!container) return;
+
+    var baseUrl   = form ? form.getAttribute('action') : window.location.pathname;
+    var currentPage = 1;
+
+    function debounce(fn, wait) {
+        var t;
+        return function() {
+            var ctx = this, args = arguments;
+            clearTimeout(t);
+            t = setTimeout(function(){ fn.apply(ctx, args); }, wait);
+        };
+    }
+
+    function showLoading() {
+        container.style.opacity = '0.5';
+        container.style.pointerEvents = 'none';
+    }
+    function hideLoading() {
+        container.style.opacity = '';
+        container.style.pointerEvents = '';
+    }
+
+    function fetchPage(page) {
+        var q = input ? input.value.trim() : '';
+        var url = baseUrl + '?q=' + encodeURIComponent(q) + '&page=' + page;
+        showLoading();
+        fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(function(r){ return r.text(); })
+            .then(function(html) {
+                container.innerHTML = html;
+                currentPage = page;
+                var newUrl = baseUrl + (q ? '?q=' + encodeURIComponent(q) : '') + (page > 1 ? (q ? '&' : '?') + 'page=' + page : '');
+                window.history.replaceState({}, '', newUrl);
+                hideLoading();
+            })
+            .catch(function() { hideLoading(); });
+    }
+
+    // Debounced search
+    if (input) {
+        input.addEventListener('input', debounce(function() {
+            currentPage = 1;
+            fetchPage(1);
+        }, 350));
+    }
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            currentPage = 1;
+            fetchPage(1);
+        });
+    }
+
+    // Delegated click handler for pagination buttons (they re-render on each fetch, so delegation is required)
+    container.addEventListener('click', function(e) {
+        var btn = e.target.closest('.am-page-link');
+        if (!btn || btn.disabled) return;
+        e.preventDefault();
+        var p = parseInt(btn.getAttribute('data-page'), 10);
+        if (!isNaN(p) && p > 0) fetchPage(p);
+    });
+})();
 </script>
-    
-        @endsection
-        <script>
-
-            var loadFile = function (event) {
-
-                var image = document.getElementById('output');
-
-                image.src = URL.createObjectURL(event.target.files[0]);
-
-            };
-
-            var viewloadFile = function (event) {
-
-                var image = document.getElementById('view_output');
-
-                image.src = URL.createObjectURL(event.target.files[0]);
-
-            };
-            
-           
-
-        </script>
 
 
-
-
-
+@endsection
