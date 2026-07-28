@@ -283,7 +283,7 @@ class AddUsersController extends Controller
     public function userEmailDetails(Request $request){
         $itemID = $request->input('user_id');
         $details = SendNotifications::where('send_to', '=', $itemID)
-            ->whereNotNull('total_days')
+            // ->whereNotNull('total_days')
             ->orderBy('created_at', 'desc')
             ->get();
 
