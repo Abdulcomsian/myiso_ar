@@ -1628,6 +1628,15 @@
 
 
 
+        function amAjaxError(xhr) {
+            if (xhr.status === 419) {
+                alert('انتهت الجلسة. يرجى تحديث الصفحة وتسجيل الدخول مرة أخرى.');
+            } else {
+                console.error('AJAX error ' + xhr.status, xhr.responseText);
+                alert('حدث خطأ أثناء تحميل البيانات (رمز الخطأ: ' + xhr.status + ')');
+            }
+        }
+
         function get_downloads(id) {
             $.ajax({
                 type: "post",
@@ -1639,6 +1648,7 @@
                     enhanceModalTable('downloadHistoryTable');
                     openAmModal('viewUserDownloads');
                 },
+                error: function(xhr) { amAjaxError(xhr); }
             });
         }
         function get_history(id) {
@@ -1652,6 +1662,7 @@
                     enhanceModalTable('loginHistoryTable');
                     openAmModal('viewUser');
                 },
+                error: function(xhr) { amAjaxError(xhr); }
             });
         }
         function get_notes(id) {
@@ -1666,6 +1677,7 @@
                     enhanceModalTable('notesHistoryTable');
                     openAmModal('userNote');
                 },
+                error: function(xhr) { amAjaxError(xhr); }
             });
         }
 
@@ -1679,7 +1691,8 @@
                     $('#userDetailEmailTable').html(response.list);
                     enhanceModalTable('userDetailEmailTable');
                     openAmModal('user-email-details');
-                }
+                },
+                error: function(xhr) { amAjaxError(xhr); }
             });
         }
 
@@ -2213,7 +2226,7 @@ function editNote(noteId, noteText) {
     $('#note_id').val(noteId);
     $('#_method').val('PUT');
     $('#addusernotform').attr('action', '/updateusernote/' + noteId);
-    $('#userNote').modal('show');
+    openAmModal('userNote');
 }
 
 function deleteNote(id) {

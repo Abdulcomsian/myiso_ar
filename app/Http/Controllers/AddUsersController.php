@@ -158,18 +158,22 @@ class AddUsersController extends Controller
         <tbody>';
         
         $i = 1;
-        
-        foreach ($loginHistory as $history) 
-        {
-            $list .= '<tr>';
-            $list .= '<td style="text-align: center;">' . $i . '</td>';
-            $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($history->login_time)) . '</td>';
-            $list .= '<td style="padding:5px 15px; text-align: center;">' . $history->ip_address . '</td>';
-            $list .= '<td style="padding:5px 15px; text-align: center;">' . $history->browser . '</td>';
-            $list .= '</tr>';
-            $i++;
+
+        if ($loginHistory->isEmpty()) {
+            $list .= '<tr><td colspan="4" style="text-align:center;padding:20px;color:#888;">لا توجد سجلات تسجيل دخول.</td></tr>';
+        } else {
+            foreach ($loginHistory as $history)
+            {
+                $list .= '<tr>';
+                $list .= '<td style="text-align: center;">' . $i . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($history->login_time)) . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . $history->ip_address . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . $history->browser . '</td>';
+                $list .= '</tr>';
+                $i++;
+            }
         }
-        
+
         $list .= '</tbody>
         </table>';
         
@@ -206,24 +210,23 @@ class AddUsersController extends Controller
 
         $i = 1;
 
-        foreach ($notesHistory as $nhistory) {
-            $list .= '<tr id="note-row-' . $nhistory->id . '">';
-            $list .= '<td style="text-align: center;">' . $i . '</td>';
-        $list .= '<td style="padding:5px 15px; text-align: left;" id="note-text-' . $nhistory->id . '">' .
-                    nl2br($nhistory->note);
-
-        if ($nhistory->note_img) {
-            $filePath = asset('uploads/notes/' . $nhistory->note_img);
-            $list .= '<br><a href="' . $filePath . '" target="_blank">عرض المرفق</a>';
-        } 
-        $list .= '</td>';
-            $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($nhistory->dated)) . '</td>';
-            // $list .= '<td style="text-align: center;">
-            //     <button onclick="editNote(' . $nhistory->id . ', \'' . addslashes($nhistory->note) . '\')" class="btn btn-sm btn-clean" title="يحرر"><i class="fa fa-edit"></i></button>
-            //     <button onclick="deleteNote(' . $nhistory->id . ')" class="btn btn-sm btn-clean" title="يمسح"><i class="fa fa-trash"></i></button>
-            // </td>';
-            $list .= '</tr>';
-            $i++;
+        if ($notesHistory->isEmpty()) {
+            $list .= '<tr><td colspan="3" style="text-align:center;padding:20px;color:#888;">لا توجد ملاحظات مسجلة.</td></tr>';
+        } else {
+            foreach ($notesHistory as $nhistory) {
+                $list .= '<tr id="note-row-' . $nhistory->id . '">';
+                $list .= '<td style="text-align: center;">' . $i . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: left;" id="note-text-' . $nhistory->id . '">' .
+                            nl2br(e($nhistory->note));
+                if ($nhistory->note_img) {
+                    $filePath = asset('uploads/notes/' . $nhistory->note_img);
+                    $list .= '<br><a href="' . $filePath . '" target="_blank">عرض المرفق</a>';
+                }
+                $list .= '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($nhistory->dated)) . '</td>';
+                $list .= '</tr>';
+                $i++;
+            }
         }
 
         $list .= '</tbody>
@@ -253,38 +256,36 @@ class AddUsersController extends Controller
         <tbody>';
         
         $i = 1;
-        if(isset($users->userDownload)){
+        $hasDownloads = isset($users->userDownload) && $users->userDownload->isNotEmpty();
+
+        if (!$hasDownloads) {
+            $list .= '<tr><td colspan="5" style="text-align:center;padding:20px;color:#888;">لا توجد سجلات تنزيل.</td></tr>';
+        } else {
             foreach ($users->userDownload as $ud)
             {
                 $list .= '<tr>';
                 $list .= '<td style="text-align: center;">' . $i . '</td>';
-                $list .= '<td style="padding:5px 15px; text-align: center;"><h5>' . $ud->downloads->name ?? ''  . '</h5></td>';
-                $list .= '<td style="padding:5px 15px; text-align: center;">' . $ud->downloads->des ?? ''  . '</td>';
-                $list .= '<td style="padding:5px 15px; text-align: center;"><a class="btn-fetch-data" href="'.asset('uploads/downloads/'. $ud->downloads->download_file).'" data-id="'.$ud->downloads->id.'" target="_blank"> Download ' . $ud->downloads->name ?? '' . '</a></td>';
-                $list .= '<td style="padding:5px 15px; text-align: center;">' . $ud->dated ?? '' . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;"><h5>' . ($ud->downloads->name ?? '') . '</h5></td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . ($ud->downloads->des ?? '') . '</td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;"><a class="btn-fetch-data" href="'.asset('uploads/downloads/'. $ud->downloads->download_file).'" data-id="'.$ud->downloads->id.'" target="_blank">تنزيل ' . ($ud->downloads->name ?? '') . '</a></td>';
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . ($ud->dated ?? '') . '</td>';
                 $list .= '</tr>';
                 $i++;
             }
-        }   
-        
-        
+        }
+
         $list .= '</tbody>
         </table>';
-        
+
         return $list;
 
     }
     public function userEmailDetails(Request $request){
         $itemID = $request->input('user_id');
-        // dd($itemID);
         $details = SendNotifications::where('send_to', '=', $itemID)
-        ->where(function($query) {
-            $query->where('total_days', '=', 90)
-                ->orWhere('total_days', '=', 180)
-                ->orWhere('total_days', '=', 300);
-        })
-        ->get();
-
+            ->whereNotNull('total_days')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $list = '<table class="table">
         <thead>
@@ -296,23 +297,26 @@ class AddUsersController extends Controller
         </thead>
         <tbody>';
 
-
-        $i = 1;
-        foreach($details as $detail){
-            $list .= '<tr>';
-            $list .= '<td style="text-align: center;">' . $i . '</td>';
-            if($detail->total_days == 90){
-                $list .= '<td style="padding:5px 15px; text-align: center;">Three Months Notification has been Sent</td>';
+        if ($details->isEmpty()) {
+            $list .= '<tr><td colspan="3" style="text-align:center;padding:20px;color:#888;">لم يتم إرسال أي تذكيرات بعد.</td></tr>';
+        } else {
+            $i = 1;
+            foreach($details as $detail){
+                $list .= '<tr>';
+                $list .= '<td style="text-align: center;">' . $i . '</td>';
+                if ($detail->total_days >= 90 && $detail->total_days < 180) {
+                    $list .= '<td style="padding:5px 15px; text-align: center;">تم إرسال إشعار 3 أشهر</td>';
+                } elseif ($detail->total_days >= 180 && $detail->total_days < 300) {
+                    $list .= '<td style="padding:5px 15px; text-align: center;">تم إرسال إشعار 6 أشهر</td>';
+                } elseif ($detail->total_days >= 300) {
+                    $list .= '<td style="padding:5px 15px; text-align: center;">تم إرسال إشعار 10 أشهر</td>';
+                } else {
+                    $list .= '<td style="padding:5px 15px; text-align: center;">إشعار تم إرساله</td>';
+                }
+                $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($detail->created_at)) . '</td>';
+                $list .= '</tr>';
+                $i++;
             }
-            if($detail->total_days == 180){
-                $list .= '<td style="padding:5px 15px; text-align: center;">Six Months Notification has been Sent</td>';
-            }
-            if($detail->total_days == 300){
-                $list .= '<td style="padding:5px 15px; text-align: center;">Ten Months Notification has been Sent</td>';
-            }
-            $list .= '<td style="padding:5px 15px; text-align: center;">' . date('d-m-Y H:i:s', strtotime($detail->created_at)) . '</td>';
-            $list .= '</tr>';
-            $i++;
         }
 
         $list .= '</tbody>
