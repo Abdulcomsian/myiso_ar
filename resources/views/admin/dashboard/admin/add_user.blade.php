@@ -107,7 +107,7 @@
                                         <div class="kt-input-icon kt-input-icon--right" style="margin-bottom:20px; padding-right: 31px;">
 
                                             <select name="user_type" id="user_type">
-                                                <option value="0">صارف کی قسم منتخب کریں</option>
+                                                <option value="0">اختر نوع المستخدم</option>
                                                 @foreach ($usertypes as $usertype)
                                                 <option value="{{$usertype->id}}">{{$usertype->name}}</option>
                                                 @endforeach
