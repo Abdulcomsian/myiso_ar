@@ -119,6 +119,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Page Vendors Styles -->
     @endif
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/admin-modern-layout.css') }}" rel="stylesheet" type="text/css" />
     @stack('styles')
 </head>
 <style>

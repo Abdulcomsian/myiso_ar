@@ -56,6 +56,32 @@
     <!-- begin:: Content -->
     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
 
+        @if (!empty($showInactivityAlert) && $showInactivityAlert)
+        {{-- Inactivity Warning Modal (only shows when previous last_login was 90+ days ago) --}}
+        <div id="inactivityAlertOverlay" style="position:fixed;inset:0;background:rgba(20,26,55,0.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;">
+            <div style="background:#fff;border-radius:14px;max-width:520px;width:100%;padding:28px 26px;box-shadow:0 20px 50px rgba(0,0,0,0.35);position:relative;text-align:right;">
+                <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;">
+                    <span style="width:44px;height:44px;flex-shrink:0;border-radius:50%;background:#fff3cd;color:#b7791f;display:inline-flex;align-items:center;justify-content:center;font-size:20px;">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </span>
+                    <div>
+                        <h4 style="margin:0 0 4px 0;font-size:17px;font-weight:600;color:#141a37;">مراجعة النظام متأخرة</h4>
+                        <p style="margin:0;font-size:13px;color:#6b7391;">لم تقم بمراجعة وثائقك منذ فترة</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:#141a37;line-height:1.6;margin:14px 0 20px 0;">
+                    لقد مرّت 90 يومًا منذ آخر مراجعة لنظام التوثيق الخاص بك. النظام غير المُصان يعرّض شهادتك لخطر الفشل في التدقيق أو التعليق أو الإلغاء. يرجى مراجعة سجلاتك وتحديثها.
+                </p>
+                <div style="text-align:left;">
+                    <button type="button" onclick="document.getElementById('inactivityAlertOverlay').style.display='none';"
+                        style="background:#7a97d9;color:#fff;border:none;padding:9px 20px;border-radius:6px;font-size:14px;cursor:pointer;font-weight:500;">
+                        حسنًا، سأراجع
+                    </button>
+                </div>
+            </div>
+        </div>
+        @endif
+
         <!--Begin::Dashboard 1-->
 
         <!--Begin::Section-->
@@ -226,9 +252,11 @@
                 <div class="kt-portlet kt-portlet--height-fluid">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                المتطلبات المطلوبة:
-                            </h3>
+                            <div style="margin-bottom:1.25rem;">
+                                <span style="display:inline-block;background:#c9d5f0;color:#3d5aa8;padding:6px 18px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:0.2px;">
+                                    المتطلبات المطلوبة
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="kt-portlet__body table-responsive">
@@ -301,9 +329,11 @@
                 <div class="kt-portlet kt-portlet--height-fluid">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                المعايرة المطلوبة
-                            </h3>
+                            <div style="margin-bottom:1.25rem;">
+                                <span style="display:inline-block;background:#c9d5f0;color:#3d5aa8;padding:6px 18px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:0.2px;">
+                                    المعايرة المطلوبة
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="kt-portlet__body table-responsive">
@@ -381,9 +411,11 @@
                 <div class="kt-portlet kt-portlet--height-fluid sd">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                شهادات ISO
-                            </h3>
+                            <div style="margin-bottom:1.25rem;">
+                                <span style="display:inline-block;background:#c9d5f0;color:#3d5aa8;padding:6px 18px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:0.2px;">
+                                    شهادات ISO
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="kt-portlet__body kt-portlet__body--fit">
@@ -456,7 +488,12 @@
                 </div>
                 <div class="kt-portlet kt-portlet--height-fluid sd">
                     <div class="kt-portlet__head" style="border-bottom: none">
-                        <div class="kt-portlet__head-label">
+                        <div class="kt-portlet__head-label" style="display:block;width:100%;">
+                            <div style="margin-bottom:1.25rem;">
+                                <span style="display:inline-block;background:#c9d5f0;color:#3d5aa8;padding:6px 18px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:0.2px;">
+                                    المستندات الداعمة
+                                </span>
+                            </div>
                             <h3 class="kt-portlet__head-title">
                                 تقرير التدقيق
                             </h3>
@@ -547,52 +584,47 @@
 
         <!--End::Section-->
     </div>
-    <div class="modal fade" id="calibrationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف استحقاق المعايرة</h5>
-                    <a data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <p>هل تريد حقًا حذف هذا الإدخال؟</p>
-                </div>
-                <div class="modal-footer">
-                    <form action="{{ route('deletecaliberinfo') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="id" id="req_id2" value="" />
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
-                        <button type="submit" class="btn btn-danger">نعم</button>
-                    </form>
-                </div>
+    {{-- Delete Calibration Modal --}}
+    <div class="am-modal" id="calibrationModal" role="dialog" aria-modal="true">
+        <div class="am-modal__box">
+            <div class="am-modal__header">
+                <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                <h4 class="am-modal__title">حذف سجل المعايرة؟</h4>
+            </div>
+            <div class="am-modal__body">
+                أنت على وشك حذف سجل المعايرة هذا نهائيًا. لا يمكن التراجع عن هذا الإجراء.
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">إلغاء</button>
+                <form action="{{ route('deletecaliberinfo') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <input type="hidden" name="id" id="req_id2" value="" />
+                    <button type="submit" class="am-btn am-btn-lightblue">
+                        <i class="fa fa-trash"></i> نعم، احذف
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 
-
-
-    <div class="modal" id="myModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف المتطلبات المستحقة</h5>
-                    <a data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                    <form action="{{ route('deleteRequirementadmin') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="id" id="req_id" value="" />
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">حذف المتطلبات</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
-                </div>
+    {{-- Delete Requirement Modal --}}
+    <div class="am-modal" id="myModal" role="dialog" aria-modal="true">
+        <div class="am-modal__box">
+            <div class="am-modal__header">
+                <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                <h4 class="am-modal__title">حذف المتطلب؟</h4>
+            </div>
+            <div class="am-modal__body">
+                أنت على وشك حذف هذا المتطلب نهائيًا. لا يمكن التراجع عن هذا الإجراء.
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">إلغاء</button>
+                <form action="{{ route('deleteRequirementadmin') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <input type="hidden" name="id" id="req_id" value="" />
+                    <button type="submit" class="am-btn am-btn-lightblue">
+                        <i class="fa fa-trash"></i> نعم، احذف
+                    </button>
                 </form>
             </div>
         </div>
@@ -600,17 +632,30 @@
 @endsection
 @section('myscript')
     <script>
-        $(".delete_requirement").click(function() {
-            $id = $(this).attr('data-id');
-            $("#req_id").val($id);
-            $("#myModal").modal('show');
-        })
-        $(".calibrationModal").click(function() {
+        // Open modals
+        document.querySelectorAll('.delete_requirement').forEach(function(el){
+            el.addEventListener('click', function(e){
+                e.preventDefault();
+                document.getElementById('req_id').value = this.getAttribute('data-id');
+                document.getElementById('myModal').classList.add('open');
+            });
+        });
+        document.querySelectorAll('.calibrationModal').forEach(function(el){
+            el.addEventListener('click', function(e){
+                e.preventDefault();
+                document.getElementById('req_id2').value = this.getAttribute('data-id');
+                document.getElementById('calibrationModal').classList.add('open');
+            });
+        });
 
-            $id = $(this).attr('data-id');
-
-            $("#req_id2").val($id);
-            $("#calibrationModal").modal('show');
-        })
+        // Close modal on Cancel / overlay click / Escape
+        document.addEventListener('click', function(e) {
+            var close = e.target.closest('.am-modal-close');
+            if (close) { var m = close.closest('.am-modal'); if (m) m.classList.remove('open'); return; }
+            if (e.target.classList && e.target.classList.contains('am-modal')) e.target.classList.remove('open');
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') document.querySelectorAll('.am-modal.open').forEach(function(m){ m.classList.remove('open'); });
+        });
     </script>
 @endsection

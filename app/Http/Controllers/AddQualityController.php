@@ -88,8 +88,9 @@ class AddQualityController extends Controller
     
             $previousPolicy = $userAddPolicy->first();
 
-            $userDetail = AddUsers::select('created_at')->where('id', '=', $userid)->first();
-            $date = $userDetail->created_at->format('d/m/Y');
+            $date = $previousPolicy && $previousPolicy->updated_at
+                ? $previousPolicy->updated_at->format('d/m/Y')
+                : null;
             return view('dashboard.mannual_policy.quality_policy', compact('companyName', 'previousPolicy', 'userAddPolicy', 'date'));
         }
     
@@ -137,10 +138,11 @@ class AddQualityController extends Controller
                 ->get();
     
             $previousPolicy = $userAddPolicy->first();
-    
-            $userDetail = AddUsers::select('created_at')->where('id', '=', $userid)->first();
-            $date = $userDetail->created_at->format('d/m/Y');
-    
+
+            $date = $previousPolicy && $previousPolicy->updated_at
+                ? $previousPolicy->updated_at->format('d/m/Y')
+                : null;
+
             return view('dashboard.mannual_policy.environment_policy', compact('companyName', 'previousPolicy', 'userAddPolicy', 'date'));
         }
 
@@ -177,8 +179,9 @@ class AddQualityController extends Controller
 
             $previousPolicy = $userAddPolicy->first();
 
-            $userDetail = AddUsers::select('created_at')->where('id', '=', $userid)->first();
-            $date = $userDetail->created_at->format('d/m/Y');
+            $date = $previousPolicy && $previousPolicy->updated_at
+                ? $previousPolicy->updated_at->format('d/m/Y')
+                : null;
 
             return view('dashboard.mannual_policy.health_safety_policy', compact('companyName', 'previousPolicy', 'userAddPolicy', 'date'));
         }   

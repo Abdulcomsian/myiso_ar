@@ -28,7 +28,7 @@
 				<div class="procedure_div text-right">
 					<div class="row">
 						<div class="col-lg-12">
-							<a onclick="qualityshowpolicy()" class="addBtn">إضافة السياسة البيئية</a>
+							<a onclick="qualityshowpolicy()" class="am-btn am-btn-lightblue">إضافة السياسة البيئية</a>
 						</div>
 					</div>
 
@@ -46,7 +46,7 @@
 							</div>
 
 							<input type="hidden" name="status" value="2" />
-							<button type="submit" class="submitBtn">يُقدِّم</button>
+							<button type="submit" class="submitBtn">يُقدِّم</button>
 							<button type="reset" onclick="qualityshowpolicy()" class="btn btn-secondary submitBtn" style="margin-right:7px;">يلغي</button>
 						</form>
 					</div>
@@ -54,9 +54,9 @@
 
 				<div class="procedure_div text-right">
 				    <p>لكل دولة أنظمتها وقوانينها الخاصة المعنية بالتشريعات البيئية داخل مكان العمل. ويتعيّن على صاحب العمل وموظفيه الالتزام بهذه التشريعات. ويجب أن تحرص الشركة على التأكد من درايتهم وفهمهم لمسؤولياتهم والتحقق بانتظام من التحديثات والتغييرات.</p>
-				    <p>{{ $companyName}} يعمل على تطوير واحترام اتباع إجراءات من شأنها تحديد ودعم عمليات الحد من التأثيرات السلبية على البيئة، وتحديد الضوابط ثم تنفيذها. تتم مراجعة هذه الضوابط ومراقبتها بشكل منتظم. وتتخذ الشركة جميع الخطوات المعقولة لتقليص مدى التأثيرات البيئية داخل مكان العمل، وتقديم التوجيه بشأن التدابير التي ينبغي تطبيقها ضمن التسلسل الهرمي للرقابة.</p>
-					<p><b><span class="authName">{{ $companyName}}</span></b> يكون بالإجراء المستمر لعمليات المراقبة وتحسين الأداء البيئي للشركة. وسيتم قياس مدى تأثيرها على البيئة بانتظام وتحديد الأهداف لضمان التحسين المستمر. </p>
-					<p>تتمثل سياسة <b><span class="authName">{{ $companyName}}</span></b> في:</p>
+				    <p>{{ $companyName }} يعمل على تطوير واحترام اتباع إجراءات من شأنها تحديد ودعم عمليات الحد من التأثيرات السلبية على البيئة، وتحديد الضوابط ثم تنفيذها. تتم مراجعة هذه الضوابط ومراقبتها بشكل منتظم. وتتخذ الشركة جميع الخطوات المعقولة لتقليص مدى التأثيرات البيئية داخل مكان العمل، وتقديم التوجيه بشأن التدابير التي ينبغي تطبيقها ضمن التسلسل الهرمي للرقابة.</p>
+					<p>{{ $companyName }} يكون بالإجراء المستمر لعمليات المراقبة وتحسين الأداء البيئي للشركة. وسيتم قياس مدى تأثيرها على البيئة بانتظام وتحديد الأهداف لضمان التحسين المستمر. </p>
+					<p>تتمثل سياسة {{ $companyName }} في:</p>
 					<ol>
 						<li class="list-items-ar">السعي جاهدًا لمنع التلوث في عملياتها ومرافقها.</li>
 						<li class="list-items-ar">الالتزام بجميع التشريعات الحالية ذات الصلة بالقضايا البيئية.</li>
@@ -69,14 +69,16 @@
 						<li class="list-items-ar">تقليل الهدر عبر التقييم الدوري للعمليات والكفاءة.</li>
 						<li class="list-items-ar">الحصول على مجموعة منتجات أو خدمات توريد من شأنها تقليل التأثير البيئي لتوزيع الشركة وإنتاجها.</li>
 					</ol>
-					<h5 class="mt-3">سياسات إضافية: </h5>
+					<h6 class="mt-4" style="color:#7a97d9;font-weight:normal;">سياسات إضافية:</h6>
 					@if ($previousPolicy)
-					<pre style="font-size: 13px;color: #040404 !important;font-family: inherit;font-weight: normal; white-space: pre-wrap; overflow:hidden; margin-right: 25px;">{{ $previousPolicy->message }}</pre>
-					@endif  
+					<p style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $previousPolicy->message }}</p>
+					@endif
 					<div style="margin-right: 25px;">
-						<p>بالنيابة عن:  <b><span class="authName">{{ $companyName}}</span></b></p>
-						<p>الاسم: <span class="authName">{{Auth::user()->director}}</span> </p>
-						<p>التاريخ: {{$date}}</p>
+						<p>بالنيابة عن:  {{ $companyName }}</p>
+						<p>الاسم: {{ Auth::user()->director }} </p>
+						@if ($date)
+						<p>التاريخ: {{ $date }}</p>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -85,7 +87,7 @@
 
 	<!--End::Section-->
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">

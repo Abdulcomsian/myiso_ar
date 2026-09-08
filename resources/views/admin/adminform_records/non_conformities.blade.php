@@ -105,8 +105,8 @@
                 </div>
                 <div class="form-row">
                     <div><label>تمت المراجعة بواسطة</label><input type="text" name="reviewdBy"></div>
+                    <div><label>تاريخ تسجيل NC</label><input type="date" name="dateNcR"></div>
                     <div><label>تاريخ معالجة NC</label><input type="date" name="dateNcP"></div>
-                    <div><label>تاريخ استلام NC</label><input type="date" name="dateNcR"></div>
                 </div>
                 <div class="form-row">
                     <div><label>وقت استجابة العميل (أيام)</label><input type="number" min="0" name="CRE"></div>
@@ -146,7 +146,7 @@
                         <th>أبلغ بواسطة</th>
                         <th>الوصف</th>
                         <th>الفئة</th>
-                        <th>تاريخ المعالجة</th>
+                        <th>تاريخ التسجيل</th>
                         <th style="text-align:right;">الإجراءات</th>
                     </tr>
                 </thead>
@@ -213,7 +213,7 @@
                 'description' => 'الوصف', 'rootCause' => 'السبب الجذري',
                 'immediateCorp' => 'الإجراء التصحيحي الفوري', 'actionPrevent' => 'منع التكرار',
                 'ActionRecurnce' => 'فعالية الإجراء', 'effectiveDate' => 'تاريخ مراجعة الفعالية',
-                'reviewdBy' => 'تمت المراجعة بواسطة', 'dateNcP' => 'تاريخ معالجة NC', 'dateNcR' => 'تاريخ استلام NC',
+                'reviewdBy' => 'تمت المراجعة بواسطة', 'dateNcR' => 'تاريخ تسجيل NC', 'dateNcP' => 'تاريخ معالجة NC',
                 'CRE' => 'وقت استجابة العميل', 'PI' => 'تأثير على المنتج', 'NCR_closed' => 'NCR مغلق',
             ]; @endphp
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;">
@@ -286,8 +286,8 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-4"><label>تمت المراجعة بواسطة</label><input type="text" class="form-control" name="reviewdBy"></div>
+                    <div class="col-lg-4"><label>تاريخ تسجيل NC</label><input type="date" class="form-control" name="dateNcR"></div>
                     <div class="col-lg-4"><label>تاريخ معالجة NC</label><input type="date" class="form-control" name="dateNcP"></div>
-                    <div class="col-lg-4"><label>تاريخ استلام NC</label><input type="date" class="form-control" name="dateNcR"></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-4"><label>وقت استجابة العميل</label><input type="number" min="0" class="form-control" name="CRE"></div>

@@ -40,9 +40,17 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>اسم المورد:</label>
-                                            <input type="text"  class="form-control supplier_name" name="supplier_data"
-                                                placeholder="أدخل اسم المورد">
+                                            <label>فئة عدم المطابقة</label>
+                                            <select name="supplier_data" class="form-control" required>
+                                                <option value="">اختر</option>
+                                                <option value="Employee">موظف</option>
+                                                <option value="Supplier">مورّد</option>
+                                                <option value="Customer">عميل</option>
+                                                <option value="Equipment">معدات</option>
+                                                <option value="Audit">تدقيق</option>
+                                                <option value="Design">تصميم</option>
+                                                <option value="Other">أخرى</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -207,20 +215,20 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>تاريخ معالجة حالة عدم المطابقة :</label>
+                                            <label>تاريخ تسجيل حالة عدم المطابقة (الشهر/اليوم/السنة):</label>
                                             <input type="date" required max="2999-12-31" class="form-control"
-                                                name="dateNcP" placeholder="الشهر/اليوم/السنة" required>
+                                                name="dateNcR" placeholder="إدخال اسم" required>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>تاريخ استلام حالة عدم المطابقة (الشهر/اليوم/السنة):</label>
+                                            <label>تاريخ معالجة حالة عدم المطابقة :</label>
                                             <input type="date" required max="2999-12-31" class="form-control"
-                                                name="dateNcR" placeholder="إدخال اسم" required>
+                                                name="dateNcP" placeholder="الشهر/اليوم/السنة" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -310,13 +318,13 @@
                                         <tr>
                                             <th>رقم هوية NCR</th>
                                             <th>عدم الثقة الصغرى أو الكبرى:</th>
-                                            <th>اسم المورد</th>
+                                            <th>فئة عدم المطابقة</th>
                                             <th>رقم هوية المورد</th>
                                             <th>الموظف الذي أبلغ عن NCR</th>
                                             <th>رقم هوية الموظف</th>
                                             <th>وصف NCR</th>
                                             <th>فئة</th>
-                                            <th>تاريخ معالجة NCR.</th>
+                                            <th>تاريخ تسجيل NCR</th>
 
                                             <th>فعل</th>
                                         </tr>
@@ -343,6 +351,7 @@
                                                             <i class="fa fa-eye"></i>
                                                         </span>
                                                     </button>
+                                                    @if ($data->non_confirm_status !== 'Major')
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
                                                         title="Delete" onclick="deleteModal({{ json_encode($data) }});">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -360,6 +369,7 @@
                                                             </g>
                                                         </svg>
                                                     </button>
+                                                    @endif
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
                                                         title="Edit" onclick="EditData({{ json_encode($data) }});">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -425,9 +435,17 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>اسم المورد:</label>
-                                        <input type="text" class="form-control" name="supplier_data"
-                                            placeholder="Enter Supplier Name">
+                                        <label>فئة عدم المطابقة</label>
+                                        <select class="form-control" name="supplier_data" disabled>
+                                            <option value="">اختر</option>
+                                            <option value="Employee">موظف</option>
+                                            <option value="Supplier">مورّد</option>
+                                            <option value="Customer">عميل</option>
+                                            <option value="Equipment">معدات</option>
+                                            <option value="Audit">تدقيق</option>
+                                            <option value="Design">تصميم</option>
+                                            <option value="Other">أخرى</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -561,20 +579,20 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>التاريخ الذي تمت فيه معالجة NC (MM/DD/YYYY):</label>
-                                        <input type="date" class="form-control" name="dateNcP"
-                                            placeholder="أدخل منع التكرار">
+                                        <label>تاريخ تسجيل NC (شهر/يوم/سنة):</label>
+                                        <input type="date" class="form-control" name="dateNcR"
+                                            placeholder="إدخال اسم">
                                     </div>
                                 </div>
-                               
+
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>تاريخ استلام NC (شهر/يوم/سنة):</label>
-                                        <input type="date" class="form-control" name="dateNcR"
-                                            placeholder="إدخال اسم">
+                                        <label>التاريخ الذي تمت فيه معالجة NC (MM/DD/YYYY):</label>
+                                        <input type="date" class="form-control" name="dateNcP"
+                                            placeholder="أدخل منع التكرار">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -656,9 +674,17 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>اسم المورد:</label>
-                                        <input type="text" class="form-control" name="supplier_data"
-                                            placeholder="Enter Supplier Name" id="supplier_name">
+                                        <label>فئة عدم المطابقة</label>
+                                        <select class="form-control" name="supplier_data" id="supplier_name">
+                                            <option value="">اختر</option>
+                                            <option value="Employee">موظف</option>
+                                            <option value="Supplier">مورّد</option>
+                                            <option value="Customer">عميل</option>
+                                            <option value="Equipment">معدات</option>
+                                            <option value="Audit">تدقيق</option>
+                                            <option value="Design">تصميم</option>
+                                            <option value="Other">أخرى</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -810,23 +836,23 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <label>تاريخ تسجيل NC (شهر/يوم/سنة):</label>
+                                        <input type="date" required max="2999-12-31" class="form-control"
+                                            name="dateNcR" placeholder="إدخال اسم" required>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
                                         <label>التاريخ الذي تمت فيه معالجة NC (MM/DD/YYYY):</label>
                                         <input type="date" required max="2999-12-31" class="form-control"
                                             name="dateNcP"
                                             placeholder="التاريخ الذي تمت فيه معالجة NC
                                         "
                                             required>
-                                    </div>
-                                </div>
-                               
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>تاريخ استلام NC (شهر/يوم/سنة):</label>
-                                        <input type="date" required max="2999-12-31" class="form-control"
-                                            name="dateNcR" placeholder="إدخال اسم" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -998,7 +1024,7 @@
         $("select[name='NCR_closed']").val(data.NCR_closed);
         $("input[name='minor_major']").val(data.non_confirm_status);
         $("input[name='root_cause_category']").val(data.root_cause_category);
-        $("input[name='supplier_data']").val(data.supplier_data);
+        $("select[name='supplier_data']").val(data.supplier_data);
 
         $("select[name='employee_id']").val(data.employee_id);
         // get_employee_name_by_id(data.employee_id, '.employee_name_edit_display');
@@ -1028,7 +1054,7 @@
         $("select[name='NCR_closed']").val(data.NCR_closed);
         $("select[name='PI']").val(data.PI);
         $("select[name='minor_major']").val(data.non_confirm_status);
-        $("input[name='supplier_data']").val(data.supplier_data);
+        $("select[name='supplier_data']").val(data.supplier_data);
 
         $("input[name='employee_id']").val(data.employee_id);
         $("input[name='employee_name']").val(data.employee_name);
