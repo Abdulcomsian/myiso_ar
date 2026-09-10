@@ -627,3 +627,103 @@ display:block !important;
   background: transparent;
   color: #93a2dd;  font-size: 22px;
 }
+/* ============================================================
+   am-modal + am-btn (user-side)
+   Ported from admin-modern-layout.css so the delete-confirm modals
+   on user pages (e.g. dashboard/index.blade.php) hide by default and
+   pop open with .open. Does NOT include the sidebar-hiding rules.
+   ============================================================ */
+.am-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    z-index: 1060;
+    padding: 40px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.am-modal.open { display: block; }
+.am-modal__box {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.24);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 80px);
+    animation: amModalIn 0.18s ease-out;
+    overflow: hidden;
+}
+@keyframes amModalIn {
+    from { transform: translateY(8px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.am-modal__header {
+    padding: 20px 22px 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.am-modal__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(235, 77, 75, 0.14);
+    color: #eb4d4b;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.am-modal__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+}
+.am-modal__body {
+    padding: 8px 22px 20px;
+    font-size: 13.5px;
+    color: #6c757d;
+    line-height: 1.5;
+    overflow-y: auto;
+    flex: 1;
+}
+.am-modal__body strong { color: #212529; }
+.am-modal__footer {
+    padding: 14px 22px;
+    background: #f9fafc;
+    border-top: 1px solid #eef1f5;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.am-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13.5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+.am-btn-outline {
+    background: #fff;
+    color: #2E3B9A;
+    border: 1px solid #eef1f5;
+}
+.am-btn-outline:hover {
+    background: rgba(46, 59, 154, 0.08);
+    color: #2E3B9A;
+    text-decoration: none;
+}
