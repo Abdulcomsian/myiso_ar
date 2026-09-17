@@ -320,6 +320,14 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
+								<a href="{{url('environmental_impacts')}}" class="kt-menu__link ">
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text">التأثيرات البيئية</span>
+								</a>
+							</li>
+							<li class="kt-menu__item " aria-haspopup="true">
 								<a href="{{url('process_audit')}}" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
@@ -328,11 +336,27 @@
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
+								<a href="{{url('incidents')}}" class="kt-menu__link ">
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text">تقرير الحوادث</span>
+								</a>
+							</li>
+							<li class="kt-menu__item " aria-haspopup="true">
 								<a href="{{url('interesting_parties')}}" class="kt-menu__link ">
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
 									<span class="kt-menu__link-text">الأطراف المعنية</span>
+								</a>
+							</li>
+							<li class="kt-menu__item " aria-haspopup="true">
+								<a href="{{url('hazards')}}" class="kt-menu__link ">
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text">سجل المخاطر</span>
 								</a>
 							</li>
 							
@@ -365,7 +389,7 @@
 									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
 										<span></span>
 									</i>
-									<span class="kt-menu__link-text">مراجعة العملاء</span>
+									<span class="kt-menu__link-text">مراجعات العملاء</span>
 								</a>
 							</li>
 							<li class="kt-menu__item " aria-haspopup="true">
@@ -374,6 +398,14 @@
 										<span></span>
 									</i>
 									<span class="kt-menu__link-text">الموردون</span>
+								</a>
+							</li>
+							<li class="kt-menu__item " aria-haspopup="true">
+								<a href="{{url('supplier_review')}}" class="kt-menu__link ">
+									<i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+										<span></span>
+									</i>
+									<span class="kt-menu__link-text">مراجعات الموردين</span>
 								</a>
 							</li>
 							<li class="kt-menu__item" aria-haspopup="true">

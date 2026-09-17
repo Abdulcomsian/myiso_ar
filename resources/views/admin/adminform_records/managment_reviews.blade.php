@@ -77,7 +77,11 @@
                     <div><label>فعالية الإجراءات المتخذة تجاه المخاطر والفرص</label><textarea name="effectiveness" required rows="3"></textarea></div>
                 </div>
                 <div class="form-row">
-                    <div style="grid-column:1/-1;"><label>أهداف الجودة الجديدة وفرص التحسين</label><textarea name="newquality" required rows="3"></textarea></div>
+                    <div><label>أهداف الجودة الجديدة وفرص التحسين</label><textarea name="newquality" required rows="3"></textarea></div>
+                    <div><label>أهداف الصحة والسلامة الجديدة وفرص التحسين</label><textarea name="newhealthsafety" required rows="3"></textarea></div>
+                </div>
+                <div class="form-row">
+                    <div style="grid-column:1/-1;"><label>الأهداف البيئية الجديدة وفرص التحسين</label><textarea name="newenvironmental" required rows="3"></textarea></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelMgtForm">إلغاء</button>
@@ -155,6 +159,8 @@
                     '1adequacy' => 'كفاية الموارد',
                     '1effectiveness' => 'فعالية الإجراءات',
                     '1newquality' => 'أهداف الجودة الجديدة',
+                    '1newhealthsafety' => 'أهداف الصحة والسلامة الجديدة',
+                    '1newenvironmental' => 'الأهداف البيئية الجديدة',
                 ];
             @endphp
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;font-size:13px;">
@@ -211,7 +217,11 @@
                     <div class="col-lg-6"><label>فعالية الإجراءات</label><input type="text" class="form-control" name="effectiveness"></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-12"><label>أهداف الجودة الجديدة</label><input type="text" class="form-control" name="newquality"></div>
+                    <div class="col-lg-6"><label>أهداف الجودة الجديدة</label><input type="text" class="form-control" name="newquality"></div>
+                    <div class="col-lg-6"><label>أهداف الصحة والسلامة الجديدة</label><input type="text" class="form-control" name="newhealthsafety"></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>الأهداف البيئية الجديدة</label><input type="text" class="form-control" name="newenvironmental"></div>
                 </div>
             </div>
             <div class="am-modal__footer">
@@ -237,13 +247,13 @@
     r();
 })();
 function amMgtView(d){
-    var m={'1reviewdate':d.reviewdate?new Date(d.reviewdate).toLocaleDateString():'—','1meetingatt':d.meetingatt,'1prevmeeting':d.prevmeeting,'1recommendedchange':d.recommendedchange,'1sammarisecustomr':d.sammarisecustomr,'1prevobjectv':d.prevobjectv,'1conformity':d.conformity,'1nonconformities':d.nonconformities,'1monitoringres':d.monitoringres,'1auditres':d.auditres,'1externalprovider':d.externalprovider,'1adequacy':d.adequacy,'1effectiveness':d.effectiveness,'1newquality':d.newquality};
+    var m={'1reviewdate':d.reviewdate?new Date(d.reviewdate).toLocaleDateString():'—','1meetingatt':d.meetingatt,'1prevmeeting':d.prevmeeting,'1recommendedchange':d.recommendedchange,'1sammarisecustomr':d.sammarisecustomr,'1prevobjectv':d.prevobjectv,'1conformity':d.conformity,'1nonconformities':d.nonconformities,'1monitoringres':d.monitoringres,'1auditres':d.auditres,'1externalprovider':d.externalprovider,'1adequacy':d.adequacy,'1effectiveness':d.effectiveness,'1newquality':d.newquality,'1newhealthsafety':d.newhealthsafety,'1newenvironmental':d.newenvironmental};
     Object.keys(m).forEach(function(k){var el=document.getElementById('v-'+k);if(el)el.textContent=m[k]||'—';});
     document.getElementById('DetailModal').classList.add('open');
 }
 function amMgtEdit(d){
     $("#sdsd").val(d.id);
-    ['reviewdate','meetingatt','prevmeeting','recommendedchange','sammarisecustomr','prevobjectv','conformity','nonconformities','monitoringres','auditres','externalprovider','adequacy','effectiveness','newquality'].forEach(function(k){
+    ['reviewdate','meetingatt','prevmeeting','recommendedchange','sammarisecustomr','prevobjectv','conformity','nonconformities','monitoringres','auditres','externalprovider','adequacy','effectiveness','newquality','newhealthsafety','newenvironmental'].forEach(function(k){
         $("#editSupplier input[name='"+k+"']").val(d[k]||'');
     });
     document.getElementById('editSupplier').classList.add('open');

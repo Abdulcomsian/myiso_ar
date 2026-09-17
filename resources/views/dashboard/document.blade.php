@@ -60,15 +60,19 @@
 					<div class="list_display">
 						<ul>
 							<li><a href="{{ url('/requirements_aspect') }}"> المتطلبات المطلوبة</a></li>
+							<li><a href="{{ url('/environmental_impacts') }}">التأثيرات البيئية</a></li>
 							<li><a href="{{ url('/process_audit') }}"> عمليات التدقيق</a></li>
+							<li><a href="{{ url('/incidents') }}">تقرير الحوادث</a></li>
 							<li><a href="{{ url('/interesting_parties')}}">الأطراف المعنية</a></li>
+							<li><a href="{{ url('/hazards') }}">سجل المخاطر</a></li>
 							<li><a href="{{ url('/qms_audit') }}">عمليات تدقيق نظام إدارة الجودة</a></li>
 							<li><a href="{{ url('/non_confromities') }}">حالات عدم المطابقة</a></li>
 							<li><a href="{{ url('/customer') }}">العملاء</a></li>
 						</ul>
 						<ul>
-							<li><a href="{{ url('/customer_review') }}">مراجعة العملاء</a></li>
+							<li><a href="{{ url('/customer_review') }}">مراجعات العملاء</a></li>
 							<li><a href="{{ url('/supplier') }}">الموردون</a></li>
+							<li><a href="{{ url('/supplier_review') }}">مراجعات الموردين</a></li>
 							<li><a href="{{ url('/calibration_record') }}">المعايرة</a></li>
 							<li><a href="{{ url('/employess') }}">الموظفون</a></li>
 							<li><a href="{{ url('/add_management_review') }}">المراجعات الإدارية</a></li>

@@ -40,7 +40,10 @@
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label>يرجى إدخال سياسات بيئية إضافية خاصة ببيئة عملك وأنشطة شركتك </label><br>
-										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 10000.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
+										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 10000."></textarea>
+										@error('message')
+											<span class="text-danger">{{ $message }}</span>
+										@enderror
 									</div>
 								</div>
 							</div>
@@ -70,16 +73,21 @@
 						<li class="list-items-ar">الحصول على مجموعة منتجات أو خدمات توريد من شأنها تقليل التأثير البيئي لتوزيع الشركة وإنتاجها.</li>
 					</ol>
 					<h6 class="mt-4" style="color:#7a97d9;font-weight:normal;">سياسات إضافية:</h6>
-					@if ($previousPolicy)
-					<p style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $previousPolicy->message }}</p>
-					@endif
-					<div style="margin-right: 25px;">
-						<p>بالنيابة عن:  {{ $companyName }}</p>
-						<p>الاسم: {{ Auth::user()->director }} </p>
-						@if ($date)
-						<p>التاريخ: {{ $date }}</p>
-						@endif
+					@forelse ($userAddPolicy as $policy)
+					<div class="mb-4">
+						<p class="mb-2" style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $policy->message }}</p>
+						<div style="margin-right: 25px; line-height:1.5;">
+							<div>بالنيابة عن:  {{ $companyName }}</div>
+							<div>الاسم: {{ Auth::user()->director }}</div>
+							<div>التاريخ: {{ $policy->created_at->format('d/m/Y') }}</div>
+						</div>
 					</div>
+					@empty
+					<div style="margin-right: 25px; line-height:1.5;">
+						<div>بالنيابة عن:  {{ $companyName }}</div>
+						<div>الاسم: {{ Auth::user()->director }}</div>
+					</div>
+					@endforelse
 				</div>
 			</div>
 		</div>

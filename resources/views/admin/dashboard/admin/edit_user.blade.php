@@ -5,13 +5,17 @@
     $userId = request()->route('id');
     $forms = [
         ['title' => 'المتطلبات المطلوبة',              'url' => '/requiremntCheck/'.$userId,     'icon' => 'fa-tasks',              'group' => 'الامتثال'],
+        ['title' => 'التأثيرات البيئية',                'url' => '/environmentalImpactsad/'.$userId, 'icon' => 'fa-leaf',            'group' => 'الامتثال'],
         ['title' => 'عمليات تدقيق العمليات',            'url' => '/ProcessCheck/'.$userId,        'icon' => 'fa-clipboard-list',     'group' => 'التدقيق'],
+        ['title' => 'تقرير الحوادث',                    'url' => '/incidentsad/'.$userId,         'icon' => 'fa-user-injured',       'group' => 'السلامة'],
         ['title' => 'الأطراف المهتمة',                  'url' => '/interested_parties/'.$userId,  'icon' => 'fa-users',              'group' => 'الامتثال'],
+        ['title' => 'سجل المخاطر',                      'url' => '/hazardsad/'.$userId,           'icon' => 'fa-hard-hat',           'group' => 'السلامة'],
         ['title' => 'عمليات تدقيق نظام إدارة الجودة',   'url' => '/AuditsCheck/'.$userId,         'icon' => 'fa-shield-alt',         'group' => 'التدقيق'],
         ['title' => 'عدم المطابقة',                    'url' => '/nonConformCheck/'.$userId,     'icon' => 'fa-exclamation-triangle','group' => 'التدقيق'],
         ['title' => 'عملاء',                          'url' => '/customerCheck/'.$userId,       'icon' => 'fa-user-friends',       'group' => 'الأعمال'],
-        ['title' => 'رأي العميل',                      'url' => '/customerReviewad/'.$userId,    'icon' => 'fa-star',               'group' => 'الأعمال'],
+        ['title' => 'مراجعات العملاء',                 'url' => '/customerReviewad/'.$userId,    'icon' => 'fa-star',               'group' => 'الأعمال'],
         ['title' => 'الموردين',                        'url' => '/supplierCheck/'.$userId,       'icon' => 'fa-truck',              'group' => 'الأعمال'],
+        ['title' => 'مراجعات الموردين',                'url' => '/supplierReviewad/'.$userId,    'icon' => 'fa-star-half-alt',      'group' => 'الأعمال'],
         ['title' => 'معايرة',                          'url' => '/calibrationcheck/'.$userId,    'icon' => 'fa-tachometer-alt',     'group' => 'العمليات'],
         ['title' => 'موظفين',                          'url' => '/EmployeCheck/'.$userId,        'icon' => 'fa-id-badge',           'group' => 'الموارد البشرية'],
         ['title' => 'مراجعات الإدارة',                  'url' => '/managementCheck/'.$userId,     'icon' => 'fa-chart-line',         'group' => 'الإدارة'],

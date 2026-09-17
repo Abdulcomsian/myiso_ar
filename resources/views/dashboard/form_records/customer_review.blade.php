@@ -7,7 +7,7 @@
         <!--Begin::Section-->
         <div class="row">
             <div class="col-xl-12 col-lg-12 text-right">
-                <h2>رأي العميل</h2>
+                <h2>مراجعات العملاء</h2>
             </div>
         </div>
         <section id="procedure_section">

@@ -152,13 +152,29 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>إضافة أهداف الجودة الجديدة والمستهدفات وفرص التحسين، مع مراعاة الأطراف
                                                 المسؤولة والجداول الزمنية للإنجاز ومعايير النجاح. وينبغي أن تشمل هذه الأهداف
                                                 جوانب الجودة والجوانب المالية، مع أخذ المواءمة مع سياسة الجودة في
                                                 الاعتبار:</label>
                                             <textarea class="form-control" name="newquality" required placeholder="أدخل أهداف الجودة الجديدة" cols="30"
+                                                rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>أهداف الصحة والسلامة الجديدة وفرص التحسين:</label>
+                                            <textarea class="form-control" name="newhealthsafety" required placeholder="أدخل أهداف الصحة والسلامة الجديدة" cols="30"
+                                                rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>الأهداف البيئية الجديدة وفرص التحسين:</label>
+                                            <textarea class="form-control" name="newenvironmental" required placeholder="أدخل الأهداف البيئية الجديدة" cols="30"
                                                 rows="4"></textarea>
                                         </div>
                                     </div>
@@ -429,12 +445,26 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>إضافة أهداف الجودة الجديدة والمستهدفات وفرص التحسين، مع مراعاة الأطراف المسؤولة
                                         والجداول الزمنية للإنجاز ومعايير النجاح. وينبغي أن تشمل هذه الأهداف جوانب الجودة
                                         والجوانب المالية، مع أخذ المواءمة مع سياسة الجودة في الاعتبار:</label>
                                     <input type="text" readonly disabled class="form-control" name="1newquality">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>أهداف الصحة والسلامة الجديدة وفرص التحسين:</label>
+                                    <input type="text" readonly disabled class="form-control" name="1newhealthsafety">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>الأهداف البيئية الجديدة وفرص التحسين:</label>
+                                    <input type="text" readonly disabled class="form-control" name="1newenvironmental">
                                 </div>
                             </div>
                         </div>
@@ -585,12 +615,26 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>إضافة أهداف الجودة الجديدة والمستهدفات وفرص التحسين، مع مراعاة الأطراف المسؤولة
                                         والجداول الزمنية للإنجاز ومعايير النجاح. وينبغي أن تشمل هذه الأهداف جوانب الجودة
                                         والجوانب المالية، مع أخذ المواءمة مع سياسة الجودة في الاعتبار:</label>
                                     <input type="text" class="form-control" required name="newquality">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>أهداف الصحة والسلامة الجديدة وفرص التحسين:</label>
+                                    <input type="text" class="form-control" name="newhealthsafety">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>الأهداف البيئية الجديدة وفرص التحسين:</label>
+                                    <input type="text" class="form-control" name="newenvironmental">
                                 </div>
                             </div>
                         </div>
@@ -630,6 +674,8 @@
         $("input[name='meetingatt']").val(data.meetingatt);
         $("input[name='monitoringres']").val(data.monitoringres);
         $("input[name='newquality']").val(data.newquality);
+        $("input[name='newhealthsafety']").val(data.newhealthsafety);
+        $("input[name='newenvironmental']").val(data.newenvironmental);
         $("input[name='nonconformities']").val(data.nonconformities);
         $("input[name='prevmeeting']").val(data.prevmeeting);
         $("input[name='prevobjectv']").val(data.prevobjectv);
@@ -655,6 +701,8 @@
         $("input[name='1meetingatt']").val(data.meetingatt);
         $("input[name='1monitoringres']").val(data.monitoringres);
         $("input[name='1newquality']").val(data.newquality);
+        $("input[name='1newhealthsafety']").val(data.newhealthsafety);
+        $("input[name='1newenvironmental']").val(data.newenvironmental);
         $("input[name='1nonconformities']").val(data.nonconformities);
         $("input[name='1prevmeeting']").val(data.prevmeeting);
         $("input[name='1prevobjectv']").val(data.prevobjectv);
