@@ -30,20 +30,20 @@ class IncidentController extends SimpleRegisterController
             'fields' => [
                 // Order matters: short fields pair up in the 2-column form, textareas take a full row
                 'incident_date' => ['label' => 'تاريخ الحادث', 'type' => 'date', 'required' => true],
-                'status' => ['label' => 'الحالة', 'type' => 'select', 'required' => true, 'options' => [
+                'status' => ['label' => 'الحالة', 'type' => 'select', 'default' => 'open', 'options' => [
                     'open' => 'مفتوح',
                     'investigating' => 'قيد التحقيق',
                     'closed' => 'مغلق',
                 ]],
-                'description' => ['label' => 'الوصف', 'type' => 'textarea', 'required' => true, 'placeholder' => 'ماذا حدث؟ وما سبب الحادث؟'],
-                'injured_person' => ['label' => 'الشخص المعني / المصاب', 'type' => 'text', 'required' => true, 'placeholder' => 'اسم الشخص المتضرر'],
-                'severity' => ['label' => 'شدة الإصابة', 'type' => 'select', 'required' => true, 'options' => [
+                'description' => ['label' => 'الوصف', 'type' => 'textarea','placeholder' => 'ماذا حدث؟ وما سبب الحادث؟'],
+                'injured_person' => ['label' => 'الشخص المعني / المصاب', 'type' => 'text','placeholder' => 'اسم الشخص المتضرر'],
+                'severity' => ['label' => 'شدة الإصابة', 'type' => 'select', 'options' => [
                     'none' => 'لا توجد إصابة (حادث وشيك)',
                     'minor' => 'طفيفة',
                     'moderate' => 'متوسطة',
                     'severe' => 'شديدة',
                 ]],
-                'location' => ['label' => 'الموقع / القسم', 'type' => 'text', 'required' => true, 'placeholder' => 'أين وقع الحادث؟'],
+                'location' => ['label' => 'الموقع / القسم', 'type' => 'text','placeholder' => 'أين وقع الحادث؟'],
                 'witnesses' => ['label' => 'أسماء الشهود', 'type' => 'text', 'placeholder' => 'أسماء الأشخاص الذين شاهدوا الحادث (اختياري)'],
                 'first_aid' => ['label' => 'الإسعافات الأولية المقدمة', 'type' => 'textarea', 'placeholder' => 'ما الإسعافات الأولية التي قُدمت؟ (اختياري)'],
                 'investigation' => ['label' => 'نتائج التحقيق', 'type' => 'textarea', 'placeholder' => 'ما توصلنا إليه حول سبب وقوع الحادث (اختياري)'],

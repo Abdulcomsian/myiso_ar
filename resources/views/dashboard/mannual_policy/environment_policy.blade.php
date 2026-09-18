@@ -28,7 +28,7 @@
 				<div class="procedure_div text-right">
 					<div class="row">
 						<div class="col-lg-12">
-							<a onclick="qualityshowpolicy()" class="am-btn am-btn-lightblue">إضافة السياسة البيئية</a>
+							<a onclick="qualityshowpolicy()" class="addBtn">إضافة السياسة البيئية</a>
 						</div>
 					</div>
 

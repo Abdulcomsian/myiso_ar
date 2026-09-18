@@ -55,8 +55,8 @@
                     <div><label>شدة الخطر (1-6، 6 = الأشد)</label><input type="number" min="1" max="6" name="riskseverity" required></div>
                 </div>
                 <div class="form-row">
-                    <div><label>حادث بيئي — ما الذي يخرج وبكم</label><input type="text" name="envaccident" required></div>
-                    <div><label>حادث بيئي — أين ينتهي أثره</label><input type="text" name="envaccidental" required></div>
+                    <div><label>ما الذي قد يحدث بشكل خاطئ؟</label><input type="text" name="envaccident" required></div>
+                    <div><label>ما الذي قد يتأثر؟</label><input type="text" name="envaccidental" required></div>
                 </div>
                 <div class="form-row">
                     <div><label>العواقب</label><input type="text" name="consequences" required></div>
@@ -145,8 +145,8 @@
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">السيناريو</div><div id="v-ar-scenario">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">احتمالية الخطر</div><div id="v-ar-likel">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">شدة الخطر</div><div id="v-ar-sev">—</div></div>
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">حادث بيئي (ماذا/كم)</div><div id="v-ar-env">—</div></div>
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">حادث بيئي (أين)</div><div id="v-ar-envwhere">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">ما الذي قد يحدث بشكل خاطئ؟</div><div id="v-ar-env">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">ما الذي قد يتأثر؟</div><div id="v-ar-envwhere">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">العواقب</div><div id="v-ar-cons">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الوقاية</div><div id="v-ar-prev">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الاحتمالية المعدلة</div><div id="v-ar-revlik">—</div></div>
@@ -179,8 +179,8 @@
                     <div class="col-lg-6"><label>شدة الخطر (1-6)</label><input type="number" class="form-control" min="1" max="6" name="riskseverity" required></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>حادث بيئي (ماذا/كم)</label><input type="text" class="form-control" name="envaccident" required></div>
-                    <div class="col-lg-6"><label>حادث بيئي (أين)</label><input type="text" class="form-control" name="envaccidental" required></div>
+                    <div class="col-lg-6"><label>ما الذي قد يحدث بشكل خاطئ؟</label><input type="text" class="form-control" name="envaccident" required></div>
+                    <div class="col-lg-6"><label>ما الذي قد يتأثر؟</label><input type="text" class="form-control" name="envaccidental" required></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-6"><label>العواقب</label><input type="text" class="form-control" name="consequences" required></div>

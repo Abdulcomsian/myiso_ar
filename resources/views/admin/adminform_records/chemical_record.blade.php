@@ -49,8 +49,8 @@
                 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                 <input type="hidden" name="is_admin" value="admin">
                 <div class="form-row">
-                    <div><label>الاسم الكيميائي</label><input type="text" name="chemicalname" required></div>
-                    <div><label>النوع الكيميائي</label><input type="text" name="chemical_type" placeholder="غاز / سائل / صلب" required></div>
+                    <div><label>اسم المادة الكيميائية / المادة الخطرة</label><input type="text" name="chemicalname" required></div>
+                    <div><label>نوع المادة</label><input type="text" name="chemical_type" placeholder="غاز / سائل / صلب" required></div>
                     <div><label>موقع الاستخدام</label><input type="text" name="location" placeholder="المنطقة / القسم" required></div>
                 </div>
                 <div class="form-row">
@@ -68,13 +68,13 @@
                 </div>
                 <div class="form-row">
                     <div>
-                        <label>لا تزال مستخدمة في الإنتاج؟</label>
+                        <label>هل لا تزال مستخدمة في مكان العمل؟</label>
                         <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;">
-                            <label style="display:inline-flex;gap:4px;align-items:center;"><input type="radio" required value="Yes" name="still_used"> نعم، لا تزال مستخدمة</label>
-                            <label style="display:inline-flex;gap:4px;align-items:center;"><input type="radio" required value="No" name="still_used"> لا، توقف استخدامها</label>
+                            <label style="display:inline-flex;gap:4px;align-items:center;"><input type="radio" required value="Yes" name="still_used"> نعم</label>
+                            <label style="display:inline-flex;gap:4px;align-items:center;"><input type="radio" required value="No" name="still_used"> لا</label>
                         </div>
                     </div>
-                    <div><label>إرفاق الدليل</label><input name="attach_evidence" type="file"></div>
+                    <div><label>إرفاق صحيفة البيانات من الشركة المصنّعة</label><input name="attach_evidence" type="file"></div>
                     <div><label>أي مشاكل أخرى</label><textarea name="any_issues" placeholder="ملاحظات" rows="2"></textarea></div>
                 </div>
                 <div class="form-actions">
@@ -150,9 +150,9 @@
         <div class="am-modal__body">
             @php
                 $fields = [
-                    'chemical_name' => 'الاسم الكيميائي',
+                    'chemical_name' => 'اسم المادة الكيميائية / المادة الخطرة',
                     'chemical_desc' => 'الوصف',
-                    'chemical_type' => 'النوع',
+                    'chemical_type' => 'نوع المادة',
                     'location_used' => 'الموقع',
                     'activity_hazard' => 'الخطر المترتب على النشاط',
                     'identified_chazard' => 'الخطر الكيميائي',
@@ -168,7 +168,7 @@
                 @foreach($fields as $k => $lb)
                     <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">{{ $lb }}</div><div id="vch-{{ $k }}">—</div></div>
                 @endforeach
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الدليل</div><div id="vch-ev">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">صحيفة بيانات الشركة المصنّعة</div><div id="vch-ev">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button></div>
@@ -188,8 +188,8 @@
             <input type="hidden" name="id" id="ech-id">
             <div class="am-modal__body" style="padding:20px;">
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>الاسم الكيميائي</label><input type="text" class="form-control" name="chemicalname" required></div>
-                    <div class="col-lg-6"><label>النوع الكيميائي</label><input type="text" class="form-control" name="chemical_type" required></div>
+                    <div class="col-lg-6"><label>اسم المادة الكيميائية / المادة الخطرة</label><input type="text" class="form-control" name="chemicalname" required></div>
+                    <div class="col-lg-6"><label>نوع المادة</label><input type="text" class="form-control" name="chemical_type" required></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-12"><label>الوصف</label><input type="text" class="form-control" name="chemical_desc" required></div>
@@ -209,7 +209,7 @@
                 <div class="form-group row">
                     <div class="col-lg-6"><label>الحماية المطلوبة</label><input type="text" class="form-control" name="protection_required" required></div>
                     <div class="col-lg-6">
-                        <label>لا تزال مستخدمة؟</label>
+                        <label>هل لا تزال مستخدمة في مكان العمل؟</label>
                         <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;">
                             <label style="display:inline-flex;gap:4px;align-items:center;"><input type="radio" value="Yes" name="still_used"> نعم</label>
                             <label style="display:inline-flex;gap:4px;align-items:center;"><input type="radio" value="No" name="still_used"> لا</label>
@@ -217,7 +217,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق الدليل</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق صحيفة البيانات من الشركة المصنّعة</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أخرى</label><textarea class="form-control" name="any_issues"></textarea></div>
                 </div>
             </div>

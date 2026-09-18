@@ -107,7 +107,7 @@
                                 <div class="row">                       
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>إرفاق الأدلة:</label>
+                                            <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
                                             <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
                                             {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
                                             {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
@@ -277,7 +277,7 @@
                                                                     <div class="row">
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>إرفاق الأدلة:</label>
+                                                                                <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
                                                                                <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
                                                                             </div>
                                                                         </div>
@@ -466,7 +466,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>إرفاق الأدلة:</label>
+                                    <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
                                     <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
                                     {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
                                     {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}

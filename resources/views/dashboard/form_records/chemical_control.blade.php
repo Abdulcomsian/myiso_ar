@@ -57,7 +57,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>الاسم الكيميائي: </label>
+                                            <label>اسم المادة الكيميائية / المادة الخطرة:</label>
                                             <input type="text" name="chemicalname" class="form-control" required
                                                    placeholder="أدخل الاسم الكيميائي">
                                         </div>
@@ -75,7 +75,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>الحالة الكيميائية (غاز، سائل، صلب):</label>
+                                            <label>نوع المادة (غاز، سائل، صلب):</label>
                                             <input type="text" name="chemical_type" class="form-control" required
                                                    placeholder="أدخل النوع الكيميائي (غاز، سائل، صلب)">
                                         </div>
@@ -148,14 +148,14 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>هل لا تزال هذه المادة الكيميائية مستخدمة في عملية الإنتاج أم توقف استخدامها؟</label>
+                                            <label>هل لا تزال مستخدمة في مكان العمل؟</label>
                                             <div class="kt-radio-list">
                                                 <label class="kt-radio">
-                                                    <input type="radio" required value="Yes" name="still_used"> نعم، لا تزال مستخدمة
+                                                    <input type="radio" required value="Yes" name="still_used"> نعم
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio">
-                                                    <input type="radio" required value="No" name="still_used">ا، توقف استخدامها
+                                                    <input type="radio" required value="No" name="still_used"> لا
                                                     <span></span>
                                                 </label>
 
@@ -166,7 +166,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>إرفاق الدليل: <span class="text-danger"
+                                            <label>إرفاق صحيفة البيانات من الشركة المصنّعة: <span class="text-danger"
                                                                           style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                             {{-- <input name="attach_evidence" type="file" class="form-control"
                                                    accept="all"> --}}
@@ -353,7 +353,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>الرقابة على المواد الكيميائية :</label>
+                                    <label>اسم المادة الكيميائية / المادة الخطرة:</label>
                                     <input type="text" name="chemical_name" required class="form-control"
                                            placeholder="أدخل الاسم الكيميائي">
                                 </div>
@@ -371,7 +371,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>النوع الكيميائي (غاز أو سائل أو صلب):</label>
+                                    <label>نوع المادة (غاز أو سائل أو صلب):</label>
                                     <input type="text" name="chemical_type" required class="form-control"
                                            placeholder="أدخل النوع الكيميائي">
                                 </div>
@@ -445,7 +445,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>هل لا تزال هذه المادة الكيميائية تستخدم في الإنتاج أم في الإرث؟</label>
+                                    <label>هل لا تزال مستخدمة في مكان العمل؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
                                             <input type="radio" value="Yes" name="still_used"> نعم
@@ -468,7 +468,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>إرفاق الدليل: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                                    <label>إرفاق صحيفة البيانات من الشركة المصنّعة: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
                                     {{-- <input name="attach_evidence" type="file" class="form-control"
                                            accept="all"> --}}
                                            <div class="custom-file-input-tag form-control">
@@ -518,7 +518,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label> الرقابة على المواد الكيميائية </label>
+                                    <label>اسم المادة الكيميائية / المادة الخطرة</label>
                                     <input type="text" name="chemical_name" required class="form-control"
                                            placeholder="أدخل الاسم الكيميائي:">
                                 </div>
@@ -536,7 +536,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>النوع الكيميائي (غاز أو سائل أو صلب):</label>
+                                    <label>نوع المادة (غاز أو سائل أو صلب):</label>
                                     <input type="text" name="chemical_type" required class="form-control"
                                            placeholder="أدخل النوع الكيميائي:">
                                 </div>
@@ -610,7 +610,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>هل لا تزال هذه المادة الكيميائية تستخدم في الإنتاج أم في الإرث؟</label>
+                                    <label>هل لا تزال مستخدمة في مكان العمل؟</label>
                                     <div class="kt-radio-list">
                                         <label class="kt-radio">
                                             <input type="radio" required value="Yes" name="still_used"> نعم
@@ -633,7 +633,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>إرفاق الدليل:  <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
+                                    <label>إرفاق صحيفة البيانات من الشركة المصنّعة: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span>:</label>
                                     <div class="evidence_attachemnt_div"></div>
                                 </div>
                             </div>

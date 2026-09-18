@@ -57,8 +57,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>في حال كان الحادث ذا طبيعة بيئية، ما الذي يمكن إنقاذه وكم التكلفة؟
-                                            </label>
+                                            <label>ما الذي قد يحدث بشكل خاطئ؟</label>
                                             <input type="text" class="form-control" placeholder="أدخل النتيجة المحتملة:"
                                                 required name="envaccident" placeholder="">
                                         </div>
@@ -67,7 +66,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>في حال كان حادثًا ذا طبيعة بيئية، أين ينتهي أثره؟ </label>
+                                            <label>ما الذي قد يتأثر؟</label>
                                             <input type="text" class="form-control" placeholder="إدخال الدولة" required
                                                 name="envaccidental">
                                         </div>
@@ -282,7 +281,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>في حال كان الحادث ذا طبيعة بيئية، ما الذي يمكن إنقاذه وكم التكلفة؟ </label>
+                                    <label>ما الذي قد يحدث بشكل خاطئ؟</label>
                                     <input type="text" class="form-control" required name="envaccident"
                                         placeholder="أدخل مراجعة الاجتماع السابق:">
                                 </div>
@@ -291,7 +290,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label> في حال كان حادثًا ذا طبيعة بيئية، أين ينتهي أثره؟ </label>
+                                    <label>ما الذي قد يتأثر؟</label>
                                     <input type="text" class="form-control" required name="envaccidental">
                                 </div>
                             </div>
@@ -391,7 +390,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>في حال كان الحادث ذا طبيعة بيئية، ما الذي يمكن إنقاذه وكم التكلفة؟ :</label>
+                                    <label>ما الذي قد يحدث بشكل خاطئ؟</label>
                                     <input type="text" class="form-control" required name="envaccident"
                                         placeholder="أدخل مراجعة الاجتماع السابق:">
                                 </div>
@@ -400,7 +399,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label> في حال كان حادثًا ذا طبيعة بيئية، أين ينتهي أثره؟ </label>
+                                    <label>ما الذي قد يتأثر؟</label>
                                     <input type="text" class="form-control" required name="envaccidental">
                                 </div>
                             </div>

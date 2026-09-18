@@ -29,8 +29,8 @@ class EnvironmentalImpactController extends SimpleRegisterController
             'label_field' => 'aspect',
             'fields' => [
                 'aspect' => ['label' => 'الجانب البيئي', 'type' => 'text', 'required' => true, 'wide' => true, 'placeholder' => 'مثال: استهلاك الطاقة، النفايات الناتجة، استهلاك المياه'],
-                'impact' => ['label' => 'التأثير البيئي', 'type' => 'text', 'required' => true, 'wide' => true, 'placeholder' => 'مثال: تغير المناخ، التلوث، استنزاف الموارد'],
-                'controls' => ['label' => 'الضوابط / الإجراءات', 'type' => 'text', 'required' => true, 'wide' => true, 'placeholder' => 'مثال: إضاءة LED، برنامج إعادة التدوير، ترشيد المياه'],
+                'impact' => ['label' => 'التأثير البيئي', 'type' => 'text', 'wide' => true, 'placeholder' => 'مثال: تغير المناخ، التلوث، استنزاف الموارد'],
+                'controls' => ['label' => 'الضوابط / الإجراءات', 'type' => 'text', 'wide' => true, 'placeholder' => 'مثال: إضاءة LED، برنامج إعادة التدوير، ترشيد المياه'],
                 'responsible_person' => ['label' => 'الشخص المسؤول', 'type' => 'text', 'placeholder' => 'مثال: أحمد محمد (اختياري)'],
                 'monitoring_method' => ['label' => 'طريقة المراقبة', 'type' => 'text', 'placeholder' => 'مثال: فحص شهري، عدّ أسبوعي (اختياري)'],
             ],
