@@ -39,7 +39,10 @@
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label>يرجى إدخال سياسات جودة إضافية خاصة ببيئة عملك وأنشطة شركتك </label><br>
-										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 10000.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
+										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 10000."></textarea>
+										@error('message')
+											<span class="text-danger">{{ $message }}</span>
+										@enderror
 									</div>
 								</div>
 							</div>
@@ -61,19 +64,21 @@
 					<p>تعزيز روح العمل الجماعي، والاعتراف بمدى أهمية دور جميع الموظفين لتحقيق النجاح المستمرّ لـ  {{ $companyName }}</p>
 					<p>ضمان الاستفادة القصوى من أهم مواردنا، أي موظفينا، عبر التدريب المستمر والتطوير الوظيفي.</p>
 					<p>الفهم المستمر لاحتياجات وتوقعات الأطراف المعنية، والاستجابة لها.</p>
-					<!-- Display the previous policy -->
-					<h6 class="mt-4" style="color:#7a97d9;font-weight:normal;">سياسات إضافية:</h6>
-					@if ($previousPolicy)
-						<p style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $previousPolicy->message }}</p>
-					@endif
-						{{-- @foreach ($useraddpolicy as $policy)
-                        <p>{{$policy->message}}</p>
-                        @endforeach --}}
 					<p>بصفتي المدير العام، أوافق على تحمّل المسؤولية النهائية عن الجودة. ومن خلال توجيهاتها واعتبارها مثلًا يحتذى به، تضمن الإدارة التشغيلية فهم هذه السياسة وتنفيذها والحفاظ عليها في جميع مستويات  {{ $companyName }}</p>
-					<p>المدير العام:  {{ Auth::user()->director }}</p>
-					@if ($date)
-					<p>التاريخ:  {{ $date }}</p>
-					@endif
+					<h6 class="mt-4" style="color:#7a97d9;font-weight:normal;">سياسات إضافية:</h6>
+					@forelse ($userAddPolicy as $policy)
+					<div class="mb-4">
+						<p class="mb-2" style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $policy->message }}</p>
+						<div style="line-height:1.5;">
+							<div>المدير العام:  {{ Auth::user()->director }}</div>
+							<div>التاريخ:  {{ $policy->created_at->format('d/m/Y') }}</div>
+						</div>
+					</div>
+					@empty
+					<div style="line-height:1.5;">
+						<div>المدير العام:  {{ Auth::user()->director }}</div>
+					</div>
+					@endforelse
 				</div>
 			</div>
 		</div>

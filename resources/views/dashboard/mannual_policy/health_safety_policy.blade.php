@@ -41,7 +41,10 @@
 								<div class="col-lg-12">
 									<div class="form-group">
 										<label>يرجى إدخال مزيد من سياسات الصحة والسلامة الخاصة ببيئة عملك وأنشطة شركتك </label><br>
-										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 10000.">{{ $previousPolicy ? $previousPolicy->message : '' }}</textarea>
+										<textarea name="message" class="form-control" placeholder="تعيين الحد الأقصى لعدد الأحرف التي يمكن إدخالها إلى 10000."></textarea>
+										@error('message')
+											<span class="text-danger">{{ $message }}</span>
+										@enderror
 									</div>
 								</div>
 							</div>
@@ -64,17 +67,21 @@
 					<p>تقع على عاتق الموظف مسؤولية ضمان الاستخدام الصحيح للآلات أو المعدات أو وسائل الإنتاج أو أجهزة السلامة التي يوفرها صاحب العمل وفقًا لأي تعليمات أو تدريب أو توجيهات يتم تلقيها بموجب اللوائح ذات الصلة.</p>
 					<h6 class="mt-4" style="color:#7a97d9;font-weight:normal;">سياسات إضافية — الغاية:</h6>
 					<p>تحدد هذه الوثيقة السياسة والممارسات التي سيتم اعتمادها ضمانًا لإجراء تقييمات مناسبة وكافية للمخاطر وفقًا لمتطلبات الأنظمة المعمول بها ذات الصلة. وتصف الوثيقة نظام إجراء تقييمات المخاطر العامة في {{ $companyName }} في إطار برنامج إدارة السلامة والصحة والبيئة. لا يشمل هذا الإجراء تقييمات المخاطر التي جرت في إطار مراقبة المعادن الخطرة والمواد الكيميائية والمواد الأخرى، أو التعامل معها، أو استخدام شاشات العرض والإجراءات المتكررة.</p>
-					@if ($previousPolicy)
-					<p style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $previousPolicy->message }}</p>
-					@endif
-					{{-- @foreach ($useraddpolicy as $health)
-						<p>{{$health->message}}</p>
-						@endforeach --}}
-					<p>بالنيابة عن : {{ $companyName }}</p>
-					<p>الاسم: {{ Auth::user()->director }}</p>
-					@if ($date)
-					<p>التاريخ: {{ $date }}</p>
-					@endif
+					@forelse ($userAddPolicy as $policy)
+					<div class="mb-4">
+						<p class="mb-2" style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $policy->message }}</p>
+						<div style="line-height:1.5;">
+							<div>بالنيابة عن : {{ $companyName }}</div>
+							<div>الاسم: {{ Auth::user()->director }}</div>
+							<div>التاريخ: {{ $policy->created_at->format('d/m/Y') }}</div>
+						</div>
+					</div>
+					@empty
+					<div style="line-height:1.5;">
+						<div>بالنيابة عن : {{ $companyName }}</div>
+						<div>الاسم: {{ Auth::user()->director }}</div>
+					</div>
+					@endforelse
 				</div>
 			</div>
 		</div>
