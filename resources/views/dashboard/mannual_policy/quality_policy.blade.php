@@ -65,18 +65,18 @@
 					<p>ضمان الاستفادة القصوى من أهم مواردنا، أي موظفينا، عبر التدريب المستمر والتطوير الوظيفي.</p>
 					<p>الفهم المستمر لاحتياجات وتوقعات الأطراف المعنية، والاستجابة لها.</p>
 					<p>بصفتي المدير العام، أوافق على تحمّل المسؤولية النهائية عن الجودة. ومن خلال توجيهاتها واعتبارها مثلًا يحتذى به، تضمن الإدارة التشغيلية فهم هذه السياسة وتنفيذها والحفاظ عليها في جميع مستويات  {{ $companyName }}</p>
-					<h6 class="mt-4" style="color:#7a97d9;font-weight:normal;">سياسات إضافية:</h6>
+					<h6 class="mt-4" style="color:#2E3B9A;font-weight:600;">سياسات إضافية:</h6>
 					@forelse ($userAddPolicy as $policy)
-					<div class="mb-4">
-						<p class="mb-2" style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $policy->message }}</p>
+					<div style="{{ $loop->first ? '' : 'border-top:1px solid #e6e8f0;margin-top:16px;' }}padding-top:{{ $loop->first ? '4' : '16' }}px;">
+						<p class="mb-2" style="white-space:pre-wrap;">{{ $policy->message }}</p>
 						<div style="line-height:1.5;">
-							<div>المدير العام:  {{ Auth::user()->director }}</div>
-							<div>التاريخ:  {{ $policy->created_at->format('d/m/Y') }}</div>
+							<div><strong style="font-weight:600;">المدير العام:</strong>  {{ Auth::user()->director }}</div>
+							<div><strong style="font-weight:600;">التاريخ:</strong>  {{ $policy->created_at->format('d/m/Y g:i') }} {{ $policy->created_at->format('A') === 'AM' ? 'ص' : 'م' }}</div>
 						</div>
 					</div>
 					@empty
 					<div style="line-height:1.5;">
-						<div>المدير العام:  {{ Auth::user()->director }}</div>
+						<div><strong style="font-weight:600;">المدير العام:</strong>  {{ Auth::user()->director }}</div>
 					</div>
 					@endforelse
 				</div>

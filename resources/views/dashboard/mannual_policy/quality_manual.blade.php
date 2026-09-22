@@ -11,6 +11,16 @@
             font-weight: 500 !important;
         }
 
+        /* Links in the manual follow the theme blue instead of the browser default */
+        #procedure_section a {
+            color: #2E3B9A;
+            font-weight: 600;
+        }
+
+        #procedure_section a:hover {
+            color: #232C7A;
+        }
+
 		.text-right{
 			text-align: right;
 		}

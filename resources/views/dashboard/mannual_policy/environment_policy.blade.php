@@ -72,20 +72,20 @@
 						<li class="list-items-ar">تقليل الهدر عبر التقييم الدوري للعمليات والكفاءة.</li>
 						<li class="list-items-ar">الحصول على مجموعة منتجات أو خدمات توريد من شأنها تقليل التأثير البيئي لتوزيع الشركة وإنتاجها.</li>
 					</ol>
-					<h6 class="mt-4" style="color:#7a97d9;font-weight:normal;">سياسات إضافية:</h6>
+					<h6 class="mt-4" style="color:#2E3B9A;font-weight:600;">سياسات إضافية:</h6>
 					@forelse ($userAddPolicy as $policy)
-					<div class="mb-4">
-						<p class="mb-2" style="white-space:pre-wrap;font-weight:normal !important;color:#7a97d9 !important;">{{ $policy->message }}</p>
-						<div style="margin-right: 25px; line-height:1.5;">
-							<div>بالنيابة عن:  {{ $companyName }}</div>
-							<div>الاسم: {{ Auth::user()->director }}</div>
-							<div>التاريخ: {{ $policy->created_at->format('d/m/Y') }}</div>
+					<div style="{{ $loop->first ? '' : 'border-top:1px solid #e6e8f0;margin-top:16px;' }}padding-top:{{ $loop->first ? '4' : '16' }}px;">
+						<p class="mb-2" style="white-space:pre-wrap;">{{ $policy->message }}</p>
+						<div style="line-height:1.5;">
+							<div><strong style="font-weight:600;">بالنيابة عن:</strong>  {{ $companyName }}</div>
+							<div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
+							<div><strong style="font-weight:600;">التاريخ:</strong> {{ $policy->created_at->format('d/m/Y g:i') }} {{ $policy->created_at->format('A') === 'AM' ? 'ص' : 'م' }}</div>
 						</div>
 					</div>
 					@empty
 					<div style="margin-right: 25px; line-height:1.5;">
-						<div>بالنيابة عن:  {{ $companyName }}</div>
-						<div>الاسم: {{ Auth::user()->director }}</div>
+						<div><strong style="font-weight:600;">بالنيابة عن:</strong>  {{ $companyName }}</div>
+						<div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
 					</div>
 					@endforelse
 				</div>
