@@ -216,7 +216,7 @@
                                                                             fill="#5d78ff" fill-rule="nonzero"
                                                                             opacity="0.3"></path>
                                                                     </g>
-                                                                </svg> </span>
+                                                                </svg> </span></span>
                                                     </button>
                                                     <button data-toggle="modal"
                                                         data-target="#deleteCalibrat_{{ $data->id }}"

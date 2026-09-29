@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 -->
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <!-- begin::Head -->
 
@@ -28,7 +28,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="../assets/vendors/custom/vendors/fontawesome5/css/all.min.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!--end::Fonts -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -119,6 +119,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Page Vendors Styles -->
     @endif
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/admin-modern-layout.css') }}" rel="stylesheet" type="text/css" />
     @stack('styles')
 </head>
 <style>

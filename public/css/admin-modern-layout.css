@@ -138,6 +138,15 @@ body.am-body {
 .am-nav-group__children .am-nav-link:hover { color: var(--am-primary); background: transparent; }
 .am-nav-group__children .am-nav-link.active { background: transparent; color: var(--am-primary); font-weight: 600; }
 
+.am-nav-sub-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--am-text-soft);
+    padding: 10px 12px 3px;
+}
+
 /* ============================
    Top header
    ============================ */
@@ -328,13 +337,25 @@ body.am-body {
     text-decoration: none;
     transition: all 0.15s ease;
 }
-.am-btn-primary { background: var(--am-primary); color: #fff; }
-.am-btn-primary:hover { background: #232C7A; color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(46, 59, 154, 0.32); }
-.am-btn-outline { background: #fff; color: var(--am-primary); border: 1px solid var(--am-border); }
-.am-btn-outline:hover { background: var(--am-primary-tint); color: var(--am-primary); text-decoration: none; }
-.am-btn-danger { background: var(--am-danger); color: #fff; }
-.am-btn-danger:hover { background: #d63f3d; color: #fff; text-decoration: none; }
+.am-btn-primary { background: var(--am-primary) !important; color: #fff !important; }
+.am-btn-primary:hover { background: #232C7A !important; color: #fff !important; text-decoration: none; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(46, 59, 154, 0.32); }
+.am-btn-outline { background: #fff !important; color: var(--am-primary) !important; border: 1px solid var(--am-border) !important; }
+.am-btn-outline:hover { background: var(--am-primary-tint) !important; color: var(--am-primary) !important; text-decoration: none; }
+.am-btn-danger { background: var(--am-danger) !important; color: #fff !important; }
+.am-btn-danger:hover { background: #d63f3d !important; color: #fff !important; text-decoration: none; }
+.am-btn-warning { background: #f39c12 !important; color: #fff !important; border: none !important; }
+.am-btn-warning:hover { background: #d68910 !important; color: #fff !important; text-decoration: none; }
 .am-btn-sm { padding: 6px 12px; font-size: 12.5px; }
+
+/* Custom paginator */
+.am-card__footer { padding: 14px 20px; border-top: 1px solid var(--am-border); }
+.am-paginator { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 14px 20px; border-top: 1px solid var(--am-border); }
+.am-paginator__info { font-size: 12.5px; color: var(--am-text-muted); }
+.am-paginator__nav { display: inline-flex; gap: 4px; align-items: center; }
+.am-paginator__btn { display: inline-flex; align-items: center; justify-content: center; min-width: 34px; height: 34px; padding: 0 10px; border: 1px solid var(--am-border); background: #fff; color: var(--am-primary); font-size: 13px; font-weight: 500; border-radius: 6px; cursor: pointer; text-decoration: none; transition: background 0.15s, color 0.15s; }
+.am-paginator__btn:hover:not([disabled]) { background: var(--am-primary-tint); border-color: var(--am-primary-soft); color: var(--am-primary); text-decoration: none; }
+.am-paginator__btn--active { background: var(--am-primary) !important; color: #fff !important; border-color: var(--am-primary) !important; cursor: default; }
+.am-paginator__btn[disabled] { opacity: 0.45; cursor: not-allowed; }
 
 /* Stat cards */
 .am-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 22px; }
@@ -1303,11 +1324,57 @@ body.am-body {
 /* Bootstrap col wrapper labels still uppercase */
 .am-main label { color: var(--am-text); }
 
+/* ============================
+   Bootstrap Modal — global style fix
+   Metronic's style.bundle applies the brand blue to .modal-header
+   but leaves text/button colours at Bootstrap defaults (dark).
+   These rules ensure white text + a clean, single close button.
+   ============================ */
+.modal-content {
+    border: none;
+    border-radius: var(--am-radius);
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.22);
+    overflow: hidden;
+}
+.modal-header {
+    background: var(--am-primary) !important;
+    color: #fff !important;
+    border-bottom: none;
+    padding: 16px 20px;
+}
+.modal-header .modal-title,
+.modal-header h5,
+.modal-header h4,
+.modal-header h3 {
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 15px;
+}
+/* Remove any Metronic pseudo-element that creates a duplicate close mark */
+.modal-header .close::before,
+.modal-header .close::after { content: none !important; }
+.modal-header .close {
+    color: #fff !important;
+    opacity: 0.85;
+    text-shadow: none;
+    font-size: 22px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+.modal-header .close:hover { opacity: 1; color: #fff !important; }
+.modal-footer { border-top: 1px solid var(--am-border); padding: 14px 20px; }
+.modal-body { padding: 20px; }
+
 /* Hide old Metronic aside/header if any partial still renders */
 .kt-aside,
 .kt-header,
 .kt-header-mobile,
-.kt-footer { display: none !important; }
+.kt-footer,
+.kt-sticky-toolbar,
+.kt-demo-panel,
+.kt-quick-panel,
+.kt-scrolltop { display: none !important; }
 
 /* ============================
    Responsive
@@ -1362,7 +1429,11 @@ body.am-body {
     right: auto;
     left: 0;
 }
-[dir="rtl"] .am-nav-group__toggle .am-chevron { transform: rotate(180deg); }
+/* text follows the page direction (Bootstrap forces body{text-align:left}) */
+[dir="rtl"] body.am-body { text-align: right; }
+/* auto margins must flip, otherwise the chevron/badge sits next to the label instead of the edge */
+[dir="rtl"] .am-nav-group__toggle .am-chevron { margin-left: 0; margin-right: auto; transform: rotate(180deg); }
+[dir="rtl"] .am-nav-link .am-badge { margin-left: 0; margin-right: auto; }
 [dir="rtl"] .am-nav-group.open .am-nav-group__toggle .am-chevron { transform: rotate(90deg); }
 [dir="rtl"] .am-nav-group__children { padding: 4px 34px 6px 0; }
 [dir="rtl"] .am-page-header,
@@ -1438,4 +1509,157 @@ body.am-body {
 [dir="rtl"] .am-search input {
     padding: 9px 34px 9px 12px;
     text-align: right;
+}
+
+/* =========================================================
+   Legacy page skin
+   The Arabic pages still carry the original Metronic markup.
+   Not one Blade file changes here: these rules only give those
+   pages the same colours, radii and icon treatment the English
+   pages get from their .am-* classes.
+   ========================================================= */
+
+/* Page title — the <h2> every legacy page opens with */
+.am-main h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--am-text);
+    margin: 0 0 4px 0;
+}
+
+/* .procedure_div is the legacy equivalent of .am-card */
+.am-main #procedure_section .procedure_div {
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius);
+    box-shadow: var(--am-shadow-sm);
+    padding: 22px;
+    margin-top: 22px;
+}
+
+/* "Add …" link button = .am-btn.am-btn-primary */
+.am-main .addBtn,
+.am-main .addBtn:hover,
+.am-main .addBtn:focus {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--am-primary);
+    color: #fff !important;
+    padding: 10px 18px;
+    border-radius: var(--am-radius-sm);
+    font-weight: 600;
+    font-size: 13.5px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+.am-main .addBtn:hover {
+    background-color: #232C7A;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 59, 154, 0.32);
+}
+
+/* File-upload triggers follow the same palette */
+.am-main .add_employee_cv span {
+    background-color: var(--am-primary);
+    border-radius: var(--am-radius-sm);
+    font-weight: 600;
+    font-size: 13.5px;
+}
+.am-main .file-label {
+    background-color: var(--am-primary-tint);
+    color: var(--am-primary);
+    border: 1px solid var(--am-primary-soft);
+    border-radius: var(--am-radius-sm);
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* Submit / reset already use the theme blue — only round them like .am-btn */
+.am-main .submitBtn {
+    border-radius: var(--am-radius-sm);
+    font-size: 13.5px;
+}
+
+/* Tables: horizontal rules only, like .am-table */
+.am-main .table.table-bordered { border: none; }
+.am-main .table.table-bordered > thead > tr > th {
+    border: none;
+    border-bottom: 1px solid var(--am-border);
+}
+.am-main .table.table-bordered > tbody > tr > td,
+.am-main .table.table-bordered > tbody > tr > th {
+    border: none;
+    border-top: 1px solid var(--am-border-soft);
+}
+.am-main .requirments_table_div { margin-top: 22px; }
+
+/* Bootstrap buttons take the theme palette + radius */
+.am-main .btn {
+    border-radius: var(--am-radius-sm);
+    font-weight: 600;
+    font-size: 13.5px;
+}
+.am-main .btn-primary {
+    background-color: var(--am-primary);
+    border-color: var(--am-primary);
+}
+.am-main .btn-primary:hover {
+    background-color: #232C7A;
+    border-color: #232C7A;
+}
+.am-main .btn-secondary {
+    background-color: #fff;
+    color: var(--am-text-muted);
+    border: 1px solid var(--am-border);
+}
+.am-main .btn-secondary:hover {
+    background-color: var(--am-hover);
+    color: var(--am-primary);
+    border-color: var(--am-primary);
+}
+
+/* Row action icons = .am-icon-btn */
+.am-main .btn.btn-clean {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: var(--am-radius-sm);
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--am-text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.am-main .btn.btn-clean:hover {
+    background: var(--am-primary-tint);
+    color: var(--am-primary);
+}
+.am-main .btn.btn-clean[title*="elete"]:hover,
+.am-main .btn.btn-clean[title*="حذف"]:hover {
+    background: rgba(235, 77, 75, 0.12);
+    color: var(--am-danger);
+}
+/* The inline SVG icons hard-code the old Metronic blue as a presentation
+   attribute; a CSS `fill` outranks it without touching the markup. */
+.am-main svg [fill="#5d78ff"] { fill: var(--am-primary); }
+.am-main .btn[title*="elete"] svg [fill="#5d78ff"],
+.am-main .btn[title*="حذف"] svg [fill="#5d78ff"] { fill: var(--am-danger); }
+
+/* Pills, cards, accordions */
+.am-main .badge {
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 11.5px;
+    padding: 5px 10px;
+}
+.am-main .card {
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius);
+    box-shadow: var(--am-shadow-sm);
+}
+.am-main .card-header {
+    background: #f9fafc;
+    border-bottom: 1px solid var(--am-border);
 }

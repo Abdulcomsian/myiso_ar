@@ -49,7 +49,7 @@
 						<li><a href="{{ url('/documented_information') }}"> الإجراء 1 - المعلومات الموثقة</a></li>
 						<li><a href="{{ url('/corrective_action') }}">الإجراء 2 - الإجراءات التصحيحية بما في ذلك حالات عدم المطابقة</a></li>
 						<li><a href="{{ url('/management_review') }}">الإجراء 3 - المراجعة الإدارية</a></li>
-						<li><a href="{{ url('/monitoring_measure') }}">الإجراء 4 - أدوات الرقابة والقياس</li>
+						<li><a href="{{ url('/monitoring_measure') }}">الإجراء 4 - أدوات الرقابة والقياس</a></li>
 						<li><a href="{{url('auidt')}}"> الإجراء 5 - عمليات التدقيق</a></li>
 					</ul>
 				</div>

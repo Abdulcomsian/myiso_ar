@@ -1,50 +1,27 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-    <style>
-        .list_div .list_number {
-            /*width: auto;*/
-            max-width: 6.8%;
-        }
-
-        .authName {
-            font-weight: 500 !important;
-        }
-
-        /* Links in the manual follow the theme blue instead of the browser default */
-        #procedure_section a {
-            color: #2E3B9A;
-            font-weight: 600;
-        }
-
-        #procedure_section a:hover {
-            color: #232C7A;
-        }
-
-		.text-right{
-			text-align: right;
-		}
-    </style>
-    <!-- begin:: Content -->
-    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-
-        <!--Begin::Dashboard 1-->
-
-
-        <!--Begin::Section-->
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 text-right">
-                <h2>كتيب الجودة</h2>
-            </div>
+<style>
+    .list_div .list_number { max-width: 6.8%; }
+    .authName { font-weight: 500 !important; }
+    #procedure_section h4 { color: var(--am-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem; font-weight: 600; }
+    #procedure_section h4:first-child { margin-top: 0; }
+    /* Links in the manual follow the theme blue instead of the browser default */
+    #procedure_section a { color: var(--am-primary); font-weight: 600; }
+    #procedure_section a:hover { color: #232C7A; }
+</style>
+<div class="am-content">
+    <div class="am-page-header">
+        <div>
+            <h2>كتيب الجودة</h2>
         </div>
-        <section id="procedure_section">
-            <?php
+    </div>
+    <div class="am-card"><div class="am-card__body" style="padding:32px 40px;line-height:1.9;">
+	<section id="procedure_section">
+        <?php
             $companyName = Auth::user()->company_name;
             
-            ?>
-            <div class="row">
-                <div class="col-lg-12 text-right">
-                    <div class="procedure_div">
+        ?>
                         <h4>1. النطاق</h4>
                         <p>يتمثل الهدف من دليل الجودة هذا في تحديد نظام إدارة الجودة المطبّق على الأنشطة التي تؤديها
                             <b><span class="authName">{{ Auth::user()->company_name }}</span></b> وفقًا لمتطلبات شهادة
@@ -100,7 +77,7 @@
                                 <p>4.1.2 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="021px;"><b><span class="authName">{{ Auth::user()->Company_overview }}</p>
+                                <p style="021px;"><b><span class="authName">{{ Auth::user()->Company_overview }}</span></b></p>
                             </div>
                         </div>
                         <div class="list_div">
@@ -1827,11 +1804,7 @@
                                 <p style=""> المراجع متوفرة في القسم 1.10</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End::Section-->
-    </div>
+	</section>
+    </div></div>
+</div>
 @endsection
-<!-- end:: Content -->

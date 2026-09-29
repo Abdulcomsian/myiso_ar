@@ -1,623 +1,274 @@
 @include('dashboard.includes.head')
-	<!-- begin::Body -->
-	<body class="kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed 	kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
-		<!-- begin:: Page -->
+<body class="am-body">
 
-		<!-- begin:: Header Mobile -->
-        @include('dashboard.includes.mobile-header')
-        {{-- @include('sweet::alert') --}}
+{{-- ============ Modern Sidebar ============ --}}
+<aside class="am-sidebar" id="amSidebar">
+    <div class="am-sidebar__brand">
+        <a href="{{ url('/home') }}">
+            <img src="{{ asset(Auth::user()->profile_image) }}" alt="Logo" style="max-height:50px;width:auto;max-width:160px;object-fit:contain;">
+        </a>
+        <button class="am-sidebar__close" id="amSidebarClose" aria-label="إغلاق القائمة">
+            <i class="la la-close"></i>
+        </button>
+    </div>
 
-		<!-- end:: Header Mobile -->
-		<div class="kt-grid kt-grid--hor kt-grid--root">
-			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt-wrapper">
-					@include('dashboard.includes.primary-header')
-					@yield('content')
-                    @include('dashboard.includes.footer')
-					@include('dashboard.includes.sidebar')
-				</div>
-			</div>
-		</div>
+    <nav class="am-sidebar__nav">
 
+        <div class="am-nav-heading">نظرة عامة</div>
 
-		<!-- end:: Page -->
+        <div class="am-nav-item">
+            <a href="{{ url('/home') }}" class="am-nav-link {{ Request::is('home') ? 'active' : '' }}">
+                <i class="fa fa-th-large"></i>
+                <span>لوحة المتابعة</span>
+            </a>
+        </div>
 
-		<!-- begin::Quick Panel -->
-		<div id="kt_quick_panel" class="kt-quick-panel">
-			<a href="#" class="kt-quick-panel__close" id="kt_quick_panel_close_btn"><i class="flaticon2-delete"></i></a>
-			<div class="kt-quick-panel__nav">
-				<ul class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand  kt-notification-item-padding-x" role="tablist">
-					<li class="nav-item active">
-						<a class="nav-link active" data-toggle="tab" href="#kt_quick_panel_tab_notifications" role="tab">Notifications</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#kt_quick_panel_tab_logs" role="tab">Audit Logs</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#kt_quick_panel_tab_settings" role="tab">Settings</a>
-					</li>
-				</ul>
-			</div>
-			<div class="kt-quick-panel__content">
-				<div class="tab-content">
-					<div class="tab-pane fade show kt-scroll active" id="kt_quick_panel_tab_notifications" role="tabpanel">
-						<div class="kt-notification">
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-line-chart kt-font-success"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										New order has been received
-									</div>
-									<div class="kt-notification__item-time">
-										2 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-box-1 kt-font-brand"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										New customer is registered
-									</div>
-									<div class="kt-notification__item-time">
-										3 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-chart2 kt-font-danger"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										Application has been approved
-									</div>
-									<div class="kt-notification__item-time">
-										3 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-image-file kt-font-warning"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										New file has been uploaded
-									</div>
-									<div class="kt-notification__item-time">
-										5 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-bar-chart kt-font-info"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title"> b
-										New user feedback received
-									</div>
-									<div class="kt-notification__item-time">
-										8 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-pie-chart-2 kt-font-success"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										System reboot has been successfully completed
-									</div>
-									<div class="kt-notification__item-time">
-										12 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-favourite kt-font-danger"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										New order has been placed
-									</div>
-									<div class="kt-notification__item-time">
-										15 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item kt-notification__item--read">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-safe kt-font-primary"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										Company meeting canceled
-									</div>
-									<div class="kt-notification__item-time">
-										19 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-psd kt-font-success"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										New report has been received
-									</div>
-									<div class="kt-notification__item-time">
-										23 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon-download-1 kt-font-danger"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										Finance report has been generated
-									</div>
-									<div class="kt-notification__item-time">
-										25 hrs ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon-security kt-font-warning"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										New customer comment recieved
-									</div>
-									<div class="kt-notification__item-time">
-										2 days ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification__item">
-								<div class="kt-notification__item-icon">
-									<i class="flaticon2-pie-chart kt-font-warning"></i>
-								</div>
-								<div class="kt-notification__item-details">
-									<div class="kt-notification__item-title">
-										New customer is registered
-									</div>
-									<div class="kt-notification__item-time">
-										3 days ago
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="tab-pane fade kt-scroll" id="kt_quick_panel_tab_logs" role="tabpanel">
-						<div class="kt-notification-v2">
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon-bell kt-font-brand"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										5 new user generated report
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										Reports based on sales
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon2-box kt-font-danger"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										2 new items submited
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										by Grog John
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon-psd kt-font-brand"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										79 PSD files generated
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										Reports based on sales
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon2-supermarket kt-font-warning"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										$2900 worth producucts sold
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										Total 234 items
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon-paper-plane-1 kt-font-success"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										4.5h-avarage response time
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										Fostest is Barry
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon2-information kt-font-danger"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										Database server is down
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										10 mins ago
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon2-mail-1 kt-font-brand"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										System report has been generated
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										Fostest is Barry
-									</div>
-								</div>
-							</a>
-							<a href="#" class="kt-notification-v2__item">
-								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon2-hangouts-logo kt-font-warning"></i>
-								</div>
-								<div class="kt-notification-v2__itek-wrapper">
-									<div class="kt-notification-v2__item-title">
-										4.5h-avarage response time
-									</div>
-									<div class="kt-notification-v2__item-desc">
-										Fostest is Barry
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="tab-pane kt-quick-panel__content-padding-x fade kt-scroll" id="kt_quick_panel_tab_settings" role="tabpanel">
-						<form class="kt-form">
-							<div class="kt-heading kt-heading--sm kt-heading--space-sm">Customer Care</div>
-							<div class="form-group form-group-xs row">
-								<label class="col-8 col-form-label">Enable Notifications:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--success kt-switch--sm">
-										<label>
-											<input type="checkbox" checked="checked" name="quick_panel_notifications_1">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="form-group form-group-xs row">
-								<label class="col-8 col-form-label">Enable Case Tracking:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--success kt-switch--sm">
-										<label>
-											<input type="checkbox" name="quick_panel_notifications_2">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="form-group form-group-last form-group-xs row">
-								<label class="col-8 col-form-label">Support Portal:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--success kt-switch--sm">
-										<label>
-											<input type="checkbox" checked="checked" name="quick_panel_notifications_2">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="kt-separator kt-separator--space-md kt-separator--border-dashed"></div>
-							<div class="kt-heading kt-heading--sm kt-heading--space-sm">Reports</div>
-							<div class="form-group form-group-xs row">
-								<label class="col-8 col-form-label">Generate Reports:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--sm kt-switch--danger">
-										<label>
-											<input type="checkbox" checked="checked" name="quick_panel_notifications_3">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="form-group form-group-xs row">
-								<label class="col-8 col-form-label">Enable Report Export:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--sm kt-switch--danger">
-										<label>
-											<input type="checkbox" name="quick_panel_notifications_3">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="form-group form-group-last form-group-xs row">
-								<label class="col-8 col-form-label">Allow Data Collection:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--sm kt-switch--danger">
-										<label>
-											<input type="checkbox" checked="checked" name="quick_panel_notifications_4">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="kt-separator kt-separator--space-md kt-separator--border-dashed"></div>
-							<div class="kt-heading kt-heading--sm kt-heading--space-sm">Memebers</div>
-							<div class="form-group form-group-xs row">
-								<label class="col-8 col-form-label">Enable Member singup:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--sm kt-switch--brand">
-										<label>
-											<input type="checkbox" checked="checked" name="quick_panel_notifications_5">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="form-group form-group-xs row">
-								<label class="col-8 col-form-label">Allow User Feedbacks:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--sm kt-switch--brand">
-										<label>
-											<input type="checkbox" name="quick_panel_notifications_5">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-							<div class="form-group form-group-last form-group-xs row">
-								<label class="col-8 col-form-label">Enable Customer Portal:</label>
-								<div class="col-4 kt-align-right">
-									<span class="kt-switch kt-switch--sm kt-switch--brand">
-										<label>
-											<input type="checkbox" checked="checked" name="quick_panel_notifications_6">
-											<span></span>
-										</label>
-									</span>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="am-nav-heading">الوثائق</div>
 
-		<!-- end::Quick Panel -->
+        <div class="am-nav-item am-nav-group {{ Request::is('quality_manual') || Request::is('quality_policy') || Request::is('environment_policy') || Request::is('health_policy') || Request::is('management_organogram') ? 'open' : '' }}">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fa fa-lock"></i>
+                <span>الأدلة والسياسات</span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <a href="{{ url('quality_manual') }}" class="am-nav-link {{ Request::is('quality_manual') ? 'active' : '' }}">دليل الجودة</a>
+                <a href="{{ url('quality_policy') }}" class="am-nav-link {{ Request::is('quality_policy') ? 'active' : '' }}">سياسة الجودة</a>
+                <a href="{{ url('environment_policy') }}" class="am-nav-link {{ Request::is('environment_policy') ? 'active' : '' }}">السياسة البيئية</a>
+                <a href="{{ url('health_policy') }}" class="am-nav-link {{ Request::is('health_policy') ? 'active' : '' }}">سياسة الصحة والسلامة</a>
+                <a href="{{ url('management_organogram') }}" class="am-nav-link {{ Request::is('management_organogram') ? 'active' : '' }}">الهيكل التنظيمي للإدارة</a>
+            </div>
+        </div>
 
-		<!-- begin::Scrolltop -->
-		{{-- <div id="kt_scrolltop" class="kt-scrolltop">
-			<i class="fa fa-arrow-up"></i>
-		</div> --}}
+        <div class="am-nav-item am-nav-group {{ Request::is('sale_processes') || Request::is('purchasing_processes') || Request::is('servicing_contract') || Request::is('competency_process') || Request::is('process_interaction') ? 'open' : '' }}">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fa fa-spinner"></i>
+                <span>مخططات سير العمليات</span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <a href="{{ url('sale_processes') }}" class="am-nav-link {{ Request::is('sale_processes') ? 'active' : '' }}">إجراء الجودة 1 – عملية المبيعات</a>
+                <a href="{{ url('purchasing_processes') }}" class="am-nav-link {{ Request::is('purchasing_processes') ? 'active' : '' }}">إجراء الجودة 2 – عملية الشراء</a>
+                <a href="{{ url('servicing_contract') }}" class="am-nav-link {{ Request::is('servicing_contract') ? 'active' : '' }}">إجراء الجودة 3 – تنفيذ بنود العقد</a>
+                <a href="{{ url('competency_process') }}" class="am-nav-link {{ Request::is('competency_process') ? 'active' : '' }}">إجراء الجودة 4 – عملية الكفاءة</a>
+                <a href="{{ url('process_interaction') }}" class="am-nav-link {{ Request::is('process_interaction') ? 'active' : '' }}">تفاعل العمليات</a>
+            </div>
+        </div>
 
-		<!-- end::Scrolltop -->
+        <div class="am-nav-item am-nav-group {{ Request::is('documented_information') || Request::is('corrective_action') || Request::is('management_review') || Request::is('monitoring_measure') || Request::is('auidt') ? 'open' : '' }}">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fa fa-gear"></i>
+                <span>الإجراءات</span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <a href="{{ url('documented_information') }}" class="am-nav-link {{ Request::is('documented_information') ? 'active' : '' }}">الإجراء 1 – المعلومات الموثقة</a>
+                <a href="{{ url('corrective_action') }}" class="am-nav-link {{ Request::is('corrective_action') ? 'active' : '' }}">الإجراء 2 – الإجراءات التصحيحية</a>
+                <a href="{{ url('management_review') }}" class="am-nav-link {{ Request::is('management_review') ? 'active' : '' }}">الإجراء 3 – المراجعة الإدارية</a>
+                <a href="{{ url('monitoring_measure') }}" class="am-nav-link {{ Request::is('monitoring_measure') ? 'active' : '' }}">الإجراء 4 – أدوات الرقابة والقياس</a>
+                <a href="{{ url('auidt') }}" class="am-nav-link {{ Request::is('auidt') ? 'active' : '' }}">الإجراء 5 – عمليات التدقيق</a>
+            </div>
+        </div>
 
-		<!-- begin::Sticky Toolbar -->
-		<ul class="kt-sticky-toolbar" style="margin-top: 30px;">
-			<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--success" id="kt_demo_panel_toggle" data-toggle="kt-tooltip" title="Check out more demos" data-placement="right">
-				<a href="#" class=""><i class="flaticon2-drop"></i></a>
-			</li>
-			<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--brand" data-toggle="kt-tooltip" title="Layout Builder" data-placement="left">
-				<a href="https://keenthemes.com/metronic/preview/default/builder.html" target="_blank"><i class="flaticon2-gear"></i></a>
-			</li>
-			<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="Documentation" data-placement="left">
-				<a href="https://keenthemes.com/metronic/?page=docs" target="_blank"><i class="flaticon2-telegram-logo"></i></a>
-			</li>
-		</ul>
+        <div class="am-nav-item am-nav-group {{ Request::is('requirements_aspect') || Request::is('environmental_impacts') || Request::is('process_audit') || Request::is('incidents') || Request::is('interesting_parties') || Request::is('hazards') || Request::is('qms_audit') || Request::is('non_confromities') || Request::is('customer') || Request::is('customer_review') || Request::is('supplier') || Request::is('supplier_review') || Request::is('calibration_record') || Request::is('employess') || Request::is('add_management_review') || Request::is('maintance_record') || Request::is('accident_risk') || Request::is('risk_assessment') || Request::is('chemical_control') || Request::is('work_instruction') ? 'open' : '' }}">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fab fa-wpforms"></i>
+                <span>النماذج والسجلات</span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <a href="{{ url('requirements_aspect') }}" class="am-nav-link {{ Request::is('requirements_aspect') ? 'active' : '' }}">المتطلبات المطلوبة</a>
+                <a href="{{ url('environmental_impacts') }}" class="am-nav-link {{ Request::is('environmental_impacts') ? 'active' : '' }}">التأثيرات البيئية</a>
+                <a href="{{ url('process_audit') }}" class="am-nav-link {{ Request::is('process_audit') ? 'active' : '' }}">عمليات التدقيق</a>
+                <a href="{{ url('incidents') }}" class="am-nav-link {{ Request::is('incidents') ? 'active' : '' }}">تقرير الحوادث</a>
+                <a href="{{ url('interesting_parties') }}" class="am-nav-link {{ Request::is('interesting_parties') ? 'active' : '' }}">الأطراف المعنية</a>
+                <a href="{{ url('hazards') }}" class="am-nav-link {{ Request::is('hazards') ? 'active' : '' }}">سجل المخاطر</a>
+                <a href="{{ url('qms_audit') }}" class="am-nav-link {{ Request::is('qms_audit') ? 'active' : '' }}">عمليات تدقيق نظام إدارة الجودة</a>
+                <a href="{{ url('non_confromities') }}" class="am-nav-link {{ Request::is('non_confromities') ? 'active' : '' }}">حالات عدم المطابقة</a>
+                <a href="{{ url('customer') }}" class="am-nav-link {{ Request::is('customer') ? 'active' : '' }}">العملاء</a>
+                <a href="{{ url('customer_review') }}" class="am-nav-link {{ Request::is('customer_review') ? 'active' : '' }}">مراجعات العملاء</a>
+                <a href="{{ url('supplier') }}" class="am-nav-link {{ Request::is('supplier') ? 'active' : '' }}">الموردون</a>
+                <a href="{{ url('supplier_review') }}" class="am-nav-link {{ Request::is('supplier_review') ? 'active' : '' }}">مراجعات الموردين</a>
+                <a href="{{ url('calibration_record') }}" class="am-nav-link {{ Request::is('calibration_record') ? 'active' : '' }}">المعايرة</a>
+                <a href="{{ url('employess') }}" class="am-nav-link {{ Request::is('employess') ? 'active' : '' }}">الموظفون</a>
+                <a href="{{ url('add_management_review') }}" class="am-nav-link {{ Request::is('add_management_review') ? 'active' : '' }}">المراجعات الإدارية</a>
+                <a href="{{ url('maintance_record') }}" class="am-nav-link {{ Request::is('maintance_record') ? 'active' : '' }}">سجلات الصيانة</a>
+                <a href="{{ url('accident_risk') }}" class="am-nav-link {{ Request::is('accident_risk') ? 'active' : '' }}">تقييمات مخاطر الحوادث</a>
+                <a href="{{ url('risk_assessment') }}" class="am-nav-link {{ Request::is('risk_assessment') ? 'active' : '' }}">تقييمات المخاطر</a>
+                <a href="{{ url('chemical_control') }}" class="am-nav-link {{ Request::is('chemical_control') ? 'active' : '' }}">التحكم الكيميائي</a>
+                <a href="{{ url('work_instruction') }}" class="am-nav-link {{ Request::is('work_instruction') ? 'active' : '' }}">تعليمات العمل</a>
+            </div>
+        </div>
 
-		<!-- end::Sticky Toolbar -->
+        <div class="am-nav-heading">الدعم</div>
 
-		<!-- begin::Demo Panel -->
-		<div id="kt_demo_panel" class="kt-demo-panel">
-			<div class="kt-demo-panel__head">
-				<h3 class="kt-demo-panel__title">
-					Select A Demo
+        <div class="am-nav-item am-nav-group {{ Request::is('faq') || Request::is('explainer_videos') || Request::is('userDownload') ? 'open' : '' }}">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fa fa-life-ring"></i>
+                <span>الدعم</span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <a href="{{ url('faq') }}" class="am-nav-link {{ Request::is('faq') ? 'active' : '' }}">الأسئلة الشائعة</a>
+                <a href="{{ url('explainer_videos') }}" class="am-nav-link {{ Request::is('explainer_videos') ? 'active' : '' }}">فيديوهات التدريب</a>
+                <a href="{{ url('userDownload') }}" class="am-nav-link {{ Request::is('userDownload') ? 'active' : '' }}">التحميلات</a>
+            </div>
+        </div>
 
-					<!--<small>5</small>-->
-				</h3>
-				<a href="#" class="kt-demo-panel__close" id="kt_demo_panel_close"><i class="flaticon2-delete"></i></a>
-			</div>
-			<div class="kt-demo-panel__body">
-				<div class="kt-demo-panel__item kt-demo-panel__item--active">
-					<div class="kt-demo-panel__item-title">
-						Default
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-_Default.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../default/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 2
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-2.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo2/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 3
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-3.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo3/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 4
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-4.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo4/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 5
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-5.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo5/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 6
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-6.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo6/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 7
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-7.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo7/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 8
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-8.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo8/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 9
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-9.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo9/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 10
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-10.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo10/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 11
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-11.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo11/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 12
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-12.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="../demo12/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 13
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-13.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-						</div>
-					</div>
-				</div>
-				<div class="kt-demo-panel__item ">
-					<div class="kt-demo-panel__item-title">
-						Demo 14
-					</div>
-					<div class="kt-demo-panel__item-preview">
-						<img src="{{ asset('/assets/media/demos/Demo-14.jpg') }}" alt="" />
-						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-						</div>
-					</div>
-				</div>
-				<a href="" target="_blank" class="kt-demo-panel__purchase btn btn-brand btn-elevate btn-bold btn-upper">
-					Buy Metronic Now!
-				</a>
-			</div>
-		</div>
+        <div class="am-nav-heading">التواصل</div>
 
-		@include('dashboard.includes.foot')
-	</body>
+        <div id="admin_notifications" class="am-nav-item am-nav-group {{ Request::is('createMessage') || Request::is('inboxMessages*') || Request::is('sentMessages*') ? 'open' : '' }}">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fa fa-envelope"></i>
+                <span>الإخطارات</span>
+                <span class="count_notifications am-badge" style="display:none;"></span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <a href="{{ route('storeMessage') }}" class="am-nav-link">إنشاء رسالة</a>
+                <a href="{{ route('inboxMessages') }}" class="am-nav-link">صندوق الوارد</a>
+                <a href="{{ route('sentMessages') }}" class="am-nav-link">المرسلة</a>
+            </div>
+        </div>
 
-	<!-- end::Body -->
+        <div class="am-nav-item am-nav-group">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fa fa-graduation-cap"></i>
+                <span>دورات ISO المعتمدة</span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%a2%d9%8a%d8%b2%d9%88-20159001-%d9%86%d8%b8%d8%a7%d9%85-%d8%a5%d8%af%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%ac%d9%88%d8%af%d8%a9-%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%af%d9%82%d9%82-%d8%a7/" class="am-nav-link" target="_blank">نظام إدارة الجودة – ISO 9001:2015</a>
+                <a href="https://myisoarabia.com/public/lms/courses/iso-450012018-occupational-health-safety-management-system-internal-auditor-course/" class="am-nav-link" target="_blank">نظام إدارة الصحة والسلامة المهنية – ISO 45001:2018</a>
+                <a href="https://myisoarabia.com/public/lms/courses/iso-140012015-environmental-management-system-internal-auditor-course/" class="am-nav-link" target="_blank">نظام الإدارة البيئية – ISO 14001:2015</a>
+            </div>
+        </div>
+
+        <div class="am-nav-item am-nav-group">
+            <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
+                <i class="fa fa-book"></i>
+                <span>دورات قصيرة</span>
+                <i class="fa fa-chevron-right am-chevron"></i>
+            </a>
+            <div class="am-nav-group__children">
+                <div class="am-nav-sub-label">ISO 9001:2015</div>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%a3%d9%87%d9%85%d9%8a%d8%a9-%d8%b5%d9%8a%d8%a7%d9%86%d8%a9-%d8%a7%d9%84%d9%85%d8%b9%d8%af%d8%a7%d8%aa-%d9%81%d9%8a-%d9%85%d9%83%d8%a7%d9%86-%d8%a7%d9%84%d8%b9%d9%85%d9%84/" class="am-nav-link" target="_blank">أهمية صيانة المعدات في مكان العمل</a>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%a5%d8%b9%d8%a7%d8%af%d8%a9-%d8%a7%d8%b3%d8%aa%d8%ae%d8%af%d8%a7%d9%85-%d8%a7%d9%84%d9%85%d9%88%d8%a7%d8%af-%d9%81%d9%8a-%d8%a7%d9%84%d8%a8%d9%86%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d9%85%d9%83%d8%a7/" class="am-nav-link" target="_blank">إعادة استخدام المواد في البناء والمكاتب</a>
+                <div class="am-nav-sub-label">ISO 45001:2018</div>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%a3%d9%87%d9%85%d9%8a%d8%a9-%d8%aa%d8%ac%d9%86%d8%a8-%d8%a7%d9%84%d8%a7%d9%86%d8%b2%d9%84%d8%a7%d9%82%d8%a7%d8%aa-%d9%88%d8%a7%d9%84%d8%aa%d8%b9%d8%ab%d8%b1%d8%a7%d8%aa-%d9%88%d8%a7%d9%84%d8%ad/" class="am-nav-link" target="_blank">أهمية تجنب الانزلاقات والتعثرات والحوادث البسيطة</a>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%af%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%85%d8%b1%d8%a7%d9%82%d8%a8%d8%a9-%d9%84%d9%84%d8%b3%d9%84%d8%a7%d9%85%d8%a9-%d9%81%d9%8a-%d9%85%d9%88%d8%a7%d9%82%d8%b9-%d8%a7%d9%84%d8%a8%d9%86%d8%a7%d8%a1/" class="am-nav-link" target="_blank">دورة المراقبة للسلامة في مواقع البناء والمكاتب</a>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%a7%d9%84%d8%b1%d9%81%d8%b9%d8%8c-%d8%a7%d9%84%d8%ad%d9%85%d9%84%d8%8c-%d9%88%d8%a7%d9%84%d8%b9%d9%85%d9%84-%d8%a8%d8%a7%d9%84%d8%b7%d8%b1%d9%8a%d9%82%d8%a9-%d8%a7%d9%84%d8%b5%d8%ad%d9%8a%d8%ad/" class="am-nav-link" target="_blank">الرفع، الحمل، والعمل بالطريقة الصحيحة</a>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%af%d9%84%d9%8a%d9%84-%d8%a3%d9%81%d8%b6%d9%84-%d8%a7%d9%84%d9%85%d9%85%d8%a7%d8%b1%d8%b3%d8%a7%d8%aa-%d9%84%d8%aa%d8%ac%d9%86%d8%a8-%d8%a7%d9%84%d8%ad%d8%b1%d8%a7%d8%a6%d9%82-%d9%81%d9%8a-%d9%85/" class="am-nav-link" target="_blank">دليل أفضل الممارسات لتجنب الحرائق في مكان العمل</a>
+                <div class="am-nav-sub-label">ISO 14001:2015</div>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%aa%d9%82%d9%84%d9%8a%d9%84-%d8%a7%d9%84%d9%86%d9%81%d8%a7%d9%8a%d8%a7%d8%aa-%d8%a7%d9%84%d8%b9%d9%85%d9%84%d9%8a%d8%a9-%d9%81%d9%8a-%d8%a7%d9%84%d8%a8%d9%86%d8%a7%d8%a1/" class="am-nav-link" target="_blank">تقليل النفايات العملية في البناء</a>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%ad%d9%85%d8%a7%d9%8a%d8%a9-%d8%a7%d9%84%d8%a8%d9%8a%d8%a6%d8%a9-%d9%81%d9%8a-%d9%85%d9%88%d8%a7%d9%82%d8%b9-%d8%a7%d9%84%d8%a8%d9%86%d8%a7%d8%a1/" class="am-nav-link" target="_blank">حماية البيئة في مواقع البناء</a>
+                <a href="https://myisoarabia.com/public/lms/courses/%d8%aa%d9%82%d9%84%d9%8a%d9%84-%d8%a7%d9%84%d9%86%d9%81%d8%a7%d9%8a%d8%a7%d8%aa-%d9%88%d8%a5%d8%b9%d8%a7%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%af%d9%88%d9%8a%d8%b1-%d9%81%d9%8a-%d8%a8%d9%8a%d8%a6%d8%a9/" class="am-nav-link" target="_blank">تقليل النفايات وإعادة التدوير في بيئة العمل</a>
+            </div>
+        </div>
+
+    </nav>
+</aside>
+
+{{-- ============ Top Header ============ --}}
+<header class="am-header">
+    <button class="am-header__toggle" id="amSidebarToggle" aria-label="فتح القائمة">
+        <i class="fa fa-bars"></i>
+    </button>
+    <div>
+        <h1 class="am-header__title">{{ Auth::user()->company_name }}</h1>
+        <p class="am-header__crumb">
+            هوية الشركة: {{ Auth::user()->order_number }}
+            @php
+                $iso9001 = Auth::user()->iso9001_expirydate;
+                $iso14001 = Auth::user()->iso14001_expirydate;
+                $iso45001 = Auth::user()->iso45001_expirydate;
+                $x = $iso9001 ? strtotime($iso9001) : null;
+                $y = $iso14001 ? strtotime($iso14001) : null;
+                $z = $iso45001 ? strtotime($iso45001) : null;
+                $vals = array_filter([$x, $y, $z]);
+                $minStamp = $vals ? min($vals) : strtotime('+3 years');
+                $expiryLabel = date('d/m/Y', $minStamp);
+            @endphp
+            &nbsp;·&nbsp; تاريخ انتهاء الصلاحية: {{ $expiryLabel }}
+        </p>
+    </div>
+
+    <div class="am-header__right">
+        @if (Auth::user()->member_scaiso == 1)
+            <img src="{{ asset('assets/media/logos/sca-iso-final-logo.png') }}" style="height:32px;width:auto;" alt="SCA ISO">
+        @endif
+
+        @auth
+        <div class="am-user-wrap">
+            <button type="button" class="am-user" id="amUserToggle" aria-haspopup="true" aria-expanded="false">
+                <span class="am-user__avatar">{{ mb_strtoupper(mb_substr(Auth::user()->name ?? 'U', 0, 1)) }}</span>
+                <span class="am-user__name">{{ Auth::user()->name ?? 'الحساب' }}</span>
+                <i class="fa fa-chevron-down am-user__caret"></i>
+            </button>
+            <div class="am-user-menu" id="amUserMenu">
+                <div class="am-user-menu__header">
+                    <div class="am-user-menu__name">{{ Auth::user()->name ?? '' }}</div>
+                    <div class="am-user-menu__email">{{ Auth::user()->email ?? '' }}</div>
+                </div>
+                <a href="{{ route('userprofile') }}" class="am-user-menu__item">
+                    <i class="fa fa-user"></i> حسابي
+                </a>
+                <div class="am-user-menu__divider"></div>
+                <a href="{{ route('logout') }}" class="am-user-menu__item danger">
+                    <i class="fa fa-sign-out-alt"></i> تسجيل الخروج
+                </a>
+            </div>
+        </div>
+        @endauth
+    </div>
+</header>
+
+{{-- ============ Main content ============ --}}
+<div class="am-backdrop" id="amBackdrop" style="display:none;"></div>
+<main class="am-main">
+    @yield('content')
+</main>
+
+@include('dashboard.includes.foot')
+
+<script>
+(function() {
+    var sidebar  = document.getElementById('amSidebar');
+    var toggle   = document.getElementById('amSidebarToggle');
+    var closeBtn = document.getElementById('amSidebarClose');
+    var backdrop = document.getElementById('amBackdrop');
+    function openSidebar()  { sidebar.classList.add('open'); backdrop.style.display = 'block'; }
+    function closeSidebar() { sidebar.classList.remove('open'); backdrop.style.display = 'none'; }
+    toggle   && toggle.addEventListener('click', openSidebar);
+    closeBtn && closeBtn.addEventListener('click', closeSidebar);
+    backdrop && backdrop.addEventListener('click', closeSidebar);
+})();
+
+document.querySelectorAll('.am-nav-group__toggle').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+        e.preventDefault();
+        el.closest('.am-nav-group').classList.toggle('open');
+    });
+});
+
+(function() {
+    var toggle = document.getElementById('amUserToggle');
+    var menu   = document.getElementById('amUserMenu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+    document.addEventListener('click', function(e) {
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+            menu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+})();
+</script>
+
+</body>
 </html>

@@ -323,7 +323,7 @@
                                                                             fill="#5d78ff" fill-rule="nonzero"
                                                                             opacity="0.3"></path>
                                                                     </g>
-                                                                </svg> </span>
+                                                                </svg> </span></span>
                                                     </button>
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
                                                         onclick="deleteempl({{ $item->id }})"
@@ -502,7 +502,7 @@
                                                                             fill="#5d78ff" fill-rule="nonzero"
                                                                             opacity="0.3"></path>
                                                                     </g>
-                                                                </svg> </span>
+                                                                </svg> </span></span>
                                                     </button>
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
                                                         onclick="deleteemplskill({{ $item->skill_id }})"
@@ -648,7 +648,7 @@
                                                                             fill="#5d78ff" fill-rule="nonzero"
                                                                             opacity="0.3"></path>
                                                                     </g>
-                                                                </svg> </span>
+                                                                </svg> </span></span>
                                                     </button>
                                                     <button class="btn btn-sm btn-clean btn-icon btn-icon-md"
                                                         onclick="deleteempltraining({{ $item->traning_id }})"
