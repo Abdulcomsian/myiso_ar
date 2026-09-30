@@ -36,14 +36,8 @@
                         <div class="calibration_from_div">
                             <form action="{{ route('calibration') }} " method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    {{-- <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>Calibration ID Number (See table below. For amendments only):</label><br>
-                                            <input type="number" class="form-control" name="calibrationid" required="required">
-                                        </div>
-                                    </div> --}}
-                                    <div class="col-lg-12">
+                                                                <div class="form-row">
+                                    <div style="grid-column:1/-1;">
                                         <div class="form-group">
                                             <label>اسم الجهاز: </label><br>
                                             <input type="text" class="form-control" name="equipment"
@@ -51,25 +45,22 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>الرقم التسلسلي: </label>
                                             <input type="text" class="form-control" name="serialNum"
                                                 placeholder="يرجى إدخال اسم العميل" required="required">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>الموقع: </label>
                                             <input type="text" class="form-control" name="locaction"
                                                 placeholder="يرجى إدخال عنوان العمل الكامل للعميل" required="required">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>مرجع طريقة الاختبار: </label>
                                             <input type="text" class="form-control" name="testMethod"
@@ -77,16 +68,16 @@
                                                 required="required">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>معايير القبول: </label>
                                             <input type="text" class="form-control" name="acceptance"
                                                 placeholder="يرجى إدخال عنوان البريد الإلكتروني للعميل" required="required">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>تاريخ المعايرة: </label>
                                             <input type="date" max="2999-12-31" class="form-control"
@@ -94,7 +85,7 @@
                                                 placeholder="يرجى إدخال اسم جهة الاتصال الخاصة بالعميل" required="required">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>رقم الشهادة: </label>
                                             <input type="text" class="form-control" name="certificatenumber"
@@ -102,24 +93,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>عدد مرات المعايرة (بالأشهر):</label>
                                             <input type="number" oninput="this.value = Math.abs(this.value)" min="1"
                                                 max="12" name="freq" class="form-control" required="required">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>مراجع التقرير: </label>
                                             <input type="text" class="form-control" name="reportRev"
                                                 placeholder="يرجى إدخال اسم مراجع التقرير" required="required">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                    <div>
                                         <div class="form-group">
                                             <label>اجتاز الاختبار أم فشل في اجتيازه:</label>
                                             <select name="sentence" class="form-control" required="required">
@@ -130,9 +119,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>إرفاق الدليل: ملفات بصيغ : <span class="text-danger"
                                                     style="color:#000 !important;">(jpeg, mp3, mp4, .xls,
@@ -148,10 +136,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
                                             <input type="text" name="issues_points"
@@ -159,6 +144,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Calibration ID Number (See table below. For amendments only):</label><br>
+                                            <input type="number" class="form-control" name="calibrationid" required="required">
+                                        </div>
+                                    </div> --}}
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button type="reset" onclick="calibration()" class="am-btn am-btn-outline">يلغي
                                 </button>
@@ -645,13 +636,7 @@
                     <form action="{{ route('calibrationedit') }} " method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="" id="editproject">
-                        <div class="row">
-                            {{-- <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Calibration ID Number (See table below. For amendments only):</label><br>
-                                    <input type="number" class="form-control" name="calibrationid">
-                                </div>
-                            </div> --}}
+                                                <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>اسم الجهاز:</label><br>
@@ -660,48 +645,45 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>رقم سري:</label>
                                     <input type="text" class="form-control" name="serialNum"
                                         placeholder="أدخل الرقم التسلسلي:" required="required">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label> الموقع</label>
                                     <input type="text" class="form-control" name="locaction"
                                         placeholder="إدخال الدولة:" required="required">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>مرجع طريقة الاختبار:</label>
                                     <input type="text" class="form-control" name="testMethod"
                                         placeholder="أدخل مرجع طريقة الاختبار:" required="required">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>معايير القبول:</label>
                                     <input type="text" class="form-control" name="acceptance"
                                         placeholder="أدخل معايير القبول:" required="required">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>تاريخ المعايرة:</label>
                                     <input type="date" max="2999-12-31" class="form-control" name="calibratedDate"
                                         required="required">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>رقم شهادة:</label>
                                     <input type="text" class="form-control" name="certificatenumber"
@@ -709,24 +691,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>عدد مرات المعايرة :</label>
                                     <input type="number" oninput="this.value = Math.abs(this.value)" min="1"
                                         max="12" name="freq" class="form-control" required="required">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>مراجع التقرير:</label>
                                     <input type="text" class="form-control" name="reportRev"
                                         placeholder="أدخل مراجع التقرير:" required="required">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>اجتاز الاختبار أم فشل في اجتيازه:</label>
                                     <select name="sentence" class="form-control" required="required" id="sentence">
@@ -737,8 +717,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>إرفاق الدليل: <span class="text-danger" style="color:#000 !important;">(jpeg,
                                             mp3, mp4, .xls, doc)</span></label>
@@ -752,9 +732,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>أي مشاكل أو نقاط أخرى يجب ملاحظتها:</label>
                                     <input type="text" id="issues_points" name="issues_points"
@@ -762,6 +740,12 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Calibration ID Number (See table below. For amendments only):</label><br>
+                                    <input type="number" class="form-control" name="calibrationid">
+                                </div>
+                            </div> --}}
                         <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                             <button type="button" class="am-btn am-btn-outline" data-dismiss="modal" aria-label="Close">يلغي</button>
                             <button type="submit" class="am-btn am-btn-primary ml-2">تحديث</button>

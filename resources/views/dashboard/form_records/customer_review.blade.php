@@ -34,14 +34,8 @@
                         <div class="customer_review_from_div">
                             <form method="POST" action="{{ route('customer_rview') }} " enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    {{-- <div class="col-lg-6">
-                    					<div class="form-group">
-											<label>Customer Review ID Number (See table below. For amendments only):</label><br>
-											<input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
-										</div>
-                    				</div> --}}
-                                    <div class="col-lg-6">
+                                                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>رقم تعريف العميل: </label><br>
                                             <!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
@@ -55,16 +49,22 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-										<div class="form-group">
-											<label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
-											<input class="form-control" type="text" name="product_activity_area" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
-										</div>
-									</div>
+                                    <div>
+                                        <div class="form-group">
+                                        	<label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                        	<input class="form-control" type="text" name="product_activity_area" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
+                                            <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate"
+                                                required="required">
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label> التقييم من حيث الجودة (0 – 10):</label>
                                             <input type="number" min="0" max="10" id="qualityScore"
@@ -73,16 +73,14 @@
                                                 name="qualityScore" required="required">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>التقييم من حيث السعر: (0 – 10):</label>
                                             <input type="number" class="form-control"min="0" max="10"
                                                 name="priceScore" required="required" placeholder="إذا كان قابلا للتطبيق">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>التقييم من حيث التسليم: (0 – 10): </label>
                                             <input type="number"min="0" max="10" class="form-control" name="DScore"
@@ -90,31 +88,22 @@
                                                 placeholder=" يرجى إدخال النقاط المحرزة فيما يتعلق  بالتسليم">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>النتيجة الإجمالية (0-10):</label>
                                             <input type="number" class="form-control"min="0" max="10"
                                             name="OveralScore" required="required" placeholder="أدخل السعر الإجمالي">
                                         </div>
                                     </div>
-                                </div>                                
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
-                                            <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate"
-                                                required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
                                             <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">                       
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
                                             <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
@@ -130,6 +119,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- <div class="col-lg-6">
+                    					<div class="form-group">
+											<label>Customer Review ID Number (See table below. For amendments only):</label><br>
+											<input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
+										</div>
+                    				</div> --}}
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button class="am-btn am-btn-outline" type="reset" onclick="customerReview()">يلغي</button>
                                     <button class="am-btn am-btn-primary" type="submit">يُقدِّم</button>
@@ -369,13 +364,7 @@
                     <form method="POST" action="{{ route('editCustomerReview') }} " enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" id="editid">
-                        <div class="row">
-                            {{-- <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Customer Review ID Number (See table below. For amendments only):</label><br>
-                                <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
-                            </div>
-                        </div> --}}
+                                                <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>رقم هوية العميل:</label><br>
@@ -391,32 +380,29 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
+                        <div class="form-group row">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label> التقييم من حيث الجودة: (0 – 10):</label>
                                     <input type="number" min="0" max="10" required class="form-control"
                                         name="qualityScore">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label>التقييم من حيث السعر: (0 – 10):</label>
                                     <input type="number" min="0" max="10" required class="form-control"
                                         name="priceScore">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label>التقييم من حيث التسليم: (0 – 10): </label>
                                     <input type="number" class="form-control" required min="0" max="10"
                                         name="DScore">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label>النتيجة الإجمالية (0-10)</label>
                                     <input type="number" class="form-control" required min="0" max="10"
@@ -424,9 +410,7 @@
                                 </div>
                             </div>
                         </div>
-                       
-
-                        <div class="row">
+                        <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label>
@@ -441,7 +425,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
@@ -458,6 +442,12 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Customer Review ID Number (See table below. For amendments only):</label><br>
+                                <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
+                            </div>
+                        </div> --}}
                         <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                             <button class="am-btn am-btn-outline" type="reset" data-dismiss="modal"
                             aria-label="Close">يلغي</button>

@@ -34,15 +34,17 @@
                         <div class="accident_risk_from_div">
                             <form method="POST" action="{{ route('accident_risk') }}" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                                                <div class="form-row">
+                                    <div style="grid-column:1/-1;">
                                         <div class="form-group">
                                             <label>سيناريو – صِف النشاط</label><br>
                                             <input type="text" class="form-control" placeholder="أدخل النشاط" required
                                                 name="activityscenario">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى
                                                 الاحتمالية الأعلى)</label><br>
@@ -51,11 +53,7 @@
                                                 onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>شدة الخطر – يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الشدة
                                                 الأعلى)</label>
@@ -64,39 +62,41 @@
                                                 onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>ما الذي قد يحدث بشكل خاطئ؟</label>
                                             <input type="text" class="form-control" placeholder="أدخل النتيجة المحتملة:"
                                                 required name="envaccident" placeholder="">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>ما الذي قد يتأثر؟</label>
                                             <input type="text" class="form-control" placeholder="إدخال الدولة" required
                                                 name="envaccidental">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>ما هي العواقب المترتبة على هذا الحادث؟ </label>
                                             <input type="text" class="form-control" placeholder="أدخل العواقب المحتملة"
                                                 required name="consequences">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>ما الذي قد يحول دون وقوع الحادث أو يخفف من خطر وقوعه؟ :</label>
                                             <input type="text" class="form-control" required
                                                 placeholder="أدخل الحلول الوقائية" name="reducerisk">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>الاحتمالية المعدلة لوقوع السيناريو بعد خطوة المنع - يرجى إدخال رقم بين 1
                                                 -6 (بحيث يشير الرقم 6 إلى الاحتمالية الأعلى)</label>
@@ -105,7 +105,7 @@
                                                 onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>شدة خطر وقوع الحادث المعدلة بعد خطوة المنع - يرجى إدخال رقم بين 1 -6
                                                 (بحيث يشير الرقم 6 إلى الأعلى شدة)</label>
@@ -115,7 +115,9 @@
                                                 onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label>إرفاق الدليل: <span class="text-danger"
@@ -133,7 +135,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div>
                                         <div class="form-group">
                                             <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
                                             <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
@@ -339,13 +341,15 @@
                     <div class="modal-body">
                         <input type="hidden" id="editrisk" name="id" value="">
 
-                        <div class="row">
-                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>سيناريو – صِف النشاط</label><br>
                                     <input type="text" class="form-control" required name="activityscenario">
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى
@@ -355,9 +359,6 @@
                                         onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>شدة الخطر – يرجى إدخال رقم بين 1 -6 (بحيث يشير الرقم 6 إلى الشدة الأعلى):</label>
@@ -366,6 +367,8 @@
                                         onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>ما الذي قد يحدث بشكل خاطئ؟</label>
@@ -373,28 +376,28 @@
                                         placeholder="أدخل مراجعة الاجتماع السابق:">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>ما الذي قد يتأثر؟</label>
                                     <input type="text" class="form-control" required name="envaccidental">
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>ما هي العواقب المترتبة على هذا الحادث؟ :</label>
                                     <input type="text" class="form-control" required name="consequences">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>ما الذي قد يحول دون وقوع الحادث أو يخفف من خطر وقوعه؟ :</label>
                                     <input type="text" class="form-control" required name="reducerisk">
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>الاحتمالية المعدلة لوقوع السيناريو بعد خطوة المنع - يرجى إدخال رقم بين 1 -6 (بحيث
@@ -413,6 +416,8 @@
                                         onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>إرفاق الدليل: <span class="text-danger" style="color:#000 !important;">(jpeg,
@@ -427,7 +432,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
                                     <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>

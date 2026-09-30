@@ -755,24 +755,14 @@
                 <form method="POST" action=" {{ route('editemployee') }} " enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="row">
-                            <input type="hidden" name="id" id="editproject" value="">
-
-                            {{-- <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>System ID Number:</label><br>
-                                    <input type="number" class="form-control"  name="systemid">
-                                </div>
-                            </div> --}}
-                            <div class="col-lg-12">
+                        <input type="hidden" name="id" id="editproject" value="">
+                                                <div class="form-group row">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>اللقب:</label><br>
                                     <input type="text" class="form-control" name="surname" placeholder="أدخل اللقب">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>الاسم الأول</label>
@@ -780,34 +770,36 @@
                                         placeholder="أدخل الاسم الأول">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group edit-emp-number-div">
-                                    <label>هوية الموظف:</label>
-                                    <input type="text" name="empNumber" required class="form-control"
-                                        data-type="edit">
-                                    <!--                         <select name="empNumber" required class="form-control">-->
-                                    <!--    <option>Select One</option>-->
-                                    <!--    @if (isset($userinfo) && $userinfo != '')
-    -->
-                                    <!--    @foreach ($userinfo as $item)
-    -->
-                                    <!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
-                                    <!--
-    @endforeach-->
-                                    <!--
-    @endif-->
-                                    <!--</select>-->
-                                </div>
-                            </div>
                         </div>
-                        <div class="row">
+                        <div class="form-group row">
+                            <div class="col-lg-6 edit-emp-number-div">
+                                                            <div class="form-group edit-emp-number-div">
+                                                                <label>هوية الموظف:</label>
+                                                                <input type="text" name="empNumber" required class="form-control"
+                                                                    data-type="edit">
+                                                                <!--                         <select name="empNumber" required class="form-control">-->
+                                                                <!--    <option>Select One</option>-->
+                                                                <!--    @if (isset($userinfo) && $userinfo != '')
+                                -->
+                                                                <!--    @foreach ($userinfo as $item)
+                                -->
+                                                                <!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
+                                                                <!--
+                                @endforeach-->
+                                                                <!--
+                                @endif-->
+                                                                <!--</select>-->
+                                                            </div>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>تاريخ البدء (يوم/شهر/سنة):</label>
                                     <input name="startDate" max="2999-12-31" type="date" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>الوصف الوظيفي:</label>
                                     <!-- <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Description:"> -->
@@ -816,8 +808,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>تحميل السيرة الذاتية للموظف:</label>
                                     {{-- <input name="employee_cv" type="file" class="form-control"
@@ -832,6 +824,12 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>System ID Number:</label><br>
+                                    <input type="number" class="form-control"  name="systemid">
+                                </div>
+                            </div> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>

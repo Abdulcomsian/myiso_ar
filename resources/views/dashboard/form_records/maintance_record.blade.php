@@ -36,31 +36,22 @@
                         <div class="maintance_record_from_div">
                             <form action="{{ route('maintain_rec') }} " method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    {{-- <div class="col-lg-6">
-                    					<div class="form-group">
-											<label>Maintenance ID Number (See table below. For amendments only):</label><br>
-											<input type="number" class="form-control" name="mid">
-										</div>
-                    				</div> --}}
-                                    <div class="col-lg-12">
+                                                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label><br>
                                             <input type="date" max="2999-12-31" class="form-control" name="mrdate"
                                                 required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>عنصر سجل الصيانة:</label>
                                             <input type="text" class="form-control" placeholder="أدخل اسم الكائن:"
                                                 name="mritem" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>نشاط سجل الصيانة:</label>
                                             <input type="text" class="form-control" placeholder="أدخل النشاط:"
@@ -68,31 +59,31 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>موقع الصيانة:</label>
                                             <input type="text" class="form-control" placeholder="إدخال الدولة"
                                                 name="mlocation" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>ملاحظات سجل الصيانة:</label>
                                             <input type="text" class="form-control" placeholder="أدخل الملاحظة"
                                                 name="mrobservation" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>إجراء سجل الصيانة:</label>
                                             <input type="text" class="form-control" placeholder="أدخل الإجراء المتخذ"
                                                 name="mractions" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                </div>
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>تم إجراء نشاط سجل الصيانة بواسطة:</label>
                                             <input type="text" class="form-control"
@@ -100,9 +91,7 @@
                                                 required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>دليل المرفق: <span class="text-danger"
                                                     style="color:#000 !important;">(jpeg, mp3, mp4, .xls,
@@ -118,13 +107,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label> هل يوجد أي مشاكل أو نقاط أخرى ترغب في تدوينها؟</label>
                                             <textarea name="any_issues" class="form-control" placeholder="أدخل أي مشاكل أخرى:"></textarea>
                                         </div>
                                     </div>
                                 </div>
+                                {{-- <div class="col-lg-6">
+                    					<div class="form-group">
+											<label>Maintenance ID Number (See table below. For amendments only):</label><br>
+											<input type="number" class="form-control" name="mid">
+										</div>
+                    				</div> --}}
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button type="reset" onclick="maintanceRecordForm()" class="am-btn am-btn-outline">يلغي</button>
                                     <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>

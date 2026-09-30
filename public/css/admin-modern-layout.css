@@ -1728,3 +1728,52 @@ body.am-body {
     color: var(--am-text-muted);
     font-size: 13px;
 }
+
+/* A legacy Bootstrap modal wearing the modern header and footer.
+   The modal itself stays Bootstrap - only the skin is borrowed, so the
+   header has to shed the brand-blue bar every other modal wears, keep its
+   icon beside the title rather than at the far end, and let the close cross
+   sit on the edge by itself. */
+.modal .am-modal__header {
+    background: #fff !important;
+    color: var(--am-text) !important;
+    padding: 20px 22px 8px;
+    justify-content: flex-start;
+    border-bottom: none;
+}
+.modal .am-modal__header .am-modal__title {
+    color: var(--am-text) !important;
+    font-size: 16px;
+    font-weight: 600;
+}
+.modal .am-modal__header > [data-dismiss="modal"] {
+    margin-inline-start: auto;
+    color: var(--am-text-muted) !important;
+    cursor: pointer;
+}
+.modal .am-modal__header > [data-dismiss="modal"]:hover { color: var(--am-text) !important; }
+.modal .am-modal__footer {
+    background: #f9fafc;
+    border-top: 1px solid var(--am-border);
+    padding: 14px 22px;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.modal .am-modal__footer > * { margin: 0; }
+
+/* A long file name must stay inside the picker, not run past its edge.
+   The chosen-file text is allowed to shrink and trails off with an ellipsis,
+   while the "choose file" button keeps its full width. */
+.custom-file-input-tag.form-control { overflow: hidden; }
+.custom-file-input-tag .file-label {
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+.custom-file-input-tag .file-label .file-chosen {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -40,25 +40,31 @@
                         <div class="risk_assessment_from_div">
                             <form action="{{ route('assessment') }} " method="POST" class="addForm">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>رقم الوظيفة:</label><br>
                                             <input type="text" min="1" class="form-control validate_number"
                                                 name="jobNumber" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>التاريخ (شهر/يوم/سنة):</label><br>
                                             <input type="date" max="2999-12-31" class="form-control" name="date"
                                                 required>
                                         </div>
                                     </div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label>موعد التسليم (شهر/يوم/سنة):</label>
+                                            <input type="date" max="2999-12-31" class="form-control"
+                                                placeholder="Enter Comment" name="dateDevelry" required>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>هل يمكنني تلبية متطلبات معايير الجودة؟</label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -75,7 +81,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>تعليقات:</label>
                                             <input type="text" class="form-control" placeholder="أدخل التعليق"
@@ -83,9 +89,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label> هل يمكنني الالتزام بموعد التسليم؟</label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -102,7 +107,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>تعليقات:</label>
                                             <input type="text" class="form-control" placeholder="أدخل التعليق"
@@ -110,9 +115,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>هل يمكنني تلبية متطلبات السعر؟</label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -129,7 +133,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>تعليقات:</label>
                                             <input type="text" class="form-control" placeholder="أدخل التعليق"
@@ -137,9 +141,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>هل يمكن اعتبار الأطراف المعنية متأثرة؟</label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -157,7 +160,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>تعليقات:</label>
                                             <input type="text" class="form-control" placeholder="أدخل التعليق"
@@ -165,26 +168,17 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div style="grid-column:1/-1;">
                                         <div class="form-group">
                                             <label>التعليق على القرار:</label>
                                             <input type="text" class="form-control" placeholder="أدخل التعليق"
                                                 name="DecisionComment" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>موعد التسليم (شهر/يوم/سنة):</label>
-                                            <input type="date" max="2999-12-31" class="form-control"
-                                                placeholder="Enter Comment" name="dateDevelry" required>
-                                        </div>
-                                    </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>احتمالية المخاطرة (انظر التعليمات) – 4 = محتمل جدًا، 3 = محتمل، 2 = غير
                                                 متوقع، 1 = غير متوقع نهائيًا:</label>
@@ -201,7 +195,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>شدة المخاطر (انظر التعليمات) – 4 = كارثيّة، 3 = خطيرة، 2 = هامشية، 1 = لا
                                                 تُذكر:</label>

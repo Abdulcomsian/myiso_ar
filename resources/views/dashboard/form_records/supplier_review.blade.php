@@ -36,8 +36,8 @@
                         <div class="customer_review_from_div">
                             <form method="POST" action="{{ route('supplier_review_store') }}" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>رقم تعريف المورد:</label><br>
                                             <select class="form-control" name="sup_id" required="required">
@@ -48,58 +48,53 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
                                             <input class="form-control" type="text" name="product_activity_area" required placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
                                         </div>
                                     </div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
+                                            <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate" required="required">
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div>
                                         <div class="form-group">
                                             <label>التقييم من حيث الجودة (0 – 10):</label>
                                             <input type="number" min="0" max="10" class="form-control" name="qualityScore" required="required" placeholder="يرجى إدخال النقاط المحرزة فيما يتعلق بالجودة">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>التقييم من حيث السعر: (0 – 10):</label>
                                             <input type="number" min="0" max="10" class="form-control" name="priceScore" required="required" placeholder="إذا كان قابلا للتطبيق">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>التقييم من حيث التسليم: (0 – 10):</label>
                                             <input type="number" min="0" max="10" class="form-control" name="DScore" required="required" placeholder="يرجى إدخال النقاط المحرزة فيما يتعلق بالتسليم">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div>
                                         <div class="form-group">
                                             <label>النتيجة الإجمالية (0-10):</label>
                                             <input type="number" min="0" max="10" class="form-control" name="OveralScore" required="required" placeholder="أدخل النتيجة الإجمالية">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>تاريخ التقييم: (الشهر/ اليوم/ السنة):</label>
-                                            <input type="date" class="form-control" max="2999-12-31" name="AssesmentDate" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
                                             <input type="text" class="form-control" name="other_issue" required="required" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>إرفاق الأدلة:</label>
                                             <div class="custom-file-input-tag form-control">
@@ -228,7 +223,7 @@
                     <form method="POST" action="{{ route('editSupplierReview') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" id="srEditId">
-                        <div class="row">
+                                                <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>رقم تعريف المورد:</label><br>
@@ -247,19 +242,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6"><div class="form-group"><label>التقييم من حيث الجودة: (0 – 10):</label><input type="number" min="0" max="10" required class="form-control" name="qualityScore"></div></div>
-                            <div class="col-lg-6"><div class="form-group"><label>التقييم من حيث السعر: (0 – 10):</label><input type="number" min="0" max="10" required class="form-control" name="priceScore"></div></div>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <div class="form-group"><label>التقييم من حيث الجودة: (0 – 10):</label><input type="number" min="0" max="10" required class="form-control" name="qualityScore"></div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group"><label>التقييم من حيث السعر: (0 – 10):</label><input type="number" min="0" max="10" required class="form-control" name="priceScore"></div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group"><label>التقييم من حيث التسليم: (0 – 10):</label><input type="number" min="0" max="10" required class="form-control" name="DScore"></div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group"><label>النتيجة الإجمالية (0-10)</label><input type="number" min="0" max="10" required class="form-control" name="OveralScore"></div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6"><div class="form-group"><label>التقييم من حيث التسليم: (0 – 10):</label><input type="number" min="0" max="10" required class="form-control" name="DScore"></div></div>
-                            <div class="col-lg-6"><div class="form-group"><label>النتيجة الإجمالية (0-10)</label><input type="number" min="0" max="10" required class="form-control" name="OveralScore"></div></div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <div class="form-group"><label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label><input type="date" max="2999-12-31" required class="form-control" name="AssesmentDate"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group"><label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label><input type="text" required class="form-control" name="other_issue"></div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6"><div class="form-group"><label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label><input type="date" max="2999-12-31" required class="form-control" name="AssesmentDate"></div></div>
-                            <div class="col-lg-6"><div class="form-group"><label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label><input type="text" required class="form-control" name="other_issue"></div></div>
-                        </div>
-                        <div class="row">
+                        <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>إرفاق الأدلة:</label>

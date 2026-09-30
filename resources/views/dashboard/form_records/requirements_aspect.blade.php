@@ -289,8 +289,9 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تعديل أحد المتطلبات.</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تعديل أحد المتطلبات.</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 					</a>
                 </div>
@@ -316,9 +317,9 @@
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-                        <button type="submit" class="btn btn-danger mx-2">تحديث</button>
+                    <div class="modal-footer am-modal__footer">
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
+                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
 
 
                     </div>
