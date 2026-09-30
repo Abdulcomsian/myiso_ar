@@ -281,7 +281,7 @@
                                                         <div class="modal fade text-right" id="cv{{ $item->id }}"
                                                             tabindex="-1" role="dialog" aria-labelledby="viewcvLabel"
                                                             aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
+                                                            <div class="modal-dialog" style="max-width:720px;" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header am-modal__header">
                                                                         <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
@@ -338,15 +338,13 @@
                                                     <div class="modal fade text-right" id="employ{{ $item->id }}"
                                                         tabindex="-1" role="dialog" aria-labelledby="model1Label"
                                                         aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
+                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header am-modal__header">
                                                                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                                                                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
                                                                         الموظفين المدرجين</h5>
-																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-																		</a>
-                                                                </div>
+																		</div>
                                                                 <div class="modal-body">
 
                                                                     <div class="row">
@@ -492,15 +490,13 @@
                                                     <div class="modal fade text-right" id="skill{{ $item->skill_id }}"
                                                         tabindex="-1" role="dialog" aria-labelledby="model2Label"
                                                         aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
+                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header am-modal__header">
                                                                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                                                                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
                                                                         مهارات الموظفين المدرجة</h5>
-																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-																		</a>
-                                                                </div>
+																		</div>
 
                                                                 <div class="modal-body">
 
@@ -611,15 +607,13 @@
                                                     <div class="modal fade text-right" id="training{{ $item->traning_id }}"
                                                         tabindex="-1" role="dialog" aria-labelledby="model3Label"
                                                         aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
+                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header am-modal__header">
                                                                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                                                                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">ملخص
                                                                         سجل التدريب</h5>
-																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-																		</a>
-                                                                </div>
+																		</div>
                                                                 <div class="modal-body">
 
                                                                     <div class="row">
@@ -749,14 +743,12 @@
     </div>
     <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:460px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
                     <h5 class="modal-title am-modal__title" id="modallabel">حذف الموظف</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <div class="modal-body ">
                     <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
@@ -777,14 +769,12 @@
     {{-- edit modal --}}
     <div class="modal fade text-right" id="editepmloyee" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:820px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير الموظف</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <form method="POST" action=" {{ route('editemployee') }} " enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -877,14 +867,12 @@
     <!--employe skills-->
     <div class="modal fade text-right" id="editepmloyeeskills" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير الموظف</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <form method="POST" action="{{ route('update-employes-skill') }}">
                     @csrf
                     <div class="modal-body">
@@ -918,14 +906,12 @@
     <!--edit employ traninging-->
     <div class="modal fade text-right" id="editepmloyeetraining" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:720px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تدريب الموظفين</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <form method="POST" action="{{ route('update-employes-training') }}">
                     @csrf
                     <div class="modal-body">

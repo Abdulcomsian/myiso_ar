@@ -185,7 +185,7 @@
                                                     <div class="modal fade modal-mini modal-primary"
                                                         id="confirm-{{ $d_id }}" tabindex="-1" role="dialog"
                                                         aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-dialog" style="max-width:460px;">
                                                             <div class="modal-content">
                                                                 <form action="{{ route('delete_m_r') }}" method="post">
                                                                     <div class="modal-header am-modal__header"> @csrf
@@ -234,14 +234,12 @@
     </div>
     <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:460px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف المورد</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <div class="modal-body">
                     <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
@@ -260,14 +258,12 @@
     <!--EDIT-->
     <div class="modal fade text-right" id="editepmloyee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:820px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل سجل الصيانة</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <form action="{{ route('editmentainance') }} " method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -370,14 +366,12 @@
 
     <div class="modal fade text-right" id="viewEpmloyee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:720px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">عرض تفاصيل سجل الصيانة</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <form action="{{ route('editmentainance') }}" method="POST">
                     @csrf
                     <div class="modal-body">

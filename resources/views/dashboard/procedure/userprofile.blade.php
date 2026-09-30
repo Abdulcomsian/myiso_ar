@@ -206,14 +206,12 @@
             </div>
             <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-lg" style="max-width:820px;" role="document">
                     <div class="modal-content">
                         <div class="modal-header am-modal__header">
                             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                             <h5 class="modal-title am-modal__title" id="exampleModalLabel">تعديل تفاصيل المستخدم</h5>
-                            <div type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"
-                                    aria-hidden="true"></i></div>
-                        </div>
+                            </div>
                         <form class="kt-form kt-form--label-right" method="POST" action="{{ route('UpdateUserInfo') }}"
                             enctype="multipart/form-data">
                             @csrf

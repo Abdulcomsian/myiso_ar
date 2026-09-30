@@ -1829,3 +1829,35 @@ body.am-body {
     color: #fff;
     border-color: var(--am-primary);
 }
+
+/* English's modal is a fixed-height panel: the header and the footer stay put
+   and only the middle scrolls, so a long form never stretches the page. Give
+   the Bootstrap boxes the same shape. On several pages the <form> wraps the
+   body and the footer, so it is taken out of the layout with display:contents
+   - exactly what the English markup does - and its children become the panel's
+   own rows. */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 3.5rem);
+}
+.modal-content > form { display: contents; }
+.modal-content .modal-header,
+.modal-content .modal-footer { flex-shrink: 0; }
+.modal-content .modal-body,
+.modal-content > .form-row {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* Metronic's bundle reaches these with a more specific selector than the ones
+   above, so the modern values have to be restated at the same depth:
+   a 4px corner instead of the card radius, and a 1.3rem heading. */
+.modal .modal-content { border-radius: var(--am-radius); }
+.modal .modal-content .modal-header .modal-title,
+.modal .modal-content .modal-header .am-modal__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--am-text);
+}

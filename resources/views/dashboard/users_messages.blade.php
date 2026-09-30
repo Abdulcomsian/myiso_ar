@@ -108,14 +108,12 @@
 							<a href="#" data-toggle="modal" data-target="#view-notification-{{$item->id}}" title="View Message"> View Message </a>
 								
 							<div class="modal fade" id="view-notification-{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
-											<div class="modal-dialog" role="document">
+											<div class="modal-dialog" style="max-width:820px;" role="document">
 												<div class="modal-content">
 													<div class="modal-header am-modal__header">
 														<span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
 														<h5 class="modal-title am-modal__title" id="exampleModalLabel">Message To Admin</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														</button>
-													</div>
+														</div>
 													<div class="modal-body">
 														<h5>{{$item->subject}}</h5>
 														<p>&nbsp;</p>

@@ -989,7 +989,7 @@
                                                     <div class="modal fade modal-mini modal-primary"
                                                         id="confirm-{{ $item->id }}" tabindex="-1" role="dialog"
                                                         aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog text-right">
+                                                        <div class="modal-dialog text-right" style="max-width:460px;">
                                                             <div class="modal-content">
                                                                 <form action="{{ route('deleteqmsAudit') }}"
                                                                     method="post">
@@ -1044,13 +1044,11 @@
 	{{-- view modal --}}
     <div class="modal fade text-right" id="editProcessAudit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:900px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">عرض تفاصيل تدقيق نظام إدارة الجودة</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-					</a>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" value="" id="test_a" name="id" />
@@ -1895,13 +1893,11 @@
     {{-- Edit Model --}}
     <div class="modal fade text-right" id="geteditdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:1000px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل تدقيق نظام إدارة الجودة</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-					</a>
                 </div>
                 <form action="{{ route('update_qmsaudit') }}" method="post" enctype="multipart/form-data">
                     @csrf

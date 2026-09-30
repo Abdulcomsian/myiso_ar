@@ -267,15 +267,13 @@
                                                     <div class="modal fade text-right" id="viewData-{{ $data->id }}"
                                                         tabindex="-1" role="dialog"
                                                         aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-dialog modal-lg" style="max-width:820px;" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header am-modal__header">
                                                                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                                                                     <h5 class="modal-title am-modal__title" id="exampleModalLabel2">عرض
                                                                         تقييمات المخاطر</h5>
-                                                                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-																	</a>
-                                                                </div>
+                                                                    </div>
                                                                 <form>
 
                                                                     <div class="modal-body ">
@@ -586,7 +584,7 @@
                                                     <div class="modal fade modal-mini modal-primary"
                                                         id="confirm-{{ $data->id }}" tabindex="-1" role="dialog"
                                                         aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-dialog" style="max-width:460px;">
                                                             <div class="modal-content">
                                                                 <form action="{{ route('delete_assesment') }}"
                                                                     method="post">
@@ -642,14 +640,12 @@
 
     <div class="modal fade text-right" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:900px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تقييمات المخاطر</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-					</a>
-                </div>
+                    </div>
                 <form action="{{ route('editassessment') }} " method="POST">
                     @csrf
 

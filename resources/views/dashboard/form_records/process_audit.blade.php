@@ -515,14 +515,12 @@
     </div>
     <div class="modal fade text-right" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:460px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">عملية الحذف</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <div class="modal-body">
                     <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
@@ -541,14 +539,12 @@
 
     <div class="modal fade text-right" id="editProcessAudit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" style="max-width:1000px;" role="document">
             <div class="modal-content modal-lg">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل العملية</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <form action="{{ route('auditDelete') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -896,14 +892,12 @@
 
     <div class="modal fade text-right" id="viewProcessAudit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:900px;" role="document">
             <div class="modal-content ">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تفاصيل</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+                    </div>
                 <form enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">

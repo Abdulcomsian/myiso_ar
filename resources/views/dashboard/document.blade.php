@@ -109,14 +109,12 @@
 	<!--End::Section-->
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog" style="max-width:460px;" role="document">
 		<div class="modal-content">
 			<div class="modal-header am-modal__header">
 				<span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
 				<h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف المتطلبات المستحقة</h5>
-				<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-				</a>
-			</div>
+				</div>
 			<div class="modal-body">
 				<p>هل أنت متأكد؟ هل تريد حقًا حذف هذا؟.</p>
 			</div>

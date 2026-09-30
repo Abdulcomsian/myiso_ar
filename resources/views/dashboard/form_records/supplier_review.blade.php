@@ -188,13 +188,12 @@
 
     {{-- View modal --}}
     <div class="modal fade text-right" id="viewSupplierRev" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:720px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                     <h5 class="modal-title am-modal__title">تفاصيل تقييم المورد</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
+                    </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-6"><div class="form-group"><label>المورد:</label><input type="text" class="form-control" id="v-sr-sup" readonly></div></div>
@@ -223,13 +222,12 @@
 
     {{-- Edit modal --}}
     <div class="modal fade text-right" id="editsupplier_rev" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:900px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title">تحرير تفاصيل تقييم المورد</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
+                    </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('editSupplierReview') }}" enctype="multipart/form-data">
                         @csrf
@@ -301,7 +299,7 @@
 
     {{-- Delete modal --}}
     <div class="modal fade modal-mini modal-primary" id="deleteSupplierRev" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width:460px;">
             <div class="modal-content">
                 <form action="{{ route('delete_supplier_review') }}" method="post">
                     @csrf

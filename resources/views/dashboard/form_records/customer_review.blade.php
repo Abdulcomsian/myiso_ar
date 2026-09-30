@@ -195,15 +195,13 @@
                                                     <!-- Modal -->
                                                     <div class="modal fade text-right" id="model3" tabindex="-1" role="dialog"
                                                         aria-labelledby="model3Label" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
+                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header am-modal__header">
                                                                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
                                                                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">رأي
                                                                         العميل</h5>
-																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-																		</a>
-                                                                </div>
+																		</div>
                                                                 <div class="modal-body">
 
                                                                     <div class="row">
@@ -312,7 +310,7 @@
                                                     <div class="modal fade modal-mini modal-primary"
                                                         id="confirm-{{ $data->id }}" tabindex="-1" role="dialog"
                                                         aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-dialog" style="max-width:460px;">
                                                             <div class="modal-content">
                                                                 <form action="{{ route('delete_customer_review') }}"
                                                                     method="post">
@@ -364,14 +362,12 @@
 
     <div class="modal fade text-right" id="editcustomer_rev" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" style="max-width:900px;" role="document">
             <div class="modal-content">
                 <div class="modal-header am-modal__header">
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل تقييم العملاء</h5>
-                    <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-					</a>
-                </div>
+                    </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('editCustomerReview') }} " enctype="multipart/form-data">
                         @csrf
