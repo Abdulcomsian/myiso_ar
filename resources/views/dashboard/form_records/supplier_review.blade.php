@@ -6,22 +6,31 @@
         $supplierNames = \App\Supplier::where('user_id', $userid)->pluck('suppliername', 'idnumber');
     @endphp
     <!-- begin:: Content -->
-    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 text-right">
+    <div class="am-content">
+        <div class="am-page-header">
+            <div>
                 <h2>مراجعات الموردين</h2>
             </div>
         </div>
-        <section id="procedure_section">
+        <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <p>تقييمات الموردين هي أداة لمراقبة وتصنيف أداء الموردين عبر جميع نقاط التعامل معهم، مثل: جودة المنتجات أو الخدمات، وموثوقية التسليم، وتنافسية الأسعار، والامتثال وسرعة الاستجابة.</p>
-                    <p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم مورد". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله.</p>
-                    <div class="procedure_div">
+                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
+                        <div style="display:flex;gap:12px;align-items:flex-start;">
+                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
+                                <i class="fa fa-info-circle"></i>
+                            </span>
+                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
+                                <p>تقييمات الموردين هي أداة لمراقبة وتصنيف أداء الموردين عبر جميع نقاط التعامل معهم، مثل: جودة المنتجات أو الخدمات، وموثوقية التسليم، وتنافسية الأسعار، والامتثال وسرعة الاستجابة.</p>
+                                <p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم مورد". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
                         <div class="row">
                             <div class="col-lg-12 text-right">
                                 {{-- customerReview() (foot.blade.php) toggles .customer_review_from_div --}}
-                                <a onclick="customerReview()" class="addBtn">إضافة تقييم مورد</a>
+                                <a onclick="customerReview()" class="am-btn am-btn-primary">إضافة تقييم مورد</a>
                             </div>
                         </div>
                         <div class="customer_review_from_div">
@@ -103,17 +112,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="submitBtn" type="submit">يُقدِّم</button>
-                                <button class="btn btn-secondary submitBtn" type="reset" onclick="customerReview()" style="margin-right: 6px;">يلغي</button>
+                                <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
+                                    <button class="am-btn am-btn-outline" type="reset" onclick="customerReview()">يلغي</button>
+                                    <button class="am-btn am-btn-primary" type="submit">يُقدِّم</button>
+                                </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="procedure_div">
+                    <div class="am-card" style="margin-bottom:16px;">
                         <div class="requirments_table_div">
-                            <h4>تفاصيل تقييم الموردين</h4>
-                            <div class="kt-portlet__body">
-                                <table class="common_table table table-striped- table-bordered table-hover table-checkable table-responsive">
+                            <div class="am-table-wrap">
+                                <table class="am-table">
                                     <thead>
                                         <tr>
                                             <th>رقم التقييم</th>
@@ -133,30 +143,30 @@
                                     <tbody>
                                         @foreach ($reviews as $data)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->sup_id }}</td>
-                                                <td>{{ $supplierNames[$data->sup_id] ?? '' }}</td>
-                                                <td>{{ $data->qualityScore }}</td>
-                                                <td>{{ $data->priceScore }}</td>
-                                                <td>{{ $data->DScore }}</td>
-                                                <td>{{ $data->OveralScore }}</td>
-                                                <td>{{ date('d/m/Y', strtotime($data->AssesmentDate)) }}</td>
-                                                <td>{{ $data->other_issues }}</td>
+                                                <td><span class="am-cell-sub">{{ $loop->iteration }}</span></td>
+                                                <td><span class="am-cell-sub">{{ $data->sup_id }}</span></td>
+                                                <td><span class="am-cell-sub">{{ $supplierNames[$data->sup_id] ?? '' }}</span></td>
+                                                <td><span class="am-cell-primary">{{ $data->qualityScore }}</span></td>
+                                                <td><span class="am-cell-sub">{{ $data->priceScore }}</span></td>
+                                                <td><span class="am-cell-sub">{{ $data->DScore }}</span></td>
+                                                <td><span class="am-chip {{ ((int)$data->OveralScore) >= 8 ? 'success' : (((int)$data->OveralScore) >= 5 ? 'warning' : 'danger') }}">{{ $data->OveralScore }}</span></td>
+                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->AssesmentDate)) }}</span></td>
+                                                <td><span class="am-cell-sub">{{ $data->other_issues }}</span></td>
                                                 <td>
                                                     @if ($data->attach_evidence)
                                                         <a href="{{ asset('supplier_review_evidence/' . $data->attach_evidence) }}" target="_blank">عرض الأدلة</a>
                                                     @endif
                                                 </td>
-                                                <td>{{ $data->product_activity_area }}</td>
-                                                <td>
-                                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="عرض" onclick='srView(@json($data), @json($supplierNames[$data->sup_id] ?? ""))'>
+                                                <td><span class="am-cell-sub">{{ $data->product_activity_area }}</span></td>
+                                                <td style="text-align:left;white-space:nowrap;">
+                                                    <button class="am-icon-btn" title="عرض" onclick='srView(@json($data), @json($supplierNames[$data->sup_id] ?? ""))'>
                                                         <i class="fa fa-eye"></i>
                                                     </button>
-                                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="تعديل" onclick='srEdit(@json($data))'>
-                                                        <i class="fa fa-pen" style="color:#5d78ff;"></i>
+                                                    <button class="am-icon-btn" title="تعديل" onclick='srEdit(@json($data))'>
+                                                        <i class="fa fa-pen"></i>
                                                     </button>
-                                                    <button class="btn btn-sm btn-clean btn-icon btn-icon-md" title="حذف" onclick="srDelete({{ $data->id }})">
-                                                        <i class="fa fa-trash" style="color:#5d78ff;"></i>
+                                                    <button class="am-icon-btn danger" title="حذف" onclick="srDelete({{ $data->id }})">
+                                                        <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -164,6 +174,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            @include('dashboard.form_records.partials.am_paginator', ['paginator' => $reviews])
                         </div>
                     </div>
                 </div>
@@ -256,8 +267,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="submitBtn" type="submit">تحديث</button>
-                        <button class="btn btn-secondary submitBtn" type="reset" data-dismiss="modal" aria-label="Close" style="margin-right: 6px;">يلغي</button>
+                        <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
+                            <button class="am-btn am-btn-outline" type="reset" data-dismiss="modal" aria-label="Close">يلغي</button>
+                            <button class="am-btn am-btn-primary" type="submit">تحديث</button>
+                        </div>
                     </form>
                 </div>
             </div>

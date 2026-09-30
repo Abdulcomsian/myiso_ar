@@ -18,7 +18,7 @@ class SupplierReviewController extends Controller
     {
         $userid = Auth::user()->id;
         $all_suppliers = Supplier::where('user_id', $userid)->get();
-        $reviews = supplier_review::where('user_id', $userid)->orderBy('id', 'DESC')->get();
+        $reviews = supplier_review::where('user_id', $userid)->orderBy('id', 'DESC')->paginate(10)->withQueryString();
         return view('dashboard.form_records.supplier_review', compact('reviews', 'userid', 'all_suppliers'));
     }
 

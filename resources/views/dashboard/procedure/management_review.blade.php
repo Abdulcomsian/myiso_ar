@@ -1,22 +1,16 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-<!-- begin:: Content -->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="am-content">
 
-	<!--Begin::Dashboard 1-->
+    <div class="am-page-header">
+        <div>
+            <h2>السياسة 3 – مراجعة الإدارة</h2>
+        </div>
+    </div>
 
-
-	<!--Begin::Section-->
-	<div class="row">
-		<div class="col-xl-12 col-lg-12 text-right">
-			<h2>السياسة 3 – مراجعة الإدارة</h2>
-		</div>
-	</div>
-	<section id="procedure_section">		
-		<div class="row text-right">
-			<div class="col-lg-12">
-				<div class="procedure_div">
+    <div class="am-card">
+        <div class="am-card__body" style="padding:32px; line-height:1.8;">
 					<h4>1. الغرض والنطاق</h4>
 					<p>يوضح هذا الإجراء متطلبات مراجعة الإدارة، حيث تضمن الإدارة العليا أداء النظام الإداري وهيكلته.</p>
                     <h4 class="m-t-20">2. المسؤولية</h4>
@@ -38,12 +32,8 @@
                     <p>مراجعة احتياجات التدريب.</p>
                     <h5 class="m-t-20">3.4  المتابعة</h5>
                     <p>يجب أن يسجل المدير مذكرات الاجتماع، بما في ذلك نقاط الأعمال وتلك المسؤولة عن الأعمال. يجب توزيع مذكرات الاجتماع على جميع الأفراد المعنيين. يجب أن يتابع المدير الأعمال ويوثقها عند استكمالها.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+        </div>
+    </div>
 
-	<!--End::Section-->
 </div>
 @endsection
-<!-- end:: Content --''

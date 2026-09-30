@@ -26,7 +26,7 @@ class AccidentRiskController extends Controller
     public function index()
     {
         $userid=Auth::user()->id;
-        $audit=AccidentRisk::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $audit=AccidentRisk::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
         return view('dashboard.form_records.accident_risk_assesment',compact('audit'));
     }
 

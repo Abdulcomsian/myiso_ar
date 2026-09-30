@@ -1,22 +1,16 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-<!-- begin:: Content -->
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="am-content">
 
-	<!--Begin::Dashboard 1-->
+    <div class="am-page-header">
+        <div>
+            <h2>السياسة 4 – معدات المراقبة والقياس</h2>
+        </div>
+    </div>
 
-
-	<!--Begin::Section-->
-	<div class="row">
-		<div class="col-xl-12 col-lg-12 text-right">
-			<h2>السياسة 4 – معدات المراقبة والقياس</h2>
-		</div>
-	</div>
-	<section id="procedure_section">		
-		<div class="row text-right">
-			<div class="col-lg-12">
-				<div class="procedure_div">
+    <div class="am-card">
+        <div class="am-card__body" style="padding:32px; line-height:1.8;">
 					<h4>1. الغرض والنطاق</h4>
 					<p>من شأن هذا الإجراء ضمان صيانة المعدات المستخدمة لقياس معلمات التشغيل أو مراقبتها أو التحكم فيها ومعايرتها للحفاظ على مدى كفاءتها ودقتها.</p>
                     <h4 class="m-t-20">2. المسؤولية</h4>
@@ -38,12 +32,8 @@
                     <p>من الناحية المثالية، عندما تتم معايرة المعدات، يجب أن يتم وضع علامة عليها لإظهار تاريخ إعادة الاختبار التالي. يجب أيضًا إظهار تواريخ إعادة الاختبار في الجدول كجزء من برنامج الاستدعاء المعتمد على الكمبيوتر.</p>
 					<h4 class="m-t-20">7. برامج الاختبار</h4>
                     <p>يجب التحقق من صحة البرامج المستخدمة في القياس والمراقبة قبل الاستخدام.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+        </div>
+    </div>
 
-	<!--End::Section-->
 </div>
 @endsection
-<!-- end:: Content --''

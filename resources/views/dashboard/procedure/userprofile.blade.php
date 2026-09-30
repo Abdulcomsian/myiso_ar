@@ -529,8 +529,6 @@
 
         <!--End::Section-->
     </div>
-@endsection
-
 <script>
     function deleteUser(id) {
         var userid = id;
@@ -538,6 +536,7 @@
         $("#deleteUser").modal('show');
     }
 </script>
+@endsection
 @section('myscript')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"
         integrity="sha512-DNeDhsl+FWnx5B1EQzsayHMyP6Xl/Mg+vcnFPXGNjUZrW28hQaa1+A4qL9M+AiOMmkAhKAWYHh1a+t6qxthzUw=="

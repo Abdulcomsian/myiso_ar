@@ -1,22 +1,16 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-    <!-- begin:: Content -->
-    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="am-content">
 
-        <!--Begin::Dashboard 1-->
-
-
-        <!--Begin::Section-->
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 text-right">
-                <h2>P1 - معلومات موثقة</h2>
-            </div>
+    <div class="am-page-header">
+        <div>
+            <h2>P1 - معلومات موثقة</h2>
         </div>
-        <section id="procedure_section">
-            <div class="row text-right">
-                <div class="col-lg-12">
-                    <div class="procedure_div">
+    </div>
+
+    <div class="am-card">
+        <div class="am-card__body" style="padding:32px; line-height:1.8;">
                         <h4>1. الغرض والنطاق</h4>
                         <p>يحدد هذا الإجراء طريقة إعداد الوثائق وترخيصها وتوزيعها ومراجعتها وتحديثها.<br>
                             يضمن هذا الإجراء أن جميع الوثائق والسجلات التي تشكل جزءًا من نظام الإدارة مخزنة بأمان ولها حد
@@ -115,12 +109,8 @@
                         <h4 class="m-t-20">9. سجلات الكمبيوتر</h4>
                         <p>تُنتج نسخة احتياطية لسجلات الكمبيوتر المحفوظة خارج هذا النظام بشكل آمن خارج الموقع، كما تُنتج
                             نسخة احتياطية من السجلات الموجودة ضمن هذا النظام بشكل منفصل.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--End::Section-->
+        </div>
     </div>
+
+</div>
 @endsection
-<!-- end:: Content -->

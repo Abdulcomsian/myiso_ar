@@ -25,7 +25,7 @@ class MgtreviewController extends Controller
     public function index()
     {
         $userid=Auth::user()->id;
-        $userData=Mgtreview::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $userData=Mgtreview::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
         return  view('dashboard.form_records.managment_reviews',compact('userData'));
 
     }

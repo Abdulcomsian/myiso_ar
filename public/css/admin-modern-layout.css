@@ -1663,3 +1663,19 @@ body.am-body {
     background: #f9fafc;
     border-bottom: 1px solid var(--am-border);
 }
+
+/* Table cards: the table sits flush against the card edge (as in the English
+   pages) and the heading above it behaves like an .am-card__header. */
+.am-main .am-card > .requirments_table_div { margin-top: 0; }
+.am-main .am-card > .requirments_table_div > h4 {
+    margin: 0;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--am-border);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--am-text);
+}
+
+/* Row action icons sit on a shared centre line. Without this they align on the
+   text baseline, so one button with different inner markup drifts up or down. */
+.am-main td .am-icon-btn { vertical-align: middle; }

@@ -54,7 +54,7 @@ class nonConfromFormController extends Controller
                 ->orWhereNull('tbl_noconformance.customerID');
         })
         ->orderBy('tbl_noconformance.id', 'DESC')
-        ->get();
+        ->paginate(10)->withQueryString();
        
         $employees= DB::table('tbl_employees')->where('user_id',$userid)->get();
 

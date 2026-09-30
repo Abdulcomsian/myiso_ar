@@ -77,10 +77,10 @@
                         <td><span class="am-cell-primary">{{ $data->interested_party}}</span></td>
                         <td><span class="am-cell-sub">{{ $data->needs}}</span></td>
                         <td><span class="am-chip info">{{date('d/m/Y h:i', strtotime($data->created_at))}}</span></td>
-                        <td>
+                        <td style="text-align:left;white-space:nowrap;">
                             <div class="am-actions">
-                                <button type="button" class="am-icon-btn" title="Edit" onclick="getEid({{$data}});"><i class="fa fa-pen"></i></button>
                                 <button type="button" class="am-icon-btn" title="View" onclick="viewinterested({{$data}});"><i class="fa fa-eye"></i></button>
+                                <button type="button" class="am-icon-btn" title="Edit" onclick="getEid({{$data}});"><i class="fa fa-pen"></i></button>
                                 <button type="button" class="am-icon-btn danger" title="delete" onclick="deleteModal({{$data}});"><i class="fa fa-trash"></i></button>
                             </div>
                         </td>
@@ -89,6 +89,7 @@
                 </tbody>
             </table>
         </div>
+        @include('dashboard.form_records.partials.am_paginator', ['paginator' => $interested])
     </div>
 
 </div>
@@ -164,8 +165,6 @@
         </div>
     </div>
 </div>
-@endsection
-
 <script>
     // ---- Modal helpers ----
     document.addEventListener('click', function(e) {
@@ -204,3 +203,4 @@
         document.getElementById('deleteRequirment').classList.add('open');
     }
 </script>
+@endsection

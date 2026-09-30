@@ -23,7 +23,7 @@ class CustomerReviewController extends Controller
     {
         $userid=Auth::user()->id;
         $all_customers=customers::where('user_id',$userid)->get();
-        $customers=customer_review::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $customers=customer_review::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
         return view('dashboard.form_records.customer_review',compact('customers','userid','all_customers'));
     }
 

@@ -27,7 +27,7 @@ class qmsauditController extends Controller
     public function index(Request $request)
     {
         $userid=Auth::user()->id;
-        $requirement=Qmsaudit::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $requirement=Qmsaudit::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
         return view('dashboard.form_records.qms_audit',compact('requirement'));
     }
 

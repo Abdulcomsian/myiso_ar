@@ -23,7 +23,7 @@ class WorkInstructionController extends Controller
     public function index()
     {
         $userid= Auth::user()->id;
-        $work=Workinstructions::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $work=Workinstructions::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
 
         //$employess=Workinstructions::join('tbl_employees','tbl_employees.id','=','tbl_workinstruction.empId')->where('tbl_employees.user_id',$userid)->get();
         $employess=Employee::where('user_id',$userid)->get();

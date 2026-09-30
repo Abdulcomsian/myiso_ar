@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
  */
 abstract class SimpleRegisterController extends Controller
 {
-    /** Arabic pages list everything and search/paginate client-side */
-    protected $paginate = false;
+    /** Registers paginate server-side, like the English pages */
+    protected $paginate = true;
 
     public function __construct()
     {

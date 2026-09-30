@@ -234,7 +234,7 @@
 </div> --}}
 
 
-@endsection
+
 <script>
 	function deleteUser(id){
 		var userid=id;
@@ -261,3 +261,4 @@
 		 $("#editModal").modal('show');
 	}
 </script>
+@endsection

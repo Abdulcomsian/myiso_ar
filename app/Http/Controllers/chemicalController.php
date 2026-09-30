@@ -23,7 +23,7 @@ class chemicalController extends Controller
     {
        
         $userid=Auth::user()->id;
-        $chemical=Chemical::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $chemical=Chemical::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
         
         return view('dashboard.form_records.chemical_control',compact('chemical'));
     }

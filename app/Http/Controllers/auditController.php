@@ -24,7 +24,7 @@ class auditController extends Controller
     public function index(Request $request)
     {
         $userid=Auth::user()->id;
-        $audit=Audit::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $audit=Audit::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
         $workInstructionsData = Workinstructions::where('user_id', $userid)->get();
         return view('dashboard.form_records.process_audit',compact('audit', 'workInstructionsData'));
     }
