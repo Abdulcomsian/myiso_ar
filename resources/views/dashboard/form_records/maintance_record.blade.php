@@ -110,8 +110,8 @@
                                             {{-- <input name="attach_evidence" type="file" class="form-control"
                                                 accept="all"> --}}
                                             <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
-                                                <label for="fileInput" class="file-label">
+                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="all"/>
+                                                <label for="fileInput1" class="file-label">
                                                     <span class="file-text">اختيار الملف</span>
                                                     <span class="file-chosen">لم يتم اختيار ملف</span>
                                                 </label>
@@ -331,8 +331,8 @@
                                             mp3, mp4, .xls, doc)</span></label>
                                     {{-- <input name="attach_evidence" type="file" class="form-control" accept="all"> --}}
                                     <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
-                                        <label for="fileInput" class="file-label">
+                                        <input type="file" id="fileInput2" class="input-file" name="attach_evidence" accept="all"/>
+                                        <label for="fileInput2" class="file-label">
                                             <span class="file-text">اختيار الملف</span>
                                             <span class="file-chosen">لم يتم اختيار ملف</span>
                                         </label>

@@ -43,8 +43,8 @@
                     <label>حمل الصورة:</label>
                     {{-- <input type="file" class="form-control" name="comp_process_photo"> --}}
                     <div class="custom-file-input-tag form-control mt-2">
-                        <input type="file" id="fileInput" class="input-file" name="comp_process_photo"/>
-                        <label for="fileInput" class="file-label">
+                        <input type="file" id="fileInput1" class="input-file" name="comp_process_photo"/>
+                        <label for="fileInput1" class="file-label">
                           <span class="file-text">اختيار الملف</span>
                           <span class="file-chosen">لم يتم اختيار ملف</span>
                         </label>

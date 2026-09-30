@@ -251,9 +251,13 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label>تحميل السيرة الذاتية للموظف:</label>
-                                                                                <input name="employee_cv" type="file"
-                                                                                    class="form-control"
-                                                                                    accept="image/*,.doc, .docx,.txt,.pdf">
+                                                                                <div class="custom-file-input-tag form-control">
+                                                                                    <input type="file" id="fileInput1" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf">
+                                                                                    <label for="fileInput1" class="file-label">
+                                                                                        <span class="file-text">اختيار الملف</span>
+                                                                                        <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                                                    </label>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>

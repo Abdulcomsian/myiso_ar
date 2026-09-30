@@ -41,8 +41,8 @@
                     <label>تحميل صورة:</label>
                     {{-- <input type="file" class="form-control"  name="organogram"> --}}
                     <div class="custom-file-input-tag form-control mt-2">
-                        <input type="file" id="fileInput" class="input-file" name="organogram"/>
-                        <label for="fileInput" class="file-label">
+                        <input type="file" id="fileInput1" class="input-file" name="organogram"/>
+                        <label for="fileInput1" class="file-label">
                           <span class="file-text">اختيار الملف</span>
                           <span class="file-chosen">لم يتم اختيار ملف</span>
                         </label>

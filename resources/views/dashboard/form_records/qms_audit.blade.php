@@ -41,11 +41,73 @@
                         <div class="qms_audit_from_div">
 
                             <form action="{{ route('qmsaudit') }}" method="POST" enctype="multipart/form-data"
-                                class="addForm">
+                                class="addForm am-form">
                                 @csrf
 
-                                <!--          			<div class="row">-->
-                                <!--          				<div class="col-lg-12">-->
+                                <div class="form-row">
+                                    <div>
+                        <div class="form-group">
+                            <label>اسم المدقق: </label>
+                            <input type="text" class="form-control" name="auditrName"
+                                placeholder="إدراج اسم المدقق:)" required="required">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>تاريخ تعبئة البيانات (يوم/شهر/سنة)):</label>
+                            <input type="date" max="2999-12-31" name="competedDate"
+                                class="form-control" placeholder="أدخل الأدلة:" required="required">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
+                            {{-- <input name="attach_evidence" type="file" class="form-control"
+                                accept="image/*,.doc, .docx,.txt,.pdf"> --}}
+                            <div class="custom-file-input-tag form-control">
+                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="image/*,.doc, .docx,.txt,.pdf"/>
+                                <label for="fileInput1" class="file-label">
+                                    <span class="file-text">اختيار الملف</span>
+                                    <span class="file-chosen">لم يتم اختيار ملف</span>
+                                </label>
+                            </div>
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                        	<label>الملف المرفق File (PDF, jpeg, txt, .docx, doc, png):</label>
+                        	<div class="custom-file-input-tag form-control">
+                        	    <input type="file" id="fileInput2" class="input-file" name="attach_file" accept="image/*,.doc, .docx,.txt,.pdf,.jpeg,.png">
+                        	    <label for="fileInput2" class="file-label">
+                        	        <span class="file-text">اختيار الملف</span>
+                        	        <span class="file-chosen">لم يتم اختيار ملف</span>
+                        	    </label>
+                        	</div>
+                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div style="grid-column:1/-1;">
+                        <div class="form-group">
+                            <label>تعليقات وإجراءات التدقيق: </label>
+                            <input type="text" class="form-control" name="audit_comments_actions"
+                                required="required" placeholder="إدراج تعليق:)">
+                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div style="grid-column:1/-1;">
+                        <div class="form-group">
+                            <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟ </label>
+                            <input type="text" name="any_issues" class="form-control"
+                                placeholder="إدراج أي مواضيع أخرى:)">
+                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--          			<div class="form-row" style="margin-bottom:8px;">-->
+                                <!--          				<div style="grid-column:span 3;">-->
                                 <!--          					<div class="form-group">-->
                                 <!--	<label>QMS Audit ID Number:</label>-->
                                 <!--	<input type="number" name="QmsauditNumber" class="form-control validate_number"  placeholder="Enter QMS Audit ID:" required>-->
@@ -53,16 +115,16 @@
                                 <!--          				</div>-->
                                 <!--          			</div> -->
 
-                                <!--<div class="row">-->
-                                <!--	<div class="col-lg-12">-->
+                                <!--<div class="form-row" style="margin-bottom:8px;">-->
+                                <!--	<div style="grid-column:span 3;">-->
                                 <!--		<div class="form-group">-->
                                 <!--			<h3 style="margin-top: -136px;">Add QMS Audit Details</h3>-->
                                 <!--		</div>-->
                                 <!--	</div>-->
                                 <!--</div>-->
 
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
 
                                             <label>4.1 الإلمام بالمؤسسة وإطار عملها. هل يصح هذا الأمر؟ </label>
@@ -80,7 +142,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: (إدراج الدليل:)</label>
                                             <input type="text" name="evidence" class="form-control"
@@ -88,8 +150,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>4.2 استيعاب احتياجات الأطراف المعنية وتوقعاتهم. هل ما يزال هذا صحيحًا؟
                                             </label>
@@ -107,7 +169,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance2"
@@ -115,8 +177,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -132,7 +194,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence3"
@@ -140,8 +202,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>4.4 نظام إدارة الجودة وعملياته. هل العمليات تابعة ومناسبة وتحقق التفاعل؟
                                             </label>
@@ -160,7 +222,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance4"
@@ -168,8 +230,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>5.1 القيادة والالتزام. هل تتحمل الإدارة العليا المسؤولية عن نظام الجودة
                                                 وهل ينصب اهتمامها على العملاء؟ </label>
@@ -188,7 +250,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence5"
@@ -196,8 +258,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>5.2 السياسة. هل سياسة الجودة معمول بها ومعلنة وتتحلى بالدقة وتخضع
                                                 للمراجعة؟ </label>
@@ -216,7 +278,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" name="evidance7" class="form-control"
@@ -224,8 +286,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>5.3 الأدوار والمسؤوليات والصلاحيات المؤسسية. هل هي محددة ومعلنة؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -243,7 +305,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" name="evidance7_1" class="form-control"
@@ -251,8 +313,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>6.1 إجراءات التعامل مع المخاطر والفرص. هل تتم إدارة المخاطر والفرص
                                                 واستيعابها ومراجعتها؟ </label>
@@ -271,7 +333,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance8"
@@ -279,8 +341,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>6.2 أهداف الجودة والتخطيط لتحقيقها. هل تُحدد الأهداف ضمن مراجعة الإدارة
                                                 ويجري متابعتها؟ </label>
@@ -299,7 +361,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance10"
@@ -307,8 +369,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>6.3 التخطيط للتغييرات. هل تم التخطيط لأي تغييرات لاستيفاء البند 6.3 من
                                                 المعيار؟ </label>
@@ -327,7 +389,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance12"
@@ -335,8 +397,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>7.1 الموارد. هل يتوفر ما يكفي من الموارد؟ ضع في اعتبارك الأشخاص والبنية
                                                 التحتية وبيئة تشغيل العمليات ومراقبة الموارد والمعارف التنظيمية وتقديرها.
@@ -356,7 +418,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" name="evidence13" class="form-control"
@@ -364,8 +426,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>7.2 الصلاحية. هل سجلات التدريب حديثة؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -383,7 +445,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidance14"
@@ -391,8 +453,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>7.3 الاطلاع. هل يستوفي اطلاع الموظف البند 7.3 من المعيار؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -410,7 +472,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" placeholder="إدراج الدليل:"
@@ -418,8 +480,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>7.4 التواصل. هل يستوفي التواصل البند 7.4 من المعيار؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -437,7 +499,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence15"
@@ -445,8 +507,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>7.5 توثيق المعلومات. هل تخضع جميع المستندات المتعلقة بنظام الجودة
                                                 للتدقيق؟</label>
@@ -465,7 +527,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" placeholder="إدراج الدليل:"
@@ -473,8 +535,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>8.1 التخطيط التشغيلي والمراقبة. هل نظام المراقبة حديث وفعال؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -493,7 +555,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence18"
@@ -501,8 +563,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>8.2 متطلبات المنتجات والخدمات. هل يتسم التواصل مع العملاء بالفعالية وهل
                                                 تم تحديد متطلبات المنتجات والخدمات ومراجعتها وتوثيقها؟ </label>
@@ -520,7 +582,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" placeholder="إدراج الدليل:"
@@ -528,8 +590,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>8.3 تصميم المنتجات والخدمات وتطويرها. هل تم استيفاء متطلبات هذا
                                                 المعيار؟</label>
@@ -548,7 +610,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence20"
@@ -556,8 +618,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>8.4 التحكم في العمليات والمنتجات والخدمات المقدمة من الخارج. هل تخضع
                                                 العمليات والمنتجات والخدمات المقدمة من الخارج للمراقبة؟ </label>
@@ -575,7 +637,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence21"
@@ -583,8 +645,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>8.5 الإنتاج وتقديم الخدمات. هل يخضع الإنتاج وتقديم الخدمات، بما في ذلك
                                                 الأنشطة اللاحقة للتسليم للمراقبة؟ </label>
@@ -604,7 +666,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" placeholder="إدراج الدليل:"
@@ -612,8 +674,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>8.6 إصدار المنتجات والخدمات. هل تكتمل المنتجات والخدمات قبل إصدارها
                                                 للعملاء؟ </label>
@@ -632,7 +694,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence23"
@@ -640,8 +702,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>8.7 مراقبة المخرجات غير المطابقة. هل يتم الإمساك بالسجلات وتحديثها؟
                                             </label>
@@ -659,7 +721,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" name="evidence24" class="form-control"
@@ -667,8 +729,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>9.1 الرصد والتقدير والتحليل والتقييم، بما في ذلك البند 9.1.3. هل تُنفذ
                                                 عمليات الرصد والتقدير والتحليل والتقييم وتُوثق؟ </label>
@@ -687,7 +749,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence25"
@@ -695,8 +757,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>9.1.2 رضا العملاء. هل اكتملت استبيانات رضا العملاء؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -713,7 +775,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence26"
@@ -721,8 +783,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>9.2 التدقيق الداخلي. هل تم التخطيط لعمليات التدقيق الداخلي واستكمالها؟
                                             </label>
@@ -740,7 +802,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence27"
@@ -749,8 +811,8 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>9.3 المراجعة الإدارية. هل تم التخطيط للمراجعة الإدارية واستكمالها؟
                                             </label>
@@ -769,7 +831,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence28"
@@ -777,8 +839,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>10.1 التحسين - هل حددت المؤسسة واختارت فرصًا للتحسين ونفذت أي إجراءات
                                                 لازمة لتلبية متطلبات العملاء وتعزيز رضاهم؟ </label>
@@ -796,7 +858,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" name="evidence29" class="form-control"
@@ -804,8 +866,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>10.2 عدم المطابقة والإجراءات التصحيحية - هل تُوثق هذه الإجراءات بشكل
                                                 صحيح؟ </label>
@@ -824,15 +886,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div style="grid-column:span 3;">
                                     <div class="form-group">
                                         <label>الدليل: </label>
                                         <input type="text" class="form-control" name="evidence30"
                                             placeholder="إدراج الدليل:">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="form-row" style="margin-bottom:8px;">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>10.3 استمرار التحسين - هل هناك دليل على استمرار تحسن الشركة؟ </label>
                                             <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
@@ -849,72 +911,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div style="grid-column:span 3;">
                                         <div class="form-group">
                                             <label>الدليل: </label>
                                             <input type="text" class="form-control" name="evidence31"
                                                 placeholder="إدراج الدليل:">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
-                                            {{-- <input name="attach_evidence" type="file" class="form-control"
-                                                accept="image/*,.doc, .docx,.txt,.pdf"> --}}
-                                            <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="image/*,.doc, .docx,.txt,.pdf"/>
-                                                <label for="fileInput" class="file-label">
-                                                    <span class="file-text">اختيار الملف</span>
-                                                    <span class="file-chosen">لم يتم اختيار ملف</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>تعليقات وإجراءات التدقيق: </label>
-                                            <input type="text" class="form-control" name="audit_comments_actions"
-                                                required="required" placeholder="إدراج تعليق:)">
-                                        </div>
                                     </div>
 
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>تاريخ تعبئة البيانات (يوم/شهر/سنة)):</label>
-                                            <input type="date" max="2999-12-31" name="competedDate"
-                                                class="form-control" placeholder="أدخل الأدلة:" required="required">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>اسم المدقق: </label>
-                                            <input type="text" class="form-control" name="auditrName"
-                                                placeholder="إدراج اسم المدقق:)" required="required">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟ </label>
-                                            <input type="text" name="any_issues" class="form-control"
-                                                placeholder="إدراج أي مواضيع أخرى:)">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-									<div class="col-lg-12">
-										<div class="form-group">
-											<label>الملف المرفق File (PDF, jpeg, txt, .docx, doc, png):</label>
-											<input name="attach_file" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf,.jpeg,.png">
-										</div>
-									</div>
-								</div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button type="reset" class="am-btn am-btn-outline"
                                     onclick="qmsAudit()">يلغي</button>
@@ -2682,8 +2687,13 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
-                                    <input name="attach_evidence" type="file" class="form-control"
-                                        accept="image/*,.doc, .docx,.txt,.pdf">
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput3" class="input-file" name="attach_evidence" accept="image/*,.doc, .docx,.txt,.pdf">
+                                        <label for="fileInput3" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2725,7 +2735,13 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>لملف المرفق (PDF, jpeg, txt, .docx, doc, png):</label>
-                                    <input name="attach_file" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf,.png,.jpeg">
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput4" class="input-file" name="attach_file" accept="image/*,.doc, .docx,.txt,.pdf,.png,.jpeg">
+                                        <label for="fileInput4" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

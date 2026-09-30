@@ -61,148 +61,132 @@
                             </div>
                         </div>
                         <div class="process_interested_from_div" style="display:none">
-                            <form action="{{route('chemicalform')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('chemicalform')}}" method="POST" enctype="multipart/form-data" class="am-form">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>اسم المادة الكيميائية / المادة الخطرة:</label>
-                                            <input type="text" name="chemicalname" class="form-control" required
-                                                   placeholder="أدخل الاسم الكيميائي">
-                                        </div>
+                                <div class="form-row">
+                                    <div>
+                        <div class="form-group">
+                            <label>اسم المادة الكيميائية / المادة الخطرة:</label>
+                            <input type="text" name="chemicalname" class="form-control" required
+                                   placeholder="أدخل الاسم الكيميائي">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>نوع المادة (غاز، سائل، صلب):</label>
+                            <input type="text" name="chemical_type" class="form-control" required
+                                   placeholder="أدخل النوع الكيميائي (غاز، سائل، صلب)">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>موقع الاستخدام (مثال ذلك المنطقة أو القسم الذي تُستخدم فيه هذه المادة):</label>
+                            <input type="text" name="location" class="form-control" required
+                                   placeholder="أدخل الموقع المستخدم (ضع في اعتبارك المنطقة أو القسم الذي يتم استخدام المادة الكيميائية فيه">
+                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>الوصف الكيميائي (ما هي العناصر الرئيسية في هذه المادة):</label>
-                                            <input type="text" name="chemical_desc" class="form-control" required
-                                                   placeholder="أدخل الوصف الكيميائي">
-                                        </div>
+                                <div class="form-row">
+                                    <div style="grid-column:1/-1;">
+                        <div class="form-group">
+                            <label>الوصف الكيميائي (ما هي العناصر الرئيسية في هذه المادة):</label>
+                            <input type="text" name="chemical_desc" class="form-control" required
+                                   placeholder="أدخل الوصف الكيميائي">
+                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>نوع المادة (غاز، سائل، صلب):</label>
-                                            <input type="text" name="chemical_type" class="form-control" required
-                                                   placeholder="أدخل النوع الكيميائي (غاز، سائل، صلب)">
-                                        </div>
+                                <div class="form-row">
+                                    <div>
+                        <div class="form-group">
+                            <label>الخطر المترتب على الأنشطة (مثال ذلك الاستخدام الكيميائي وإجراء إضافات للمادة والتخلص منها، وغير ذلك):</label>
+                            <input type="text" name="activity_hazard" class="form-control" required
+                                   placeholder="أدخل خطر النشاط (ضع في اعتبارك استخدام المواد الكيميائية، وعمل الإضافات، والتخلص من المواد الكيميائية، وما إلى ذلك)">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>الأخطار الكيميائية المثبتة (مثال ذلك أن تؤدي المادة إلى التآكل أو أن تكون عالية السمّية أو مؤكسدة) :</label>
+                            <input type="text" name="identified_chazard" class="form-control" required
+                                   placeholder="أدخل المخاطر الكيميائية المحددة">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>الأخطار المثبتة (مثال ذلك البقع أو استنشاق بخار الأدخنة وغير ذلك):</label>
+                            <input type="text" name="identified_hazard" class="form-control" required
+                                   placeholder="أدخل المخاطر المحددة">
+                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>موقع الاستخدام (مثال ذلك المنطقة أو القسم الذي تُستخدم فيه هذه المادة):</label>
-                                            <input type="text" name="location" class="form-control" required
-                                                   placeholder="أدخل الموقع المستخدم (ضع في اعتبارك المنطقة أو القسم الذي يتم استخدام المادة الكيميائية فيه">
-                                        </div>
+                                <div class="form-row">
+                                    <div>
+                        <div class="form-group">
+                            <label>الأجهزة المستهدفة:</label>
+                            <input type="text" name="target_organs" class="form-control" required
+                                   placeholder="أدخل الأجهزة المستهدفة">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>الفئات الأكثر عرضة للخطر: </label>
+                            <input type="text" name="who_risk" class="form-control" required
+                                   placeholder="الفئات الأكثر عرضة للخطر: ">
+                        </div>
+                                    </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>وسائل الحماية المطلوبة (مثال ذلك ارتداء قفازات أو نظارات أو لباس العمل أو الأحذية وغير ذلك):</label>
+                            <input type="text" name="protection_required" class="form-control" required
+                                   placeholder="أدخل الحماية المطلوبة">
+                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>الخطر المترتب على الأنشطة (مثال ذلك الاستخدام الكيميائي وإجراء إضافات للمادة والتخلص منها، وغير ذلك):</label>
-                                            <input type="text" name="activity_hazard" class="form-control" required
-                                                   placeholder="أدخل خطر النشاط (ضع في اعتبارك استخدام المواد الكيميائية، وعمل الإضافات، والتخلص من المواد الكيميائية، وما إلى ذلك)">
-                                        </div>
+                                <div class="form-row">
+                                    <div>
+                        <div class="form-group">
+                            <label>هل لا تزال مستخدمة في مكان العمل؟</label>
+                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
+                                <label style="display:inline-flex;gap:4px;align-items:center;">
+                                    <input type="radio" required value="Yes" name="still_used"> نعم
+                                </label>
+                                <label style="display:inline-flex;gap:4px;align-items:center;">
+                                    <input type="radio" required value="No" name="still_used"> لا
+                                </label>
+
+                            </div>
+                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>الأخطار الكيميائية المثبتة (مثال ذلك أن تؤدي المادة إلى التآكل أو أن تكون عالية السمّية أو مؤكسدة) :</label>
-                                            <input type="text" name="identified_chazard" class="form-control" required
-                                                   placeholder="أدخل المخاطر الكيميائية المحددة">
-                                        </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>إرفاق صحيفة البيانات من الشركة المصنّعة: <span class="text-danger"
+                                                          style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                            {{-- <input name="attach_evidence" type="file" class="form-control"
+                                   accept="all"> --}}
+                            <div class="custom-file-input-tag form-control">
+                            <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="all"/>
+                                <label for="fileInput1" class="file-label">
+                                    <span class="file-text">اختيار الملف</span>
+                                    <span class="file-chosen">لم يتم اختيار ملف</span>
+                                </label>
+                            </div>
+                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>الأخطار المثبتة (مثال ذلك البقع أو استنشاق بخار الأدخنة وغير ذلك):</label>
-                                            <input type="text" name="identified_hazard" class="form-control" required
-                                                   placeholder="أدخل المخاطر المحددة">
-                                        </div>
+                                    <div>
+                        <div class="form-group">
+                            <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
+                            <textarea name="any_issues" class="form-control"
+                                      placeholder="أدخل أي مشاكل أخرى:"></textarea>
+                        </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>الأجهزة المستهدفة:</label>
-                                            <input type="text" name="target_organs" class="form-control" required
-                                                   placeholder="أدخل الأجهزة المستهدفة">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>الفئات الأكثر عرضة للخطر: </label>
-                                            <input type="text" name="who_risk" class="form-control" required
-                                                   placeholder="الفئات الأكثر عرضة للخطر: ">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>وسائل الحماية المطلوبة (مثال ذلك ارتداء قفازات أو نظارات أو لباس العمل أو الأحذية وغير ذلك):</label>
-                                            <input type="text" name="protection_required" class="form-control" required
-                                                   placeholder="أدخل الحماية المطلوبة">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>هل لا تزال مستخدمة في مكان العمل؟</label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" required value="Yes" name="still_used"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" required value="No" name="still_used"> لا
-                                                </label>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>إرفاق صحيفة البيانات من الشركة المصنّعة: <span class="text-danger"
-                                                                          style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
-                                            {{-- <input name="attach_evidence" type="file" class="form-control"
-                                                   accept="all"> --}}
-                                            <div class="custom-file-input-tag form-control">
-                                            <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
-                                                <label for="fileInput" class="file-label">
-                                                    <span class="file-text">اختيار الملف</span>
-                                                    <span class="file-chosen">لم يتم اختيار ملف</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ </label>
-                                            <textarea name="any_issues" class="form-control"
-                                                      placeholder="أدخل أي مشاكل أخرى:"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="text-align: right; width: 100%;">
-                                    <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
+                                <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                         <button type="reset" onclick="cosh()" class="am-btn am-btn-outline">
                                         يلغي
                                     </button>
                                         <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
                                     </div>
-                                </div>
-                        </form>
+                            </form>
                     </div>
                 </div>
                 <div class="am-card" style="margin-bottom:16px;">
@@ -332,144 +316,132 @@
                     @csrf
                     <div class="modal-body">
                         <input type="hidden" value="" id="id_feild" name="id">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>اسم المادة الكيميائية / المادة الخطرة:</label>
-                                    <input type="text" name="chemical_name" required class="form-control"
-                                           placeholder="أدخل الاسم الكيميائي">
-                                </div>
+                                                <div class="row">
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>اسم المادة الكيميائية / المادة الخطرة:</label>
+                                <input type="text" name="chemical_name" required class="form-control"
+                                       placeholder="أدخل الاسم الكيميائي">
+                            </div>
+                            </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>نوع المادة (غاز أو سائل أو صلب):</label>
+                                <input type="text" name="chemical_type" required class="form-control"
+                                       placeholder="أدخل النوع الكيميائي">
+                            </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>الوصف الكيميائي (ما هي المكونات الرئيسية):</label>
-                                    <input type="text" name="chemical_desc" required class="form-control"
-                                           placeholder="أدخل الوصف الكيميائي">
-                                </div>
+                            <div class="form-group">
+                                <label>الوصف الكيميائي (ما هي المكونات الرئيسية):</label>
+                                <input type="text" name="chemical_desc" required class="form-control"
+                                       placeholder="أدخل الوصف الكيميائي">
+                            </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>نوع المادة (غاز أو سائل أو صلب):</label>
-                                    <input type="text" name="chemical_type" required class="form-control"
-                                           placeholder="أدخل النوع الكيميائي">
-                                </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>الموقع المستخدم (ضع في اعتبارك المنطقة أو القسم الذي تستخدم فيه المادة الكيميائية):</label>
+                                <input type="text" name="location" required class="form-control"
+                                       placeholder="إدخال الدولة">
+                            </div>
+                            </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>خطر النشاط (ضع في اعتبارك استخدام المواد الكيميائية، وعمل الإضافات، والتخلص من المواد الكيميائية، وما إلى ذلك):</label>
+                                <input type="text" name="activity_hazard" required class="form-control"
+                                       placeholder="أدخل خطر النشاط">
+                            </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>الموقع المستخدم (ضع في اعتبارك المنطقة أو القسم الذي تستخدم فيه المادة الكيميائية):</label>
-                                    <input type="text" name="location" required class="form-control"
-                                           placeholder="إدخال الدولة">
-                                </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>المخاطر الكيميائية المحددة (ضع في اعتبارك المواد المسببة للتآكل، والسامة جدًا، والمؤكسدات، وما إلى ذلك):</label>
+                                <input type="text" name="identified_chazard" required class="form-control"
+                                       placeholder="أدخل المخاطر الكيميائية المحددة" id="identified_chazard">
+                            </div>
+                            </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>المخاطر التي تم تحديدها (ضع في اعتبارك البقع واستنشاق بخار الدخان وما إلى ذلك):</label>
+                                <input type="text" name="identified_hazard" required class="form-control"
+                                       placeholder="أدخل المخاطر المحددة" id="identified_hazard">
+                            </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>خطر النشاط (ضع في اعتبارك استخدام المواد الكيميائية، وعمل الإضافات، والتخلص من المواد الكيميائية، وما إلى ذلك):</label>
-                                    <input type="text" name="activity_hazard" required class="form-control"
-                                           placeholder="أدخل خطر النشاط">
-                                </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>الجهاز المستهدف</label>
+                                <input type="text" name="target_hazard" required class="form-control"
+                                       placeholder="أدخل خطر الهدف المحدد">
+                            </div>
+                            </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Who is at Risk</label>
+                                <input type="text" name="who_risk" required class="form-control"
+                                       placeholder="أدخل من هو في خطر">
+                            </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>المخاطر الكيميائية المحددة (ضع في اعتبارك المواد المسببة للتآكل، والسامة جدًا، والمؤكسدات، وما إلى ذلك):</label>
-                                    <input type="text" name="identified_chazard" required class="form-control"
-                                           placeholder="أدخل المخاطر الكيميائية المحددة" id="identified_chazard">
-                                </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>الحماية المطلوبة (ضع في اعتبارك القفازات أو النظارات أو الملابس أو الأحذية وما إلى ذلك):</label>
+                                <input type="text" name="protection_required" required class="form-control"
+                                       placeholder="الحماية مطلوبة">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>المخاطر التي تم تحديدها (ضع في اعتبارك البقع واستنشاق بخار الدخان وما إلى ذلك):</label>
-                                    <input type="text" name="identified_hazard" required class="form-control"
-                                           placeholder="أدخل المخاطر المحددة" id="identified_hazard">
-                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>الجهاز المستهدف</label>
-                                    <input type="text" name="target_hazard" required class="form-control"
-                                           placeholder="أدخل خطر الهدف المحدد">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Who is at Risk</label>
-                                    <input type="text" name="who_risk" required class="form-control"
-                                           placeholder="أدخل من هو في خطر">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>الحماية المطلوبة (ضع في اعتبارك القفازات أو النظارات أو الملابس أو الأحذية وما إلى ذلك):</label>
-                                    <input type="text" name="protection_required" required class="form-control"
-                                           placeholder="الحماية مطلوبة">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>هل لا تزال مستخدمة في مكان العمل؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input type="radio" value="Yes" name="still_used"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input type="radio" value="No" name="still_used"> لا
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--<div class="col-lg-12">-->
-                            <!--	<div class="form-group">-->
-                            <!--		<label>Evidence:</label>-->
-                            <!--		<input type="text" class="form-control" name="evidence30" placeholder="أدخل الأدلة::">-->
-                            <!--	</div>-->
-                            <!--</div>-->
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>إرفاق صحيفة البيانات من الشركة المصنّعة: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
-                                    {{-- <input name="attach_evidence" type="file" class="form-control"
-                                           accept="all"> --}}
-                                           <div class="custom-file-input-tag form-control">
-                                            <input type="file" id="fileInput" class="input-file" name="attach_evidence" accept="all"/>
-                                                <label for="fileInput" class="file-label">
-                                                    <span class="file-text">اختيار الملف</span>
-                                                    <span class="file-chosen">لم يتم اختيار ملف</span>
-                                                </label>
-                                            </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ 
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>هل لا تزال مستخدمة في مكان العمل؟</label>
+                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
+                                    <label style="display:inline-flex;gap:4px;align-items:center;">
+                                        <input type="radio" value="Yes" name="still_used"> نعم
                                     </label>
-                                    <textarea name="any_issues" class="form-control"
-                                              placeholder="أدخل أي مشاكل أخرى:"></textarea>
+                                    <label style="display:inline-flex;gap:4px;align-items:center;">
+                                        <input type="radio" value="No" name="still_used"> لا
+                                    </label>
                                 </div>
                             </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>إرفاق صحيفة البيانات من الشركة المصنّعة: <span class="text-danger" style="color:#000 !important;">(jpeg, mp3, mp4, .xls, doc)</span></label>
+                                {{-- <input name="attach_evidence" type="file" class="form-control"
+                                       accept="all"> --}}
+                                       <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput2" class="input-file" name="attach_evidence" accept="all"/>
+                                            <label for="fileInput2" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                            </div>
+                            </div>
+                            <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>هل هناك أي مشاكل أو نقاط أخرى ترغب بالإشارة إليها؟ 
+                                </label>
+                                <textarea name="any_issues" class="form-control"
+                                          placeholder="أدخل أي مشاكل أخرى:"></textarea>
+                            </div>
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-12">-->
+                        <!--	<div class="form-group">-->
+                        <!--		<label>Evidence:</label>-->
+                        <!--		<input type="text" class="form-control" name="evidence30" placeholder="أدخل الأدلة::">-->
+                        <!--	</div>-->
+                        <!--</div>-->
+                        </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>

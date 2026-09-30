@@ -103,8 +103,8 @@
                                         <div class="form-group">
                                             <label>إرفاق الأدلة:</label>
                                             <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput" class="input-file" name="attach_evidence" required="required"/>
-                                                <label for="fileInput" class="file-label">
+                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" required="required"/>
+                                                <label for="fileInput1" class="file-label">
                                                     <span class="file-text">اختيار الملف</span>
                                                     <span class="file-chosen">لم يتم اختيار ملف</span>
                                                 </label>
@@ -263,7 +263,13 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>إرفاق الأدلة:</label>
-                                    <input type="file" class="form-control" name="attach_evidence">
+                                    <div class="custom-file-input-tag form-control">
+                                        <input type="file" id="fileInput2" class="input-file" name="attach_evidence">
+                                        <label for="fileInput2" class="file-label">
+                                            <span class="file-text">اختيار الملف</span>
+                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

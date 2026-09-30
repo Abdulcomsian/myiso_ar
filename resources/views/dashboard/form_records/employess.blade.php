@@ -90,8 +90,8 @@
                                             {{-- <input name="employee_cv" type="file" class="form-control"
                                                 accept="image/*,.doc, .docx,.txt,.pdf"> --}}
                                             <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf"/>
-                                                <label for="fileInput" class="file-label">
+                                                <input type="file" id="fileInput1" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf"/>
+                                                <label for="fileInput1" class="file-label">
                                                     <span class="file-text">اختيار الملف</span>
                                                     <span class="file-chosen">لم يتم اختيار ملف</span>
                                                 </label>
@@ -207,7 +207,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>تحميل شهادة التدريب (PDF, jpeg,  png):</label>
-                                            <input name="attach_file" type="file" class="form-control" accept="image/*,.pdf,.jpeg,.png">
+                                            <div class="custom-file-input-tag form-control">
+                                                <input type="file" id="fileInput3" class="input-file" name="attach_file" accept="image/*,.pdf,.jpeg,.png">
+                                                <label for="fileInput3" class="file-label">
+                                                    <span class="file-text">اختيار الملف</span>
+                                                    <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -817,8 +823,8 @@
                                     {{-- <input name="employee_cv" type="file" class="form-control"
                                         accept="image/*,.doc, .docx,.txt,.pdf"> --}}
                                     <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf"/>
-                                        <label for="fileInput" class="file-label">
+                                        <input type="file" id="fileInput2" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf"/>
+                                        <label for="fileInput2" class="file-label">
                                             <span class="file-text">اختيار الملف</span>
                                             <span class="file-chosen">لم يتم اختيار ملف</span>
                                         </label>

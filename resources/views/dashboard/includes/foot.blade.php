@@ -392,15 +392,19 @@
 		</script>
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
-			const fileInput = document.getElementById('fileInput');
-			const fileText = document.querySelector('.file-text');
-			const fileChosen = document.querySelector('.file-chosen');
+			// several pages carry more than one picker, so wire up each of them
+			// rather than only the first on the page
+			document.querySelectorAll('.custom-file-input-tag').forEach(function(box) {
+				const fileInput = box.querySelector('input[type="file"]');
+				const fileChosen = box.querySelector('.file-chosen');
+				if (!fileInput || !fileChosen) return;
 
-			fileInput.addEventListener('change', function() {
-				const fileName = fileInput.value.split(/\\|\//).pop();
-				fileText.style.display = 'none';
-				fileChosen.style.display = 'inline-block';
-				fileChosen.textContent = fileName;
+				fileInput.addEventListener('change', function() {
+					const fileName = fileInput.value.split(/\\|\//).pop();
+					// the button stays put and only the name beside it changes,
+					// the way a native file input behaves
+					fileChosen.textContent = fileName;
+				});
 			});
 			});
 		</script>

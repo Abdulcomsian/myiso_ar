@@ -1679,3 +1679,52 @@ body.am-body {
 /* Row action icons sit on a shared centre line. Without this they align on the
    text baseline, so one button with different inner markup drifts up or down. */
 .am-main td .am-icon-btn { vertical-align: middle; }
+
+/* File picker.
+   A native <input type="file"> draws its own button label ("Choose File") and
+   the browser, not the page, decides that wording - it cannot be translated.
+   So the Arabic pages keep their custom picker, and it is styled here to look
+   like the native control the English pages show: a small grey button followed
+   by the chosen file name. */
+.am-main .custom-file-input-tag.form-control {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+/* The picker must end up exactly as tall as a normal input. An input here is
+   10px padding + 1.5px border either side around a 13.5px/1.5 text line, so its
+   content box is 20px; the button is sized to that same 20px (an 18px line plus
+   its 1px border) instead of adding padding of its own on top. */
+.am-main .file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    line-height: 20px;
+    font-weight: 400;
+    color: inherit;
+    cursor: pointer;
+}
+.am-main .file-label .file-text {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0 10px;
+    line-height: 18px;
+    background: #efefef;
+    color: var(--am-text);
+    border: 1px solid #c4c8d0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.am-main .file-label .file-chosen {
+    display: inline-block;
+    line-height: 20px;
+    color: var(--am-text-muted);
+    font-size: 13px;
+}
