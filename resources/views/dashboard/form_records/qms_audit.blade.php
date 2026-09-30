@@ -993,21 +993,22 @@
                                                             <div class="modal-content">
                                                                 <form action="{{ route('deleteqmsAudit') }}"
                                                                     method="post">
-                                                                    <div class="modal-header"> @csrf
-                                                                        <div class="modal-profile">
+                                                                    <div class="modal-header am-modal__header"> @csrf
+                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                        <div class="modal-profile am-modal__title">
                                                                             <h5>حذف تفاصيل تدقيق نظام إدارة الجودة</h5>
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-body text-center">
                                                                         <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                                                                     </div>
-                                                                    <div class="modal-footer">
+                                                                    <div class="modal-footer am-modal__footer">
                                                                         <input type="hidden" name="id"
                                                                             value="{{ $item->id }}">
-                                                                        <button type="button" class="btn btn-secondary"
+                                                                        <button type="button" class="am-btn am-btn-outline"
                                                                             data-dismiss="modal">لا</button>
                                                                         <button type="submit"
-                                                                            class="btn btn-danger">نعم</button>
+                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -1036,8 +1037,9 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">عرض تفاصيل تدقيق نظام إدارة الجودة</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">عرض تفاصيل تدقيق نظام إدارة الجودة</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 					</a>
                 </div>
@@ -1871,8 +1873,8 @@
                     </div>
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
 
                 </div>
             </div>

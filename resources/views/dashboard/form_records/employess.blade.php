@@ -283,8 +283,9 @@
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="viewcvLabel">عرض
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="viewcvLabel">عرض
                                                                             السيرة الذاتية</h5>
 																			<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																			</a>
@@ -300,7 +301,7 @@
                                                                                 type="application/pdf" />
                                                                         </object>
                                                                     </div>
-                                                                    <div class="modal-footer">
+                                                                    <div class="modal-footer am-modal__footer">
                                                                         <a href="{{ asset($item->cv) }}" download>
                                                                             <h5 class="modal-title"
                                                                                 style="float:right;text-align:Right;">تحميل
@@ -339,8 +340,9 @@
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">إجمالي
+                                                                <div class="modal-header am-modal__header">
+                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
                                                                         الموظفين المدرجين</h5>
 																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																		</a>
@@ -409,8 +411,8 @@
                                                                         </div>
                                                                     </div> -->
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
+                                                                <div class="modal-footer am-modal__footer">
+                                                                    <button type="button" class="am-btn am-btn-outline"
                                                                         data-dismiss="modal">يغلق</button>
                                                                 </div>
                                                             </div>
@@ -483,8 +485,9 @@
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">إجمالي
+                                                                <div class="modal-header am-modal__header">
+                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
                                                                         مهارات الموظفين المدرجة</h5>
 																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																		</a>
@@ -515,8 +518,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
+                                                                <div class="modal-footer am-modal__footer">
+                                                                    <button type="button" class="am-btn am-btn-outline"
                                                                         data-dismiss="modal">يغلق</button>
                                                                 </div>
 
@@ -592,8 +595,9 @@
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">ملخص
+                                                                <div class="modal-header am-modal__header">
+                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">ملخص
                                                                         سجل التدريب</h5>
 																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																		</a>
@@ -646,8 +650,8 @@
 																</div>
 																@endif	
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
+                                                                <div class="modal-footer am-modal__footer">
+                                                                    <button type="button" class="am-btn am-btn-outline"
                                                                         data-dismiss="modal">يغلق</button>
                                                                 </div>
                                                             </div>
@@ -720,21 +724,22 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modallabel">حذف الموظف</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                    <h5 class="modal-title am-modal__title" id="modallabel">حذف الموظف</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="modal-body ">
                     <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer am-modal__footer">
                     <form action="{{ route('employess-delete') }}" method="POST">
                         @csrf
                         <input type="hidden" value="" name="id" id="res_id" />
                         <input type="hidden" name="type" value="" id="type" />
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
-                        <button type="submit" class="btn btn-danger">نعم</button>
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">لا</button>
+                        <button type="submit" class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
                     </form>
                 </div>
             </div>
@@ -747,8 +752,9 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تحرير الموظف</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير الموظف</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -831,9 +837,9 @@
                                 </div>
                             </div> --}}
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-                        <button type="submit" class="btn btn-danger">تحديث</button>
+                    <div class="modal-footer am-modal__footer">
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
+                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
                     </div>
                 </form>
             </div>
@@ -846,8 +852,9 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تحرير الموظف</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير الموظف</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -872,9 +879,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-                        <button type="submit" class="btn btn-danger">تحديث</button>
+                    <div class="modal-footer am-modal__footer">
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
+                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
                     </div>
                 </form>
             </div>
@@ -886,8 +893,9 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تحرير تدريب الموظفين</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تدريب الموظفين</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -918,9 +926,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-                        <button type="submit" class="btn btn-danger">تحديث</button>
+                    <div class="modal-footer am-modal__footer">
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
+                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
                     </div>
                 </form>
             </div>

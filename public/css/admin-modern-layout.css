@@ -1760,6 +1760,27 @@ body.am-body {
     gap: 8px;
 }
 .modal .am-modal__footer > * { margin: 0; }
+/* Two older heading shapes live inside these modals: a Bootstrap .close
+   button instead of the times link, and a .modal-profile div instead of an
+   h5. Both have to read as dark text now that the bar is white. */
+.modal .am-modal__header .close {
+    color: var(--am-text-muted) !important;
+    opacity: 0.8;
+    text-shadow: none;
+    margin-inline-start: auto;
+}
+.modal .am-modal__header .close:hover { color: var(--am-text) !important; opacity: 1; }
+.modal .am-modal__header .modal-profile {
+    margin: 0;
+    padding: 0;
+    text-align: inherit;
+}
+.modal .am-modal__header .modal-profile h5 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--am-text) !important;
+}
 
 /* A long file name must stay inside the picker, not run past its edge.
    The chosen-file text is allowed to shrink and trails off with an ellipsis,

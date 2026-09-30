@@ -105,8 +105,9 @@
 <div class="modal fade" id="kt_modal_customer_plane" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Customer Planes</h5>
+			<div class="modal-header am-modal__header">
+				<span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+				<h5 class="modal-title am-modal__title" id="exampleModalLabel">Customer Planes</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
@@ -175,20 +176,21 @@
 <div class="modal fade" id="kt_modal_user_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Deleting User</h5>
+			<div class="modal-header am-modal__header">
+				<span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+				<h5 class="modal-title am-modal__title" id="exampleModalLabel">Deleting User</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				</button>
 			</div>
 			<div class="modal-body">
 				<p>Are you sure?Do you really want to delete this?.</p>
 			</div>
-			<div class="modal-footer">
+			<div class="modal-footer am-modal__footer">
 				<form action="" method="POST">
 				@csrf
 				@method('DELETE')
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" class="btn btn-danger">Yes</button>
+				<button type="button" class="am-btn am-btn-outline" data-dismiss="modal">No</button>
+				<button type="submit" class="am-btn am-btn-danger"><i class="fa fa-trash"></i> Yes</button>
 				</form>
 			</div>
 		</div>

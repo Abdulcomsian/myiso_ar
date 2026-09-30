@@ -200,20 +200,21 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف مخاطر الحوادث</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف مخاطر الحوادث</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="modal-body">
                     <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer am-modal__footer">
                     <form action="{{ route('deleteRisk') }}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="" id="idform">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
-                        <button type="submit" class="btn btn-danger">نعم</button>
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">لا</button>
+                        <button type="submit" class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
                     </form>
                 </div>
             </div>
@@ -224,8 +225,9 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">عرض تقييمات مخاطر الحوادث</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">عرض تقييمات مخاطر الحوادث</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -320,7 +322,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">يغلق</button>
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
                     </form>
                 </div>
             </div>
@@ -331,8 +333,9 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تحرير تقييمات مخاطر الحوادث</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تقييمات مخاطر الحوادث</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -441,9 +444,9 @@
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">يلغي</button>
-                        <button type="submit" class="btn btn-danger">تحديث</button>
+                    <div class="modal-footer am-modal__footer">
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
+                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
                     </div>
                 </form>
             </div>

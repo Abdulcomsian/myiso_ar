@@ -197,8 +197,9 @@
                                                         aria-labelledby="model3Label" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">رأي
+                                                                <div class="modal-header am-modal__header">
+                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">رأي
                                                                         العميل</h5>
 																		<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																		</a>
@@ -285,11 +286,11 @@
                                                                         </div>
                                                                     </div>
                                             
-                                                                    <button class="btn btn-secondary" type="reset" data-dismiss="modal"
+                                                                    <button class="am-btn am-btn-outline" type="reset" data-dismiss="modal"
                                                                         aria-label="Close" style="margin-right: 6px;">يلغي</button>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
+                                                                <div class="modal-footer am-modal__footer">
+                                                                    <button type="button" class="am-btn am-btn-outline"
                                                                         data-dismiss="modal">يغلق</button>
                                                                 </div>
                                                             </div>
@@ -315,20 +316,21 @@
                                                             <div class="modal-content">
                                                                 <form action="{{ route('delete_customer_review') }}"
                                                                     method="post">
-                                                                    <div class="modal-header text-right"> @csrf
-                                                                        <div class="modal-profile"> حذف تفاصيل مراجعة
+                                                                    <div class="modal-header text-right am-modal__header"> @csrf
+                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                        <div class="modal-profile am-modal__title"> حذف تفاصيل مراجعة
                                                                             العميل </div>
                                                                     </div>
                                                                     <div class="modal-body text-center">
                                                                         <p>هل أنت متأكد أنك تريد إزالة هذا؟</p>
                                                                     </div>
-                                                                    <div class="modal-footer">
+                                                                    <div class="modal-footer am-modal__footer">
                                                                         <input type="hidden" name="id"
                                                                             value="{{ $data->id }}">
-                                                                        <button type="button" class="btn btn-secondary"
+                                                                        <button type="button" class="am-btn am-btn-outline"
                                                                             data-dismiss="modal">لا</button>
                                                                         <button type="submit"
-                                                                            class="btn btn-danger">نعم</button>
+                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -355,8 +357,9 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تحرير تفاصيل تقييم العملاء</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل تقييم العملاء</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 					</a>
                 </div>

@@ -128,8 +128,9 @@
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">حذف
+                                                                <div class="modal-header am-modal__header">
+                                                                    <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف
                                                                         المتطلبات</h5>
 																	<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																	</a>
@@ -137,16 +138,16 @@
                                                                 <div class="modal-body">
                                                                     <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                                                                 </div>
-                                                                <div class="modal-footer">
+                                                                <div class="modal-footer am-modal__footer">
                                                                     <form action="{{ url('deleteRequirement/' . $data->id) }}"
                                                                         method="GET">
                                                                         @csrf
                                                                         <!---input type="text" name="id" value="" id="re_id"--->
 
-                                                                        <button type="button" class="btn btn-secondary"
+                                                                        <button type="button" class="am-btn am-btn-outline"
                                                                             data-dismiss="modal">لا</button>
                                                                         <button type="submit"
-                                                                            class="btn btn-danger">نعم</button>
+                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -172,8 +173,9 @@
                                                         aria-labelledby="model3Label" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                <div class="modal-header am-modal__header">
+                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">
                                                                         المتطلبات المستحقة</h5>
 																	<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																	</a>
@@ -262,8 +264,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
+                                                                <div class="modal-footer am-modal__footer">
+                                                                    <button type="button" class="am-btn am-btn-outline"
                                                                         data-dismiss="modal">يغلق</button>
                                                                 </div>
                                                             </div>

@@ -110,8 +110,9 @@
 <div class="modal fade" id="view-notification-{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Message From Admin</h5>
+													<div class="modal-header am-modal__header">
+														<span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+														<h5 class="modal-title am-modal__title" id="exampleModalLabel">Message From Admin</h5>
 														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 														</button>
 													</div>
@@ -120,12 +121,12 @@
 														<p>&nbsp;</p>
 														<p>{{$item->message}}</p>
 													</div>
-													<div class="modal-footer">								
+													<div class="modal-footer am-modal__footer">								
 													@if ($item->attachement != NULL || $item->attachement)
 													<a target="_blank" href="public/{{$item->attachement}}">View Attachment</a> 
 													@endif
 													
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+											<button type="button" class="am-btn am-btn-outline" data-dismiss="modal">Close</button>
 															
 													</div>
 												</div>

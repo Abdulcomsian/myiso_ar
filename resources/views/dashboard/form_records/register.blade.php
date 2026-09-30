@@ -129,8 +129,9 @@
     <div class="modal fade text-right" id="regViewModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">تفاصيل {{ $module['item_name'] }}</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                    <h5 class="modal-title am-modal__title">تفاصيل {{ $module['item_name'] }}</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
                 <div class="modal-body">
@@ -145,8 +146,8 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">يغلق</button>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
                 </div>
             </div>
         </div>
@@ -156,8 +157,9 @@
     <div class="modal fade text-right" id="regEditModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ $module['edit_title'] }}</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title">{{ $module['edit_title'] }}</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
                 <div class="modal-body">
@@ -181,16 +183,17 @@
             <div class="modal-content">
                 <form action="{{ route($module['key'].'.destroy') }}" method="post">
                     @csrf
-                    <div class="modal-header text-right">
-                        <div class="modal-profile">حذف {{ $module['item_name'] }}</div>
+                    <div class="modal-header text-right am-modal__header">
+                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                        <div class="modal-profile am-modal__title">حذف {{ $module['item_name'] }}</div>
                     </div>
                     <div class="modal-body text-center">
                         <p>هل أنت متأكد أنك تريد إزالة هذا؟</p>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer am-modal__footer">
                         <input type="hidden" name="id" id="regDeleteId">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
-                        <button type="submit" class="btn btn-danger">نعم</button>
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">لا</button>
+                        <button type="submit" class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
                     </div>
                 </form>
             </div>

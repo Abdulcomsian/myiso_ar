@@ -269,8 +269,9 @@
                                                         aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel2">عرض
+                                                                <div class="modal-header am-modal__header">
+                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel2">عرض
                                                                         تقييمات المخاطر</h5>
                                                                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 																	</a>
@@ -558,8 +559,8 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
+                                                                    <div class="modal-footer am-modal__footer">
+                                                                        <button type="button" class="am-btn am-btn-outline"
                                                                             data-dismiss="modal">يغلق</button>
                                                                     </div>
                                                                 </form>
@@ -589,19 +590,20 @@
                                                             <div class="modal-content">
                                                                 <form action="{{ route('delete_assesment') }}"
                                                                     method="post">
-                                                                    <div class="modal-header"> @csrf
-                                                                        <div class="modal-profile"> حذف إدخال </div>
+                                                                    <div class="modal-header am-modal__header"> @csrf
+                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                        <div class="modal-profile am-modal__title"> حذف إدخال </div>
                                                                     </div>
                                                                     <div class="modal-body text-center">
                                                                         <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                                                                     </div>
-                                                                    <div class="modal-footer">
+                                                                    <div class="modal-footer am-modal__footer">
                                                                         <input type="hidden" name="id"
                                                                             value="{{ $data->id }}">
-                                                                        <button type="button" class="btn btn-secondary"
+                                                                        <button type="button" class="am-btn am-btn-outline"
                                                                             data-dismiss="modal">لا</button>
                                                                         <button type="submit"
-                                                                            class="btn btn-danger">نعم</button>
+                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -633,8 +635,9 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تحرير تقييمات المخاطر</h5>
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تقييمات المخاطر</h5>
                     <a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
 					</a>
                 </div>
@@ -819,10 +822,10 @@
 
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    <div class="modal-footer am-modal__footer">
+                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal"
                             style="margin-right:20px;">يلغي</button>
-                        <button type="submit" class="btn btn-primary mx-2">تحديث</button>
+                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
                     </div>
             </div>
         </div>
