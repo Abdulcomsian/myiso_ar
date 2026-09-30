@@ -148,7 +148,7 @@
                                         </tr>
                                     </thead>
                                     <tbody> @php $number = 1; @endphp
-                                        @foreach ($userinfo as $data)
+                                        @forelse ($userinfo as $data)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $number }}</span></td>
                                                 <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->mrdate)) }}</span></td>
@@ -209,7 +209,16 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="9">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-wrench"></i>
+                                                        <p>لم تتم إضافة أي سجلات صيانة بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

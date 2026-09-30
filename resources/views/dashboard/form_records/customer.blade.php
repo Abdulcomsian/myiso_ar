@@ -144,7 +144,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($customers as $item)
+                                        @forelse ($customers as $item)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $item->idNumber }}</span></td>
                                                 <td><span class="am-cell-primary">{{ $item->name }}</span></td>
@@ -168,7 +168,16 @@
 
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="7">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-user-friends"></i>
+                                                        <p>لم تتم إضافة أي عملاء بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

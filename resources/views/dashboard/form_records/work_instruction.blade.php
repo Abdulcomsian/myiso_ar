@@ -177,7 +177,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($work as $data)
+                                        @forelse ($work as $data)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $loop->index + 1 }}</span></td>
                                                 <td><span class="am-cell-primary">{{ $data->workinstruction }}</span></td>
@@ -236,7 +236,16 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="8">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-file-alt"></i>
+                                                        <p>لم تتم إضافة أي تعليمات عمل بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
 
                                     </tbody>
                                 </table>
@@ -268,7 +277,7 @@
                                             $n = 1;
                                             $userinfo = \App\Employee::get();
                                         @endphp-->
-                                        @foreach ($employess as $item)
+                                        @forelse ($employess as $item)
                                             <tr>
                                                 <!--<td><span class="am-cell-sub">{{ $n }}</span></td>-->
                                                 <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
@@ -279,7 +288,16 @@
                                                 <td><span class="am-cell-sub">{{ $item->jobdetails }}</span></td>
                                             </tr>
                                             <!--@php $n++; @endphp-->
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-id-badge"></i>
+                                                        <p>لم تتم إضافة أي موظفين بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

@@ -136,7 +136,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($reviews as $data)
+                                        @forelse ($reviews as $data)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $loop->iteration }}</span></td>
                                                 <td><span class="am-cell-sub">{{ $data->sup_id }}</span></td>
@@ -165,7 +165,16 @@
                                                     </button>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="12">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-star"></i>
+                                                        <p>لم تتم إضافة أي تقييمات موردين بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

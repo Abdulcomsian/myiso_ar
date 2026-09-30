@@ -232,7 +232,7 @@
                                     </thead>
                                     <tbody>
                                         @php $i=1; @endphp
-                                        @foreach ($userData as $item)
+                                        @forelse ($userData as $item)
                                             <tr>
                                                 <!--<td><span class="am-cell-sub">{{ $item->id }}</span></td>-->
                                                 <td>@php echo $i; @endphp</td>
@@ -261,7 +261,16 @@
 
                                             </tr>
                                             @php $i++; @endphp
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-chart-line"></i>
+                                                        <p>لم يتم تسجيل أي مراجعات إدارية بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

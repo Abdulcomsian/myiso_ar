@@ -112,7 +112,7 @@
                                                 </td>
                                             </tr>
                                         @empty
-                                            <tr><td colspan="{{ count($module['columns']) + 2 }}" class="text-center"><span class="am-cell-primary">{{ $module['empty'] }}</span></td></tr>
+                                            <tr><td colspan="{{ count($module['columns']) + 2 }}"><div class="am-empty"><i class="fa {{ $module['icon'] }}"></i><p>{{ $module['empty'] }}</p></div></td></tr>
                                         @endforelse
                                     </tbody>
                                 </table>

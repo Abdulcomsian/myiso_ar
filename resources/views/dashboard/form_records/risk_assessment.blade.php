@@ -246,7 +246,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($assessment as $data)
+                                        @forelse ($assessment as $data)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $i }}</span></td>
                                                 <!--<td><span class="am-cell-sub">{{ $data->id }}</span></td>-->
@@ -614,7 +614,16 @@
 
                                             </tr>
                                             @php $i++  @endphp
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="8">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-user-shield"></i>
+                                                        <p>لم يتم تسجيل أي تقييمات مخاطر بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
 
                                     </tbody>
                                 </table>

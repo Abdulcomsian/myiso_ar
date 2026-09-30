@@ -1,52 +1,37 @@
-{{-- Pagination row, styled like the English pages. Expects $paginator.
-     Shown whenever there is at least one record, the way English shows
-     "1-1 / 1" even on a single page. --}}
-@if ($paginator->total() > 0)
-    @php
-        $last = $paginator->lastPage();
-        $cur = $paginator->currentPage();
-        $from = max(1, $cur - 2);
-        $to = min($last, $from + 4);
-        $from = max(1, $to - 4);
-    @endphp
-    <div class="am-paginator">
-        <div class="am-paginator__info">
-            {{ $paginator->firstItem() }}–{{ $paginator->lastItem() }} / {{ $paginator->total() }}
-        </div>
-        <div class="am-paginator__nav">
-            @if ($paginator->onFirstPage())
-                <span class="am-paginator__btn" style="opacity:.45;">&lsaquo;</span>
-            @else
-                <a class="am-paginator__btn" href="{{ $paginator->previousPageUrl() }}">&lsaquo;</a>
-            @endif
+{{-- Pagination row, laid out exactly like the English pages: the count on one
+     side, a five-page window with ‹ › on the other. Expects $paginator.
 
-            @if ($from > 1)
-                <a class="am-paginator__btn" href="{{ $paginator->url(1) }}">1</a>
-                @if ($from > 2)
-                    <span class="am-paginator__btn" style="border:none;background:none;">…</span>
-                @endif
-            @endif
-
-            @for ($p = $from; $p <= $to; $p++)
-                @if ($p == $cur)
-                    <span class="am-paginator__btn am-paginator__btn--active">{{ $p }}</span>
-                @else
-                    <a class="am-paginator__btn" href="{{ $paginator->url($p) }}">{{ $p }}</a>
-                @endif
-            @endfor
-
-            @if ($to < $last)
-                @if ($to < $last - 1)
-                    <span class="am-paginator__btn" style="border:none;background:none;">…</span>
-                @endif
-                <a class="am-paginator__btn" href="{{ $paginator->url($last) }}">{{ $last }}</a>
-            @endif
-
-            @if ($paginator->hasMorePages())
-                <a class="am-paginator__btn" href="{{ $paginator->nextPageUrl() }}">&rsaquo;</a>
-            @else
-                <span class="am-paginator__btn" style="opacity:.45;">&rsaquo;</span>
-            @endif
-        </div>
+     English drives its buttons over AJAX; the Arabic pages reload, so each
+     page is a link and only the dead ends stay as disabled buttons. The
+     wording is the one the Arabic admin pages already use. --}}
+@php
+    $amCur  = $paginator->currentPage();
+    $amLast = $paginator->lastPage();
+    $amFrom = max(1, $amCur - 2);
+    $amTo   = min($amLast, $amFrom + 4);
+    $amFrom = max(1, $amTo - 4);
+@endphp
+<div class="am-pagination">
+    <div class="am-pagination__info">
+        عرض <strong>{{ $paginator->firstItem() ?? 0 }}–{{ $paginator->lastItem() ?? 0 }}</strong> من
+        <strong>{{ $paginator->total() }}</strong>
     </div>
-@endif
+    <div class="am-pagination__nav">
+        @if ($paginator->onFirstPage())
+            <button type="button" disabled>&lsaquo;</button>
+        @else
+            <a class="am-page-link" href="{{ $paginator->previousPageUrl() }}">&lsaquo;</a>
+        @endif
+
+        @for ($amP = $amFrom; $amP <= $amTo; $amP++)
+            <a class="am-page-link {{ $amP == $amCur ? 'active' : '' }}"
+                href="{{ $paginator->url($amP) }}">{{ $amP }}</a>
+        @endfor
+
+        @if ($paginator->hasMorePages())
+            <a class="am-page-link" href="{{ $paginator->nextPageUrl() }}">&rsaquo;</a>
+        @else
+            <button type="button" disabled>&rsaquo;</button>
+        @endif
+    </div>
+</div>

@@ -213,7 +213,7 @@
                                     $i=1;
 
                                 @endphp
-                                @foreach ($chemical as $data)
+                                @forelse ($chemical as $data)
                                     <?php $counter++; ?>
                                     <tr>
                                         <td><span class="am-cell-sub">{{ $i++}}</span></td>
@@ -268,7 +268,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="7">
+                                            <div class="am-empty">
+                                                <i class="fa fa-flask"></i>
+                                                <p>لم تتم إضافة أي سجلات كيميائية بعد.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                             <!--end: Datatable -->

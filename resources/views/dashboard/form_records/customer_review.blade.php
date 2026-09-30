@@ -159,7 +159,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($customers as $data)
+                                        @forelse ($customers as $data)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $i++ }}</span></td>
                                                 <td><span class="am-cell-sub">{{ $data->cus_id }}</span></td>
@@ -339,7 +339,16 @@
                                                 </td>
 
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="12">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-star"></i>
+                                                        <p>لم تتم إضافة أي تقييمات عملاء بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

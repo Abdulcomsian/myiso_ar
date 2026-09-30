@@ -248,7 +248,7 @@
                                     </thead>
                                     <tbody>
                                         @php $n = 1; @endphp
-                                        @foreach ($userinfo as $item)
+                                        @forelse ($userinfo as $item)
                                             <tr>
                                                 <!--<td><span class="am-cell-sub">{{ $n }}</span></td>-->
                                                 <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
@@ -423,7 +423,16 @@
 
                                             </tr>
                                             @php $n++; @endphp
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="8">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-id-badge"></i>
+                                                        <p>لم تتم إضافة أي موظفين بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
 
                                     </tbody>
                                 </table>
@@ -452,7 +461,7 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach ($employess as $item)
+                                        @forelse ($employess as $item)
                                             <tr>
                                                 <!--<td> { item->skill_id} </td>-->
                                                 <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
@@ -532,7 +541,16 @@
 
 
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-tools"></i>
+                                                        <p>لم يتم تسجيل أي مهارات بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->
@@ -562,7 +580,7 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach ($emptraining as $item)
+                                        @forelse ($emptraining as $item)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
                                                 <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
@@ -660,7 +678,16 @@
                                                 </td>
 
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="7">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-graduation-cap"></i>
+                                                        <p>لا توجد سجلات تدريب بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
 
                                          @foreach ($wp_users as $wpuser)
 										@foreach($wpuser as $user)

@@ -179,7 +179,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $counter = 0; ?>
-                                        @foreach ($calibration as $data)
+                                        @forelse ($calibration as $data)
                                             <?php $counter++; ?>
 
 
@@ -408,7 +408,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="6">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-tachometer-alt"></i>
+                                                        <p>لم تتم إضافة أي سجلات معايرة بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->
@@ -440,7 +449,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $counter = 0; ?>
-                                        @foreach ($calibration as $data)
+                                        @forelse ($calibration as $data)
                                             <?php $counter++; ?>
 
 
@@ -459,7 +468,16 @@
                                                 <td><span class="am-cell-sub">{{ $data->reportRev }}</span></td>
                                                 <td><span class="am-chip {{ strtolower($data->sentence ?? '') === 'pass' ? 'success' : 'danger' }}">{{ $data->sentence }}</span></td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="11">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-tachometer-alt"></i>
+                                                        <p>لم تتم إضافة أي سجلات معايرة بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

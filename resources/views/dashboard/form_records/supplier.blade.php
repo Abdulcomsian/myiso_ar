@@ -159,7 +159,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($supplier as $data)
+                                        @forelse ($supplier as $data)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $data->idnumber }}</span></td>
                                                 <td><span class="am-cell-primary">{{ $data->suppliername }}</span></td>
@@ -299,7 +299,16 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="9">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-truck"></i>
+                                                        <p>لم تتم إضافة أي موردين بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

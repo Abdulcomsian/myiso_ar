@@ -164,7 +164,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($audit as $data)
+                                        @forelse ($audit as $data)
                                             <tr>
                                                 <td><span class="am-cell-primary">{{ $data->activityscenario }}</span></td>
                                                 <td style="text-align:left;white-space:nowrap;"> <button onclick="getDetails({{ json_encode($data) }})"
@@ -182,7 +182,16 @@
                                                 </td>
                                                 <!--<td> </td>-->
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-first-aid"></i>
+                                                        <p>لم يتم تسجيل أي تقييمات لمخاطر الحوادث بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

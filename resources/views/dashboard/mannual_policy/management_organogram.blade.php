@@ -59,6 +59,11 @@
         {{-- @dd($img) --}}
             @if ($img)
                 <img src="{{ $img }}" class="img-fluid">
+            @else
+                <div class="am-empty">
+                    <i class="fa fa-sitemap"></i>
+                    <p>لم يتم رفع أي صورة للمخطط التنظيمي بعد.</p>
+                </div>
             @endif
         </div>
     </div>

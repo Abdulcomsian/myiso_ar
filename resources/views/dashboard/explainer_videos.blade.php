@@ -9,6 +9,7 @@
         </div>
     </div>
 
+    @if ($videos->count())
     <div class="row">
         @foreach($videos as $video)
             <div class="col-md-4 mb-4">
@@ -25,6 +26,16 @@
             </div>
         @endforeach
     </div>
+    @else
+        <div class="am-card">
+            <div class="am-card__body">
+                <div class="am-empty">
+                    <i class="fa fa-play-circle"></i>
+                    <p>لا توجد مقاطع فيديو.</p>
+                </div>
+            </div>
+        </div>
+    @endif
 
 </div>
 @endsection

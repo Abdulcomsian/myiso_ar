@@ -92,7 +92,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $counter = 0; ?>
-                                        @foreach ($requirement as $data)
+                                        @forelse ($requirement as $data)
                                             <?php $counter++; ?>
                                             <tr>
 
@@ -273,7 +273,16 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="6">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-database"></i>
+                                                        <p>لم تتم إضافة أي متطلبات بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

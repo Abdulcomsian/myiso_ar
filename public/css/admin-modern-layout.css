@@ -1798,3 +1798,34 @@ body.am-body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+/* The English pages page through over AJAX, so their pagination controls are
+   buttons; the Arabic pages reload, so theirs are links. A link wears exactly
+   the button's skin. */
+.am-pagination__nav a {
+    min-width: 34px;
+    height: 34px;
+    border: 1px solid var(--am-border);
+    background: #fff;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: var(--am-text);
+    cursor: pointer;
+    transition: all 0.15s;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.am-pagination__nav a:hover {
+    background: var(--am-primary-tint);
+    border-color: var(--am-primary-soft);
+    color: var(--am-primary);
+    text-decoration: none;
+}
+.am-pagination__nav a.active {
+    background: var(--am-primary);
+    color: #fff;
+    border-color: var(--am-primary);
+}

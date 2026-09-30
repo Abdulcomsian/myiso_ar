@@ -432,7 +432,7 @@
                                             @php
                                                 $i = 1;
                                             @endphp
-                                            @foreach ($audit as $data)
+                                            @forelse ($audit as $data)
                                                 <?php $counter++; ?>
                                                 <tr>
                                                     <td><span class="am-cell-sub">{{ $i++ }}</span></td>
@@ -490,7 +490,16 @@
 
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            @empty
+                                                <tr>
+                                                    <td colspan="11">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-clipboard-list"></i>
+                                                            <p>لم يتم تسجيل أي عمليات تدقيق للعمليات بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
                                     <!--end: Datatable -->

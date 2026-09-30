@@ -320,7 +320,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($customers_nonconform as $data)
+                                        @forelse ($customers_nonconform as $data)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $i++ }}</span></td>
                                                 <td>
@@ -360,7 +360,16 @@
 
 
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="10">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-exclamation-triangle"></i>
+                                                        <p>لم يتم تسجيل أي حالات عدم مطابقة بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
 
                                     </tbody>
                                 </table>

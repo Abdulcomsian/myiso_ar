@@ -945,7 +945,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($requirement as $item)
+                                        @forelse ($requirement as $item)
                                             <tr>
                                                 <td><span class="am-cell-sub">{{ $i++ }}</span></td>
                                                 <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->competedDate)) }}</span></td>
@@ -1017,7 +1017,16 @@
 
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="am-empty">
+                                                        <i class="fa fa-shield-alt"></i>
+                                                        <p>لم يتم تسجيل أي تدقيقات لنظام إدارة الجودة بعد.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <!--end: Datatable -->

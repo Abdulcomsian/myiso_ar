@@ -70,7 +70,7 @@
                     @php
                         $i=1;
                     @endphp
-                    @foreach ($interested as $data)
+                    @forelse ($interested as $data)
                     <?php $counter++; ?>
                     <tr>
                         <td><span class="am-cell-sub">{{ $i++}}</span></td>
@@ -85,7 +85,16 @@
                             </div>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="5">
+                                <div class="am-empty">
+                                    <i class="fa fa-database"></i>
+                                    <p>لم تتم إضافة أي أطراف مهتمة بعد.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
