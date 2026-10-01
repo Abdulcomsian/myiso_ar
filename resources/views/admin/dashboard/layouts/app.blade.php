@@ -45,7 +45,7 @@
 
         <div class="am-nav-heading">التواصل</div>
 
-        <div class="am-nav-item am-nav-group {{ Request::is('send_message*') || Request::is('received_Notification*') || Request::is('receive_notifications*') || Request::is('sent_notification*') || Request::is('message*') ? 'open' : '' }}">
+        <div id="admin_notifications" class="am-nav-item am-nav-group {{ Request::is('send_message*') || Request::is('received_Notification*') || Request::is('receive_notifications*') || Request::is('sent_notification*') || Request::is('message*') ? 'open' : '' }}">
             <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
                 <i class="fa fa-envelope"></i>
                 <span>الإخطارات</span>
