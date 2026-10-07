@@ -652,9 +652,9 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل عدم المطابقة.</h5>
                     </div>
-                <div class="form-row">
+                <form action="{{ route('editnonConfirm') }}" method="POST">
+                    <div class="modal-body">
                     <div class="col-md-12 p-3">
-                        <form action="{{ route('editnonConfirm') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="" id="editid">
                             {{-- <div class="form-group">
@@ -869,13 +869,13 @@
                                         name="CustomerName" placeholder="Enter Customer Name" id="customer_name">
                                 </div>
                             </div> --}}
-                            <div class="modal-footer am-modal__footer">
+                        </div>
+                    </div>
+                    <div class="modal-footer am-modal__footer">
                                 <button type="reset" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
                                 <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
                             </div>
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

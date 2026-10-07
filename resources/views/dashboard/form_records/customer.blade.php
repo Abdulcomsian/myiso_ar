@@ -230,8 +230,8 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل العميل</h5>
                     </div>
-                <div class="modal-body">
-                    <form action="{{ route('editCustomers') }} " id="editcust" method="POST">
+                <form action="{{ route('editCustomers') }} " id="editcust" method="POST">
+                    <div class="modal-body">
                         @csrf
 
                         <input type="hidden" name="id" id="id_feild" value="">
@@ -287,12 +287,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
+                    </div>
+                    <div class="modal-footer am-modal__footer">
                             <button type="button" class="am-btn am-btn-outline" data-dismiss="modal" aria-label="Close">يلغي</button>
                             <button type="submit" class="am-btn am-btn-primary">تحديث</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

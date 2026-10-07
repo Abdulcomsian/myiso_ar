@@ -186,17 +186,17 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title">{{ $module['edit_title'] }}</h5>
                     </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route($module['key'].'.update') }}">
+                <form method="POST" action="{{ route($module['key'].'.update') }}">
+                    <div class="modal-body">
                         @csrf
                         <input type="hidden" name="id">
                         @include('dashboard.form_records.partials.register_fields', ['mode' => 'edit', 'bootstrap' => true])
-                        <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
+                    </div>
+                    <div class="modal-footer am-modal__footer">
                             <button class="am-btn am-btn-outline" type="button" data-dismiss="modal">يلغي</button>
                             <button class="am-btn am-btn-primary" type="submit">تحديث</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

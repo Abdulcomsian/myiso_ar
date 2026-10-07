@@ -398,8 +398,8 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل تقييم العملاء</h5>
                     </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('editCustomerReview') }} " enctype="multipart/form-data">
+                <form method="POST" action="{{ route('editCustomerReview') }} " enctype="multipart/form-data">
+                    <div class="modal-body">
                         @csrf
                         <input type="hidden" name="id" id="editid">
                                                 <div class="form-group row">
@@ -486,13 +486,13 @@
                                 <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
                             </div>
                         </div> --}}
-                        <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
+                    </div>
+                    <div class="modal-footer am-modal__footer">
                             <button class="am-btn am-btn-outline" type="reset" data-dismiss="modal"
                             aria-label="Close">يلغي</button>
                             <button class="am-btn am-btn-primary" type="submit">تحديث</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
