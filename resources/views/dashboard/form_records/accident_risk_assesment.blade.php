@@ -6,38 +6,33 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>تقييمات مخاطر الحوادث</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="تقييمات مخاطر الحوادث" aria-label="تقييمات مخاطر الحوادث">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>تقييمات مخاطر الحوادث</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <h5>النطاق:</h5>
-                                <p>يتضمن هذا الإجراء تفاصيل حول السيناريوهات المحتملة لوقوع حوادث، ويجري مقارنة للمخاطر أو العواقب
-                                المترتبة على وقوع مثل هذه الحوادث. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="accidentRiskForm()" class="am-btn am-btn-primary">إضافة تقييم مخاطر وقوع حوادث</a>
                             </div>
                         </div>
                         <div class="accident_risk_from_div">
-                            <form method="POST" action="{{ route('accident_risk') }}" enctype="multipart/form-data">
+                            <form class="am-inline-form open" method="POST" action="{{ route('accident_risk') }}" enctype="multipart/form-data" style="margin:16px 20px;">
                                 @csrf
                                                                 <div class="form-row">
                                     <div style="grid-column:1/-1;">
                                         <div class="form-group">
-                                            <label>سيناريو – صِف النشاط</label><br>
+                                            <label>سيناريو – صِف النشاط</label>
                                             <input type="text" class="form-control" placeholder="أدخل النشاط" required
                                                 name="activityscenario">
                                         </div>
@@ -47,7 +42,7 @@
                                     <div>
                                         <div class="form-group">
                                             <label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى
-                                                الاحتمالية الأعلى)</label><br>
+                                                الاحتمالية الأعلى)</label>
                                             <input type="number" class="form-control" min="1" max="6"
                                                 required name="risklikehood" placeholder="أدخل الاحتمالية"
                                                 onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
@@ -143,8 +138,8 @@
                                     </div>
                                 </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" onclick="accidentRiskForm()" class="am-btn am-btn-outline">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="reset" onclick="accidentRiskForm()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -205,6 +200,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">تقييمات مخاطر الحوادث</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">تقييم مكتوب يتناول ما قد يُلحق الأذى بالأشخاص، وما قد يحدث، ومدى احتمال وقوعه، ومدى خطورته، وما تتخذه من تدابير للحدّ من احتمال وقوعه. ولا ينبغي الخلط بينه وبين تقييمات المخاطر.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">تُقيَّم المخاطر هنا مرتين عن قصد؛ إذ يمثّل التقييم الأول مستوى الخطر قبل اتخاذ أي إجراء، بينما يمثّل التقييم الثاني مستوى الخطر بعد تطبيق تدابير التحكم. والفارق بين التقييمين هو دليلك على أن تدابير السلامة فعّالة بالفعل، وهذا تحديدًا ما يبحث عنه المدقق.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة تقييم.</li>
+                        <li style="margin-bottom:6px;">صِف السيناريو، وما قد يحدث من خلل، ومن قد يتضرر منه.</li>
+                        <li style="margin-bottom:6px;">قيّم الخطر الأولي: احتمال وقوعه مضروبًا في مدى خطورته.</li>
+                        <li style="margin-bottom:6px;">دوّن تدابير الوقاية التي طبّقتها.</li>
+                        <li style="margin-bottom:6px;">قيّم الخطر المُعدَّل بعد تطبيق تلك التدابير.</li>
+                        <li>راجِع التقييم بعد أي حادث، أو أي تغيير في طريقة أداء العمل، ومرة واحدة سنويًا على الأقل.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">
@@ -242,14 +272,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>سيناريو – صِف النشاط:</label><br>
+                                    <label>سيناريو – صِف النشاط:</label>
                                     <input type="text" class="form-control" required name="activityscenario">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى
-                                        الاحتمالية الأعلى):</label><br>
+                                        الاحتمالية الأعلى):</label>
                                     <input type="number" class="form-control" min="1" max="6" required
                                         name="risklikehood"
                                         onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
@@ -350,7 +380,7 @@
                                                 <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>سيناريو – صِف النشاط</label><br>
+                                    <label>سيناريو – صِف النشاط</label>
                                     <input type="text" class="form-control" required name="activityscenario">
                                 </div>
                             </div>
@@ -359,7 +389,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>احتمالية وقوع السيناريو – يرجى إدخال رقم بين 1 – 6 (بحيث يشير الرقم 6 إلى
-                                        الاحتمالية الأعلى)</label><br>
+                                        الاحتمالية الأعلى)</label>
                                     <input type="number" class="form-control validate_number" min="1"
                                         max="6" required name="risklikehood"
                                         onkeypress='return event.charCode >= 48 && event.charCode <= 57'>

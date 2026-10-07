@@ -4,30 +4,21 @@
     <!-- begin:: Content -->
     <div class="am-content">
         <div class="am-page-header">
-            <div>
-                <h2>{{ $module['title'] }}</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="{{ $module['title'] }}" aria-label="{{ $module['title'] }}">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>{{ $module['title'] }}</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>{{ $module['subtitle'] }}</p>
-                                <p>
-                                <strong>{{ $module['info_title'] }}</strong>
-                                {{ implode('، ', $module['info_items']) }}.
-                                لإضافة سجل، يرجى النقر على زر "{{ $module['add_label'] }}".
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    @if (session('msg'))
+@if (session('msg'))
                         <div class="alert alert-success text-right">{{ session('msg') }}</div>
                     @endif
                     @if ($errors->any())
@@ -38,21 +29,21 @@
                         </div>
                     @endif
 
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 {{-- customerReview() (foot.blade.php) toggles .customer_review_from_div --}}
                                 <a onclick="customerReview()" class="am-btn am-btn-primary">{{ $module['add_label'] }}</a>
                             </div>
                         </div>
                         <div class="customer_review_from_div" @if (old('_form') === 'add') style="display:block;" @endif>
-                            <form method="POST" action="{{ route($module['key'].'.store') }}">
+                            <form class="am-inline-form open" method="POST" action="{{ route($module['key'].'.store') }}" style="margin:16px 20px;">
                                 @csrf
                                 <input type="hidden" name="_form" value="add">
                                 @include('dashboard.form_records.partials.register_fields', ['mode' => 'add', 'bootstrap' => true])
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button class="am-btn am-btn-outline" type="reset" onclick="customerReview()">يلغي</button>
-                                    <button class="am-btn am-btn-primary" type="submit">حفظ</button>
+                                    <button class="am-btn am-btn-outline am-btn-sm" type="reset" onclick="customerReview()">يلغي</button>
+                                    <button class="am-btn am-btn-primary am-btn-sm" type="submit">حفظ</button>
                                 </div>
                             </form>
                         </div>
@@ -126,6 +117,41 @@
     </div>
 
     {{-- View modal --}}
+    {{-- Page guide --}}
+    @if (!empty($module['guide']))
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">{{ $module['guide']['eyebrow'] }}</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">{{ $module['guide']['title'] }}</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    @foreach ($module['guide']['sections'] as $gs)
+                        <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">{{ $gs['heading'] }}</h5>
+                        @foreach ($gs['body'] as $gp)
+                            <p style="margin:0 0 16px;">{{ $gp }}</p>
+                        @endforeach
+                        @if ($loop->last && !empty($module['guide']['steps']))
+                            <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                                @foreach ($module['guide']['steps'] as $gstep)
+                                    <li @if (!$loop->last) style="margin-bottom:6px;" @endif>{{ $gstep }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="modal fade text-right" id="regViewModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" style="max-width:760px;" role="document">
             <div class="modal-content">

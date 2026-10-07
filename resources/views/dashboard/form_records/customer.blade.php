@@ -11,37 +11,31 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>العملاء</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="العملاء" aria-label="العملاء">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>العملاء</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>يجب إدراج العملاء حتى يمكن إجراء عمليات التدقيق الداخلية عند تقييمات التسليم/جودة الخدمة، لكن تُستخدم
-                                أيضًا للمساعدة في استبيانات رضا العملاء.</p>
-                                <p> لإضافة سجل، انقر على الزر "إضافة عميل". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد تعديله.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    @if (Session::has('Error'))
+@if (Session::has('Error'))
                         <h5 class="text-danger"> {{ Session::get('Error') }} </h5>
                     @endif
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="customerForm()" class="am-btn am-btn-primary">إضافة عملاء:</a>
                             </div>
                         </div>
                         <div class="customer_from_div">
-                            <form action="{{ route('customerform') }} " id="addcust" method="POST">
+                            <form class="am-inline-form open" action="{{ route('customerform') }} " id="addcust" method="POST" style="margin:16px 20px;">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -63,7 +57,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>اسم العميل: </label><br>
+                                            <label>اسم العميل: </label>
                                             <input type="text" class="form-control" required name="name"
                                                 id="name" placeholder="أدخل اسم العميل:">
                                         </div>
@@ -116,8 +110,8 @@
                                 </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button onclick="customerForm()" type="reset"
-                                    class="am-btn am-btn-outline">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    class="am-btn am-btn-outline am-btn-sm">يلغي</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -193,6 +187,41 @@
         <!--End::Section-->
     </div>
 
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">العملاء</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">دليل عناوين للجهات التي تبيع لها، يتضمن اسم الشركة وعنوانها ورقم الهاتف والبريد الإلكتروني وجهة الاتصال الرئيسية لديها. ويُغذّي هذا السجل قسم تقييم العملاء واستبيانات الرضا.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">لا يمكن الاستفادة من أي وظيفة أخرى متعلقة بالعملاء قبل إدراجهم هنا. إذ تتحقق عمليات التدقيق الداخلي من جودة التسليم والخدمة لكل عميل على حدة، وسيرغب المدقق في التأكد من أن هذه الفحوصات تشمل عملاء حقيقيين لا أمثلة افتراضية.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة عميل.</li>
+                        <li style="margin-bottom:6px;">أدخِل اسم الشركة وعنوانها ورقم الهاتف والبريد الإلكتروني.</li>
+                        <li style="margin-bottom:6px;">أضِف اسم جهة الاتصال الرئيسية التي تتعامل معها يوميًا.</li>
+                        <li style="margin-bottom:6px;">حافظ على تحديث السجل، بإضافة العملاء الجدد فور التعاقد معهم، وحذف من توقفت عن التعامل معهم.</li>
+                        <li style="margin-bottom:6px;">بعد إدراج العميل هنا، يمكنك تقييم الخدمة المقدمة له ضمن قسم تقييم العملاء.</li>
+                        <li>إذا كان لديك آلاف العملاء لمرة واحدة: اجمع آراء شريحة ممثِّلة منهم من خلال استبيانات أو تقييمات ما بعد الشراء، وتابِع الشكاوى، وقِس مستوى الرضا كل ربع سنة.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="EditCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" style="max-width:820px;" role="document">
@@ -209,7 +238,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>رقم تعريف العميل: </label><br>
+                                    <label>رقم تعريف العميل: </label>
                                     <input type="number" class="form-control validate_number" name="idNumber"
                                         id="editidNumber" placeholder="أدخل رقم تعريف العميل" required>
                                     <span id="editnumbererror" class="text-dagner"></span>
@@ -217,7 +246,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>اسم العميل: </label><br>
+                                    <label>اسم العميل: </label>
                                     <input type="text" class="form-control" name="name"
                                         placeholder="أدخل اسم العميل:" required>
                                 </div>
@@ -285,7 +314,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label> رقم تعريف العميل: </label><br>
+                                    <label> رقم تعريف العميل: </label>
                                     <input type="number" readonly class="form-control" name="idNumber"
                                         placeholder="أدخل رقم تعريف العميل">
 
@@ -293,7 +322,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label> اسم العميل: </label><br>
+                                    <label> اسم العميل: </label>
                                     <input type="text" readonly class="form-control" name="name"
                                         placeholder="أدخل اسم العميل:">
                                 </div>

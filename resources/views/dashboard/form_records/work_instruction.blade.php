@@ -6,42 +6,39 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>إرشادات العمل</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="إرشادات العمل" aria-label="إرشادات العمل">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>إرشادات العمل</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>يشار إلى تعليمات العمل أيضًا باسم العمليات. ويتم استخدامها كدليل خطوة بخطوة لكيفية إجراء نشاط في مكان العمل. ويجب استخدام هذا القسم لإنشاء أنشطة يتم تحديدها لاحقًا لإجراء عمليات تدقيق داخلية من عمليات تدقيق العمليات الخاصة بك. . إذا كنت تستخدم مستندات خارجية لهذا النظام، فلا بأس طالما تمت الإشارة إليها هنا. قم بذلك عن طريق تسجيل تفاصيل تعليمات العمل ووضع ملخص مختصر في قسم النطاق.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="workInstructionFrom()" class="am-btn am-btn-primary">إضافة تعليمات العمل</a>
                             </div>
                         </div>
                         <div class="work_instruction_from_div">
-                            <form action="{{ route('workinstructions') }} " method="POST" class="am-form">
+                            <form action="{{ route('workinstructions') }} " method="POST" class="am-inline-form open" style="margin:16px 20px;">
                                 @csrf
                                 <div class="form-row">
                                     <div>
 
-                                            <label>تعليمات العمل / عنوان العملية:</label><br>
+                                            <label>تعليمات العمل / عنوان العملية:</label>
                                             <input type="text" class="form-control" name="workinstruction" placeholder="إضافة تعليمات/عملية العمل"
                                                 required="required">
                                     </div>
                                     <div>
 
-                                            <label>الرقم المرجعي لإرشادات العمل:</label><br>
+                                            <label>الرقم المرجعي لإرشادات العمل:</label>
                                             <input type="text" class="form-control" name="instructionref"
                                                 required="required">
                                     </div>
@@ -151,8 +148,8 @@
                                 </div>
 
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" class="am-btn am-btn-outline" onclick="closeform();">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="reset" class="am-btn am-btn-outline am-btn-sm" onclick="closeform();">يلغي</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -306,6 +303,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">تعليمات العمل</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هي؟</h5>
+                    <p style="margin:0 0 16px;">أدلة تفصيلية خطوة بخطوة توضح كيفية تنفيذ مهمة معينة في شركتك. وهي بسيطة وعملية، ومكتوبة بطريقة تمكن الموظفين الجدد من اتباعها. ولكنها تشمل أيضًا الأنشطة الصعبة في الشركة التي تتطلب تعليمات مفصلة لتجنب الأخطاء. على سبيل المثال، خطط الطوارئ مثل الإخلاء في حالة الحريق، أو انسكاب المواد الكيميائية، أو انقطاع التيار الكهربائي.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">لماذا هي مهمة؟</h5>
+                    <p style="margin:0 0 16px;">تحول التعليمات المكتوبة طريقة أداء شخص ما لمهمة ما إلى طريقة أداء الشركة لها، بحيث يستمر العمل عند غياب ذلك الشخص. كما أنها توفر لمدقق الحسابات الداخلي عملية محددة للتدقيق، حيث تتحقق عمليات تدقيق العمليات من اتباع جميع تعليمات العمل بشكل صحيح.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على "إضافة تعليمات العمل".</li>
+                        <li style="margin-bottom:6px;">أعطها عنوانًا واضحًا ورقمًا مرجعيًّا.</li>
+                        <li style="margin-bottom:6px;">حدد النطاق: المهمة التي تغطيها وأين تنطبق.</li>
+                        <li style="margin-bottom:6px;">اكتب الخطوات بلغة واضحة، بالترتيب الذي يتم تنفيذها به فعليًا، بحيث يمكن لأي شخص اتباعها.</li>
+                        <li style="margin-bottom:6px;">سجل اسم الشخص الذي قام بتجميعها، وتاريخ الإصدار، ورقم المراجعة.</li>
+                        <li>عند تغيير أي جزء، أعد إصدار الوثيقة بالكامل وارفع رقم المراجعة.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">
@@ -343,13 +375,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>عنوان إرشادات العمل:</label><br>
+                                    <label>عنوان إرشادات العمل:</label>
                                     <input type="text" readyonly disabled class="form-control" name="workinstruction">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>الرقم المرجعي لإرشادات العمل:</label><br>
+                                    <label>الرقم المرجعي لإرشادات العمل:</label>
                                     <input type="text" readyonly disabled class="form-control" name="instructionref">
                                 </div>
                             </div>
@@ -516,14 +548,14 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
 
-                                    <label>عنوان إرشادات العمل:</label><br>
+                                    <label>عنوان إرشادات العمل:</label>
                                     <input type="text" class="form-control" name="workinstruction">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
 
-                                    <label>الرقم المرجعي لإرشادات العمل:</label><br>
+                                    <label>الرقم المرجعي لإرشادات العمل:</label>
                                     <input type="text" class="form-control" name="instructionref">
                                             </div>
                                         </div>

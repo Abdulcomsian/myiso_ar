@@ -6,33 +6,28 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>عدم المطابقة</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="عدم المطابقة" aria-label="عدم المطابقة">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>عدم المطابقة</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>يحدث عدم التأكيد عندما لا يفي شيء ما بالمواصفات أو المتطلبات بطريقة ما - في الخدمات أو المنتجات أو العمليات أو البضائع من المورد أو الموظفين. هناك نوعان من حالات عدم المطابقة، الصغرى والكبرى. من الأمثلة على حالات عدم المطابقة البسيطة وجود خطأ في إصدار الفواتير. من الأمثلة على حالات عدم التأكيد الرئيسية قيام الموظفين بسرقة ممتلكات الشركة.</p>
-                                <p>لتسجيل حالة عدم مطابقة، انقر على زر "إضافة حالة عدم مطابقة" واتبع الخطوات الظاهرة لتوضيح الحالة
-                                بالتفصيل.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="nonConformities()" class="am-btn am-btn-primary">إضافة عدم المطابقة</a>
                             </div>
                         </div>
                         <div class="non_conformities_from_div">
-                            <form action=" {{ route('nonConfromForm') }} " method="POST">
+                            <form class="am-inline-form open" action=" {{ route('nonConfromForm') }} " method="POST" style="margin:16px 20px;">
                                 @csrf
                                 <input type="hidden" name="user_id2" id="user_id2" value="{{ $userid }}" />
                                                                 <div class="form-row">
@@ -256,8 +251,8 @@
                                 {{-- </div> --}}
 
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" onclick="nonConformities()" class="am-btn am-btn-outline">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="reset" onclick="nonConformities()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -383,6 +378,41 @@
         <!--End::Section-->
     </div>
 
+
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">حالات عدم المطابقة</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">سجل بكل ما حدث فيه خلل: منتج أو خدمة لم تستوفِ المواصفات، أو عملية لم يُلتزم بها، أو مورّد أخلّ بالتزاماته، أو خطأ ارتكبه أحد الموظفين. وتعني بسيطة أمرًا محدود الأثر، كخطأ في الفوترة، بينما تعني جسيمة أمرًا خطيرًا، كسوء السلوك أو مشكلة قد تُلحق الأذى بأحد.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">لا يبحث المدققون عن سجل خالٍ من الملاحظات. فالسجل الفارغ لا يوحي بمنشأة لا تقع فيها أخطاء، بل بمنشأة لا يُبلَّغ فيها عن الأخطاء. وما يريدون رؤيته هو أنك تكتشف المشكلات وتدوّنها وتعالجها. ويُعد هذا السجل من أكثر السجلات التي تخضع للفحص الدقيق خلال التدقيق عن بُعد.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما المطلوب مني؟</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة حالة عدم مطابقة فور حدوث الخلل، لا بعد أسابيع.</li>
+                        <li style="margin-bottom:6px;">حدّد ما إذا كانت الحالة بسيطة أو جسيمة.</li>
+                        <li style="margin-bottom:6px;">سجّل اسم من أبلغ عنها، وصِف ما حدث بعبارات واضحة.</li>
+                        <li style="margin-bottom:6px;">اختر الفئة التي تفسّر السبب على النحو الأمثل، مثل العامل البشري أو التخطيط.</li>
+                        <li style="margin-bottom:6px;">سجّل ما تم اتخاذه لتصحيح الوضع، وأدخِل تاريخ إغلاق الحالة.</li>
+                        <li>في الحالات الجسيمة أو المتكررة، اتبع الإجراء P2 – الإجراءات التصحيحية.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade text-right" id="nonconfirmDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

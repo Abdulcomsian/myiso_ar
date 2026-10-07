@@ -396,7 +396,7 @@ Route::group(['middleware' => ['auth']], function ()
     //User msgs
     Route::post('/send_msg_to_admin', 'UserMsgController@send_msg_to_admin');
     Route::get('/faq', 'UserInfoController@the_faqs');
-    Route::get('/explainer_videos', 'UserInfoController@explainer_videos');
+    // Route::get('/explainer_videos', 'UserInfoController@explainer_videos');   // hidden on the client's request - may come back
     Route::get('/userDownload', 'UserInfoController@userDownload')->name("user.download");
     Route::get('/quick_links', 'UserInfoController@quick_links');
     Route::post('/remove_iso', 'UserInfoController@remove_iso');

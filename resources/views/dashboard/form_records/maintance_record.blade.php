@@ -6,40 +6,33 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>سجلات الصيانة</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="سجلات الصيانة" aria-label="سجلات الصيانة">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>سجلات الصيانة</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>تنفيذ فحوصات الصيانة الدورية والإصلاحات يعد أمرًا ضروريًا للحفاظ على الإنتاج والخدمة. يجب تنفيذ
-                                مراجعات الصيانة داخل بيئة العمل، بما في ذلك المعدات، شهريًا، أو كل ثلاثة أشهر، أو كل ستة أشهر أو
-                                سنويًا، وفقًا لحجم العمل وطبيعته.</p>
-                                <p>لإضافة سجل، انقر على الزر "إضافة سجل صيانة". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد
-                                تعديله أو حذفه.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="maintanceRecordForm()" class="am-btn am-btn-primary">إضافة سجل صيانة</a>
                             </div>
                         </div>
                         <div class="maintance_record_from_div">
-                            <form action="{{ route('maintain_rec') }} " method="POST" enctype="multipart/form-data">
+                            <form class="am-inline-form open" action="{{ route('maintain_rec') }} " method="POST" enctype="multipart/form-data" style="margin:16px 20px;">
                                 @csrf
                                                                 <div class="form-row">
                                     <div>
                                         <div class="form-group">
-                                            <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label><br>
+                                            <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label>
                                             <input type="date" max="2999-12-31" class="form-control" name="mrdate"
                                                 required>
                                         </div>
@@ -116,13 +109,13 @@
                                 </div>
                                 {{-- <div class="col-lg-6">
                     					<div class="form-group">
-											<label>Maintenance ID Number (See table below. For amendments only):</label><br>
+											<label>Maintenance ID Number (See table below. For amendments only):</label>
 											<input type="number" class="form-control" name="mid">
 										</div>
                     				</div> --}}
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" onclick="maintanceRecordForm()" class="am-btn am-btn-outline">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="reset" onclick="maintanceRecordForm()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -232,6 +225,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">سجلات الصيانة</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">سجل بأعمال الإصلاح والخدمة والفحص التي تُجرى على المعدات والمركبات والمباني، يوضح ما تم إنجازه، وأين، ومن قام به، وما تم رصده.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">المعدات التي لا تحظى بالعناية تتعطل، والأعطال تؤثر في الجودة والسلامة معًا. ويُثبت هذا السجل أنك تعتني بالمعدات بصورة مخططة، لا عند حدوث العطل فقط. وهو يختلف عن سجل المعايرة؛ فالمعايرة تتعلق بالدقة، أما الصيانة فتتعلق بالحالة.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة سجل صيانة.</li>
+                        <li style="margin-bottom:6px;">أدخِل التاريخ، والمعدّة وموقعها، واستخدم ملصق «تحت الصيانة» أثناء العمل.</li>
+                        <li style="margin-bottom:6px;">صِف العمل أو الفحص الذي تم تنفيذه.</li>
+                        <li style="margin-bottom:6px;">دوّن أي ملاحظات رصدتها، وأي إجراء اتُّخذ بناءً عليها.</li>
+                        <li style="margin-bottom:6px;">سجّل اسم من قام بالعمل.</li>
+                        <li>أي عمل يلزم تنفيذه بصورة دورية ينبغي إضافته أيضًا إلى المتطلبات المستحقة لتصلك التذكيرات.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">
@@ -271,13 +299,13 @@
                         <div class="row">
                             {{-- <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance ID Number (See table below. For amendments only):</label><br>
+                                <label>Maintenance ID Number (See table below. For amendments only):</label>
                                 <input type="number" class="form-control" name="mid">
                             </div>
                         </div> --}}
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label><br>
+                                    <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label>
                                     <input type="date" max="2999-12-31" class="form-control" name="mrdate">
                                 </div>
                             </div>
@@ -379,13 +407,13 @@
                         <div class="row">
                             {{-- <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Maintenance ID Number (See table below. For amendments only):</label><br>
+                                <label>Maintenance ID Number (See table below. For amendments only):</label>
                                 <input type="number" class="form-control" name="mid" disabled>
                             </div>
                         </div> --}}
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label><br>
+                                    <label>تاريخ سجل الصيانة (يوم/شهر/سنة):</label>
                                     <input type="date" max="2999-12-31" class="form-control" name="mrdate" disabled>
                                 </div>
                             </div>

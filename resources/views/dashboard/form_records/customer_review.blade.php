@@ -6,38 +6,33 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>مراجعات العملاء</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="مراجعات العملاء" aria-label="مراجعات العملاء">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>مراجعات العملاء</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>تقييمات العملاء هي أداة لمراقبة وتصنيف مستويات الأداء التي يقدمها عملاؤك، ويمكن لمؤشر الأداء هذا أن يستهدف جميع مجالات الاتصال مع العميل. على سبيل المثال: "جودة الخدمة أو المنتج" "دقة وقت التسليم" "مداراة موظفينا" أو ما شابه ذلك وذات صلة</p>
-                                <p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم عميل". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة
-                                بالقيد المراد تعديله. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="customerReview()" class="am-btn am-btn-primary">إضافة تقييم عميل </a>
                             </div>
                         </div>
                         <div class="customer_review_from_div">
-                            <form method="POST" action="{{ route('customer_rview') }} " enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('customer_rview') }} " class="am-inline-form open" enctype="multipart/form-data" style="margin:16px 20px;">
                                 @csrf
                                                                 <div class="form-row">
                                     <div>
                                         <div class="form-group">
-                                            <label>رقم تعريف العميل: </label><br>
+                                            <label>رقم تعريف العميل: </label>
                                             <!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
                                             <select class="form-control" name="cus_id" required="required">
                                                 <option value="" selected disabled>يرجى اختيار رقم تعريف العميل
@@ -51,7 +46,7 @@
                                     </div>
                                     <div>
                                         <div class="form-group">
-                                        	<label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                        	<label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label>
                                         	<input class="form-control" type="text" name="product_activity_area" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
                                         </div>
                                     </div>
@@ -99,13 +94,13 @@
                                 <div class="form-row">
                                     <div style="grid-column:span 2;">
                                         <div class="form-group">
-                                            <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
-                                            <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+                                            <label>ملاحظات</label>
+                                            <textarea required class="form-control" name="other_issue" required="required"></textarea>
                                         </div>
                                     </div>
                                     <div style="grid-column:span 2;">
                                         <div class="form-group">
-                                            <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
+                                            <label>إرفاق دليل <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
                                             <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
                                             {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
                                             {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
@@ -121,13 +116,13 @@
                                 </div>
                                 {{-- <div class="col-lg-6">
                     					<div class="form-group">
-											<label>Customer Review ID Number (See table below. For amendments only):</label><br>
+											<label>Customer Review ID Number (See table below. For amendments only):</label>
 											<input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
 										</div>
                     				</div> --}}
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button class="am-btn am-btn-outline" type="reset" onclick="customerReview()">يلغي</button>
-                                    <button class="am-btn am-btn-primary" type="submit">يُقدِّم</button>
+                                    <button class="am-btn am-btn-outline am-btn-sm" type="reset" onclick="customerReview()">يلغي</button>
+                                    <button class="am-btn am-btn-primary am-btn-sm" type="submit">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -207,20 +202,20 @@
                                                                     <div class="row">
                                                                         {{-- <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Customer Review ID Number (See table below. For amendments only):</label><br>
+                                                                            <label>Customer Review ID Number (See table below. For amendments only):</label>
                                                                             <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
                                                                         </div>
                                                                     </div> --}}
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>رقم هوية العميل:</label><br>
+                                                                                <label>رقم هوية العميل:</label>
                                                                                 <input type="number" class="form-control" required name="cus_id"
                                                                                     placeholder="أدخل معرف العميل:" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                                                                <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label>
                                                                                 <input class="form-control" type="text" name="product_activity_area_id" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة" value="" readonly>
                                                                             </div>
                                                                         </div>
@@ -270,15 +265,15 @@
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
-                                                                                <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+                                                                                <label>ملاحظات</label>
+                                                                                <textarea required class="form-control" name="other_issue" required="required"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
+                                                                                <label>إرفاق دليل <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
                                                                                <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
                                                                             </div>
                                                                         </div>
@@ -360,6 +355,41 @@
     </div>
 
 
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">تقييم العملاء</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">بطاقة تقييم تقيس من خلالها مستوى الخدمة التي قدّمتها لكل عميل من حيث الجودة والسعر والتسليم، ثم تمنح تقييمًا إجماليًا من عشرة.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">تطلب المواصفة قياس مدى رضا العملاء فعليًا، لا افتراضه. وتُظهر التقييمات بمرور الوقت ما إذا كان أداؤك يتحسن أم يتراجع، وهذا الاتجاه من الأمور التي ينظر فيها المدقق عن بُعد. كما أنها بمثابة إنذار مبكر؛ فالعميل الذي تتراجع تقييماته غالبًا ما يكون على وشك المغادرة.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">أضِف العميل أولًا ضمن قسم العملاء.</li>
+                        <li style="margin-bottom:6px;">انقر على إضافة تقييم عميل.</li>
+                        <li style="margin-bottom:6px;">اختر العميل، والمنتج أو مجال العمل الذي يجري تقييمه.</li>
+                        <li style="margin-bottom:6px;">قيّم الجودة والسعر والتسليم، ثم امنح تقييمًا إجماليًا.</li>
+                        <li style="margin-bottom:6px;">أرفِق الأدلة الداعمة، مثل ردّ على استبيان، أو رسالة بريد إلكتروني، أو خطاب توصية، أو ملاحظات من مكالمة هاتفية.</li>
+                        <li>كرّر التقييم على فترات مناسبة: مرة سنويًا لمعظم العملاء، وبوتيرة أعلى لكبار العملاء.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="editcustomer_rev" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" style="max-width:900px;" role="document">
@@ -375,14 +405,14 @@
                                                 <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>رقم هوية العميل:</label><br>
+                                    <label>رقم هوية العميل:</label>
                                     <input type="number" class="form-control" required name="cus_id"
                                         placeholder="أدخل معرف العميل:" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                    <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label>
                                     <!-- <input type="number" class="form-control" name="cus_id" placeholder="Enter Customer ID:"> -->
                                     <input class="form-control" type="text" name="product_activity_area_edit" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
                                 </div>
@@ -428,15 +458,15 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
-                                    <input type="text" required class="form-control" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟" name="other_issue" required="required">
+                                    <label>ملاحظات</label>
+                                    <textarea required class="form-control" name="other_issue" required="required"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة:</label>
+                                    <label>إرفاق دليل <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
                                     <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
                                     {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
                                     {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
@@ -452,7 +482,7 @@
                         </div>
                         {{-- <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Customer Review ID Number (See table below. For amendments only):</label><br>
+                                <label>Customer Review ID Number (See table below. For amendments only):</label>
                                 <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
                             </div>
                         </div> --}}
@@ -481,7 +511,7 @@
         $("input[name='revnumber']").val(data.revnumber);
         $("input[name='qualityScore']").val(data.qualityScore);
         $("input[name='product_activity_area_edit']").val(data.product_activity_area);
-        $("input[name='other_issue']").val(data.other_issues);
+        $("[name='other_issue']").val(data.other_issues);
         $("#editcustomer_rev").modal('show');
     }
 
@@ -496,7 +526,7 @@
         $("input[name='product_activity_area_id']").val(data.product_activity_area);
         $("input[name='revnumber']").val(data.revnumber);
         $("input[name='qualityScore']").val(data.qualityScore);
-        $("input[name='other_issue']").val(data.other_issues);
+        $("[name='other_issue']").val(data.other_issues);
 		var assetUrl = $("#assetUrl").val();
     	$("a[name='attach_evidence']").attr("href", assetUrl + "/" + data.attach_evidence);
         // $("#editcustomer_rev").modal('show');

@@ -11,47 +11,41 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>الموردون</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="الموردون" aria-label="الموردون">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>الموردون</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>مراجعة الموردين هي أداة لمراقبة مستويات أداء الموردين لديك وتصنيفهم، ويمكن أن يستهدف مؤشر الأداء هذا
-                                جميع مجالات الاتصال بالمورد.</p>
-                                <p>لإضافة سجل، انقر على زر "إضافة مورّد". لتعديل سجل أو حذفه، انقر على رمز التحرير أو الحذف الخاص بالقيد
-                                المراد تعديله أو حذفه. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="supplierForm()" class="am-btn am-btn-primary">إضافة مورد</a>
                             </div>
                         </div>
                         <div class="supplier_from_div">
-                            <form action="{{ route('supplier') }} " id="addcust" method="post">
+                            <form class="am-inline-form open" action="{{ route('supplier') }} " id="addcust" method="post" style="margin:16px 20px;">
                                 @csrf
                                 <h3>إضافة تفاصيل المورد</h3>
                                                                 <div class="form-row">
                                     <div>
                                         <div class="form-group">
-                                            <label>رقم تعريف المورد:</label><br>
+                                            <label>رقم تعريف المورد:</label>
                                             <input type="number" class="form-control validate_number" min="1"
                                                 name="idnumber" required placeholder="أدخل المعرف:">
                                         </div>
                                     </div>
                                     <div>
                                         <div class="form-group">
-                                            <label>اسم المورد:</label><br>
+                                            <label>اسم المورد:</label>
                                             <input type="text" class="form-control" required name="suppliername"
                                                 placeholder="أدخل اسم المورد:">
                                         </div>
@@ -126,8 +120,8 @@
 									</div>
 								</div> --}}
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" onclick="supplierForm()" class="am-btn am-btn-outline">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="reset" onclick="supplierForm()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -208,13 +202,13 @@
 
                                                                         {{-- <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>System ID Number:</label><br>
+                                    <label>System ID Number:</label>
                                     <input type="number" readonly class="form-control"  name="systemid">
                                 </div>
                             </div> --}}
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>اسم العائلة:</label><br>
+                                                                                <label>اسم العائلة:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     name="surname"
                                                                                     placeholder="أدخل اللقب
@@ -316,6 +310,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">الموردون</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">سجل بالمنشآت التي تشتري منها السلع أو الخدمات، يتضمن بيانات الاتصال بها وما توفّره، ومن خلاله يمكن إجراء تقييمات الموردين.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">إذا أخلّ مورّد بالتزاماته، فإن عميلك هو من يشعر بذلك. وتتوقع المواصفة أن تختار الموردين بناءً على أدلة، وأن تتابع أداءهم. وسيسألك المدقق عن كيفية تقرير أن المورّد مؤهل بما يكفي، وهذا السجل هو المكان الذي تُثبت فيه ذلك.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة مورّد.</li>
+                        <li style="margin-bottom:6px;">أدخِل اسم الشركة، والعنوان، والبلد، ورقم الهاتف، والبريد الإلكتروني.</li>
+                        <li style="margin-bottom:6px;">صِف ما يورّده في كلمات قليلة.</li>
+                        <li style="margin-bottom:6px;">راجِع أداء كل مورّد على فترات منتظمة وسجّل النتيجة.</li>
+                        <li style="margin-bottom:6px;">سجّل حالة عدم مطابقة كلما تسبّب مورّد في مشكلة، ليكون هناك سجل يستند إليه أي قرار بالتوقف عن التعامل معه.</li>
+                        <li>راجِع اتجاهات أداء الموردين دوريًا واتخذ إجراءً عاجلًا عند الحاجة، وراجِعها سنويًا في مراجعات الإدارة.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">
@@ -355,13 +384,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>رقم الهوية:</label><br>
+                                    <label>رقم الهوية:</label>
                                     <input type="number" required class="form-control" name="idnumber" placeholder="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>اسم المورد:</label><br>
+                                    <label>اسم المورد:</label>
                                     <input type="text" required class="form-control" name="suppliername"
                                         placeholder="">
                                 </div>
@@ -469,14 +498,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>رقم هوية المورد:</label><br>
+                                    <label>رقم هوية المورد:</label>
                                     <input type="number" class="form-control" name="idnumber"
                                         placeholder="أدخل المعرف:" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>اسم المورد:</label><br>
+                                    <label>اسم المورد:</label>
                                     <input type="text" class="form-control" name="suppliername"
                                         placeholder="أدخل اسم المورد:" readonly>
                                 </div>

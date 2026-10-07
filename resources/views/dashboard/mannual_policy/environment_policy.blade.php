@@ -61,14 +61,14 @@
                 <div style="{{ $loop->first ? '' : 'border-top:1px solid #e6e8f0;margin-top:16px;' }}padding-top:{{ $loop->first ? '4' : '16' }}px;">
                     <p class="mb-2" style="white-space:pre-wrap;">{{ $policy->message }}</p>
                     <div style="line-height:1.5;">
-                        <div><strong style="font-weight:600;">بالنيابة عن:</strong>  {{ $companyName }}</div>
+                        <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong>  {{ $companyName }}</div>
                         <div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
                         <div><strong style="font-weight:600;">التاريخ:</strong> {{ $policy->created_at->format('d/m/Y g:i') }} {{ $policy->created_at->format('A') === 'AM' ? 'ص' : 'م' }}</div>
                     </div>
                 </div>
             @empty
                 <div style="margin-right: 25px; line-height:1.5;">
-                    <div><strong style="font-weight:600;">بالنيابة عن:</strong>  {{ $companyName }}</div>
+                    <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong>  {{ $companyName }}</div>
                     <div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
                 </div>
             @endforelse

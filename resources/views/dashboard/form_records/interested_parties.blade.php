@@ -4,24 +4,19 @@
 <div class="am-content">
 
     <div class="am-page-header">
-        <div>
-            <h2>الأطراف المعنية</h2>
-        </div>
-    </div>
-
-    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+            <button type="button" class="am-page-guide-btn"
+                onclick="document.getElementById('amPageGuide').classList.add('open')"
+                title="الأطراف المعنية" aria-label="الأطراف المعنية">
                 <i class="fa fa-info-circle"></i>
-            </span>
-            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                <p style="margin:0 0 8px 0;">يتطلب القسم 4.2 من شهادة الآيزو القياسية (ISO9001:2015) فهم احتياجات الأطراف المعنية وتوقعاتها. ويمكن توثيق مثل هذه المعلومات كما ترغب في هذا السجل. أما دليل الجودة في القسم 4،2،2 فهو يحدد من هي هذه الأطراف المعنية. </p>
-                <p style="margin:0;">لإضافة سجل، يرجى النقر على زر "إضافة أطراف معنية". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله. </p>
+            </button>
+            <div>
+                <h2>الأطراف المعنية</h2>
             </div>
         </div>
     </div>
 
-    {{-- Toolbar + Add form --}}
+{{-- Toolbar + Add form --}}
     <div class="am-card" style="margin-bottom:16px;">
         <div class="am-card__toolbar">
             <button type="button" class="am-btn am-btn-primary" id="toggleIpForm">
@@ -104,6 +99,39 @@
 </div>
 
 {{-- Delete Confirmation Modal --}}
+{{-- Page guide --}}
+<div class="am-modal" id="amPageGuide" role="dialog" aria-modal="true">
+    <div class="am-modal__box" style="max-width:600px;">
+        <div class="am-modal__header">
+            <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+            <div>
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                <h5 class="am-modal__title" style="color:var(--am-primary);">الأطراف المعنية</h5>
+            </div>
+        </div>
+        <div class="am-modal__body" style="color:var(--am-text);">
+            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+            <p style="margin:0 0 16px;">قائمة بالأشخاص والجهات التي تهتم بما تقوم به منشأتك، مثل العملاء والموظفين والموردين والجيران والجهات التنظيمية والملّاك، مع ملاحظة بما يتوقعه كل منهم منك.</p>
+
+            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+            <p style="margin:0 0 16px;">تطلب المواصفة أن تفكّر فيمن تؤثر فيهم ومن يؤثرون فيك، حتى لا يفوتك أي أمر مهم عند التخطيط. وعادةً ما يطلب المدققون هذه القائمة في مرحلة مبكرة، لأنها تُظهر بسرعة ما إذا كنت قد فكّرت فعلًا في طبيعة عملك أم اكتفيت بتعبئة النماذج.</p>
+
+            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+            <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                <li style="margin-bottom:6px;">انقر على إضافة طرف معني.</li>
+                <li style="margin-bottom:6px;">سمِّ الفئة، مثل: العملاء، أو الموظفين، أو السلطة المحلية.</li>
+                <li style="margin-bottom:6px;">اكتب ما تحتاجه هذه الفئة أو تتوقعه منك، في جملة أو جملتين واضحتين.</li>
+                <li style="margin-bottom:6px;">أضِف صفًا لكل فئة، وعادةً ما يكفي ما بين ست وعشر فئات للمنشأة الصغيرة.</li>
+                <li style="margin-bottom:6px;">راجِع القائمة مرة واحدة سنويًا في اجتماع مراجعة الإدارة، أو قبل ذلك إذا بدأت التعامل مع فئة جديدة من العملاء أو انتقلت إلى مقر جديد.</li>
+                <li>يوضح البند 4.2.2 من دليل الجودة الأطراف المعنية بمنشأتك، فاستخدمه نقطة انطلاق.</li>
+            </ul>
+        </div>
+        <div class="am-modal__footer">
+            <button type="button" class="am-btn am-btn-outline am-modal-close">يغلق</button>
+        </div>
+    </div>
+</div>
+
 <div class="am-modal" id="deleteRequirment" role="dialog" aria-modal="true">
     <div class="am-modal__box">
         <div class="am-modal__header">

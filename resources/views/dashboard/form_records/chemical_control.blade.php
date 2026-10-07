@@ -6,8 +6,15 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>COSHH</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="COSHH" aria-label="COSHH">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>COSHH</h2>
+                </div>
             </div>
         </div>
         <section>
@@ -42,26 +49,14 @@
                         create substances. These could cause harm to employees, contractors and other people.</p>
                     <p>Sometimes substances are easily recognised as harmful. Common substances such as paint, bleach or
                         dust from natural materials may also be harmful.</p> -->
-                        <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                            <div style="display:flex;gap:12px;align-items:flex-start;">
-                                <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                    <i class="fa fa-info-circle"></i>
-                                </span>
-                                <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                    <p>صُمم نظام الرقابة على المواد التي تُشكل خطرًا على الصحة (COSHH) لتمكين أصحاب العمل من مراقبة المواد التي تُشكل خطرًا على الصحة، فضلًا عن وضع معايير خاصة للحد من أو تقليل تعرّض الموظفين للمواد الخطرة من خلال الاحتفاظ بسجل معلومات يخضع للتحديث المستمر عن هذه المواد. </p>
-                                    <p>لإضافة سجل، يرجى النقر على زر "إضافة COSHH". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله أو حذفه. </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row mb-3">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="processinterestedForm()" class="am-btn am-btn-primary">إضافة COSHH</a>
                             </div>
                         </div>
                         <div class="process_interested_from_div" style="display:none">
-                            <form action="{{route('chemicalform')}}" method="POST" enctype="multipart/form-data" class="am-form">
+                            <form action="{{route('chemicalform')}}" method="POST" enctype="multipart/form-data" class="am-inline-form open" style="margin:16px 20px;">
                                 @csrf
                                 <div class="form-row">
                                     <div>
@@ -181,10 +176,10 @@
                                 </div>
 
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                        <button type="reset" onclick="cosh()" class="am-btn am-btn-outline">
+                                        <button type="reset" onclick="cosh()" class="am-btn am-btn-outline am-btn-sm">
                                         يلغي
                                     </button>
-                                        <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                        <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                     </div>
                             </form>
                     </div>
@@ -288,6 +283,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">ضبط المواد الكيميائية (COSHH)</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">سجل بجميع المواد الخطرة المستخدمة في مكان عملك، مثل منتجات التنظيف والوقود والمذيبات والمواد اللاصقة والدهانات، يبيّن مكان تخزين كل مادة والغرض من استخدامها. ويرمز الاختصار COSHH إلى «ضبط المواد الخطرة على الصحة».</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">يتعرّض الأشخاص للأذى بسبب مواد لم يكونوا يعلمون بخطورتها. ويضمن هذا السجل أن يتمكن أي شخص من معرفة طبيعة المواد التي يتعامل معها. كما أنه متطلب قانوني في معظم الدول، وسيطلبه مدقق الصحة والسلامة.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">تجوّل في موقع العمل ودوّن كل مادة كيميائية أو مادة خطرة قيد الاستخدام.</li>
+                        <li style="margin-bottom:6px;">انقر على إضافة COSHH لكل مادة.</li>
+                        <li style="margin-bottom:6px;">سجّل اسم المادة الكيميائية، ومكان تخزينها، والغرض من استخدامها.</li>
+                        <li style="margin-bottom:6px;">حدّد الحالة: قيد الاستخدام أو لم تعد مستخدمة.</li>
+                        <li style="margin-bottom:6px;">احتفظ بصحيفة بيانات السلامة الصادرة عن المورّد مرفقةً بالسجل.</li>
+                        <li>راجِع القائمة مرة واحدة سنويًا، وكلما أُدخل منتج جديد إلى مكان العمل.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">

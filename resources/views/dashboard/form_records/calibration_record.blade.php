@@ -6,40 +6,33 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>إضافة أو تعديل سجل معايرة </h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="إضافة أو تعديل سجل معايرة" aria-label="إضافة أو تعديل سجل معايرة">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>إضافة أو تعديل سجل معايرة </h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>المعايرة هي إعدادات الاختبار و/ أو مواضع المعلَمات التي تستهدف الآليات أو الأجهزة للتأكد من أنها تعمل
-                                بالشكل الصحيح. وبالاعتماد على بيئة العمل، قد تكون هذه عبارة عن آليات ثقيلة أو طابعة مكتبية. </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p>لإضافة سجل، يرجى النقر على زر "إضافة سجل معايرة". تتطلب جميع سجلات المعايرة معرفة عدد مرات المعايرة،
-                        وتظهر هذه المعلومة كتذكير على لوحة التحكم الخاصة بك على MyISOOnline </p>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="calibrationForm()" class="am-btn am-btn-primary">إضافة سجل المعايرة</a>
                             </div>
                         </div>
                         <div class="calibration_from_div">
-                            <form action="{{ route('calibration') }} " method="POST" enctype="multipart/form-data">
+                            <form class="am-inline-form open" action="{{ route('calibration') }} " method="POST" enctype="multipart/form-data" style="margin:16px 20px;">
                                 @csrf
                                                                 <div class="form-row">
                                     <div style="grid-column:1/-1;">
                                         <div class="form-group">
-                                            <label>اسم الجهاز: </label><br>
+                                            <label>اسم الجهاز: </label>
                                             <input type="text" class="form-control" name="equipment"
                                                 placeholder="يرجى إدخال رقم تعريف العميل" required="required">
                                         </div>
@@ -146,14 +139,14 @@
                                 </div>
                                 {{-- <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Calibration ID Number (See table below. For amendments only):</label><br>
+                                            <label>Calibration ID Number (See table below. For amendments only):</label>
                                             <input type="number" class="form-control" name="calibrationid" required="required">
                                         </div>
                                     </div> --}}
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" onclick="calibration()" class="am-btn am-btn-outline">يلغي
+                                    <button type="reset" onclick="calibration()" class="am-btn am-btn-outline am-btn-sm">يلغي
                                 </button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                                 <!--<button type="button"  class="am-btn am-btn-outline " style="margin-right:7px;">Cancel</button>-->
                             </form>
@@ -224,13 +217,13 @@
                                                                     <div class="row">
                                                                         {{-- <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label>Calibration ID Number (See table below. For amendments only):</label><br>
+                                                                            <label>Calibration ID Number (See table below. For amendments only):</label>
                                                                             <input type="number" class="form-control" name="calibrationid" required="required">
                                                                         </div>
                                                                     </div> --}}
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>اسم الجهاز:</label><br>
+                                                                                <label>اسم الجهاز:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     name="equipment"
                                                                                     placeholder="أدخل اسم الجهاز:"
@@ -482,6 +475,40 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">المعايرة</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">سجل لكل جهاز أو أداة قياس تتطلب الدقة، يوضح تاريخ آخر فحص لها، وما إذا كانت قد اجتازته أم لا، وموعد الفحص التالي.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">إذا كانت أجهزة القياس لديك غير دقيقة، فإن كل ما يُقاس بها سيكون غير دقيق أيضًا. وتظهر المعايرات المتأخرة والأجهزة التي لم تجتز الفحص على لوحة المعلومات، وتُشكّل جزءًا من أدلتك السنوية، ولذا يُعد هذا السجل من أسرع ما يمكن للمدقق عن بُعد التحقق منه.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة سجل معايرة.</li>
+                        <li style="margin-bottom:6px;">أدخِل اسم الجهاز، ورقمه التسلسلي، ورقم شهادة المعايرة.</li>
+                        <li style="margin-bottom:6px;">سجّل تاريخ المعايرة، وما إذا كان الجهاز قد اجتاز الفحص أم لا.</li>
+                        <li style="margin-bottom:6px;">حدّد معدّل تكرار إعادة الفحص، وسيتولى النظام تتبّع موعد الاستحقاق وتنبيهك.</li>
+                        <li>إذا لم يجتز أي جهاز الفحص، فأوقف استخدامه إلى أن يتم إصلاحه وإعادة فحصه.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">
@@ -518,13 +545,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>رقم الهوية:</label><br>
+                                    <label>رقم الهوية:</label>
                                     <input type="number" class="form-control" placeholder="أدخل المعرف:">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>اسم المورد:</label><br>
+                                    <label>اسم المورد:</label>
                                     <input type="text" class="form-control" placeholder="أدخل اسم المورد:">
                                 </div>
                             </div>
@@ -649,7 +676,7 @@
                                                 <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>اسم الجهاز:</label><br>
+                                    <label>اسم الجهاز:</label>
                                     <input type="text" class="form-control" name="equipment"
                                         placeholder="أدخل اسم الجهاز:" required="required">
                                 </div>
@@ -752,7 +779,7 @@
                         </div>
                         {{-- <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Calibration ID Number (See table below. For amendments only):</label><br>
+                                    <label>Calibration ID Number (See table below. For amendments only):</label>
                                     <input type="number" class="form-control" name="calibrationid">
                                 </div>
                             </div> --}}

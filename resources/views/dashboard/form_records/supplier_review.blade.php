@@ -8,38 +8,34 @@
     <!-- begin:: Content -->
     <div class="am-content">
         <div class="am-page-header">
-            <div>
-                <h2>مراجعات الموردين</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="مراجعات الموردين" aria-label="مراجعات الموردين">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>مراجعات الموردين</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>تقييمات الموردين هي أداة لمراقبة وتصنيف أداء الموردين عبر جميع نقاط التعامل معهم، مثل: جودة المنتجات أو الخدمات، وموثوقية التسليم، وتنافسية الأسعار، والامتثال وسرعة الاستجابة.</p>
-                                <p>لإضافة سجل، يرجى النقر على زر "إضافة تقييم مورد". لتعديل سجل، يرجى النقر على أيقونة التعديل الخاصة بالقيد المراد تعديله.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 {{-- customerReview() (foot.blade.php) toggles .customer_review_from_div --}}
                                 <a onclick="customerReview()" class="am-btn am-btn-primary">إضافة تقييم مورد</a>
                             </div>
                         </div>
                         <div class="customer_review_from_div">
-                            <form method="POST" action="{{ route('supplier_review_store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('supplier_review_store') }}" class="am-inline-form open" enctype="multipart/form-data" style="margin:16px 20px;">
                                 @csrf
                                                                 <div class="form-row">
                                     <div>
                                         <div class="form-group">
-                                            <label>رقم تعريف المورد:</label><br>
+                                            <label>رقم تعريف المورد:</label>
                                             <select class="form-control" name="sup_id" required="required">
                                                 <option value="" selected disabled>يرجى اختيار رقم تعريف المورد</option>
                                                 @foreach ($all_suppliers as $supplier)
@@ -50,7 +46,7 @@
                                     </div>
                                     <div>
                                         <div class="form-group">
-                                            <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                            <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label>
                                             <input class="form-control" type="text" name="product_activity_area" required placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
                                         </div>
                                     </div>
@@ -90,8 +86,8 @@
                                 <div class="form-row">
                                     <div style="grid-column:span 2;">
                                         <div class="form-group">
-                                            <label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label>
-                                            <input type="text" class="form-control" name="other_issue" required="required" placeholder="هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟">
+                                            <label>ملاحظات</label>
+                                            <textarea class="form-control" name="other_issue" required="required"></textarea>
                                         </div>
                                     </div>
                                     <div style="grid-column:span 2;">
@@ -108,8 +104,8 @@
                                     </div>
                                 </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button class="am-btn am-btn-outline" type="reset" onclick="customerReview()">يلغي</button>
-                                    <button class="am-btn am-btn-primary" type="submit">يُقدِّم</button>
+                                    <button class="am-btn am-btn-outline am-btn-sm" type="reset" onclick="customerReview()">يلغي</button>
+                                    <button class="am-btn am-btn-primary am-btn-sm" type="submit">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -187,6 +183,42 @@
     </div>
 
     {{-- View modal --}}
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">تقييمات الموردين</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">بطاقة تقييم تقيس من خلالها أداء كل مورّد من حيث الجودة والسعر والتسليم، ثم تمنح تقييمًا إجماليًا من عشرة. ولا ينبغي الخلط بينه وبين سجل الموردون؛ فذلك السجل هو دليل الجهات التي تشتري منها، أما هذا النموذج فهو المكان الذي تسجّل فيه مستوى أدائها.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">تتوقع المواصفة أن تختار الموردين بناءً على أدلة، وأن تواصل متابعة أدائهم. وعندما يسألك المدقق: «كيف تعرف أن مورديك مؤهلون بما يكفي؟»، فإن هذه التقييمات والأدلة المرفقة بها هي إجابتك. وتظهر التقييمات الإجمالية المنخفضة باللون الأحمر، ليسهل رصد المورّد الذي يتراجع أداؤه قبل أن يشعر عملاؤك بذلك.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">أضِف المورّد أولًا ضمن سجل الموردون ليظهر في القائمة.</li>
+                        <li style="margin-bottom:6px;">انقر على إضافة تقييم مورّد، ثم اختر المورّد.</li>
+                        <li style="margin-bottom:6px;">أدخِل المنتج أو النشاط أو المجال الذي يجري تقييمه، وتاريخ التقييم.</li>
+                        <li style="margin-bottom:6px;">قيّم الجودة والسعر والتسليم من 0 إلى 10، ثم امنح تقييمًا إجماليًا.</li>
+                        <li style="margin-bottom:6px;">دوّن أي ملاحظات أخرى، وأرفِق الأدلة الداعمة، مثل سجلات التسليم أو الفواتير أو رسائل البريد الإلكتروني.</li>
+                        <li style="margin-bottom:6px;">انقر على حفظ التقييم. قيّم كل مورّد رئيسي مرة واحدة سنويًا على الأقل، وفي وقت أقرب بعد وقوع أي مشكلة.</li>
+                        <li>إذا حصل مورّد على تقييم منخفض أو تسبّب في مشكلة، فسجّل حالة عدم مطابقة، وناقِش أداء الموردين في مراجعات الإدارة.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="viewSupplierRev" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" style="max-width:720px;" role="document">
             <div class="modal-content">
@@ -207,7 +239,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6"><div class="form-group"><label>تاريخ التقييم:</label><input type="date" class="form-control" id="v-sr-date" readonly></div></div>
-                        <div class="col-lg-6"><div class="form-group"><label>مشكلات أخرى:</label><input type="text" class="form-control" id="v-sr-oi" readonly></div></div>
+                        <div class="col-lg-6"><div class="form-group"><label>ملاحظات</label><textarea class="form-control" id="v-sr-oi" readonly></textarea></div></div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12"><div class="form-group"><label>إرفاق الأدلة:</label> <span id="v-sr-ev"></span></div></div>
@@ -235,7 +267,7 @@
                                                 <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>رقم تعريف المورد:</label><br>
+                                    <label>رقم تعريف المورد:</label>
                                     <select class="form-control" name="sup_id" required="required">
                                         <option value="" selected disabled>يرجى اختيار رقم تعريف المورد</option>
                                         @foreach ($all_suppliers as $supplier)
@@ -246,7 +278,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label><br>
+                                    <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label>
                                     <input class="form-control" type="text" name="product_activity_area_edit" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة">
                                 </div>
                             </div>
@@ -270,7 +302,7 @@
                                 <div class="form-group"><label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label><input type="date" max="2999-12-31" required class="form-control" name="AssesmentDate"></div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="form-group"><label>هل هناك أي مشكلات أو نقاط أخرى يجب ملاحظتها؟</label><input type="text" required class="form-control" name="other_issue"></div>
+                                <div class="form-group"><label>ملاحظات</label><textarea required class="form-control" name="other_issue"></textarea></div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -351,7 +383,7 @@
             m.find("input[name='DScore']").val(data.DScore);
             m.find("input[name='OveralScore']").val(data.OveralScore);
             m.find("input[name='AssesmentDate']").val(data.AssesmentDate);
-            m.find("input[name='other_issue']").val(data.other_issues);
+            m.find("[name='other_issue']").val(data.other_issues);
             m.modal('show');
         }
 

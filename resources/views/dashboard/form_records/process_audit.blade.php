@@ -6,30 +6,23 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>تدقيق العمليات</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="تدقيق العمليات" aria-label="تدقيق العمليات">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>تدقيق العمليات</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>يُشار أيضًا إلى عمليات تدقيق العمليات باسم عمليات تدقيق تعليمات العمل، ويتم إجراء عمليات التدقيق هذه بواسطة المدقق الداخلي. يتم إجراء هذا التدقيق عن طريق تحديد تعليمات العمل، أو تدقيق مخطط تدفق العملية والتأكد من معالجتها بشكل صحيح.</p>
-                                <p>لإضافة سجل، انقر فوق "إضافة".
-                                زر "تفاصيل تدقيق العملية". لتعديل سجل، انقر على أيقونة التحرير الخاصة
-                                الإدخال الذي يحتاج إلى تعديل.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
 
                                 <a href="{{ asset('download_process_audit/Process-Audit.pdf') }}" target="_blank"
                                     class="am-btn am-btn-primary">تحميل عمليات التدقيق</a>
@@ -40,7 +33,7 @@
                         </div>
                         <div class="process_audit_from_div">
                             <form action="{{ route('auditform') }}" method="POST" enctype="multipart/form-data"
-                                class="addForm">
+                                class="addForm am-inline-form open" style="margin:16px 20px;">
                                 @csrf
                                 <div class="row">
                                     {{-- <div class="col-lg-6">
@@ -392,9 +385,9 @@
                                 </div>
                                 <!--<button type="reset" onclick="processAuditFormclose()" class=" closeBtn btn btn-secondary">Cancel</button>-->
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" class="am-btn am-btn-outline" onclick="processAuditFormclose()">يلغي
+                                    <button type="reset" class="am-btn am-btn-outline am-btn-sm" onclick="processAuditFormclose()">يلغي
                                     </button>
-                                    <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> إرسال</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i> إرسال</button>
                                 </div>
                             </form>
                         </div>
@@ -513,6 +506,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">تدقيقات العمليات</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">تحقّق من أن عملًا محددًا قد نُفّذ وفق ما تنص عليه العملية المكتوبة، ولا ينبغي الخلط بينه وبين تدقيقات نظام إدارة الجودة. وتُجرى تدقيقات العمليات استنادًا إلى مخططات سير العمليات، حيث يراجع شخص من داخل منشأتك (المدقق الداخلي) العمل، ثم يسجّل ما توصّل إليه.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">كتابة العملية أمر سهل، أما إثبات التزام الأشخاص بها فعليًا فهو الجزء الصعب، وهو ما يهتم به المدققون أكثر من أي شيء آخر. ولأن التدقيق يُجرى عن بُعد، فإن هذه السجلات هي الدليل؛ فإذا كانت القائمة فارغة، لن يجد المدقق ما يطّلع عليه.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة تدقيق عملية.</li>
+                        <li style="margin-bottom:6px;">اختر العملية أو تعليمات العمل التي جرى التحقق منها، مثل QP1 – عملية المبيعات.</li>
+                        <li style="margin-bottom:6px;">أدخِل اسم القائم بالتدقيق وتاريخه.</li>
+                        <li style="margin-bottom:6px;">سجّل ما توصلت إليه: أي خلل، وأي ملاحظة جديرة بالتدوين، وما سيُتخذ حيالها.</li>
+                        <li style="margin-bottom:6px;">أرفِق الصور أو النماذج المكتملة، إذ يمكن للمدقق عن بُعد فتحها.</li>
+                        <li>حدّد معدّل تكرار هذا التدقيق.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">

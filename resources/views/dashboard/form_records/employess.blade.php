@@ -6,48 +6,43 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>الموظفون</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="الموظفون" aria-label="الموظفون">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>الموظفون</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>إضافة الموظفين سيحفظ جميع معلومات طاقم العمل ذات الصلة بدقة، بما في ذلك التدريب والمهارات.</p>
-                                <p>لإضافة سجل، انقر على الزر "إضافة موظف". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد تعديله
-                                أو حذفه.</p>
-                            </div>
-                        </div>
-                    </div>
-                    @if (Session::has('Error'))
+@if (Session::has('Error'))
                         <h5 class="text-danger"> {{ Session::get('Error') }} </h5>
                     @endif
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                               <a onclick="employeeForm()" class="am-btn am-btn-primary">إضافة موظف</a>  &nbsp;<a onclick="employeeSkillForm()" class="am-btn am-btn-primary">إضافة مهارات العمليات للموظف</a> &nbsp;<a onclick="employeeRecordForm()" class="am-btn am-btn-primary"> إضافة سجل تدريب للموظف</a>
                             </div>
                         </div>
                         <div class="employee_from_div">
                             <form method="POST" action="{{ route('employee') }}" enctype="multipart/form-data"
-                                class="addForm">
+                                class="addForm am-inline-form open" style="margin:16px 20px;">
                                 @csrf
                                 <div class="row">
                                     {{-- <div class="col-lg-6">
                     					<div class="form-group">
-											<label>System ID Number:</label><br>
+											<label>System ID Number:</label>
 											<input type="number" class="form-control" required  name="systemid">
 										</div>
                     				</div> --}}
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>اللقب:</label><br>
+                                            <label>اللقب:</label>
                                             <input type="text" class="form-control" name="surname" required
                                                 placeholder="أدخل اللقب" data-type="add">
                                         </div>
@@ -112,8 +107,8 @@
              </div>
             </div> -->
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" onclick="emp1()" class="am-btn am-btn-outline">يلغي</button>
-                                    <button class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="reset" onclick="emp1()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
+                                    <button class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -130,7 +125,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>رقم تعريف الموظف:</label><br>
+                                            <label>رقم تعريف الموظف:</label>
 
                                             <select name="empid" required class="form-control">
                                                 <option value="" selected="selected" disabled="disabled">حدد واحدًا
@@ -147,7 +142,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>المهارة:</label><br>
+                                            <label>المهارة:</label>
                                             <input type="text" name="empskill" class="form-control" required
                                                 placeholder="أدخل مهارة">
                                         </div>
@@ -173,7 +168,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>رقم تعريف الموظف:</label><br>
+                                            <label>رقم تعريف الموظف:</label>
 
                                             <select name="empid" required class="form-control">
                                                 <option value="" selected="selected" disabled="disabled">حدد واحدًا
@@ -191,7 +186,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>تاريخ التدريب (شهر/يوم/سنة):</label><br>
+                                            <label>تاريخ التدريب (شهر/يوم/سنة):</label>
                                             <input type="date" max="2999-12-31" required class="form-control"
                                                 name="traningdate">
                                         </div>
@@ -200,7 +195,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>تفاصيل التدريب:</label><br>
+                                            <label>تفاصيل التدريب:</label>
                                             <input type="text" class="form-control" required name="traningdetails">
                                         </div>
                                     </div>
@@ -350,7 +345,7 @@
                                                                     <div class="row">
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>اسم العائلة:</label><br>
+                                                                                <label>اسم العائلة:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     name="surname"
                                                                                     placeholder="أدخل اللقب"
@@ -503,7 +498,7 @@
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>رقم تعريف الموظف:</label><br>
+                                                                                <label>رقم تعريف الموظف:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     name="surname"
                                                                                     placeholder="أدخل اللقب"
@@ -619,7 +614,7 @@
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>رقم تعريف الموظف</label><br>
+                                                                                <label>رقم تعريف الموظف</label>
                                                                                 <input type="text" class="form-control"
                                                                                     name="surname"
                                                                                     placeholder="أدخل معرف الموظف"
@@ -741,6 +736,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">الموظفون</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">سجل لكل موظف يتضمن بيانات الاتصال، وتفاصيل الوظيفة، والسيرة الذاتية، وتاريخ الالتحاق بالعمل، والمهارات التي يمتلكها، وسجله التدريبي.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">تطلب المواصفة إثبات أن من يؤدون العمل قادرون على أدائه، وهذا يتطلب أدلة لا آراء. وسجلات التدريب المحفوظة هنا من ضمن البنود التي يطلبها المدقق كل عام، لذا فإن تحديثها أولًا بأول يجنّبك الارتباك لاحقًا.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على إضافة موظف.</li>
+                        <li style="margin-bottom:6px;">أدخِل اسمه وبريده الإلكتروني وتفاصيل وظيفته وتاريخ التحاقه بالعمل.</li>
+                        <li style="margin-bottom:6px;">ارفع سيرته الذاتية، إلى جانب أي شهادات أو سجلات تدريب.</li>
+                        <li style="margin-bottom:6px;">سجّل المهارات التي يمتلكها والعمليات التي تلقّى تدريبًا عليها.</li>
+                        <li style="margin-bottom:6px;">حدّث السجل عند إتمام الموظف تدريبًا، أو تغيير دوره الوظيفي، أو مغادرته.</li>
+                        <li>لا يمكن تنفيذ أي دورة تدريبية على MyISOOnline قبل إضافة الموظف.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">
@@ -782,7 +812,7 @@
                                                 <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>اللقب:</label><br>
+                                    <label>اللقب:</label>
                                     <input type="text" class="form-control" name="surname" placeholder="أدخل اللقب">
                                 </div>
                             </div>
@@ -849,7 +879,7 @@
                         </div>
                         {{-- <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>System ID Number:</label><br>
+                                    <label>System ID Number:</label>
                                     <input type="number" class="form-control"  name="systemid">
                                 </div>
                             </div> --}}
@@ -879,7 +909,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>رقم تعريف الموظف</label><br>
+                                    <label>رقم تعريف الموظف</label>
                                     <input name="editempid" readonly type="number" class="form-control">
                                     <input type="hidden" required placeholder="أدخل رقم هوية الموظف"
                                         name="employskillid" value="" />
@@ -887,7 +917,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>المهارة:</label><br>
+                                    <label>المهارة:</label>
                                     <input type="text" name="editempskill" required class="form-control"
                                         placeholder="أدخل اسم المهارات:">
                                 </div>
@@ -925,7 +955,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>تاريخ التدريب (يوم/شهر/سنة):</label><br>
+                                    <label>تاريخ التدريب (يوم/شهر/سنة):</label>
                                     <input type="date" max="2999-12-31" class="form-control" name="edittraningdate">
                                 </div>
                             </div>
@@ -933,7 +963,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>تفاصيل التدريب:</label><br>
+                                    <label>تفاصيل التدريب:</label>
                                     <input type="text" class="form-control" name="edittraningdetails">
                                 </div>
                             </div>

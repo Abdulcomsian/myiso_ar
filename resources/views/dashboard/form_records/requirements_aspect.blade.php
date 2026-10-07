@@ -11,36 +11,29 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>المتطلبات المستحقة</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="المتطلبات المستحقة" aria-label="المتطلبات المستحقة">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>المتطلبات المستحقة</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>يمكن اعتبار هذا القسم كمفكرة تظهر في لوحة التحكم الخاصة بمنصة MyISOOnline الخاصة بك. ما عليك سوى
-                                إضافة العناصر التي تحتاج إلى استدعائها بشكل منتظم، كما هو الحال عند استحقاق إجراء مراجعات على
-                                الإدارة أو يكون إجراء تدقيقات على المعايرة مطلوبًا.</p>
-                                <p>لإضافة متطلبات، انقر على "إضافة أحد المتطلبات" ثم أدخل المعلومات التي ترغب في تذكيرك بها واضبط تاريخ
-                                التذكير باستخدام التقويم.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="requirementFrom()" class="am-btn am-btn-primary">إضافة أحد المتطلبات</a>
                             </div>
                         </div>
                         <div class="requirments_from_div">
 
-                            <form action="{{ route('requiemntform') }}" method="POST">
+                            <form class="am-inline-form open" action="{{ route('requiemntform') }}" method="POST" style="margin:16px 20px;">
                                 @csrf
                                 <div class="form-group">
                                     <label>المتطلبات: (أدخل المتطلبات:)</label>
@@ -66,8 +59,8 @@
                                 </div>
 
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button onclick="requirementFrom()" type="reset" class="am-btn am-btn-outline"> إلغاء </button>
-                                    <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> إرسال</button>
+                                    <button onclick="requirementFrom()" type="reset" class="am-btn am-btn-outline am-btn-sm"> إلغاء </button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i> إرسال</button>
                                 </div>
                             </form>
                         </div>
@@ -184,13 +177,13 @@
 
                                                                         {{-- <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>System ID Number:</label><br>
+                                    <label>System ID Number:</label>
                                     <input type="number" readonly class="form-control"  name="systemid">
                                 </div>
                             </div> --}}
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                                <label>اسم العائلة:</label><br>
+                                                                                <label>اسم العائلة:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     name="surname"
                                                                                     placeholder="أدخل اللقب:">
@@ -290,6 +283,40 @@
         </section>
 
         <!--End::Section-->
+    </div>
+
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">المتطلبات المطلوب تقديمها</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">مفكرة تذكيرية للمهام التي تتكرر مرارًا وتكرارًا، مثل موعد المراجعة الإدارية، أو معايرة المعدات، أو تدريبات الطوارئ، أو عمليات التفتيش التي تجري كل بضعة أشهر. ما عليك سوى إضافة المهمة مرة واحدة، وإبلاغ النظام بمدى تكرارها، وسيقوم النظام بإعلامك بموعد استحقاقها.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">لماذا هذا مهم؟</h5>
+                    <p style="margin:0 0 16px;">تُفقد معظم الشهادات بسبب نسيان شخص ما، وليس لأن الشركة كانت ترتكب أي أخطاء. يتم إجراء التدقيق عن بُعد، لذا لا يمكن للمراجع التجول في المكان والسؤال عن سير الأمور — وهذه القائمة هي الطريقة التي يرى بها المراجع أن المهام الروتينية يتم الوفاء بها. تظهر أي مهام متأخرة على لوحة التحكم الخاصة بك، لذا تتلقى التحذير قبل أن يتلقاه المراجع.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على «إضافة متطلب».</li>
+                        <li style="margin-bottom:6px;">اكتب ما يجب القيام به، بعبارات يفهمها أي شخص في الشركة.</li>
+                        <li style="margin-bottom:6px;">أدخل تاريخ آخر مرة تم فيها إنجاز المهمة، وعدد الأشهر المتبقية حتى موعد إنجازها مرة أخرى.</li>
+                        <li style="margin-bottom:6px;">احفظ. سيظهر البند الآن على لوحة التحكم الخاصة بك ويتحول إلى "متأخر" إذا انقضى التاريخ المحدد.</li>
+                        <li>تحقق من القائمة مرة واحدة على الأقل شهريًا، وقم بتحديث التاريخ في كل مرة يتم فيها إنجاز المهمة.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="editRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

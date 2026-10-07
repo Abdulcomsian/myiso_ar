@@ -6,30 +6,23 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>إضافة تفاصيل تدقيق نظام إدارة الجودة</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="إضافة تفاصيل تدقيق نظام إدارة الجودة" aria-label="إضافة تفاصيل تدقيق نظام إدارة الجودة">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>إضافة تفاصيل تدقيق نظام إدارة الجودة</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>يُعد هذا التدقيق تدقيقًا أفقيًا لكل بند في المعيار. وعادةً ما سيتكرر هذا التدقيق سنويًا ويُستخدم
-                                للوقوف على مستوى مطابقتك لمعيار الآيزو.</p>
-                                <p>لإضافة سجل، انقر على زر "إضافة تفاصيل تدقيق نظام إدارة الجودة". ولتعديل سجل، انقر على أيقونة تعديل
-                                الإدخال الواجب تعديله. وستُجرى عمليات التدقيق بموجب التالية <a href="{{ url('auidt') }}">عمليات
-                                التدقيق </a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
 
                                 <a href="{{ asset('download_qms_audit/QMS-Audit-Report.pdf') }}" target="_blank"
                                     class="am-btn am-btn-primary">تحميل تدقيق نظام إدارة الجودة</a>
@@ -41,7 +34,7 @@
                         <div class="qms_audit_from_div">
 
                             <form action="{{ route('qmsaudit') }}" method="POST" enctype="multipart/form-data"
-                                class="addForm am-form">
+                                class="addForm am-inline-form open" style="margin:16px 20px;">
                                 @csrf
 
                                 <div class="form-row">
@@ -921,9 +914,9 @@
                                     </div>
 
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" class="am-btn am-btn-outline"
+                                    <button type="reset" class="am-btn am-btn-outline am-btn-sm"
                                     onclick="qmsAudit()">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
                             </form>
                         </div>
@@ -1042,6 +1035,40 @@
 
 
 	{{-- view modal --}}
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">تدقيقات نظام إدارة الجودة</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هي؟</h5>
+                    <p style="margin:0 0 16px;">فحص يتم إجراؤه مرة واحدة على الأقل سنويًا لنظامك بأكمله وفقًا لمعايير ISO 9001 و14001 و45001، أو وفقًا لمعايير فردية من خلال 17 سؤالًا. تركز مراجعة العمليات على مهمة واحدة؛ بينما تركز هذه المراجعة على كل شيء.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">لماذا يهم ذلك؟</h5>
+                    <p style="margin:0 0 16px;">هذا هو الفحص الذاتي الخاص بك قبل أن يقوم مدقق الاعتماد بفحصه. إن إجراء هذا الفحص وتصحيح ما يكتشفه هو ما يميز الشركة التي تدير نظامها عن تلك التي تكتفي بتسجيل الأوراق. يطلب المدقق هذا الملخص في كل عملية مراقبة سنوية.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">انقر على «إضافة تدقيق نظام إدارة الجودة» وسجل اسم القائم بالتدقيق وتاريخ الانتهاء.</li>
+                        <li style="margin-bottom:6px;">تناول الأسئلة الـ 17، باستخدام قائمة «ما يجب فحصه». تخطّ الأسطر المخصصة لمعيار لا تمتلكه.</li>
+                        <li style="margin-bottom:6px;">أجب بـ «نعم» أو «لا» أو «لا ينطبق» باستخدام المربع الرمادي. كن صادقًا — فالهدف الأساسي هو اكتشاف المشكلات.</li>
+                        <li style="margin-bottom:6px;">قم برفع «حالة عدم مطابقة» لأي شيء لم يستوفِ المعايير، حتى يتم تتبع الإصلاح بشكل صحيح.</li>
+                        <li>يعد تسجيل الأدلة أمرًا حيويًا هنا، لذا قم بتسجيل الأدلة أو تصويرها أو مسحها ضوئيًا وإرفاقها حيثما أمكن ذلك.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="editProcessAudit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" style="max-width:900px;" role="document">

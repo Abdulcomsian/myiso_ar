@@ -6,49 +6,41 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Section-->
         <div class="am-page-header">
-            <div>
-                <h2>مراجعات الإدارة</h2>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="مراجعات الإدارة" aria-label="مراجعات الإدارة">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+                <div>
+                    <h2>مراجعات الإدارة</h2>
+                </div>
             </div>
         </div>
         <section>
             <div class="row text-right">
                 <div class="col-lg-12">
-                    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-                        <div style="display:flex;gap:12px;align-items:flex-start;">
-                            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                                <p>صُممت المراجعات الإدارية لتقييم كفاءة نظام الإدارة مع توجيه مسار الأعمال نحو التحسين المستمر. وينبغي
-                                إجراء هذه المراجعات بشكلٍ شهري أو ربع سنوي أو نصف سنوي أو سنويًا وذلك بناءً على حجم العمل وطبيعته
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <p>لإضافة سجل، انقر زر "إضافة مراجعة إدارية". لتعديل سجل، انقر على رمز التحرير الخاص بالقيد المراد
-                        تعديله أو حذفه.</p>
-
-                    <div class="am-card" style="padding:22px;margin-bottom:16px;">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
+                    <div class="am-card" style="margin-bottom:16px;">
+                        <div class="am-card__toolbar">
+                            <div class="text-right" style="width:100%;">
                                 <a onclick="managemnetReviewForm()" class="am-btn am-btn-primary">إضافة مراجعة إدارية </a>
                             </div>
                         </div>
                         <div class="managemnet_review_from_div">
-                            <form action="{{ route('mgtreview') }}" method="POST" enctype="multipart/form-data">
+                            <form class="am-inline-form open" action="{{ route('mgtreview') }}" method="POST" enctype="multipart/form-data" style="margin:16px 20px;">
                                 @csrf
                                 <div class="row">
                                     <!-- <div class="col-lg-6">
                         <div class="form-group">
-               <label>Management Review ID Number (See table below. For amendments only):</label><br>
+               <label>Management Review ID Number (See table below. For amendments only):</label>
                <input type="number" class="form-control" name="mgtreviewId">
               </div>
                                         </div>  -->
                                     <input type="hidden" class="form-control" name="mgtreviewId" value="241">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>تاريخ المراجعة الإدارية: </label><br>
+                                            <label>تاريخ المراجعة الإدارية: </label>
                                             <input type="date" max="2999-12-31" required class="form-control"
                                                 name="reviewdate">
                                         </div>
@@ -203,8 +195,8 @@
 									</div>
 								</div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" onclick="mngmnt_reviews()" class="am-btn am-btn-outline">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary">يُقدِّم</button>
+                                    <button type="reset" onclick="mngmnt_reviews()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
+                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
                                 </div>
 
 
@@ -287,6 +279,41 @@
 
         <!--End::Section-->
     </div>
+    {{-- Page guide --}}
+    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header am-modal__header">
+                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+                    <div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">الإجراءات</div>
+                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">P3 – مراجعة الإدارة</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="color:var(--am-text);">
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
+                    <p style="margin:0 0 16px;">سجل الاجتماع الذي يعقده القائمون على إدارة المنشأة لتقييم مدى فعالية النظام، وما حدث من أخطاء، وما يشهد تحسنًا، والأهداف المحددة للعام المقبل.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
+                    <p style="margin:0 0 16px;">يُعد هذا السجل الأهم على الإطلاق في النظام. فالمدقق عن بُعد لا يستطيع حضور اجتماعاتك، ولذلك فإن هذا السجل هو الاجتماع بالنسبة إليه؛ وغياب السجل يعني أن المراجعة لم تُعقد. وتدعم إضافة مقاطع فيديو من الاجتماع وصور وعروض تقديمية عمل المدقق. ويحدد الإجراء P3 جدول الأعمال الواجب تغطيته.</p>
+
+                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                        <li style="margin-bottom:6px;">اعقد الاجتماع كل 12 شهرًا، على أن يترأسه المدير العام ويعمّم جدول الأعمال مسبقًا.</li>
+                        <li style="margin-bottom:6px;">غطِّ جدول الأعمال المعتاد: الإجراءات المعلّقة من الاجتماع السابق؛ وحالات عدم المطابقة والحوادث والشكاوى وملاحظات التدقيق؛ وإجراءات معالجة المخاطر؛ ومدى التقدم في تحقيق الأهداف؛ ومدى استمرار ملاءمة السياسات ودليل الجودة والإجراءات؛ وأهداف العام المقبل؛ والاحتياجات التدريبية.</li>
+                        <li style="margin-bottom:6px;">ضع أهدافًا للتحسين يُحدَّد لكل منها مسؤول وموعد نهائي وتصور واضح لما يعنيه النجاح، مع الجمع بين أهداف الجودة والأهداف المالية.</li>
+                        <li style="margin-bottom:6px;">سجّل المحضر والإجراءات في نموذج مراجعات الإدارة، وشاركها مع جميع المعنيين.</li>
+                        <li style="margin-bottom:6px;">تابِع تنفيذ الإجراءات خلال العام، وسجّل تاريخ إنجاز كل منها.</li>
+                        <li>إذا لم يُحدَّد موعد لهدف ما، فإنه يستحق بحلول الاجتماع التالي لمراجعة الإدارة.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer am-modal__footer">
+                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade text-right" id="deleteRequirment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" style="max-width:460px;" role="document">
@@ -326,13 +353,13 @@
                             <input type="hidden" readonly disabled name="id" value="" id="id_feild">
                             <!-- <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Management Review ID Number (See table below. For amendments only):</label><br>
+                                        <label>Management Review ID Number (See table below. For amendments only):</label>
                                         <input type="number" readonly disabled class="form-control" name="1mgtreviewId">
                                     </div>
                                 </div> -->
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>تاريخ المراجعة الإدارية: </label><br>
+                                    <label>تاريخ المراجعة الإدارية: </label>
                                     <input type="date" readonly disabled class="form-control" name="1reviewdate">
                                 </div>
                             </div>
@@ -496,13 +523,13 @@
                             <input type="hidden" name="id" value="" id="sdsd">
                             <!-- <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Management Review ID Number (See table below. For amendments only):</label><br>
+                                        <label>Management Review ID Number (See table below. For amendments only):</label>
                                         <input type="number" class="form-control" name="mgtreviewId">
                                     </div>
                                 </div> -->
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>تاريخ المراجعة الإدارية: </label><br>
+                                    <label>تاريخ المراجعة الإدارية: </label>
                                     <input type="date" max="2999-12-31" required class="form-control"
                                         name="reviewdate">
                                 </div>
