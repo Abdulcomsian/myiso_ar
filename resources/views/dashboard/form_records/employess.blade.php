@@ -225,210 +225,212 @@
 
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent2">
-                                    <thead>
-                                        <tr>
-                                            <th style="width:170px;">رقم تعريف الموظف</th>
-                                            <th style="width:150px;">اللقب</th>
-                                            <th style="width:150px;">الاسم الأول</th>
-                                            <!--<th>Employee Number</th>-->
-                                            <th style="width:200px;">تاريخ البدء </th>
-                                            <th style="width:240px;">الوصف الوظيفي</th>
-                                            <th style="width:240px;">بريد إلكتروني</th>
-                                            <th style="width:120px;">السيرة الذاتية</th>
-                                            <th style="width:150px;">النشاط</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php $n = 1; @endphp
-                                        @forelse ($userinfo as $item)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent2">
+                                        <thead>
                                             <tr>
-                                                <!--<td><span class="am-cell-sub">{{ $n }}</span></td>-->
-                                                <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
-                                                <!--<td> {$item->empNumber}</td>-->
-
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->startDate)) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->jobdetails }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->email }}</span></td>
-                                                <td>
-
-                                                    @if (!empty($item->cv))
-                                                        <?php
-													$path_info = explode('.', $item->cv);
-													if($path_info[1]=="pdf"){
-													
-												?>
-                                                        <a target="_blank" style="color: blue;cursor: pointer;"
-                                                            data-toggle="modal" data-target="#cv{{ $item->id }}">عرض
-                                                            السيرة الذاتية</a>
-                                                        <?php
-													}else{
-												?>
-                                                        <a target="_blank" download href="{{ asset($item->cv) }}">عرض
-                                                            السيرة الذاتية</a>
-                                                        <?php } ?>
-
+                                                <th style="width:170px;">رقم تعريف الموظف</th>
+                                                <th style="width:150px;">اللقب</th>
+                                                <th style="width:150px;">الاسم الأول</th>
+                                                <!--<th>Employee Number</th>-->
+                                                <th style="width:200px;">تاريخ البدء </th>
+                                                <th style="width:240px;">الوصف الوظيفي</th>
+                                                <th style="width:240px;">بريد إلكتروني</th>
+                                                <th style="width:120px;">السيرة الذاتية</th>
+                                                <th style="width:150px;">النشاط</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php $n = 1; @endphp
+                                            @forelse ($userinfo as $item)
+                                                <tr>
+                                                    <!--<td><span class="am-cell-sub">{{ $n }}</span></td>-->
+                                                    <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
+                                                    <!--<td> {$item->empNumber}</td>-->
+    
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->startDate)) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->jobdetails }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->email }}</span></td>
+                                                    <td>
+    
+                                                        @if (!empty($item->cv))
+                                                            <?php
+    													$path_info = explode('.', $item->cv);
+    													if($path_info[1]=="pdf"){
+    													
+    												?>
+                                                            <a target="_blank" style="color: blue;cursor: pointer;"
+                                                                data-toggle="modal" data-target="#cv{{ $item->id }}">عرض
+                                                                السيرة الذاتية</a>
+                                                            <?php
+    													}else{
+    												?>
+                                                            <a target="_blank" download href="{{ asset($item->cv) }}">عرض
+                                                                السيرة الذاتية</a>
+                                                            <?php } ?>
+    
+                                                            <!-- Modal -->
+                                                            <div class="modal fade text-right" id="cv{{ $item->id }}"
+                                                                tabindex="-1" role="dialog" aria-labelledby="viewcvLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog" style="max-width:720px;" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header am-modal__header">
+                                                                            <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                            <h5 class="modal-title am-modal__title" id="viewcvLabel">عرض
+                                                                                السيرة الذاتية</h5>
+    																			<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+    																			</a>
+                                                                        </div>
+                                                                        <div class="modal-body">
+    
+                                                                            <!--<iframe frameborder="0" style="min-height: 500px;overflow:scroll; width: 100%" scrolling="yes" src="{{ asset($item->cv) }}"></iframe>-->
+    
+    
+                                                                            <object data="{{ asset($item->cv) }}"
+                                                                                type="application/pdf">
+                                                                                <embed src="{{ asset($item->cv) }}"
+                                                                                    type="application/pdf" />
+                                                                            </object>
+                                                                        </div>
+                                                                        <div class="modal-footer am-modal__footer">
+                                                                            <a href="{{ asset($item->cv) }}" download>
+                                                                                <h5 class="modal-title"
+                                                                                    style="float:right;text-align:Right;">تحميل
+                                                                                    السيرة الذاتية</h5>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @else
+                                                            لاتوجد بيانات
+                                                        @endif
+                                                    </td>
+                                                    {{--                                            <td><img src="{{ asset($item->cv) }}" alt=""></td> --}}
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="View Customer Details" value="" o
+                                                            data-toggle="modal" data-target="#employ{{ $item->id }}"><i
+                                                                class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button onclick="getEid({{ json_encode($item) }});"
+                                                            class="am-icon-btn" title="Edit">
+                                                            <i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn"
+                                                            onclick="deleteempl({{ $item->id }})"
+                                                            title="Delete Employee">
+                                                            <i class="fa fa-trash"></i>
+    
+                                                        </button>
+    
+    
                                                         <!-- Modal -->
-                                                        <div class="modal fade text-right" id="cv{{ $item->id }}"
-                                                            tabindex="-1" role="dialog" aria-labelledby="viewcvLabel"
+                                                        <div class="modal fade text-right" id="employ{{ $item->id }}"
+                                                            tabindex="-1" role="dialog" aria-labelledby="model1Label"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" style="max-width:720px;" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header am-modal__header">
                                                                         <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                        <h5 class="modal-title am-modal__title" id="viewcvLabel">عرض
-                                                                            السيرة الذاتية</h5>
-																			<a data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
-																			</a>
-                                                                    </div>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
+                                                                            الموظفين المدرجين</h5>
+    																		</div>
                                                                     <div class="modal-body">
-
-                                                                        <!--<iframe frameborder="0" style="min-height: 500px;overflow:scroll; width: 100%" scrolling="yes" src="{{ asset($item->cv) }}"></iframe>-->
-
-
-                                                                        <object data="{{ asset($item->cv) }}"
-                                                                            type="application/pdf">
-                                                                            <embed src="{{ asset($item->cv) }}"
-                                                                                type="application/pdf" />
-                                                                        </object>
+    
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12">
+                                                                                <div class="form-group">
+                                                                                    <label>اسم العائلة:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="surname"
+                                                                                        placeholder="أدخل اللقب"
+                                                                                        value="{{ $item->surname }}" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+    
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>الاسم الأول:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="first_name"
+                                                                                        placeholder="أدخل الاسم الأول"
+                                                                                        value="{{ $item->first_name }}"
+                                                                                        readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group edit-emp-number-div">
+                                                                                    <label>هوية الموظف:</label>
+                                                                                    <input type="text" name="empNumber"
+                                                                                        required class="form-control"
+                                                                                        data-type="edit"
+                                                                                        value="{{ $item->empNumber }}"
+                                                                                        readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تاريخ البدء (يوم/شهر/سنة):</label>
+                                                                                    <input name="startDate" max="2999-12-31"
+                                                                                        type="date" class="form-control"
+                                                                                        value="{{ $item->startDate }}"
+                                                                                        readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>الوصف الوظيفي</label>
+                                                                                    <!-- <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Details:" value="{{ $item->jobdetails }}" readonly> -->
+                                                                                    <textarea name="jobdetails" id="" cols="20" rows="5" class="form-control"
+                                                                                        placeholder="أدخل الوصف الوظيفي:">{{ $item->jobdetails }}</textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Upload Employee CV:</label>
+                                                                                    <input name="employee_cv" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div> -->
                                                                     </div>
                                                                     <div class="modal-footer am-modal__footer">
-                                                                        <a href="{{ asset($item->cv) }}" download>
-                                                                            <h5 class="modal-title"
-                                                                                style="float:right;text-align:Right;">تحميل
-                                                                                السيرة الذاتية</h5>
-                                                                        </a>
+                                                                        <button type="button" class="am-btn am-btn-outline"
+                                                                            data-dismiss="modal">يغلق</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @else
-                                                        لاتوجد بيانات
-                                                    @endif
-                                                </td>
-                                                {{--                                            <td><img src="{{ asset($item->cv) }}" alt=""></td> --}}
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="View Customer Details" value="" o
-                                                        data-toggle="modal" data-target="#employ{{ $item->id }}"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button onclick="getEid({{ json_encode($item) }});"
-                                                        class="am-icon-btn" title="Edit">
-                                                        <i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn"
-                                                        onclick="deleteempl({{ $item->id }})"
-                                                        title="Delete Employee">
-                                                        <i class="fa fa-trash"></i>
-
-                                                    </button>
-
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade text-right" id="employ{{ $item->id }}"
-                                                        tabindex="-1" role="dialog" aria-labelledby="model1Label"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
-                                                                        الموظفين المدرجين</h5>
-																		</div>
-                                                                <div class="modal-body">
-
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12">
-                                                                            <div class="form-group">
-                                                                                <label>اسم العائلة:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="surname"
-                                                                                    placeholder="أدخل اللقب"
-                                                                                    value="{{ $item->surname }}" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>الاسم الأول:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="first_name"
-                                                                                    placeholder="أدخل الاسم الأول"
-                                                                                    value="{{ $item->first_name }}"
-                                                                                    readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group edit-emp-number-div">
-                                                                                <label>هوية الموظف:</label>
-                                                                                <input type="text" name="empNumber"
-                                                                                    required class="form-control"
-                                                                                    data-type="edit"
-                                                                                    value="{{ $item->empNumber }}"
-                                                                                    readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تاريخ البدء (يوم/شهر/سنة):</label>
-                                                                                <input name="startDate" max="2999-12-31"
-                                                                                    type="date" class="form-control"
-                                                                                    value="{{ $item->startDate }}"
-                                                                                    readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>الوصف الوظيفي</label>
-                                                                                <!-- <input type="text" name="jobdetails" class="form-control"  placeholder="Enter Job Details:" value="{{ $item->jobdetails }}" readonly> -->
-                                                                                <textarea name="jobdetails" id="" cols="20" rows="5" class="form-control"
-                                                                                    placeholder="أدخل الوصف الوظيفي:">{{ $item->jobdetails }}</textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>Upload Employee CV:</label>
-                                                                                <input name="employee_cv" type="file" class="form-control" accept="image/*,.doc, .docx,.txt,.pdf">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <button type="button" class="am-btn am-btn-outline"
-                                                                        data-dismiss="modal">يغلق</button>
-                                                                </div>
-                                                            </div>
+    
+                                                    </td>
+    
+                                                </tr>
+                                                @php $n++; @endphp
+                                            @empty
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-id-badge"></i>
+                                                            <p>لم تتم إضافة أي موظفين بعد.</p>
                                                         </div>
-                                                    </div>
-
-                                                </td>
-
-                                            </tr>
-                                            @php $n++; @endphp
-                                        @empty
-                                            <tr>
-                                                <td colspan="8">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-id-badge"></i>
-                                                        <p>لم تتم إضافة أي موظفين بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+    
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                         </div>
@@ -437,113 +439,115 @@
                         <div class="requirments_table_div" style="margin-top: 0px;">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <!--<th>Skills ID</th>-->
-                                            <th style="width:170px;">رقم تعريف الموظف:</th>
-                                            <th style="width:150px;">اللقب</th>
-                                            <th style="width:150px;">الاسم الأول</th>
-                                            <!--<th>Employee Number</th>-->
-                                            <th style="width:560px;">المهارة:</th>
-                                            <th style="width:150px;">النشاط</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @forelse ($employess as $item)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <!--<td> { item->skill_id} </td>-->
-                                                <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
-                                                <!--<td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>-->
-                                                <td><span class="am-cell-sub">{{ $item->empskill }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="View Customer Details" value="" o
-                                                        data-toggle="modal" data-target="#skill{{ $item->skill_id }}"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button onclick="getEidskill({{ json_encode($item) }});"
-                                                        class="am-icon-btn"
-                                                        title="Edit"><i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <!-- new  -->
-                                                    <button class="am-icon-btn"
-                                                        onclick="deleteemplskill({{ $item->skill_id }})"
-                                                        title="Delete Employee">
-                                                        <i class="fa fa-trash"></i>
-
-                                                    </button>
-
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade text-right" id="skill{{ $item->skill_id }}"
-                                                        tabindex="-1" role="dialog" aria-labelledby="model2Label"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
-                                                                        مهارات الموظفين المدرجة</h5>
-																		</div>
-
-                                                                <div class="modal-body">
-
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>رقم تعريف الموظف:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="surname"
-                                                                                    placeholder="أدخل اللقب"
-                                                                                    value="{{ $item->empNumber }}"
-                                                                                    readonly>
+                                                <!--<th>Skills ID</th>-->
+                                                <th style="width:170px;">رقم تعريف الموظف:</th>
+                                                <th style="width:150px;">اللقب</th>
+                                                <th style="width:150px;">الاسم الأول</th>
+                                                <!--<th>Employee Number</th>-->
+                                                <th style="width:560px;">المهارة:</th>
+                                                <th style="width:150px;">النشاط</th>
+    
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+    
+                                            @forelse ($employess as $item)
+                                                <tr>
+                                                    <!--<td> { item->skill_id} </td>-->
+                                                    <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
+                                                    <!--<td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>-->
+                                                    <td><span class="am-cell-sub">{{ $item->empskill }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="View Customer Details" value="" o
+                                                            data-toggle="modal" data-target="#skill{{ $item->skill_id }}"><i
+                                                                class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button onclick="getEidskill({{ json_encode($item) }});"
+                                                            class="am-icon-btn"
+                                                            title="Edit"><i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <!-- new  -->
+                                                        <button class="am-icon-btn"
+                                                            onclick="deleteemplskill({{ $item->skill_id }})"
+                                                            title="Delete Employee">
+                                                            <i class="fa fa-trash"></i>
+    
+                                                        </button>
+    
+    
+                                                        <!-- Modal -->
+                                                        <div class="modal fade text-right" id="skill{{ $item->skill_id }}"
+                                                            tabindex="-1" role="dialog" aria-labelledby="model2Label"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:720px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">إجمالي
+                                                                            مهارات الموظفين المدرجة</h5>
+    																		</div>
+    
+                                                                    <div class="modal-body">
+    
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>رقم تعريف الموظف:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="surname"
+                                                                                        placeholder="أدخل اللقب"
+                                                                                        value="{{ $item->empNumber }}"
+                                                                                        readonly>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>المهارة:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="first_name"
-                                                                                    placeholder="أدخل الاسم الأول"
-                                                                                    value="{{ $item->empskill }}"
-                                                                                    readonly>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>المهارة:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="first_name"
+                                                                                        placeholder="أدخل الاسم الأول"
+                                                                                        value="{{ $item->empskill }}"
+                                                                                        readonly>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="modal-footer am-modal__footer">
+                                                                        <button type="button" class="am-btn am-btn-outline"
+                                                                            data-dismiss="modal">يغلق</button>
+                                                                    </div>
+    
                                                                 </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <button type="button" class="am-btn am-btn-outline"
-                                                                        data-dismiss="modal">يغلق</button>
-                                                                </div>
-
                                                             </div>
+                                                    </td>
+    
+                                                    </td>
+    
+    
+    
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-tools"></i>
+                                                            <p>لم يتم تسجيل أي مهارات بعد.</p>
                                                         </div>
-                                                </td>
-
-                                                </td>
-
-
-
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="5">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-tools"></i>
-                                                        <p>لم يتم تسجيل أي مهارات بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                         </div>
@@ -553,179 +557,181 @@
                         <div class="requirments_table_div" style="margin-top: 0px;">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th style="width:170px;">رقم تعريف الموظف</th>
-                                            <th style="width:150px;">اللقب</th>
-                                            <th style="width:150px;">الاسم الأول</th>
-                                            <th style="width:200px;">تاريخ البدء</th>
-                                            {{-- <th>Employee Stamp Number</th> --}}
-                                            <th style="width:240px;">تاريخ التدريب</th>
-                                            <th style="width:120px;"> تفاصيل التدريب</th>
-                                            <th style="width:150px;"> الإجراءات</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @forelse ($emptraining as $item)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
-
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->startDate)) }}</span></td>
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->traningdate)) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->traningdetails }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="View Customer Details" value="" o
-                                                        data-toggle="modal"
-                                                        data-target="#training{{ $item->traning_id }}"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button onclick="getEidtraining({{ json_encode($item) }});"
-                                                        class="am-icon-btn"
-                                                        title="Edit"><i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn"
-                                                        onclick="deleteempltraining({{ $item->traning_id }})"
-                                                        title="Delete Employee">
-                                                        <i class="fa fa-trash"></i>
-
-                                                    </button>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade text-right" id="training{{ $item->traning_id }}"
-                                                        tabindex="-1" role="dialog" aria-labelledby="model3Label"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">ملخص
-                                                                        سجل التدريب</h5>
-																		</div>
-                                                                <div class="modal-body">
-
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>رقم تعريف الموظف</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="surname"
-                                                                                    placeholder="أدخل معرف الموظف"
-                                                                                    value="{{ $item->empNumber }}"
-                                                                                    readonly>
+                                                <th style="width:170px;">رقم تعريف الموظف</th>
+                                                <th style="width:150px;">اللقب</th>
+                                                <th style="width:150px;">الاسم الأول</th>
+                                                <th style="width:200px;">تاريخ البدء</th>
+                                                {{-- <th>Employee Stamp Number</th> --}}
+                                                <th style="width:240px;">تاريخ التدريب</th>
+                                                <th style="width:120px;"> تفاصيل التدريب</th>
+                                                <th style="width:150px;"> الإجراءات</th>
+    
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+    
+                                            @forelse ($emptraining as $item)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
+    
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->startDate)) }}</span></td>
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->traningdate)) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->traningdetails }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="View Customer Details" value="" o
+                                                            data-toggle="modal"
+                                                            data-target="#training{{ $item->traning_id }}"><i
+                                                                class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button onclick="getEidtraining({{ json_encode($item) }});"
+                                                            class="am-icon-btn"
+                                                            title="Edit"><i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn"
+                                                            onclick="deleteempltraining({{ $item->traning_id }})"
+                                                            title="Delete Employee">
+                                                            <i class="fa fa-trash"></i>
+    
+                                                        </button>
+    
+                                                        <!-- Modal -->
+                                                        <div class="modal fade text-right" id="training{{ $item->traning_id }}"
+                                                            tabindex="-1" role="dialog" aria-labelledby="model3Label"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:720px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">ملخص
+                                                                            سجل التدريب</h5>
+    																		</div>
+                                                                    <div class="modal-body">
+    
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>رقم تعريف الموظف</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="surname"
+                                                                                        placeholder="أدخل معرف الموظف"
+                                                                                        value="{{ $item->empNumber }}"
+                                                                                        readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تاريخ التدريب (يوم/شهر/سنة):</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="first_name"
+                                                                                        placeholder="أدخل الاسم الأول"
+                                                                                        value="{{ $item->traningdate }}"
+                                                                                        readonly>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تاريخ التدريب (يوم/شهر/سنة):</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="first_name"
-                                                                                    placeholder="أدخل الاسم الأول"
-                                                                                    value="{{ $item->traningdate }}"
-                                                                                    readonly>
+    
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12">
+                                                                                <div class="form-group edit-emp-number-div">
+                                                                                    <label>تفاصيل التدريب</label>
+                                                                                    <input type="text" name="empNumber"
+                                                                                        required class="form-control"
+                                                                                        data-type="edit"
+                                                                                        value="{{ $item->traningdetails }}"
+                                                                                        readonly>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
+                                                                    @if ($item->attach_cert)
+    																<div class="row">
+    																	<div class="col-lg-12">
+    																		<div class="form-group edit-emp-number-div">
+    																			<label>شهادة التدريب</label><br>
+    																			<a href="{{$item->attach_cert}}" target="_blank">انقر للعرض</a>
+    																		</div>
+    																	</div>
+    																</div>
+    																@endif	
                                                                     </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12">
-                                                                            <div class="form-group edit-emp-number-div">
-                                                                                <label>تفاصيل التدريب</label>
-                                                                                <input type="text" name="empNumber"
-                                                                                    required class="form-control"
-                                                                                    data-type="edit"
-                                                                                    value="{{ $item->traningdetails }}"
-                                                                                    readonly>
-                                                                            </div>
-                                                                        </div>
+                                                                    <div class="modal-footer am-modal__footer">
+                                                                        <button type="button" class="am-btn am-btn-outline"
+                                                                            data-dismiss="modal">يغلق</button>
                                                                     </div>
-                                                                @if ($item->attach_cert)
-																<div class="row">
-																	<div class="col-lg-12">
-																		<div class="form-group edit-emp-number-div">
-																			<label>شهادة التدريب</label><br>
-																			<a href="{{$item->attach_cert}}" target="_blank">انقر للعرض</a>
-																		</div>
-																	</div>
-																</div>
-																@endif	
-                                                                </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <button type="button" class="am-btn am-btn-outline"
-                                                                        data-dismiss="modal">يغلق</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-
-                                            </tr>
-                                        @empty
+                                                    </td>
+    
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="7">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-graduation-cap"></i>
+                                                            <p>لا توجد سجلات تدريب بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+    
+                                             @foreach ($wp_users as $wpuser)
+    										@foreach($wpuser as $user)
+    										@php
+    											$uid= '"user_id";i:'.$user->ID.';';
+               									$options = App\CertificateOption::where('option_name', 'LIKE', "%user_cert_%")->Where('option_value', 'LIKE', "%".$uid."%")->get();
+    											$finshedcourses = App\CertificateUserItems::Where('ID', $user->ID)->where('user_status','finished')->get();
+    
+    											//print_r($options);
+    											if(count($finshedcourses)>0)
+    											{   
+    												foreach ($finshedcourses as $key => $finshedcourse) {
+    													$courses = App\CertificateCourse::where('ID',$finshedcourse->item_id)->get();
+    													foreach ($courses as $key => $course) {
+    														$usercourses[]= $course->post_title;
+    														$postDate[]=$course->post_date;
+    													}
+    												   
+    													$startdate=$finshedcourse->start_time;
+    													$endate=$finshedcourse->end_time;
+    												}
+    												$laravel_employee_detail = App\Employee::where('email', $user->user_email)->first();
+    										@endphp
+    										@if(!empty($usercourses) && count($usercourses) > 0)
+    										@foreach($usercourses as $key => $usercourse)
+    
                                             <tr>
-                                                <td colspan="7">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-graduation-cap"></i>
-                                                        <p>لا توجد سجلات تدريب بعد.</p>
-                                                    </div>
-                                                </td>
+    											<td><span class="am-cell-sub">{{$laravel_employee_detail->empNumber}}</span></td>
+                                                <td><span class="am-cell-sub">{{$laravel_employee_detail->surname}}</span></td>
+    											<td><span class="am-cell-sub">{{$laravel_employee_detail->first_name}}</span></td>
+    											<td><span class="am-cell-sub">{{$startdate}}</span></td>
+    											<td><span class="am-cell-sub">{{$endate}}</span></td>
+    											<td>
+    												
+    												   <li>
+    													{{ $usercourse}}
+    													</li>
+    												
+    											</td>
+    											
+    											<td> </td>
                                             </tr>
-                                        @endforelse
-
-                                         @foreach ($wp_users as $wpuser)
-										@foreach($wpuser as $user)
-										@php
-											$uid= '"user_id";i:'.$user->ID.';';
-           									$options = App\CertificateOption::where('option_name', 'LIKE', "%user_cert_%")->Where('option_value', 'LIKE', "%".$uid."%")->get();
-											$finshedcourses = App\CertificateUserItems::Where('ID', $user->ID)->where('user_status','finished')->get();
-
-											//print_r($options);
-											if(count($finshedcourses)>0)
-											{   
-												foreach ($finshedcourses as $key => $finshedcourse) {
-													$courses = App\CertificateCourse::where('ID',$finshedcourse->item_id)->get();
-													foreach ($courses as $key => $course) {
-														$usercourses[]= $course->post_title;
-														$postDate[]=$course->post_date;
-													}
-												   
-													$startdate=$finshedcourse->start_time;
-													$endate=$finshedcourse->end_time;
-												}
-												$laravel_employee_detail = App\Employee::where('email', $user->user_email)->first();
-										@endphp
-										@if(!empty($usercourses) && count($usercourses) > 0)
-										@foreach($usercourses as $key => $usercourse)
-
-                                        <tr>
-											<td><span class="am-cell-sub">{{$laravel_employee_detail->empNumber}}</span></td>
-                                            <td><span class="am-cell-sub">{{$laravel_employee_detail->surname}}</span></td>
-											<td><span class="am-cell-sub">{{$laravel_employee_detail->first_name}}</span></td>
-											<td><span class="am-cell-sub">{{$startdate}}</span></td>
-											<td><span class="am-cell-sub">{{$endate}}</span></td>
-											<td>
-												
-												   <li>
-													{{ $usercourse}}
-													</li>
-												
-											</td>
-											
-											<td> </td>
-                                        </tr>
-										@endforeach
-										@endif
-										@php } @endphp 
-										@endforeach
-                                        @endforeach
-                                    </tbody>
-                                </table>
+    										@endforeach
+    										@endif
+    										@php } @endphp 
+    										@endforeach
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                         </div>

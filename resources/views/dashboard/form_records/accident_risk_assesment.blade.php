@@ -148,47 +148,49 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th>السيناريو</th>
-                                            <!--<th>Detail View</th>-->
-                                            <th>النشاط </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($audit as $data)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-primary">{{ $data->activityscenario }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;"> <button onclick="getDetails({{ json_encode($data) }})"
-                                                        class="am-icon-btn" title="View"
-                                                        value=""><i class="fa fa-eye"></i>
-                                                    </button>
-
-                                                    <button onclick="Editinfo({{ json_encode($data) }})"
-                                                        class="am-icon-btn" title="Edit"
-                                                        value=""><i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn danger"
-                                                        title="Delete" onclick="deleteModal({{ $data }});"><i class="fa fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                                <!--<td> </td>-->
+                                                <th>السيناريو</th>
+                                                <!--<th>Detail View</th>-->
+                                                <th>النشاط </th>
                                             </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="2">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-first-aid"></i>
-                                                        <p>لم يتم تسجيل أي تقييمات لمخاطر الحوادث بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($audit as $data)
+                                                <tr>
+                                                    <td><span class="am-cell-primary">{{ $data->activityscenario }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;"> <button onclick="getDetails({{ json_encode($data) }})"
+                                                            class="am-icon-btn" title="View"
+                                                            value=""><i class="fa fa-eye"></i>
+                                                        </button>
+    
+                                                        <button onclick="Editinfo({{ json_encode($data) }})"
+                                                            class="am-icon-btn" title="Edit"
+                                                            value=""><i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn danger"
+                                                            title="Delete" onclick="deleteModal({{ $data }});"><i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                    <!--<td> </td>-->
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-first-aid"></i>
+                                                            <p>لم يتم تسجيل أي تقييمات لمخاطر الحوادث بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $audit])

@@ -120,60 +120,62 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="">
-                                    <thead>
-                                        <tr>
-                                            <th> معرّف العميل</th>
-                                            <th>اسم العميل</th>
-                                            <th> عنوان العمل</th>
-                                            <th> رقم هاتف العميل</th>
-                                            <th>عنوان البريد الإلكتروني</th>
-                                            <th>جهة الاتصال</th>
-                                            <th> الإجراء</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @forelse ($customers as $item)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $item->idNumber }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $item->name }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->address }}</span></td>
-                                                <td>{{ $item->phonecode }} {{ $item->phoneNumber }}</td>
-                                                <td><span class="am-cell-sub">{{ $item->Email }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->contactName }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn" title="View"
-                                                        value="" onclick="viewEid({{ $item }});"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button data-toggle="modal" onclick="getEid({{ $item }});"
-                                                        class="am-icon-btn" title="edit"
-                                                        value=""><i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn danger"
-                                                        title="delete" value=""
-                                                        onclick="deletethisitem({{ $item }});"><i class="fa fa-trash"></i>
-                                                    </button>
-
-                                                </td>
+                                                <th> معرّف العميل</th>
+                                                <th>اسم العميل</th>
+                                                <th> عنوان العمل</th>
+                                                <th> رقم هاتف العميل</th>
+                                                <th>عنوان البريد الإلكتروني</th>
+                                                <th>جهة الاتصال</th>
+                                                <th> الإجراء</th>
                                             </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="7">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-user-friends"></i>
-                                                        <p>لم تتم إضافة أي عملاء بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @forelse ($customers as $item)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $item->idNumber }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $item->name }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->address }}</span></td>
+                                                    <td>{{ $item->phonecode }} {{ $item->phoneNumber }}</td>
+                                                    <td><span class="am-cell-sub">{{ $item->Email }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->contactName }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn" title="View"
+                                                            value="" onclick="viewEid({{ $item }});"><i
+                                                                class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button data-toggle="modal" onclick="getEid({{ $item }});"
+                                                            class="am-icon-btn" title="edit"
+                                                            value=""><i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn danger"
+                                                            title="delete" value=""
+                                                            onclick="deletethisitem({{ $item }});"><i class="fa fa-trash"></i>
+                                                        </button>
+    
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="7">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-user-friends"></i>
+                                                            <p>لم تتم إضافة أي عملاء بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $customers])

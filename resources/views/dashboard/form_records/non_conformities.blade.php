@@ -261,28 +261,30 @@
         <div class="requirments_table_div">
             <div class="am-table-wrap">
                 <!--begin: Datatable -->
-                <table class="am-table" id="kt_table_agent">
-                    <thead>
-                        <tr>
-                            <th>Customer ID</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Tel</th>
-                            <th>Email</th>
-                            <th>Contact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>58</td>
-                            <td>Block Computing</td>
-                            <td>Al Quasais, Unit 5, Dubai</td>
-                            <td>0971 56 491 5517</td>
-                            <td>B.Cmp@gmail.com</td>
-                            <td>Mr Ahmed</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="am-table-wrap">
+                    <table class="am-table" id="kt_table_agent">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Tel</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>58</td>
+                                <td>Block Computing</td>
+                                <td>Al Quasais, Unit 5, Dubai</td>
+                                <td>0971 56 491 5517</td>
+                                <td>B.Cmp@gmail.com</td>
+                                <td>Mr Ahmed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <!--end: Datatable -->
         </div>
 
@@ -293,81 +295,83 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th>رقم هوية NCR</th>
-                                            <th>عدم الثقة الصغرى أو الكبرى:</th>
-                                            <th>فئة عدم المطابقة</th>
-                                            <th>رقم هوية المورد</th>
-                                            <th>الموظف الذي أبلغ عن NCR</th>
-                                            <th>رقم هوية الموظف</th>
-                                            <th>وصف NCR</th>
-                                            <th>فئة</th>
-                                            <th>تاريخ تسجيل NCR</th>
-
-                                            <th>فعل</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @forelse ($customers_nonconform as $data)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $i++ }}</span></td>
-                                                <td>
-                                                    @if ($data->non_confirm_status === 'Major')
-                                                        <span class="am-chip danger">{{$data->non_confirm_status}}</span>
-                                                    @elseif ($data->non_confirm_status === 'Minor')
-                                                        <span class="am-chip warning">{{$data->non_confirm_status}}</span>
-                                                    @else
-                                                        <span class="am-cell-sub">{{$data->non_confirm_status}}</span>
-                                                    @endif
-                                                </td>
-                                                <td><span class="am-cell-sub">{{ $data->supplier_data }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->customerID }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->employee_name }}</span></td> 
-                                                <td><span class="am-cell-sub">{{ $data->employee_id }}</span></td> 
-                                                <td><span class="am-cell-sub">{{ $data->description }}</span></td>
-                                                <td><span class="am-chip info">{{ $data->root_cause_category }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->dateNcR }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;"> <button class="am-icon-btn"
-                                                        title="View" value="{{ $data->customerID }}"
-                                                        onclick="getEid({{ json_encode($data) }});">
-                                                        <i class="fa fa-eye"></i>
-                                                    </button>
-                                                    @if ($data->non_confirm_status !== 'Major')
-                                                    <button class="am-icon-btn"
-                                                        title="Edit" onclick="EditData({{ json_encode($data) }});">
-                                                        <i class="fa fa-pen"></i>
-                                                    </button>
-                                                    @endif
-                                                    <button class="am-icon-btn danger"
-                                                        title="Delete" onclick="deleteModal({{ json_encode($data) }});">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-
-
-                                                </td>
-
-
+                                                <th>رقم هوية NCR</th>
+                                                <th>عدم الثقة الصغرى أو الكبرى:</th>
+                                                <th>فئة عدم المطابقة</th>
+                                                <th>رقم هوية المورد</th>
+                                                <th>الموظف الذي أبلغ عن NCR</th>
+                                                <th>رقم هوية الموظف</th>
+                                                <th>وصف NCR</th>
+                                                <th>فئة</th>
+                                                <th>تاريخ تسجيل NCR</th>
+    
+                                                <th>فعل</th>
                                             </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="10">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-exclamation-triangle"></i>
-                                                        <p>لم يتم تسجيل أي حالات عدم مطابقة بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @forelse ($customers_nonconform as $data)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $i++ }}</span></td>
+                                                    <td>
+                                                        @if ($data->non_confirm_status === 'Major')
+                                                            <span class="am-chip danger">{{$data->non_confirm_status}}</span>
+                                                        @elseif ($data->non_confirm_status === 'Minor')
+                                                            <span class="am-chip warning">{{$data->non_confirm_status}}</span>
+                                                        @else
+                                                            <span class="am-cell-sub">{{$data->non_confirm_status}}</span>
+                                                        @endif
+                                                    </td>
+                                                    <td><span class="am-cell-sub">{{ $data->supplier_data }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->customerID }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->employee_name }}</span></td> 
+                                                    <td><span class="am-cell-sub">{{ $data->employee_id }}</span></td> 
+                                                    <td><span class="am-cell-sub">{{ $data->description }}</span></td>
+                                                    <td><span class="am-chip info">{{ $data->root_cause_category }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->dateNcR }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;"> <button class="am-icon-btn"
+                                                            title="View" value="{{ $data->customerID }}"
+                                                            onclick="getEid({{ json_encode($data) }});">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        @if ($data->non_confirm_status !== 'Major')
+                                                        <button class="am-icon-btn"
+                                                            title="Edit" onclick="EditData({{ json_encode($data) }});">
+                                                            <i class="fa fa-pen"></i>
+                                                        </button>
+                                                        @endif
+                                                        <button class="am-icon-btn danger"
+                                                            title="Delete" onclick="deleteModal({{ json_encode($data) }});">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+    
+    
+                                                    </td>
+    
+    
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="10">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-exclamation-triangle"></i>
+                                                            <p>لم يتم تسجيل أي حالات عدم مطابقة بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+    
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $customers_nonconform])

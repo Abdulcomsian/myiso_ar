@@ -70,210 +70,212 @@
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
 
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th> العدد.</th>
-                                            <th> المتطلبات</th>
-                                            <th>تاريخ الاستكمال</th>
-                                            <th>التواتر الدوري (بالأشهر)</th>
-                                            <th>تاريخ الاستحقاق</th>
-                                            <th> الإجراء</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $counter = 0; ?>
-                                        @forelse ($requirement as $data)
-                                            <?php $counter++; ?>
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-
-                                                <td><span class="am-cell-sub">{{ $counter }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $data->requirment_title }}</span></td>
-
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->completion_date)) }}</span></td>
-                                                <!--<td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->completion_date)) }}</span></td>-->
-                                                <td><span class="am-cell-primary">{{ $data->periods }}</span></td>
-                                                @php
-                                                    $d = strtotime("+$data->periods months", strtotime($data->completion_date));
-
-                                                @endphp
-                                                @php $daysToDue = intval(($d - time()) / 86400); @endphp
-                                                <td>
-                                                    @if ($daysToDue < 0)
-                                                        <span class="am-chip danger">{{ date('d/m/Y', $d) }}</span>
-                                                    @elseif ($daysToDue < 30)
-                                                        <span class="am-chip warning">{{ date('d/m/Y', $d) }}</span>
-                                                    @else
-                                                        <span class="am-chip success">{{ date('d/m/Y', $d) }}</span>
-                                                    @endif
-                                                </td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="View Customer Details" value="" o
-                                                        data-toggle="modal" data-target="#model3"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
-
-                                                    <div class="modal fade" id="deleteRequirment_{{ $data->id }}"
-                                                        tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:460px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف
-                                                                        المتطلبات</h5>
-																	</div>
-                                                                <div class="modal-body">
-                                                                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                                                                </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <form action="{{ url('deleteRequirement/' . $data->id) }}"
-                                                                        method="GET">
-                                                                        @csrf
-                                                                        <!---input type="text" name="id" value="" id="re_id"--->
-
-                                                                        <button type="button" class="am-btn am-btn-outline"
-                                                                            data-dismiss="modal">لا</button>
-                                                                        <button type="submit"
-                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                                                                    </form>
+                                                <th> العدد.</th>
+                                                <th> المتطلبات</th>
+                                                <th>تاريخ الاستكمال</th>
+                                                <th>التواتر الدوري (بالأشهر)</th>
+                                                <th>تاريخ الاستحقاق</th>
+                                                <th> الإجراء</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $counter = 0; ?>
+                                            @forelse ($requirement as $data)
+                                                <?php $counter++; ?>
+                                                <tr>
+    
+                                                    <td><span class="am-cell-sub">{{ $counter }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $data->requirment_title }}</span></td>
+    
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->completion_date)) }}</span></td>
+                                                    <!--<td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->completion_date)) }}</span></td>-->
+                                                    <td><span class="am-cell-primary">{{ $data->periods }}</span></td>
+                                                    @php
+                                                        $d = strtotime("+$data->periods months", strtotime($data->completion_date));
+    
+                                                    @endphp
+                                                    @php $daysToDue = intval(($d - time()) / 86400); @endphp
+                                                    <td>
+                                                        @if ($daysToDue < 0)
+                                                            <span class="am-chip danger">{{ date('d/m/Y', $d) }}</span>
+                                                        @elseif ($daysToDue < 30)
+                                                            <span class="am-chip warning">{{ date('d/m/Y', $d) }}</span>
+                                                        @else
+                                                            <span class="am-chip success">{{ date('d/m/Y', $d) }}</span>
+                                                        @endif
+                                                    </td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="View Customer Details" value="" o
+                                                            data-toggle="modal" data-target="#model3"><i
+                                                                class="fa fa-eye"></i>
+                                                        </button>
+    
+                                                        <div class="modal fade" id="deleteRequirment_{{ $data->id }}"
+                                                            tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:460px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف
+                                                                            المتطلبات</h5>
+    																	</div>
+                                                                    <div class="modal-body">
+                                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
+                                                                    </div>
+                                                                    <div class="modal-footer am-modal__footer">
+                                                                        <form action="{{ url('deleteRequirement/' . $data->id) }}"
+                                                                            method="GET">
+                                                                            @csrf
+                                                                            <!---input type="text" name="id" value="" id="re_id"--->
+    
+                                                                            <button type="button" class="am-btn am-btn-outline"
+                                                                                data-dismiss="modal">لا</button>
+                                                                            <button type="submit"
+                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <button class="am-icon-btn" title="Edit"
-                                                        value="{{ $data->requirment_id }}"
-                                                        onclick="getEid({{ json_encode($data) }});">
-                                                        <i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <!-- new button -->
-                                                    <!-- new  -->
-                                                    <button type="button" class="am-icon-btn danger" title="حذف"
-                                                        data-toggle="modal"
-                                                        data-target="#deleteRequirment_{{ $data->id }}">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="model3" tabindex="-1" role="dialog"
-                                                        aria-labelledby="model3Label" aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:520px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">
-                                                                        المتطلبات المستحقة</h5>
-																	</div>
-                                                                <div class="modal-body">
-
-                                                                    <div class="row">
-                                                                        <input type="hidden" name="id"
-                                                                            id="editproject" value="">
-
-                                                                        {{-- <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>System ID Number:</label>
-                                    <input type="number" readonly class="form-control"  name="systemid">
-                                </div>
-                            </div> --}}
-                                                                        <div class="col-lg-12">
-                                                                            <div class="form-group">
-                                                                                <label>اسم العائلة:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="surname"
-                                                                                    placeholder="أدخل اللقب:">
+    
+                                                        <button class="am-icon-btn" title="Edit"
+                                                            value="{{ $data->requirment_id }}"
+                                                            onclick="getEid({{ json_encode($data) }});">
+                                                            <i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <!-- new button -->
+                                                        <!-- new  -->
+                                                        <button type="button" class="am-icon-btn danger" title="حذف"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteRequirment_{{ $data->id }}">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+    
+    
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="model3" tabindex="-1" role="dialog"
+                                                            aria-labelledby="model3Label" aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:520px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">
+                                                                            المتطلبات المستحقة</h5>
+    																	</div>
+                                                                    <div class="modal-body">
+    
+                                                                        <div class="row">
+                                                                            <input type="hidden" name="id"
+                                                                                id="editproject" value="">
+    
+                                                                            {{-- <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>System ID Number:</label>
+                                        <input type="number" readonly class="form-control"  name="systemid">
+                                    </div>
+                                </div> --}}
+                                                                            <div class="col-lg-12">
+                                                                                <div class="form-group">
+                                                                                    <label>اسم العائلة:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="surname"
+                                                                                        placeholder="أدخل اللقب:">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>الاسم الأول:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="first_name"
-                                                                                    placeholder="أدخل الاسم الأول:">
+    
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>الاسم الأول:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="first_name"
+                                                                                        placeholder="أدخل الاسم الأول:">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group edit-emp-number-div">
+                                                                                    <label>هوية الموظف:</label>
+                                                                                    <input type="text" name="empNumber"
+                                                                                        required class="form-control"
+                                                                                        data-type="edit">
+                                                                                    <!--                         <select name="empNumber" required class="form-control">-->
+                                                                                    <!--    <option>Select One</option>-->
+                                                                                    <!--    @if (isset($userinfo) && $userinfo != '')
+        -->
+                                                                                    <!--    @foreach ($userinfo as $item)
+        -->
+                                                                                    <!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
+                                                                                    <!--
+        @endforeach-->
+                                                                                    <!--
+        @endif-->
+                                                                                    <!--</select>-->
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group edit-emp-number-div">
-                                                                                <label>هوية الموظف:</label>
-                                                                                <input type="text" name="empNumber"
-                                                                                    required class="form-control"
-                                                                                    data-type="edit">
-                                                                                <!--                         <select name="empNumber" required class="form-control">-->
-                                                                                <!--    <option>Select One</option>-->
-                                                                                <!--    @if (isset($userinfo) && $userinfo != '')
-    -->
-                                                                                <!--    @foreach ($userinfo as $item)
-    -->
-                                                                                <!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
-                                                                                <!--
-    @endforeach-->
-                                                                                <!--
-    @endif-->
-                                                                                <!--</select>-->
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تاريخ البدء (YYYY/MM/DD):</label>
+                                                                                    <input name="startDate" max="2999-12-31"
+                                                                                        type="date" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تفاصيل الوظيفة:</label>
+                                                                                    <input type="text" name="jobdetails"
+                                                                                        class="form-control"
+                                                                                        placeholder="أدخل تفاصيل الوظيفة:">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تاريخ البدء (YYYY/MM/DD):</label>
-                                                                                <input name="startDate" max="2999-12-31"
-                                                                                    type="date" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تفاصيل الوظيفة:</label>
-                                                                                <input type="text" name="jobdetails"
-                                                                                    class="form-control"
-                                                                                    placeholder="أدخل تفاصيل الوظيفة:">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تحميل السيرة الذاتية للموظف:</label>
-                                                                                <div class="custom-file-input-tag form-control">
-                                                                                    <input type="file" id="fileInput1" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf">
-                                                                                    <label for="fileInput1" class="file-label">
-                                                                                        <span class="file-text">اختيار الملف</span>
-                                                                                        <span class="file-chosen">لم يتم اختيار ملف</span>
-                                                                                    </label>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تحميل السيرة الذاتية للموظف:</label>
+                                                                                    <div class="custom-file-input-tag form-control">
+                                                                                        <input type="file" id="fileInput1" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf">
+                                                                                        <label for="fileInput1" class="file-label">
+                                                                                            <span class="file-text">اختيار الملف</span>
+                                                                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                                                        </label>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <button type="button" class="am-btn am-btn-outline"
-                                                                        data-dismiss="modal">يغلق</button>
+                                                                    <div class="modal-footer am-modal__footer">
+                                                                        <button type="button" class="am-btn am-btn-outline"
+                                                                            data-dismiss="modal">يغلق</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="6">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-database"></i>
-                                                        <p>لم تتم إضافة أي متطلبات بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-database"></i>
+                                                            <p>لم تتم إضافة أي متطلبات بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $requirement])

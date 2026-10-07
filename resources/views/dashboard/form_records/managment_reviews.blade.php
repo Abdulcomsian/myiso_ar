@@ -209,62 +209,64 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th> رقم الهوية</th>
-                                            <th>التاريخ</th>
-                                            <th>الحضور</th>
-                                            <th> الأهداف المرجوة</th>
-                                            <!--<th>Detail View</th>-->
-                                            <th>الإجراء</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php $i=1; @endphp
-                                        @forelse ($userData as $item)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <!--<td><span class="am-cell-sub">{{ $item->id }}</span></td>-->
-                                                <td>@php echo $i; @endphp</td>
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->reviewdate)) }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $item->meetingatt }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->newquality }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="Edit" value=""
-                                                        onclick="displaydetail({{ json_encode($item) }});">
-                                                        <i class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn"
-                                                        title="Edit" value=""
-                                                        onclick="getEid({{ $item }});"><i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <button onclick="deleteData({{ $item }})"
-                                                        class="am-icon-btn danger" title="Delete"
-                                                        value=""><i class="fa fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                                <!--       <td>-->
-                                                <!--   {{-- <button  onclick="deleteData({{$item}})" class="am-icon-btn danger" title="Delete" value=""><i class="fa fa-trash"></i>-->
-                                        <!--   </button> --}}-->
-                                                <!--</td>-->
-
+                                                <th> رقم الهوية</th>
+                                                <th>التاريخ</th>
+                                                <th>الحضور</th>
+                                                <th> الأهداف المرجوة</th>
+                                                <!--<th>Detail View</th>-->
+                                                <th>الإجراء</th>
                                             </tr>
-                                            @php $i++; @endphp
-                                        @empty
-                                            <tr>
-                                                <td colspan="5">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-chart-line"></i>
-                                                        <p>لم يتم تسجيل أي مراجعات إدارية بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @php $i=1; @endphp
+                                            @forelse ($userData as $item)
+                                                <tr>
+                                                    <!--<td><span class="am-cell-sub">{{ $item->id }}</span></td>-->
+                                                    <td>@php echo $i; @endphp</td>
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->reviewdate)) }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $item->meetingatt }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->newquality }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="Edit" value=""
+                                                            onclick="displaydetail({{ json_encode($item) }});">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn"
+                                                            title="Edit" value=""
+                                                            onclick="getEid({{ $item }});"><i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <button onclick="deleteData({{ $item }})"
+                                                            class="am-icon-btn danger" title="Delete"
+                                                            value=""><i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                    <!--       <td>-->
+                                                    <!--   {{-- <button  onclick="deleteData({{$item}})" class="am-icon-btn danger" title="Delete" value=""><i class="fa fa-trash"></i>-->
+                                            <!--   </button> --}}-->
+                                                    <!--</td>-->
+    
+                                                </tr>
+                                                @php $i++; @endphp
+                                            @empty
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-chart-line"></i>
+                                                            <p>لم يتم تسجيل أي مراجعات إدارية بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $userData])

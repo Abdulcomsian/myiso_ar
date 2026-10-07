@@ -222,404 +222,406 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th>رقم معرف المخاطرة</th>
-                                            <th>رقم الوظيفة</th>
-                                            <th>تاريخ الطلب</th>
-                                            <th> هل تمت الموافقة على الجودة؟</th>
-                                            <th>هل تمت الموافقة على التسليم؟</th>
-                                            <th>هل تمت الموافقة على السعر؟</th>
-                                            <th>القرار بشأن المخاطرة</th>
-                                            <th> الإجراء</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @forelse ($assessment as $data)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $i }}</span></td>
-                                                <!--<td><span class="am-cell-sub">{{ $data->id }}</span></td>-->
-                                                <td><span class="am-cell-primary">{{ $data->jobNumber }}</span></td>
-
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->date)) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ ucfirst($data->qualitySatandard) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ ucfirst($data->delevryStandard) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ ucfirst($data->priceRequiremnt) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ ucfirst($data->DecisionComment) }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        data-toggle="modal" data-target="#viewData-{{ $data->id }}"
-                                                        id="viewData_{{ $data->id }}" title="View" type="button">
-                                                        <i class="fa fa-eye"></i>
-                                                    </button>
-                                                    <!--EDIT MODAL-->
-                                                    <div class="modal fade text-right" id="viewData-{{ $data->id }}"
-                                                        tabindex="-1" role="dialog"
-                                                        aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg" style="max-width:820px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel2">عرض
-                                                                        تقييمات المخاطر</h5>
-                                                                    </div>
-                                                                <form>
-
-                                                                    <div class="modal-body ">
-                                                                        {{-- print_r($data) - --}}
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>رقم الوظيفة:</label>
-                                                                                    <input disabled type="text"
-                                                                                        class="form-control"
-                                                                                        name="jobNumber"
-                                                                                        value="{{ $data->jobNumber }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>التاريخ
-                                                                                        (شهر/يوم/سنة):</label>
-                                                                                    <input disabled type="date"
-                                                                                        max="2999-12-31"
-                                                                                        class="form-control"
-                                                                                        name="date"
-                                                                                        value="{{ $data->date }}"
-                                                                                        disabled>
-                                                                                </div>
-                                                                            </div>
+                                                <th>رقم معرف المخاطرة</th>
+                                                <th>رقم الوظيفة</th>
+                                                <th>تاريخ الطلب</th>
+                                                <th> هل تمت الموافقة على الجودة؟</th>
+                                                <th>هل تمت الموافقة على التسليم؟</th>
+                                                <th>هل تمت الموافقة على السعر؟</th>
+                                                <th>القرار بشأن المخاطرة</th>
+                                                <th> الإجراء</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @forelse ($assessment as $data)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $i }}</span></td>
+                                                    <!--<td><span class="am-cell-sub">{{ $data->id }}</span></td>-->
+                                                    <td><span class="am-cell-primary">{{ $data->jobNumber }}</span></td>
+    
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->date)) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ ucfirst($data->qualitySatandard) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ ucfirst($data->delevryStandard) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ ucfirst($data->priceRequiremnt) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ ucfirst($data->DecisionComment) }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            data-toggle="modal" data-target="#viewData-{{ $data->id }}"
+                                                            id="viewData_{{ $data->id }}" title="View" type="button">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <!--EDIT MODAL-->
+                                                        <div class="modal fade text-right" id="viewData-{{ $data->id }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" style="max-width:820px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel2">عرض
+                                                                            تقييمات المخاطر</h5>
                                                                         </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label> هل يمكنني تلبية متطلبات معايير
-                                                                                        الجودة؟: </label>
-                                                                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="qualitySatandard"
-                                                                                                value="Yes"
-                                                                                                {{ $data->qualitySatandard == 'Yes' ? 'checked' : '' }}>
-                                                                                            نعم
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="qualitySatandard"
-                                                                                                value="No"
-                                                                                                {{ $data->qualitySatandard == 'No' ? 'checked' : '' }}>
-                                                                                            لا
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="qualitySatandard"
-                                                                                                value="NA"
-                                                                                                {{ $data->qualitySatandard == 'NA' ? 'checked' : '' }}>
-                                                                                            لا ينطبق
-                                                                                        </label>
+                                                                    <form>
+    
+                                                                        <div class="modal-body ">
+                                                                            {{-- print_r($data) - --}}
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>رقم الوظيفة:</label>
+                                                                                        <input disabled type="text"
+                                                                                            class="form-control"
+                                                                                            name="jobNumber"
+                                                                                            value="{{ $data->jobNumber }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>التاريخ
+                                                                                            (شهر/يوم/سنة):</label>
+                                                                                        <input disabled type="date"
+                                                                                            max="2999-12-31"
+                                                                                            class="form-control"
+                                                                                            name="date"
+                                                                                            value="{{ $data->date }}"
+                                                                                            disabled>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>تعليقات:</label>
-                                                                                    <input disabled type="text"
-                                                                                        class="form-control"
-                                                                                        placeholder="Enter Comment"
-                                                                                        name="commentsstandard"
-                                                                                        value="{{ $data->commentsstandard }}">
+    
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label> هل يمكنني تلبية متطلبات معايير
+                                                                                            الجودة؟: </label>
+                                                                                        <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="qualitySatandard"
+                                                                                                    value="Yes"
+                                                                                                    {{ $data->qualitySatandard == 'Yes' ? 'checked' : '' }}>
+                                                                                                نعم
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="qualitySatandard"
+                                                                                                    value="No"
+                                                                                                    {{ $data->qualitySatandard == 'No' ? 'checked' : '' }}>
+                                                                                                لا
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="qualitySatandard"
+                                                                                                    value="NA"
+                                                                                                    {{ $data->qualitySatandard == 'NA' ? 'checked' : '' }}>
+                                                                                                لا ينطبق
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label> هل يمكنني الالتزام بموعد
-                                                                                        التسليم؟</label>
-                                                                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="delevryStandard"
-                                                                                                value="yes"
-                                                                                                {{ $data->delevryStandard == 'yes' ? 'checked' : '' }}>
-                                                                                            نعم
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="delevryStandard"
-                                                                                                value="no"
-                                                                                                {{ $data->delevryStandard == 'no' ? 'checked' : '' }}>
-                                                                                            لا
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="delevryStandard"
-                                                                                                value="NA"
-                                                                                                {{ $data->delevryStandard == 'NA' ? 'checked' : '' }}>
-                                                                                            لا ينطبق
-                                                                                        </label>
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>تعليقات:</label>
+                                                                                        <input disabled type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="Enter Comment"
+                                                                                            name="commentsstandard"
+                                                                                            value="{{ $data->commentsstandard }}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>تعليقات:</label>
-                                                                                    <input disabled type="text"
-                                                                                        class="form-control"
-                                                                                        placeholder="Enter Comment"
-                                                                                        name="commentsdelvery"
-                                                                                        value="{{ $data->commentsdelvery }}">
+    
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label> هل يمكنني الالتزام بموعد
+                                                                                            التسليم؟</label>
+                                                                                        <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="delevryStandard"
+                                                                                                    value="yes"
+                                                                                                    {{ $data->delevryStandard == 'yes' ? 'checked' : '' }}>
+                                                                                                نعم
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="delevryStandard"
+                                                                                                    value="no"
+                                                                                                    {{ $data->delevryStandard == 'no' ? 'checked' : '' }}>
+                                                                                                لا
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="delevryStandard"
+                                                                                                    value="NA"
+                                                                                                    {{ $data->delevryStandard == 'NA' ? 'checked' : '' }}>
+                                                                                                لا ينطبق
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>هل يمكنني تلبية متطلبات السعر؟
-                                                                                        ({{ $data->priceRequiremnt }})</label>
-                                                                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="priceRequiremnt"
-                                                                                                value="yes"
-                                                                                                {{ $data->priceRequiremnt == 'yes' ? 'checked' : '' }}>
-                                                                                            نعم
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="priceRequiremnt"
-                                                                                                value="No"
-                                                                                                {{ $data->priceRequiremnt == 'No' ? 'checked' : '' }}>
-                                                                                            لا
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="priceRequiremnt"
-                                                                                                value="NA"
-                                                                                                {{ $data->priceRequiremnt == 'NA' ? 'checked' : '' }}>
-                                                                                            لا ينطبق
-                                                                                        </label>
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>تعليقات:</label>
+                                                                                        <input disabled type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="Enter Comment"
+                                                                                            name="commentsdelvery"
+                                                                                            value="{{ $data->commentsdelvery }}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>تعليقات:</label>
-                                                                                    <input disabled type="text"
-                                                                                        class="form-control"
-                                                                                        placeholder="أدخل التعليق"
-                                                                                        name="commentprice"
-                                                                                        value="{{ $data->commentprice }}">
+    
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>هل يمكنني تلبية متطلبات السعر؟
+                                                                                            ({{ $data->priceRequiremnt }})</label>
+                                                                                        <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="priceRequiremnt"
+                                                                                                    value="yes"
+                                                                                                    {{ $data->priceRequiremnt == 'yes' ? 'checked' : '' }}>
+                                                                                                نعم
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="priceRequiremnt"
+                                                                                                    value="No"
+                                                                                                    {{ $data->priceRequiremnt == 'No' ? 'checked' : '' }}>
+                                                                                                لا
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="priceRequiremnt"
+                                                                                                    value="NA"
+                                                                                                    {{ $data->priceRequiremnt == 'NA' ? 'checked' : '' }}>
+                                                                                                لا ينطبق
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>هل يمكن اعتبار الأطراف المعنية
-                                                                                        متأثرة؟</label>
-                                                                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="interestedDeemed"
-                                                                                                value="Yes"
-                                                                                                {{ $data->interestedDeemed == 'Yes' ? 'checked' : '' }}>
-                                                                                            نعم
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="interestedDeemed"
-                                                                                                value="No"
-                                                                                                {{ $data->interestedDeemed == 'No' ? 'checked' : '' }}>
-                                                                                            لا
-                                                                                        </label>
-                                                                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                                                            <input disabled type="radio"
-                                                                                                name="interestedDeemed"
-                                                                                                value="NA"
-                                                                                                {{ $data->interestedDeemed == 'NA' ? 'checked' : '' }}>
-                                                                                            لا ينطبق
-                                                                                        </label>
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>تعليقات:</label>
+                                                                                        <input disabled type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="أدخل التعليق"
+                                                                                            name="commentprice"
+                                                                                            value="{{ $data->commentprice }}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>تعليقات:</label>
-                                                                                    <input disabled type="text"
-                                                                                        class="form-control"
-                                                                                        placeholder="أدخل التعليق"
-                                                                                        name="commentsDeemed"
-                                                                                        value="{{ $data->commentsDeemed }}">
+    
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>هل يمكن اعتبار الأطراف المعنية
+                                                                                            متأثرة؟</label>
+                                                                                        <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="interestedDeemed"
+                                                                                                    value="Yes"
+                                                                                                    {{ $data->interestedDeemed == 'Yes' ? 'checked' : '' }}>
+                                                                                                نعم
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="interestedDeemed"
+                                                                                                    value="No"
+                                                                                                    {{ $data->interestedDeemed == 'No' ? 'checked' : '' }}>
+                                                                                                لا
+                                                                                            </label>
+                                                                                            <label style="display:inline-flex;gap:4px;align-items:center;">
+                                                                                                <input disabled type="radio"
+                                                                                                    name="interestedDeemed"
+                                                                                                    value="NA"
+                                                                                                    {{ $data->interestedDeemed == 'NA' ? 'checked' : '' }}>
+                                                                                                لا ينطبق
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>تعليقات:</label>
+                                                                                        <input disabled type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="أدخل التعليق"
+                                                                                            name="commentsDeemed"
+                                                                                            value="{{ $data->commentsDeemed }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>التعليق على القرار:</label>
+                                                                                        <input disabled type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="أدخل التعليق"
+                                                                                            name="DecisionComment"
+                                                                                            value="{{ $data->DecisionComment }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>موعد التسليم
+                                                                                            (شهر/يوم/سنة):</label>
+                                                                                        <input disabled type="date"
+                                                                                            max="2999-12-31"
+                                                                                            class="form-control"
+                                                                                            placeholder="أدخل التعليق"
+                                                                                            name="dateDevelry"
+                                                                                            value="{{ $data->dateDevelry }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+    
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>احتمالية المخاطرة (انظر
+                                                                                            التعليمات) – 4 = محتمل جدًا، 3 =
+                                                                                            محتمل، 2 = غير متوقع، 1 = غير متوقع
+                                                                                            نهائيًا:</label>
+                                                                                        <!--<input disabled type="number" class="form-control" name="RiskProbability">-->
+                                                                                        <select name="RiskProbability"
+                                                                                            id="RiskProbability"
+                                                                                            class="form-control" disabled>
+                                                                                            <option value="">حدد واحدًا
+                                                                                            </option>
+    
+                                                                                            <option value="4"
+                                                                                                {{ $data->RiskProbability == '4' ? 'selected="selected"' : '' }}>
+                                                                                                4</option>
+                                                                                            <option value="3"
+                                                                                                {{ $data->RiskProbability == '3' ? 'selected="selected"' : '' }}>
+                                                                                                3</option>
+                                                                                            <option value="2"
+                                                                                                {{ $data->RiskProbability == '2' ? 'selected="selected"' : '' }}>
+                                                                                                2</option>
+                                                                                            <option value="1"
+                                                                                                {{ $data->RiskProbability == '1' ? 'selected="selected"' : '' }}>
+                                                                                                1</option>
+    
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>شدة المخاطر (انظر التعليمات) – 4
+                                                                                            = كارثيّة، 3 = خطيرة، 2 = هامشية، 1
+                                                                                            = لا تُذكر:</label>
+                                                                                        <!--<input disabled type="number" class="form-control" name="riskSeverity">-->
+    
+                                                                                        <select name="riskSeverity"
+                                                                                            id="riskSeverity"
+                                                                                            class="form-control" disabled>
+                                                                                            <option value="">حدد واحدًا
+                                                                                            </option>
+    
+                                                                                            <option value="4"
+                                                                                                {{ $data->riskSeverity == '4' ? 'selected="selected"' : '' }}>
+                                                                                                4</option>
+                                                                                            <option value="3"
+                                                                                                {{ $data->riskSeverity == '3' ? 'selected="selected"' : '' }}>
+                                                                                                3</option>
+                                                                                            <option value="2"
+                                                                                                {{ $data->riskSeverity == '2' ? 'selected="selected"' : '' }}>
+                                                                                                2</option>
+                                                                                            <option value="1"
+                                                                                                {{ $data->riskSeverity == '1' ? 'selected="selected"' : '' }}>
+                                                                                                1</option>
+    
+                                                                                        </select>
+    
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>التعليق على القرار:</label>
-                                                                                    <input disabled type="text"
-                                                                                        class="form-control"
-                                                                                        placeholder="أدخل التعليق"
-                                                                                        name="DecisionComment"
-                                                                                        value="{{ $data->DecisionComment }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>موعد التسليم
-                                                                                        (شهر/يوم/سنة):</label>
-                                                                                    <input disabled type="date"
-                                                                                        max="2999-12-31"
-                                                                                        class="form-control"
-                                                                                        placeholder="أدخل التعليق"
-                                                                                        name="dateDevelry"
-                                                                                        value="{{ $data->dateDevelry }}">
-                                                                                </div>
-                                                                            </div>
+    
+                                                                        <div class="modal-footer am-modal__footer">
+                                                                            <button type="button" class="am-btn am-btn-outline"
+                                                                                data-dismiss="modal">يغلق</button>
                                                                         </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>احتمالية المخاطرة (انظر
-                                                                                        التعليمات) – 4 = محتمل جدًا، 3 =
-                                                                                        محتمل، 2 = غير متوقع، 1 = غير متوقع
-                                                                                        نهائيًا:</label>
-                                                                                    <!--<input disabled type="number" class="form-control" name="RiskProbability">-->
-                                                                                    <select name="RiskProbability"
-                                                                                        id="RiskProbability"
-                                                                                        class="form-control" disabled>
-                                                                                        <option value="">حدد واحدًا
-                                                                                        </option>
-
-                                                                                        <option value="4"
-                                                                                            {{ $data->RiskProbability == '4' ? 'selected="selected"' : '' }}>
-                                                                                            4</option>
-                                                                                        <option value="3"
-                                                                                            {{ $data->RiskProbability == '3' ? 'selected="selected"' : '' }}>
-                                                                                            3</option>
-                                                                                        <option value="2"
-                                                                                            {{ $data->RiskProbability == '2' ? 'selected="selected"' : '' }}>
-                                                                                            2</option>
-                                                                                        <option value="1"
-                                                                                            {{ $data->RiskProbability == '1' ? 'selected="selected"' : '' }}>
-                                                                                            1</option>
-
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>شدة المخاطر (انظر التعليمات) – 4
-                                                                                        = كارثيّة، 3 = خطيرة، 2 = هامشية، 1
-                                                                                        = لا تُذكر:</label>
-                                                                                    <!--<input disabled type="number" class="form-control" name="riskSeverity">-->
-
-                                                                                    <select name="riskSeverity"
-                                                                                        id="riskSeverity"
-                                                                                        class="form-control" disabled>
-                                                                                        <option value="">حدد واحدًا
-                                                                                        </option>
-
-                                                                                        <option value="4"
-                                                                                            {{ $data->riskSeverity == '4' ? 'selected="selected"' : '' }}>
-                                                                                            4</option>
-                                                                                        <option value="3"
-                                                                                            {{ $data->riskSeverity == '3' ? 'selected="selected"' : '' }}>
-                                                                                            3</option>
-                                                                                        <option value="2"
-                                                                                            {{ $data->riskSeverity == '2' ? 'selected="selected"' : '' }}>
-                                                                                            2</option>
-                                                                                        <option value="1"
-                                                                                            {{ $data->riskSeverity == '1' ? 'selected="selected"' : '' }}>
-                                                                                            1</option>
-
-                                                                                    </select>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="modal-footer am-modal__footer">
-                                                                        <button type="button" class="am-btn am-btn-outline"
-                                                                            data-dismiss="modal">يغلق</button>
-                                                                    </div>
-                                                                </form>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!--EDIT MODAL ENDS-->
-                                                    <button class="am-icon-btn"
-                                                        type="button" onclick="EditData({{ $data }});"
-                                                        title="Edit">
-                                                        <i class="fa fa-pen"></i>
-                                                    </button>
-
-
-                                                    <button data-toggle="modal"
-                                                        data-target="#confirm-{{ $data->id }}"
-                                                        id="remove_{{ $data->id }}" title="Delete"
-                                                        class="am-icon-btn danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <!-- Delete Modal -->
-
-                                                    <div class="modal fade modal-mini modal-primary"
-                                                        id="confirm-{{ $data->id }}" tabindex="-1" role="dialog"
-                                                        aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:460px;">
-                                                            <div class="modal-content">
-                                                                <form action="{{ route('delete_assesment') }}"
-                                                                    method="post">
-                                                                    <div class="modal-header am-modal__header"> @csrf
-                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                        <div class="modal-profile am-modal__title"> حذف إدخال </div>
-                                                                    </div>
-                                                                    <div class="modal-body text-center">
-                                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                                                                    </div>
-                                                                    <div class="modal-footer am-modal__footer">
-                                                                        <input type="hidden" name="id"
-                                                                            value="{{ $data->id }}">
-                                                                        <button type="button" class="am-btn am-btn-outline"
-                                                                            data-dismiss="modal">لا</button>
-                                                                        <button type="submit"
-                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                                                                    </div>
-                                                                </form>
+                                                        <!--EDIT MODAL ENDS-->
+                                                        <button class="am-icon-btn"
+                                                            type="button" onclick="EditData({{ $data }});"
+                                                            title="Edit">
+                                                            <i class="fa fa-pen"></i>
+                                                        </button>
+    
+    
+                                                        <button data-toggle="modal"
+                                                            data-target="#confirm-{{ $data->id }}"
+                                                            id="remove_{{ $data->id }}" title="Delete"
+                                                            class="am-icon-btn danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <!-- Delete Modal -->
+    
+                                                        <div class="modal fade modal-mini modal-primary"
+                                                            id="confirm-{{ $data->id }}" tabindex="-1" role="dialog"
+                                                            aria-labelledby="confirm" aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:460px;">
+                                                                <div class="modal-content">
+                                                                    <form action="{{ route('delete_assesment') }}"
+                                                                        method="post">
+                                                                        <div class="modal-header am-modal__header"> @csrf
+                                                                            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                            <div class="modal-profile am-modal__title"> حذف إدخال </div>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
+                                                                        </div>
+                                                                        <div class="modal-footer am-modal__footer">
+                                                                            <input type="hidden" name="id"
+                                                                                value="{{ $data->id }}">
+                                                                            <button type="button" class="am-btn am-btn-outline"
+                                                                                data-dismiss="modal">لا</button>
+                                                                            <button type="submit"
+                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                </td>
-
-                                            </tr>
-                                            @php $i++  @endphp
-                                        @empty
-                                            <tr>
-                                                <td colspan="8">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-user-shield"></i>
-                                                        <p>لم يتم تسجيل أي تقييمات مخاطر بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-
-                                    </tbody>
-                                </table>
+    
+                                                    </td>
+    
+                                                </tr>
+                                                @php $i++  @endphp
+                                            @empty
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-user-shield"></i>
+                                                            <p>لم يتم تسجيل أي تقييمات مخاطر بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+    
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $assessment])

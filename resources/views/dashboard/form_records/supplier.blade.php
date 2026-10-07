@@ -130,177 +130,179 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th class="w-100-px"> رقم تعريف المورد:</th>
-                                            <th>اسم المورد</th>
-                                            <th> عنوان المورد</th>
-                                            {{-- <th>City</th> --}}
-                                            <th>البلد</th>
-                                            {{-- <th>Postcode</th> --}}
-                                            <!--<th>Country Code</th>-->
-                                            <th>رقم هاتف المورد</th>
-                                            <th> عنوان البريد الإلكتروني للمورد</th>
-                                            <th>اسم جهة الاتصال بالمورد</th>
-                                            <th> الخدمات</th>
-                                            <th class="w-100-px">النشاط</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @forelse ($supplier as $data)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $data->idnumber }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $data->suppliername }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->supplieraddress }}</span></td>
-                                                {{-- <td><span class="am-cell-sub">{{$data->suppliercity}}</span></td> --}}
-                                                <td><span class="am-cell-sub">{{ $data->suppliercountry }}</span></td>
-                                                {{-- <td><span class="am-cell-sub">{{$data->supplierzip}}</span></td> --}}
-                                                <!--<td><span class="am-cell-sub">{{ $data->phonecode }}</span></td>-->
-                                                <td>{{ $data->phonecode }} {{ $data->supplierphn }}</td>
-                                                <td><span class="am-cell-sub">{{ $data->supplieremail }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->supplierContactNumber }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->supplierservc }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="view" onclick="viewEid({{ $data }});"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn" title="Edit"
-                                                        onclick="getEid({{ $data }});"><i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <!-- new  -->
-                                                    <!-- <button class="am-icon-btn"
-                   title="View Customer Details" value="" o data-toggle="modal" data-target="#model3"><i
-                    class="fa fa-eye"></i>
-                 </button> -->
-
-                                                    <button class="am-icon-btn danger"
-                                                        title="Delete" onclick="deleteModal({{ $data }});"><i class="fa fa-trash"></i>
-                                                    </button>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="model3" tabindex="-1" role="dialog"
-                                                        aria-labelledby="model3Label" aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:900px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">
-                                                                        الموردين</h5>
-                                                                    </div>
-                                                                <div class="modal-body">
-
-                                                                    <div class="row">
-                                                                        <input type="hidden" name="id"
-                                                                            id="editproject" value="">
-
-                                                                        {{-- <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>System ID Number:</label>
-                                    <input type="number" readonly class="form-control"  name="systemid">
-                                </div>
-                            </div> --}}
-                                                                        <div class="col-lg-12">
-                                                                            <div class="form-group">
-                                                                                <label>اسم العائلة:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="surname"
-                                                                                    placeholder="أدخل اللقب
-                                    ">
+                                                <th class="w-100-px"> رقم تعريف المورد:</th>
+                                                <th>اسم المورد</th>
+                                                <th> عنوان المورد</th>
+                                                {{-- <th>City</th> --}}
+                                                <th>البلد</th>
+                                                {{-- <th>Postcode</th> --}}
+                                                <!--<th>Country Code</th>-->
+                                                <th>رقم هاتف المورد</th>
+                                                <th> عنوان البريد الإلكتروني للمورد</th>
+                                                <th>اسم جهة الاتصال بالمورد</th>
+                                                <th> الخدمات</th>
+                                                <th class="w-100-px">النشاط</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @forelse ($supplier as $data)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $data->idnumber }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $data->suppliername }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->supplieraddress }}</span></td>
+                                                    {{-- <td><span class="am-cell-sub">{{$data->suppliercity}}</span></td> --}}
+                                                    <td><span class="am-cell-sub">{{ $data->suppliercountry }}</span></td>
+                                                    {{-- <td><span class="am-cell-sub">{{$data->supplierzip}}</span></td> --}}
+                                                    <!--<td><span class="am-cell-sub">{{ $data->phonecode }}</span></td>-->
+                                                    <td>{{ $data->phonecode }} {{ $data->supplierphn }}</td>
+                                                    <td><span class="am-cell-sub">{{ $data->supplieremail }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->supplierContactNumber }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->supplierservc }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="view" onclick="viewEid({{ $data }});"><i
+                                                                class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn" title="Edit"
+                                                            onclick="getEid({{ $data }});"><i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <!-- new  -->
+                                                        <!-- <button class="am-icon-btn"
+                       title="View Customer Details" value="" o data-toggle="modal" data-target="#model3"><i
+                        class="fa fa-eye"></i>
+                     </button> -->
+    
+                                                        <button class="am-icon-btn danger"
+                                                            title="Delete" onclick="deleteModal({{ $data }});"><i class="fa fa-trash"></i>
+                                                        </button>
+    
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="model3" tabindex="-1" role="dialog"
+                                                            aria-labelledby="model3Label" aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:900px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">
+                                                                            الموردين</h5>
+                                                                        </div>
+                                                                    <div class="modal-body">
+    
+                                                                        <div class="row">
+                                                                            <input type="hidden" name="id"
+                                                                                id="editproject" value="">
+    
+                                                                            {{-- <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>System ID Number:</label>
+                                        <input type="number" readonly class="form-control"  name="systemid">
+                                    </div>
+                                </div> --}}
+                                                                            <div class="col-lg-12">
+                                                                                <div class="form-group">
+                                                                                    <label>اسم العائلة:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="surname"
+                                                                                        placeholder="أدخل اللقب
+                                        ">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>الاسم الأول:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="first_name"
-                                                                                    placeholder="أدخل الاسم الأول">
+    
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>الاسم الأول:</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="first_name"
+                                                                                        placeholder="أدخل الاسم الأول">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group edit-emp-number-div">
+                                                                                    <label>هوية الموظف:</label>
+                                                                                    <input type="text" name="empNumber"
+                                                                                        required class="form-control"
+                                                                                        data-type="edit">
+                                                                                    <!--                         <select name="empNumber" required class="form-control">-->
+                                                                                    <!--    <option>Select One</option>-->
+                                                                                    <!--    @if (isset($userinfo) && $userinfo != '')
+        -->
+                                                                                    <!--    @foreach ($userinfo as $item)
+        -->
+                                                                                    <!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
+                                                                                    <!--
+        @endforeach-->
+                                                                                    <!--
+        @endif-->
+                                                                                    <!--</select>-->
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group edit-emp-number-div">
-                                                                                <label>هوية الموظف:</label>
-                                                                                <input type="text" name="empNumber"
-                                                                                    required class="form-control"
-                                                                                    data-type="edit">
-                                                                                <!--                         <select name="empNumber" required class="form-control">-->
-                                                                                <!--    <option>Select One</option>-->
-                                                                                <!--    @if (isset($userinfo) && $userinfo != '')
-    -->
-                                                                                <!--    @foreach ($userinfo as $item)
-    -->
-                                                                                <!--    <option value="{{ $item->id }}" title="{{ $item->first_name }}">{{ $item->empNumber . ' (' . $item->first_name . ')' }}</option>-->
-                                                                                <!--
-    @endforeach-->
-                                                                                <!--
-    @endif-->
-                                                                                <!--</select>-->
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تاريخ البدء
+                                                                                        (سنين/الشهر/أيام):</label>
+                                                                                    <input name="startDate" max="2999-12-31"
+                                                                                        type="date" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تفاصيل الوظيفة:</label>
+                                                                                    <input type="text" name="jobdetails"
+                                                                                        class="form-control"
+                                                                                        placeholder="أدخل تفاصيل الوظيفة:">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تاريخ البدء
-                                                                                    (سنين/الشهر/أيام):</label>
-                                                                                <input name="startDate" max="2999-12-31"
-                                                                                    type="date" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تفاصيل الوظيفة:</label>
-                                                                                <input type="text" name="jobdetails"
-                                                                                    class="form-control"
-                                                                                    placeholder="أدخل تفاصيل الوظيفة:">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تحميل السيرة الذاتية للموظف:</label>
-                                                                                <div class="custom-file-input-tag form-control">
-                                                                                    <input type="file" id="fileInput1" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf">
-                                                                                    <label for="fileInput1" class="file-label">
-                                                                                        <span class="file-text">اختيار الملف</span>
-                                                                                        <span class="file-chosen">لم يتم اختيار ملف</span>
-                                                                                    </label>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تحميل السيرة الذاتية للموظف:</label>
+                                                                                    <div class="custom-file-input-tag form-control">
+                                                                                        <input type="file" id="fileInput1" class="input-file" name="employee_cv" accept="image/*,.doc, .docx,.txt,.pdf">
+                                                                                        <label for="fileInput1" class="file-label">
+                                                                                            <span class="file-text">اختيار الملف</span>
+                                                                                            <span class="file-chosen">لم يتم اختيار ملف</span>
+                                                                                        </label>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <button type="button" class="am-btn am-btn-outline"
-                                                                        data-dismiss="modal">يغلق</button>
+                                                                    <div class="modal-footer am-modal__footer">
+                                                                        <button type="button" class="am-btn am-btn-outline"
+                                                                            data-dismiss="modal">يغلق</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="9">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-truck"></i>
-                                                        <p>لم تتم إضافة أي موردين بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="9">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-truck"></i>
+                                                            <p>لم تتم إضافة أي موردين بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $supplier])

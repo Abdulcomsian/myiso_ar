@@ -124,96 +124,98 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th>معرّف الصيانة</th>
-                                            <th>التاريخ</th>
-                                            <th>العنصر</th>
-                                            <th>النشاط</th>
-                                            <th>الموقع</th>
-                                            <th>ملاحظات</th>
-                                            <th>الإجراءات</th>
-                                            <th> تم بواسطة</th>
-                                            <th>الإجراء</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody> @php $number = 1; @endphp
-                                        @forelse ($userinfo as $data)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $number }}</span></td>
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->mrdate)) }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $data->mritem }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->mractivity }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->mlocation }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->mrobservation }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->mractions }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->mractivityperofrmby }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button onclick="viewRecord({{ json_encode($data) }});"
-                                                        class="am-icon-btn" title="View">
-                                                        <i class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button onclick="getEid({{ json_encode($data) }});"
-                                                        class="am-icon-btn"
-                                                        title="Edit"><i class="fa fa-pen"></i>
-                                                    </button>
-
-                                                    @php
-                                                        $number++;
-                                                        $d_id = intval($data->id);
-
-                                                    @endphp
-
-                                                    <button data-toggle="modal"
-                                                        data-target="#confirm-{{ $d_id }}"
-                                                        id="remove_{{ $d_id }}" title="Delete"
-                                                        class="am-icon-btn danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <!-- Delete Modal -->
-
-                                                    <div class="modal fade modal-mini modal-primary"
-                                                        id="confirm-{{ $d_id }}" tabindex="-1" role="dialog"
-                                                        aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:460px;">
-                                                            <div class="modal-content">
-                                                                <form action="{{ route('delete_m_r') }}" method="post">
-                                                                    <div class="modal-header am-modal__header"> @csrf
-                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                        <div class="modal-profile am-modal__title"> حذف إدخال </div>
-                                                                    </div>
-                                                                    <div class="modal-body text-center">
-                                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                                                                    </div>
-                                                                    <div class="modal-footer am-modal__footer">
-                                                                        <input type="hidden" name="id"
-                                                                            value="{{ $d_id }}">
-                                                                        <button type="button" class="am-btn am-btn-outline"
-                                                                            data-dismiss="modal">لا</button>
-                                                                        <button type="submit"
-                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                                                                    </div>
-                                                                </form>
+                                                <th>معرّف الصيانة</th>
+                                                <th>التاريخ</th>
+                                                <th>العنصر</th>
+                                                <th>النشاط</th>
+                                                <th>الموقع</th>
+                                                <th>ملاحظات</th>
+                                                <th>الإجراءات</th>
+                                                <th> تم بواسطة</th>
+                                                <th>الإجراء</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody> @php $number = 1; @endphp
+                                            @forelse ($userinfo as $data)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $number }}</span></td>
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->mrdate)) }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $data->mritem }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->mractivity }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->mlocation }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->mrobservation }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->mractions }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->mractivityperofrmby }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button onclick="viewRecord({{ json_encode($data) }});"
+                                                            class="am-icon-btn" title="View">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button onclick="getEid({{ json_encode($data) }});"
+                                                            class="am-icon-btn"
+                                                            title="Edit"><i class="fa fa-pen"></i>
+                                                        </button>
+    
+                                                        @php
+                                                            $number++;
+                                                            $d_id = intval($data->id);
+    
+                                                        @endphp
+    
+                                                        <button data-toggle="modal"
+                                                            data-target="#confirm-{{ $d_id }}"
+                                                            id="remove_{{ $d_id }}" title="Delete"
+                                                            class="am-icon-btn danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <!-- Delete Modal -->
+    
+                                                        <div class="modal fade modal-mini modal-primary"
+                                                            id="confirm-{{ $d_id }}" tabindex="-1" role="dialog"
+                                                            aria-labelledby="confirm" aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:460px;">
+                                                                <div class="modal-content">
+                                                                    <form action="{{ route('delete_m_r') }}" method="post">
+                                                                        <div class="modal-header am-modal__header"> @csrf
+                                                                            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                            <div class="modal-profile am-modal__title"> حذف إدخال </div>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
+                                                                        </div>
+                                                                        <div class="modal-footer am-modal__footer">
+                                                                            <input type="hidden" name="id"
+                                                                                value="{{ $d_id }}">
+                                                                            <button type="button" class="am-btn am-btn-outline"
+                                                                                data-dismiss="modal">لا</button>
+                                                                            <button type="submit"
+                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="9">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-wrench"></i>
-                                                        <p>لم تتم إضافة أي سجلات صيانة بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="9">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-wrench"></i>
+                                                            <p>لم تتم إضافة أي سجلات صيانة بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $userinfo])

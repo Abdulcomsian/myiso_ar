@@ -91,6 +91,7 @@
                 <a href="{{ url('customer') }}" class="am-nav-link {{ Request::is('customer') ? 'active' : '' }}">العملاء</a>
                 <a href="{{ url('process_audit') }}" class="am-nav-link {{ Request::is('process_audit') ? 'active' : '' }}">عمليات التدقيق</a>
                 <a href="{{ url('qms_audit') }}" class="am-nav-link {{ Request::is('qms_audit') ? 'active' : '' }}">عمليات تدقيق نظام إدارة الجودة</a>
+                <a href="{{ url('objectives_tracker') }}" class="am-nav-link {{ Request::is('objectives_tracker') ? 'active' : '' }}">متتبع الأهداف</a>
                 <a href="{{ url('requirements_aspect') }}" class="am-nav-link {{ Request::is('requirements_aspect') ? 'active' : '' }}">المتطلبات المطلوبة</a>
                 <a href="{{ url('add_management_review') }}" class="am-nav-link {{ Request::is('add_management_review') ? 'active' : '' }}">المراجعات الإدارية</a>
                 <a href="{{ url('customer_review') }}" class="am-nav-link {{ Request::is('customer_review') ? 'active' : '' }}">مراجعات العملاء</a>

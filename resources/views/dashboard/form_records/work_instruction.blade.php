@@ -41,6 +41,10 @@
                                             <label>الرقم المرجعي لإرشادات العمل:</label>
                                             <input type="text" class="form-control" name="instructionref"
                                                 required="required">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>تكرار المراجعة أو الإجراء:</label>
+                                                <select class="form-control" name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -158,91 +162,95 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th>الرقم التعريفي لإرشادات العمل</th>
-                                            <th>اسم إرشادات العمل</th>
-                                            <th>الرقم المرجعي لإرشادات العمل</th>
-                                            <th>نطاق إرشادات العمل</th>
-                                            <th>جامع البيانات:</th>
-                                            <th>تاريخ الإصدار</th>
-                                            <th>المراجعة</th>
-                                            <th>الإجراءات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($work as $data)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $loop->index + 1 }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $data->workinstruction }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->instructionref }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->scop }}</span></td>
-                                                @php
-                                                    $employname = \App\Employee::where('id', $data->empid)->first();
-                                                @endphp
-                                                <td><span class="am-cell-sub">{{ isset($data->CompiledBy) ? $data->CompiledBy : '' }}</span></td>
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->issueDate)) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->revisionstatus }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="View" onclick="getEid({{ $data }});"><i
-                                                            class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn"
-                                                        title="Edit" onclick="editDetails({{ $data }});"><i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <button class="am-icon-btn"
-                                                        data-toggle="modal"
-                                                        data-target="#deleteworkinst{{ $data->id }}">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <div class="modal fade text-right"
-                                                        id="deleteworkinst{{ $data->id }}" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:460px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف
-                                                                        تعليمات العمل</h5>
+                                                <th>الرقم التعريفي لإرشادات العمل</th>
+                                                <th>اسم إرشادات العمل</th>
+                                                <th>الرقم المرجعي لإرشادات العمل</th>
+                                                <th>نطاق إرشادات العمل</th>
+                                                <th>جامع البيانات:</th>
+                                                <th>تاريخ الإصدار</th>
+                                                <th>المراجعة</th>
+                                                <th>التكرار</th>
+                                                <th>الإجراءات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($work as $data)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $loop->index + 1 }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $data->workinstruction }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->instructionref }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->scop }}</span></td>
+                                                    @php
+                                                        $employname = \App\Employee::where('id', $data->empid)->first();
+                                                    @endphp
+                                                    <td><span class="am-cell-sub">{{ isset($data->CompiledBy) ? $data->CompiledBy : '' }}</span></td>
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->issueDate)) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->revisionstatus }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->frequencyLabel() }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="View" onclick="getEid({{ $data }});"><i
+                                                                class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn"
+                                                            title="Edit" onclick="editDetails({{ $data }});"><i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <button class="am-icon-btn"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteworkinst{{ $data->id }}">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <div class="modal fade text-right"
+                                                            id="deleteworkinst{{ $data->id }}" tabindex="-1"
+                                                            role="dialog" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:460px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف
+                                                                            تعليمات العمل</h5>
+                                                                        </div>
+                                                                    <div class="modal-body">
+                                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
                                                                     </div>
-                                                                <div class="modal-body">
-                                                                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                                                                </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <form action="{{ route('deleteWork') }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        <input type="hidden" value="{{ $data->id }}"
-                                                                            name="id">
-                                                                        <button type="button" class="am-btn am-btn-outline"
-                                                                            data-dismiss="modal">لا</button>
-                                                                        <button type="submit"
-                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                                                                    </form>
+                                                                    <div class="modal-footer am-modal__footer">
+                                                                        <form action="{{ route('deleteWork') }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <input type="hidden" value="{{ $data->id }}"
+                                                                                name="id">
+                                                                            <button type="button" class="am-btn am-btn-outline"
+                                                                                data-dismiss="modal">لا</button>
+                                                                            <button type="submit"
+                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="8">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-file-alt"></i>
-                                                        <p>لم تتم إضافة أي تعليمات عمل بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="9">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-file-alt"></i>
+                                                            <p>لم تتم إضافة أي تعليمات عمل بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+    
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $work])
@@ -252,48 +260,50 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th>الرقم التعريفي للموظف</th>
-                                            <th>اسم العائلة</th>
-                                            <th>الاسم الأول</th>
-                                            <!--<th>Employee Number</th>-->
-                                            <th>تاريخ البدء</th>
-                                            <th>التفاصيل الوظيفية</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--@php
-                                            $n = 1;
-                                            $userinfo = \App\Employee::get();
-                                        @endphp-->
-                                        @forelse ($employess as $item)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <!--<td><span class="am-cell-sub">{{ $n }}</span></td>-->
-                                                <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
-                                                <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
-                                                <!--<td> {$item->empNumber}</td>-->
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->startDate)) }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $item->jobdetails }}</span></td>
+                                                <th>الرقم التعريفي للموظف</th>
+                                                <th>اسم العائلة</th>
+                                                <th>الاسم الأول</th>
+                                                <!--<th>Employee Number</th>-->
+                                                <th>تاريخ البدء</th>
+                                                <th>التفاصيل الوظيفية</th>
+    
                                             </tr>
-                                            <!--@php $n++; @endphp-->
-                                        @empty
-                                            <tr>
-                                                <td colspan="5">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-id-badge"></i>
-                                                        <p>لم تتم إضافة أي موظفين بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <!--@php
+                                                $n = 1;
+                                                $userinfo = \App\Employee::get();
+                                            @endphp-->
+                                            @forelse ($employess as $item)
+                                                <tr>
+                                                    <!--<td><span class="am-cell-sub">{{ $n }}</span></td>-->
+                                                    <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
+                                                    <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
+                                                    <!--<td> {$item->empNumber}</td>-->
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->startDate)) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $item->jobdetails }}</span></td>
+                                                </tr>
+                                                <!--@php $n++; @endphp-->
+                                            @empty
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-id-badge"></i>
+                                                            <p>لم تتم إضافة أي موظفين بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                         </div>
@@ -373,16 +383,22 @@
                     <form action="{{ route('workinstructions') }} " method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>عنوان إرشادات العمل:</label>
                                     <input type="text" readyonly disabled class="form-control" name="workinstruction">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>الرقم المرجعي لإرشادات العمل:</label>
                                     <input type="text" readyonly disabled class="form-control" name="instructionref">
+                                </div>
+                            </div>
+                                                    <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>تكرار المراجعة أو الإجراء:</label>
+                                    <select class="form-control" name="reviewFrequency" disabled><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select>
                                 </div>
                             </div>
                         </div>
@@ -413,7 +429,7 @@
                                 <div class="form-group">
                                     <label>حالة المراجعة:</label>
                                     <input type="text" readyonly disabled class="form-control" name="revisionstatus">
-                                </div>
+                                    </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -545,21 +561,27 @@
 
                         <input type="hidden" id="editit" name="id" value="">
                                                                         <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group">
 
                                     <label>عنوان إرشادات العمل:</label>
                                     <input type="text" class="form-control" name="workinstruction">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group">
 
                                     <label>الرقم المرجعي لإرشادات العمل:</label>
                                     <input type="text" class="form-control" name="instructionref">
                                             </div>
                                         </div>
-                                    </div>
+                                                                                                                <div class="col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>تكرار المراجعة أو الإجراء:</label>
+                                                                                    <select class="form-control" name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group">
@@ -588,7 +610,7 @@
 
                                     <label>حالة المراجعة:</label>
                                     <input type="text" class="form-control" name="revisionstatus">
-                                            </div>
+                                    </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -713,6 +735,7 @@
         console.log(data);
         $("#id_feild").val(data.work_id);
         $("select[name='empId']").val(data.empId);
+        $("select[name='reviewFrequency']").val(data.reviewFrequency || '');
         //  $("input[name='empId']").val(data.empId);
         $("input[name='instructionref']").val(data.instructionref);
         $("input[name='issueDate']").val(data.issueDate);
@@ -749,6 +772,7 @@
         console.log(data);
         $("#editit").val(data.id);
         $("select[name='empId']").val(data.empId);
+        $("select[name='reviewFrequency']").val(data.reviewFrequency || '');
         $("input[name='instructionref']").val(data.instructionref);
         $("input[name='issueDate']").val(data.issueDate);
         $("input[name='point1']").val(data.point1);

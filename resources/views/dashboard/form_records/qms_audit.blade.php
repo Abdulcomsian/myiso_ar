@@ -925,103 +925,105 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table class="am-table"
-                                    id="kt_table_agent">
-                                    <thead>
-                                        <tr>
-                                            <th>الرقم التعريفي لتدقيق نظام إدارة الجودة</th>
-                                            <th>تاريخ التدقيق</th>
-                                            <th>الإجراء</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @forelse ($requirement as $item)
+                                <div class="am-table-wrap">
+                                    <table class="am-table"
+                                        id="kt_table_agent">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $i++ }}</span></td>
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->competedDate)) }}</span></td>
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <button class="am-icon-btn"
-                                                        title="View" onclick="getEid({{ json_encode($item) }});">
-                                                        <!--                                                                                                     <i class="fa fa-eye"></i>-->
-                                                        <i class="fa fa-eye"></i>
-                                                        <!--<i class="fa fa-eye"></i>-->
-                                                    </button>
-                                                    <button class="am-icon-btn"
-                                                        title="Edit"
-                                                        onclick="geteditdetails({{ json_encode($item) }});"> <i class="fa fa-pen"></i>
-                                                    </button>
-
-
-                                                    @php
-
-                                                        $d_id = intval($item->QmsauditNumber);
-
-                                                    @endphp
-
-                                                    <button data-qmsid="{{ $item->id }}"
-                                                        class="am-icon-btn download-pdf-qms"
-                                                        onclick = "qmsfun({{ $item->id }})" title="Download PDF">
-                                                        <i class="fa fa-download"></i>
-                                                    </button>
-
-
-                                                    <button data-toggle="modal" data-target="#confirm-{{ $item->id }}"
-                                                        id="remove_{{ $item->id }}" title="Delete"
-                                                        class="am-icon-btn danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-
-
-
-
-                                                    <!-- Delete Modal -->
-
-                                                    <div class="modal fade modal-mini modal-primary"
-                                                        id="confirm-{{ $item->id }}" tabindex="-1" role="dialog"
-                                                        aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog text-right" style="max-width:460px;">
-                                                            <div class="modal-content">
-                                                                <form action="{{ route('deleteqmsAudit') }}"
-                                                                    method="post">
-                                                                    <div class="modal-header am-modal__header"> @csrf
-                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                        <div class="modal-profile am-modal__title">
-                                                                            <h5>حذف تفاصيل تدقيق نظام إدارة الجودة</h5>
+                                                <th>الرقم التعريفي لتدقيق نظام إدارة الجودة</th>
+                                                <th>تاريخ التدقيق</th>
+                                                <th>الإجراء</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @forelse ($requirement as $item)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $i++ }}</span></td>
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->competedDate)) }}</span></td>
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <button class="am-icon-btn"
+                                                            title="View" onclick="getEid({{ json_encode($item) }});">
+                                                            <!--                                                                                                     <i class="fa fa-eye"></i>-->
+                                                            <i class="fa fa-eye"></i>
+                                                            <!--<i class="fa fa-eye"></i>-->
+                                                        </button>
+                                                        <button class="am-icon-btn"
+                                                            title="Edit"
+                                                            onclick="geteditdetails({{ json_encode($item) }});"> <i class="fa fa-pen"></i>
+                                                        </button>
+    
+    
+                                                        @php
+    
+                                                            $d_id = intval($item->QmsauditNumber);
+    
+                                                        @endphp
+    
+                                                        <button data-qmsid="{{ $item->id }}"
+                                                            class="am-icon-btn download-pdf-qms"
+                                                            onclick = "qmsfun({{ $item->id }})" title="Download PDF">
+                                                            <i class="fa fa-download"></i>
+                                                        </button>
+    
+    
+                                                        <button data-toggle="modal" data-target="#confirm-{{ $item->id }}"
+                                                            id="remove_{{ $item->id }}" title="Delete"
+                                                            class="am-icon-btn danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+    
+    
+    
+    
+                                                        <!-- Delete Modal -->
+    
+                                                        <div class="modal fade modal-mini modal-primary"
+                                                            id="confirm-{{ $item->id }}" tabindex="-1" role="dialog"
+                                                            aria-labelledby="confirm" aria-hidden="true">
+                                                            <div class="modal-dialog text-right" style="max-width:460px;">
+                                                                <div class="modal-content">
+                                                                    <form action="{{ route('deleteqmsAudit') }}"
+                                                                        method="post">
+                                                                        <div class="modal-header am-modal__header"> @csrf
+                                                                            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                            <div class="modal-profile am-modal__title">
+                                                                                <h5>حذف تفاصيل تدقيق نظام إدارة الجودة</h5>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="modal-body text-center">
-                                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                                                                    </div>
-                                                                    <div class="modal-footer am-modal__footer">
-                                                                        <input type="hidden" name="id"
-                                                                            value="{{ $item->id }}">
-                                                                        <button type="button" class="am-btn am-btn-outline"
-                                                                            data-dismiss="modal">لا</button>
-                                                                        <button type="submit"
-                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                                                                    </div>
-                                                                </form>
+                                                                        <div class="modal-body text-center">
+                                                                            <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
+                                                                        </div>
+                                                                        <div class="modal-footer am-modal__footer">
+                                                                            <input type="hidden" name="id"
+                                                                                value="{{ $item->id }}">
+                                                                            <button type="button" class="am-btn am-btn-outline"
+                                                                                data-dismiss="modal">لا</button>
+                                                                            <button type="submit"
+                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="3">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-shield-alt"></i>
-                                                        <p>لم يتم تسجيل أي تدقيقات لنظام إدارة الجودة بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+    
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-shield-alt"></i>
+                                                            <p>لم يتم تسجيل أي تدقيقات لنظام إدارة الجودة بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $requirement])

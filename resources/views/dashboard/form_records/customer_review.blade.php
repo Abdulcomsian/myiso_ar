@@ -132,218 +132,220 @@
                         <div class="requirments_table_div">
                             <div class="am-table-wrap">
                                 <!--begin: Datatable -->
-                                <table
-                                    class="am-table">
-                                    <thead>
-                                        <tr>
-                                            <th>رقم تقييم العميل</th>
-                                            <th>رقم تعريف العميل</th>
-                                            <th>اسم العميل</th>
-                                            <th>الجودة </th>
-                                            <th>السعر </th>
-                                            <th>التسليم </th>
-                                            <th>الإجمالي</th>
-                                            <th>تاريخ التقييم </th>
-                                            <th>حالات أخرى </th>
-                                            <th>إرفاق الأدلة </th>
-                                            <th>المنتج / النشاط / المنطقة التي تتم مراجعتها</th>
-                                            <th>النشاط </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @forelse ($customers as $data)
+                                <div class="am-table-wrap">
+                                    <table
+                                        class="am-table">
+                                        <thead>
                                             <tr>
-                                                <td><span class="am-cell-sub">{{ $i++ }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->cus_id }}</span></td>
-                                                @php
-                                                    $customersName = \App\customers::where('user_id', $userid)
-                                                        ->where('idNumber', $data->cus_id)
-                                                        ->first();
-                                                @endphp
-                                                <td>
-                                                    @if (isset($customersName->name))
-                                                        {{ $customersName->name }}
-                                                    @endif
-                                                </td>
-                                                <td><span class="am-cell-primary">{{ $data->qualityScore }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->priceScore }}</span></td>
-                                                <td><span class="am-cell-sub">{{ $data->DScore }}</span></td>
-                                                <td><span class="am-chip {{ ((int)$data->OveralScore) >= 8 ? 'success' : (((int)$data->OveralScore) >= 5 ? 'warning' : 'danger') }}">{{ $data->OveralScore }}</span></td>
-
-                                                <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->AssesmentDate)) }}</span></td>
-                                                <td><span class="am-cell-sub">{{$data->other_issues}}</span></td>
-                                                <td>
-                                                    @isset($data->attach_evidence)
-                                                    <a href="{{asset('customer_review_evidence/' . $data->attach_evidence)}}" target="_blank">View Evidence</a>
-                                                    @endisset
-                                                </td>
-                                                <td><span class="am-cell-sub">{{$data->product_activity_area}}</span></td>      
-                                                <td style="text-align:left;white-space:nowrap;">
-                                                    <!-- new  -->
-                                                    <button class="am-icon-btn" onclick="getView({{$data}});" title="View Customer Details" value="" o data-toggle="modal" data-target="#model3"><i class="fa fa-eye"></i>
-                                                    </button>
-
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade text-right" id="model3" tabindex="-1" role="dialog"
-                                                        aria-labelledby="model3Label" aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:720px;" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header am-modal__header">
-                                                                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                                                                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">رأي
-                                                                        العميل</h5>
-																		</div>
-                                                                <div class="modal-body">
-
-                                                                    <div class="row">
-                                                                        {{-- <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label>Customer Review ID Number (See table below. For amendments only):</label>
-                                                                            <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
-                                                                        </div>
-                                                                    </div> --}}
-                                                                        <div class="col-lg-6">
+                                                <th>رقم تقييم العميل</th>
+                                                <th>رقم تعريف العميل</th>
+                                                <th>اسم العميل</th>
+                                                <th>الجودة </th>
+                                                <th>السعر </th>
+                                                <th>التسليم </th>
+                                                <th>الإجمالي</th>
+                                                <th>تاريخ التقييم </th>
+                                                <th>حالات أخرى </th>
+                                                <th>إرفاق الأدلة </th>
+                                                <th>المنتج / النشاط / المنطقة التي تتم مراجعتها</th>
+                                                <th>النشاط </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @forelse ($customers as $data)
+                                                <tr>
+                                                    <td><span class="am-cell-sub">{{ $i++ }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->cus_id }}</span></td>
+                                                    @php
+                                                        $customersName = \App\customers::where('user_id', $userid)
+                                                            ->where('idNumber', $data->cus_id)
+                                                            ->first();
+                                                    @endphp
+                                                    <td>
+                                                        @if (isset($customersName->name))
+                                                            {{ $customersName->name }}
+                                                        @endif
+                                                    </td>
+                                                    <td><span class="am-cell-primary">{{ $data->qualityScore }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->priceScore }}</span></td>
+                                                    <td><span class="am-cell-sub">{{ $data->DScore }}</span></td>
+                                                    <td><span class="am-chip {{ ((int)$data->OveralScore) >= 8 ? 'success' : (((int)$data->OveralScore) >= 5 ? 'warning' : 'danger') }}">{{ $data->OveralScore }}</span></td>
+    
+                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->AssesmentDate)) }}</span></td>
+                                                    <td><span class="am-cell-sub">{{$data->other_issues}}</span></td>
+                                                    <td>
+                                                        @isset($data->attach_evidence)
+                                                        <a href="{{asset('customer_review_evidence/' . $data->attach_evidence)}}" target="_blank">View Evidence</a>
+                                                        @endisset
+                                                    </td>
+                                                    <td><span class="am-cell-sub">{{$data->product_activity_area}}</span></td>      
+                                                    <td style="text-align:left;white-space:nowrap;">
+                                                        <!-- new  -->
+                                                        <button class="am-icon-btn" onclick="getView({{$data}});" title="View Customer Details" value="" o data-toggle="modal" data-target="#model3"><i class="fa fa-eye"></i>
+                                                        </button>
+    
+    
+                                                        <!-- Modal -->
+                                                        <div class="modal fade text-right" id="model3" tabindex="-1" role="dialog"
+                                                            aria-labelledby="model3Label" aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:720px;" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header am-modal__header">
+                                                                        <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">رأي
+                                                                            العميل</h5>
+    																		</div>
+                                                                    <div class="modal-body">
+    
+                                                                        <div class="row">
+                                                                            {{-- <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label>رقم هوية العميل:</label>
-                                                                                <input type="number" class="form-control" required name="cus_id"
-                                                                                    placeholder="أدخل معرف العميل:" readonly>
+                                                                                <label>Customer Review ID Number (See table below. For amendments only):</label>
+                                                                                <input type="number" class="form-control" name="revnumber" placeholder="Enter ID:">
+                                                                            </div>
+                                                                        </div> --}}
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>رقم هوية العميل:</label>
+                                                                                    <input type="number" class="form-control" required name="cus_id"
+                                                                                        placeholder="أدخل معرف العميل:" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label>
+                                                                                    <input class="form-control" type="text" name="product_activity_area_id" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة" value="" readonly>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>المنتج / النشاط / المنطقة التي تتم مراجعتها</label>
-                                                                                <input class="form-control" type="text" name="product_activity_area_id" placeholder="أدخل المنتج / النشاط / المنطقة قيد المراجعة" value="" readonly>
+                                                
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label> التقييم من حيث الجودة: (0 – 10):</label>
+                                                                                    <input type="number" min="0" max="10" required class="form-control"
+                                                                                        name="qualityScore">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>التقييم من حيث السعر: (0 – 10):</label>
+                                                                                    <input type="number" min="0" max="10" required class="form-control"
+                                                                                        name="priceScore">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                            
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label> التقييم من حيث الجودة: (0 – 10):</label>
-                                                                                <input type="number" min="0" max="10" required class="form-control"
-                                                                                    name="qualityScore">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>التقييم من حيث التسليم: (0 – 10): </label>
+                                                                                    <input type="number" class="form-control" required min="0" max="10"
+                                                                                        name="DScore">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>النتيجة الإجمالية (0-10)</label>
+                                                                                    <input type="number" class="form-control" required min="0" max="10"
+                                                                                        name="OveralScore">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>التقييم من حيث السعر: (0 – 10):</label>
-                                                                                <input type="number" min="0" max="10" required class="form-control"
-                                                                                    name="priceScore">
+                                                                       
+                                                
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label>
+                                                                                    <input type="date" max="2999-12-31" required class="form-control"
+                                                                                        name="AssesmentDate" required="required">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label>ملاحظات</label>
+                                                                                    <textarea required class="form-control" name="other_issue" required="required"></textarea>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>التقييم من حيث التسليم: (0 – 10): </label>
-                                                                                <input type="number" class="form-control" required min="0" max="10"
-                                                                                    name="DScore">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12">
+                                                                                <div class="form-group">
+                                                                                    <label>إرفاق دليل <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
+                                                                                   <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>النتيجة الإجمالية (0-10)</label>
-                                                                                <input type="number" class="form-control" required min="0" max="10"
-                                                                                    name="OveralScore">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                   
-                                            
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>تاريخ التقييم: (الشهر/ اليوم/ السنة)</label>
-                                                                                <input type="date" max="2999-12-31" required class="form-control"
-                                                                                    name="AssesmentDate" required="required">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label>ملاحظات</label>
-                                                                                <textarea required class="form-control" name="other_issue" required="required"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12">
-                                                                            <div class="form-group">
-                                                                                <label>إرفاق دليل <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
-                                                                               <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                            
-                                                                    <button class="am-btn am-btn-outline" type="reset" data-dismiss="modal"
-                                                                        aria-label="Close" style="margin-right: 6px;">يلغي</button>
-                                                                </div>
-                                                                <div class="modal-footer am-modal__footer">
-                                                                    <button type="button" class="am-btn am-btn-outline"
-                                                                        data-dismiss="modal">يغلق</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="am-icon-btn"
-                                                        title="Edit" value=""
-                                                        onclick="getEid({{ $data }});">
-                                                        <i class="fa fa-pen"></i>
-                                                    </button>
-                                                    <button data-toggle="modal"
-                                                        data-target="#confirm-{{ $data->id }}"
-                                                        id="remove_{{ $data->id }}" title="Delete"
-                                                        class="am-icon-btn danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <!-- Delete Modal -->
-
-                                                    <div class="modal fade modal-mini modal-primary"
-                                                        id="confirm-{{ $data->id }}" tabindex="-1" role="dialog"
-                                                        aria-labelledby="confirm" aria-hidden="true">
-                                                        <div class="modal-dialog" style="max-width:460px;">
-                                                            <div class="modal-content">
-                                                                <form action="{{ route('delete_customer_review') }}"
-                                                                    method="post">
-                                                                    <div class="modal-header text-right am-modal__header"> @csrf
-                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                        <div class="modal-profile am-modal__title"> حذف تفاصيل مراجعة
-                                                                            العميل </div>
-                                                                    </div>
-                                                                    <div class="modal-body text-center">
-                                                                        <p>هل أنت متأكد أنك تريد إزالة هذا؟</p>
+                                                
+                                                                        <button class="am-btn am-btn-outline" type="reset" data-dismiss="modal"
+                                                                            aria-label="Close" style="margin-right: 6px;">يلغي</button>
                                                                     </div>
                                                                     <div class="modal-footer am-modal__footer">
-                                                                        <input type="hidden" name="id"
-                                                                            value="{{ $data->id }}">
                                                                         <button type="button" class="am-btn am-btn-outline"
-                                                                            data-dismiss="modal">لا</button>
-                                                                        <button type="submit"
-                                                                            class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
+                                                                            data-dismiss="modal">يغلق</button>
                                                                     </div>
-                                                                </form>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="12">
-                                                    <div class="am-empty">
-                                                        <i class="fa fa-star"></i>
-                                                        <p>لم تتم إضافة أي تقييمات عملاء بعد.</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                                        <button class="am-icon-btn"
+                                                            title="Edit" value=""
+                                                            onclick="getEid({{ $data }});">
+                                                            <i class="fa fa-pen"></i>
+                                                        </button>
+                                                        <button data-toggle="modal"
+                                                            data-target="#confirm-{{ $data->id }}"
+                                                            id="remove_{{ $data->id }}" title="Delete"
+                                                            class="am-icon-btn danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <!-- Delete Modal -->
+    
+                                                        <div class="modal fade modal-mini modal-primary"
+                                                            id="confirm-{{ $data->id }}" tabindex="-1" role="dialog"
+                                                            aria-labelledby="confirm" aria-hidden="true">
+                                                            <div class="modal-dialog" style="max-width:460px;">
+                                                                <div class="modal-content">
+                                                                    <form action="{{ route('delete_customer_review') }}"
+                                                                        method="post">
+                                                                        <div class="modal-header text-right am-modal__header"> @csrf
+                                                                            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                                                            <div class="modal-profile am-modal__title"> حذف تفاصيل مراجعة
+                                                                                العميل </div>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <p>هل أنت متأكد أنك تريد إزالة هذا؟</p>
+                                                                        </div>
+                                                                        <div class="modal-footer am-modal__footer">
+                                                                            <input type="hidden" name="id"
+                                                                                value="{{ $data->id }}">
+                                                                            <button type="button" class="am-btn am-btn-outline"
+                                                                                data-dismiss="modal">لا</button>
+                                                                            <button type="submit"
+                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+    
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="12">
+                                                        <div class="am-empty">
+                                                            <i class="fa fa-star"></i>
+                                                            <p>لم تتم إضافة أي تقييمات عملاء بعد.</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--end: Datatable -->
                             </div>
                             @include('dashboard.form_records.partials.am_paginator', ['paginator' => $customers])
