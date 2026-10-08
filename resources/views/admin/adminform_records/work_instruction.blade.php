@@ -50,6 +50,7 @@
                 <div class="form-row">
                     <div><label>عنوان تعليمات العمل</label><input type="text" name="workinstruction" placeholder="عنوان العملية" required></div>
                     <div><label>المرجع</label><input type="text" name="instructionref" required></div>
+                    <div><label>تكرار المراجعة أو الإجراء</label><select name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
                 </div>
                 <div class="form-row">
                     <div>
@@ -95,6 +96,7 @@
                         <th>جمعها</th>
                         <th>تاريخ الإصدار</th>
                         <th>المراجعة</th>
+                        <th>التكرار</th>
                         <th style="text-align:right;">الإجراءات</th>
                     </tr>
                 </thead>
@@ -108,6 +110,7 @@
                             <td>{{ $data->CompiledBy ?? '—' }}</td>
                             <td><span class="am-chip info">{{ date('d M Y', strtotime($data->issueDate)) }}</span></td>
                             <td>{{ $data->revisionstatus }}</td>
+                            <td>{{ $data->frequencyLabel() }}</td>
                             <td style="text-align:right;white-space:nowrap;">
                                 <div class="am-actions">
                                     <button type="button" class="am-icon-btn" title="عرض" onclick='amWiView(@json($data))'><i class="fa fa-eye"></i></button>
@@ -147,6 +150,7 @@
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">رقم الموظف</div><div id="vwi-emp">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الإصدار</div><div id="vwi-date">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">حالة المراجعة</div><div id="vwi-rev">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تكرار المراجعة أو الإجراء</div><div id="vwi-freq">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">جمعها</div><div id="vwi-comp">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">النطاق</div><div id="vwi-scope">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:8px;">الخطوات</div><ol id="vwi-points" style="padding-left:18px;margin:0;font-size:13px;line-height:1.6;"></ol></div>
@@ -169,8 +173,9 @@
             <input type="hidden" name="id" id="ewi-id">
             <div class="am-modal__body" style="padding:20px;">
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>العنوان</label><input type="text" class="form-control" name="workinstruction" required></div>
-                    <div class="col-lg-6"><label>المرجع</label><input type="text" class="form-control" name="instructionref" required></div>
+                    <div class="col-lg-4"><label>العنوان</label><input type="text" class="form-control" name="workinstruction" required></div>
+                    <div class="col-lg-4"><label>المرجع</label><input type="text" class="form-control" name="instructionref" required></div>
+                    <div class="col-lg-4"><label>تكرار المراجعة أو الإجراء</label><select class="form-control" name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-4">
@@ -219,12 +224,15 @@
     p&&p.addEventListener('click',function(e){var b=e.target.closest('button[data-p]');if(!b||b.disabled)return;var q=parseInt(b.getAttribute('data-p'),10);if(!isNaN(q)&&q>=1){pg=q;r();}});
     r();
 })();
+var amWiFrequencies = @json(App\Workinstructions::frequencyOptions());
+function amWiFreqLabel(k) { return (k && amWiFrequencies[k]) || '—'; }
 function amWiView(d){
     document.getElementById('vwi-title').textContent = d.workinstruction||'—';
     document.getElementById('vwi-ref').textContent = d.instructionref||'—';
     document.getElementById('vwi-emp').textContent = d.empId||'—';
     document.getElementById('vwi-date').textContent = d.issueDate ? new Date(d.issueDate).toLocaleDateString() : '—';
     document.getElementById('vwi-rev').textContent = d.revisionstatus||'—';
+    document.getElementById('vwi-freq').textContent = amWiFreqLabel(d.reviewFrequency);
     document.getElementById('vwi-comp').textContent = d.CompiledBy||'—';
     document.getElementById('vwi-scope').textContent = d.scop||'—';
     var pointsEl = document.getElementById('vwi-points');
@@ -239,6 +247,7 @@ function amWiEdit(d){
     $("#ewi-id").val(d.id);
     ['workinstruction','instructionref','issueDate','revisionstatus','scop','CompiledBy'].forEach(function(k){ $("#editWiModal input[name='"+k+"']").val(d[k]||''); });
     $("#editWiModal select[name='empId']").val(d.empId||'');
+    $("#editWiModal select[name='reviewFrequency']").val(d.reviewFrequency||'');
     for (var i=1; i<=12; i++) { $("#editWiModal input[name='point"+i+"']").val(d['point'+i]||''); }
     document.getElementById('editWiModal').classList.add('open');
 }

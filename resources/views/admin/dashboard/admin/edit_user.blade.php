@@ -19,6 +19,7 @@
         ['title' => 'معايرة',                          'url' => '/calibrationcheck/'.$userId,    'icon' => 'fa-tachometer-alt',     'group' => 'العمليات'],
         ['title' => 'موظفين',                          'url' => '/EmployeCheck/'.$userId,        'icon' => 'fa-id-badge',           'group' => 'الموارد البشرية'],
         ['title' => 'مراجعات الإدارة',                  'url' => '/managementCheck/'.$userId,     'icon' => 'fa-chart-line',         'group' => 'الإدارة'],
+        ['title' => 'متتبع الأهداف',                    'url' => '/objectivesCheck/'.$userId,     'icon' => 'fa-bullseye',           'group' => 'الإدارة'],
         ['title' => 'سجلات الصيانة',                   'url' => '/maintainRecCheck/'.$userId,    'icon' => 'fa-wrench',             'group' => 'العمليات'],
         ['title' => 'تقييمات مخاطر الحوادث',            'url' => '/AccidentCheck/'.$userId,       'icon' => 'fa-first-aid',          'group' => 'السلامة'],
         ['title' => 'تقييم المخاطر',                   'url' => '/riskAssesmntCheck/'.$userId,   'icon' => 'fa-user-shield',        'group' => 'السلامة'],

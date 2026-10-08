@@ -1,18 +1,23 @@
-@extends('dashboard.layouts.app')
+@extends('admin.dashboard.layouts.app')
 
 @section('content')
-<div class="am-content">
+@php
+    // whose objectives these are; every form has to say so, because the
+    // controller takes the owner from the request when an admin is signed in
+    $ownerId = $ownerId ?? request()->route('userid');
+@endphp
+
+<div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding:26px;">
 
     <div class="am-page-header">
-        <div style="display:flex;align-items:center;gap:12px;">
-            <button type="button" class="am-page-guide-btn"
-                onclick="document.getElementById('amPageGuide').classList.add('open')"
-                title="متتبع الأهداف" aria-label="متتبع الأهداف">
-                <i class="fa fa-info-circle"></i>
-            </button>
-            <div>
-                <h2>متتبع الأهداف</h2>
-            </div>
+        <div>
+            <h2>متتبع الأهداف</h2>
+            <p>أهداف قابلة للقياس للجودة والبيئة والصحة والسلامة، ومدى التقدم فيها.</p>
+        </div>
+        <div>
+            <a href="{{ url('/edit_user/'.$ownerId) }}" class="am-btn am-btn-outline">
+                <i class="fa fa-arrow-left"></i> العودة إلى النماذج
+            </a>
         </div>
     </div>
 
@@ -24,7 +29,7 @@
 
     <div class="am-card" style="margin-bottom:16px;">
         <div class="am-card__toolbar">
-            <form method="GET" action="{{ url('/objectives_tracker') }}" class="am-search" id="amObjSearchForm" style="flex:1;max-width:340px;margin:0;">
+            <form method="GET" action="{{ url('/objectivesCheck/' . $ownerId) }}" class="am-search" id="amObjSearchForm" style="flex:1;max-width:340px;margin:0;">
                 <i class="fa fa-search"></i>
                 <input type="text" name="q" id="amObjSearch" value="{{ $search ?? '' }}" placeholder="ابحث في الأهداف…" autocomplete="off">
             </form>
@@ -36,6 +41,7 @@
         <div class="am-inline-form" id="newObjForm" style="margin:16px 20px;">
             <form action="{{ route('objective.store') }}" method="POST">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ $ownerId }}">
                 <div class="form-row">
                     <div style="grid-column:1/-1;"><label>الهدف *</label><input type="text" name="objective" placeholder="خفض النفايات العامة المرسلة إلى المكبّ بنسبة 15%" required></div>
                 </div>
@@ -62,7 +68,7 @@
                         <select name="agreed_at">
                             <option value="">اختر مراجعة الإدارة…</option>
                             @foreach ($reviews as $rev)
-                                <option value="{{ $rev->id }}">{{ $rev->mgtreviewId ? 'مراجعة ' . $rev->mgtreviewId : 'Review' }}@if($rev->reviewdate) — {{ date('d/m/Y', strtotime($rev->reviewdate)) }}@endif</option>
+                                <option value="{{ $rev->id }}">{{ $rev->mgtreviewId ? 'Review ' . $rev->mgtreviewId : 'Review' }}@if($rev->reviewdate) — {{ date('d M Y', strtotime($rev->reviewdate)) }}@endif</option>
                             @endforeach
                         </select>
                     </div>
@@ -104,40 +110,6 @@
     </div>
 </div>
 
-{{-- Page guide --}}
-<div class="am-modal" id="amPageGuide" role="dialog" aria-modal="true">
-    <div class="am-modal__box" style="max-width:600px;">
-        <div class="am-modal__header">
-            <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
-            <div>
-                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
-                <h4 class="am-modal__title" style="color:var(--am-primary);">متتبع الأهداف</h4>
-            </div>
-        </div>
-        <div class="am-modal__body" style="color:var(--am-text);">
-            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هو؟</h5>
-            <p style="margin:0 0 16px;">الصفحة التي تسجّل فيها أهدافك القابلة للقياس في مجالات الجودة (ISO 9001) والبيئة (ISO 14001) والصحة والسلامة (ISO 45001)، وتتابع فيها مدى تقدمك في تحقيقها على مدار العام.</p>
-
-            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما أهميته؟</h5>
-            <p style="margin:0 0 16px;">تُتفق الأهداف في اجتماع مراجعة الإدارة، لكنها تحتاج إلى متابعة بين الاجتماعات. ويُظهر تسجيل التقدم بانتظام ما إذا كان كل هدف يسير وفق الخطة أو متأخرًا أو محقَّقًا. ويمكن للمدقق أن يطلب الاطلاع على التقدم الحالي في أي وقت، وسجل التقدم في هذه الصفحة هو الدليل على ذلك.</p>
-
-            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
-            <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
-                <li style="margin-bottom:6px;">انقر على إضافة هدف ، ثم اختر المواصفة, الهدف هو التحسين.</li>
-                <li style="margin-bottom:6px;">اكتب الهدف بحيث يمكن قياسه. فعبارة «تحسين السلامة» غير قابلة للقياس، أما «عدم وقوع أي حادث يتسبب في فقدان أيام عمل خلال عام 2026» فقابلة للقياس.</li>
-                <li style="margin-bottom:6px;">أدخِل طريقة القياس ونقطة البداية والمستهدف، لتتمكن من إثبات التحسن.</li>
-                <li style="margin-bottom:6px;">أضِف ما سيُنفَّذ، والمسؤول، والموعد النهائي، واجتماع مراجعة الإدارة الذي اعتُمد فيه الهدف.</li>
-                <li style="margin-bottom:6px;">حدّث التقدم مرة كل ثلاثة أشهر على الأقل، وأرفِق أدلة مثل الأرقام أو التقارير أو الصور أو مقاطع الفيديو.</li>
-                <li style="margin-bottom:6px;">أبقِ الحالة محدّثة: لم يبدأ أو يسير وفق الخطة أو في خطر أو محقَّق أو غير محقَّق.</li>
-                <li>راجِع كل هدف في اجتماع مراجعة الإدارة التالي، ثم اتفقوا على أهداف جديدة للعام المقبل.</li>
-            </ul>
-        </div>
-        <div class="am-modal__footer">
-            <button type="button" class="am-btn am-btn-outline am-modal-close">يغلق</button>
-        </div>
-    </div>
-</div>
-
 {{-- View modal --}}
 <div class="am-modal" id="viewObjModal" role="dialog" aria-modal="true">
     <div class="am-modal__box" style="max-width:760px;">
@@ -170,6 +142,7 @@
         </div>
         <form action="{{ route('objective.update') }}" method="POST" style="display:contents;">
             @csrf
+            <input type="hidden" name="user_id" value="{{ $ownerId }}">
             <input type="hidden" name="id" id="eobj-id">
             <div class="am-modal__body" style="padding:20px;">
                 <div class="form-group row">
@@ -198,7 +171,7 @@
                         <select class="form-control" name="agreed_at">
                             <option value="">اختر مراجعة الإدارة…</option>
                             @foreach ($reviews as $rev)
-                                <option value="{{ $rev->id }}">{{ $rev->mgtreviewId ? 'مراجعة ' . $rev->mgtreviewId : 'Review' }}@if($rev->reviewdate) — {{ date('d/m/Y', strtotime($rev->reviewdate)) }}@endif</option>
+                                <option value="{{ $rev->id }}">{{ $rev->mgtreviewId ? 'Review ' . $rev->mgtreviewId : 'Review' }}@if($rev->reviewdate) — {{ date('d M Y', strtotime($rev->reviewdate)) }}@endif</option>
                             @endforeach
                         </select>
                     </div>
@@ -233,6 +206,7 @@
         </div>
         <form action="{{ route('objective.progress') }}" method="POST" enctype="multipart/form-data" style="display:contents;">
             @csrf
+            <input type="hidden" name="user_id" value="{{ $ownerId }}">
             <input type="hidden" name="objective_id" id="pobj-id">
             <div class="am-modal__body" style="padding:20px;">
                 <div class="form-group row">
@@ -279,6 +253,7 @@
             <button type="button" class="am-btn am-btn-outline am-modal-close">يلغي</button>
             <form action="{{ route('objective.destroy') }}" method="POST" style="display:inline;">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ $ownerId }}">
                 <input type="hidden" name="id" id="dobj-id">
                 <button type="submit" class="am-btn am-btn-danger"><i class="fa fa-trash"></i> حذف</button>
             </form>
@@ -313,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var form      = document.getElementById('amObjSearchForm');
     var container = document.getElementById('amObjContainer');
     if (!container) return;
-    var baseUrl = '{{ url('/objectives_tracker') }}';
+    var baseUrl = '{{ url('/objectivesCheck/' . $ownerId) }}';
     var status  = '{{ $status ?? '' }}';
 
     function debounce(fn, wait) { var t; return function () { var c = this, a = arguments; clearTimeout(t); t = setTimeout(function () { fn.apply(c, a); }, wait); }; }
