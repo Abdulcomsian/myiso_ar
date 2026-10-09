@@ -1,3036 +1,353 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-    <!-- begin:: Content -->
-    <div class="am-content">
-        <!--Begin::Dashboard 1-->
-        <!--Begin::Section-->
-        <div class="am-page-header">
-            <div style="display:flex;align-items:center;gap:12px;">
-                <button type="button" class="am-page-guide-btn"
-                    data-toggle="modal" data-target="#amPageGuide"
-                    title="إضافة تفاصيل تدقيق نظام إدارة الجودة" aria-label="إضافة تفاصيل تدقيق نظام إدارة الجودة">
-                    <i class="fa fa-info-circle"></i>
+@php
+// The 17 questions the audit asks. Same source, same numbers and same layout
+// as the English site; only the wording is Arabic.
+$qmsQuestions = App\QmsAuditQuestions::all();
+@endphp
+
+<div class="am-content">
+
+    <div class="am-page-header">
+        <div style="display:flex;align-items:center;gap:12px;">
+            <button type="button" class="am-page-guide-btn"
+                onclick="document.getElementById('amPageGuide').classList.add('open')"
+                title="عن تدقيقات نظام إدارة الجودة" aria-label="عن تدقيقات نظام إدارة الجودة">
+                <i class="fa fa-info-circle"></i>
+            </button>
+            <div>
+                <h2>تدقيقات نظام إدارة الجودة</h2>
+            </div>
+        </div>
+        <div class="am-page-header__actions">
+            <a href="{{ asset('download_qms_audit/QMS-Audit-Report.pdf') }}" target="_blank" class="am-btn am-btn-outline">
+                <i class="fa fa-download"></i> تحميل تدقيق نظام إدارة الجودة
+            </a>
+        </div>
+    </div>
+
+    @if(session('message'))
+        <div class="am-card" style="padding:14px 20px;margin-bottom:16px;color:#1a8a5c;background:rgba(38,194,129,0.08);">
+            <i class="fa fa-check-circle"></i> {{ session('message') }}
+        </div>
+    @endif
+    @if(session('msg'))
+        <div class="am-card" style="padding:14px 20px;margin-bottom:16px;color:#1a8a5c;background:rgba(38,194,129,0.08);">
+            <i class="fa fa-check-circle"></i> {{ session('msg') }}
+        </div>
+    @endif
+
+    <div class="am-card" style="margin-bottom:16px;">
+        <div class="am-card__toolbar">
+            <form method="GET" action="{{ url('/qms_audit') }}" class="am-search" id="amQmsSearchForm" style="flex:1;max-width:340px;margin:0;">
+                <i class="fa fa-search"></i>
+                <input type="text" name="q" id="amQmsSearch" value="{{ $search ?? '' }}" placeholder="ابحث في تدقيقات نظام إدارة الجودة…" autocomplete="off">
+            </form>
+            <button type="button" class="am-btn am-btn-primary" id="toggleQmsForm">
+                <i class="fa fa-plus"></i> إضافة تدقيق نظام إدارة الجودة
+            </button>
+        </div>
+
+        <div class="am-inline-form" id="newQmsForm" style="margin:16px 20px;">
+            <form action="{{ route('qmsaudit') }}" method="POST" enctype="multipart/form-data" class="addForm">
+                @csrf
+                <div class="form-row">
+                    <div><label>اسم المدقق</label><input type="text" name="auditrName" required></div>
+                    <div><label>تاريخ الاستكمال</label><input type="date" max="2999-12-31" name="competedDate" required></div>
+                </div>
+
+                <div style="padding-top:4px;">
+                    @foreach ($qmsQuestions as $q)
+                        @include('dashboard.form_records.partials.qms_question_card', [
+                            'q' => $q,
+                            'prefix' => 'add',
+                            'answers' => $qmsAnswers ?? [],
+                            'notes' => $qmsNotes ?? [],
+                        ])
+                    @endforeach
+                </div>
+
+                <div class="form-row">
+                    <div><label>تعليقات وإجراءات التدقيق</label><textarea name="audit_comments_actions" rows="3" required placeholder="ملخّص لما وجدته، وما سيُصحَّح، ومن المسؤول ومتى."></textarea></div>
+                    <div><label>أي مشكلات أخرى</label><textarea name="any_issues" rows="3" placeholder="أي أمر خارج قائمة التحقق يستحق الطرح في المراجعة الإدارية القادمة."></textarea></div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelQmsForm">يلغي</button>
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i> حفظ التدقيق</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="am-card">
+        <div id="amQmsContainer">
+            @include('dashboard.form_records.partials.qms_audit_table')
+        </div>
+    </div>
+</div>
+
+{{-- Page guide --}}
+<div class="am-modal" id="amPageGuide" role="dialog" aria-modal="true">
+    <div class="am-modal__box" style="max-width:600px;">
+        <div class="am-modal__header">
+            <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
+            <div>
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
+                <h4 class="am-modal__title" style="color:var(--am-primary);">تدقيقات نظام إدارة الجودة</h4>
+            </div>
+        </div>
+        <div class="am-modal__body" style="color:var(--am-text);">
+            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هي؟</h5>
+            <p style="margin:0 0 16px;">فحص يتم إجراؤه مرة واحدة على الأقل سنويًا لنظامك بأكمله وفقًا لمعايير ISO 9001 و14001 و45001، أو وفقًا لمعايير فردية من خلال 17 سؤالًا. تركز مراجعة العمليات على مهمة واحدة؛ بينما تركز هذه المراجعة على كل شيء.</p>
+
+            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">لماذا يهم ذلك؟</h5>
+            <p style="margin:0 0 16px;">هذا هو الفحص الذاتي الخاص بك قبل أن يقوم مدقق الاعتماد بفحصه. إن إجراء هذا الفحص وتصحيح ما يكتشفه هو ما يميز الشركة التي تدير نظامها عن تلك التي تكتفي بتسجيل الأوراق. يطلب المدقق هذا الملخص في كل عملية مراقبة سنوية.</p>
+
+            <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
+            <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
+                <li style="margin-bottom:6px;">انقر على «إضافة تدقيق نظام إدارة الجودة» وسجل اسم القائم بالتدقيق وتاريخ الانتهاء.</li>
+                <li style="margin-bottom:6px;">تناول الأسئلة الـ 17، باستخدام قائمة «ما يجب فحصه». تخطّ الأسطر المخصصة لمعيار لا تمتلكه.</li>
+                <li style="margin-bottom:6px;">أجب بـ «نعم» أو «لا» أو «لا ينطبق» باستخدام المربع الرمادي. كن صادقًا — فالهدف الأساسي هو اكتشاف المشكلات.</li>
+                <li style="margin-bottom:6px;">قم برفع «حالة عدم مطابقة» لأي شيء لم يستوفِ المعايير، حتى يتم تتبع الإصلاح بشكل صحيح.</li>
+                <li>يعد تسجيل الأدلة أمرًا حيويًا هنا، لذا قم بتسجيل الأدلة أو تصويرها أو مسحها ضوئيًا وإرفاقها حيثما أمكن ذلك.</li>
+            </ul>
+        </div>
+        <div class="am-modal__footer">
+            <button type="button" class="am-btn am-btn-outline am-modal-close">يغلق</button>
+        </div>
+    </div>
+</div>
+
+{{-- View modal --}}
+<div class="am-modal" id="editProcessAudit" role="dialog" aria-modal="true">
+    <div class="am-modal__box" style="max-width:900px;">
+        <div class="am-modal__header">
+            <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+            <h4 class="am-modal__title">تفاصيل تدقيق نظام إدارة الجودة</h4>
+        </div>
+        <div class="am-modal__body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;margin-bottom:20px;">
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المدقق</div><div id="vqms-auditor">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الاستكمال</div><div id="vqms-date">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">ملف الدليل</div><div id="vqms-ev">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">التعليقات والإجراءات</div><div id="vqms-comments">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">أي مشكلات أخرى</div><div id="vqms-issues">—</div></div>
+            </div>
+            <div style="border-top:1px solid var(--am-border);padding-top:14px;">
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:10px;">الإجابات</div>
+                <div id="vqms-checklist" style="display:grid;grid-template-columns:1fr;gap:8px;font-size:13px;"></div>
+            </div>
+        </div>
+        <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">يغلق</button></div>
+    </div>
+</div>
+
+{{-- Edit modal --}}
+<div class="am-modal" id="geteditdetails" role="dialog" aria-modal="true">
+    <div class="am-modal__box am-form" style="max-width:1000px;">
+        <div class="am-modal__header">
+            <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+            <h4 class="am-modal__title">تحرير تدقيق نظام إدارة الجودة</h4>
+        </div>
+        <form action="{{ route('update_qmsaudit') }}" method="POST" enctype="multipart/form-data" style="display:contents;">
+            @csrf
+            <input type="hidden" name="id" id="eqms-id">
+            <div class="am-modal__body" style="padding:20px;">
+                <div class="form-group row">
+                    <div class="col-lg-6"><label>اسم المدقق</label><input type="text" class="form-control" name="auditrName" required></div>
+                    <div class="col-lg-6"><label>تاريخ الاستكمال</label><input type="date" class="form-control" name="competedDate" required></div>
+                </div>
+
+                @foreach ($qmsQuestions as $q)
+                    @include('dashboard.form_records.partials.qms_question_card', [
+                        'q' => $q,
+                        'prefix' => 'edit',
+                        'answers' => $qmsAnswers ?? [],
+                        'notes' => $qmsNotes ?? [],
+                    ])
+                @endforeach
+
+                <div class="form-group row">
+                    <div class="col-lg-6"><label>تعليقات وإجراءات التدقيق</label><textarea class="form-control" name="audit_comments_actions" rows="3" required></textarea></div>
+                    <div class="col-lg-6"><label>أي مشكلات أخرى</label><textarea class="form-control" name="any_issues" rows="3"></textarea></div>
+                </div>
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">يلغي</button>
+                <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{-- Delete Confirmation Modal --}}
+<div class="am-modal" id="amConfirmDelete" role="dialog" aria-modal="true">
+    <div class="am-modal__box">
+        <div class="am-modal__header">
+            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+            <h4 class="am-modal__title">حذف <span id="amConfirmType">عنصر</span>؟</h4>
+        </div>
+        <div class="am-modal__body">
+            أنت على وشك حذف <strong id="amConfirmLabel">هذا العنصر</strong> نهائيًا، ولا يمكن التراجع عن ذلك.
+        </div>
+        <div class="am-modal__footer">
+            <button type="button" class="am-btn am-btn-outline am-modal-close">يلغي</button>
+            <form id="amConfirmForm" method="POST" style="display:inline;">
+                @csrf
+                <input type="hidden" name="id" id="amConfirmId">
+                <button type="submit" class="am-btn" style="background:var(--am-danger);color:#fff;">
+                    <i class="fa fa-trash"></i> نعم، احذف
                 </button>
-                <div>
-                    <h2>إضافة تفاصيل تدقيق نظام إدارة الجودة</h2>
-                </div>
-            </div>
-        </div>
-        <section>
-            <div class="row text-right">
-                <div class="col-lg-12">
-                    <div class="am-card" style="margin-bottom:16px;">
-                        <div class="am-card__toolbar">
-                            <div class="text-right" style="width:100%;">
-
-                                <a href="{{ asset('download_qms_audit/QMS-Audit-Report.pdf') }}" target="_blank"
-                                    class="am-btn am-btn-primary">تحميل تدقيق نظام إدارة الجودة</a>
-
-
-                                <a onclick="qmsAudit()" class="am-btn am-btn-primary">إضافة تفاصيل تدقيق نظام إدارة الجودة</a>
-                            </div>
-                        </div>
-                        <div class="qms_audit_from_div">
-
-                            <form action="{{ route('qmsaudit') }}" method="POST" enctype="multipart/form-data"
-                                class="addForm am-inline-form open" style="margin:16px 20px;">
-                                @csrf
-
-                                <div class="form-row">
-                                    <div>
-                        <div class="form-group">
-                            <label>اسم المدقق: </label>
-                            <input type="text" class="form-control" name="auditrName"
-                                placeholder="إدراج اسم المدقق:)" required="required">
-                        </div>
-                                    </div>
-                                    <div>
-                        <div class="form-group">
-                            <label>تاريخ تعبئة البيانات (يوم/شهر/سنة)):</label>
-                            <input type="date" max="2999-12-31" name="competedDate"
-                                class="form-control" placeholder="أدخل الأدلة:" required="required">
-                        </div>
-                                    </div>
-                                    <div>
-                        <div class="form-group">
-                            <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
-                            {{-- <input name="attach_evidence" type="file" class="form-control"
-                                accept="image/*,.doc, .docx,.txt,.pdf"> --}}
-                            <div class="custom-file-input-tag form-control">
-                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="image/*,.doc, .docx,.txt,.pdf"/>
-                                <label for="fileInput1" class="file-label">
-                                    <span class="file-text">اختيار الملف</span>
-                                    <span class="file-chosen">لم يتم اختيار ملف</span>
-                                </label>
-                            </div>
-                        </div>
-                                    </div>
-                                    <div>
-                        <div class="form-group">
-                        	<label>الملف المرفق File (PDF, jpeg, txt, .docx, doc, png):</label>
-                        	<div class="custom-file-input-tag form-control">
-                        	    <input type="file" id="fileInput2" class="input-file" name="attach_file" accept="image/*,.doc, .docx,.txt,.pdf,.jpeg,.png">
-                        	    <label for="fileInput2" class="file-label">
-                        	        <span class="file-text">اختيار الملف</span>
-                        	        <span class="file-chosen">لم يتم اختيار ملف</span>
-                        	    </label>
-                        	</div>
-                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div style="grid-column:1/-1;">
-                        <div class="form-group">
-                            <label>تعليقات وإجراءات التدقيق: </label>
-                            <input type="text" class="form-control" name="audit_comments_actions"
-                                required="required" placeholder="إدراج تعليق:)">
-                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div style="grid-column:1/-1;">
-                        <div class="form-group">
-                            <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟ </label>
-                            <input type="text" name="any_issues" class="form-control"
-                                placeholder="إدراج أي مواضيع أخرى:)">
-                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!--          			<div class="form-row" style="margin-bottom:8px;">-->
-                                <!--          				<div style="grid-column:span 3;">-->
-                                <!--          					<div class="form-group">-->
-                                <!--	<label>QMS Audit ID Number:</label>-->
-                                <!--	<input type="number" name="QmsauditNumber" class="form-control validate_number"  placeholder="Enter QMS Audit ID:" required>-->
-                                <!--</div>-->
-                                <!--          				</div>-->
-                                <!--          			</div> -->
-
-                                <!--<div class="form-row" style="margin-bottom:8px;">-->
-                                <!--	<div style="grid-column:span 3;">-->
-                                <!--		<div class="form-group">-->
-                                <!--			<h3 style="margin-top: -136px;">Add QMS Audit Details</h3>-->
-                                <!--		</div>-->
-                                <!--	</div>-->
-                                <!--</div>-->
-
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-
-                                            <label>4.1 الإلمام بالمؤسسة وإطار عملها. هل يصح هذا الأمر؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="qmsCorects"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="qmsCorects"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="qmsCorects"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: (إدراج الدليل:)</label>
-                                            <input type="text" name="evidence" class="form-control"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>4.2 استيعاب احتياجات الأطراف المعنية وتوقعاتهم. هل ما يزال هذا صحيحًا؟
-                                            </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="needExpactations"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="needExpactations"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="needExpactations"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidance2"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction3" required="required">نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction3"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction3"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence3"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>4.4 نظام إدارة الجودة وعملياته. هل العمليات تابعة ومناسبة وتحقق التفاعل؟
-                                            </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction4"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction4"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction4"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidance4"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>5.1 القيادة والالتزام. هل تتحمل الإدارة العليا المسؤولية عن نظام الجودة
-                                                وهل ينصب اهتمامها على العملاء؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction5"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction5"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction5"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence5"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>5.2 السياسة. هل سياسة الجودة معمول بها ومعلنة وتتحلى بالدقة وتخضع
-                                                للمراجعة؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction6"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction6"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction6"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" name="evidance7" class="form-control"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>5.3 الأدوار والمسؤوليات والصلاحيات المؤسسية. هل هي محددة ومعلنة؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction7"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction7"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction7"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" name="evidance7_1" class="form-control"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>6.1 إجراءات التعامل مع المخاطر والفرص. هل تتم إدارة المخاطر والفرص
-                                                واستيعابها ومراجعتها؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction8"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction8"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction8"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidance8"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>6.2 أهداف الجودة والتخطيط لتحقيقها. هل تُحدد الأهداف ضمن مراجعة الإدارة
-                                                ويجري متابعتها؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction9"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction9"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction9"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidance10"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>6.3 التخطيط للتغييرات. هل تم التخطيط لأي تغييرات لاستيفاء البند 6.3 من
-                                                المعيار؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction11"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction11"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction11"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidance12"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>7.1 الموارد. هل يتوفر ما يكفي من الموارد؟ ضع في اعتبارك الأشخاص والبنية
-                                                التحتية وبيئة تشغيل العمليات ومراقبة الموارد والمعارف التنظيمية وتقديرها.
-                                            </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction12"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction12"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction12"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" name="evidence13" class="form-control"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>7.2 الصلاحية. هل سجلات التدريب حديثة؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction13"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction13"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction13"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidance14"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>7.3 الاطلاع. هل يستوفي اطلاع الموظف البند 7.3 من المعيار؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction14"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction14"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction14"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                                name="evidence17">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>7.4 التواصل. هل يستوفي التواصل البند 7.4 من المعيار؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction15"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction15"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction15"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence15"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>7.5 توثيق المعلومات. هل تخضع جميع المستندات المتعلقة بنظام الجودة
-                                                للتدقيق؟</label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction16"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction16"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction16"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                                name="evidence17">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>8.1 التخطيط التشغيلي والمراقبة. هل نظام المراقبة حديث وفعال؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correciton17"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correciton17"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correciton17"> لا ينطبق
-                                                </label>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence18"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>8.2 متطلبات المنتجات والخدمات. هل يتسم التواصل مع العملاء بالفعالية وهل
-                                                تم تحديد متطلبات المنتجات والخدمات ومراجعتها وتوثيقها؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction18"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction18"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction18"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                                name="evidence19">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>8.3 تصميم المنتجات والخدمات وتطويرها. هل تم استيفاء متطلبات هذا
-                                                المعيار؟</label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction19"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction19"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction19"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence20"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>8.4 التحكم في العمليات والمنتجات والخدمات المقدمة من الخارج. هل تخضع
-                                                العمليات والمنتجات والخدمات المقدمة من الخارج للمراقبة؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction20"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction20"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction20"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence21"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>8.5 الإنتاج وتقديم الخدمات. هل يخضع الإنتاج وتقديم الخدمات، بما في ذلك
-                                                الأنشطة اللاحقة للتسليم للمراقبة؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction21"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction21"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction21"> لا ينطبق
-                                                </label>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                                name="evidence22">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>8.6 إصدار المنتجات والخدمات. هل تكتمل المنتجات والخدمات قبل إصدارها
-                                                للعملاء؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction22"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction22"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction22"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence23"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>8.7 مراقبة المخرجات غير المطابقة. هل يتم الإمساك بالسجلات وتحديثها؟
-                                            </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction23"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction23"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction23"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" name="evidence24" class="form-control"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>9.1 الرصد والتقدير والتحليل والتقييم، بما في ذلك البند 9.1.3. هل تُنفذ
-                                                عمليات الرصد والتقدير والتحليل والتقييم وتُوثق؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction24"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction24"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction24"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence25"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>9.1.2 رضا العملاء. هل اكتملت استبيانات رضا العملاء؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction25"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction25"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction25"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence26"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>9.2 التدقيق الداخلي. هل تم التخطيط لعمليات التدقيق الداخلي واستكمالها؟
-                                            </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction26"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction26"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction26"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence27"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>9.3 المراجعة الإدارية. هل تم التخطيط للمراجعة الإدارية واستكمالها؟
-                                            </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction27"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction27"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction27"> لا ينطبق
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence28"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>10.1 التحسين - هل حددت المؤسسة واختارت فرصًا للتحسين ونفذت أي إجراءات
-                                                لازمة لتلبية متطلبات العملاء وتعزيز رضاهم؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction28"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction28"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction28"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" name="evidence29" class="form-control"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>10.2 عدم المطابقة والإجراءات التصحيحية - هل تُوثق هذه الإجراءات بشكل
-                                                صحيح؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction30"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction30"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction30"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="grid-column:span 3;">
-                                    <div class="form-group">
-                                        <label>الدليل: </label>
-                                        <input type="text" class="form-control" name="evidence30"
-                                            placeholder="إدراج الدليل:">
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-bottom:8px;">
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>10.3 استمرار التحسين - هل هناك دليل على استمرار تحسن الشركة؟ </label>
-                                            <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="Yes" name="correction29"
-                                                        required="required"> نعم
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="No" name="correction29"> لا
-                                                </label>
-                                                <label style="display:inline-flex;gap:4px;align-items:center;">
-                                                    <input type="radio" value="NA" name="correction29"> لا ينطبق
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="grid-column:span 3;">
-                                        <div class="form-group">
-                                            <label>الدليل: </label>
-                                            <input type="text" class="form-control" name="evidence31"
-                                                placeholder="إدراج الدليل:">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" class="am-btn am-btn-outline am-btn-sm"
-                                    onclick="qmsAudit()">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="am-card" style="margin-bottom:16px;">
-                        <div class="requirments_table_div">
-                            <div class="am-table-wrap">
-                                <!--begin: Datatable -->
-                                <div class="am-table-wrap">
-                                    <table class="am-table"
-                                        id="kt_table_agent">
-                                        <thead>
-                                            <tr>
-                                                <th>الرقم التعريفي لتدقيق نظام إدارة الجودة</th>
-                                                <th>تاريخ التدقيق</th>
-                                                <th>الإجراء</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @forelse ($requirement as $item)
-                                                <tr>
-                                                    <td><span class="am-cell-sub">{{ $i++ }}</span></td>
-                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->competedDate)) }}</span></td>
-                                                    <td style="text-align:left;white-space:nowrap;">
-                                                        <button class="am-icon-btn"
-                                                            title="View" onclick="getEid({{ json_encode($item) }});">
-                                                            <!--                                                                                                     <i class="fa fa-eye"></i>-->
-                                                            <i class="fa fa-eye"></i>
-                                                            <!--<i class="fa fa-eye"></i>-->
-                                                        </button>
-                                                        <button class="am-icon-btn"
-                                                            title="Edit"
-                                                            onclick="geteditdetails({{ json_encode($item) }});"> <i class="fa fa-pen"></i>
-                                                        </button>
-    
-    
-                                                        @php
-    
-                                                            $d_id = intval($item->QmsauditNumber);
-    
-                                                        @endphp
-    
-                                                        <button data-qmsid="{{ $item->id }}"
-                                                            class="am-icon-btn download-pdf-qms"
-                                                            onclick = "qmsfun({{ $item->id }})" title="Download PDF">
-                                                            <i class="fa fa-download"></i>
-                                                        </button>
-    
-    
-                                                        <button data-toggle="modal" data-target="#confirm-{{ $item->id }}"
-                                                            id="remove_{{ $item->id }}" title="Delete"
-                                                            class="am-icon-btn danger">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-    
-    
-    
-    
-                                                        <!-- Delete Modal -->
-    
-                                                        <div class="modal fade modal-mini modal-primary"
-                                                            id="confirm-{{ $item->id }}" tabindex="-1" role="dialog"
-                                                            aria-labelledby="confirm" aria-hidden="true">
-                                                            <div class="modal-dialog text-right" style="max-width:460px;">
-                                                                <div class="modal-content">
-                                                                    <form action="{{ route('deleteqmsAudit') }}"
-                                                                        method="post">
-                                                                        <div class="modal-header am-modal__header"> @csrf
-                                                                            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                            <div class="modal-profile am-modal__title">
-                                                                                <h5>حذف تفاصيل تدقيق نظام إدارة الجودة</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-body text-center">
-                                                                            <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                                                                        </div>
-                                                                        <div class="modal-footer am-modal__footer">
-                                                                            <input type="hidden" name="id"
-                                                                                value="{{ $item->id }}">
-                                                                            <button type="button" class="am-btn am-btn-outline"
-                                                                                data-dismiss="modal">لا</button>
-                                                                            <button type="submit"
-                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-    
-                                                    </td>
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="3">
-                                                        <div class="am-empty">
-                                                            <i class="fa fa-shield-alt"></i>
-                                                            <p>لم يتم تسجيل أي تدقيقات لنظام إدارة الجودة بعد.</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--end: Datatable -->
-                            </div>
-                            @include('dashboard.form_records.partials.am_paginator', ['paginator' => $requirement])
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <!--End::Section-->
-    </div>
-
-
-	{{-- view modal --}}
-    {{-- Page guide --}}
-    <div class="modal fade text-right" id="amPageGuide" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" style="max-width:600px;" role="document">
-            <div class="modal-content">
-                <div class="modal-header am-modal__header">
-                    <span class="am-modal__icon am-page-guide-icon"><i class="fa fa-info-circle"></i></span>
-                    <div>
-                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;">النماذج والسجلات</div>
-                        <h5 class="modal-title am-modal__title" style="color:var(--am-primary);">تدقيقات نظام إدارة الجودة</h5>
-                    </div>
-                </div>
-                <div class="modal-body" style="color:var(--am-text);">
-                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">ما هي؟</h5>
-                    <p style="margin:0 0 16px;">فحص يتم إجراؤه مرة واحدة على الأقل سنويًا لنظامك بأكمله وفقًا لمعايير ISO 9001 و14001 و45001، أو وفقًا لمعايير فردية من خلال 17 سؤالًا. تركز مراجعة العمليات على مهمة واحدة؛ بينما تركز هذه المراجعة على كل شيء.</p>
-
-                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">لماذا يهم ذلك؟</h5>
-                    <p style="margin:0 0 16px;">هذا هو الفحص الذاتي الخاص بك قبل أن يقوم مدقق الاعتماد بفحصه. إن إجراء هذا الفحص وتصحيح ما يكتشفه هو ما يميز الشركة التي تدير نظامها عن تلك التي تكتفي بتسجيل الأوراق. يطلب المدقق هذا الملخص في كل عملية مراقبة سنوية.</p>
-
-                    <h5 style="font-size:13px;font-weight:600;color:var(--am-primary);margin:0 0 6px;">الخطوات الأساسية</h5>
-                    <ul style="margin:0;padding-inline-start:18px;list-style:disc;color:var(--am-text);font-size:13.5px;line-height:1.5;">
-                        <li style="margin-bottom:6px;">انقر على «إضافة تدقيق نظام إدارة الجودة» وسجل اسم القائم بالتدقيق وتاريخ الانتهاء.</li>
-                        <li style="margin-bottom:6px;">تناول الأسئلة الـ 17، باستخدام قائمة «ما يجب فحصه». تخطّ الأسطر المخصصة لمعيار لا تمتلكه.</li>
-                        <li style="margin-bottom:6px;">أجب بـ «نعم» أو «لا» أو «لا ينطبق» باستخدام المربع الرمادي. كن صادقًا — فالهدف الأساسي هو اكتشاف المشكلات.</li>
-                        <li style="margin-bottom:6px;">قم برفع «حالة عدم مطابقة» لأي شيء لم يستوفِ المعايير، حتى يتم تتبع الإصلاح بشكل صحيح.</li>
-                        <li>يعد تسجيل الأدلة أمرًا حيويًا هنا، لذا قم بتسجيل الأدلة أو تصويرها أو مسحها ضوئيًا وإرفاقها حيثما أمكن ذلك.</li>
-                    </ul>
-                </div>
-                <div class="modal-footer am-modal__footer">
-                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
-
-    <div class="modal fade text-right" id="editProcessAudit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" style="max-width:900px;" role="document">
-            <div class="modal-content">
-                <div class="modal-header am-modal__header">
-                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">عرض تفاصيل تدقيق نظام إدارة الجودة</h5>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" value="" id="test_a" name="id" />
-
-                    <!--                 <div class="row">-->
-                    <!--    <div class="col-lg-12">-->
-                    <!--        <div class="form-group">-->
-                    <!--            <label>QMS Audit ID Number:</label>-->
-                    <!--            <input type="number" name="QmsauditNumber" class="form-control"  placeholder="Enter QMS Audit ID:" readonly>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>4.1 الإلمام بالمؤسسة وإطار عملها. هل يصح هذا الأمر؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="qmsCorects"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="qmsCorects"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="qmsCorects"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" name="evidence" class="form-control"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>4.2 استيعاب احتياجات الأطراف المعنية وتوقعاتهم. هل ما يزال هذا صحيحًا؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="needExpactations"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="needExpactations"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="needExpactations"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidance2"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction3"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction3"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction3"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence3"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>4.4 نظام إدارة الجودة وعملياته. هل العمليات تابعة ومناسبة وتحقق التفاعل؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction4"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction4"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction4"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidance4"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>5.1 القيادة والالتزام. هل تتحمل الإدارة العليا المسؤولية عن نظام الجودة وهل ينصب
-                                    اهتمامها على العملاء؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction5"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction5"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction5"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence5"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>5.2 السياسة. هل سياسة الجودة معمول بها ومعلنة وتتحلى بالدقة وتخضع للمراجعة؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction6"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction6"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction6"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" name="evidance7" class="form-control"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>5.3 الأدوار والمسؤوليات والصلاحيات المؤسسية. هل هي محددة ومعلنة؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction7"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction7"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction7"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" name="evidance7_1" class="form-control"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>6.1 إجراءات التعامل مع المخاطر والفرص. هل تتم إدارة المخاطر والفرص واستيعابها
-                                    ومراجعتها؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction8"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction8"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction8"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidance8"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>6.2 أهداف الجودة والتخطيط لتحقيقها. هل تُحدد الأهداف ضمن مراجعة الإدارة ويجري
-                                    متابعتها؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction9"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction9"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction9"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidance10"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>6.3 التخطيط للتغييرات. هل تم التخطيط لأي تغييرات لاستيفاء البند 6.3 من
-                                    المعيار؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction11"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction11"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction11"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidance12"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>7.1 الموارد. هل يتوفر ما يكفي من الموارد؟ ضع في اعتبارك الأشخاص والبنية التحتية وبيئة
-                                    تشغيل العمليات ومراقبة الموارد والمعارف التنظيمية وتقديرها.</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction12"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction12"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction12"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" name="evidence13" class="form-control"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>7.2 الصلاحية. هل سجلات التدريب حديثة؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction13"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction13"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction13"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidance14"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>7.3 الاطلاع. هل يستوفي اطلاع الموظف البند 7.3 من المعيار؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction14"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction14"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction14"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                    name="evidence17">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>7.4 التواصل. هل يستوفي التواصل البند 7.4 من المعيار؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction15"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction15"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction15"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence15"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>7.5 توثيق المعلومات. هل تخضع جميع المستندات المتعلقة بنظام الجودة للتدقيق؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction16"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction16"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction16"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                    name="evidence17">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.1 التخطيط التشغيلي والمراقبة. هل نظام المراقبة حديث وفعال؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correciton17"
-                                            class="correciton17"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correciton17"
-                                            class="correciton17"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correciton17"
-                                            class="correciton17"> لا ينطبق
-                                    </label>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence18"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.2 متطلبات المنتجات والخدمات. هل يتسم التواصل مع العملاء بالفعالية وهل تم تحديد
-                                    متطلبات المنتجات والخدمات ومراجعتها وتوثيقها؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction18"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction18"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction18"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                    name="evidence19">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.3 تصميم المنتجات والخدمات وتطويرها. هل تم استيفاء متطلبات هذا المعيار؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction19"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction19"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction19"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence20"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.4 التحكم في العمليات والمنتجات والخدمات المقدمة من الخارج. هل تخضع العمليات
-                                    والمنتجات والخدمات المقدمة من الخارج للمراقبة؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction20"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction20"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction20"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence21"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.5 الإنتاج وتقديم الخدمات. هل يخضع الإنتاج وتقديم الخدمات، بما في ذلك الأنشطة
-                                    اللاحقة للتسليم للمراقبة؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction21"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction21"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction21"> لا ينطبق
-                                    </label>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" placeholder="أدخل الأدلة:"
-                                    name="evidence22">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.6 إصدار المنتجات والخدمات. هل تكتمل المنتجات والخدمات قبل إصدارها للعملاء؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction22"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction22"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction22"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence23"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>8.7 مراقبة المخرجات غير المطابقة. هل يتم الإمساك بالسجلات وتحديثها؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction23"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction23"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction23"> لا ينطبق
-                                    </label>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" name="evidence24" class="form-control"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>9.1 الرصد والتقدير والتحليل والتقييم، بما في ذلك البند 9.1.3. هل تُنفذ عمليات الرصد
-                                    والتقدير والتحليل والتقييم وتُوثق؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction24"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction24"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction24"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence25"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>9.1.2 رضا العملاء. هل اكتملت استبيانات رضا العملاء؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction25"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction25"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction25"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence26"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>9.2 التدقيق الداخلي. هل تم التخطيط لعمليات التدقيق الداخلي واستكمالها؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction26"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction26"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction26"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence27"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>9.3 المراجعة الإدارية. هل تم التخطيط للمراجعة الإدارية واستكمالها؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction27"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction27"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction27"> لا ينطبق
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence28"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>10.1 التحسين - هل حددت المؤسسة واختارت فرصًا للتحسين ونفذت أي إجراءات لازمة لتلبية
-                                    متطلبات العملاء وتعزيز رضاهم؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction28"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction28"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction28"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" name="evidence29" class="form-control"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>10.2 عدم المطابقة والإجراءات التصحيحية - هل تُوثق هذه الإجراءات بشكل صحيح؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction30"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction30"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction30"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence30"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>10.3 استمرار التحسين - هل هناك دليل على استمرار تحسن الشركة؟</label>
-                                <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="Yes" name="correction29"> نعم
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="No" name="correction29"> لا
-                                    </label>
-                                    <label style="display:inline-flex;gap:4px;align-items:center;">
-                                        <input type="radio" value="NA" name="correction29"> لا ينطبق
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>الدليل: </label>
-                                <input type="text" class="form-control" name="evidence31"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
-                                <div class="evidence_attachemnt_div">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>تعليقات وإجراءات التدقيق: </label>
-                                <input type="text" class="form-control" name="audit_comments_actions"
-                                    placeholder="إدراج تعليق:">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>تاريخ تعبئة البيانات (يوم/شهر/سنة):</label>
-                                <input type="date" max="2999-12-31" name="competedDate" class="form-control"
-                                    placeholder="أدخل الأدلة:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>سم المدقق: </label>
-                                <input type="text" class="form-control" name="auditrName"
-                                    placeholder="إدراج اسم المدقق:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟</label>
-                                <input type="text" class="form-control" name="any_issues" required
-                                    placeholder="إدراج أي مواضيع أخرى:">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Attachment File (PDF, jpeg, txt, .docx, doc, png):</label>
-                                <div class="file_attachemnt_div">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer am-modal__footer">
-                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    {{-- Edit Model --}}
-    <div class="modal fade text-right" id="geteditdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" style="max-width:1000px;" role="document">
-            <div class="modal-content">
-                <div class="modal-header am-modal__header">
-                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
-                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل تدقيق نظام إدارة الجودة</h5>
-                </div>
-                <form action="{{ route('update_qmsaudit') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-
-                        <input type="hidden" value="" id="test_a" name="id" />
-
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>اسم المدقق: </label>
-                                    <input type="text" class="form-control" required name="auditrName"
-                                        placeholder="إدراج اسم المدقق:">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>تاريخ تعبئة البيانات (يوم/شهر/سنة):</label>
-                                    <input required type="date" max="2999-12-31" name="competedDate"
-                                        class="form-control" placeholder="أدخل الأدلة:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>تعليقات وإجراءات التدقيق: </label>
-                                    <input type="text" class="form-control" name="audit_comments_actions"
-                                        placeholder="إدراج تعليق:">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>هل هناك أي مواضيع أو نقاط أخرى تود إضافتها؟ </label>
-                                    <input type="text" class="form-control" name="any_issues" required
-                                        placeholder="إدراج أي مواضيع أخرى:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>إرفاق الأدلة (jpeg, mp3, mp4, .xls, doc):</label>
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput3" class="input-file" name="attach_evidence" accept="image/*,.doc, .docx,.txt,.pdf">
-                                        <label for="fileInput3" class="file-label">
-                                            <span class="file-text">اختيار الملف</span>
-                                            <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>لملف المرفق (PDF, jpeg, txt, .docx, doc, png):</label>
-                                    <div class="custom-file-input-tag form-control">
-                                        <input type="file" id="fileInput4" class="input-file" name="attach_file" accept="image/*,.doc, .docx,.txt,.pdf,.png,.jpeg">
-                                        <label for="fileInput4" class="file-label">
-                                            <span class="file-text">اختيار الملف</span>
-                                            <span class="file-chosen">لم يتم اختيار ملف</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--                 <div class="form-group row">-->
-                        {{--				Any other issue:  <!--    <div class="col-lg-6">--> --}}
-                        <!--        <div class="form-group">-->
-                        <!--            <label>QMS Audit ID Number:</label>-->
-                        <!--            <input type="number" name="QmsauditNumber" class="form-control"  placeholder="Enter QMS Audit ID:" readonly>-->
-                        <!--        </div>-->
-                        <!--    </div>-->
-                        <!--</div>-->
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>4.1 الإلمام بالمؤسسة وإطار عملها. هل يصح هذا الأمر؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="qmsCorects"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="qmsCorects"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="qmsCorects"> لا ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" name="evidence" class="form-control"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>4.2 استيعاب احتياجات الأطراف المعنية وتوقعاتهم. هل ما يزال هذا صحيحًا؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="needExpactations"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="needExpactations"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="needExpactations"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidance2"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>4.3 تحديد نطاق نظام إدارة الجودة. هل ما يزال هذا صحيحًا؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction3"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction3"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction3"> لا ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence3"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>4.4 نظام إدارة الجودة وعملياته. هل العمليات تابعة ومناسبة وتحقق التفاعل؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction4"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction4"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction4"> لا ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidance4"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>5.1 القيادة والالتزام. هل تتحمل الإدارة العليا المسؤولية عن نظام الجودة وهل ينصب
-                                        اهتمامها على العملاء؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction5"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction5"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction5"> لا ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence5"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>5.2 السياسة. هل سياسة الجودة معمول بها ومعلنة وتتحلى بالدقة وتخضع
-                                        للمراجعة؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction6"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction6"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction6"> لا ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" name="evidance7" class="form-control"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>5.3 الأدوار والمسؤوليات والصلاحيات المؤسسية. هل هي محددة ومعلنة؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction7"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction7"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction7"> لا ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" name="evidance7_1" class="form-control"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>6.1 إجراءات التعامل مع المخاطر والفرص. هل تتم إدارة المخاطر والفرص واستيعابها
-                                        ومراجعتها؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction8"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction8"> لا
-                                        </label>
-                                        <label required style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input type="radio" value="NA" name="correction8"> لا ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidance8"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>6.2 أهداف الجودة والتخطيط لتحقيقها. هل تُحدد الأهداف ضمن مراجعة الإدارة ويجري
-                                        متابعتها؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction9"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction9"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction9"> لا ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidance10"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>6.3 التخطيط للتغييرات. هل تم التخطيط لأي تغييرات لاستيفاء البند 6.3 من
-                                        المعيار؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction11"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction11"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction11"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidance12"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>7.1 الموارد. هل يتوفر ما يكفي من الموارد؟ ضع في اعتبارك الأشخاص والبنية التحتية
-                                        وبيئة تشغيل العمليات ومراقبة الموارد والمعارف التنظيمية وتقديرها</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction12"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction12"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction12"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" name="evidence13" class="form-control"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>7.2 الصلاحية. هل سجلات التدريب حديثة؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction13"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction13"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction13"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidance14"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>7.3 الاطلاع. هل يستوفي اطلاع الموظف البند 7.3 من المعيار؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label required style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input type="radio" value="Yes" name="correction14"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction14"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction14"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                        name="evidence17">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>7.4 التواصل. هل يستوفي التواصل البند 7.4 من المعيار؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label required style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input type="radio" value="Yes" name="correction15"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction15"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction15"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence15"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>7.5 توثيق المعلومات. هل تخضع جميع المستندات المتعلقة بنظام الجودة
-                                        للتدقيق؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction16"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction16"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction16"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                        name="evidence17">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>8.1 التخطيط التشغيلي والمراقبة. هل نظام المراقبة حديث وفعال؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correciton17"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correciton17"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correciton17"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence18"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>8.2 متطلبات المنتجات والخدمات. هل يتسم التواصل مع العملاء بالفعالية وهل تم تحديد
-                                        متطلبات المنتجات والخدمات ومراجعتها وتوثيقها؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction18"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction18"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction18"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                        name="evidence19">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>8.3 تصميم المنتجات والخدمات وتطويرها. هل تم استيفاء متطلبات هذا المعيار؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label required style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input type="radio" value="Yes" name="correction19"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction19"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction19"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence20"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>8.4 التحكم في العمليات والمنتجات والخدمات المقدمة من الخارج. هل تخضع العمليات
-                                        والمنتجات والخدمات المقدمة من الخارج للمراقبة؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction20"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction20"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction20"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence21"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>8.5 الإنتاج وتقديم الخدمات. هل يخضع الإنتاج وتقديم الخدمات، بما في ذلك الأنشطة
-                                        اللاحقة للتسليم للمراقبة؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction21"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction21"> لا
-                                        </label>
-                                        <label required style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input type="radio" value="NA" name="correction21"> لا ينطبق
-                                        </label>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" placeholder="إدراج الدليل:"
-                                        name="evidence22">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>8.6 إصدار المنتجات والخدمات. هل تكتمل المنتجات والخدمات قبل إصدارها
-                                        للعملاء؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction22"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction22"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction22"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence23"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>8.7 مراقبة المخرجات غير المطابقة. هل يتم الإمساك بالسجلات وتحديثها؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction23"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction23"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction23"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" name="evidence24" class="form-control"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>9.1 الرصد والتقدير والتحليل والتقييم، بما في ذلك البند 9.1.3. هل تُنفذ عمليات
-                                        الرصد والتقدير والتحليل والتقييم وتُوثق؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction24"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction24"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction24"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence25"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>9.1.2 رضا العملاء. هل اكتملت استبيانات رضا العملاء؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction25"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction25"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction25"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence26"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>9.2 التدقيق الداخلي. هل تم التخطيط لعمليات التدقيق الداخلي واستكمالها؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction26"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction26"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction26"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence27"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>9.3 المراجعة الإدارية. هل تم التخطيط للمراجعة الإدارية واستكمالها؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction27"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction27"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction27"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence28"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>10.1 التحسين - هل حددت المؤسسة واختارت فرصًا للتحسين ونفذت أي إجراءات لازمة
-                                        لتلبية متطلبات العملاء وتعزيز رضاهم؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction28"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction28"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction28"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" name="evidence29" class="form-control"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>10.2 عدم المطابقة والإجراءات التصحيحية - هل تُوثق هذه الإجراءات بشكل
-                                        صحيح؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction30"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction30"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction30"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence30"
-                                        placeholder="إدراج الدليل:">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>10.3 استمرار التحسين - هل هناك دليل على استمرار تحسن الشركة؟</label>
-                                    <div style="display:flex;gap:12px;font-size:13px;padding:6px 0;flex-wrap:wrap;">
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="Yes" name="correction29"> نعم
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="No" name="correction29"> لا
-                                        </label>
-                                        <label style="display:inline-flex;gap:4px;align-items:center;">
-                                            <input required type="radio" value="NA" name="correction29"> لا
-                                            ينطبق
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الدليل: </label>
-                                    <input type="text" class="form-control" name="evidence31"
-                                        placeholder="أدخل الأدلة:">
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    <div class="modal-footer am-modal__footer">
-                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
-                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+</div>
 
 <script>
-    function qmsfun(id) {
-        $.ajax({
-            url: '/generate-pdf-qms',
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {
-                qms_id: id
-            },
-            success: function(response) {
-                window.open(response.url, '_blank');
-            },
-            error: function() {
-                console.error("Failed to generate PDF");
-            }
+// The "what to check" panels. Every question opens its own in place; the
+// panel is found by walking up to the question rather than by id, because
+// the form is rendered twice and an id would not be unique.
+document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.qms-guide-toggle');
+    if (!btn) return;
+    var card = btn.closest('[data-qms-q]');
+    var pnl = card && card.querySelector('.qms-guide');
+    if (!pnl) return;
+    var open = pnl.classList.toggle('is-open');
+    btn.classList.toggle('is-open', open);
+});
+document.addEventListener('click', function(e) {
+    var close = e.target.closest('.am-modal-close');
+    if (close) { var m = close.closest('.am-modal'); if (m) m.classList.remove('open'); return; }
+    if (e.target.classList && e.target.classList.contains('am-modal')) e.target.classList.remove('open');
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.querySelectorAll('.am-modal.open').forEach(function(m){ m.classList.remove('open'); });
+});
+(function() {
+    var t = document.getElementById('toggleQmsForm');
+    var f = document.getElementById('newQmsForm');
+    var c = document.getElementById('cancelQmsForm');
+    t && t.addEventListener('click', function() { f.classList.toggle('open'); });
+    c && c.addEventListener('click', function() { f.classList.remove('open'); });
+})();
+document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.am-confirm-delete');
+    if (!btn) return;
+    e.preventDefault();
+    document.getElementById('amConfirmForm').setAttribute('action', btn.getAttribute('data-action') || '');
+    document.getElementById('amConfirmId').value = btn.getAttribute('data-id') || '';
+    document.getElementById('amConfirmType').textContent = btn.getAttribute('data-type') || 'عنصر';
+    document.getElementById('amConfirmLabel').textContent = btn.getAttribute('data-label') || 'هذا العنصر';
+    document.getElementById('amConfirmDelete').classList.add('open');
+});
+(function() {
+    var input = document.getElementById('amQmsSearch');
+    var form = document.getElementById('amQmsSearchForm');
+    var container = document.getElementById('amQmsContainer');
+    if (!container) return;
+    var baseUrl = '{{ url('/qms_audit') }}';
+    function debounce(fn, wait) { var t; return function() { var ctx = this, args = arguments; clearTimeout(t); t = setTimeout(function() { fn.apply(ctx, args); }, wait); }; }
+    function showLoading() { container.style.opacity = '0.5'; container.style.pointerEvents = 'none'; }
+    function hideLoading() { container.style.opacity = ''; container.style.pointerEvents = ''; }
+    function fetchPage(page) {
+        var q = input ? input.value.trim() : '';
+        var url = baseUrl + '?q=' + encodeURIComponent(q) + '&page=' + page;
+        showLoading();
+        fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(function(r) { return r.text(); })
+            .then(function(html) { container.innerHTML = html; hideLoading(); })
+            .catch(function() { hideLoading(); });
+    }
+    input && input.addEventListener('input', debounce(function() { fetchPage(1); }, 350));
+    form && form.addEventListener('submit', function(e) { e.preventDefault(); fetchPage(1); });
+    container.addEventListener('click', function(e) {
+        var btn = e.target.closest('.am-page-link');
+        if (!btn || btn.disabled) return;
+        e.preventDefault();
+        var p = parseInt(btn.getAttribute('data-page'), 10);
+        if (!isNaN(p) && p > 0) fetchPage(p);
+    });
+})();
+
+// the questions, so the scripts can label an answer without repeating them
+var qmsQuestions = {!! json_encode(collect($qmsQuestions)->map(function ($q) {
+    return ['no' => $q['no'], 'title' => $q['title'], 'na' => (bool) $q['tick_na']];
+})->values()) !!};
+
+// an audit carries its answers with it; key them by question for lookup
+function amQmsEsc(s) {
+    return String(s == null ? '' : s).replace(/[<>&]/g, function (c) {
+        return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c];
+    });
+}
+function qmsAnswersOf(d) {
+    var by = {};
+    (d.answers || []).forEach(function (a) { by[a.question_no] = a; });
+    return by;
+}
+
+function amQmsView(d){
+    document.getElementById('vqms-auditor').textContent = d.auditrName||'—';
+    document.getElementById('vqms-date').textContent = d.competedDate ? new Date(d.competedDate).toLocaleDateString() : '—';
+    document.getElementById('vqms-comments').textContent = d.audit_comments_actions||'—';
+    document.getElementById('vqms-issues').textContent = d.any_issues||'—';
+    var ev = document.getElementById('vqms-ev');
+    if (d.attach_evidence) { ev.innerHTML = '<a href="'+d.attach_evidence+'" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض</a>'; } else ev.textContent='—';
+    var chk = document.getElementById('vqms-checklist');
+    chk.innerHTML = '';
+    var byNo = qmsAnswersOf(d);
+    qmsQuestions.forEach(function (q) {
+        var a = byNo[q.no] || {};
+        var answer = a.answer || '—';
+        var label = answer === 'Yes' ? 'نعم' : (answer === 'No' ? 'لا' : (answer === 'NA' ? 'لا ينطبق' : '—'));
+        var cls = answer === 'Yes' ? 'success' : (answer === 'No' ? 'danger' : 'info');
+        var note = a.note ? '<div style="font-size:12px;color:var(--am-text-muted);margin-top:2px;">' + amQmsEsc(a.note) + '</div>' : '';
+        var file = a.evidence_file
+            ? ' <a href="{{ asset('qms_evidence') }}/' + encodeURIComponent(a.evidence_file) + '" target="_blank">ملف</a>'
+            : '';
+        var row = document.createElement('div');
+        row.innerHTML = '<div style="display:flex;gap:10px;align-items:flex-start;padding:6px 10px;background:var(--am-hover);border-radius:var(--am-radius-sm);margin-bottom:6px;">'
+            + '<span class="am-chip ' + cls + '" style="flex-shrink:0;">' + label + '</span>'
+            + '<div><strong>' + q.no + '.</strong> ' + amQmsEsc(q.title) + note + file + '</div></div>';
+        chk.appendChild(row);
+    });
+    document.getElementById('editProcessAudit').classList.add('open');
+}
+function amQmsEdit(d){
+    document.getElementById('eqms-id').value = d.id || '';
+    var m = document.getElementById('geteditdetails');
+    ['auditrName','competedDate','audit_comments_actions','any_issues'].forEach(function(k){
+        var el = m.querySelector("input[name='"+k+"'], textarea[name='"+k+"']");
+        if (el) el.value = d[k] || '';
+    });
+    var byNo = qmsAnswersOf(d);
+    qmsQuestions.forEach(function (q) {
+        var a = byNo[q.no] || {};
+        m.querySelectorAll("input[name='q[" + q.no + "]']").forEach(function (r) {
+            r.checked = (a.answer === r.value);
         });
-    }
+        var note = m.querySelector("textarea[name='qnote[" + q.no + "]']");
+        if (note) note.value = a.note || '';
+    });
+    m.classList.add('open');
+}
 
-    function getEid(data) {
-        if ($(".qms_audit_from_div").is(":visible")) {
-            qmsAudit();
-        }
-        console.log(data);
-        $("#id_feild").val(data.id);
-
-        $("input[name='QmsauditNumber']").val(data.QmsauditNumber);
-        $("input[name='auditrName']").val(data.auditrName);
-        $("input[name='competedDate']").val(data.competedDate);
-        $("input[name='completion_date']").val(data.completion_date);
-        $("input[name='evidance2']").val(data.evidance2);
-        $("input[name='evidance4']").val(data.evidance4);
-        $("input[name='evidance5']").val(data.evidance5);
-        $("input[name='evidance6']").val(data.evidance6);
-        $("input[name='evidance7']").val(data.evidance7);
-        $("input[name='evidance8']").val(data.evidance8);
-        $("input[name='evidance10']").val(data.evidance10);
-        $("input[name='evidance12']").val(data.evidance12);
-        $("input[name='evidance14']").val(data.evidance14);
-        $("input[name='evidance']").val(data.evidance);
-        $("input[name='evidance3']").val(data.evidance3);
-        $("input[name='evidance13']").val(data.evidance13);
-        $("input[name='evidance5']").val(data.evidance5);
-        $("input[name='evidance17']").val(data.evidance17);
-        $("input[name='evidance18']").val(data.evidance18);
-        $("input[name='evidance19']").val(data.evidance19);
-        $("input[name='evidance20']").val(data.evidance20);
-        $("input[name='evidance21']").val(data.evidance21);
-        $("input[name='evidance22']").val(data.evidance22);
-        $("input[name='evidance23']").val(data.evidance23);
-        $("input[name='evidance24']").val(data.evidance24);
-        $("input[name='evidance25']").val(data.evidance25);
-        $("input[name='evidance26']").val(data.evidance26);
-        $("input[name='evidance27']").val(data.evidance27);
-        $("input[name='evidance28']").val(data.evidance28);
-        $("input[name='evidance29']").val(data.evidance29);
-        $("input[name='evidance30']").val(data.evidance30);
-        $("input[name='evidence3']").val(data.evidence3);
-        $("input[name='evidence']").val(data.evidence);
-        $("input[name='evidence5']").val(data.evidence5);
-        $("input[name='evidence13']").val(data.evidence13);
-        $("input[name='evidence15']").val(data.evidence15);
-        $("input[name='evidence17']").val(data.evidence17);
-        $("input[name='evidence18']").val(data.evidence18);
-        $("input[name='evidence19']").val(data.evidence19);
-        $("input[name='evidence20']").val(data.evidence20);
-        $("input[name='evidence21']").val(data.evidence21);
-        $("input[name='evidence22']").val(data.evidence22);
-        $("input[name='evidence23']").val(data.evidence23);
-        $("input[name='evidence24']").val(data.evidence24);
-        $("input[name='evidence25']").val(data.evidence25);
-        $("input[name='evidence26']").val(data.evidence26);
-        $("input[name='evidence27']").val(data.evidence27);
-        $("input[name='evidence28']").val(data.evidence28);
-        $("input[name='evidence29']").val(data.evidence29);
-        $("input[name='evidence31']").val(data.evidence31);
-        $("input[name='evidence30']").val(data.evidence30);
-        $("input[name='any_issues']").val(data.any_issues);
-        $("input[name='audit_comments_actions']").val(data.audit_comments_actions);
-        if (data.attach_evidence) {
-            $('.evidence_attachemnt_div').empty().append(
-                `<a target="_blank" href="${data.attach_evidence}">Click to View</a>`);
-        } else {
-            $('.evidence_attachemnt_div').empty().append('No data found');
-        }
-        if(data.attach_file){
-			$('.file_attachemnt_div').empty().append(`<a target="_blank" href="${data.attach_file}">Click to View</a>`);
-		}else{
-			$('.file_attachemnt_div').empty().append('No data found');
-		}
-        $("input[name='qmsCorects'][value=" + data.qmsCorects + "]").prop('checked', true);
-        $("input[name='needExpactations'][value=" + data.needExpactations + "]").prop('checked', true);
-        $("input[name='correction3'][value=" + data.correction3 + "]").prop('checked', true);
-        $("input[name='correction5'][value=" + data.correction5 + "]").prop('checked', true);
-        $("input[name='correction7'][value=" + data.correction7 + "]").prop('checked', true);
-        $("input[name='correction4'][value=" + data.correction4 + "]").prop('checked', true);
-        $("input[name='correction8'][value=" + data.correction8 + "]").prop('checked', true);
-        $("input[name='correction6'][value=" + data.correction6 + "]").prop('checked', true);
-
-        $("input[name='correction9'][value=" + data.correction9 + "]").prop('checked', true);
-        $("input[name='correction10'][value=" + data.correction10 + "]").prop('checked', true);
-        $("input[name='correction11'][value=" + data.correction11 + "]").prop('checked', true);
-        $("input[name='correction12'][value=" + data.correction12 + "]").prop('checked', true);
-        $("input[name='correction13'][value=" + data.correction13 + "]").prop('checked', true);
-        $("input[name='correction14'][value=" + data.correction14 + "]").prop('checked', true);
-        $("input[name='correction15'][value=" + data.correction15 + "]").prop('checked', true);
-        $("input[name='correction16'][value=" + data.correction16 + "]").prop('checked', true);
-        $("input[name='correction18'][value=" + data.correction18 + "]").prop('checked', true);
-        $("input[name='correciton17'][value=" + data.correciton17 + "]").prop('checked', true);
-
-        $("input[name='correction19'][value=" + data.correction19 + "]").prop('checked', true);
-        $("input[name='correction20'][value=" + data.correction20 + "]").prop('checked', true);
-        $("input[name='correction21'][value=" + data.correction21 + "]").prop('checked', true);
-        $("input[name='correction22'][value=" + data.correction22 + "]").prop('checked', true);
-        $("input[name='correction23'][value=" + data.correction23 + "]").prop('checked', true);
-        $("input[name='correction24'][value=" + data.correction24 + "]").prop('checked', true);
-        $("input[name='correction25'][value=" + data.correction25 + "]").prop('checked', true);
-        $("input[name='correction26'][value=" + data.correction26 + "]").prop('checked', true);
-        $("input[name='correction27'][value=" + data.correction27 + "]").prop('checked', true);
-        $("input[name='correction28'][value=" + data.correction28 + "]").prop('checked', true);
-        $("input[name='correction29'][value=" + data.correction29 + "]").prop('checked', true);
-        $("input[name='correction30'][value=" + data.correction30 + "]").prop('checked', true);
-
-        $("#editProcessAudit").modal('show');
-    }
-
-    function geteditdetails(data) {
-        if ($(".qms_audit_from_div").is(":visible")) {
-            qmsAudit();
-        }
-        console.log(data);
-        $("#test_a").val(data.id);
-        $("input[name='id']").val(data.id);
-
-        $("input[name='QmsauditNumber']").val(data.QmsauditNumber);
-        $("input[name='auditrName']").val(data.auditrName);
-        $("input[name='competedDate']").val(data.competedDate);
-        $("input[name='completion_date']").val(data.completion_date);
-        $("input[name='evidance2']").val(data.evidance2);
-        $("input[name='evidance4']").val(data.evidance4);
-        $("input[name='evidance5']").val(data.evidance5);
-        $("input[name='evidance6']").val(data.evidance6);
-        $("input[name='evidance7']").val(data.evidance7);
-        $("input[name='evidance8']").val(data.evidance8);
-        $("input[name='evidance10']").val(data.evidance10);
-        $("input[name='evidance12']").val(data.evidance12);
-        $("input[name='evidance14']").val(data.evidance14);
-        $("input[name='evidance']").val(data.evidance);
-        $("input[name='evidance3']").val(data.evidance3);
-        $("input[name='evidance13']").val(data.evidance13);
-        $("input[name='evidance5']").val(data.evidance5);
-        $("input[name='evidance17']").val(data.evidance17);
-        $("input[name='evidance18']").val(data.evidance18);
-        $("input[name='evidance19']").val(data.evidance19);
-        $("input[name='evidance20']").val(data.evidance20);
-        $("input[name='evidance21']").val(data.evidance21);
-        $("input[name='evidance22']").val(data.evidance22);
-        $("input[name='evidance23']").val(data.evidance23);
-        $("input[name='evidance24']").val(data.evidance24);
-        $("input[name='evidance25']").val(data.evidance25);
-        $("input[name='evidance26']").val(data.evidance26);
-        $("input[name='evidance27']").val(data.evidance27);
-        $("input[name='evidance28']").val(data.evidance28);
-        $("input[name='evidance29']").val(data.evidance29);
-        $("input[name='evidance30']").val(data.evidance30);
-        $("input[name='evidence3']").val(data.evidence3);
-        $("input[name='evidence']").val(data.evidence);
-        $("input[name='evidence5']").val(data.evidence5);
-        $("input[name='evidence13']").val(data.evidence13);
-        $("input[name='evidence15']").val(data.evidence15);
-        $("input[name='evidence17']").val(data.evidence17);
-        $("input[name='evidence18']").val(data.evidence18);
-        $("input[name='evidence19']").val(data.evidence19);
-        $("input[name='evidence20']").val(data.evidence20);
-        $("input[name='evidence21']").val(data.evidence21);
-        $("input[name='evidence22']").val(data.evidence22);
-        $("input[name='evidence23']").val(data.evidence23);
-        $("input[name='evidence24']").val(data.evidence24);
-        $("input[name='evidence25']").val(data.evidence25);
-        $("input[name='evidence26']").val(data.evidence26);
-        $("input[name='evidence27']").val(data.evidence27);
-        $("input[name='evidence28']").val(data.evidence28);
-        $("input[name='evidence29']").val(data.evidence29);
-        $("input[name='evidence31']").val(data.evidence31);
-        $("input[name='evidence30']").val(data.evidence30);
-        $("input[name='any_issues']").val(data.any_issues);
-        $("input[name='audit_comments_actions']").val(data.audit_comments_actions);
-
-        $("input[name='qmsCorects'][value=" + data.qmsCorects + "]").prop('checked', true);
-        $("input[name='needExpactations'][value=" + data.needExpactations + "]").prop('checked', true);
-        $("input[name='correction3'][value=" + data.correction3 + "]").prop('checked', true);
-        $("input[name='correction5'][value=" + data.correction5 + "]").prop('checked', true);
-        $("input[name='correction7'][value=" + data.correction7 + "]").prop('checked', true);
-        $("input[name='correction4'][value=" + data.correction4 + "]").prop('checked', true);
-        $("input[name='correction8'][value=" + data.correction8 + "]").prop('checked', true);
-        $("input[name='correction6'][value=" + data.correction6 + "]").prop('checked', true);
-
-        $("input[name='correction9'][value=" + data.correction9 + "]").prop('checked', true);
-        $("input[name='correction10'][value=" + data.correction10 + "]").prop('checked', true);
-        $("input[name='correction11'][value=" + data.correction11 + "]").prop('checked', true);
-        $("input[name='correction12'][value=" + data.correction12 + "]").prop('checked', true);
-        $("input[name='correction13'][value=" + data.correction13 + "]").prop('checked', true);
-        $("input[name='correction14'][value=" + data.correction14 + "]").prop('checked', true);
-        $("input[name='correction15'][value=" + data.correction15 + "]").prop('checked', true);
-        $("input[name='correction16'][value=" + data.correction16 + "]").prop('checked', true);
-        $("input[name='correction18'][value=" + data.correction18 + "]").prop('checked', true);
-
-        $("input[name='correciton17'][value=" + data.correciton17 + "]").prop('checked', true);
-        $(".correciton17[value=" + data.correciton17 + "]").prop('checked', true);
-
-        $("input[name='correction19'][value=" + data.correction19 + "]").prop('checked', true);
-        $("input[name='correction20'][value=" + data.correction20 + "]").prop('checked', true);
-        $("input[name='correction21'][value=" + data.correction21 + "]").prop('checked', true);
-        $("input[name='correction22'][value=" + data.correction22 + "]").prop('checked', true);
-        $("input[name='correction23'][value=" + data.correction23 + "]").prop('checked', true);
-        $("input[name='correction24'][value=" + data.correction24 + "]").prop('checked', true);
-        $("input[name='correction25'][value=" + data.correction25 + "]").prop('checked', true);
-        $("input[name='correction26'][value=" + data.correction26 + "]").prop('checked', true);
-        $("input[name='correction27'][value=" + data.correction27 + "]").prop('checked', true);
-        $("input[name='correction28'][value=" + data.correction28 + "]").prop('checked', true);
-        $("input[name='correction29'][value=" + data.correction29 + "]").prop('checked', true);
-        $("input[name='correction30'][value=" + data.correction30 + "]").prop('checked', true);
-
-        $("#geteditdetails").modal('show');
-    }
-
-    function deleteqmsAudit(data) {
-        if ($(".qms_audit_from_div").is(":visible")) {
-            qmsAudit();
-        }
-
-        $("#re_id").val(data.id);
-        $("#deleteRequirment").modal('show');
-
-    }
-
-
-
-    //  QMS PDF REPORT
+function qmsfun(id) {
+    fetch('{{ url('/generate-pdf-qms') }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({ qms_id: id })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){ if (res.url) window.open(res.url, '_blank'); })
+    .catch(function(){ console.error('Failed to generate PDF'); });
+}
 </script>
 @endsection

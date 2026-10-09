@@ -876,9 +876,21 @@ public function store(Request $request)
         }
     }
 
-    public function AuditsCheck($request){
-        $auditreport=Qmsaudit::where('user_id',$request)->orderBy('id','DESC')->get();
-        return view('admin.adminform_records.qms_audit',compact('auditreport'));
+    public function AuditsCheck(Request $request, $userid){
+        $search = trim($request->query('q', ''));
+        $query = Qmsaudit::with('answers')->where('user_id',$userid)->orderBy('id','DESC');
+        if ($search !== '') {
+            $query->where(function($q) use ($search){
+                $q->where('auditrName','like',"%{$search}%")
+                  ->orWhere('audit_comments_actions','like',"%{$search}%")
+                  ->orWhere('any_issues','like',"%{$search}%");
+            });
+        }
+        $auditreport = $query->paginate(10)->withQueryString();
+        if ($request->ajax()) {
+            return view('admin.adminform_records.partials.qms_audit_table', compact('auditreport'));
+        }
+        return view('admin.adminform_records.qms_audit',compact('auditreport','search'));
     }
 
     public function nonConformCheck(Request $request, $id)
