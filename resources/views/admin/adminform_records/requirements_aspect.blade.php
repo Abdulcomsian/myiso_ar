@@ -7,9 +7,15 @@
 
     {{-- Page header --}}
     <div class="am-page-header">
-        <div>
-            <h2>المتطلبات المستحقة</h2>
-            <p>مذكرة الامتثال — تتبع العناصر التي تحتاج إلى إجراء دوري (مراجعات، تدقيقات، معايرات).</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="المتطلبات المستحقة" aria-label="المتطلبات المستحقة">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+            <div>
+                <h2>المتطلبات المستحقة</h2>
+            </div>
         </div>
         <div>
             <a href="{{ url('/edit_user/'.$urlparam['userid']) }}" class="am-btn am-btn-outline">
@@ -26,17 +32,6 @@
     @endif
 
     {{-- Info card --}}
-    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;">
-                <i class="fa fa-info-circle"></i>
-            </span>
-            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                أضف العناصر التي تحتاج إلى استرجاعها بشكل منتظم، مثل وقت استحقاق مراجعات الإدارة أو عمليات تدقيق المعايرة المطلوبة.
-                اضغط على <strong>إضافة متطلب</strong>، ثم أدخل المعلومات التي ترغب في التذكير بها وحدد تاريخ التذكير باستخدام التقويم.
-            </div>
-        </div>
-    </div>
 
     {{-- Toolbar + Add form --}}
     <div class="am-card" style="margin-bottom:16px;">
@@ -350,4 +345,7 @@
         render();
     })();
 </script>
+{{-- The guide behind the "i" beside the title --}}
+@include('dashboard.form_records.partials.guides.requirements_aspect')
+
 @endsection

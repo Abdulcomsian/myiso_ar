@@ -12,9 +12,15 @@ $qmsQuestions = App\QmsAuditQuestions::all();
 <div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding:26px;">
 
     <div class="am-page-header">
-        <div>
-            <h2>عمليات تدقيق نظام إدارة الجودة</h2>
-            <p>تدقيق أفقي سنوي لكل بند من بنود معيار ISO 9001:2015.</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <button type="button" class="am-page-guide-btn"
+                onclick="document.getElementById('amPageGuide').classList.add('open')"
+                title="عن تدقيقات نظام إدارة الجودة" aria-label="عن تدقيقات نظام إدارة الجودة">
+                <i class="fa fa-info-circle"></i>
+            </button>
+            <div>
+                <h2>عمليات تدقيق نظام إدارة الجودة</h2>
+            </div>
         </div>
         <div>
             <a href="{{ url('/edit_user/'.$urlparam['userid']) }}" class="am-btn am-btn-outline">
@@ -28,16 +34,6 @@ $qmsQuestions = App\QmsAuditQuestions::all();
             <i class="fa fa-check-circle"></i> {{ $message }}
         </div>
     @endif
-
-    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;"><i class="fa fa-info-circle"></i></span>
-            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                تدقيق أفقي لكل بند من بنود معيار ISO. عادةً ما تكون الدورية سنوية لتحديد مستوى الامتثال.
-                تُجرى عمليات التدقيق وفقًا لـ <a href="{{ url('auidt') }}" style="color:var(--am-primary);">عمليات التدقيق</a>.
-            </div>
-        </div>
-    </div>
 
     <div class="am-card" style="margin-bottom:16px;">
         <div class="am-card__toolbar">
@@ -304,5 +300,8 @@ function amQmsEdit(d){
     m.classList.add('open');
 }
 </script>
+
+{{-- The guide behind the "i" beside the title --}}
+@include('dashboard.form_records.partials.guides.qms_audit')
 
 @endsection

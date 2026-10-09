@@ -7,9 +7,15 @@
 <div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content" style="padding:26px;">
 
     <div class="am-page-header">
-        <div>
-            <h2>الموردون</h2>
-            <p>تسجيل الموردين وتقييمهم لمتابعة أدائهم عبر جميع نقاط التواصل.</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <button type="button" class="am-page-guide-btn"
+                    data-toggle="modal" data-target="#amPageGuide"
+                    title="الموردون" aria-label="الموردون">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+            <div>
+                <h2>الموردون</h2>
+            </div>
         </div>
         <div>
             <a href="{{ url('/edit_user/'.$urlparam['userid']) }}" class="am-btn am-btn-outline">
@@ -23,15 +29,6 @@
             <i class="fa fa-check-circle"></i> {{ $message }}
         </div>
     @endif
-
-    <div class="am-card" style="padding:16px 20px;margin-bottom:16px;background:rgba(46,59,154,0.04);border:1px solid rgba(46,59,154,0.12);">
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="width:36px;height:36px;flex-shrink:0;border-radius:10px;background:var(--am-primary-tint);color:var(--am-primary);display:inline-flex;align-items:center;justify-content:center;font-size:15px;"><i class="fa fa-info-circle"></i></span>
-            <div style="font-size:13px;color:var(--am-text);line-height:1.55;">
-                مراجعة الموردين هي أداة لمراقبة وتقييم مستويات أداء الموردين لديك. ويمكن أن يستهدف مؤشر الأداء هذا جميع مجالات الاتصال بالمورد.
-            </div>
-        </div>
-    </div>
 
     <div class="am-card" style="margin-bottom:16px;">
         <div class="am-card__toolbar">
@@ -290,4 +287,7 @@
         });
     });
 </script>
+{{-- The guide behind the "i" beside the title --}}
+@include('dashboard.form_records.partials.guides.supplier')
+
 @endsection
