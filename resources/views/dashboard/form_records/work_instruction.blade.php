@@ -1,765 +1,277 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-    <!-- begin:: Content -->
-    <div class="am-content">
-        <!--Begin::Dashboard 1-->
-        <!--Begin::Section-->
-        <div class="am-page-header">
-            <div style="display:flex;align-items:center;gap:12px;">
-                <button type="button" class="am-page-guide-btn"
-                    data-toggle="modal" data-target="#amPageGuide"
-                    title="إرشادات العمل" aria-label="إرشادات العمل">
-                    <i class="fa fa-info-circle"></i>
+<div class="am-content">
+
+    <div class="am-page-header">
+        <div style="display:flex;align-items:center;gap:12px;">
+            <button type="button" class="am-page-guide-btn"
+                data-toggle="modal" data-target="#amPageGuide"
+                title="عن تعليمات العمل" aria-label="عن تعليمات العمل">
+                <i class="fa fa-info-circle"></i>
+            </button>
+            <div>
+                <h2>تعليمات العمل</h2>
+            </div>
+        </div>
+    </div>
+
+    @if(session('message'))
+        <div class="am-card" style="padding:14px 20px;margin-bottom:16px;color:#1a8a5c;background:rgba(38,194,129,0.08);">
+            <i class="fa fa-check-circle"></i> {{ session('message') }}
+        </div>
+    @endif
+    @if(session('msg'))
+        <div class="am-card" style="padding:14px 20px;margin-bottom:16px;color:#1a8a5c;background:rgba(38,194,129,0.08);">
+            <i class="fa fa-check-circle"></i> {{ session('msg') }}
+        </div>
+    @endif
+
+    <div class="am-card" style="margin-bottom:16px;">
+        <div class="am-card__toolbar">
+            <form method="GET" action="{{ url('/work_instruction') }}" class="am-search" id="amWiSearchForm" style="flex:1;max-width:340px;margin:0;">
+                <i class="fa fa-search"></i>
+                <input type="text" name="q" id="amWiSearch" value="{{ $search ?? '' }}" placeholder="البحث في تعليمات العمل..." autocomplete="off">
+            </form>
+            <button type="button" class="am-btn am-btn-primary" id="toggleWiForm">
+                <i class="fa fa-plus"></i> إضافة تعليمات عمل
+            </button>
+        </div>
+
+        <div class="am-inline-form" id="newWiForm" style="margin:16px 20px;">
+            <form action="{{ route('workinstructions') }}" method="POST">
+                @csrf
+                <div class="form-row">
+                    <div><label>عنوان تعليمات العمل</label><input type="text" name="workinstruction" placeholder="عنوان العملية" required></div>
+                    <div><label>المرجع</label><input type="text" name="instructionref" required></div>
+                    <div><label>دورية المراجعة أو التنفيذ</label><select name="reviewFrequency"><option value="">اختر الدورية...</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label>رقم الموظف المُعِدّ</label>
+                        <select name="empId" required>
+                            <option value="">اختر الموظف</option>
+                            @foreach($employess as $emp)
+                                <option value="{{ $emp->empNumber }}">{{ $emp->empNumber }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div><label>تاريخ الإصدار</label><input type="date" max="2999-12-31" name="issueDate" required></div>
+                    <div><label>حالة التعديل</label><input type="text" name="revisionstatus" required></div>
+                </div>
+                <div class="form-row">
+                    <div style="grid-column:1/-1;"><label>النطاق</label><input type="text" name="scop" required></div>
+                </div>
+                <div class="form-row">
+                    @for ($i = 1; $i <= 12; $i++)
+                        <div><label>النقطة {{ $i }}</label><input type="text" name="point{{ $i }}"></div>
+                    @endfor
+                </div>
+                <div class="form-row">
+                    <div style="grid-column:1/-1;"><label>أعدّه</label><input type="text" name="CompiledBy" required></div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelWiForm">إلغاء</button>
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i> حفظ التعليمات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="am-card">
+        <div id="amWiContainer">
+            @include('dashboard.form_records.partials.work_instruction_table')
+        </div>
+    </div>
+</div>
+
+{{-- Page guide --}}
+@include('dashboard.form_records.partials.guides.work_instruction')
+
+{{-- View modal --}}
+<div class="am-modal" id="viewWiModal" role="dialog" aria-modal="true">
+    <div class="am-modal__box" style="max-width:820px;">
+        <div class="am-modal__header">
+            <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
+            <h4 class="am-modal__title">تفاصيل تعليمات العمل</h4>
+        </div>
+        <div class="am-modal__body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;">
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">العنوان</div><div id="vwi-title">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المرجع</div><div id="vwi-ref">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">رقم الموظف المُعِدّ</div><div id="vwi-emp">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الإصدار</div><div id="vwi-date">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">حالة التعديل</div><div id="vwi-rev">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">دورية المراجعة أو التنفيذ</div><div id="vwi-freq">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">أعدّه</div><div id="vwi-comp">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">النطاق</div><div id="vwi-scope">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:8px;">الخطوات</div><ol id="vwi-points" style="padding-inline-start:18px;margin:0;font-size:13px;line-height:1.6;"></ol></div>
+            </div>
+        </div>
+        <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">يغلق</button></div>
+    </div>
+</div>
+
+{{-- Edit modal --}}
+<div class="am-modal" id="editWiModal" role="dialog" aria-modal="true">
+    <div class="am-modal__box am-form" style="max-width:900px;">
+        <div class="am-modal__header">
+            <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
+            <h4 class="am-modal__title">تحرير تعليمات العمل</h4>
+        </div>
+        <form action="{{ route('editworkinstructions') }}" method="POST" style="display:contents;">
+            @csrf
+            <input type="hidden" name="id" id="ewi-id">
+            <div class="am-modal__body" style="padding:20px;">
+                <div class="form-group row">
+                    <div class="col-lg-4"><label>العنوان</label><input type="text" class="form-control" name="workinstruction" required></div>
+                    <div class="col-lg-4"><label>المرجع</label><input type="text" class="form-control" name="instructionref" required></div>
+                    <div class="col-lg-4"><label>دورية المراجعة أو التنفيذ</label><select class="form-control" name="reviewFrequency"><option value="">اختر الدورية...</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-4">
+                        <label>رقم الموظف المُعِدّ</label>
+                        <select class="form-control" name="empId" required>
+                            <option value="">اختر الموظف</option>
+                            @foreach($employess as $emp)
+                                <option value="{{ $emp->empNumber }}">{{ $emp->empNumber }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-lg-4"><label>تاريخ الإصدار</label><input type="date" class="form-control" name="issueDate" required></div>
+                    <div class="col-lg-4"><label>حالة التعديل</label><input type="text" class="form-control" name="revisionstatus" required></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>النطاق</label><input type="text" class="form-control" name="scop" required></div>
+                </div>
+                <div class="form-group row">
+                    @for ($i = 1; $i <= 12; $i++)
+                        <div class="col-lg-4"><label>النقطة {{ $i }}</label><input type="text" class="form-control" name="point{{ $i }}"></div>
+                    @endfor
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>أعدّه</label><input type="text" class="form-control" name="CompiledBy" required></div>
+                </div>
+            </div>
+            <div class="am-modal__footer">
+                <button type="button" class="am-btn am-btn-outline am-modal-close">يلغي</button>
+                <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{-- Delete Confirmation Modal --}}
+<div class="am-modal" id="amConfirmDelete" role="dialog" aria-modal="true">
+    <div class="am-modal__box">
+        <div class="am-modal__header">
+            <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
+            <h4 class="am-modal__title">حذف <span id="amConfirmType">عنصر</span>؟</h4>
+        </div>
+        <div class="am-modal__body">
+            أنت على وشك حذف <strong id="amConfirmLabel">هذا العنصر</strong> نهائيًا، ولا يمكن التراجع عن ذلك.
+        </div>
+        <div class="am-modal__footer">
+            <button type="button" class="am-btn am-btn-outline am-modal-close">يلغي</button>
+            <form id="amConfirmForm" method="POST" style="display:inline;">
+                @csrf
+                <input type="hidden" name="id" id="amConfirmId">
+                <button type="submit" class="am-btn" style="background:var(--am-danger);color:#fff;">
+                    <i class="fa fa-trash"></i> نعم، احذف
                 </button>
-                <div>
-                    <h2>إرشادات العمل</h2>
-                </div>
-            </div>
-        </div>
-        <section>
-            <div class="row text-right">
-                <div class="col-lg-12">
-                    <div class="am-card" style="margin-bottom:16px;">
-                        <div class="am-card__toolbar">
-                            <div class="text-right" style="width:100%;">
-                                <a onclick="workInstructionFrom()" class="am-btn am-btn-primary">إضافة تعليمات العمل</a>
-                            </div>
-                        </div>
-                        <div class="work_instruction_from_div">
-                            <form action="{{ route('workinstructions') }} " method="POST" class="am-inline-form open" style="margin:16px 20px;">
-                                @csrf
-                                <div class="form-row">
-                                    <div>
-
-                                            <label>تعليمات العمل / عنوان العملية:</label>
-                                            <input type="text" class="form-control" name="workinstruction" placeholder="إضافة تعليمات/عملية العمل"
-                                                required="required">
-                                    </div>
-                                    <div>
-
-                                            <label>الرقم المرجعي لإرشادات العمل:</label>
-                                            <input type="text" class="form-control" name="instructionref"
-                                                required="required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>تكرار المراجعة أو الإجراء:</label>
-                                                <select class="form-control" name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div>
-
-
-                                            <label>الرقم التعريفي للموظف المُصدر لإرشادات العمل. يُستخرج هذا البيان من جدول
-                                                الموظفين:</label>
-                                            <select class="form-control" name="empId" required="required">
-                                                <option value="">حدد الموظف</option>
-                                                @foreach ($employess as $emp)
-                                                    <option value="{{ $emp->id }}">{{ $emp->empNumber }}</option>
-                                                @endforeach
-                                            </select>
-                                            <!--<input type="number" class="form-control" name="empId" required="required">-->
-                                    </div>
-                                    <div>
-
-                                            <label>تاريخ الإصدار (شهر/يوم/سنة):</label>
-                                            <input type="date" max="2999-12-31" class="form-control" name="issueDate"
-                                                required="required">
-                                    </div>
-                                    <div>
-
-                                            <label>حالة المراجعة:</label>
-                                            <input type="text" class="form-control" name="revisionstatus"
-                                                required="required">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div style="grid-column:1/-1;">
-
-                                            <label>النطاق:</label>
-                                            <input type="text" class="form-control" name="scop" required="required">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div>
-
-                                            <label>النقطة 1:</label>
-                                            <input type="text" class="form-control" name="point1">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 2:</label>
-                                            <input type="text" class="form-control" name="point2">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 3:</label>
-                                            <input type="text" class="form-control" name="point3">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 4:</label>
-                                            <input type="text" class="form-control" name="point4">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 5:</label>
-                                            <input type="text" class="form-control" name="point5">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 6:</label>
-                                            <input type="text" class="form-control" name="point6">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 7:</label>
-                                            <input type="text" class="form-control" name="point7">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 8:</label>
-                                            <input type="text" class="form-control" name="point8">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 9:</label>
-                                            <input type="text" class="form-control" name="point9">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 10:</label>
-                                            <input type="text" class="form-control" name="point10">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 11:</label>
-                                            <input type="text" class="form-control" name="point11">
-                                    </div>
-                                    <div>
-
-                                            <label>النقطة 12:</label>
-                                            <input type="text" class="form-control" name="point12">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div style="grid-column:1/-1;">
-
-                                            <label>جامع البيانات:</label>
-                                            <input type="text" class="form-control" name="CompiledBy" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
-                                    <button type="reset" class="am-btn am-btn-outline am-btn-sm" onclick="closeform();">يلغي</button>
-                                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="am-card" style="margin-bottom:16px;">
-                        <div class="requirments_table_div">
-                            <div class="am-table-wrap">
-                                <!--begin: Datatable -->
-                                <div class="am-table-wrap">
-                                    <table
-                                        class="am-table"
-                                        id="kt_table_agent">
-                                        <thead>
-                                            <tr>
-                                                <th>الرقم التعريفي لإرشادات العمل</th>
-                                                <th>اسم إرشادات العمل</th>
-                                                <th>الرقم المرجعي لإرشادات العمل</th>
-                                                <th>نطاق إرشادات العمل</th>
-                                                <th>جامع البيانات:</th>
-                                                <th>تاريخ الإصدار</th>
-                                                <th>المراجعة</th>
-                                                <th>التكرار</th>
-                                                <th>الإجراءات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($work as $data)
-                                                <tr>
-                                                    <td><span class="am-cell-sub">{{ $loop->index + 1 }}</span></td>
-                                                    <td><span class="am-cell-primary">{{ $data->workinstruction }}</span></td>
-                                                    <td><span class="am-cell-sub">{{ $data->instructionref }}</span></td>
-                                                    <td><span class="am-cell-sub">{{ $data->scop }}</span></td>
-                                                    @php
-                                                        $employname = \App\Employee::where('id', $data->empid)->first();
-                                                    @endphp
-                                                    <td><span class="am-cell-sub">{{ isset($data->CompiledBy) ? $data->CompiledBy : '' }}</span></td>
-                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($data->issueDate)) }}</span></td>
-                                                    <td><span class="am-cell-sub">{{ $data->revisionstatus }}</span></td>
-                                                    <td><span class="am-cell-sub">{{ $data->frequencyLabel() }}</span></td>
-                                                    <td style="text-align:left;white-space:nowrap;">
-                                                        <button class="am-icon-btn"
-                                                            title="View" onclick="getEid({{ $data }});"><i
-                                                                class="fa fa-eye"></i>
-                                                        </button>
-                                                        <button class="am-icon-btn"
-                                                            title="Edit" onclick="editDetails({{ $data }});"><i class="fa fa-pen"></i>
-                                                        </button>
-                                                        <button class="am-icon-btn"
-                                                            data-toggle="modal"
-                                                            data-target="#deleteworkinst{{ $data->id }}">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-                                                        <div class="modal fade text-right"
-                                                            id="deleteworkinst{{ $data->id }}" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog" style="max-width:460px;" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header am-modal__header">
-                                                                        <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                                                                        <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف
-                                                                            تعليمات العمل</h5>
-                                                                        </div>
-                                                                    <div class="modal-body">
-                                                                        <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                                                                    </div>
-                                                                    <div class="modal-footer am-modal__footer">
-                                                                        <form action="{{ route('deleteWork') }}"
-                                                                            method="POST">
-                                                                            @csrf
-                                                                            <input type="hidden" value="{{ $data->id }}"
-                                                                                name="id">
-                                                                            <button type="button" class="am-btn am-btn-outline"
-                                                                                data-dismiss="modal">لا</button>
-                                                                            <button type="submit"
-                                                                                class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="9">
-                                                        <div class="am-empty">
-                                                            <i class="fa fa-file-alt"></i>
-                                                            <p>لم تتم إضافة أي تعليمات عمل بعد.</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
-    
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--end: Datatable -->
-                            </div>
-                            @include('dashboard.form_records.partials.am_paginator', ['paginator' => $work])
-                        </div>
-                    </div>
-                    <div class="am-card" style="margin-bottom:16px;">
-                        <div class="requirments_table_div">
-                            <div class="am-table-wrap">
-                                <!--begin: Datatable -->
-                                <div class="am-table-wrap">
-                                    <table
-                                        class="am-table"
-                                        id="kt_table_agent">
-                                        <thead>
-                                            <tr>
-                                                <th>الرقم التعريفي للموظف</th>
-                                                <th>اسم العائلة</th>
-                                                <th>الاسم الأول</th>
-                                                <!--<th>Employee Number</th>-->
-                                                <th>تاريخ البدء</th>
-                                                <th>التفاصيل الوظيفية</th>
-    
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!--@php
-                                                $n = 1;
-                                                $userinfo = \App\Employee::get();
-                                            @endphp-->
-                                            @forelse ($employess as $item)
-                                                <tr>
-                                                    <!--<td><span class="am-cell-sub">{{ $n }}</span></td>-->
-                                                    <td><span class="am-cell-sub">{{ $item->empNumber }}</span></td>
-                                                    <td><span class="am-cell-primary">{{ $item->surname }}</span></td>
-                                                    <td><span class="am-cell-sub">{{ $item->first_name }}</span></td>
-                                                    <!--<td> {$item->empNumber}</td>-->
-                                                    <td><span class="am-chip info">{{ date('d/m/Y', strtotime($item->startDate)) }}</span></td>
-                                                    <td><span class="am-cell-sub">{{ $item->jobdetails }}</span></td>
-                                                </tr>
-                                                <!--@php $n++; @endphp-->
-                                            @empty
-                                                <tr>
-                                                    <td colspan="5">
-                                                        <div class="am-empty">
-                                                            <i class="fa fa-id-badge"></i>
-                                                            <p>لم تتم إضافة أي موظفين بعد.</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--end: Datatable -->
-                            </div>
-                        </div>
-                    </div>
-
-        </section>
-
-        <!--End::Section-->
-    </div>
-    {{-- Page guide --}}
-    @include('dashboard.form_records.partials.guides.work_instruction')
-
-    <div class="modal fade text-right" id="deleteSupplier" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="max-width:460px;" role="document">
-            <div class="modal-content">
-                <div class="modal-header am-modal__header">
-                    <span class="am-modal__icon"><i class="fa fa-exclamation-triangle"></i></span>
-                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">حذف تعليمات العمل</h5>
-                    </div>
-                <div class="modal-body">
-                    <p>هل أنت متأكد أنك تريد حذف هذا الإدخال؟</p>
-                </div>
-                <div class="modal-footer am-modal__footer">
-                    <form action="{{ route('deleteWork') }}" method="POST">
-                        @csrf
-                        <input type="hidden" value="" id="re_id" name="id">
-                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">لا</button>
-                        <button type="submit" class="am-btn am-btn-danger"><i class="fa fa-trash"></i> نعم</button>
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
-
-    <div class="modal fade text-right" id="workinstructionsDetails" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" style="max-width:820px;" role="document">
-            <div class="modal-content">
-                <div class="modal-header am-modal__header">
-                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-eye"></i></span>
-                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">عرض تعليمات العمل</h5>
-                    </div>
-                <div class="modal-body">
-                    <form action="{{ route('workinstructions') }} " method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>عنوان إرشادات العمل:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="workinstruction">
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>الرقم المرجعي لإرشادات العمل:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="instructionref">
-                                </div>
-                            </div>
-                                                    <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>تكرار المراجعة أو الإجراء:</label>
-                                    <select class="form-control" name="reviewFrequency" disabled><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>الرقم التعريفي للموظف المُصدر لإرشادات العمل. يُستخرج هذا البيان من جدول
-                                        الموظفين:</label>
-                                    <!--<input type="number" readonly disabled class="form-control" name="empId">-->
-                                    <select class="form-control" name="empId" required="required">
-                                        <option value="">حدد الموظف</option>
-                                        @foreach ($employess as $emp)
-                                            <option value="{{ $emp->id }}">{{ $emp->empNumber }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>تاريخ الإصدار (شهر/يوم/سنة):</label>
-                                    <input type="date" readonly disabled class="form-control" name="issueDate">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>حالة المراجعة:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="revisionstatus">
-                                    </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النطاق:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="scop">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 1:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point1">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 2:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 3:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point3">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 4:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point4">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 5:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point5">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 6:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point6">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 7:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point7">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 8:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point8">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 9:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point9">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 10:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point10">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 11:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point11">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>النقطة 12:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="point12">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>جامع البيانات:</label>
-                                    <input type="text" readyonly disabled class="form-control" name="CompiledBy">
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer am-modal__footer">
-                    <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    {{-- work insturctions edit --}}
-
-    <div class="modal fade text-right" id="editworkinstuction" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" style="max-width:900px;" role="document">
-            <div class="modal-content">
-                <div class="modal-header am-modal__header">
-                    <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
-                    <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تعليمات العمل</h5>
-                    </div>
-                <form action="{{ route('editworkinstructions') }} " method="POST">
-                    @csrf
-                    <div class="modal-body">
-
-                        <input type="hidden" id="editit" name="id" value="">
-                                                                        <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>عنوان إرشادات العمل:</label>
-                                    <input type="text" class="form-control" name="workinstruction">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>الرقم المرجعي لإرشادات العمل:</label>
-                                    <input type="text" class="form-control" name="instructionref">
-                                            </div>
-                                        </div>
-                                                                                                                <div class="col-lg-4">
-                                                                                <div class="form-group">
-                                                                                    <label>تكرار المراجعة أو الإجراء:</label>
-                                                                                    <select class="form-control" name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-
-                                    <label>الرقم التعريفي للموظف المُصدر لإرشادات العمل. يُستخرج هذا البيان من جدول
-                                        الموظفين:</label>
-                                    <select class="form-control" name="empId" required="required">
-                                        <option value="">حدد الموظف</option>
-                                        @foreach ($employess as $emp)
-                                            <option value="{{ $emp->id }}">{{ $emp->empNumber }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!--<input type="number" class="form-control" name="empId" required="required">-->
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>تاريخ الإصدار (شهر/يوم/سنة):</label>
-                                    <input type="date" max="2999-12-31" class="form-control" name="issueDate">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>حالة المراجعة:</label>
-                                    <input type="text" class="form-control" name="revisionstatus">
-                                    </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-
-                                    <label>النطاق:</label>
-                                    <input type="text" class="form-control" name="scop">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 1:</label>
-                                    <input type="text" class="form-control" name="point1">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 2:</label>
-                                    <input type="text" class="form-control" name="point2">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 3:</label>
-                                    <input type="text" class="form-control" name="point3">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 4:</label>
-                                    <input type="text" class="form-control" name="point4">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 5:</label>
-                                    <input type="text" class="form-control" name="point5">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 6:</label>
-                                    <input type="text" class="form-control" name="point6">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 7:</label>
-                                    <input type="text" class="form-control" name="point7">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 8:</label>
-                                    <input type="text" class="form-control" name="point8">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 9:</label>
-                                    <input type="text" class="form-control" name="point9">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 10:</label>
-                                    <input type="text" class="form-control" name="point10">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 11:</label>
-                                    <input type="text" class="form-control" name="point11">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-
-                                    <label>النقطة 12:</label>
-                                    <input type="text" class="form-control" name="point12">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-
-                                    <label>جامع البيانات:</label>
-                                    <input type="text" class="form-control" name="CompiledBy" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                    </div>
-                    <div class="modal-footer am-modal__footer">
-                        <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
-                        <button type="submit" class="am-btn am-btn-primary"><i class="fa fa-check"></i> تحديث</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+</div>
 
 <script>
-    function getEid(data) {
-        // console.log(data);
-        console.log(data);
-        $("#id_feild").val(data.work_id);
-        $("select[name='empId']").val(data.empId);
-        $("select[name='reviewFrequency']").val(data.reviewFrequency || '');
-        //  $("input[name='empId']").val(data.empId);
-        $("input[name='instructionref']").val(data.instructionref);
-        $("input[name='issueDate']").val(data.issueDate);
-        $("input[name='point1']").val(data.point1);
-        $("input[name='point2']").val(data.point2);
-        $("input[name='point3']").val(data.point3);
-        $("input[name='point4']").val(data.point4);
-        $("input[name='point5']").val(data.point5);
-        $("input[name='point6']").val(data.point6);
-        $("input[name='point7']").val(data.point7);
-        $("input[name='point8']").val(data.point8);
-        $("input[name='point9']").val(data.point9);
-        $("input[name='point10']").val(data.point10);
-        $("input[name='point11']").val(data.point11);
-        $("input[name='point12']").val(data.point12);
-        $("input[name='revisionstatus']").val(data.revisionstatus);
-        $("input[name='scop']").val(data.scop);
-        $("input[name='workinstruction']").val(data.workinstruction);
-        $("input[name='CompiledBy']").val(data.CompiledBy);
-        $("#workinstructionsDetails").modal('show');
+document.addEventListener('click', function(e) {
+    var close = e.target.closest('.am-modal-close');
+    if (close) { var m = close.closest('.am-modal'); if (m) m.classList.remove('open'); return; }
+    if (e.target.classList && e.target.classList.contains('am-modal')) e.target.classList.remove('open');
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.querySelectorAll('.am-modal.open').forEach(function(m){ m.classList.remove('open'); });
+});
+(function() {
+    var t = document.getElementById('toggleWiForm');
+    var f = document.getElementById('newWiForm');
+    var c = document.getElementById('cancelWiForm');
+    t && t.addEventListener('click', function() { f.classList.toggle('open'); });
+    c && c.addEventListener('click', function() { f.classList.remove('open'); });
+})();
+document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.am-confirm-delete');
+    if (!btn) return;
+    e.preventDefault();
+    document.getElementById('amConfirmForm').setAttribute('action', btn.getAttribute('data-action') || '');
+    document.getElementById('amConfirmId').value = btn.getAttribute('data-id') || '';
+    document.getElementById('amConfirmType').textContent = btn.getAttribute('data-type') || 'عنصر';
+    document.getElementById('amConfirmLabel').textContent = btn.getAttribute('data-label') || 'هذا العنصر';
+    document.getElementById('amConfirmDelete').classList.add('open');
+});
+(function() {
+    var input     = document.getElementById('amWiSearch');
+    var form      = document.getElementById('amWiSearchForm');
+    var container = document.getElementById('amWiContainer');
+    if (!container) return;
+    var baseUrl = '{{ url('/work_instruction') }}';
+    function debounce(fn, wait) { var t; return function() { var ctx = this, args = arguments; clearTimeout(t); t = setTimeout(function() { fn.apply(ctx, args); }, wait); }; }
+    function showLoading() { container.style.opacity = '0.5'; container.style.pointerEvents = 'none'; }
+    function hideLoading() { container.style.opacity = ''; container.style.pointerEvents = ''; }
+    function fetchPage(page) {
+        var q = input ? input.value.trim() : '';
+        var url = baseUrl + '?q=' + encodeURIComponent(q) + '&page=' + page;
+        showLoading();
+        fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(function(r){ return r.text(); })
+            .then(function(html) { container.innerHTML = html; hideLoading(); })
+            .catch(function() { hideLoading(); });
     }
-
-    function deleteModal(data) {
-        $("#re_id").val(data.id);
-        $("#deleteSupplier").modal('show');
-
+    input && input.addEventListener('input', debounce(function() { fetchPage(1); }, 350));
+    form  && form.addEventListener('submit', function(e) { e.preventDefault(); fetchPage(1); });
+    container.addEventListener('click', function(e) {
+        var btn = e.target.closest('.am-page-link');
+        if (!btn || btn.disabled) return;
+        e.preventDefault();
+        var p = parseInt(btn.getAttribute('data-page'), 10);
+        if (!isNaN(p) && p > 0) fetchPage(p);
+    });
+})();
+// the wording for each stored key, taken from the model
+var amWiFrequencies = @json(App\Workinstructions::frequencyOptions());
+function amWiFreqLabel(k) { return (k && amWiFrequencies[k]) || '—'; }
+function amWiView(d) {
+    document.getElementById('vwi-title').textContent = d.workinstruction || '—';
+    document.getElementById('vwi-ref').textContent = d.instructionref || '—';
+    document.getElementById('vwi-emp').textContent = d.empId || '—';
+    document.getElementById('vwi-date').textContent = d.issueDate ? new Date(d.issueDate).toLocaleDateString() : '—';
+    document.getElementById('vwi-rev').textContent = d.revisionstatus || '—';
+    document.getElementById('vwi-freq').textContent = amWiFreqLabel(d.reviewFrequency);
+    document.getElementById('vwi-comp').textContent = d.CompiledBy || '—';
+    document.getElementById('vwi-scope').textContent = d.scop || '—';
+    var pointsEl = document.getElementById('vwi-points');
+    pointsEl.innerHTML = '';
+    for (var i = 1; i <= 12; i++) {
+        var pt = d['point'+i];
+        if (pt) { var li = document.createElement('li'); li.textContent = pt; pointsEl.appendChild(li); }
     }
-
-    function closeform() {
-        $(".work_instruction_from_div").hide();
+    document.getElementById('viewWiModal').classList.add('open');
+}
+function amWiEdit(d) {
+    document.getElementById('ewi-id').value = d.id || '';
+    var m = document.getElementById('editWiModal');
+    ['workinstruction','instructionref','issueDate','revisionstatus','scop','CompiledBy'].forEach(function(k){
+        var el = m.querySelector("input[name='"+k+"']");
+        if (el) el.value = d[k] || '';
+    });
+    var sel = m.querySelector("select[name='empId']"); if (sel) sel.value = d.empId || '';
+    var fq = m.querySelector("select[name='reviewFrequency']"); if (fq) fq.value = d.reviewFrequency || '';
+    for (var i = 1; i <= 12; i++) {
+        var el = m.querySelector("input[name='point"+i+"']");
+        if (el) el.value = d['point'+i] || '';
     }
-
-    function editDetails(data) {
-        console.log(data);
-        $("#editit").val(data.id);
-        $("select[name='empId']").val(data.empId);
-        $("select[name='reviewFrequency']").val(data.reviewFrequency || '');
-        $("input[name='instructionref']").val(data.instructionref);
-        $("input[name='issueDate']").val(data.issueDate);
-        $("input[name='point1']").val(data.point1);
-        $("input[name='point2']").val(data.point2);
-        $("input[name='point3']").val(data.point3);
-        $("input[name='point4']").val(data.point4);
-        $("input[name='point5']").val(data.point5);
-        $("input[name='point6']").val(data.point6);
-        $("input[name='point7']").val(data.point7);
-        $("input[name='point8']").val(data.point8);
-        $("input[name='point9']").val(data.point9);
-        $("input[name='point10']").val(data.point10);
-        $("input[name='point11']").val(data.point11);
-        $("input[name='point12']").val(data.point12);
-        $("input[name='revisionstatus']").val(data.revisionstatus);
-        $("input[name='scop']").val(data.scop);
-        $("input[name='workinstruction']").val(data.workinstruction);
-        $("input[name='CompiledBy']").val(data.CompiledBy);
-        $("#editworkinstuction").modal('show');
-    }
+    m.classList.add('open');
+}
 </script>
 @endsection

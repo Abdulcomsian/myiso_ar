@@ -33,7 +33,7 @@
         <div class="am-card__toolbar">
             <div class="am-search" style="flex:1;max-width:340px;">
                 <i class="fa fa-search"></i>
-                <input type="text" id="amWiSearch" placeholder="ابحث في تعليمات العمل…" autocomplete="off">
+                <input type="text" id="amWiSearch" placeholder="البحث في تعليمات العمل..." autocomplete="off">
             </div>
             <button type="button" class="am-btn am-btn-primary" id="toggleWiForm">
                 <i class="fa fa-plus"></i> إضافة تعليمات عمل
@@ -47,11 +47,11 @@
                 <div class="form-row">
                     <div><label>عنوان تعليمات العمل</label><input type="text" name="workinstruction" placeholder="عنوان العملية" required></div>
                     <div><label>المرجع</label><input type="text" name="instructionref" required></div>
-                    <div><label>تكرار المراجعة أو الإجراء</label><select name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
+                    <div><label>دورية المراجعة أو التنفيذ</label><select name="reviewFrequency"><option value="">اختر الدورية...</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
                 </div>
                 <div class="form-row">
                     <div>
-                        <label>رقم معرف الموظف المُنشئ</label>
+                        <label>رقم الموظف المُعِدّ</label>
                         <select name="empId" required>
                             <option value="">حدد الموظف</option>
                             @foreach($employess as $emp)
@@ -60,7 +60,7 @@
                         </select>
                     </div>
                     <div><label>تاريخ الإصدار</label><input type="date" max="2999-12-31" name="issueDate" required></div>
-                    <div><label>حالة المراجعة</label><input type="text" name="revisionstatus" required></div>
+                    <div><label>حالة التعديل</label><input type="text" name="revisionstatus" required></div>
                 </div>
                 <div class="form-row">
                     <div style="grid-column:1/-1;"><label>النطاق</label><input type="text" name="scop" required></div>
@@ -71,7 +71,7 @@
                     @endfor
                 </div>
                 <div class="form-row">
-                    <div style="grid-column:1/-1;"><label>جمعها</label><input type="text" name="CompiledBy" required></div>
+                    <div style="grid-column:1/-1;"><label>أعدّه</label><input type="text" name="CompiledBy" required></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelWiForm">إلغاء</button>
@@ -90,10 +90,10 @@
                         <th>العنوان</th>
                         <th>المرجع</th>
                         <th>النطاق</th>
-                        <th>جمعها</th>
+                        <th>أعدّه</th>
                         <th>تاريخ الإصدار</th>
-                        <th>المراجعة</th>
-                        <th>التكرار</th>
+                        <th>التعديل</th>
+                        <th>الدورية</th>
                         <th style="text-align:right;">الإجراءات</th>
                     </tr>
                 </thead>
@@ -144,11 +144,11 @@
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;">
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">العنوان</div><div id="vwi-title">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المرجع</div><div id="vwi-ref">—</div></div>
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">رقم الموظف</div><div id="vwi-emp">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">رقم الموظف المُعِدّ</div><div id="vwi-emp">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الإصدار</div><div id="vwi-date">—</div></div>
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">حالة المراجعة</div><div id="vwi-rev">—</div></div>
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تكرار المراجعة أو الإجراء</div><div id="vwi-freq">—</div></div>
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">جمعها</div><div id="vwi-comp">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">حالة التعديل</div><div id="vwi-rev">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">دورية المراجعة أو التنفيذ</div><div id="vwi-freq">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">أعدّه</div><div id="vwi-comp">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">النطاق</div><div id="vwi-scope">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:8px;">الخطوات</div><ol id="vwi-points" style="padding-left:18px;margin:0;font-size:13px;line-height:1.6;"></ol></div>
             </div>
@@ -172,11 +172,11 @@
                 <div class="form-group row">
                     <div class="col-lg-4"><label>العنوان</label><input type="text" class="form-control" name="workinstruction" required></div>
                     <div class="col-lg-4"><label>المرجع</label><input type="text" class="form-control" name="instructionref" required></div>
-                    <div class="col-lg-4"><label>تكرار المراجعة أو الإجراء</label><select class="form-control" name="reviewFrequency"><option value="">اختر…</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
+                    <div class="col-lg-4"><label>دورية المراجعة أو التنفيذ</label><select class="form-control" name="reviewFrequency"><option value="">اختر الدورية...</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-4">
-                        <label>رقم معرف الموظف المُنشئ</label>
+                        <label>رقم الموظف المُعِدّ</label>
                         <select class="form-control" name="empId" required>
                             <option value="">اختر</option>
                             @foreach($employess as $emp)
@@ -185,7 +185,7 @@
                         </select>
                     </div>
                     <div class="col-lg-4"><label>تاريخ الإصدار</label><input type="date" class="form-control" name="issueDate" required></div>
-                    <div class="col-lg-4"><label>حالة المراجعة</label><input type="text" class="form-control" name="revisionstatus" required></div>
+                    <div class="col-lg-4"><label>حالة التعديل</label><input type="text" class="form-control" name="revisionstatus" required></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-12"><label>النطاق</label><input type="text" class="form-control" name="scop" required></div>
@@ -196,7 +196,7 @@
                     @endfor
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-12"><label>جمعها</label><input type="text" class="form-control" name="CompiledBy" required></div>
+                    <div class="col-lg-12"><label>أعدّه</label><input type="text" class="form-control" name="CompiledBy" required></div>
                 </div>
             </div>
             <div class="am-modal__footer">

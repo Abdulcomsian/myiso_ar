@@ -39,7 +39,7 @@ $qmsQuestions = App\QmsAuditQuestions::all();
         <div class="am-card__toolbar">
             <form method="GET" action="{{ url('/AuditsCheck/' . $urlparam['userid']) }}" class="am-search" id="amQmsSearchForm" style="flex:1;max-width:340px;margin:0;">
                 <i class="fa fa-search"></i>
-                <input type="text" name="q" id="amQmsSearch" value="{{ $search ?? '' }}" placeholder="ابحث في تدقيقات نظام إدارة الجودة…" autocomplete="off">
+                <input type="text" name="q" id="amQmsSearch" value="{{ $search ?? '' }}" placeholder="البحث في تدقيقات نظام إدارة الجودة..." autocomplete="off">
             </form>
             <button type="button" class="am-btn am-btn-primary" id="toggleQmsForm">
                 <i class="fa fa-plus"></i> إضافة تدقيق نظام إدارة الجودة
@@ -51,8 +51,8 @@ $qmsQuestions = App\QmsAuditQuestions::all();
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                 <div class="form-row">
-                    <div><label>اسم المدقق</label><input type="text" name="auditrName" required></div>
-                    <div><label>تاريخ الاستكمال</label><input type="date" max="2999-12-31" name="competedDate" required></div>
+                    <div><label>اسم المدقق</label><input type="text" name="auditrName" placeholder="مثال: سارة أحمد" required></div>
+                    <div><label>تاريخ الإنجاز</label><input type="date" max="2999-12-31" name="competedDate" required></div>
                 </div>
 
                 <div style="padding-top:4px;">
@@ -67,8 +67,8 @@ $qmsQuestions = App\QmsAuditQuestions::all();
                 </div>
 
                 <div class="form-row">
-                    <div><label>تعليقات وإجراءات التدقيق</label><textarea name="audit_comments_actions" rows="3" required placeholder="ملخّص لما وجدته، وما سيُصحَّح، ومن المسؤول ومتى."></textarea></div>
-                    <div><label>أي مشكلات أخرى</label><textarea name="any_issues" rows="3" placeholder="أي أمر خارج قائمة التحقق يستحق الطرح في المراجعة الإدارية القادمة."></textarea></div>
+                    <div><label>ملاحظات التدقيق والإجراءات</label><textarea name="audit_comments_actions" rows="3" required placeholder="ملخص ما وجدته، وما سيُعالَج، ومن سيعالجه، ومتى."></textarea></div>
+                    <div><label>أي مسائل أخرى</label><textarea name="any_issues" rows="3" placeholder="أي أمر خارج قائمة التحقق يستحق طرحه في اجتماع مراجعة الإدارة القادم."></textarea></div>
                 </div>
 
                 <div class="form-actions">
@@ -119,7 +119,7 @@ $qmsQuestions = App\QmsAuditQuestions::all();
         <div class="am-modal__body">
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;margin-bottom:20px;">
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المدقق</div><div id="vqms-auditor">—</div></div>
-                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الاستكمال</div><div id="vqms-date">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الإنجاز</div><div id="vqms-date">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">ملف الدليل</div><div id="vqms-ev">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">التعليقات والإجراءات</div><div id="vqms-comments">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">أي مشكلات أخرى</div><div id="vqms-issues">—</div></div>
@@ -147,7 +147,7 @@ $qmsQuestions = App\QmsAuditQuestions::all();
             <div class="am-modal__body" style="padding:20px;">
                 <div class="form-group row">
                     <div class="col-lg-6"><label>اسم المدقق</label><input type="text" class="form-control" name="auditrName" required></div>
-                    <div class="col-lg-6"><label>تاريخ الاستكمال</label><input type="date" class="form-control" name="competedDate" required></div>
+                    <div class="col-lg-6"><label>تاريخ الإنجاز</label><input type="date" class="form-control" name="competedDate" required></div>
                 </div>
 
                 @foreach ($qmsQuestions as $q)
@@ -160,8 +160,8 @@ $qmsQuestions = App\QmsAuditQuestions::all();
                 @endforeach
 
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>تعليقات وإجراءات التدقيق</label><textarea class="form-control" name="audit_comments_actions" rows="3" required></textarea></div>
-                    <div class="col-lg-6"><label>أي مشكلات أخرى</label><textarea class="form-control" name="any_issues" rows="3"></textarea></div>
+                    <div class="col-lg-6"><label>ملاحظات التدقيق والإجراءات</label><textarea class="form-control" name="audit_comments_actions" rows="3" required></textarea></div>
+                    <div class="col-lg-6"><label>أي مسائل أخرى</label><textarea class="form-control" name="any_issues" rows="3"></textarea></div>
                 </div>
             </div>
             <div class="am-modal__footer">

@@ -57,7 +57,7 @@
                     <div><label>المستهدف *</label><input type="text" name="target" placeholder="3.6 طن أو أقل" required></div>
                 </div>
                 <div class="form-row">
-                    <div style="grid-column:1/-1;"><label>كيف سيتحقق ذلك</label><textarea name="how_achieved" rows="3" placeholder="إضافة حاويات إعادة تدوير في كل محطة؛ تدريب الموظفين في اجتماع الفريق في أبريل؛ التحول إلى مورّد يعيد تدوير الكرتون"></textarea></div>
+                    <div style="grid-column:1/-1;"><label>كيف سيتحقق الهدف</label><textarea name="how_achieved" rows="3" placeholder="إضافة حاويات إعادة تدوير في كل محطة؛ تدريب الموظفين في اجتماع الفريق في أبريل؛ التحول إلى مورّد يعيد تدوير الكرتون"></textarea></div>
                 </div>
                 <div class="form-row">
                     <div>
@@ -129,7 +129,7 @@
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">طريقة القياس</div><div id="vobj-measured">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">نقطة البداية</div><div id="vobj-start">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المستهدف</div><div id="vobj-target">—</div></div>
-                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">كيف سيتحقق ذلك</div><div id="vobj-achieved">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">كيف سيتحقق الهدف</div><div id="vobj-achieved">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الشخص المسؤول</div><div id="vobj-person">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الموعد النهائي</div><div id="vobj-deadline">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الحالة</div><div id="vobj-status">—</div></div>
@@ -160,7 +160,7 @@
                     <div class="col-lg-4"><label>المستهدف *</label><input type="text" class="form-control" name="target" required></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-12"><label>كيف سيتحقق ذلك</label><textarea class="form-control" name="how_achieved" rows="3"></textarea></div>
+                    <div class="col-lg-12"><label>كيف سيتحقق الهدف</label><textarea class="form-control" name="how_achieved" rows="3"></textarea></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-3">
@@ -229,13 +229,20 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-12">
-                        <label>الدليل <span style="color:var(--am-text-soft);">PDF أو JPEG أو TXT أو DOCX أو PNG — فاتورة نفايات أو فاتورة طاقة أو سجل شكاوى أو تقرير حادث</span></label>
-                        <input type="file" class="form-control" name="evidence" accept=".pdf,.jpg,.jpeg,.txt,.doc,.docx,.png">
+                        <label>الأدلة <span style="color:var(--am-text-soft);font-weight:500;text-transform:none;letter-spacing:0;">إرفاق ملف ( PDF، JPEG، TXT، DOCX، PNG )</span></label>
+                        <div class="custom-file-input-tag form-control">
+                            <input type="file" id="objAdminEvidence" class="input-file" name="evidence" accept=".pdf,.jpg,.jpeg,.txt,.doc,.docx,.png"/>
+                            <label for="objAdminEvidence" class="file-label">
+                                <span class="file-text">اختيار الملف</span>
+                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                            </label>
+                        </div>
+                        <div style="font-size:12px;color:var(--am-text-muted);margin-top:6px;">فاتورة نفايات، أو فاتورة طاقة، أو سجل شكاوى، أو تقرير حادث.</div>
                     </div>
                 </div>
 
                 <div style="border-top:1px solid var(--am-border);padding-top:14px;margin-top:6px;">
-                    <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:10px;">سجل التقدم</div>
+                    <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text);font-weight:600;margin-bottom:10px;">سجل التقدم</div>
                     <div id="pobj-history"></div>
                 </div>
             </div>
@@ -370,12 +377,12 @@ function amObjProgress(d, history) {
         history.forEach(function (h) {
             var st = amObjStatuses[h.status] || { chip: '', label: h.status };
             var row = document.createElement('div');
-            row.style.cssText = 'display:grid;grid-template-columns:110px 120px 1fr 110px;gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid var(--am-border);font-size:13px;';
+            row.style.cssText = 'display:grid;grid-template-columns:110px 120px minmax(0,1fr) minmax(0,150px);gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid var(--am-border);font-size:13px;';
             row.innerHTML =
                 '<div style="color:var(--am-text-muted);">' + (h.update_date ? new Date(h.update_date).toLocaleDateString() : '—') + '</div>' +
                 '<div><span class="am-chip ' + st.chip + '">' + st.label + '</span></div>' +
-                '<div>' + (h.note ? String(h.note).replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }) : '') + '</div>' +
-                '<div>' + (h.evidence
+                '<div style="min-width:0;overflow-wrap:anywhere;">' + (h.note ? String(h.note).replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }) : '') + '</div>' +
+                '<div style="min-width:0;overflow-wrap:anywhere;">' + (h.evidence
                     ? '<a href="{{ asset('objective_evidence') }}/' + encodeURIComponent(h.evidence) + '" target="_blank">' + h.evidence + '</a>'
                     : '—') + '</div>';
             box.appendChild(row);

@@ -25,8 +25,8 @@
         <span class="qms-question__no">{{ $qNo }}</span>
         <div class="qms-question__title">{{ $q['title'] }}</div>
         <button type="button" class="am-page-guide-btn qms-guide-toggle"
-            title="ما الذي يجب التحقق منه في السؤال {{ $qNo }}"
-            aria-label="ما الذي يجب التحقق منه في السؤال {{ $qNo }}"><i class="fa fa-info-circle"></i></button>
+            title="ما يجب التحقق منه في السؤال {{ $qNo }}"
+            aria-label="ما يجب التحقق منه في السؤال {{ $qNo }}"><i class="fa fa-info-circle"></i></button>
         <div class="qms-question__badges">
             @foreach ($q['badges'] as $badge)
                 <span class="am-chip {{ App\QmsAuditQuestions::badgeChips()[$badge] ?? '' }}">{{ $badge }}</span>
@@ -48,7 +48,7 @@
 
     {{-- The answer in the auditor's own words, and the file that proves it. --}}
     <div class="qms-question__evidence">
-        <label>الدليل <span style="color:var(--am-text-soft);font-weight:500;text-transform:none;letter-spacing:0;">ملف مرفق (PDF، JPEG، TXT، DOCX، PNG)</span></label>
+        <label>الأدلة <span style="color:var(--am-text-soft);font-weight:500;text-transform:none;letter-spacing:0;">إرفاق ملف ( PDF، JPEG، TXT، DOCX، PNG )</span></label>
         <textarea name="qnote[{{ $qNo }}]" rows="3" placeholder="{{ $q['eg'] }}">{{ $prevNote }}</textarea>
         {{-- the Arabic picker the rest of the forms use, wired up in foot.blade.php --}}
         <div class="custom-file-input-tag form-control">

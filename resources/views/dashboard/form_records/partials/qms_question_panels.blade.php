@@ -3,7 +3,7 @@
 <div class="qms-panels">
 
     <div class="qms-panel qms-panel--check">
-        <div class="qms-panel__head">ما الذي يجب التحقق منه</div>
+        <div class="qms-panel__head">ما يجب التحقق منه</div>
         <ul>
             @foreach ($q['check'] as [$line, $tags])
                 <li>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="qms-panel qms-panel--tick">
-        <div class="qms-panel__head">متى تختار</div>
+        <div class="qms-panel__head">متى تختار كل إجابة</div>
         <div class="qms-panel__tick">
             <div class="qms-tick-yes">نعم</div>
             <div>{{ $q['tick_yes'] }}</div>
