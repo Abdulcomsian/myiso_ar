@@ -83,6 +83,7 @@
                 @include('dashboard.form_records.partials.objectives_table', [
                     'showFilters' => false,
                     'actions'     => ['view', 'progress'],
+                    'viewAllUrl'  => url('/objectives_tracker'),
                 ])
             </div>
         </div>
@@ -95,50 +96,9 @@
                     المتطلبات المطلوبة
                 </span>
             </div>
-            @php
-                $requirement = App\requirement::where('user_id', Auth::user()->id)->get();
-            @endphp
-            @if($requirement->isEmpty())
-            <div class="am-empty">
-                <i class="fa fa-database"></i>
-                <p>لا توجد متطلبات مستحقة.</p>
+            <div id="amDashReqContainer" data-dash-list data-page-name="reqpage" data-url="{{ url('/requirements_dashboard') }}">
+                @include('dashboard.partials.dash_requirements')
             </div>
-            @else
-            <div class="am-table-wrap">
-                <table class="am-table">
-                    <thead>
-                        <tr>
-                            <th>الرقم</th>
-                            <th>المتطلبات</th>
-                            <th>تاريخ الاستكمال</th>
-                            <th>التواتر (بالأشهر)</th>
-                            <th>تاريخ الاستحقاق</th>
-                            <th>الإجراء</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $counter = 0; ?>
-                        @foreach ($requirement as $data)
-                            <?php $counter++; ?>
-                            <tr>
-                                <td>{{ $counter }}</td>
-                                <td>{{ $data->requirment_title }}</td>
-                                @php $d = strtotime($data->completion_date); @endphp
-                                <td>{{ date("d/m/Y", $d) }}</td>
-                                <td>{{ $data->periods }}</td>
-                                @php $d = strtotime("+$data->periods months", strtotime($data->completion_date)); @endphp
-                                <td>{{ date("d/m/Y", $d) }}</td>
-                                <td>
-                                    <a href="#" data-id="{{ $data->id }}" class="delete_requirement am-btn am-btn-sm am-btn-danger" title="حذف">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            @endif
         </div>
     </div>
 
@@ -150,51 +110,9 @@
                     المعايرة المطلوبة
                 </span>
             </div>
-            @php
-                $calibration = App\calibration::where('user_id', Auth::user()->id)->get();
-            @endphp
-            @if($calibration->isEmpty())
-            <div class="am-empty">
-                <i class="fa fa-database"></i>
-                <p>لا توجد سجلات معايرة مستحقة.</p>
+            <div id="amDashCalContainer" data-dash-list data-page-name="calpage" data-url="{{ url('/calibration_dashboard') }}">
+                @include('dashboard.partials.dash_calibration')
             </div>
-            @else
-            <div class="am-table-wrap">
-                <table class="am-table">
-                    <thead>
-                        <tr>
-                            <th>رقم تعريف الأداة</th>
-                            <th>اسم الأداة</th>
-                            <th>الرقم التسلسلي</th>
-                            <th>تاريخ المعايرة</th>
-                            <th>معدل التكرار</th>
-                            <th>تاريخ الاستحقاق</th>
-                            <th>الإجراء</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $counter = 0; ?>
-                        @foreach ($calibration as $data)
-                        <?php $counter++; ?>
-                        <tr>
-                            <td>{{ $counter }}</td>
-                            <td>{{ $data->equipment }}</td>
-                            <td>{{ $data->serialNum }}</td>
-                            <td>{{ date('d/m/Y', strtotime($data->calibratedDate)) }}</td>
-                            <td>{{ $data->freq }}</td>
-                            @php $d = strtotime("+$data->freq months", strtotime($data->calibratedDate)); @endphp
-                            <td>{{ date("d/m/Y", $d) }}</td>
-                            <td>
-                                <a href="javascript:;" data-id="{{ $data->id }}" class="calibrationModal am-btn am-btn-sm am-btn-danger" title="حذف">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            @endif
         </div>
     </div>
 
@@ -394,20 +312,43 @@
 
 @section('myscript')
 <script>
-    // Open modals
-    document.querySelectorAll('.delete_requirement').forEach(function(el){
-        el.addEventListener('click', function(e){
+    // Open modals.
+    //
+    // Delegated rather than bound to the buttons that happen to be on the page
+    // at load: these lists are paged now, so the rows are replaced as you move
+    // through them and a button bound once would be dead on the second page.
+    document.addEventListener('click', function (e) {
+        var req = e.target.closest('.delete_requirement');
+        if (req) {
             e.preventDefault();
-            document.getElementById('req_id').value = this.getAttribute('data-id');
+            document.getElementById('req_id').value = req.getAttribute('data-id');
             document.getElementById('myModal').classList.add('open');
-        });
-    });
-    document.querySelectorAll('.calibrationModal').forEach(function(el){
-        el.addEventListener('click', function(e){
+            return;
+        }
+        var cal = e.target.closest('.calibrationModal');
+        if (cal) {
             e.preventDefault();
-            document.getElementById('req_id2').value = this.getAttribute('data-id');
+            document.getElementById('req_id2').value = cal.getAttribute('data-id');
             document.getElementById('calibrationModal').classList.add('open');
-        });
+        }
+    });
+
+    // The pager on a dashboard card. One handler for every card that carries
+    // data-dash-list, so a new card needs no new script. The address bar is
+    // left alone - paging a card is not navigating the page.
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-dash-list] .am-page-link');
+        if (!btn || btn.disabled) return;
+        e.preventDefault();
+        var box  = btn.closest('[data-dash-list]');
+        var page = parseInt(btn.getAttribute('data-page'), 10);
+        if (!box || isNaN(page) || page < 1) return;
+        var url  = box.getAttribute('data-url');
+        box.style.opacity = '0.5';
+        fetch(url + '?' + (box.getAttribute('data-page-name') || 'page') + '=' + page, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(function (r) { return r.text(); })
+            .then(function (html) { box.innerHTML = html; box.style.opacity = ''; })
+            .catch(function () { box.style.opacity = ''; });
     });
 
     // Close modal on Cancel / overlay click / Escape
