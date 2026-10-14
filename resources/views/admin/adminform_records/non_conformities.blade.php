@@ -56,8 +56,8 @@
                     <div><label>اسم المورد</label><input type="text" class="supplier_name" name="supplier_data" placeholder="اسم المورد"></div>
                     <div>
                         <label>رقم هوية المورد</label>
-                        <select onchange="get_customer(this)" required name="customerID" id="customer_id">
-                            <option value="" disabled selected>اختر رقم هوية المورد</option>
+                        <select onchange="get_customer(this)" name="customerID" id="customer_id">
+                            <option value="" selected>اختر رقم هوية المورد</option>
                             @foreach($customers as $customer)
                                 <option value="{{ $customer->idnumber }}">{{ $customer->idnumber }}</option>
                             @endforeach
@@ -68,8 +68,8 @@
                     <div><label>الموظف الذي أبلغ عن NCR</label><input type="text" class="Employee_name" name="employee_name" placeholder="اسم الموظف"></div>
                     <div>
                         <label>معرف الموظف</label>
-                        <select onchange="get_employee(this)" required name="employee_id" id="employee_id">
-                            <option value="" disabled selected>اختر معرف الموظف</option>
+                        <select onchange="get_employee(this)" name="employee_id" id="employee_id">
+                            <option value="" selected>اختر معرف الموظف</option>
                             @foreach($employees as $employee)
                                 <option value="{{ $employee->empNumber }}">{{ $employee->empNumber }}</option>
                             @endforeach
@@ -335,6 +335,36 @@ function amNcEdit(d){
     $("#editNcModal select[name='PI']").val(d.PI||'');
     $("#editNcModal select[name='NCR_closed']").val(d.NCR_closed||'');
     document.getElementById('editNcModal').classList.add('open');
+}
+
+/* The two handlers the id dropdowns call. They live on the user's page too;
+   without them here the admin page threw on every selection and the employee
+   name was never filled in. The employee is looked up for the user whose
+   records these are, not for the admin reading them. */
+function get_customer(obj) {
+    // the Supplier Name field is filled in by hand, so there is nothing to do
+}
+function get_employee(obj) {
+    var id = obj.value;
+    // the field is optional, so nothing is looked up when it is cleared
+    if (!id) return;
+    var body = new FormData();
+    body.append('_token', '{{ csrf_token() }}');
+    body.append('id', id);
+    body.append('user_id', '{{ $urlparam['userid'] }}');
+    fetch('{{ url('/get_employee_name_by_id') }}', {
+        method: 'POST',
+        body: body,
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+        if (res.Status) {
+            var input = document.querySelector('.Employee_name');
+            if (input) input.value = res.surname || '';
+        }
+    })
+    .catch(function(){});
 }
 </script>
 {{-- The guide behind the "i" beside the title --}}

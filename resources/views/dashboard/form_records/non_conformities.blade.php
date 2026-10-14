@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <label>رقم هوية المورد</label>
                                             @if ($no_customer == 1)
-                                                <select onchange="get_customer(this)" class="form-control" required
+                                                <select onchange="get_customer(this)" class="form-control"
                                                     name="customerID" id="customer_id">
                                                     <option value="">أدخل رقم هوية المورد:</option>
 
@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label>رقم هوية الموظف:</label>
                                             @if ($no_customer == 1)
-                                                <select onchange="get_employee(this)" class="form-control" required
+                                                <select onchange="get_employee(this)" class="form-control"
                                                     name="employee_id" id="employee_id">
                                                     <option value="">أدخل رقم هوية الموظف:</option>
                                                 </select>
@@ -428,7 +428,7 @@
                                     <div class="form-group">
                                         <label>رقم هوية المورد</label>
                                         @if ($no_customer == 1)
-                                            <select readonly disabled class="form-control" required name="customerID">
+                                            <select readonly disabled class="form-control" name="customerID">
                                                 <option value="">أدخل رقم هوية العميل:</option>
 
                                             </select>
@@ -665,7 +665,7 @@
                                     <div class="form-group">
                                         <label>رقم هوية المورد </label>
                                         @if ($no_customer == 1)
-                                            <select readonly disabled class="form-control" required name="customerID">
+                                            <select readonly disabled class="form-control" name="customerID">
                                                 <option value="">أدخل رقم هوية المورد: </option>
 
                                             </select>
@@ -695,7 +695,7 @@
                                     <div class="form-group">
                                         <label>رقم هوية الموظف:</label>
                                         @if ($no_customer == 1)
-                                            <select onchange="get_employee(this)" class="form-control" required
+                                            <select onchange="get_employee(this)" class="form-control"
                                                 name="employee_id" id="employee_id">
                                                 <option value="">أدخل رقم هوية الموظف:</option>
                                             </select>
@@ -902,6 +902,8 @@
     function get_employee(obj) {
         $this = $(obj);
         $id = $this.val();
+        // the field is optional now, so nothing is looked up when it is cleared
+        if (!$id) return;
         // alert($id);
         $user_id = document.getElementById('user_id2').value;
         // console.log("tets", $user_id);
