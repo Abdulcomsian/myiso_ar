@@ -195,60 +195,29 @@
                     المستندات الداعمة
                 </span>
             </div>
-            <h6 class="dash-section-title">تقرير التدقيق</h6>
-            <div style="margin-bottom:.75rem;">
-                @if(!empty($user['audit_report']))
-                <a href="{{ asset($user['audit_report']) }}" target="_blank" style="margin-left:.5rem; color:var(--am-primary);">
-                    انقر لعرض تقرير التدقيق
-                </a>
-                <a href="{{ asset($user['audit_report']) }}" target="_blank">
-                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                </a>
-                @else
-                <p style="color:#888;">لا يوجد تقرير تدقيق.</p>
-                @endif
-            </div>
-
-            <h6 class="dash-section-title">تعليقات المدقق</h6>
-            <div style="margin-bottom:.75rem;">
-                @if(!empty($user['audit_comment']))
-                    {{ $user['audit_comment'] }}
-                @else
-                    <p style="color:#888;">لا توجد تعليقات.</p>
-                @endif
-            </div>
-
-            <h6 class="dash-section-title">نظرة عامة على التدقيق عن بُعد</h6>
-            <div style="margin-bottom:.75rem;">
-                <a href="{{ asset('uploads/user/pdfs/Arabic-Remote-Audit-Overview.pdf') }}" target="_blank" style="color:var(--am-primary); margin-left:.5rem;">
-                    عرض نظرة عامة على التدقيق عن بُعد
-                </a>
-                <a href="{{ asset('uploads/user/pdfs/Arabic-Remote-Audit-Overview.pdf') }}" target="_blank">
-                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                </a>
-            </div>
-
-            <h6 class="dash-section-title">استخدام الشهادات وعلامات التصديق</h6>
-            <div style="margin-bottom:.75rem;">
-                <a href="{{ asset('uploads/user/pdfs/Arabic-Use-Of-Certification.pdf') }}" target="_blank" style="color:var(--am-primary); margin-left:.5rem;">
-                    عرض دليل علامات التصديق
-                </a>
-                <a href="{{ asset('uploads/user/pdfs/Arabic-Use-Of-Certification.pdf') }}" target="_blank">
-                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                </a>
-            </div>
-
-            @if(!empty($user['qa_certification']))
-            <h6 class="dash-section-title">اتفاقية شهادة ضمان الجودة</h6>
-            <div style="margin-bottom:.75rem;">
-                <a href="{{ asset($user['qa_certification']) }}" target="_blank" style="color:var(--am-primary); margin-left:.5rem;">
-                    عرض اتفاقية شهادة ضمان الجودة
-                </a>
-                <a href="{{ asset($user['qa_certification']) }}" target="_blank">
-                    <i class="far fa-file-pdf fa-2x" style="color:red;"></i>
-                </a>
-            </div>
-            @endif
+            @php
+                // the four documents this card offers, in the order they were in
+                $docs = [
+                    ['title' => 'تقرير التدقيق',
+                     'url'   => !empty($user['audit_report']) ? asset($user['audit_report']) : null,
+                     'none'  => 'غير متوفر'],
+                    ['title' => 'نظرة عامة على التدقيق عن بُعد',
+                     'url'   => '/uploads/user/pdfs/Remote-Audit-Overview.pdf',
+                     'none'  => ''],
+                    ['title' => 'استخدام الشهادات وعلامات التصديق',
+                     'url'   => '/uploads/user/pdfs/Use-Of-Certificate-and-Certification-Marks.pdf',
+                     'none'  => ''],
+                    ['title' => 'اتفاقية شهادة ضمان الجودة',
+                     'url'   => !empty($user['qa_certification']) ? asset($user['qa_certification']) : null,
+                     'none'  => 'غير متوفر'],
+                ];
+            @endphp
+            @include('dashboard.partials.dash_supporting_docs', [
+                'docs'    => $docs,
+                'comment' => $user['audit_comment'] ?? '',
+                'labels'  => ['comments' => 'تعليقات المدقق',
+                              'no_comments' => 'لا توجد تعليقات.'],
+            ])
         </div>
     </div>
 

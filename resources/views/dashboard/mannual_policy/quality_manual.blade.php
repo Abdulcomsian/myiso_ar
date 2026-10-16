@@ -3,7 +3,6 @@
 @section('content')
 <style>
     .list_div .list_number { max-width: 6.8%; }
-    .authName { font-weight: 500 !important; }
     #procedure_section h4 { color: var(--am-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem; font-weight: 600; }
     #procedure_section h4:first-child { margin-top: 0; }
     /* Links in the manual follow the theme blue instead of the browser default */
@@ -24,7 +23,7 @@
         ?>
                         <h4>1. النطاق</h4>
                         <p>يتمثل الهدف من دليل الجودة هذا في تحديد نظام إدارة الجودة المطبّق على الأنشطة التي تؤديها
-                            <b><span class="authName">{{ Auth::user()->company_name }}</span></b> وفقًا لمتطلبات شهادة
+                            <span class="authName">{{ Auth::user()->company_name }}</span> وفقًا لمتطلبات شهادة
                             الأيزو: (ISO 9001:2015).</p>
                         <h4 class="m-t-20">2. المراجع المعيارية</h4>
                         <div class="list_div">
@@ -65,7 +64,7 @@
                             </div>
                             <div class="list_content">
                                 <p style="025px;">يستعرض هذا الدليل المتطلبات السياسية والإجرائية لنظام إدارة الجودة في
-                                    <b><span class="authName">{{ Auth::user()->company_name }}</span></b>. يستوجب فهم السياق
+                                    <span class="authName">{{ Auth::user()->company_name }}</span>. يستوجب فهم السياق
                                     الخارجيّ مراعاة القضايا الناشئة عن البيئات القانونية والتكنولوجية والتنافسية والسوقية
                                     والثقافية والاجتماعية والاقتصادية، سواء كانت دولية أو وطنية أو إقليمية أو محلية. وفيما
                                     يخصّ فهم السياق الداخلي، يتم التركيز على القضايا المعنية بالقيم والثقافة والمعرفة
@@ -77,7 +76,7 @@
                                 <p>4.1.2 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="021px;"><b><span class="authName">{{ Auth::user()->Company_overview }}</span></b></p>
+                                <p style="021px;"><span class="authName">{{ Auth::user()->Company_overview }}</span></p>
                             </div>
                         </div>
                         <div class="list_div">
@@ -101,8 +100,8 @@
                                 <p>4.2.2 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="018px;"> تأخذ <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> بعين الاعتبار أن
+                                <p style="018px;"> تأخذ <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> بعين الاعتبار أن
                                     الأطراف المعنية تشمل العملاء والالتزامات القانونية والموظفين والمقاولين والموردين
                                     والمنطقة المحيطة بالشركة. الشركة. كما تشمل قائمة الأطراف المعنية الجهات المتأثرة
                                     بالقانون العام لحماية البيانات. ويمكن توثيق احتياجاتهم وتوقعاتهم بشكل أكبر <a
@@ -133,7 +132,7 @@
                                 <p>4.3.2 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="018px;">نطاق <b><span class="authName">{{ Auth::user()->company_name }}</span></b>
+                                <p style="018px;">نطاق <span class="authName">{{ Auth::user()->company_name }}</span>
                                     يتمثل في "{{ Auth::user()->scope }}"</p>
                             </div>
                         </div>
@@ -161,8 +160,8 @@
 								">4.3.3.2 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="012px;"> يمكن تطبيق هذه الاستثناءات نظرًا لعدم ارتباطها بأنشطة <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> أو نطاق التسجيل
+                                <p style="012px;"> يمكن تطبيق هذه الاستثناءات نظرًا لعدم ارتباطها بأنشطة <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> أو نطاق التسجيل
                                     المطلوب. لا يؤثر عدم القيام بهذا العنصر على المنتج أو الخدمة المقدمة للعملاء.</p>
                             </div>
                         </div>
@@ -179,8 +178,8 @@
                                 <p>4.4.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="020px;"> تستخدم <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> العمليات التالية،
+                                <p style="020px;"> تستخدم <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> العمليات التالية،
                                     وتحددها.</p>
                             </div>
                         </div>
@@ -242,8 +241,8 @@
                                 <p>5.1.1.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="015px;">تلتزم <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> بسياسة التحسين
+                                <p style="015px;">تلتزم <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> بسياسة التحسين
                                     المستمر لمختلف جوانب عملياتها التجارية، مع التنفيذ الفعال والتحسين المستمر لنظامنا
                                     المعني بإدارة الجودة للارتقاء بسوية رضا العملاء والقيمة المضافة للأعمال. ستحرص الإدارة
                                     على إدراك الجميع في المنظمة لمدى أهمية تلبية احتياجات العملاء والمتطلبات التنظيمية
@@ -282,8 +281,8 @@
                                 <p>5.2.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="021px;">تلتزم إدارة <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> بمواصلة تقديم
+                                <p style="021px;">تلتزم إدارة <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> بمواصلة تقديم
                                     منتجات وخدمات تفوق احتياجات عملائنا وتوقعاتهم من حيث الجودة والقيمة.</p>
                             </div>
                         </div>
@@ -400,8 +399,8 @@
                                 <p>6.1.2 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="022px;"> في إطار سياستنا للتحسين المستمر، وضعت <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> إجراءات موثقة
+                                <p style="022px;"> في إطار سياستنا للتحسين المستمر، وضعت <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> إجراءات موثقة
                                     لتوفير مراجعة وتحليل للمعلومات المستمدة من عمليات نظام إدارة الجودة.</p>
                             </div>
                         </div>
@@ -521,8 +520,8 @@
                                 <p>7.1.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="025px;">- تضمن إدارة <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> تحديد الموارد
+                                <p style="025px;">- تضمن إدارة <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> تحديد الموارد
                                     المطلوبة وإتاحتها، من أجل ضمان التشغيل الفعال لنظام إدارة الجودة وتحقيق رضا العملاء
                                     وتعزيزه.</p>
                             </div>
@@ -590,8 +589,8 @@
                                 <p>7.1.3.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="014px;">تلتزم <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> بضمان وجود بنية
+                                <p style="014px;">تلتزم <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> بضمان وجود بنية
                                     تحتية مناسبة من حيث المباني؛ يتم تحديد المرافق والمعدات والحصول عليها وصيانتها بشكل
                                     مناسب.</p>
                             </div>
@@ -609,8 +608,8 @@
                                 <p>7.1.4.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="014px;">تضمن إدارة <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> تحديد جميع جوانب
+                                <p style="014px;">تضمن إدارة <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> تحديد جميع جوانب
                                     بيئة العمل المؤثرة على توافق المنتج، وإدارتها بفعالية في جميع الأوقات.</p>
                             </div>
                         </div>
@@ -627,8 +626,8 @@
                                 <p>7.1.5.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="014px;">ينبغي أن تحرص <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> على إجراء معايرة
+                                <p style="014px;">ينبغي أن تحرص <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> على إجراء معايرة
                                     سنوية لأداة الاستقصاء المستخدمة وتسجيل تفاصيل المعايرة؛ وفي حال فشلت أداة الاستقصاء في
                                     معايرتها، سيتم تسجيل ذلك في وثائق اختبار المعايرة، ولفت انتباه مدير العمليات للحالة
                                     ريثما تتخذ الإدارة قرارًا بشأن مدى جاهزية الأداة لاستخدامها، وتحديد أي إجراءات يمكن
@@ -649,7 +648,7 @@
                             </div>
                             <div class="list_content">
                                 <p style="014px;">ينبغي اعتبار التدريب جزءًا رئيسيًا من النمو والنجاح المستمر لشركة
-                                    <b><span class="authName">{{ Auth::user()->company_name }}</span></b>. وقد حددت
+                                    <span class="authName">{{ Auth::user()->company_name }}</span>. وقد حددت
                                     المنظمة الخطوات المطلوبة من الموظفين للحفاظ على توقعات أعمال مُرضِية. تمتلك المنظمة
                                     موظفين في المجالات الرئيسية للإنتاج والصيانة والإدارة، ممن يمتلكون القدرة على الاتصال
                                     بحرفية مع العملاء والموردين. ينبغي أن تمتلك الإدارة القدرة على تحقيق مستويات عمل مرضية
@@ -722,8 +721,8 @@
                                 <p>7.4.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="022px;">ستعتمد <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> على طرائق اتصال
+                                <p style="022px;">ستعتمد <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> على طرائق اتصال
                                     مناسبة لضمان إرسال جميع المعلومات المعنية بأداء نظام إدارة الجودة إلى الموظفين ذوي الصلة
                                     والأطراف المعنية الخارجية؛ ويشمل ذلك اجتماعات المراجعة المطلوبة. يعتبر
                                     {{ Auth::user()->director }} الشخص المسؤول عن جميع الاتصالات الداخلية والخارجية.</p>
@@ -751,8 +750,8 @@
                                 <p>7.5.1.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="014px;"> تتولى <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> تشغيل نظام إدارة
+                                <p style="014px;"> تتولى <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> تشغيل نظام إدارة
                                     الجودة استنادًا إلى متطلبات شهادة الآيزو (ISO 9001:2015)، والتي تم تنظيمها على النحو
                                     المفصل أدناه:</p>
                             </div>
@@ -1068,8 +1067,8 @@
                                 <p style="012px;">8.2.2.1.4 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="06px;"> المتطلبات الإضافية التي تحددها <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b></p>
+                                <p style="06px;"> المتطلبات الإضافية التي تحددها <span
+                                            class="authName">{{ Auth::user()->company_name }}</span></p>
                             </div>
                         </div>
                         <div class="list_div">
@@ -1085,8 +1084,8 @@
                                 <p>8.2.3.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="09px;">تتم مراجعة جميع استفسارات وطلبات العملاء للتأكد من امتلاك <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> للقدرة على تلبية
+                                <p style="09px;">تتم مراجعة جميع استفسارات وطلبات العملاء للتأكد من امتلاك <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> للقدرة على تلبية
                                     متطلبات العميل المحددة فيما يخص الجودة والتسليم والتكلفة.</p>
                             </div>
                         </div>
@@ -1114,8 +1113,8 @@
                                 <p style="012px;">8.2.3.2.2 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="06px;">امتلاك <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> للقدرة على تلبية
+                                <p style="06px;">امتلاك <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> للقدرة على تلبية
                                     هذه المتطلبات.</p>
                             </div>
                         </div>
@@ -1189,8 +1188,8 @@
                                 <p>8.4.1.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="013px;"> تتمثل سياسة <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> في الحرص على قدرة
+                                <p style="013px;"> تتمثل سياسة <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> في الحرص على قدرة
                                     جميع المنتجات المشتراة من الموردين على تلبية المتطلبات المحددة. وبناءً عليه، يتم تأهيل
                                     الموردين وفقًا لمعايير محددة، حيث تعتمد طبيعة ومدى التأهيل الذي يتم إجراؤه على مدى أهمية
                                     المنتج الذي سيتم تقديمه. يجب الاحتفاظ بسجلات الموردين "المعتمدين". انظر <a
@@ -1213,8 +1212,8 @@
                                 <p style="013px;">يتم التحقق من المنتجات المشتراة عند استلامها وفقًا للترتيبات المخطط لها.
                                     ويعتمد مستوى وطبيعة التفتيش على مدى أهمية المنتج المعني، والقدرة المثبتة للمورد، بما في
                                     ذلك ترتيبات نظام الجودة، والأداء السابق، والأدلة الموثقة للامتثال. يجب توثيق التحقق من
-                                    المواد والمنتجات في مقر المورد عبر <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> بشكل واضح ضمن
+                                    المواد والمنتجات في مقر المورد عبر <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> بشكل واضح ضمن
                                     وثائق الشراء المرتبطة، ويتم الاتفاق عليها مع المورد المعني.</p>
                             </div>
                         </div>
@@ -1341,7 +1340,7 @@
 
                             <div class="list_content">
                                 <p style="014px;"> يتم تحديد جميع المنتجات بشكل مناسب طوال دورة حياتها داخل <span
-                                        style="color: #000;font-weight: 500;">{{ $user->company_name != '' ? $user->company_name : 'Your Company' }}</span>
+                                        style="color: #000;">{{ $user->company_name != '' ? $user->company_name : 'Your Company' }}</span>
                                     وأثناء التسليم إلى العميل.</p>
                             </div>
                         </div>
@@ -1368,7 +1367,7 @@
                             </div>
                             <div class="list_content">
                                 <p style="013px;">ستبذل <span
-                                        style="color: #000;font-weight: 500;">{{ $user->company_name != '' ? $user->company_name : 'Your Company' }}</span>
+                                        style="color: #000;">{{ $user->company_name != '' ? $user->company_name : 'Your Company' }}</span>
                                     جهدها للعناية بممتلكات العميل بما فيها من مواد أو منتجات أو أجهزة أو برامج أو "ملكيات
                                     فكرية"، مع توفير القدر المناسب من الاعتناء والصيانة ومنع أي خسائر أو سوء استخدام أو نشر
                                     غير مصرّح به.</p>
@@ -1397,8 +1396,8 @@
                                 <p>8.5.4.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="012px;">ينبغي أن تضمن<b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> تحديد جميع
+                                <p style="012px;">ينبغي أن تضمن<span
+                                            class="authName">{{ Auth::user()->company_name }}</span> تحديد جميع
                                     المنتجات التي يتم تسليمها إلى الموقع ومعالجتها وحمايتها من التلف والتحكم فيها بيئيًا عند
                                     الحاجة.</p>
                             </div>
@@ -1510,8 +1509,8 @@
                                 <p>8.6.4 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="018px;">ينبغي أن تعمد<b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> إلى توثيق عمليات
+                                <p style="018px;">ينبغي أن تعمد<span
+                                            class="authName">{{ Auth::user()->company_name }}</span> إلى توثيق عمليات
                                     التحقق من المواد والمنتجات في مقر المورد، وبشكل واضح في وثائق الشراء المرتبطة، ويتم
                                     الاتفاق عليها مع المورد المعني.</p>
                             </div>
@@ -1594,8 +1593,8 @@
                                 <p>9.1.1.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="010px;">عملت <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> على تخطيط وتنفيذ
+                                <p style="010px;">عملت <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> على تخطيط وتنفيذ
                                     عمليات مراقبة وقياس المؤشرات الرئيسية المعنية بالعملية والمنتج وأداء نظام الجودة، فضلًا
                                     عن تحليل البيانات باستخدام المنهجية الإحصائية المناسبة، لتحديد فرص التحسين المستمر
                                     وتعزيز رضا العملاء.</p>
@@ -1614,8 +1613,8 @@
                                 <p>9.1.2.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="010px;">أنشأت <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> نموذجًا لاستبيان
+                                <p style="010px;">أنشأت <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> نموذجًا لاستبيان
                                     رضا العملاء، وجمع البيانات من عملائنا وتحليلها لتحديد مستوى تلبية احتياجاتهم وتوقعاتهم
                                     المتعلقة بمنتجاتنا، والوقوف على فرص التحسين الممكنة.</p>
                             </div>
@@ -1634,8 +1633,8 @@
                             </div>
                             <div class="list_content">
                                 <p style="010px;">ستخضع جميع البيانات التي تم جمعها من نظام إدارة الجودة وعمليات المراقبة
-                                    والقياس المنفذة داخل <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> إلى المراجعة
+                                    والقياس المنفذة داخل <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> إلى المراجعة
                                     والتحليل، وسيصار إلى استخدامها كأساس لتحديد فعالية نظام الجودة، وتوفيرًا لقاعدة برنامجنا
                                     للتحسين المستمر. انظر<a href="{{ url('/competency_process') }}">سياسة الجودة 104.</a>
                                 </p>
@@ -1654,8 +1653,8 @@
                                 <p>9.2.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="018px;">تدرك إدارة <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> أن <a
+                                <p style="018px;">تدرك إدارة <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> أن <a
                                         href="{{ url('/auidt') }}">عمليات التدقيق الداخلي </a> تلعب دورًا أساسيًا في
                                     التحكم في نظام إدارة الجودة وتحسينه.</p>
                             </div>
@@ -1761,8 +1760,8 @@
                                 <p>10.1.1 -</p>
                             </div>
                             <div class="list_content">
-                                <p style="020px;">تلتزم <b><span
-                                            class="authName">{{ Auth::user()->company_name }}</span></b> بسياسة التحسين
+                                <p style="020px;">تلتزم <span
+                                            class="authName">{{ Auth::user()->company_name }}</span> بسياسة التحسين
                                     المستمر لجميع جوانب أعمالنا. ويساهم نظام إدارة الجودة بشكل فعال في تحقيق سياسات الجودة
                                     وأهدافنا.</p>
                             </div>
