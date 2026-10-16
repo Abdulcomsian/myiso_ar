@@ -71,7 +71,7 @@ td{
 .textColor span i,.textColor span{
     color:#fff !important;
 }
-.authName{font-weight:normal !important;color:inherit !important;}
+.authName{font-weight:inherit !important;color:inherit !important;}
 .am-btn-lightblue {
   background: #7a97d9 !important;
   color: #fff !important;
