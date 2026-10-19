@@ -962,6 +962,28 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+
+                                <div class="col-lg-4">
+                                    <label for="iso9001_audit_report">تقرير تدقيق ISO9001:</label>&nbsp;&nbsp;
+                                    <span id="view_iso9001_audit"></span>
+                                    <input type="file" id="iso9001_audit_report" accept=".pdf" name="iso9001_audit_report">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="iso9001_audit_comment">تعليق تدقيق ISO9001:</label>
+                                    <textarea id="iso9001_audit_comment" name="iso9001_audit_comment" class="form-control"
+                                              placeholder="تعليق تدقيق ISO9001"></textarea>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="iso9001_qa_agreement">اتفاقية ضمان الجودة ISO9001:</label>&nbsp;&nbsp;
+                                    <span id="view_iso9001_qa"></span>
+                                    <input type="file" id="iso9001_qa_agreement" accept=".pdf" name="iso9001_qa_agreement">
+                                </div>
+
+                            </div>
+
 
 
 
@@ -1003,6 +1025,28 @@
                             <div class="form-group row">
 
                                 <div class="col-lg-4">
+                                    <label for="iso14001_audit_report">تقرير تدقيق ISO14001:</label>&nbsp;&nbsp;
+                                    <span id="view_iso14001_audit"></span>
+                                    <input type="file" id="iso14001_audit_report" accept=".pdf" name="iso14001_audit_report">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="iso14001_audit_comment">تعليق تدقيق ISO14001:</label>
+                                    <textarea id="iso14001_audit_comment" name="iso14001_audit_comment" class="form-control"
+                                              placeholder="تعليق تدقيق ISO14001"></textarea>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="iso14001_qa_agreement">اتفاقية ضمان الجودة ISO14001:</label>&nbsp;&nbsp;
+                                    <span id="view_iso14001_qa"></span>
+                                    <input type="file" id="iso14001_qa_agreement" accept=".pdf" name="iso14001_qa_agreement">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+
+                                <div class="col-lg-4">
                                     <label for="iso45001_certificate">شهادة ISO45001:</label>&nbsp;&nbsp;
                                     <span id="view_45001"></span>
                                     &nbsp;&nbsp; <a href="#" data-handle="iso45001" class="iso45001 delete-certificate">حذف</a>
@@ -1030,6 +1074,28 @@
                                 </div>
 
                             </div>
+
+                            <div class="form-group row">
+
+                                <div class="col-lg-4">
+                                    <label for="iso45001_audit_report">تقرير تدقيق ISO45001:</label>&nbsp;&nbsp;
+                                    <span id="view_iso45001_audit"></span>
+                                    <input type="file" id="iso45001_audit_report" accept=".pdf" name="iso45001_audit_report">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="iso45001_audit_comment">تعليق تدقيق ISO45001:</label>
+                                    <textarea id="iso45001_audit_comment" name="iso45001_audit_comment" class="form-control"
+                                              placeholder="تعليق تدقيق ISO45001"></textarea>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="iso45001_qa_agreement">اتفاقية ضمان الجودة ISO45001:</label>&nbsp;&nbsp;
+                                    <span id="view_iso45001_qa"></span>
+                                    <input type="file" id="iso45001_qa_agreement" accept=".pdf" name="iso45001_qa_agreement">
+                                </div>
+
+                            </div>
                             <div class="form-group row">
                                 <div class="col-lg-4">
                                     <label for="audit_report">تقرير التدقيق</label>&nbsp;&nbsp;
@@ -1053,6 +1119,23 @@
                                     <input type="file" id="qa_certification" accept=".pdf" name="qa_certification">
                                 </div>
 
+                            </div>
+
+                            <div class="form-group row" id="amPrevDocsRow" style="display:none;">
+                                <div class="col-lg-12">
+                                    <label>الشهادات وتقارير التدقيق السابقة</label>
+                                    <table class="table" id="amPrevDocs" style="margin-top:6px;">
+                                        <thead>
+                                            <tr>
+                                                <th>المعيار</th>
+                                                <th>المستند</th>
+                                                <th>تاريخ الاستبدال</th>
+                                                <th>الملف</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
 
@@ -1707,6 +1790,38 @@
                 $("#view_45001").empty();
                 $("#edit_audit_report").empty();
                 $("#edit_qa_certification").empty();
+                  // each standard's own paperwork, which travels with the row
+                  ['iso9001', 'iso14001', 'iso45001'].forEach(function (std) {
+                      $('#view_' + std + '_audit').empty();
+                      $('#view_' + std + '_qa').empty();
+                      $('#' + std + '_audit_comment').val('');
+                  });
+                  (data.documents || []).forEach(function (doc) {
+                      if (String(doc.is_current) !== '1') { return; }   // superseded ones are history
+                      var link = "<a target='_blank' href='{{ asset('/') }}" + doc.file_path + "'>عرض</a>";
+                      if (doc.doc_type === 'audit_report') {
+                          $('#view_' + doc.standard + '_audit').append(link);
+                          $('#' + doc.standard + '_audit_comment').val(doc.comment || '');
+                      } else if (doc.doc_type === 'qa_agreement') {
+                          $('#view_' + doc.standard + '_qa').append(link);
+                      }
+                  });
+                  // everything a renewal or a re-upload replaced
+                  var prevRows = '';
+                  var stdNames = {iso9001: 'الأيزو 9001', iso14001: 'الأيزو 14001', iso45001: 'الأيزو 45001', general: 'عام'};
+                  var typeNames = {certificate: 'الشهادة', audit_report: 'تقرير التدقيق', qa_agreement: 'اتفاقية شهادة ضمان الجودة'};
+                  (data.documents || []).forEach(function (doc) {
+                      if (String(doc.is_current) === '1') { return; }
+                      var when = (doc.archived_at || doc.created_at || '').substring(0, 10);
+                      prevRows += '<tr>'
+                          + '<td>' + (stdNames[doc.standard] || doc.standard) + '</td>'
+                          + '<td>' + (typeNames[doc.doc_type] || doc.doc_type) + '</td>'
+                          + '<td>' + when + '</td>'
+                          + "<td><a target='_blank' href='{{ asset('/') }}" + doc.file_path + "'>عرض</a></td>"
+                          + '</tr>';
+                  });
+                  $('#amPrevDocs tbody').html(prevRows);
+                  $('#amPrevDocsRow').css('display', prevRows ? '' : 'none');
                 $("#downloadlink").empty();
                 console.log(data);
                 $("#editvalue").val(data.id);

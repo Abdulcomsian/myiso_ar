@@ -347,6 +347,38 @@
                                 </div>
 
                                 <div class="form-group row">
+                                
+                                    <div class="col-lg-3">
+                                        <label for="iso9001_audit_report">تقرير تدقيق ISO9001</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="iso9001_audit_report" class="input-file" name="iso9001_audit_report" accept=".pdf"/>
+                                            <label for="iso9001_audit_report" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-4">
+                                        <label for="iso9001_audit_comment">تعليق تدقيق ISO9001</label>
+                                        <textarea id="iso9001_audit_comment" name="iso9001_audit_comment" class="form-control"
+                                            placeholder="تعليق تدقيق ISO9001"></textarea>
+                                    </div>
+                                
+                                    <div class="col-lg-4">
+                                        <label for="iso9001_qa_agreement">اتفاقية ضمان الجودة ISO9001</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="iso9001_qa_agreement" class="input-file" name="iso9001_qa_agreement" accept=".pdf"/>
+                                            <label for="iso9001_qa_agreement" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="form-group row">
 
                                     <div class="col-lg-3">
                                         <label for="iso14001_certificate">شهادة ISO14001:</label>
@@ -376,6 +408,38 @@
                                 </div>
 
                                 <div class="form-group row">
+                                
+                                    <div class="col-lg-3">
+                                        <label for="iso14001_audit_report">تقرير تدقيق ISO14001</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="iso14001_audit_report" class="input-file" name="iso14001_audit_report" accept=".pdf"/>
+                                            <label for="iso14001_audit_report" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-4">
+                                        <label for="iso14001_audit_comment">تعليق تدقيق ISO14001</label>
+                                        <textarea id="iso14001_audit_comment" name="iso14001_audit_comment" class="form-control"
+                                            placeholder="تعليق تدقيق ISO14001"></textarea>
+                                    </div>
+                                
+                                    <div class="col-lg-4">
+                                        <label for="iso14001_qa_agreement">اتفاقية ضمان الجودة ISO14001</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="iso14001_qa_agreement" class="input-file" name="iso14001_qa_agreement" accept=".pdf"/>
+                                            <label for="iso14001_qa_agreement" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="form-group row">
 
                                     <div class="col-lg-3">
                                         <label for="iso45001_certificate">شهادة ISO45001:</label>
@@ -401,6 +465,38 @@
                                         <textarea id="iso45001_description" name="iso45001_description" class="form-control"
                                             placeholder="وصف شهادة ISO45001"></textarea>
                                     </div>
+                                </div>
+
+                                <div class="form-group row">
+                                
+                                    <div class="col-lg-3">
+                                        <label for="iso45001_audit_report">تقرير تدقيق ISO45001</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="iso45001_audit_report" class="input-file" name="iso45001_audit_report" accept=".pdf"/>
+                                            <label for="iso45001_audit_report" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-4">
+                                        <label for="iso45001_audit_comment">تعليق تدقيق ISO45001</label>
+                                        <textarea id="iso45001_audit_comment" name="iso45001_audit_comment" class="form-control"
+                                            placeholder="تعليق تدقيق ISO45001"></textarea>
+                                    </div>
+                                
+                                    <div class="col-lg-4">
+                                        <label for="iso45001_qa_agreement">اتفاقية ضمان الجودة ISO45001</label>
+                                        <div class="custom-file-input-tag form-control">
+                                            <input type="file" id="iso45001_qa_agreement" class="input-file" name="iso45001_qa_agreement" accept=".pdf"/>
+                                            <label for="iso45001_qa_agreement" class="file-label">
+                                                <span class="file-text">اختيار الملف</span>
+                                                <span class="file-chosen">لم يتم اختيار ملف</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
                                 </div>
 
 
