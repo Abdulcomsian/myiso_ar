@@ -60,7 +60,7 @@
 					<div class="list_display">
 						<ul>
 							<li><a href="{{ url('/requirements_aspect') }}"> المتطلبات المطلوبة</a></li>
-							<li><a href="{{ url('/environmental_impacts') }}">التأثيرات البيئية</a></li>
+							<li><a href="{{ url('/environmental_impacts') }}">الجوانب البيئية</a></li>
 							<li><a href="{{ url('/process_audit') }}"> عمليات التدقيق</a></li>
 							<li><a href="{{ url('/incidents') }}">تقرير الحوادث</a></li>
 							<li><a href="{{ url('/interesting_parties')}}">الأطراف المعنية</a></li>

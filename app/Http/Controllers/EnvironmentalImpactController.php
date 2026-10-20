@@ -16,7 +16,7 @@ class EnvironmentalImpactController extends SimpleRegisterController
         return [
             'key' => 'environmental_impacts',
             'admin_url' => 'environmentalImpactsad',
-            'title' => 'التأثيرات البيئية',
+            'title' => 'الجوانب والتأثيرات البيئية',
             'subtitle' => 'قائمة بتأثيرات أنشطة شركتك على البيئة وكيفية التحكم فيها.',
             'guide' => [
                 'eyebrow' => 'الأدلة والسياسات',
@@ -36,9 +36,9 @@ class EnvironmentalImpactController extends SimpleRegisterController
             ],
             'info_title' => 'أضف العناصر التي تؤثر على البيئة مثل:',
             'info_items' => ['استهلاك الطاقة', 'توليد النفايات', 'استخدام المياه', 'استخدام المواد الكيميائية'],
-            'add_label' => 'إضافة جانب بيئي',
-            'edit_title' => 'تعديل الجانب البيئي',
-            'item_name' => 'جانب بيئي',
+            'add_label' => 'إضافة جانب وتأثير بيئي',
+            'edit_title' => 'تعديل الجانب والتأثير البيئي',
+            'item_name' => 'جانب وتأثير بيئي',
             'search_placeholder' => 'ابحث في الجوانب البيئية…',
             'empty' => 'لم تتم إضافة أي جوانب بيئية بعد.',
             'icon' => 'fa-leaf',

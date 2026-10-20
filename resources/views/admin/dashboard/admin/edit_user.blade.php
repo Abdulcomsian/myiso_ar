@@ -5,7 +5,7 @@
     $userId = request()->route('id');
     $forms = [
         ['title' => 'المتطلبات المطلوبة',              'url' => '/requiremntCheck/'.$userId,     'icon' => 'fa-tasks',              'group' => 'الامتثال'],
-        ['title' => 'التأثيرات البيئية',                'url' => '/environmentalImpactsad/'.$userId, 'icon' => 'fa-leaf',            'group' => 'الامتثال'],
+        ['title' => 'الجوانب البيئية',                'url' => '/environmentalImpactsad/'.$userId, 'icon' => 'fa-leaf',            'group' => 'الامتثال'],
         ['title' => 'عمليات تدقيق العمليات',            'url' => '/ProcessCheck/'.$userId,        'icon' => 'fa-clipboard-list',     'group' => 'التدقيق'],
         ['title' => 'تقرير الحوادث',                    'url' => '/incidentsad/'.$userId,         'icon' => 'fa-user-injured',       'group' => 'السلامة'],
         ['title' => 'الأطراف المهتمة',                  'url' => '/interested_parties/'.$userId,  'icon' => 'fa-users',              'group' => 'الامتثال'],
