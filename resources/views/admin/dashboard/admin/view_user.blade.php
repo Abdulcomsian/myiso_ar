@@ -1096,41 +1096,21 @@
                                 </div>
 
                             </div>
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    <label for="audit_report">تقرير التدقيق</label>&nbsp;&nbsp;
-                                    <span id="edit_audit_report"></span>
-                                    &nbsp;&nbsp; <a href="#" data-handle="audit_report"
-                                                    class="audit_report delete-certificate">حذف</a>
-                                    <input type="file" id="audit_report" accept=".pdf" name="audit_report">
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="audit_comment">تعليق التدقيق</label>&nbsp;&nbsp;
-                                    <textarea id="audit_comment" name="audit_comment" class="form-control"
-                                              placeholder="وصف تعليق التدقيق"></textarea>
-                                </div>
-                            </div>
-                                <div class="form-group row">
-                                <div class="col-lg-4">
-                                    <label for="qa_certification"> اتفاقية شهادة ضمان الجودة</label>&nbsp;&nbsp;
-                                    <span id="edit_qa_certification"></span>
-                                    &nbsp;&nbsp; <a href="#" data-handle="qa_certification"
-                                                    class="qa_certification delete-qa_certification">حذف</a>
-                                    <input type="file" id="qa_certification" accept=".pdf" name="qa_certification">
-                                </div>
-
-                            </div>
-
-                            <div class="form-group row" id="amPrevDocsRow" style="display:none;">
+                            {{-- The standard-less Audit Report, Audit Comment and QA Agreement used
+     to sit here. Every standard now carries its own, so the client asked
+     for these to come off. The columns stay in the database and the
+     dashboard still shows what is already in them. --}}
+<div class="form-group row" id="amPrevDocsRow" style="display:none;">
                                 <div class="col-lg-12">
                                     <label>الشهادات وتقارير التدقيق السابقة</label>
-                                    <table class="table" id="amPrevDocs" style="margin-top:6px;">
+                                    <table class="am-table" id="amPrevDocs" style="margin-top:6px;">
                                         <thead>
                                             <tr>
                                                 <th>المعيار</th>
                                                 <th>المستند</th>
                                                 <th>تاريخ الاستبدال</th>
                                                 <th>الملف</th>
+                                                <th>الإجراء</th>
                                             </tr>
                                         </thead>
                                         <tbody></tbody>
@@ -1818,6 +1798,9 @@
                           + '<td>' + (typeNames[doc.doc_type] || doc.doc_type) + '</td>'
                           + '<td>' + when + '</td>'
                           + "<td><a target='_blank' href='{{ asset('/') }}" + doc.file_path + "'>عرض</a></td>"
+                          + "<td><button type='button' class='am-icon-btn danger am-prev-doc-del'"
+                              + " title='حذف السجل' aria-label='حذف السجل' data-id='" + doc.id + "'>"
+                              + "<i class='fa fa-trash'></i></button></td>"
                           + '</tr>';
                   });
                   $('#amPrevDocs tbody').html(prevRows);
@@ -2164,7 +2147,28 @@
         @section('myscript')
             <script>
 
-                $('.delete-certificate').on('click', function () {
+        // the history rows are built when the modal opens, so this is
+        // delegated rather than bound to them
+        $(document).on('click', '.am-prev-doc-del', function (e) {
+            e.preventDefault();
+            var link = $(this);
+            if (!window.confirm("هل تريد حذف هذا السجل من السجل التاريخي؟ سيبقى الملف محفوظًا.")) { return; }
+            $.ajax({
+                url: "{{ url('/remove_user_document') }}",
+                type: 'POST',
+                headers: { 'X-CSRF-TOKEN': "{{ csrf_token() }}" },
+                data: { id: link.data('id') },
+                success: function () {
+                    link.closest('tr').remove();
+                    if ($('#amPrevDocs tbody tr').length === 0) {
+                        $('#amPrevDocsRow').css('display', 'none');
+                    }
+                },
+                error: function () { window.alert("تعذّر حذف هذا السجل."); }
+            });
+        });
+
+        $('.delete-certificate').on('click', function () {
 
                     let _this = $(this),
                     user_id = $('#editvalue').val();
