@@ -196,20 +196,19 @@
                 </span>
             </div>
             @php
-                // the four documents this card offers, in the order they were in
+                // The two standing PDFs every client gets, plus one tile per
+                // standard that has a QA agreement of its own. A standard-less
+                // Audit Report and QA Agreement used to sit here as well, with
+                // the auditor's comment under them; each standard carries its
+                // own now, so all three came off. The columns are still in the
+                // database - this is only what the dashboard offers.
                 $docs = [
-                    ['title' => 'تقرير التدقيق',
-                     'url'   => !empty($user['audit_report']) ? asset($user['audit_report']) : null,
-                     'none'  => 'غير متوفر'],
                     ['title' => 'نظرة عامة على التدقيق عن بُعد',
                      'url'   => '/uploads/user/pdfs/Remote-Audit-Overview.pdf',
                      'none'  => ''],
                     ['title' => 'استخدام الشهادات وعلامات التصديق',
                      'url'   => '/uploads/user/pdfs/Use-Of-Certificate-and-Certification-Marks.pdf',
                      'none'  => ''],
-                    ['title' => 'اتفاقية شهادة ضمان الجودة',
-                     'url'   => !empty($user['qa_certification']) ? asset($user['qa_certification']) : null,
-                     'none'  => 'غير متوفر'],
                 ];
                 // and one tile per standard that has a QA agreement of its own,
                 // which is what a client gains on taking a second standard later
@@ -224,10 +223,7 @@
                 }
             @endphp
             @include('dashboard.partials.dash_supporting_docs', [
-                'docs'    => $docs,
-                'comment' => $user['audit_comment'] ?? '',
-                'labels'  => ['comments' => 'تعليقات المدقق',
-                              'no_comments' => 'لا توجد تعليقات.'],
+                'docs'    => $docs
             ])
         </div>
     </div>
