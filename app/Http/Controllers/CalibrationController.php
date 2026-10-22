@@ -50,9 +50,21 @@ class CalibrationController extends Controller
     public function index(Request $request)
     {
         $userid=Auth::user()->id;
-        $calibration=calibration::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $search  = trim($request->query('q', ''));
+        $query   = calibration::where('user_id',$userid)->orderBy('id','DESC');
+        if ($search !== '') {
+            $query->where(function($q) use ($search){
+                $q->where('equipment','like',"%{$search}%")
+                  ->orWhere('serialNum','like',"%{$search}%")
+                  ->orWhere('certificatenumber','like',"%{$search}%");
+            });
+        }
+        $calibration = $query->paginate(10)->withQueryString();
+        if ($request->ajax()) {
+            return view('dashboard.form_records.partials.calibration_table', compact('calibration'));
+        }
         // dd($calibration);
-        return view('dashboard.form_records.calibration_record',compact('calibration'));
+        return view('dashboard.form_records.calibration_record',compact('calibration','search'));
     }
 
     /**

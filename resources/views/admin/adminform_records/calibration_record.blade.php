@@ -62,7 +62,7 @@
                     <div><label>التكرار (بالأشهر، 1-12)</label><input type="number" min="1" max="12" name="freq" required></div>
                     <div><label>مراجع التقرير</label><input type="text" name="reportRev" required></div>
                     <div>
-                        <label>الحكم</label>
+                        <label>النتيجة</label>
                         <select name="sentence" required>
                             <option value="">اختر</option>
                             <option value="Pass">نجاح</option>
@@ -92,7 +92,7 @@
                         <th>الرقم التسلسلي</th>
                         <th>تاريخ المعايرة</th>
                         <th>تاريخ الاستحقاق</th>
-                        <th>الحكم</th>
+                        <th>النتيجة</th>
                         <th style="text-align:right;">الإجراءات</th>
                     </tr>
                 </thead>
@@ -157,7 +157,7 @@
                 'equipment' => 'الجهاز', 'serialNum' => 'الرقم التسلسلي', 'locaction' => 'الموقع',
                 'testMethod' => 'طريقة الاختبار', 'acceptance' => 'معايير القبول', 'calibratedDate' => 'تاريخ المعايرة',
                 'certificatenumber' => 'رقم الشهادة', 'freq' => 'التكرار (شهور)', 'reportRev' => 'مراجع التقرير',
-                'sentence' => 'الحكم', 'issues_points' => 'ملاحظات',
+                'sentence' => 'النتيجة', 'issues_points' => 'ملاحظات',
             ]; @endphp
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;">
                 @foreach($vf as $k => $lb)
@@ -198,7 +198,7 @@
                 <div class="form-group row">
                     <div class="col-lg-4"><label>التكرار (بالأشهر)</label><input type="number" class="form-control" min="1" max="12" name="freq" required></div>
                     <div class="col-lg-4"><label>مراجع التقرير</label><input type="text" class="form-control" name="reportRev" required></div>
-                    <div class="col-lg-4"><label>الحكم</label>
+                    <div class="col-lg-4"><label>النتيجة</label>
                         <select class="form-control" name="sentence" required>
                             <option value="">اختر</option>
                             <option value="Pass">نجاح</option>
