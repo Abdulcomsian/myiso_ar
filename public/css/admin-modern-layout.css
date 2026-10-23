@@ -852,17 +852,22 @@ body.am-body {
     max-width: 300px;
     min-width: 180px;
 }
+/* The magnifier had no box of its own - its width was whatever the glyph
+   measured - so it crowded the placeholder beside it. */
 .am-mtable-search i {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 12px;
     transform: translateY(-50%);
     color: var(--am-text-soft);
     font-size: 12px;
+    line-height: 1;
+    width: 12px;
+    text-align: center;
 }
 .am-mtable-search input {
     width: 100%;
-    padding: 7px 10px 7px 30px;
+    padding: 7px 10px 7px 36px;
     border: 1px solid var(--am-border);
     border-radius: 6px;
     font-size: 12.5px;
@@ -1451,6 +1456,11 @@ body.am-body {
 .am-main .am-search input[type="search"] {
     padding-left: 38px;
 }
+/* and the search box the modal tables draw, for the same reason */
+.am-main .am-mtable-search input,
+.am-main .am-mtable-search input[type="text"] {
+    padding-left: 36px;
+}
 /* intl-tel-input: let the plugin set padding-left inline (varies by dial-code width) */
 .am-main .iti input[type="tel"],
 .am-main .iti input[type="text"],
@@ -1677,6 +1687,16 @@ body.am-body {
 [dir="rtl"] .am-card__toolbar .am-search input,
 [dir="rtl"] .am-search input {
     padding: 9px 34px 9px 12px;
+    text-align: right;
+}
+/* the same for the search box the modal tables draw */
+[dir="rtl"] .am-mtable-search i {
+    left: auto;
+    right: 12px;
+}
+[dir="rtl"] .am-mtable-search input,
+[dir="rtl"] .am-mtable-search input[type="text"] {
+    padding: 7px 36px 7px 10px;
     text-align: right;
 }
 

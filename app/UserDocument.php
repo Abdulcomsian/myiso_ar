@@ -78,11 +78,16 @@ class UserDocument extends Model
         return $out;
     }
 
-    /** what the "Previous Certificates & Audit Reports" section lists, newest first */
+    /**
+     * What the "Previous Certificates & Audit Reports" card lists, newest
+     * first - a page at a time, under its own page name so paging this card
+     * leaves the other dashboard cards where they were.
+     */
     public static function archivedFor($userId)
     {
         return self::where('user_id', $userId)->where('is_current', 0)
-            ->orderByDesc('archived_at')->orderByDesc('id')->get();
+            ->orderByDesc('archived_at')->orderByDesc('id')
+            ->paginate(10, ['*'], 'prevpage');
     }
 
     /**
@@ -162,6 +167,8 @@ class UserDocument extends Model
     /** the date to show against an archived document */
     public function archivedOn()
     {
+        // the same shape as every other date on the dashboard, which is where
+        // this is now read; it was written before anything called it
         $when = $this->archived_at ?: $this->created_at;
         return $when ? date('d/m/Y', strtotime($when)) : '';
     }
