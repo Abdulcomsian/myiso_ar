@@ -271,7 +271,7 @@
             <form action="{{ route('previous.document.delete') }}" method="POST" style="display:inline;">
                 @csrf
                 <input type="hidden" name="id" id="prev_doc_id" value=""/>
-                <button type="submit" class="am-btn am-btn-lightblue">
+                <button type="submit" class="am-btn am-btn-danger">
                     <i class="fa fa-trash"></i> نعم، احذف
                 </button>
             </form>
@@ -294,7 +294,7 @@
             <form action="{{ route('deletecaliberinfo') }}" method="POST" style="display:inline;">
                 @csrf
                 <input type="hidden" name="id" id="req_id2" value=""/>
-                <button type="submit" class="am-btn am-btn-lightblue">
+                <button type="submit" class="am-btn am-btn-danger">
                     <i class="fa fa-trash"></i> نعم، احذف
                 </button>
             </form>
@@ -317,7 +317,7 @@
             <form action="{{ route('deleteRequirementadmin') }}" method="POST" style="display:inline;">
                 @csrf
                 <input type="hidden" name="id" id="req_id" value=""/>
-                <button type="submit" class="am-btn am-btn-lightblue">
+                <button type="submit" class="am-btn am-btn-danger">
                     <i class="fa fa-trash"></i> نعم، احذف
                 </button>
             </form>
