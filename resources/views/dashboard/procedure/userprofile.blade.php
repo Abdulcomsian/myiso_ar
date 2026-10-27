@@ -388,7 +388,7 @@
                                                     class="form-control" placeholder="Company Profile">
                                                 <div class="downloadlink">
                                                     <a target="_blank"
-                                                        href="https://myisoonline.com/public/{{ Auth::user()->company_profile }}"
+                                                        href="{{ asset('/') }}{{ Auth::user()->company_profile }}"
                                                         target="blank">عرض الصفحة الشخصية</a>
                                                 </div>
                                             </div>
@@ -576,6 +576,12 @@
             });
         });
 
+        // the preview beside the upload box, swapped for whatever was just picked
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
         function editDetails(data) {
             console.log(data);
             $("#editvalue").val(data.id);
@@ -589,7 +595,7 @@
             $("input[name='sales_process']").val(data.sales_process);
             //  $("input[name='company_profile']").val(data.company_profile);
             if (data.company_profile != null) {
-                $('#downloadlink').html('<a target="_blank" href="public/' + data.company_profile + '">View Profile</a>');
+                $('#downloadlink').html('<a target="_blank" href="{{ asset('/') }}' + data.company_profile + '">View Profile</a>');
             }
 
             $("input[name='company_name']").val(data.company_name);
@@ -609,24 +615,24 @@
             $("input[name='order_number']").val(data.order_number);
             $("textarea[name='scope']").val(data.scope);
             //let logo_src = data.profile_image;
-            let logo_src = "https://myisoonline.com/public/" + data.profile_image;
+            let logo_src = "{{ asset('/') }}" + data.profile_image;
             $("#output").attr("src", logo_src);
             $("textarea[name='Company_overview']").val(data.Company_overview);
 
 
             if (data.iso9001_certificate != null) {
                 $('#iso9001_certificate').addClass('has_file');
-                $("#view_9001").append("<a target='_blank' href='https://myisoonline.com/public/" + data
+                $("#view_9001").append("<a target='_blank' href='{{ asset('/') }}" + data
                     .iso9001_certificate + "'>View</a>");
             }
             if (data.iso14001_certificate != null) {
                 $('#iso14001_certificate').addClass('has_file');
-                $("#view_14001").append("<a target='_blank' href='https://myisoonline.com/public/" + data
+                $("#view_14001").append("<a target='_blank' href='{{ asset('/') }}" + data
                     .iso14001_certificate + "'>View</a>");
             }
             if (data.iso45001_certificate != null) {
                 $('#iso45001_certificate').addClass('has_file');
-                $("#view_45001").append("<a target='_blank' href='https://myisoonline.com/public/" + data
+                $("#view_45001").append("<a target='_blank' href='{{ asset('/') }}" + data
                     .iso45001_certificate + "'>View</a>");
             }
 
