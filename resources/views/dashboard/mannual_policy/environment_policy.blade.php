@@ -3,11 +3,14 @@
 @section('content')
 <div class="am-content">
 
+    @include('dashboard.mannual_policy.partials.policy_print', ['title' => 'السياسة البيئية'])
+
     <div class="am-page-header">
         <div>
             <h2>السياسة البيئية</h2>
         </div>
         <div>
+            <button type="button" onclick="window.print()" class="am-btn am-btn-outline" style="margin-inline-end:8px;"><i class="fa fa-print"></i> طباعة / PDF</button>
             <button type="button" onclick="qualityshowpolicy()" class="am-btn am-btn-primary"><i class="fa fa-plus"></i> إضافة السياسة البيئية</button>
         </div>
     </div>
@@ -58,17 +61,17 @@
 
             <h6 class="mt-4" style="color:var(--am-primary);font-weight:600;">سياسات إضافية:</h6>
             @forelse ($userAddPolicy as $policy)
-                <div style="{{ $loop->first ? '' : 'border-top:1px solid #e6e8f0;margin-top:16px;' }}padding-top:{{ $loop->first ? '4' : '16' }}px;">
+                <div class="am-policy-entry" style="{{ $loop->first ? '' : 'border-top:1px solid #e6e8f0;margin-top:16px;' }}padding-top:{{ $loop->first ? '4' : '16' }}px;">
                     <p class="mb-2" style="white-space:pre-wrap;">{{ $policy->message }}</p>
                     <div style="line-height:1.5;">
-                        <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong>  {{ $companyName }}</div>
+                        <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong> المدير العام</div>
                         <div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
                         <div><strong style="font-weight:600;">التاريخ:</strong> {{ $policy->created_at->format('d/m/Y g:i') }} {{ $policy->created_at->format('A') === 'AM' ? 'ص' : 'م' }}</div>
                     </div>
                 </div>
             @empty
                 <div style="margin-right: 25px; line-height:1.5;">
-                    <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong>  {{ $companyName }}</div>
+                    <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong> المدير العام</div>
                     <div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
                 </div>
             @endforelse
