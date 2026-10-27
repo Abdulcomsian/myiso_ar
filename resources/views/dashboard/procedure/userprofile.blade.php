@@ -24,6 +24,19 @@
         .text-right {
             direction: rtl;
         }
+    
+    /* the logo preview: laid over the 200x200 box so a wide logo is
+       letterboxed rather than squeezed into a square */
+    #image-preview img#output {
+        position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: contain;
+        background: #fff;
+        z-index: 1;
+    }
+    /* and nothing at all until there is something to show */
+    #image-preview img#output:not([src]),
+    #image-preview img#output[src=""] { display: none; }
     </style>
     <!-- begin:: Content -->
     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
