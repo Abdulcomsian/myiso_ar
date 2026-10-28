@@ -418,6 +418,10 @@ Route::group(['middleware' => ['auth']], function ()
     //User msgs
     Route::post('/send_msg_to_admin', 'UserMsgController@send_msg_to_admin');
     Route::get('/faq', 'UserInfoController@the_faqs');
+    // the sidebar link is hidden for now; the page itself works
+    Route::get('/schedule-training', function () {
+        return view('dashboard.schedule_training');
+    })->name('schedule.training');
     // Route::get('/explainer_videos', 'UserInfoController@explainer_videos');   // hidden on the client's request - may come back
     Route::get('/userDownload', 'UserInfoController@userDownload')->name("user.download");
     Route::get('/quick_links', 'UserInfoController@quick_links');
