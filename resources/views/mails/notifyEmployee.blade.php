@@ -22,7 +22,7 @@
 
     <div class="container" style="max-width: 500px; height: auto; margin: 50px auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;">
 
-        <img src="{{ asset('assets/media/logos/MyISOArbiaLogo.png') }}" alt="Logo" style="height: 50px; margin-bottom: 20px;">
+        <img src="{{ asset('assets/media/logos/MyISOArbiaLogo.png') }}" alt="MyISOOnline" width="180" height="34" style="width: 180px; height: 34px; max-width: 100%; margin-bottom: 20px; border: 0;">
 
         <div class="content-area" style="text-align: left;">
 
@@ -33,27 +33,13 @@
                     عزيزي
                 <?php } ?>
                 </strong></p>
+            
             <p>
-              
-
-أنت الآن مؤهل للوصول إلى دوراتنا المجانية 
-
- 
+                يسعدنا إعلامك بأنه قد تمت إضافة حساب الموظف الخاص بك بنجاح إلى MyISOOnline. يمكنك الآن الوصول إلى دورات MyISOOnline.
             </p>
-            <p>
-               
-              
-يسعدنا إعلامك بأنك قد تمت إضافتك بنجاح إلى MyISOOnline . أنت الآن مؤهل للوصول إلى دوراتنا المجانية والاستفادة منها.
 
-               <br>
-               للبدء، يرجى التسجيل باستخدام عنوان بريدك الإلكتروني الرسمي: 
-               
-               
-               
-
-            </p>
-            <a href="{{ url('/lms/account') }}?action=register" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
-            class="button">سجل الآن</a>
+            <a href="{{ url('/lms/account') }}?action=login" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
+            class="button">سجّل الدخول الآن</a>
 
         </div>
     </div>
