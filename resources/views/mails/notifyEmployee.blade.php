@@ -22,7 +22,7 @@
 
     <div class="container" style="max-width: 500px; height: auto; margin: 50px auto; padding: 32px 24px 28px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;">
 
-        <img src="{{ asset('assets/media/logos/MyISOArbiaLogo.png') }}" alt="MyISOOnline" width="180" height="34" style="width: 180px; height: 34px; max-width: 100%; display: block; margin: 0 auto 24px; border: 0;">
+        <img src="{{ asset('assets/media/logos/MyISOArbiaLogo.png') }}" alt="MyISOonline" width="180" height="34" style="width: 180px; height: 34px; max-width: 100%; display: block; margin: 0 auto 24px; border: 0;">
 
         <div class="content-area" style="text-align: left;">
 
@@ -35,7 +35,7 @@
                 </strong></p>
             
             <p>
-                يسعدنا إعلامك بأنه قد تمت إضافة حساب الموظف الخاص بك بنجاح إلى MyISOOnline. يمكنك الآن الوصول إلى دورات MyISOOnline.
+                يسعدنا إعلامك بأنه قد تمت إضافة حساب الموظف الخاص بك بنجاح إلى MyISOonline. يمكنك الآن الوصول إلى دورات MyISOonline.
             </p>
 
             <a href="{{ url('/lms/account') }}?action=login" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
@@ -45,7 +45,7 @@
     </div>
 
     <footer style="margin-top: 20px; text-align: center; color: #888;">
-        <p>All Rights Reserved. MyISOOnline</p>
+        <p>All Rights Reserved. MyISOonline</p>
     </footer>
 
 </body>
