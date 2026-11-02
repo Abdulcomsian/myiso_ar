@@ -32,7 +32,24 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $userid=Auth::user()->id;
-        $userinfo=Employee::where('user_id',$userid)->orderBy('id','DESC')->get();
+        $search = trim($request->query('q', ''));
+        $empQuery = Employee::where('user_id',$userid);
+        if ($search !== '') {
+            $empQuery->where(function($q) use ($search){
+                $q->where('empNumber','like',"%{$search}%")
+                  ->orWhere('surname','like',"%{$search}%")
+                  ->orWhere('first_name','like',"%{$search}%")
+                  ->orWhere('email','like',"%{$search}%");
+            });
+        }
+        $userinfo = $empQuery->orderBy('id','DESC')->paginate(10)->withQueryString();
+        // paging and searching ask for the table on its own
+        if ($request->ajax()) {
+            return view('dashboard.form_records.partials.employees_table', compact('userinfo'));
+        }
+        // the Skills and Training dropdowns need every employee, not the ten
+        // on the page the user happens to be looking at
+        $allEmployees = Employee::where('user_id',$userid)->orderBy('id','DESC')->get();
         // $employess=Employee::join('tbl_employees_skills','tbl_employees_skills.empid','=','tbl_employees.id')->where('tbl_employees.user_id',$userid)->get();
         // $e = EmpSkills::with('employee')->get();
         $employess = DB::table('tbl_employees_skills')
@@ -51,12 +68,23 @@ class EmployeeController extends Controller
 
             $users = Employee::where('user_id',$userid)->orderBy('id','DESC')->get();
             //dd($users);
+            // The certificates come from the LMS over the 'second_db' connection.
+            // That connection is configured outside this repo and falls back to
+            // forge/forge when SECOND_DB_* is missing, so the lookup can fail for
+            // reasons that have nothing to do with this page: certificates are a
+            // nicety here and the employee list is the point, so a failure leaves
+            // them empty instead of closing the page.
             $wp_users = [];
-            foreach($users as $user){
-               $wp_users[] = Certificate::where('user_email', $user->email)->get();
+            try {
+                foreach($users as $user){
+                   $wp_users[] = Certificate::where('user_email', $user->email)->get();
+                }
+            } catch (\Throwable $e) {
+                $wp_users = [];
+                \Illuminate\Support\Facades\Log::warning('employees page: certificate lookup failed - ' . $e->getMessage());
             }
        
-            return view('dashboard.form_records.employess',compact('userinfo','employess','emptraining', 'wp_users'));
+            return view('dashboard.form_records.employess',compact('userinfo','employess','emptraining', 'wp_users','allEmployees','search'));
 
     }
     public function empSkills(Request $request){
@@ -185,7 +213,14 @@ class EmployeeController extends Controller
 
         $employee->save();
         $empName = $request->surname . ' ' . $request->first_name;
-        Notification::route("mail", $request->email)->notify(new NotifyEmployee($empName));
+        // The employee is already saved by this point, so a mail that cannot
+        // be sent must not take the page down with it - the user would see a
+        // server error, assume nothing was saved, and add the same person again.
+        try {
+            Notification::route("mail", $request->email)->notify(new NotifyEmployee($empName));
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('employee welcome mail failed - ' . $e->getMessage());
+        }
         return back();
     }
 
