@@ -105,7 +105,7 @@
                                             {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
                                             {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
                                             <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="all"/>
+                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="all" required/>
                                                 <label for="fileInput1" class="file-label">
                                                     <span class="file-text">اختيار الملف</span>
                                                     <span class="file-chosen">لم يتم اختيار ملف</span>
