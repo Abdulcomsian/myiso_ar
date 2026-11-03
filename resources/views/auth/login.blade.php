@@ -199,7 +199,7 @@
 														المكتب 1003، مبنى C34،<br>
 														شارع الرزقي، منطقة الدانة،<br>
 														أبوظبي، الإمارات العربية المتحدة، 22207<br>
-														البريد الإلكتروني: ceo@jmegrp.com
+														البريد الإلكتروني: info@isoonline.com
 													<!-- <div class="ml-2">
 															<input class="form-check-input agreeInput" type="checkbox" value="" id="TermConditions">
 															<label class="form-check-label" for="TermConditions">
