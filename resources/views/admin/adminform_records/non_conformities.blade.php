@@ -89,15 +89,15 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div><label>وصف NCR</label><input type="text" name="description" placeholder="وصف الخطأ"></div>
-                    <div><label>السبب الجذري</label><input type="text" name="rootCause" placeholder="السبب الجذري"></div>
+                    <div><label>وصف NCR</label><textarea name="description" placeholder="وصف الخطأ" rows="2"></textarea></div>
+                    <div><label>السبب الجذري</label><textarea name="rootCause" placeholder="السبب الجذري" rows="2"></textarea></div>
                 </div>
                 <div class="form-row">
-                    <div><label>الإجراء التصحيحي الفوري</label><input type="text" name="immediateCorp"></div>
-                    <div><label>إجراء لمنع التكرار</label><input type="text" name="actionPrevent"></div>
+                    <div><label>الإجراء التصحيحي الفوري</label><textarea name="immediateCorp" rows="2"></textarea></div>
+                    <div><label>إجراء لمنع التكرار</label><textarea name="actionPrevent" rows="2"></textarea></div>
                 </div>
                 <div class="form-row">
-                    <div><label>فعالية الإجراء</label><input type="text" name="ActionRecurnce"></div>
+                    <div><label>فعالية الإجراء</label><textarea name="ActionRecurnce" rows="2"></textarea></div>
                     <div><label>تاريخ مراجعة الفعالية</label><input type="date" name="effectiveDate"></div>
                 </div>
                 <div class="form-row">
@@ -270,15 +270,15 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>الوصف</label><input type="text" class="form-control" name="description"></div>
-                    <div class="col-lg-6"><label>السبب الجذري</label><input type="text" class="form-control" name="rootCause"></div>
+                    <div class="col-lg-6"><label>الوصف</label><textarea class="form-control" name="description" rows="2"></textarea></div>
+                    <div class="col-lg-6"><label>السبب الجذري</label><textarea class="form-control" name="rootCause" rows="2"></textarea></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>الإجراء التصحيحي الفوري</label><input type="text" class="form-control" name="immediateCorp"></div>
-                    <div class="col-lg-6"><label>منع التكرار</label><input type="text" class="form-control" name="actionPrevent"></div>
+                    <div class="col-lg-6"><label>الإجراء التصحيحي الفوري</label><textarea class="form-control" name="immediateCorp" rows="2"></textarea></div>
+                    <div class="col-lg-6"><label>منع التكرار</label><textarea class="form-control" name="actionPrevent" rows="2"></textarea></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>فعالية الإجراء</label><input type="text" class="form-control" name="ActionRecurnce"></div>
+                    <div class="col-lg-6"><label>فعالية الإجراء</label><textarea class="form-control" name="ActionRecurnce" rows="2"></textarea></div>
                     <div class="col-lg-6"><label>تاريخ مراجعة الفعالية</label><input type="date" class="form-control" name="effectiveDate"></div>
                 </div>
                 <div class="form-group row">

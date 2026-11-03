@@ -54,19 +54,29 @@
             <p>تقع على عاتق الموظف مسؤولية ضمان الاستخدام الصحيح للآلات أو المعدات أو وسائل الإنتاج أو أجهزة السلامة التي يوفرها صاحب العمل وفقًا لأي تعليمات أو تدريب أو توجيهات يتم تلقيها بموجب اللوائح ذات الصلة.</p>
             <h6 class="mt-4" style="color:var(--am-primary);font-weight:600;">سياسات إضافية — الغاية:</h6>
             <p>تحدد هذه الوثيقة السياسة والممارسات التي سيتم اعتمادها ضمانًا لإجراء تقييمات مناسبة وكافية للمخاطر وفقًا لمتطلبات الأنظمة المعمول بها ذات الصلة. وتصف الوثيقة نظام إجراء تقييمات المخاطر العامة في {{ $companyName }} في إطار برنامج إدارة السلامة والصحة والبيئة. لا يشمل هذا الإجراء تقييمات المخاطر التي جرت في إطار مراقبة المعادن الخطرة والمواد الكيميائية والمواد الأخرى، أو التعامل معها، أو استخدام شاشات العرض والإجراءات المتكررة.</p>
+            @php
+                // the account-details field, "Managing Director / CEO". It is blank on
+                // plenty of accounts, and an empty bold line above the role would only
+                // push it down, so the name line is skipped when there is no name.
+                $amDirector = trim((string) Auth::user()->director);
+            @endphp
             @forelse ($userAddPolicy as $policy)
                 <div class="am-policy-entry" style="{{ $loop->first ? '' : 'border-top:1px solid #e6e8f0;margin-top:16px;' }}padding-top:{{ $loop->first ? '4' : '16' }}px;">
                     <p class="mb-2" style="white-space:pre-wrap;">{{ $policy->message }}</p>
                     <div style="line-height:1.5;">
-                        <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong> المدير العام</div>
-                        <div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
+                        @if ($amDirector !== '')
+                            <div><strong style="font-weight:600;">{{ $amDirector }}</strong></div>
+                        @endif
+                        <div><strong style="font-weight:600;">المدير العام / الرئيس التنفيذي</strong></div>
                         <div><strong style="font-weight:600;">التاريخ:</strong> {{ $policy->created_at->format('d/m/Y g:i') }} {{ $policy->created_at->format('A') === 'AM' ? 'ص' : 'م' }}</div>
                     </div>
                 </div>
             @empty
                 <div style="line-height:1.5;">
-                    <div><strong style="font-weight:600;">تمت الإضافة بواسطة:</strong> المدير العام</div>
-                    <div><strong style="font-weight:600;">الاسم:</strong> {{ Auth::user()->director }}</div>
+                    @if ($amDirector !== '')
+                        <div><strong style="font-weight:600;">{{ $amDirector }}</strong></div>
+                    @endif
+                    <div><strong style="font-weight:600;">المدير العام / الرئيس التنفيذي</strong></div>
                 </div>
             @endforelse
         </div>

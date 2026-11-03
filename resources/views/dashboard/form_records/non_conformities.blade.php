@@ -126,15 +126,15 @@
                                     <div>
                                         <div class="form-group">
                                             <label>	وصف NCR </label>
-                                            <input type="text" required class="form-control" name="description"
-                                                placeholder="أدخل وصف NCR" required>
+                                            <textarea required class="form-control" name="description"
+                                                placeholder="أدخل وصف NCR" required rows="2"></textarea>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="form-group">
                                             <label>السبب الرئيسي: </label>
-                                            <input type="text" required class="form-control" name="rootCause"
-                                                placeholder="أدخل السبب الرئيسي" required>
+                                            <textarea required class="form-control" name="rootCause"
+                                                placeholder="أدخل السبب الرئيسي" required rows="2"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -142,15 +142,15 @@
                                     <div>
                                         <div class="form-group">
                                             <label>الإجراء التصحيحي المباشر: </label>
-                                            <input type="text" required class="form-control" name="immediateCorp"
-                                                placeholder="أدخل الإجراء التصحيحي المباشر" required>
+                                            <textarea required class="form-control" name="immediateCorp"
+                                                placeholder="أدخل الإجراء التصحيحي المباشر" required rows="2"></textarea>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="form-group">
                                             <label>الإجراء المناسب لمنع تكرار الخطأ: </label>
-                                            <input type="text" required class="form-control" name="actionPrevent"
-                                                placeholder="أدخل الإجراء (الإجراءات) المناسبة لمنع تكرار الخطأ" required>
+                                            <textarea required class="form-control" name="actionPrevent"
+                                                placeholder="أدخل الإجراء (الإجراءات) المناسبة لمنع تكرار الخطأ" required rows="2"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -158,9 +158,9 @@
                                     <div>
                                         <div class="form-group">
                                             <label>مدى فعالية الإجراء المناسب لمنع تكرار الخطأ: </label>
-                                            <input type="text" required class="form-control" name="ActionRecurnce"
+                                            <textarea required class="form-control" name="ActionRecurnce"
                                                 placeholder="أدخل تفاصيل حول مدى فعالية الإجراء (الإجراءات) المناسبة لمنع تكرار الخطأ"
-                                                required>
+                                                required rows="2"></textarea>
                                         </div>
                                     </div>
                                     <div>
@@ -492,15 +492,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>	وصف NCR</label>
-                                        <input type="text" readonly disabled class="form-control" name="description"
-                                            placeholder="أدخل وصف NCR">
+                                        <textarea readonly disabled class="form-control" name="description"
+                                            placeholder="أدخل وصف NCR" rows="2"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>السبب الجذري:</label>
-                                        <input type="text" readonly disabled class="form-control" name="rootCause"
-                                            placeholder="أدخل السبب الجذري">
+                                        <textarea readonly disabled class="form-control" name="rootCause"
+                                            placeholder="أدخل السبب الجذري" rows="2"></textarea>
                                     </div>
                                 </div>
                                
@@ -510,15 +510,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>الإجراءات التصحيحية الفورية:</label>
-                                        <input type="text" readonly disabled class="form-control" name="immediateCorp"
-                                            placeholder="أدخل الإجراء التصحيحي الفوري">
+                                        <textarea readonly disabled class="form-control" name="immediateCorp"
+                                            placeholder="أدخل الإجراء التصحيحي الفوري" rows="2"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>إجراءات لمنع التكرار:</label>
-                                        <input type="text" readonly disabled class="form-control" name="actionPrevent"
-                                            placeholder="أدخل منع التكرار">
+                                        <textarea readonly disabled class="form-control" name="actionPrevent"
+                                            placeholder="أدخل منع التكرار" rows="2"></textarea>
                                     </div>
                                 </div>
 
@@ -529,9 +529,9 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>فعالية العمل لمنع التكرار:</label>
-                                        <input type="text" readonly disabled class="form-control"
+                                        <textarea readonly disabled class="form-control"
                                             name="ActionRecurnce"
-                                            placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها">
+                                            placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها" rows="2"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -733,15 +733,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>	وصف NCR</label>
-                                        <input type="text" required class="form-control" name="description"
-                                            placeholder="أدخل وصف NCR" required>
+                                        <textarea required class="form-control" name="description"
+                                            placeholder="أدخل وصف NCR" required rows="2"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>السبب الجذري:</label>
-                                        <input type="text" required class="form-control" name="rootCause"
-                                            placeholder="أدخل السبب الجذري" required>
+                                        <textarea required class="form-control" name="rootCause"
+                                            placeholder="أدخل السبب الجذري" required rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -749,15 +749,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>الإجراءات التصحيحية الفورية:</label>
-                                        <input type="text" required class="form-control" name="immediateCorp"
-                                            placeholder="أدخل الإجراء التصحيحي الفوري" required>
+                                        <textarea required class="form-control" name="immediateCorp"
+                                            placeholder="أدخل الإجراء التصحيحي الفوري" required rows="2"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>إجراءات لمنع التكرار:</label>
-                                        <input type="text" required class="form-control" name="actionPrevent"
-                                            placeholder="أدخل فعالية الإجراء/الإجراءات لمنع تكرارها." required>
+                                        <textarea required class="form-control" name="actionPrevent"
+                                            placeholder="أدخل فعالية الإجراء/الإجراءات لمنع تكرارها." required rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -765,8 +765,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>فعالية العمل لمنع التكرار:</label>
-                                        <input type="text" required class="form-control" name="ActionRecurnce"
-                                            placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها" required>
+                                        <textarea required class="form-control" name="ActionRecurnce"
+                                            placeholder="أدخل تفاصيل فعالية الإجراء/الإجراءات لمنع تكرارها" required rows="2"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -959,20 +959,20 @@
     function getEid(data) {
         console.log(data);
         $("#id_feild").val(data.id);
-        $("input[name='ActionRecurnce']").val(data.ActionRecurnce);
+        $("input[name='ActionRecurnce'], textarea[name='ActionRecurnce']").val(data.ActionRecurnce);
         $("input[name='CRE']").val(data.CRE);
         $("select[name='customerID']").val(data.customerID);
         $("input[name='CustomerName']").val(data.name);
         get_customer_name_by_id(data.customerID, '.customer_name_edit_display');
         $("input[name='dateNcP']").val(data.dateNcP);
         $("input[name='dateNcR']").val(data.dateNcR);
-        $("input[name='description']").val(data.description);
+        $("input[name='description'], textarea[name='description']").val(data.description);
         $("input[name='effectiveDate']").val(data.effectiveDate);
-        $("input[name='immediateCorp']").val(data.immediateCorp);
+        $("input[name='immediateCorp'], textarea[name='immediateCorp']").val(data.immediateCorp);
         $("input[name='reviewdBy']").val(data.reviewdBy);
-        $("input[name='rootCause']").val(data.rootCause);
-        $("input[name='actionPrevent']").val(data.actionPrevent);
-        $("input[name='rootCause']").val(data.rootCause);
+        $("input[name='rootCause'], textarea[name='rootCause']").val(data.rootCause);
+        $("input[name='actionPrevent'], textarea[name='actionPrevent']").val(data.actionPrevent);
+        $("input[name='rootCause'], textarea[name='rootCause']").val(data.rootCause);
         $("select[name='PI']").val(data.PI);
         $("select[name='NCR_closed']").val(data.NCR_closed);
         $("input[name='minor_major']").val(data.non_confirm_status);
@@ -989,21 +989,21 @@
     function EditData(data) {
         console.log(data);
         $("#editid").val(data.noid);
-        $("input[name='ActionRecurnce']").val(data.ActionRecurnce);
+        $("input[name='ActionRecurnce'], textarea[name='ActionRecurnce']").val(data.ActionRecurnce);
         $("input[name='CRE']").val(data.CRE);
         $("select[name='customerID']").val(data.customerID);
         $("input[name='CustomerName']").val(data.name);
         get_customer_name_by_id(data.customerID, '.customer_name_edit_display');
         $("input[name='dateNcP']").val(data.dateNcP);
         $("input[name='dateNcR']").val(data.dateNcR);
-        $("input[name='description']").val(data.description);
+        $("input[name='description'], textarea[name='description']").val(data.description);
         $("input[name='effectiveDate']").val(data.effectiveDate);
-        $("input[name='immediateCorp']").val(data.immediateCorp);
+        $("input[name='immediateCorp'], textarea[name='immediateCorp']").val(data.immediateCorp);
         $("input[name='reviewdBy']").val(data.reviewdBy);
-        $("input[name='rootCause']").val(data.rootCause);
-        $("input[name='actionPrevent']").val(data.actionPrevent);
+        $("input[name='rootCause'], textarea[name='rootCause']").val(data.rootCause);
+        $("input[name='actionPrevent'], textarea[name='actionPrevent']").val(data.actionPrevent);
         $("select[name='root_cause_category']").val(data.root_cause_category);
-        $("input[name='rootCause']").val(data.rootCause);
+        $("input[name='rootCause'], textarea[name='rootCause']").val(data.rootCause);
         $("select[name='NCR_closed']").val(data.NCR_closed);
         $("select[name='PI']").val(data.PI);
         $("select[name='minor_major']").val(data.non_confirm_status);

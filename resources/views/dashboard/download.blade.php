@@ -30,6 +30,9 @@
                             <option value="Environmental signs" title="Environmental signs">اللافتات البيئية</option>
                             <option value="Mandatory Signs" title="Mandatory Signs">اللافتات الإلزامية</option>
                             <option value="Warning Signs" title="Warning Signs">اللافتات التحذيرية</option>
+                            <option value="Cut-outs" title="Cut-outs">اللافتات المقصوصة</option>
+                            <option value="Everyday Safety" title="Everyday Safety">السلامة اليومية</option>
+                            <option value="Welfare" title="Welfare">الرعاية والمرافق</option>
                         </select>
                     </div>
                 </div>
