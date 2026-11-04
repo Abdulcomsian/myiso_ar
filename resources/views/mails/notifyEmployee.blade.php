@@ -22,7 +22,7 @@
 
     <div class="container" style="max-width: 500px; height: auto; margin: 50px auto; padding: 32px 24px 28px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;">
 
-        <img src="{{ asset('assets/media/logos/MyISOArbiaLogo.png') }}" alt="MyISOonline" width="180" height="34" style="width: 180px; height: 34px; max-width: 100%; display: block; margin: 0 auto 24px; border: 0;">
+        <img src="https://myisoonline.com/assets/media/logos/MyISOOnline-Logo.png" alt="MyISOonline" width="180" height="40" style="width: 180px; height: 40px; max-width: 100%; display: block; margin: 0 auto 24px; border: 0;">
 
         <div class="content-area" style="text-align: left;">
 
