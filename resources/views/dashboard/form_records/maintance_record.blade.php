@@ -86,8 +86,7 @@
                                     </div>
                                     <div>
                                         <div class="form-group">
-                                            <label>دليل المرفق: <span class="text-danger"
-                                                    style="color:#000 !important;">(jpeg, mp3, mp4, .xls,
+                                            <label>دليل المرفق: <span class="am-hint">(jpeg, mp3, mp4, .xls,
                                                     doc)</span></label>
                                             {{-- <input name="attach_evidence" type="file" class="form-control"
                                                 accept="all"> --}}
@@ -328,7 +327,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>دليل المرفق: <span class="text-danger" style="color:#000 !important;">(jpeg,
+                                    <label>دليل المرفق: <span class="am-hint">(jpeg,
                                             mp3, mp4, .xls, doc)</span></label>
                                     {{-- <input name="attach_evidence" type="file" class="form-control" accept="all"> --}}
                                     <div class="custom-file-input-tag form-control">
@@ -436,7 +435,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>دليل المرفق: <span class="text-danger" style="color:#000 !important;">(jpeg,
+                                    <label>دليل المرفق: <span class="am-hint">(jpeg,
                                             mp3, mp4, .xls, doc)</span>:</label>
                                     <div class="evidence_attachemnt_div"></div>
                                 </div>

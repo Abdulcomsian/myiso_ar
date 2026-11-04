@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-row">
                     <div style="grid-column:span 2;"><label>أي مشكلات أخرى</label><input type="text" name="other_issue" placeholder="ملاحظات" required></div>
-                    <div style="grid-column:span 2;"><label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</label><input type="file" name="attach_evidence" required></div>
+                    <div style="grid-column:span 2;"><label>إرفاق دليل داعم <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span></label><input type="file" name="attach_evidence" required></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelCrForm">إلغاء</button>
@@ -181,7 +181,7 @@
                     <div class="col-lg-6"><label>أي مشكلات أخرى</label><input type="text" class="form-control" name="other_issue" required></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-12"><label>إرفاق دليل من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</label><input type="file" class="form-control" name="attach_evidence"></div>
+                    <div class="col-lg-12"><label>إرفاق دليل داعم <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span></label><input type="file" class="form-control" name="attach_evidence"></div>
                 </div>
             </div>
             <div class="am-modal__footer">
