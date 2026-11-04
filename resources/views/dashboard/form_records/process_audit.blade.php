@@ -24,8 +24,13 @@
                         <div class="am-card__toolbar">
                             <div class="text-right" style="width:100%;">
 
+                                {{-- Hidden at the client's request (the "delete templates and print features" note).
+                                     The route, the controller and the PDF template behind it are all
+                                     still there, so bringing it back is deleting this comment.
+
                                 <a href="{{ asset('download_process_audit/Process-Audit.pdf') }}" target="_blank"
                                     class="am-btn am-btn-primary">تحميل عمليات التدقيق</a>
+                                --}}
 
                                 <a onclick="processAuditForm()" class="am-btn am-btn-primary"> إضافة تفاصيل تدقيق العملية</a>
 
@@ -456,11 +461,16 @@
                                                             title="Edit" onclick="getEid({{ $data }});"><i class="fa fa-pen"></i>
                                                         </button>
 
+                                                        {{-- Hidden at the client's request (the "delete templates and print features" note).
+                                                             The route, the controller and the PDF template behind it are all
+                                                             still there, so bringing it back is deleting this comment.
+
                                                         <button data-processid="{{ $data->id }}"
                                                             class="am-icon-btn download-pdf"
                                                             title="Download PDF">
                                                             <i class="fa fa-download"></i>
                                                         </button>
+                                                        --}}
 
 
                                                         {{-- <button class="am-icon-btn bi bi-printer"

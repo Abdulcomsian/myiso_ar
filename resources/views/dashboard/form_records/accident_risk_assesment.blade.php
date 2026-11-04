@@ -315,7 +315,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>إرفاق الدليل <span class="text-danger" style="color:#000 !important;">(jpeg,
+                                    <label>إرفاق الدليل الداعم <span class="text-danger" style="color:#000 !important;">(jpeg,
                                             mp3, mp4, .xls, doc)</span>:</label>
                                     <div class="evidence_attachemnt_div"></div>
                                 </div>

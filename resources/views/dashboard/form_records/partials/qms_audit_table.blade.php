@@ -25,7 +25,12 @@
                         <div class="am-actions">
                             <button type="button" class="am-icon-btn" title="عرض" onclick='amQmsView(@json($item))'><i class="fa fa-eye"></i></button>
                             <button type="button" class="am-icon-btn" title="تعديل" onclick='amQmsEdit(@json($item))'><i class="fa fa-pen"></i></button>
+                            {{-- Hidden at the client's request (the "delete templates and print features" note).
+                                 The route, the controller and the PDF template behind it are all
+                                 still there, so bringing it back is deleting this comment.
+
                             <button type="button" class="am-icon-btn" title="تحميل PDF" onclick="qmsfun({{ $item->id }})"><i class="fa fa-download"></i></button>
+                            --}}
                             <button type="button" class="am-icon-btn danger am-confirm-delete"
                                     title="حذف"
                                     data-action="{{ route('deleteqmsAudit') }}"

@@ -64,7 +64,7 @@
                     <div><label>شدة الخطر المعدلة (1-6)</label><input type="number" min="1" max="6" name="reviseRiskSever" required></div>
                 </div>
                 <div class="form-row">
-                    <div><label>إرفاق دليل (jpeg, mp3, mp4, xls, doc)</label><input name="attach_evidence" type="file"></div>
+                    <div><label>إرفاق دليل داعم <span class="am-hint">(jpeg, mp3, mp4, xls, doc)</span></label><input name="attach_evidence" type="file"></div>
                     <div><label>أي مشاكل أخرى</label><textarea name="any_issues" placeholder="ملاحظات" rows="2"></textarea></div>
                 </div>
                 <div class="form-actions">
@@ -138,7 +138,7 @@
             <h4 class="am-modal__title">تفاصيل مخاطر الحوادث</h4>
         </div>
         <div class="am-modal__body">
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 18px;font-size:13px;">
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">السيناريو</div><div id="v-ar-scenario">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">احتمالية الخطر</div><div id="v-ar-likel">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">شدة الخطر</div><div id="v-ar-sev">—</div></div>
@@ -188,7 +188,7 @@
                     <div class="col-lg-6"><label>الشدة المعدلة</label><input type="number" class="form-control" min="1" max="6" name="reviseRiskSever" required></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق دليل</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق دليل داعم</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أخرى</label><textarea class="form-control" name="any_issues"></textarea></div>
                 </div>
             </div>

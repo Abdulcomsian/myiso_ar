@@ -316,7 +316,7 @@
                             </div>
                             <div>
                                 <div class="form-group">
-                                    <label>تحميل شهادة التدريب (PDF, jpeg, png):</label>
+                                    <label>تحميل شهادة التدريب <span class="am-hint">(PDF, jpeg, png)</span>:</label>
                                     <div class="custom-file-input-tag form-control">
                                         <input type="file" id="fileInput3" class="input-file" name="attach_file"
                                             accept="image/*,.pdf,.jpeg,.png">

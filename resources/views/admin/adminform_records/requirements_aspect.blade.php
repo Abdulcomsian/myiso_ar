@@ -163,17 +163,10 @@
             <h4 class="am-modal__title">تفاصيل المتطلب</h4>
         </div>
         <div class="am-modal__body">
-            <div style="margin-bottom:14px;">
-                <p style="font-size:11.5px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);margin:0 0 4px 0;font-weight:600;">المتطلب</p>
-                <p style="font-size:14px;color:var(--am-text);margin:0;font-weight:600;" id="vReqTitle">—</p>
-            </div>
-            <div style="margin-bottom:14px;">
-                <p style="font-size:11.5px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);margin:0 0 4px 0;font-weight:600;">تاريخ الاستكمال</p>
-                <p style="font-size:13.5px;color:var(--am-text);margin:0;" id="vReqDate">—</p>
-            </div>
-            <div>
-                <p style="font-size:11.5px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);margin:0 0 4px 0;font-weight:600;">الدورية</p>
-                <p style="font-size:13.5px;color:var(--am-text);margin:0;" id="vReqPeriod">—</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 18px;">
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المتطلب</div><div id="vReqTitle">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الاستكمال</div><div id="vReqDate">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الدورية</div><div id="vReqPeriod">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer">

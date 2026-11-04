@@ -82,7 +82,7 @@
                         <input type="text" placeholder="الاسم الكامل" name="mractivityperofrmby" required>
                     </div>
                     <div>
-                        <label>إرفاق دليل (jpeg, mp3, mp4, xls, doc)</label>
+                        <label>إرفاق دليل داعم <span class="am-hint">(jpeg, mp3, mp4, xls, doc)</span></label>
                         <input name="attach_evidence" type="file">
                     </div>
                     <div>
@@ -168,7 +168,7 @@
             <h4 class="am-modal__title">سجل الصيانة</h4>
         </div>
         <div class="am-modal__body">
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 18px;font-size:13px;">
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">التاريخ</div><div id="v-mrdate"></div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">العنصر</div><div id="v-mritem"></div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">النشاط</div><div id="v-mractivity"></div></div>
@@ -217,7 +217,7 @@
                     <div class="col-lg-6"><label>تم بواسطة</label><input type="text" class="form-control" name="mractivityperofrmby" id="e-mrperformed"></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق دليل</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق دليل داعم</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أخرى</label><textarea class="form-control" name="any_issues" id="e-mrissues"></textarea></div>
                 </div>
             </div>

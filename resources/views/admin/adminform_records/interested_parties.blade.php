@@ -108,10 +108,15 @@
             <h4 class="am-modal__title">الطرف المهتم</h4>
         </div>
         <div class="am-modal__body">
-            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الطرف المهتم</div>
-            <div id="v-ip-party" style="font-size:14px;color:var(--am-text);margin-bottom:16px;"></div>
-            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الاحتياجات والتوقعات</div>
-            <div id="v-ip-needs" style="font-size:14px;color:var(--am-text);"></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 18px;">
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الطرف المهتم</div><div id="v-ip-party">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الاحتياجات والتوقعات</div><div id="v-ip-needs">—</div></div>
+            </div>
+            {{-- the same history block the client page shows --}}
+            <div style="border-top:1px solid var(--am-border);padding-top:14px;margin-top:18px;">
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;margin-bottom:10px;">السجل</div>
+                <div id="vIpHistory"></div>
+            </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button></div>
     </div>
@@ -154,7 +159,55 @@
     p&&p.addEventListener('click',function(e){var b=e.target.closest('button[data-p]');if(!b||b.disabled)return;var q=parseInt(b.getAttribute('data-p'),10);if(!isNaN(q)&&q>=1){pg=q;r();}});
     r();
 })();
-function amIpView(d){document.getElementById('v-ip-party').textContent=d.interested_party||'—';document.getElementById('v-ip-needs').textContent=d.needs||'—';document.getElementById('amIpViewModal').classList.add('open');}
+    // the same timeline the client page draws, from the same wording
+    function amIpWhen(stamp, who) {
+        var m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/.exec(stamp || '');
+        if (!m) return '—';
+        var h = parseInt(m[4], 10);
+        var half = h < 12 ? 'ص' : 'م';
+        var h12 = h % 12 === 0 ? 12 : h % 12;
+        var when = m[3] + '/' + m[2] + '/' + m[1] + '، ' + h12 + ':' + m[5] + ' ' + half;
+        return when;
+    }
+
+    function amIpHistory(data) {
+        var box = document.getElementById('vIpHistory');
+        if (!box) return;
+        box.innerHTML = '';
+
+        var events = [
+            ['تم الإنشاء', data.created_at_raw, data.created_by_name],
+            ['آخر تحديث', data.updated_at_raw, data.updated_by_name],
+        ].filter(function (e) { return e[1]; });
+
+        if (!events.length) {
+            box.innerHTML = '<div style="font-size:13px;color:var(--am-text-muted);">لا يوجد سجل بعد.</div>';
+            return;
+        }
+
+        events.forEach(function (e, i) {
+            var row = document.createElement('div');
+            row.style.cssText = 'display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,160px);'
+                + 'gap:12px;align-items:start;padding:10px 0;font-size:13px;'
+                + (i < events.length - 1 ? 'border-bottom:1px solid var(--am-border);' : '');
+            row.appendChild(amIpCell(e[0], true));
+            row.appendChild(amIpCell(amIpWhen(e[1]), false));
+            row.appendChild(amIpCell(e[2] || '—', false));
+            box.appendChild(row);
+        });
+    }
+
+    // built as text, never as markup: a name is whatever someone typed
+    function amIpCell(text, muted) {
+        var d = document.createElement('div');
+        if (muted) d.style.color = 'var(--am-text-muted)';
+        d.style.minWidth = '0';
+        d.style.overflowWrap = 'anywhere';
+        d.textContent = text;
+        return d;
+    }
+
+function amIpView(d){document.getElementById('v-ip-party').textContent=d.interested_party||'—';document.getElementById('v-ip-needs').textContent=d.needs||'—';amIpHistory(d);document.getElementById('amIpViewModal').classList.add('open');}
 function amIpEdit(d){document.getElementById('e-ip-id').value=d.id||'';document.getElementById('e-ip-party').value=d.interested_party||'';document.getElementById('e-ip-needs').value=d.needs||'';document.getElementById('amIpEditModal').classList.add('open');}
 </script>
 {{-- The guide behind the "i" beside the title --}}

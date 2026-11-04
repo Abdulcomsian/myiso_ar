@@ -20,11 +20,16 @@ $qmsQuestions = App\QmsAuditQuestions::all();
                 <h2>تدقيقات نظام إدارة الجودة</h2>
             </div>
         </div>
+        {{-- Hidden at the client's request (the "delete templates and print features" note).
+             The route, the controller and the PDF template behind it are all
+             still there, so bringing it back is deleting this comment.
+
         <div class="am-page-header__actions">
             <a href="{{ asset('download_qms_audit/QMS-Audit-Report.pdf') }}" target="_blank" class="am-btn am-btn-outline">
                 <i class="fa fa-download"></i> تحميل تدقيق نظام إدارة الجودة
             </a>
         </div>
+        --}}
     </div>
 
     @if(session('message'))
@@ -99,7 +104,7 @@ $qmsQuestions = App\QmsAuditQuestions::all();
             <h4 class="am-modal__title">تفاصيل تدقيق نظام إدارة الجودة</h4>
         </div>
         <div class="am-modal__body">
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;margin-bottom:20px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 18px;font-size:13px;margin-bottom:20px;">
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المدقق</div><div id="vqms-auditor">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الإنجاز</div><div id="vqms-date">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">ملف الدليل</div><div id="vqms-ev">—</div></div>

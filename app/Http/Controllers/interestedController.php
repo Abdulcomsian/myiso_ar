@@ -19,7 +19,18 @@ class interestedController extends Controller
        
         $userid=Auth::user()->id;
        
-        $interested=Interested::where('user_id',$userid)->orderBy('id','DESC')->paginate(10)->withQueryString();
+        // the popup shows who filed it and who last changed it, so the
+        // names come along with the row rather than a lookup per row
+        $interested=Interested::where('interested_parties.user_id',$userid)
+            ->leftJoin('users as am_cu', 'am_cu.id', '=', 'interested_parties.created_by')
+            ->leftJoin('users as am_uu', 'am_uu.id', '=', 'interested_parties.updated_by')
+            ->select('interested_parties.*',
+                     'am_cu.name as created_by_name',
+                     'am_uu.name as updated_by_name',
+                     // the stored value, not a cast date: see the popup's own note
+                     'interested_parties.created_at as created_at_raw',
+                     'interested_parties.updated_at as updated_at_raw')
+            ->orderBy('interested_parties.id','DESC')->paginate(10)->withQueryString();
         return view('dashboard.form_records.interested_parties',compact('interested'));
     }
 
@@ -59,6 +70,10 @@ class interestedController extends Controller
              $Interested->interested_party=$request->input('interestedparty');
              $Interested->needs=$request->input('needs');
              $Interested->user_id=$the_id;
+             // whose record it is and who typed it are different questions -
+             // an admin may file this against a client's account
+             $Interested->created_by = Auth::id();
+             $Interested->updated_by = Auth::id();
 
               $Interested->save();
 
@@ -113,6 +128,7 @@ class interestedController extends Controller
             
             $Interested->interested_party=$request->input('interestedparty');
             $Interested->needs=$request->input('needs');
+            $Interested->updated_by = Auth::id();
             $Interested->save();
              $notification = [
                 'message' => 'Record  updated successfully.!',
