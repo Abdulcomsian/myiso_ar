@@ -131,12 +131,7 @@
                     <div class="procedure_div">
                         <table class="common_table table table-sm table-striped table-responsive" style="width:100%">
                             <tr>
-                                <td>اسم المستخدم</td>
-                                <td>{{ Auth::user()->name }} </td>
-
-                            </tr>
-                            <tr>
-                                <td>عنوان البريد الإلكتروني</td>
+                                <td>عنوان البريد الإلكتروني / اسم المستخدم</td>
                                 <td>{{ Auth::user()->email }} </td>
 
 
@@ -241,13 +236,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 text-right">
-                                            <label for="name">اسم المستخدم</label>
-                                            <input type="text" id="name" required name="name"
-                                                class="form-control" placeholder="Enter name" readonly>
-                                            <!--<span class="form-text text-muted">Please enter your Username</span>-->
-                                        </div>
-                                        <div class="col-lg-4 text-right">
-                                            <label for="name">عنوان البريد الإلكتروني</label>
+                                            <label for="name">عنوان البريد الإلكتروني / اسم المستخدم</label>
                                             <input type="text" required id="name" name="email"
                                                 class="form-control" placeholder="Enter email" readonly>
                                             <!--<span class="form-text text-muted">Please enter your Email Address</span>-->

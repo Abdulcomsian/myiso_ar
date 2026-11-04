@@ -123,7 +123,7 @@
 
                                 <div class="form-group row">
 
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <label for="address2">هوية الشركة:</label>
                                         <div class="kt-input-icon kt-input-icon--right">
                                             <input type="text" id="order_number" name="order_number" class="form-control"
@@ -132,19 +132,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-3">
-                                        <label for="name">عنوان البريد الإلكتروني</label>
+                                    <div class="col-lg-4">
+                                        <label for="name">عنوان البريد الإلكتروني / اسم المستخدم</label>
                                         <input type="email" id="email" name="email" class="form-control"
                                             placeholder="أدخل عنوان البريد الالكتروني" required>
                                     </div>
 
-                                    <div class="col-lg-3">
-                                        <label for="name">اسم المستخدم</label>
-                                        <input type="text" id="name" name="name" class="form-control"
-                                            placeholder="ادخل اسم المستخدم" required>
-                                    </div>
-
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <label for="password">كلمة المرور:</label>
                                         <div class="kt-input-icon kt-input-icon--right">
                                             <input type="password" id="password" name="password" class="form-control"
