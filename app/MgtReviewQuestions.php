@@ -374,6 +374,12 @@ class MgtReviewQuestions
             'where_head' => 'أين تبحث:',
             'answer_head' => 'الإجابات والأدلة',
             'attach' => 'إرفاق ملف',
+            // what the Details popup calls the same file: there it is
+            // something to open, not something to attach
+            'viewfile' => 'عرض الملف',
+            // the Print option on the list and in the popup
+            'print' => 'طباعة',
+            'printed' => 'تاريخ الطباعة:',
             'attach_hint' => 'PDF أو JPEG أو TXT أو DOCX أو PNG',
             'accept' => '.pdf,.jpg,.jpeg,.txt,.doc,.docx,.png',
             'reviewdate' => 'تاريخ المراجعة',
