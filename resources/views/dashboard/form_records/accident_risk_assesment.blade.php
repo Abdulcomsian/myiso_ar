@@ -115,8 +115,7 @@
                                     <div>
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label>إرفاق الدليل: <span class="am-hint">(jpeg, mp3, mp4, .xls,
-                                                        doc)</span></label>
+                                                <label>إرفاق أدلة داعمة</label>
                                                 {{-- <input name="attach_evidence" type="file" class="form-control"
                                                     accept="all"> --}}
                                                 <div class="custom-file-input-tag form-control">
@@ -314,8 +313,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>إرفاق الدليل الداعم <span class="am-hint">(jpeg,
-                                            mp3, mp4, .xls, doc)</span>:</label>
+                                    <label>إرفاق أدلة داعمة</label>
                                     <div class="evidence_attachemnt_div"></div>
                                 </div>
                             </div>
@@ -425,8 +423,7 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>إرفاق الدليل: <span class="am-hint">(jpeg,
-                                            mp3, mp4, .xls, doc)</span></label>
+                                    <label>إرفاق أدلة داعمة</label>
                                     {{-- <input name="attach_evidence" type="file" class="form-control" accept="all"> --}}
                                     <div class="custom-file-input-tag form-control">
                                         <input type="file" id="fileInput2" class="input-file" name="attach_evidence" accept="all"/>

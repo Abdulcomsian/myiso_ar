@@ -839,6 +839,18 @@ public function store(Request $request)
          $addreq->due_date=$createdAt;
 
 
+         // the evidence the admin attached, if any. The field is optional,
+         // so a record saved without one is normal and nothing is cleared.
+         if ($request->file('attach_evidence')
+             && \Illuminate\Support\Facades\Schema::hasColumn('tbl_requiremnt', 'attach_evidence')) {
+             // replacing one: the old file goes, but only if there is one
+             if ($addreq->attach_evidence
+                 && \Illuminate\Support\Facades\File::exists(public_path($addreq->attach_evidence))) {
+                 \Illuminate\Support\Facades\File::delete(public_path($addreq->attach_evidence));
+             }
+             $addreq->attach_evidence = \App\Helpers\HelperFunctions::saveFile(
+                 '/uploads/user/attach_evidence/', $request->file('attach_evidence'));
+         }
          $addreq->save();
         return redirect()->back();
     }
@@ -1304,6 +1316,18 @@ public function store(Request $request)
         $requirement->completion_date=$request->input('completion_date');
         $requirement->periods=$request->input('periods');
         $requirement->due_date=$next_due_date;
+        // the evidence the admin attached, if any. The field is optional,
+        // so a record saved without one is normal and nothing is cleared.
+        if ($request->file('attach_evidence')
+            && \Illuminate\Support\Facades\Schema::hasColumn('tbl_requiremnt', 'attach_evidence')) {
+            // replacing one: the old file goes, but only if there is one
+            if ($requirement->attach_evidence
+                && \Illuminate\Support\Facades\File::exists(public_path($requirement->attach_evidence))) {
+                \Illuminate\Support\Facades\File::delete(public_path($requirement->attach_evidence));
+            }
+            $requirement->attach_evidence = \App\Helpers\HelperFunctions::saveFile(
+                '/uploads/user/attach_evidence/', $request->file('attach_evidence'));
+        }
         $requirement->save();
         //sign them in
         $notification = [

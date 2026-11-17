@@ -118,6 +118,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
+                        </div>
                         <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                             <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelEmpForm">يلغي</button>
                             <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i>
@@ -593,6 +596,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
                         </div>
                     </div>
                     <div class="modal-footer am-modal__footer">

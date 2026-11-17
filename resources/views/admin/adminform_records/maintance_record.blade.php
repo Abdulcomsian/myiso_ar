@@ -82,7 +82,7 @@
                         <input type="text" placeholder="الاسم الكامل" name="mractivityperofrmby" required>
                     </div>
                     <div>
-                        <label>إرفاق دليل داعم <span class="am-hint">(jpeg, mp3, mp4, xls, doc)</span></label>
+                        <label>إرفاق أدلة داعمة</label>
                         <input name="attach_evidence" type="file">
                     </div>
                     <div>
@@ -217,7 +217,7 @@
                     <div class="col-lg-6"><label>تم بواسطة</label><input type="text" class="form-control" name="mractivityperofrmby" id="e-mrperformed"></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق دليل داعم</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أخرى</label><textarea class="form-control" name="any_issues" id="e-mrissues"></textarea></div>
                 </div>
             </div>

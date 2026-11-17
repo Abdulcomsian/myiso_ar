@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="supplier_from_div">
-                            <form class="am-inline-form open" action="{{ route('supplier') }} " id="addcust" method="post" style="margin:16px 20px;">
+                            <form class="am-inline-form open" action="{{ route('supplier') }} " id="addcust" method="post" style="margin:16px 20px;" enctype="multipart/form-data">
                                 @csrf
                                 <h3>إضافة تفاصيل المورد</h3>
                                                                 <div class="form-row">
@@ -119,6 +119,9 @@
 										</div>
 									</div>
 								</div> --}}
+                                <div class="form-row">
+                                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
+                                </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button type="reset" onclick="supplierForm()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
                                     <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
@@ -347,7 +350,7 @@
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير المورد</h5>
                     </div>
                 <div class="modal-body">
-                    <form action="{{ route('supplieredit') }} " id="editcust" method="post">
+                    <form action="{{ route('supplieredit') }} " id="editcust" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" id="id_feild" value="">
 
@@ -440,6 +443,14 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>إرفاق أدلة داعمة</label>
+                                    <input type="file" class="form-control" name="attach_evidence">
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer am-modal__footer">
                     <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
@@ -555,6 +566,14 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>إرفاق أدلة داعمة</label>
+                                    <div id="vSupEvidence">—</div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer am-modal__footer">
                     <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
@@ -646,6 +665,11 @@
                 return "e.g. " + selectedCountryPlaceholder;
             },
         });
+        // the attached evidence, if the record has any
+        var amEv = document.getElementById('vSupEvidence');
+        if (amEv) amEv.innerHTML = data.attach_evidence
+            ? '<a href="{{ rtrim(asset("/"), "/") }}' + data.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+            : '—';
         $("#viewSupplier").modal('show');
         $('#addcust').resetForm();
     }

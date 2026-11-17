@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="non_conformities_from_div">
-                            <form class="am-inline-form open" action=" {{ route('nonConfromForm') }} " method="POST" style="margin:16px 20px;">
+                            <form class="am-inline-form open" action=" {{ route('nonConfromForm') }} " method="POST" style="margin:16px 20px;" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="user_id2" id="user_id2" value="{{ $userid }}" />
                                                                 <div class="form-row">
@@ -219,7 +219,7 @@
                                         <div class="form-group">
                                             <label>إغلاق حالة عدم المطابقة (نعم أو لا):</label>
                                             <select name="NCR_closed" class="form-control">
-                                                <option value=""></option>
+                                                <option value="">اختر: هل أغلقت حالة عدم المطابقة؟</option>
                                                 <option value="Yes">نعم</option>
                                                 <option value="No">لا</option>
                                             </select>
@@ -250,6 +250,9 @@
                                 {{-- </div> --}}
                                 {{-- </div> --}}
 
+                                <div class="form-row">
+                                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
+                                </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button type="reset" onclick="nonConformities()" class="am-btn am-btn-outline am-btn-sm">يلغي</button>
                                     <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
@@ -605,6 +608,14 @@
 
                         </form>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>إرفاق أدلة داعمة</label>
+                                <div id="vnc-ev">—</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer am-modal__footer">
                     <button type="reset" class="am-btn am-btn-outline" data-dismiss="modal">يغلق</button>
@@ -624,7 +635,7 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل عدم المطابقة.</h5>
                     </div>
-                <form action="{{ route('editnonConfirm') }}" method="POST">
+                <form action="{{ route('editnonConfirm') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                     <div class="col-md-12 p-3">
                             @csrf
@@ -842,6 +853,9 @@
                                 </div>
                             </div> --}}
                         </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
+                        </div>
                     </div>
                     <div class="modal-footer am-modal__footer">
                                 <button type="reset" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>
@@ -982,6 +996,11 @@
         $("select[name='employee_id']").val(data.employee_id);
         // get_employee_name_by_id(data.employee_id, '.employee_name_edit_display');
         $("input[name='employee_name']").val(data.employee_name);
+        // the attached evidence, if the record has any
+        var amEv = document.getElementById('vnc-ev');
+        if (amEv) amEv.innerHTML = data.attach_evidence
+            ? '<a href="{{ rtrim(asset("/"), "/") }}' + data.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+            : '—';
         $("#nonconfirmDetail").modal('show');
 
     }

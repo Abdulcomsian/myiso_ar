@@ -46,7 +46,7 @@
         </div>
 
         <div class="am-inline-form" id="newReqForm" style="margin:16px 20px;">
-            <form action="{{ route('addRequirementadmin') }}" method="POST">
+            <form action="{{ route('addRequirementadmin') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                 <div class="form-row">
@@ -64,6 +64,9 @@
                         <label>الدورية (بالأشهر، 1–12)</label>
                         <input type="number" min="1" max="12" name="period" placeholder="مثال: 3" required>
                     </div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelReqForm">إلغاء</button>
@@ -167,6 +170,7 @@
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">المتطلب</div><div id="vReqTitle">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ الاستكمال</div><div id="vReqDate">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الدورية</div><div id="vReqPeriod">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="vReqEvidence">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer">
@@ -182,7 +186,7 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">تعديل المتطلب</h4>
         </div>
-        <form action="{{ route('updaterequiremntadmin') }}" method="POST" style="display:contents;">
+        <form action="{{ route('updaterequiremntadmin') }}" method="POST" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <div class="am-modal__body">
                 <input type="hidden" name="requirment_id" id="eReqId">
@@ -197,6 +201,9 @@
                 <div>
                     <label>الدورية (بالأشهر، 1–12)</label>
                     <input type="number" class="form-control" min="1" max="12" name="periods" id="eReqPeriod" required>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
                 </div>
             </div>
             <div class="am-modal__footer">
@@ -256,6 +263,11 @@
         document.getElementById('vReqTitle').textContent = data.requirment_title || '—';
         document.getElementById('vReqDate').textContent = data.completion_date ? new Date(data.completion_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
         document.getElementById('vReqPeriod').textContent = 'كل ' + data.periods + ' أشهر';
+        // the attached evidence, if the record has any
+        var amEv = document.getElementById('vReqEvidence');
+        if (amEv) amEv.innerHTML = data.attach_evidence
+            ? '<a href="{{ rtrim(asset("/"), "/") }}' + data.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+            : '—';
         openAmModal('amReqView');
     }
     function amReqEdit(data) {

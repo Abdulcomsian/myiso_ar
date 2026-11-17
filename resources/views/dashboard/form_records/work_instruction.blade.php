@@ -39,11 +39,11 @@
         </div>
 
         <div class="am-inline-form" id="newWiForm" style="margin:16px 20px;">
-            <form action="{{ route('workinstructions') }}" method="POST">
+            <form action="{{ route('workinstructions') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
                     <div><label>عنوان تعليمات العمل</label><input type="text" name="workinstruction" placeholder="عنوان العملية" required></div>
-                    <div><label>المرجع</label><input type="text" name="instructionref" required></div>
+                    <div><label>المرجع</label><input type="text" name="instructionref" required placeholder="مثال: WI-03"></div>
                     <div><label>دورية المراجعة أو التنفيذ</label><select name="reviewFrequency"><option value="">اختر الدورية...</option>@foreach (App\Workinstructions::frequencyOptions() as $fqKey => $fqLabel)<option value="{{ $fqKey }}">{{ $fqLabel }}</option>@endforeach</select></div>
                 </div>
                 <div class="form-row">
@@ -57,18 +57,28 @@
                         </select>
                     </div>
                     <div><label>تاريخ الإصدار</label><input type="date" max="2999-12-31" name="issueDate" required></div>
-                    <div><label>حالة التعديل</label><input type="text" name="revisionstatus" required></div>
+                    <div><label>حالة التعديل</label><input type="text" name="revisionstatus" required placeholder="مثال: التعديل 1 أو مسودة"></div>
                 </div>
                 <div class="form-row">
-                    <div style="grid-column:1/-1;"><label>النطاق</label><textarea name="scop" required rows="2"></textarea></div>
+                    <div style="grid-column:1/-1;"><label>النطاق</label><textarea name="scop" required rows="2" placeholder="ما تغطيه التعليمات ومن تنطبق عليهم"></textarea></div>
                 </div>
                 <div class="form-row">
                     @for ($i = 1; $i <= 12; $i++)
-                        <div><label>النقطة {{ $i }}</label><textarea name="point{{ $i }}" rows="2"></textarea></div>
+                        @php
+                            // the first shows what a step looks like, the second
+                            // says there is another, the rest say they are optional
+                            $pointPh = $i === 1 ? 'مثال: تأكد من أن المنطقة آمنة'
+                                     : ($i === 2 ? 'الخطوة التالية'
+                                                 : 'الخطوة التالية (اختياري)');
+                        @endphp
+                        <div><label>النقطة {{ $i }}</label><textarea name="point{{ $i }}" rows="2" placeholder="{{ $pointPh }}"></textarea></div>
                     @endfor
                 </div>
                 <div class="form-row">
-                    <div style="grid-column:1/-1;"><label>أعدّه</label><input type="text" name="CompiledBy" required></div>
+                    <div style="grid-column:1/-1;"><label>أعدّه</label><input type="text" name="CompiledBy" required placeholder="اسم الشخص الذي كتب التعليمات"></div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelWiForm">إلغاء</button>
@@ -106,6 +116,7 @@
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">أعدّه</div><div id="vwi-comp">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">النطاق</div><div id="vwi-scope">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:8px;">الخطوات</div><ol id="vwi-points" style="padding-inline-start:18px;margin:0;font-size:13px;line-height:1.6;"></ol></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="vwi-ev">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">يغلق</button></div>
@@ -119,7 +130,7 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">تحرير تعليمات العمل</h4>
         </div>
-        <form action="{{ route('editworkinstructions') }}" method="POST" style="display:contents;">
+        <form action="{{ route('editworkinstructions') }}" method="POST" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" id="ewi-id">
             <div class="am-modal__body" style="padding:20px;">
@@ -151,6 +162,9 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-12"><label>أعدّه</label><input type="text" class="form-control" name="CompiledBy" required></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
                 </div>
             </div>
             <div class="am-modal__footer">
@@ -256,6 +270,11 @@ function amWiView(d) {
         var pt = d['point'+i];
         if (pt) { var li = document.createElement('li'); li.textContent = pt; pointsEl.appendChild(li); }
     }
+    // the attached evidence, if the record has any
+    var amEv = document.getElementById('vwi-ev');
+    if (amEv) amEv.innerHTML = d.attach_evidence
+        ? '<a href="{{ rtrim(asset("/"), "/") }}' + d.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+        : '—';
     document.getElementById('viewWiModal').classList.add('open');
 }
 function amWiEdit(d) {

@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="form-row" style="margin-top:14px;">
-                    <div><label>إرفاق دليل داعم</label><input name="attach_evidence" type="file"></div>
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                     <div style="grid-column:span 2;"><label>أي مشاكل أخرى</label><textarea name="any_issues" rows="2"></textarea></div>
                 </div>
 
@@ -243,7 +243,7 @@
                 <div class="form-group row">
                     <div class="col-lg-4"><label>مرجع تقرير NC</label><input type="text" class="form-control" name="nonConfReport"></div>
                     <div class="col-lg-4"><label>الدورية (بالأشهر)</label><input type="number" class="form-control" min="1" max="12" name="dateFrequency"></div>
-                    <div class="col-lg-4"><label>إرفاق دليل داعم</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-4"><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file" class="form-control"></div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-12"><label>إجراءات التدقيق</label><textarea class="form-control" name="AdutiActions" rows="3"></textarea></div>

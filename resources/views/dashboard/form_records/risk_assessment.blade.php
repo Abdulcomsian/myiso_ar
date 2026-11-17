@@ -33,14 +33,14 @@
                             </div>
                         </div>
                         <div class="risk_assessment_from_div">
-                            <form action="{{ route('assessment') }} " method="POST" class="addForm am-inline-form open" style="margin:16px 20px;">
+                            <form action="{{ route('assessment') }} " method="POST" class="addForm am-inline-form open" style="margin:16px 20px;" enctype="multipart/form-data">
                                 @csrf
                                                                 <div class="form-row">
                                     <div>
                                         <div class="form-group">
                                             <label>رقم الوظيفة:</label>
                                             <input type="text" min="1" class="form-control validate_number"
-                                                name="jobNumber" required>
+                                                name="jobNumber" required placeholder="مثال: 1045">
                                         </div>
                                     </div>
                                     <div>
@@ -210,6 +210,9 @@
                                     </div>
                                 </div>
 
+                                <div class="form-row">
+                                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
+                                </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button onclick="riskAssessment()" type="reset" class="am-btn am-btn-outline am-btn-sm" data-dismiss="modal">يلغي</button>
                                     <button type="submit" class="am-btn am-btn-primary am-btn-sm">يُقدِّم</button>
@@ -646,7 +649,7 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تقييمات المخاطر</h5>
                     </div>
-                <form action="{{ route('editassessment') }} " method="POST">
+                <form action="{{ route('editassessment') }} " method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="modal-body ">
@@ -826,6 +829,14 @@
                         </div>
 
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>إرفاق أدلة داعمة</label>
+                                    <input type="file" class="form-control" name="attach_evidence">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer am-modal__footer">
                         <button type="button" class="am-btn am-btn-outline" data-dismiss="modal"

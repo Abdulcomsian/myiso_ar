@@ -71,7 +71,8 @@
                             <label style="display:inline-flex;gap:4px;align-items:center;"><input type="radio" required value="No" name="still_used"> لا</label>
                         </div>
                     </div>
-                    <div><label>إرفاق صحيفة البيانات من الشركة المصنّعة</label><input name="attach_evidence" type="file"></div>
+                    <div><label>إرفاق صحيفة البيانات من الشركة المصنّعة</label><input name="attach_datasheet" type="file"></div>
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                     <div><label>أي مشاكل أخرى</label><textarea name="any_issues" placeholder="ملاحظات" rows="2"></textarea></div>
                 </div>
                 <div class="form-actions">
@@ -166,6 +167,7 @@
                     <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">{{ $lb }}</div><div id="vch-{{ $k }}">—</div></div>
                 @endforeach
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">صحيفة بيانات الشركة المصنّعة</div><div id="vch-ev">—</div></div>
+                <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">أدلة داعمة</div><div id="vch-sup">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button></div>
@@ -214,7 +216,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق صحيفة البيانات من الشركة المصنّعة</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق صحيفة البيانات من الشركة المصنّعة</label><input name="attach_datasheet" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أخرى</label><textarea class="form-control" name="any_issues"></textarea></div>
                 </div>
             </div>
@@ -246,7 +249,12 @@ function amChView(d){
         if (el) el.textContent = d[k] || '—';
     });
     var ev = document.getElementById('vch-ev');
-    if (d.attach_evidence) { ev.innerHTML = '<a href="'+d.attach_evidence+'" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض</a>'; } else ev.textContent = '—';
+    if (d.attach_datasheet) { ev.innerHTML = '<a href="'+d.attach_datasheet+'" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض</a>'; } else ev.textContent = '—';
+    // the supporting evidence, which is a second file on this page
+    var sup = document.getElementById('vch-sup');
+    if (sup) sup.innerHTML = d.attach_evidence
+        ? '<a href="{{ rtrim(asset("/"), "/") }}' + d.attach_datasheet + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض</a>'
+        : '—';
     document.getElementById('viewChModal').classList.add('open');
 }
 function amChEdit(d){

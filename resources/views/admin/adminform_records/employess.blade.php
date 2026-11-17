@@ -82,6 +82,9 @@
                     <div class="form-row">
                         <div style="grid-column:1/-1;"><label>الوصف الوظيفي</label><textarea name="jobdetails" rows="3" placeholder="الوصف الوظيفي"></textarea></div>
                     </div>
+                    <div class="form-row">
+                        <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
+                    </div>
                     <div class="form-actions">
                         <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelEmpForm">إلغاء</button>
                         <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i> حفظ الموظف</button>
@@ -387,6 +390,7 @@
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">البريد الإلكتروني</div><div id="vemp-email">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">تاريخ التعيين</div><div id="vemp-start">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الوصف الوظيفي</div><div id="vemp-job">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="vemp-ev">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button></div>
@@ -419,6 +423,9 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-12"><label>تحميل السيرة الذاتية</label><input name="employee_cv" type="file" class="form-control" accept="image/*,.doc,.docx,.txt,.pdf"></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
                 </div>
             </div>
             <div class="am-modal__footer">
@@ -540,6 +547,11 @@ function amEmpView(d){
     document.getElementById('vemp-email').textContent = d.email||'—';
     document.getElementById('vemp-start').textContent = d.startDate ? new Date(d.startDate).toLocaleDateString() : '—';
     document.getElementById('vemp-job').textContent = d.jobdetails||'—';
+    // the attached evidence, if the record has any
+    var amEv = document.getElementById('vemp-ev');
+    if (amEv) amEv.innerHTML = d.attach_evidence
+        ? '<a href="{{ rtrim(asset("/"), "/") }}' + d.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+        : '—';
     document.getElementById('viewEmpModal').classList.add('open');
 }
 function amEmpEdit(d){

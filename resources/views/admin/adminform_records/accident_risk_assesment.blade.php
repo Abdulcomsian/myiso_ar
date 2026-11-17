@@ -64,7 +64,7 @@
                     <div><label>شدة الخطر المعدلة (1-6)</label><input type="number" min="1" max="6" name="reviseRiskSever" required></div>
                 </div>
                 <div class="form-row">
-                    <div><label>إرفاق دليل داعم <span class="am-hint">(jpeg, mp3, mp4, xls, doc)</span></label><input name="attach_evidence" type="file"></div>
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                     <div><label>أي مشاكل أخرى</label><textarea name="any_issues" placeholder="ملاحظات" rows="2"></textarea></div>
                 </div>
                 <div class="form-actions">
@@ -188,7 +188,7 @@
                     <div class="col-lg-6"><label>الشدة المعدلة</label><input type="number" class="form-control" min="1" max="6" name="reviseRiskSever" required></div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق دليل داعم</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أخرى</label><textarea class="form-control" name="any_issues"></textarea></div>
                 </div>
             </div>

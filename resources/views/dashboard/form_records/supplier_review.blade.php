@@ -87,14 +87,14 @@
                                     <div style="grid-column:span 2;">
                                         <div class="form-group">
                                             <label>ملاحظات</label>
-                                            <textarea class="form-control" name="other_issue" required="required"></textarea>
+                                            <textarea class="form-control" name="other_issue" required="required" placeholder="ملاحظات اختيارية حول أداء المورّد"></textarea>
                                         </div>
                                     </div>
                                     <div style="grid-column:span 2;">
                                         <div class="form-group">
-                                            <label>إرفاق الأدلة:</label>
+                                            <label>إرفاق أدلة داعمة</label>
                                             <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" required="required"/>
+                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence"/>
                                                 <label for="fileInput1" class="file-label">
                                                     <span class="file-text">اختيار الملف</span>
                                                     <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -209,7 +209,7 @@
                         <div class="col-lg-6"><div class="form-group"><label>ملاحظات</label><textarea class="form-control" id="v-sr-oi" readonly></textarea></div></div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12"><div class="form-group"><label>إرفاق الأدلة:</label> <span id="v-sr-ev"></span></div></div>
+                        <div class="col-lg-12"><div class="form-group"><label>إرفاق أدلة داعمة</label> <span id="v-sr-ev"></span></div></div>
                     </div>
                 </div>
                 <div class="modal-footer am-modal__footer">
@@ -275,7 +275,7 @@
                         <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>إرفاق الأدلة:</label>
+                                    <label>إرفاق أدلة داعمة</label>
                                     <div class="custom-file-input-tag form-control">
                                         <input type="file" id="fileInput2" class="input-file" name="attach_evidence">
                                         <label for="fileInput2" class="file-label">

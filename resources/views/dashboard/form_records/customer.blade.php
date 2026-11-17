@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="customer_from_div">
-                            <form class="am-inline-form open" action="{{ route('customerform') }} " id="addcust" method="POST" style="margin:16px 20px;">
+                            <form class="am-inline-form open" action="{{ route('customerform') }} " id="addcust" method="POST" style="margin:16px 20px;" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -107,6 +107,9 @@
                                                 placeholder="أدخل اسم الشخص المسؤول عن الاتصال بالعميل">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row">
+                                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                                 </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button onclick="customerForm()" type="reset"
@@ -200,7 +203,7 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تحرير تفاصيل العميل</h5>
                     </div>
-                <form action="{{ route('editCustomers') }} " id="editcust" method="POST">
+                <form action="{{ route('editCustomers') }} " id="editcust" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
 
@@ -254,6 +257,14 @@
                                     <label>اسم جهة الاتصال الخاصة بالعميل: </label>
                                     <input type="text" class="form-control" name="contactName"
                                         placeholder="أدخل اسم الشخص المسؤول عن الاتصال بالعميل" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>إرفاق أدلة داعمة</label>
+                                    <input type="file" class="form-control" name="attach_evidence">
                                 </div>
                             </div>
                         </div>
@@ -331,6 +342,14 @@
                                     <label>اسم جهة الاتصال الخاصة بالعميل: </label>
                                     <input type="text" readonly class="form-control" name="contactName"
                                         placeholder="أدخل اسم الشخص المسؤول عن الاتصال بالعميل">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>إرفاق أدلة داعمة</label>
+                                    <div id="vCustEvidence">—</div>
                                 </div>
                             </div>
                         </div>
@@ -607,6 +626,11 @@
 
 
 
+        // the attached evidence, if the record has any
+        var amEv = document.getElementById('vCustEvidence');
+        if (amEv) amEv.innerHTML = data.attach_evidence
+            ? '<a href="{{ rtrim(asset("/"), "/") }}' + data.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+            : '—';
         $("#ViewCustomer").modal('show');
         $('#addcust').resetForm();
     }

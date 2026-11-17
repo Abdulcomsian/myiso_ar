@@ -42,7 +42,7 @@
         </div>
 
         <div class="am-inline-form" id="newSupForm" style="margin:16px 20px;">
-            <form action="{{ route('supplier') }}" id="addcust" method="POST">
+            <form action="{{ route('supplier') }}" id="addcust" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                 <input type="hidden" name="is_admin" value="admin">
@@ -61,6 +61,9 @@
                 <div class="form-row">
                     <div><label>اسم جهة الاتصال</label><input type="text" name="supplierContactNumber" placeholder="الشخص المسؤول" required></div>
                     <div style="grid-column:span 2;"><label>الخدمات</label><input type="text" name="supplierservc" placeholder="الخدمات المقدمة" required></div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelSupForm">إلغاء</button>
@@ -135,7 +138,7 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">تعديل بيانات المورد</h4>
         </div>
-        <form action="{{ route('supplieredit') }}" method="POST" id="editcust" style="display:contents;">
+        <form action="{{ route('supplieredit') }}" method="POST" id="editcust" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
             <input type="hidden" name="is_admin" value="admin">
@@ -160,6 +163,9 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-12"><label>الخدمات</label><input type="text" class="form-control" name="supplierservc"></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
                 </div>
             </div>
             <div class="am-modal__footer">
@@ -187,6 +193,7 @@
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">البريد الإلكتروني للمورد</div><div id="vSupEmail">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">اسم جهة الاتصال</div><div id="vSupContact">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الخدمات</div><div id="vSupServices">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="vSupEvidence">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button></div>
@@ -249,6 +256,11 @@
         document.getElementById('vSupEmail').textContent = data.supplieremail || '—';
         document.getElementById('vSupContact').textContent = data.supplierContactNumber || '—';
         document.getElementById('vSupServices').textContent = data.supplierservc || '—';
+        // the attached evidence, if the record has any
+        var amEv = document.getElementById('vSupEvidence');
+        if (amEv) amEv.innerHTML = data.attach_evidence
+            ? '<a href="{{ rtrim(asset("/"), "/") }}' + data.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+            : '—';
         document.getElementById('viewSupplier').classList.add('open');
     }
 

@@ -25,7 +25,7 @@
         </div>
 
         <div class="am-inline-form" id="newIpForm" style="margin:16px 20px;">
-            <form action="{{route('interestedform')}}" method="POST">
+            <form action="{{route('interestedform')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
                     <div style="grid-column:1/-1;">
@@ -38,6 +38,9 @@
                         <label>الاحتياجات والتوقعات </label>
                         <input type="text" name="needs" class="form-control"  required placeholder="يرجى إدخال الاحتياجات والتوقعات">
                     </div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="reset" class="am-btn am-btn-outline am-btn-sm" id="cancelIpForm">إلغاء </button>
@@ -129,7 +132,7 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">تحرير تفاصيل الأطراف المهتمة</h4>
         </div>
-        <form action="{{route('interestedUpdate')}}" method="POST" style="display:contents;">
+        <form action="{{route('interestedUpdate')}}" method="POST" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <div class="am-modal__body">
                 <input type="hidden" value="" id="id_feild" name="id">
@@ -140,6 +143,10 @@
                 <div>
                     <label>الاحتياجات والتوقعات </label>
                     <input type="text" name="needs" id="eIpNeeds" required class="form-control"  placeholder="أدخل الحاجة والتوقعات:">
+                </div>
+                <div style="margin-top:16px;">
+                    <label>إرفاق أدلة داعمة</label>
+                    <input type="file" class="form-control" name="attach_evidence">
                 </div>
             </div>
             <div class="am-modal__footer">
@@ -161,6 +168,7 @@
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 18px;">
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">طرف مهتم:</div><div id="vIpParty">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الاحتياجات والتوقعات:</div><div id="vIpNeeds">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="vIpEvidence">—</div></div>
             </div>
             {{-- the same shape the Objectives Tracker gives its progress history:
                  a rule, a heading, then a row per event --}}
@@ -259,6 +267,11 @@
         document.getElementById('vIpParty').textContent = data.interested_party || '—';
         document.getElementById('vIpNeeds').textContent = data.needs || '—';
         amIpHistory(data);
+        // the attached evidence, if the record has any
+        var amEv = document.getElementById('vIpEvidence');
+        if (amEv) amEv.innerHTML = data.attach_evidence
+            ? '<a href="{{ rtrim(asset("/"), "/") }}' + data.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+            : '—';
         document.getElementById('viewinterestedparty').classList.add('open');
     }
 

@@ -57,7 +57,7 @@
         </div>
 
         <div class="am-inline-form {{ old('_form') === 'add' ? 'open' : '' }}" id="amRegAddForm" style="margin:16px 20px;">
-            <form method="POST" action="{{ route($module['key'].'.store') }}">
+            <form method="POST" action="{{ route($module['key'].'.store') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="_form" value="add">
                 <input type="hidden" name="user_id" value="{{ $ownerId }}">
@@ -165,7 +165,7 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">{{ $module['edit_title'] }}</h4>
         </div>
-        <form method="POST" action="{{ route($module['key'].'.update') }}" style="display:contents;">
+        <form method="POST" action="{{ route($module['key'].'.update') }}" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id">
             <div class="am-modal__body" style="padding:20px;">
@@ -201,10 +201,19 @@ function amRegDisplay(field, value) {
     if (field.type === 'date') { var p = String(value).substring(0, 10).split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : value; }
     return value;
 }
+// an attached file is a link to open, not a line of text
+var AM_REG_ASSET = '{{ rtrim(asset('/'), '/') }}';
+function amRegFileLink(value) {
+    if (!value) return '—';
+    return '<a href="' + AM_REG_ASSET + value + '" target="_blank" style="color:var(--am-primary);">'
+         + '<i class="fa fa-external-link-alt"></i> عرض الملف</a>';
+}
 function amRegView(d) {
     Object.keys(AM_REG_FIELDS).forEach(function(k) {
         var el = document.getElementById('v-reg-' + k);
-        if (el) el.textContent = amRegDisplay(AM_REG_FIELDS[k], d[k]);
+        if (!el) return;
+        if (AM_REG_FIELDS[k].type === 'file') { el.innerHTML = amRegFileLink(d[k]); return; }
+        el.textContent = amRegDisplay(AM_REG_FIELDS[k], d[k]);
     });
     document.getElementById('amRegViewModal').classList.add('open');
 }
@@ -214,6 +223,9 @@ function amRegEdit(d) {
     Object.keys(AM_REG_FIELDS).forEach(function(k) {
         var el = m.querySelector("[name='" + k + "']");
         if (!el) return;
+        // a file input cannot be given a value - the browser refuses it -
+        // and an empty box is what keeps the file already on the record
+        if (AM_REG_FIELDS[k].type === 'file') { el.value = ''; return; }
         var v = d[k] === null || d[k] === undefined ? '' : String(d[k]);
         el.value = AM_REG_FIELDS[k].type === 'date' ? v.substring(0, 10) : v;
     });

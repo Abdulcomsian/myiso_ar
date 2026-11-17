@@ -41,7 +41,7 @@
         </div>
 
         <div class="am-inline-form" id="newNcForm" style="margin:16px 20px;">
-            <form action="{{ route('nonConfromForm') }}" method="POST">
+            <form action="{{ route('nonConfromForm') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                 <div class="form-row">
@@ -123,6 +123,9 @@
                             <option value="No">لا</option>
                         </select>
                     </div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelNcForm">إلغاء</button>
@@ -217,6 +220,7 @@
                 @foreach($vf as $k => $lb)
                     <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">{{ $lb }}</div><div id="vnc-{{ $k }}">—</div></div>
                 @endforeach
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="vnc-ev">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button></div>
@@ -230,7 +234,7 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">تعديل حالة عدم المطابقة</h4>
         </div>
-        <form action="{{ route('editnonConfirm') }}" method="POST" style="display:contents;">
+        <form action="{{ route('editnonConfirm') }}" method="POST" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
             <input type="hidden" name="noid" id="enc-id">
@@ -295,6 +299,9 @@
                         <select class="form-control" name="NCR_closed"><option value=""></option><option value="Yes">نعم</option><option value="No">لا</option></select>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
+                </div>
             </div>
             <div class="am-modal__footer">
                 <button type="button" class="am-btn am-btn-outline am-modal-close">إلغاء</button>
@@ -323,6 +330,11 @@ function amNcView(d){
         var el = document.getElementById('vnc-'+k);
         if (el) el.textContent = d[k] || '—';
     });
+    // the attached evidence, if the record has any
+    var amEv = document.getElementById('vnc-ev');
+    if (amEv) amEv.innerHTML = d.attach_evidence
+        ? '<a href="{{ rtrim(asset("/"), "/") }}' + d.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+        : '—';
     document.getElementById('viewNcModal').classList.add('open');
 }
 function amNcEdit(d){

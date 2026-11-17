@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div><label>إرفاق الدليل الداعم</label><input name="attach_evidence" type="file"></div>
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                     <div style="grid-column:span 2;"><label>أي مشاكل أو ملاحظات أخرى</label><input type="text" name="issues_points"></div>
                 </div>
                 <div class="form-actions">
@@ -207,7 +207,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق الدليل الداعم</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أو ملاحظات أخرى</label><input type="text" class="form-control" name="issues_points"></div>
                 </div>
             </div>

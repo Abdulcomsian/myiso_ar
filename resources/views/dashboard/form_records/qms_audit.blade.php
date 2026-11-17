@@ -74,7 +74,7 @@ $qmsQuestions = App\QmsAuditQuestions::all();
                 </div>
 
                 <div class="form-row">
-                    <div><label>ملاحظات التدقيق والإجراءات</label><textarea name="audit_comments_actions" rows="3" required placeholder="ملخص ما وجدته، وما سيُعالَج، ومن سيعالجه، ومتى."></textarea></div>
+                    <div><label>ملاحظات التدقيق والإجراءات</label><textarea name="audit_comments_actions" rows="3" required placeholder="ملخص نتائج تدقيق نظام إدارة الجودة. إضافة معلومات جديدة إلى أقسام متتبع الأهداف / المتطلبات المستحقة."></textarea></div>
                     <div><label>أي مسائل أخرى</label><textarea name="any_issues" rows="3" placeholder="أي أمر خارج قائمة التحقق يستحق طرحه في اجتماع مراجعة الإدارة القادم."></textarea></div>
                 </div>
 

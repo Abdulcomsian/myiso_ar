@@ -47,7 +47,7 @@
         </div>
 
         <div class="am-inline-form" id="newCustForm" style="margin:16px 20px;">
-            <form action="{{ route('customerform') }}" id="add_form" method="POST" name="add_form">
+            <form action="{{ route('customerform') }}" id="add_form" method="POST" name="add_form" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
                 <input type="hidden" name="is_admin" value="admin">
@@ -65,6 +65,9 @@
                 <div class="form-row">
                     <div><label>عنوان البريد الإلكتروني للعميل</label><input type="email" name="Email" placeholder="البريد الإلكتروني للعميل" required></div>
                     <div><label>اسم جهة الاتصال الخاصة بالعميل</label><input type="text" name="contactName" placeholder="اسم الشخص المسؤول عن الاتصال" required></div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelCustForm">إلغاء</button>
@@ -137,7 +140,7 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">تعديل تفاصيل العميل</h4>
         </div>
-        <form action="{{ route('editCustomers') }}" id="edit_form" name="edit_form" method="POST" style="display:contents;">
+        <form action="{{ route('editCustomers') }}" id="edit_form" name="edit_form" method="POST" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" value="{{ $urlparam['userid'] }}">
             <input type="hidden" name="id" id="id_feild">
@@ -156,6 +159,9 @@
                 <div class="form-group row">
                     <div class="col-lg-6"><label>عنوان البريد الإلكتروني للعميل</label><input type="email" class="form-control" name="Email" required></div>
                     <div class="col-lg-6"><label>اسم جهة الاتصال الخاصة بالعميل</label><input type="text" class="form-control" name="contactName" required></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
                 </div>
             </div>
             <div class="am-modal__footer">
@@ -181,6 +187,7 @@
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">هاتف العميل</div><div id="vCustPhone">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">عنوان البريد الإلكتروني للعميل</div><div id="vCustEmail">—</div></div>
                 <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">اسم جهة الاتصال الخاصة بالعميل</div><div id="vCustContact">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="vCustEvidence">—</div></div>
             </div>
         </div>
         <div class="am-modal__footer"><button type="button" class="am-btn am-btn-outline am-modal-close">إغلاق</button></div>
@@ -243,6 +250,11 @@
         document.getElementById('vCustPhone').textContent = amPhone || '—';
         document.getElementById('vCustEmail').textContent = data.Email || '—';
         document.getElementById('vCustContact').textContent = data.contactName || '—';
+        // the attached evidence, if the record has any
+        var amEv = document.getElementById('vCustEvidence');
+        if (amEv) amEv.innerHTML = data.attach_evidence
+            ? '<a href="{{ rtrim(asset("/"), "/") }}' + data.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+            : '—';
         document.getElementById('ViewCustomer').classList.add('open');
     }
 

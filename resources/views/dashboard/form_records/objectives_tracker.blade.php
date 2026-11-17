@@ -34,7 +34,7 @@
         </div>
 
         <div class="am-inline-form" id="newObjForm" style="margin:16px 20px;">
-            <form action="{{ route('objective.store') }}" method="POST">
+            <form action="{{ route('objective.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
                     <div style="grid-column:1/-1;"><label>الهدف *</label><input type="text" name="objective" placeholder="خفض النفايات العامة المرسلة إلى المكبّ بنسبة 15%" required></div>
@@ -69,6 +69,9 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelObjForm">يلغي</button>

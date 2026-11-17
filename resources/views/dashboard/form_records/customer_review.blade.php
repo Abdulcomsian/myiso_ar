@@ -100,12 +100,12 @@
                                     </div>
                                     <div style="grid-column:span 2;">
                                         <div class="form-group">
-                                            <label>إرفاق دليل داعم <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
+                                            <label>إرفاق أدلة داعمة <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span></label>
                                             <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
                                             {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
-                                            {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
+                                            {{-- <input type="file" class="form-control" name="attach_evidence"> --}}
                                             <div class="custom-file-input-tag form-control">
-                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="all" required/>
+                                                <input type="file" id="fileInput1" class="input-file" name="attach_evidence" accept="all"/>
                                                 <label for="fileInput1" class="file-label">
                                                     <span class="file-text">اختيار الملف</span>
                                                     <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -274,7 +274,7 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-12">
                                                                                 <div class="form-group">
-                                                                                    <label>إرفاق دليل داعم <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
+                                                                                    <label>إرفاق أدلة داعمة <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span></label>
                                                                                    <a href="" name="attach_evidence">عرض الأدلة المرفقة</a>
                                                                                 </div>
                                                                             </div>
@@ -436,10 +436,10 @@
                         <div class="form-group row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>إرفاق دليل داعم <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span>:</label>
+                                    <label>إرفاق أدلة داعمة <span style="color:var(--am-text-soft);">من رد الاستبيان أو البريد الإلكتروني أو خطاب التوصية أو ملاحظات المكالمة</span></label>
                                     <input type="hidden" id="assetUrl" value="{{ asset('customer_review_evidence/') }}">
                                     {{-- <a href="" name="attach_evidence">عرض الأدلة المرفقة</a> --}}
-                                    {{-- <input type="file" class="form-control" name="attach_evidence" required="required"> --}}
+                                    {{-- <input type="file" class="form-control" name="attach_evidence"> --}}
                                     <div class="custom-file-input-tag form-control">
                                         <input type="file" id="fileInput2" class="input-file" name="attach_evidence" accept="all"/>
                                         <label for="fileInput2" class="file-label">

@@ -41,12 +41,15 @@
         </div>
 
         <div class="am-inline-form" id="newIpForm" style="margin:16px 20px;">
-            <form action="{{ route('interestedform') }}" method="POST">
+            <form action="{{ route('interestedform') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $urlparam['id'] }}">
                 <div class="form-row">
                     <div><label>الطرف المهتم</label><input type="text" name="interestedparty" placeholder="مثال: العملاء، الموردين، الموظفين" required></div>
                     <div><label>الاحتياجات والتوقعات</label><input type="text" name="needs" placeholder="مثال: التسليم في الوقت المحدد" required></div>
+                </div>
+                <div class="form-row">
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelIpForm">إلغاء</button>
@@ -111,6 +114,7 @@
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 18px;">
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الطرف المهتم</div><div id="v-ip-party">—</div></div>
                 <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">الاحتياجات والتوقعات</div><div id="v-ip-needs">—</div></div>
+                <div style="grid-column:1/-1;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--am-text-muted);font-weight:600;margin-bottom:4px;">إرفاق أدلة داعمة</div><div id="v-ip-evidence">—</div></div>
             </div>
             {{-- the same history block the client page shows --}}
             <div style="border-top:1px solid var(--am-border);padding-top:14px;margin-top:18px;">
@@ -129,13 +133,16 @@
             <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
             <h4 class="am-modal__title">تعديل الطرف المهتم</h4>
         </div>
-        <form action="{{ route('interestedUpdate') }}" method="POST" style="display:contents;">
+        <form action="{{ route('interestedUpdate') }}" method="POST" style="display:contents;" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" value="{{ $urlparam['id'] }}">
             <input type="hidden" name="id" id="e-ip-id">
             <div class="am-modal__body" style="padding:22px;">
                 <div class="form-group row"><div class="col-lg-12"><label>الطرف المهتم</label><input type="text" class="form-control" name="interestedparty" id="e-ip-party" required></div></div>
                 <div class="form-group row"><div class="col-lg-12"><label>الاحتياجات والتوقعات</label><input type="text" class="form-control" name="needs" id="e-ip-needs" required></div></div>
+                <div class="form-group row">
+                    <div class="col-lg-12"><label>إرفاق أدلة داعمة</label><input type="file" class="form-control" name="attach_evidence"></div>
+                </div>
             </div>
             <div class="am-modal__footer">
                 <button type="button" class="am-btn am-btn-outline am-modal-close">إلغاء</button>
@@ -207,6 +214,11 @@
         return d;
     }
 
+// the attached evidence, if the record has any
+var amEv = document.getElementById('v-ip-evidence');
+if (amEv) amEv.innerHTML = d.attach_evidence
+    ? '<a href="{{ rtrim(asset("/"), "/") }}' + d.attach_evidence + '" target="_blank" style="color:var(--am-primary);"><i class="fa fa-external-link-alt"></i> عرض الملف</a>'
+    : '—';
 function amIpView(d){document.getElementById('v-ip-party').textContent=d.interested_party||'—';document.getElementById('v-ip-needs').textContent=d.needs||'—';amIpHistory(d);document.getElementById('amIpViewModal').classList.add('open');}
 function amIpEdit(d){document.getElementById('e-ip-id').value=d.id||'';document.getElementById('e-ip-party').value=d.interested_party||'';document.getElementById('e-ip-needs').value=d.needs||'';document.getElementById('amIpEditModal').classList.add('open');}
 </script>

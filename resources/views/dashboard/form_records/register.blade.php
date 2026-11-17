@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="customer_review_from_div" @if (old('_form') === 'add') style="display:block;" @endif>
-                            <form class="am-inline-form open" method="POST" action="{{ route($module['key'].'.store') }}" style="margin:16px 20px;">
+                            <form class="am-inline-form open" method="POST" action="{{ route($module['key'].'.store') }}" style="margin:16px 20px;" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="_form" value="add">
                                 @include('dashboard.form_records.partials.register_fields', ['mode' => 'add', 'bootstrap' => true])
@@ -156,7 +156,7 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title">{{ $module['edit_title'] }}</h5>
                     </div>
-                <form method="POST" action="{{ route($module['key'].'.update') }}">
+                <form method="POST" action="{{ route($module['key'].'.update') }}" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <input type="hidden" name="id">
@@ -204,8 +204,20 @@
             return value;
         }
 
+        // an attached file is a link to open, not a line of text
+        var REG_ASSET = '{{ rtrim(asset('/'), '/') }}';
+        function regFileLink(value) {
+            if (!value) return '—';
+            return '<a href="' + REG_ASSET + value + '" target="_blank" style="color:var(--am-primary);">'
+                 + '<i class="fa fa-external-link-alt"></i> عرض الملف</a>';
+        }
+
         function regView(data) {
             Object.keys(REG_FIELDS).forEach(function (k) {
+                if (REG_FIELDS[k].type === 'file') {
+                    $('#v-reg-' + k).html(regFileLink(data[k]));
+                    return;
+                }
                 $('#v-reg-' + k).text(regDisplay(REG_FIELDS[k], data[k]));
             });
             $('#regViewModal').modal('show');
@@ -215,6 +227,12 @@
             var m = $('#regEditModal');
             m.find("input[name='id']").val(data.id);
             Object.keys(REG_FIELDS).forEach(function (k) {
+                // a file input cannot be given a value - the browser refuses
+                // it - and an empty box is what keeps the file already saved
+                if (REG_FIELDS[k].type === 'file') {
+                    m.find("[name='" + k + "']").val('');
+                    return;
+                }
                 var v = data[k] === null || data[k] === undefined ? '' : String(data[k]);
                 m.find("[name='" + k + "']").val(REG_FIELDS[k].type === 'date' ? v.substring(0, 10) : v);
             });

@@ -44,21 +44,21 @@
             <form action="{{ route('calibration') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
-                    <div style="grid-column:1/-1;"><label>اسم الجهاز</label><input type="text" name="equipment" required></div>
+                    <div style="grid-column:1/-1;"><label>اسم الجهاز</label><input type="text" name="equipment" required placeholder="مثال: ميزان حرارة رقمي"></div>
                 </div>
                 <div class="form-row">
-                    <div><label>الرقم التسلسلي</label><input type="text" name="serialNum" required></div>
-                    <div><label>الموقع</label><input type="text" name="locaction" required></div>
-                    <div><label>مرجع طريقة الاختبار</label><input type="text" name="testMethod" required></div>
+                    <div><label>الرقم التسلسلي</label><input type="text" name="serialNum" required placeholder="مثال: SN-48213"></div>
+                    <div><label>الموقع</label><input type="text" name="locaction" required placeholder="مثال: الورشة A"></div>
+                    <div><label>مرجع طريقة الاختبار</label><input type="text" name="testMethod" required placeholder="مثال: WI-07 أو المعيار المستخدم"></div>
                 </div>
                 <div class="form-row">
-                    <div><label>معايير القبول</label><input type="text" name="acceptance" required></div>
+                    <div><label>معايير القبول</label><input type="text" name="acceptance" required placeholder="مثال: ضمن ±0.5°C"></div>
                     <div><label>تاريخ المعايرة</label><input type="date" max="2999-12-31" name="calibratedDate" required></div>
-                    <div><label>رقم الشهادة</label><input type="text" name="certificatenumber" required></div>
+                    <div><label>رقم الشهادة</label><input type="text" name="certificatenumber" required placeholder="مثال: CAL-2026-0142"></div>
                 </div>
                 <div class="form-row">
-                    <div><label>التكرار (بالأشهر، 1-12)</label><input type="number" min="1" max="12" name="freq" required></div>
-                    <div><label>مراجع التقرير</label><input type="text" name="reportRev" required></div>
+                    <div><label>التكرار (بالأشهر، 1-12)</label><input type="number" min="1" max="12" name="freq" required placeholder="مثال: 12"></div>
+                    <div><label>مراجع التقرير</label><input type="text" name="reportRev" required placeholder="اسم الشخص الذي راجع التقرير"></div>
                     <div>
                         <label>النتيجة</label>
                         <select name="sentence" required>
@@ -69,8 +69,8 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div><label>إرفاق الدليل الداعم</label><input name="attach_evidence" type="file"></div>
-                    <div style="grid-column:span 2;"><label>أي مشاكل أو ملاحظات أخرى</label><input type="text" name="issues_points"></div>
+                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
+                    <div style="grid-column:span 2;"><label>أي مشاكل أو ملاحظات أخرى</label><input type="text" name="issues_points" placeholder="ملاحظات اختيارية"></div>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="am-btn am-btn-outline am-btn-sm" id="cancelCalForm">إلغاء</button>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-6"><label>إرفاق الدليل الداعم</label><input name="attach_evidence" type="file" class="form-control"></div>
+                    <div class="col-lg-6"><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file" class="form-control"></div>
                     <div class="col-lg-6"><label>أي مشاكل أو ملاحظات أخرى</label><input type="text" class="form-control" name="issues_points"></div>
                 </div>
             </div>

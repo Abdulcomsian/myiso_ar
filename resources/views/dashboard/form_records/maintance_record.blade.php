@@ -86,8 +86,7 @@
                                     </div>
                                     <div>
                                         <div class="form-group">
-                                            <label>دليل المرفق: <span class="am-hint">(jpeg, mp3, mp4, .xls,
-                                                    doc)</span></label>
+                                            <label>إرفاق أدلة داعمة</label>
                                             {{-- <input name="attach_evidence" type="file" class="form-control"
                                                 accept="all"> --}}
                                             <div class="custom-file-input-tag form-control">
@@ -327,8 +326,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>دليل المرفق: <span class="am-hint">(jpeg,
-                                            mp3, mp4, .xls, doc)</span></label>
+                                    <label>إرفاق أدلة داعمة</label>
                                     {{-- <input name="attach_evidence" type="file" class="form-control" accept="all"> --}}
                                     <div class="custom-file-input-tag form-control">
                                         <input type="file" id="fileInput2" class="input-file" name="attach_evidence" accept="all"/>
@@ -435,8 +433,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>دليل المرفق: <span class="am-hint">(jpeg,
-                                            mp3, mp4, .xls, doc)</span>:</label>
+                                    <label>إرفاق أدلة داعمة</label>
                                     <div class="evidence_attachemnt_div"></div>
                                 </div>
                             </div>

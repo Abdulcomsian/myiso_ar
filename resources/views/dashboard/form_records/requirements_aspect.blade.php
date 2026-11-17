@@ -33,7 +33,7 @@
                         </div>
                         <div class="requirments_from_div">
 
-                            <form class="am-inline-form open" action="{{ route('requiemntform') }}" method="POST" style="margin:16px 20px;">
+                            <form class="am-inline-form open" action="{{ route('requiemntform') }}" method="POST" style="margin:16px 20px;" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label>المتطلبات: (أدخل المتطلبات:)</label>
@@ -58,6 +58,9 @@
                                     </div>
                                 </div>
 
+                                <div class="form-row">
+                                    <div><label>إرفاق أدلة داعمة</label><input name="attach_evidence" type="file"></div>
+                                </div>
                                 <div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;">
                                     <button onclick="requirementFrom()" type="reset" class="am-btn am-btn-outline am-btn-sm"> إلغاء </button>
                                     <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="fa fa-check"></i> إرسال</button>
@@ -298,7 +301,7 @@
                     <span class="am-modal__icon" style="background:var(--am-primary-tint);color:var(--am-primary);"><i class="fa fa-pen"></i></span>
                     <h5 class="modal-title am-modal__title" id="exampleModalLabel">تعديل أحد المتطلبات.</h5>
                     </div>
-                <form action="{{ route('updaterequiremnt') }}" method="POST">
+                <form action="{{ route('updaterequiremnt') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body text-right">
                         @csrf
                         <input type="hidden" name="requirment_id" value="" id="id_feild">
@@ -319,6 +322,10 @@
                                 required>
                         </div>
 
+                        <div style="margin-top:16px;">
+                            <label>إرفاق أدلة داعمة</label>
+                            <input type="file" class="form-control" name="attach_evidence">
+                        </div>
                     </div>
                     <div class="modal-footer am-modal__footer">
                         <button type="button" class="am-btn am-btn-outline" data-dismiss="modal">يلغي</button>

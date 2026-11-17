@@ -373,6 +373,9 @@ class MgtReviewQuestions
             'eg_head' => 'مثال على إجابة جيدة',
             'where_head' => 'أين تبحث:',
             'answer_head' => 'الإجابات والأدلة',
+            // the label the client's document puts above every file
+            // picker, on the questions and on the meeting files alike
+            'attach_evidence' => 'إرفاق أدلة داعمة',
             'attach' => 'إرفاق ملف',
             // what the Details popup calls the same file: there it is
             // something to open, not something to attach
