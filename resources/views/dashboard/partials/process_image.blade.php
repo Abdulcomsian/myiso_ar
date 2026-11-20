@@ -18,10 +18,22 @@
     $amIsImage = in_array($amExt, ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'], true);
 @endphp
 
+@php
+    // asset(), not the bare path. The two sites do NOT share an uploads
+    // folder: this one serves its files from /ar/public/uploads/process/ and
+    // the English site from /uploads/process/, and each site's ASSET_URL
+    // already knows which. A bare leading slash would send this page to the
+    // English folder, where its file is not.
+    //
+    // An absolute url is returned unchanged by asset(), so rows that still
+    // hold one from before the repair keep working.
+    $amSrc = asset($img);
+@endphp
+
 @if ($amIsImage)
-    <img src="{{ $img }}" class="img-fluid" {!! $amImg ?? '' !!}>
+    <img src="{{ $amSrc }}" class="img-fluid" {!! $amImg ?? '' !!}>
 @else
-    <a href="{{ $img }}" target="_blank" rel="noopener"
+    <a href="{{ $amSrc }}" target="_blank" rel="noopener"
        class="am-btn am-btn-outline" style="text-decoration:none;">
         <i class="fa fa-file-arrow-down"></i>
         فتح الملف المرفوع{{ $amExt ? ' (' . strtoupper($amExt) . ')' : '' }}
