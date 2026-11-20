@@ -43,7 +43,7 @@
                     <label>حمل الصورة:</label>
                     {{-- <input type="file" class="form-control" name="process_int_photo"> --}}
                     <div class="custom-file-input-tag form-control mt-2">
-                        <input type="file" id="fileInput1" class="input-file" name="process_int_photo"/>
+                        <input type="file" id="fileInput1" class="input-file" name="process_int_photo" accept="image/*"/>
                         <label for="fileInput1" class="file-label">
                           <span class="file-text">اختيار الملف</span>
                           <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -64,7 +64,7 @@
             <p>توضح هذه العملية بالتفصيل التفاعل الجاري ضمن العمليات الرئيسية.</p>
             @if ($img)
                 <div style="margin-top:16px;">
-                    <img src="{{ $img }}" class="img-fluid" style="max-width:100%; border-radius:8px;">
+                    @include('dashboard.partials.process_image', ['amImg' => 'style="max-width:100%; border-radius:8px;"'])
                 </div>
             @endif
         </div>

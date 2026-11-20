@@ -43,7 +43,7 @@
 					<label>تحميل صورة:</label>
 					{{-- <input type="file" class="form-control" name="sales_process_photo"> --}}
 					<div class="custom-file-input-tag form-control mt-2">
-						<input type="file" id="fileInput1" class="input-file" name="sales_process_photo"/>
+						<input type="file" id="fileInput1" class="input-file" name="sales_process_photo" accept="image/*"/>
 						<label for="fileInput1" class="file-label">
 						  <span class="file-text">اختيار الملف</span>
 						  <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -63,7 +63,7 @@
 		<div class="am-card__body" style="padding:32px; line-height:1.8;">
 			@if($img)
 			<div style="margin-bottom:20px;">
-				<img src="{{ $img }}" class="img-fluid" style="max-width:100%; border-radius:8px;">
+				@include('dashboard.partials.process_image', ['amImg' => 'style="max-width:100%; border-radius:8px;"'])
 			</div>
 			@endif
 			<p class="m-t-20">سيتم استخدام هذه العملية لبدء العقد من العميل.</p>

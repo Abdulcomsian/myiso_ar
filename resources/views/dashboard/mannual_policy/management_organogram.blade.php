@@ -41,7 +41,7 @@
                     <label>تحميل صورة:</label>
                     {{-- <input type="file" class="form-control"  name="organogram"> --}}
                     <div class="custom-file-input-tag form-control mt-2">
-                        <input type="file" id="fileInput1" class="input-file" name="organogram"/>
+                        <input type="file" id="fileInput1" class="input-file" name="organogram" accept="image/*"/>
                         <label for="fileInput1" class="file-label">
                           <span class="file-text">اختيار الملف</span>
                           <span class="file-chosen">لم يتم اختيار ملف</span>
@@ -58,7 +58,7 @@
         <div class="am-card__body" style="padding:32px; text-align:center;">
         {{-- @dd($img) --}}
             @if ($img)
-                <img src="{{ $img }}" class="img-fluid">
+                @include('dashboard.partials.process_image')
             @else
                 <div class="am-empty">
                     <i class="fa fa-sitemap"></i>
