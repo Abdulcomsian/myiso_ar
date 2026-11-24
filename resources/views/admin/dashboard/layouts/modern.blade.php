@@ -73,7 +73,7 @@
 
         <div class="am-nav-heading">Resources</div>
 
-        <div class="am-nav-item am-nav-group {{ Request::is('all_faqs*') || Request::is('all_videos*') || Request::is('upload*') ? 'open' : '' }}">
+        <div class="am-nav-item am-nav-group {{ Request::is('all_faqs*') || Request::is('all_videos*') || Request::is('downloads*') ? 'open' : '' }}">
             <a href="javascript:;" class="am-nav-link am-nav-group__toggle">
                 <i class="fa fa-info-circle"></i>
                 <span>Info for Users</span>
@@ -82,7 +82,9 @@
             <div class="am-nav-group__children">
                 <a href="{{ url('/all_faqs') }}" class="am-nav-link {{ Request::is('all_faqs*') ? 'active' : '' }}">FAQs</a>
                 <a href="{{ url('/all_videos') }}" class="am-nav-link {{ Request::is('all_videos*') ? 'active' : '' }}">Videos</a>
-                <a href="{{ url('/upload') }}" class="am-nav-link {{ Request::is('upload*') ? 'active' : '' }}">Uploads</a>
+                {{-- /downloads is this site's route for the page; /upload is
+                     the English one and answers 404 here --}}
+                <a href="{{ url('/downloads') }}" class="am-nav-link {{ Request::is('downloads*') ? 'active' : '' }}">التحميلات</a>
             </div>
         </div>
 

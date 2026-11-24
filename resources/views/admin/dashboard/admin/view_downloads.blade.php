@@ -25,7 +25,11 @@
     {{-- Category filter pills --}}
     <div class="am-pills">
         @foreach ($categories as $cat)
-            <a href="{{ url('/upload?cat='.urlencode($cat)) }}" class="am-pill {{ $category === $cat ? 'active' : '' }}" data-cat="{{ $cat }}">
+            {{-- /downloads, not /upload. This page is reached by a different
+                 route on each site - the English one registers /upload, this
+                 one /downloads - and the view was copied across without that
+                 being changed. --}}
+            <a href="{{ url('/downloads?cat='.urlencode($cat)) }}" class="am-pill {{ $category === $cat ? 'active' : '' }}" data-cat="{{ $cat }}">
                 <i class="fa fa-tag"></i>
                 {{ $cat }}
                 <span class="am-pill__count">{{ $categoryCounts[$cat] ?? 0 }}</span>
@@ -130,7 +134,8 @@
 
 <script>
 (function() {
-    var baseUrl     = '{{ url("/upload") }}';
+    // the route this site registers for this page; the English one is /upload
+    var baseUrl     = '{{ url("/downloads") }}';
     var currentCat  = @json($category);
 
     // Toggle upload form
@@ -163,7 +168,13 @@
         container.style.pointerEvents = 'none';
 
         fetch(baseUrl + '?' + params.toString(), { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
-            .then(function(r){ return r.text(); })
+            .then(function(r){
+                // fetch only rejects on a network failure: a 404 or a 500
+                // arrives here as a normal response, and its body would be
+                // drawn into the page as though it were the list
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
             .then(function(html) {
                 container.innerHTML = html;
                 container.style.opacity = '';
