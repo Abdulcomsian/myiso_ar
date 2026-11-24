@@ -38,7 +38,20 @@
                 يسعدنا إعلامك بأنه قد تمت إضافة حساب الموظف الخاص بك بنجاح إلى MyISOonline. يمكنك الآن الوصول إلى دورات MyISOonline.
             </p>
 
-            <a href="{{ url('/lms/account') }}?action=login" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
+            {{-- asset(), not url(). url() reads APP_URL, which on this site is
+                 .../ar and leaves out the /public the LMS actually sits under,
+                 so this button led to a 404. asset() reads ASSET_URL, which is
+                 .../ar/public. The trailing slash is written after asset()
+                 because asset() trims one off its own argument.
+
+                 ?action=register, not login: the email goes out when an
+                 employee is first added, so there is no account to log into
+                 yet. This is the address the client asked for:
+                 https://myisoonline.com/ar/public/lms/account/?action=register
+
+                 Only the address changed - the wording and the styling below
+                 are untouched. --}}
+            <a href="{{ asset('/lms/account') }}/?action=register" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; cursor: pointer; border: 2px solid #3498db; color: #fff; background-color: #3498db; border-radius: 5px; transition: background-color 0.3s, color 0.3s, border-color 0.3s;"
             class="button">سجّل الدخول الآن</a>
 
         </div>
